@@ -1,0 +1,601 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="ADR">
+	<Package name="MagRepack">
+		<Key ID="STR_ADR_MagRepack">
+			<Original>Repack magazines</Original>
+			<Russian>Перепаковать магазины</Russian>
+		</Key>
+		<Key ID="STR_ADR_MagRepack_ChatMsg">
+			<Original>Magazines have been repacked. You had %1, now %2.</Original>
+			<Russian>Магазины перепакованы. Было %1, стало %2.</Russian>
+		</Key>
+	</Package>
+</Project>
+<Project name="Virtual Ammobox System">
+	<Package name="Main">
+		<Key ID="STR_VAS_Main_Weapons">
+			<Original>Weapons</Original>
+			<German>Waffen</German>
+			<French>Armes</French>
+			<Polish>Broń</Polish>
+			<Portuguese>Armas</Portuguese>
+			<Italian>Armi</Italian>
+			<Czech>Zbraně</Czech>
+			<Russian>Оружие</Russian>
+			<Spanish>Armas</Spanish>
+		</Key>
+		<Key ID="STR_VAS_Main_Magazines">
+			<Original>Magazines</Original>
+			<German>Magazine</German>
+			<French>Chargeurs</French>
+			<Polish>Amunicja</Polish>
+			<Portuguese>Munições</Portuguese>
+			<Italian>Munizioni</Italian>
+			<Czech>Munice</Czech>
+			<Russian>Боеприпасы</Russian>
+			<Spanish>Cargadores</Spanish>
+		</Key>
+		<Key ID="STR_VAS_Main_Items">
+			<Original>Items</Original>
+			<German>Gegenstände</German>
+			<French>Objets</French>
+			<Polish>Przedmioty</Polish>
+			<Portuguese>Items</Portuguese>
+			<Italian>Oggetti</Italian>
+			<Czech>Předměty</Czech>
+			<Russian>Вещи</Russian>
+			<Spanish>Articulos</Spanish>
+		</Key>
+		<Key ID="STR_VAS_Main_Backpacks">
+			<Original>Backpacks</Original>
+			<German>Rucksäcke</German>
+			<French>Sacs à dos</French>
+			<Polish>Plecaki</Polish>
+			<Portuguese>Mochilas</Portuguese>
+			<Italian>Zaini</Italian>
+			<Czech>Batohy</Czech>
+			<Russian>Заплечные</Russian>
+			<Spanish>Mochilas</Spanish>
+		</Key>
+		<Key ID="STR_VAS_Main_Goggles">
+			<Original>Goggles</Original>
+			<German>Brillen</German>
+			<French>Lunettes</French>
+			<Polish>Gogle</Polish>
+			<Portuguese>Óculos</Portuguese>
+			<Italian>Occhiali</Italian>
+			<Czech>Brýle</Czech>
+			<Russian>Очки</Russian>
+			<Spanish>Gafas</Spanish>
+		</Key>
+		<Key ID="STR_VAS_Main_Uniforms">
+			<Original>Uniforms</Original>
+			<German>Uniformen</German>
+			<French>Uniformes</French>
+			<Polish>Mundury</Polish>
+			<Portuguese>Uniformes</Portuguese>
+			<Italian>Uniformi</Italian>
+			<Czech>Uniformy</Czech>
+			<Russian>Форма</Russian>
+			<Spanish>Uniformes</Spanish>
+		</Key>
+		<Key ID="STR_VAS_Main_Vests">
+			<Original>Vests</Original>
+			<German>Westen</German>
+			<French>Gilets Tac.</French>
+			<Polish>Kamizelki</Polish>
+			<Portuguese>Coletes</Portuguese>
+			<Italian>Gibernaggio</Italian>
+			<Czech>Vesty</Czech>
+			<Russian>Жилеты</Russian>
+			<Spanish>Ropa</Spanish>
+		</Key>
+		<Key ID="STR_VAS_Main_Headgear">
+			<Original>Headgear</Original>
+			<German>Kopfbekleidung</German>
+			<French>Casques</French>
+			<Polish>Nakrycia głowy</Polish>
+			<Portuguese>Capacetes</Portuguese>
+			<Italian>Elmetto</Italian>
+			<Czech>Pokrývky Hlavy</Czech>
+			<Russian>Головные</Russian>
+			<Spanish>Cascos</Spanish>
+		</Key>
+		<Key ID="STR_VAS_Main_Attachments">
+			<Original>Attachments</Original>
+			<German>Anbauteile</German>
+			<French>Objets Attachés</French>
+			<Polish>Dodatki</Polish>
+			<Portuguese>Acessórios</Portuguese>
+			<Italian>Accessori</Italian>
+			<Czech>Doplňky</Czech>
+			<Russian>Навесные</Russian>
+			<Spanish>Accesorios</Spanish>
+		</Key>
+		<Key ID="STR_VAS_Main_Misc">
+			<Original>Misc</Original>
+			<German>Diverses</German>
+			<French>Objets Divers</French>
+			<Polish>Inne</Polish>
+			<Portuguese>Diversos</Portuguese>
+			<Italian>Varie</Italian>
+			<Czech>Ostatní</Czech>
+			<Russian>Предметы</Russian>
+			<Spanish>Diversos</Spanish>
+		</Key>
+		<Key ID="STR_VAS_Main_btnAdd">
+			<Original>Add Item</Original>
+			<German>Zufügen</German>
+			<French>Ajouter Arme/Obj.</French>
+			<Polish>Dodaj przedmiot</Polish>
+			<Portuguese>Acrescemtar Item</Portuguese>
+			<Italian>Aggiungi oggetto</Italian>
+			<Czech>Přidat Předmět</Czech>
+			<Russian>Добавить</Russian>
+			<Spanish>Equipar Articulo</Spanish>
+		</Key>
+		<Key ID="STR_VAS_Main_btnRemove">
+			<Original>Remove Item</Original>
+			<German>Entfernen</German>
+			<French>Retirer Arme/Obj.</French>
+			<Polish>Usuń przedmiot</Polish>
+			<Portuguese>Remover Item</Portuguese>
+			<Italian>Rimuovi oggetto</Italian>
+			<Czech>Odebrat Předmět</Czech>
+			<Russian>Убрать</Russian>
+			<Spanish>Eliminar Articulo</Spanish>
+		</Key>
+		<Key ID="STR_VAS_Main_btnClose">
+			<Original>Close</Original>
+			<German>Schließen</German>
+			<French>Fermer</French>
+			<Polish>Zamknij</Polish>
+			<Portuguese>Fechar</Portuguese>
+			<Italian>Chiudi</Italian>
+			<Czech>Zavřít</Czech>
+			<Russian>Закрыть</Russian>
+			<Spanish>Cerrar</Spanish>
+		</Key>
+		<Key ID="STR_VAS_Main_btnLoad">
+			<Original>Load Gear</Original>
+			<German>Laden</German>
+			<French>Charger</French>
+			<Polish>Załaduj wyposażenie</Polish>
+			<Portuguese>Carregar Equipamento</Portuguese>
+			<Italian>Carica equipaggiamento</Italian>
+			<Czech>Nahrát Vybaveni</Czech>
+			<Russian>Загрузить</Russian>
+			<Spanish>Cargar</Spanish>
+		</Key>
+		<Key ID="STR_VAS_Main_btnSave">
+			<Original>Save Gear</Original>
+			<German>Speichern</German>
+			<French>Sauver</French>
+			<Polish>Zapisz wyposażenie</Polish>
+			<Portuguese>Gravar Equipamento</Portuguese>
+			<Italian>Salva equipaggiamento</Italian>
+			<Czech>Uložit Vybavení</Czech>
+			<Russian>Сохранить</Russian>
+			<Spanish>Guardar</Spanish>
+		</Key>
+		<Key ID="STR_VAS_Main_btnRemoveAll">
+			<Original>Remove All</Original>
+			<German>Alles Entfernen</German>
+			<French>Retir.Tout</French>
+			<Polish>Usuń wszystko</Polish>
+			<Portuguese>Retirar Tudo</Portuguese>
+			<Italian>Rimuovi tutto</Italian>
+			<Czech>Odebrat Vše</Czech>
+			<Russian>Очистить</Russian>
+			<Spanish>Eliminar Todo</Spanish>
+		</Key>
+		<Key ID="STR_VAS_Main_btnInfo">
+			<Original>Info</Original>
+			<Russian>Таблица</Russian>
+		</Key>
+		<Key ID="STR_VAS_Main_VirtGear">
+			<Original>Virtual Ammobox</Original>
+			<German>Interaktive Waffenkiste</German>
+			<Portuguese>Caixa de Munições Virtual</Portuguese>
+			<Russian>Доступные</Russian>
+			<Czech>Virtuální Ammobox</Czech>
+		</Key>
+		<Key ID="STR_VAS_Main_YCG">
+			<Original>Your Current Gear</Original>
+			<German>Aktuelle Ausrüstung</German>
+			<French>Votre équipement actuel</French>
+			<Polish>Twoje Aktualne Wyposażenie</Polish>
+			<Portuguese>Equipamento Actual</Portuguese>
+			<Italian>Equipaggiamento attuale</Italian>
+			<Czech>Vaše současné vybavení</Czech>
+			<Russian>В наличии</Russian>
+			<Spanish>Equipamiento Actual</Spanish>
+		</Key>
+		<Key ID="STR_Vas_Main_CL">
+			<Original>Custom Loadout</Original>
+			<German>Angepasste Ausrüstung</German>
+			<French>Emplacement perso</French>
+			<Polish>Niestandardowe wyposażenie</Polish>
+			<Portuguese>Equipamento Customizado</Portuguese>
+			<Italian>Equip. personalizzato</Italian>
+			<Czech>Vlastní Výbava</Czech>
+			<Russian>Место набора</Russian>
+			<Spanish>Equipamiento Customizado</Spanish>
+		</Key>
+		<Key ID="STR_Vas_Main_Rifles">
+			<Original>Rifles</Original>
+			<German>Gewehre</German>
+			<French>Fusils (Tous)</French>
+			<Polish>Karabiny</Polish>
+			<Portuguese>Espingardas</Portuguese>
+			<Italian>Fucili</Italian>
+			<Czech>Pušky</Czech>
+			<Russian>Винтовки</Russian>
+			<Spanish>Fusiles</Spanish>
+		</Key>
+		<Key ID="STR_Vas_Main_Scoped">
+			<Original>Scoped</Original>
+			<German>Fernkampf</German>
+			<French>Fusils (Longs)</French>
+			<Polish>Bron Ciężka</Polish>
+			<Portuguese>Telescópicas</Portuguese>
+			<Italian>Fucili (ottica)</Italian>
+			<Czech>Odstřelovačky</Czech>
+			<Russian>Под оптику</Russian>
+			<Spanish>Fusiles Largos</Spanish>
+		</Key>
+		<Key ID="STR_Vas_Main_Heavy">
+			<Original>Heavy</Original>
+			<German>Schwere Waffen</German>
+			<French>Lourds</French>
+			<Polish>Wyrzutnie</Polish>
+			<Portuguese>Pesadas</Portuguese>
+			<Italian>Pesanti</Italian>
+			<Czech>Těžké Zbraně</Czech>
+			<Russian>Тяжелое</Russian>
+			<Spanish>Pesadas</Spanish>
+		</Key>
+		<Key ID="STR_Vas_Main_Launcher">
+			<Original>Launchers</Original>
+			<German>Raketenwerfer</German>
+			<French>Lanceurs</French>
+			<Portuguese>Lança-Misseis</Portuguese>
+			<Italian>Lanciamissili</Italian>
+			<Czech>Odpalovače</Czech>
+			<Russian>Гранатомёты</Russian>
+			<Spanish>Lanzamisiles</Spanish>
+		</Key>
+		<Key ID="STR_Vas_Main_Pistols">
+			<Original>Pistols</Original>
+			<German>Pistolen</German>
+			<French>Pistolets</French>
+			<Polish>Pistolety</Polish>
+			<Portuguese>Pistolas</Portuguese>
+			<Italian>Pistole</Italian>
+			<Czech>Pistole</Czech>
+			<Russian>Пистолеты</Russian>
+			<Spanish>Pistolas</Spanish>
+		</Key>
+		<Key ID="STR_VAS_restricted">
+			<Original>is a restricted item and will not be added to your inventory.</Original>
+			<Italian>è un oggetto bloccato e non sarà aggiunto al tuo inventario.</Italian>
+			<Russian>относиться к запрещенным вещам и не будет добавлен к вашей экипировке.</Russian>
+			<Czech>je zakázaný a nebude přidán do tvého inventáře.</Czech>
+		</Key>
+	</Package>
+	<Package name="LoadGear">
+		<Key ID="STR_VAS_Load_Title">
+			<Original>Virtual Ammobox System - Load Gear</Original>
+			<German>Virtual Ammobox System - Ausrüstung Laden</German>
+			<French>Caisse Virtuelle - Charger</French>
+			<Portuguese>Caixa de Munições Virtual - Carregar</Portuguese>
+			<Italian>Virtual Ammobox System - Carica equipaggiamento</Italian>
+			<Czech>Virtuální Ammobox Systém - Nahrát Vybavení</Czech>
+			<Russian>Список имеющихся наборов экипировки</Russian>
+			<Spanish>Virtual Ammobox System - Cargar Equipamiento</Spanish>
+		</Key>
+		<Key ID="STR_VAS_Info_Title">
+			<Original>Allowed weapons and scopes</Original>
+			<Russian>Разрешенное оружие и прицелы</Russian>
+		</Key>
+		<Key ID="STR_VAS_Menu_Title">
+			<Original>Allowed weapons</Original>
+			<Russian>Разрешенное оружие</Russian>
+		</Key>
+		<Key ID="STR_VAS_Load_LOR">
+			<Original>Load On Respawn</Original>
+			<German>Beim Respawn Laden</German>
+			<French>Charg. à la réap</French>
+			<Polish>Ekwipuj przy odrodzeniu</Polish>
+			<Portuguese>Carregar em Respawn</Portuguese>
+			<Italian>Carica al respawn</Italian>
+			<Czech>Výbava pro respawn</Czech>
+			<Russian>Автозагрузка</Russian>
+			<Spanish>Equipar En Respawn</Spanish>
+		</Key>
+		<Key ID="STR_VAS_Load_TransferBtn">
+			<Original>Transfer</Original>
+			<Russian>Передать</Russian>
+			<Czech>Převod</Czech>
+		</Key>
+		<Key ID="STR_VAS_Load_btnLoad">
+			<Original>Load</Original>
+			<German>Laden</German>
+			<French>Charger</French>
+			<Polish>Załaduj</Polish>
+			<Portuguese>Carregar</Portuguese>
+			<Italian>Carica</Italian>
+			<Czech>Nahrát</Czech>
+			<Russian>Загрузить</Russian>
+			<Spanish>Cargar</Spanish>
+		</Key>
+		<Key ID="STR_VAS_Load_btnDelete">
+			<Original>Delete</Original>
+			<German>Löschen</German>
+			<French>Supprimer</French>
+			<Polish>Usuń</Polish>
+			<Portuguese>Apagar</Portuguese>
+			<Italian>Cancella</Italian>
+			<Czech>Smazat</Czech>
+			<Russian>Удалить</Russian>
+			<Spanish>Eliminar</Spanish>
+		</Key>
+	</Package>
+	<Package name="SaveGear">
+		<Key ID="STR_VAS_Save_Title">
+			<Original>Virtual Ammobox System - Save Gear</Original>
+			<German>Virtual Ammobox System - Ausrüstung Speichern</German>
+			<French>Caisse Virtuelle - Sauver</French>
+			<Portuguese>Caixa de Munições Virtual - Gravar</Portuguese>
+			<Italian>Virtual Ammobox System - Salva equipaggiamento</Italian>
+			<Czech>Virtuální Ammobox Systém - Uložit Vybavení</Czech>
+			<Russian>Сохранение наличной экипировки в виде набора</Russian>
+			<Spanish>Virtual Ammobox System - Guardar Equipamiento</Spanish>
+		</Key>
+		<Key ID="STR_VAS_Save_btnSave">
+			<Original>Save</Original>
+			<German>Speichern</German>
+			<French>Sauver</French>
+			<Polish>Zapisz</Polish>
+			<Portuguese>Gravar</Portuguese>
+			<Italian>Salva</Italian>
+			<Czech>Uložit</Czech>
+			<Russian>Сохранить</Russian>
+			<Spanish>Guardar</Spanish>
+		</Key>
+		<Key ID="STR_VAS_Save_CLN">
+			<Original>Custom Loadout Name</Original>
+			<German>Angepasste Ausrüstung</German>
+			<French>Nom de l'emplacement perso</French>
+			<Portuguese>Nome da Selecção</Portuguese>
+			<Italian>Nome equipaggiamento</Italian>
+			<Czech>Název Výbavy</Czech>
+			<Russian>Новый набор</Russian>
+			<Spanish>Nombre De Equipamiento Customizado</Spanish>
+		</Key>
+	</Package>
+	<Package name="VASTransferMenu">
+		<Key ID="STR_VAS_Transfer_MainMenu">
+			<Original>Virtual Ammobox System - Transfer Menu</Original>
+			<Russian>Выбор игрока для передачи набора</Russian>
+			<Czech>Virtuální Ammobox Systém - Menu Převodu</Czech>
+		</Key>
+		<Key ID="STR_VAS_Transfer_SaveMenu">
+			<Original>Virtual Ammobox System - Save Transfer</Original>
+			<Russian>Выбор места хранения переданного Вам набора</Russian>
+			<Czech>Virtuální Ammobox Systém - Uložení Převodu</Czech>
+		</Key>
+		<Key ID="STR_VAS_Transfer_Request">
+			<Original>wants to transfer you their saved loadout.</Original>
+			<Russian>хочет передать Вам свой набор экипировки.</Russian>
+			<Czech>ti chce převést svojí uloženou výbavu.</Czech>
+		</Key>
+		<Key ID="STR_VAS_Transfer_Request2">
+			<Original>Would you like to receive this request and save it?</Original>
+			<Russian>Вы согласны принять етот набор на хранение?</Russian>
+			<Czech>Chtěl by jsi přijmout tuto žádost a uložit jí?</Czech>
+		</Key>
+		<Key ID="STR_VAS_Transfer_NoSlotSelection">
+			<Original>You either did not select a slot that you wanted to transfer to another user or the slot had no information.</Original>
+			<Russian>Набор для передачи не выбран либо не хранит в себе никаких вещей.</Russian>
+			<Czech>Buď si nevybral slot, který si chtěl převést na jiného uživatele, nebo slot neměl žádné informace.</Czech>
+		</Key>
+		<Key ID="STR_VAS_Transfer_BadUnit">
+			<Original>The selected user doesn not exist.</Original>
+			<Russian>Выбранный Вами игрок недоступен.</Russian>
+			<Czech>Tento uživatel neexistuje.</Czech>
+		</Key>
+	</Package>
+	<Package name="VASPrompts">
+		<Key ID="STR_VAS_Prompt_selectSlotFail">
+			<Original>You didn't select a slot to delete!</Original>
+			<Italian>Non hai selezionato uno slot da cancellare!</Italian>
+			<Russian>Вы не выбрали набор для удаления!</Russian>
+			<Czech>Nevybral si slot pro smazání!</Czech>
+			<French>Aucun emplacement choisi pour être supprimé!</French>
+		</Key>
+		<Key ID="STR_VAS_Prompt_deleteSlotNoInfo">
+			<Original>You can't delete that slot, it has no information!</Original>
+			<Italian>Non puoi cancellare questo slot, è già vuoto!</Italian>
+			<Russian>Место для набора удалить нельзя!</Russian>
+			<Czech>Nemůžeš vymazat tento slot, nemá žádné informace!</Czech>
+			<French>Vous ne pouvez pas supprimer cette emplacement, aucun enregistrement détecté!</French>
+		</Key>
+		<Key ID="STR_VAS_Prompt_deleteSlotWarning">
+			<Original>You are about to delete slot</Original>
+			<Italian>Stai per cancellare lo slot</Italian>
+			<Russian>Вы собираетесь удалить набор</Russian>
+			<Czech>Chystáš se smazat slot</Czech>
+			<French>Vous êtes sur le point de supprimer cet emplacement</French>
+		</Key>
+		<Key ID="STR_VAS_Prompt_deleteCanelled">
+			<Original>You cancelled deleting slot</Original>
+			<Italian>Hai cancellato lo slot cancellandolo</Italian>
+			<Russian>Вы отменили удаление набора</Russian>
+			<Czech>Zrušil si mazání slotu</Czech>
+			<French>Vous avez annulé la suppression de l'emplacement</French>
+		</Key>
+		<Key ID="STR_VAS_Prompt_deleteSuccess">
+			<Original>You deleted slot</Original>
+			<Italian>Hai cancellato lo slot</Italian>
+			<Russian>Вы удалили набор</Russian>
+			<Czech>Vymazal si slot</Czech>
+			<French>Vous avez supprimé cet emplacement</French>
+		</Key>
+		<Key ID="STR_VAS_Prompt_deleteYes">
+			<Original>Yes</Original>
+			<Italian>Sì</Italian>
+			<Spanish>Sì</Spanish>
+			<Russian>Да</Russian>
+			<Czech>Ano</Czech>
+			<French>Oui</French>
+		</Key>
+		<Key ID="STR_VAS_Prompt_deleteNo">
+			<Original>No</Original>
+			<Italian>No</Italian>
+			<Spanish>No</Spanish>
+			<Russian>Нет</Russian>
+			<Czech>Ne</Czech>
+			<French>Non</French>
+		</Key>
+		<Key ID="STR_VAS_Prompt_slotNoInfo">
+			<Original>You didn't select a slot!</Original>
+			<Italian>Non hai selezionato uno slot!</Italian>
+			<Russian>Выберите один из наборов в списке!</Russian>
+			<Czech>Nevybral si slot!</Czech>
+			<French>Vous n'avez pas choisi d'emplacement!</French>
+		</Key>
+		<Key ID="STR_VAS_Prompt_onRespawnFail">
+			<Original>No slot was selected to be loaded upon respawn!</Original>
+			<Italian>Non hai selezionato nessuno slot da caricare al respawn!</Italian>
+			<Russian>Вы не выбрали набор для автозагрузки!</Russian>
+			<Czech>Nebyl vybrán žádný slot pro načtení při respawnu!</Czech>
+			<Polish>Nie wybrano slotu do wczytania przy odrodzeniu!</Polish>
+			<French>Aucun emplacement n'a été sélectionné pour être chargé lors de la réapparition!</French>
+		</Key>
+		<Key ID="STR_VAS_Prompt_slotSelFail">
+			<Original>You didn't select a slot!</Original>
+			<Italian>Non hai selezionato uno slot!</Italian>
+			<Russian>Выберите один из наборов в списке!</Russian>
+			<Czech>Nevybral si slot!</Czech>
+			<French>Vous n'avez pas choisi d'emplacement!</French>
+		</Key>
+		<Key ID="STR_VAS_Prompt_addToWeapon">
+			<Original>Weapon</Original>
+			<Italian>Armi</Italian>
+			<Russian>На оружие</Russian>
+			<Czech>Zbraň</Czech>
+			<French>Armes</French>
+		</Key>
+		<Key ID="STR_VAS_Prompt_addToInv">
+			<Original>Inventory</Original>
+			<Italian>Inventario</Italian>
+			<Russian>К вещам</Russian>
+			<Czech>Inventář</Czech>
+			<French>Inventaire</French>
+		</Key>
+		<Key ID="STR_VAS_Prompt_acc1">
+			<Original>What do you want to do with that attachment?</Original>
+			<Italian>Cosa vuoi fare con questo accessorio?</Italian>
+			<Russian>Установить на оружие или добавить к вещам?</Russian>
+			<Czech>Co chcete dělat s tímto doplňkem?</Czech>
+			<French>Que voulez-vous faire avec cet emplacement?</French>
+		</Key>
+		<Key ID="STR_VAS_Prompt_acc2">
+			<Original>Please know that if you choose to add it to your weapon your current existing attachment in that slot will be lost.</Original>
+			<Italian>Attenzione, se attacchi l'accessorio alla tua arma, l'accessorio attaccato attualmente sarà sostituito.</Italian>
+			<Russian>Установка на оружие подразумевает замену любого имеющегося приспособления на его месте крепления.</Russian>
+			<Czech>Berte na vědomí, že pokud si přidáte doplněk na zbraň tak přijdete o již existující doplněk co máte na zbrani.</Czech>
+			<French>Si vous choisissez de placer cette objet sur votre arme, sachez que l'objet actuellement placé sur l'arme sera automatiquement supprimé</French>
+		</Key>
+	</Package>
+</Project>
+<Project name="DOM_Squad">
+	<Package name="DOM_Squad">
+		<Key ID="STRD_squadm">
+			<Original>Squad Menu</Original>
+			<Russian>Меню отрядов</Russian>
+		</Key>
+		<Key ID="STRD_manage">
+			<Original>Squad Management</Original>
+			<Russian>Управление Отрядом</Russian>
+		</Key>
+		<Key ID="STRD_namegroup">
+			<Original>Group Name</Original>
+			<Russian>Название отряда</Russian>
+		</Key>
+		<Key ID="STRD_locked">
+			<Original>Locked</Original>
+			<Russian>Закрыт</Russian>
+		</Key>
+		<Key ID="STRD_Quit">
+			<Original>Quit</Original>
+			<Russian>Выйти</Russian>
+		</Key>
+		<Key ID="STRD_Lock">
+			<Original>Lock</Original>
+			<Russian>Закрыть</Russian>
+		</Key>
+		<Key ID="STRD_Unlock">
+			<Original>Unlock</Original>
+			<Russian>Открыть</Russian>
+		</Key>
+		<Key ID="STRD_Remove">
+			<Original>Kick</Original>
+			<Russian>Выгнать</Russian>
+		</Key>
+		<Key ID="STRD_Leave">
+			<Original>Leave</Original>
+			<Russian>Покинуть</Russian>
+		</Key>
+		<Key ID="STRD_Join">
+			<Original>Join</Original>
+			<Russian>Вступить</Russian>
+		</Key>
+		<Key ID="STRD_Invite">
+			<Original>Invite</Original>
+			<Russian>Пригласить</Russian>
+		</Key>
+		<Key ID="STRD_Rank">
+			<Original>Promote</Original>
+			<Russian>Повысить</Russian>
+		</Key>
+		<Key ID="STRD_Kicked">
+			<Original>%1 have kicked %2</Original>
+			<Russian>%1 выгнал %2</Russian>
+		</Key>
+		<Key ID="STRD_Teamlead">
+			<Original>%1 gave leadership to %2</Original>
+			<Russian>%1 передал командование %2</Russian>
+		</Key>
+		<Key ID="STRD_SendInvite">
+			<Original>%1 has invited %2 to %3</Original>
+			<Russian>%1 пригласил %2 в %3</Russian>
+		</Key>
+		<Key ID="STRD_Hint">
+			<Original>In order to give leadership to other squad member, click twice on his name and press the 'Promote' button</Original>
+			<Russian>Для передачи лидерства нажмите на игрока 2 раза левой кнопкой мыши, затем на кнопку 'Повысить'</Russian>
+		</Key>
+	</Package>
+</Project>
+<Project name="TEHGAM_Rules">
+	<Package name="TEHGAM_Rules">
+		<Key ID="STR_TEHGAM_RULES_Title">
+			<Original>Server Rules</Original>
+			<Russian>Правила сервера</Russian>
+		</Key>
+    </Package>
+</Project>
+<Project name="Prison_Reasons">
+	<Package name="Prison_Reasons">
+		<Key ID="STR_PRISON_TEAMKILL">
+			<Original>YOU PUNISHED FOR TEAMKILL! Time: %1 sec</Original>
+			<Russian>ВАС НАКАЗАЛИ ЗА УБИЙСТВО СВОИХ! Наказание: %1 сек</Russian>
+		</Key>
+		<Key ID="STR_PRISON_VEHICLE">
+			<Original>YOU PUNISHED FOR DESTROING VEHICLES! Time: %1 sec</Original>
+			<Russian>ВАС НАКАЗАЛИ ЗА УНИЧТОЖЕНИЕ ТЕХНИКИ! Наказание: %1 сек</Russian>
+		</Key>
+    </Package>
+</Project>
+

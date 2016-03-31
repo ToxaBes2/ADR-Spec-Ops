@@ -1,0 +1,426 @@
+//------------------------- On Load
+
+author = "based on ADR:Blue Shark [www.tehgam.com]";
+onLoadName = "ADR: Spec Ops";
+OnLoadMission = "version 0.0.1 by ToxaBes";
+loadScreen = "media\images\adr_specops_loading.jpg";
+overviewPicture = "media\images\adr_specops_loading.jpg";
+
+onLoadIntro = "";										// Displays a message while the intro is loading.
+onLoadIntroTime = 0;									// Time and date displayed while the intro loads. 1 visible, 0 hidden.
+onLoadMissionTime = 0;									// Time and date displayed while the mission loads. 1 visible, 0 hidden.
+forceRotorLibSimulation= 1;								// Default value: 0 - options-based; 1 - force enable; 2 - force disable
+class Header
+	{
+		gameType = COOP;								// Unknown, COOP, DM, TDM, CTF, SC, CTI, RPG, Sandbox, Seize, Defend.
+		minPlayers = 1;
+		maxPlayers = 31;
+	};
+
+//------------------------- Admin
+
+enableDebugConsole = 1;									// 0 = disabled. 1 = admins, 2 = everybody. 0 is recommended in MP.
+allowFunctionsLog = 0; 									// Log functions to .rpt. disabled with 0
+
+//------------------------- Misc
+
+disableChannels[]={0,2}; 								// 0 = Global, 1 = Side, 2 = Command, 3 = Group, 4 = Vehicle, 5 = Direct, 6 = System. Admin/server/BattlEye can still use Global.
+disabledAI = 1;											// No AI in playable units
+aiKills = 0; 											// disable scorelist for AI players
+enableItemsDropping = 0; 								// disabled with 0
+joinUnassigned = 1;										// 0 = players forced into role on join
+showUAVFeed = 1;										// Enables/Disables the UAV Feed. Zeus-related.
+
+//------------------------- Respawn
+
+Respawn = 3;											// 0 = none. 1 = bird. 2 = instant where died. 3 = base or respawn_west marker. 4 = respawn with team, or bird. 5 = into AI or bird.
+RespawnDelay = 4;										// Delay prior to respawn, ensure longer than BTC revive delay.
+RespawnDialog = 0;										// default = 1. show respawn timer and scoreboard when killed.
+
+//------------------------- Garbage collector
+
+wreckLimit = 3;											// Limit before removal is triggered
+wreckRemovalMinTime = 120;								// Min time before removal
+wreckRemovalMaxTime = 360;								// Max time before removal
+corpseLimit = 5;										// Limit before removal is triggered
+corpseRemovalMinTime = 60;								// Min time before removal
+corpseRemovalMaxTime = 120;								// Max time before removal
+
+//------------------------- Includes / Functions
+
+#include "scripts\VAS\menu.hpp" 						// VAS
+#include "scripts\taw_vd\dialog.hpp" 					// TAW View Distance
+#include "scripts\vehicle\crew\common.hpp"  			// vehicle crew hud
+#include "scripts\=BTC=_revive\=BTC=_respawn.h"			// BTC medic revive system
+#include "scripts\DOM_squad\SquadManagement.hpp"		// Squad manager
+#include "scripts\rules\dialog.hpp"		                // Server rules dialog
+
+class CfgFunctions
+	{
+		#include "functions\cfgfunctions.hpp"			// Integrated I&A functions
+		#include "scripts\VAS\cfgfunctions.hpp"			// VAS
+		#include "scripts\taw_vd\CfgFunctions.hpp"		// View distance
+		class FETT {
+	        class curator {
+	            class eventHandlers {postInit = 1;};
+	            class objPlaced {};
+	            class grpPlaced {};
+	        };
+	    };
+	};
+
+class RscTitles
+	{
+		#include "scripts\vehicle\crew\namesleft.hpp"	// Occupants HUD for vehicles
+	};
+
+//------------------------- Parameters
+
+class Params {
+	class AO {
+		title = "Основное задание";
+		values[] = {1,0};
+		texts[] = {"Включено","Выключено"};
+		default = 1;
+	};
+
+	class DefendAO {
+		title = "Защита";
+		values[] = {1,0};
+		texts[] = {"Включено","Выключена"};
+		default = 1;
+	};
+
+	class SideObjectives {
+		title = "Дополнительные миссии";
+		values[] = {1,0};
+		texts[] = {"Включено","Выключено"};
+		default = 1;
+	};
+
+	class AOReinforcementJet {
+		title = "Вражеский самолет оказывает поддержку";
+		values[] = {1,0};
+		texts[] = {"Включено","Выключено"};
+		default = 1;
+	};
+
+	class EnemyLeftThreshhold {
+		title = "Кол-во оставшихся врагов для завершения миссии";
+		values[] = {2,4,8,16,20};
+		texts[] = {"2","4","8","16","20"};
+		default = 20;
+	};
+
+	class RadioTowerMineFieldChance {
+		title = "Шанс появления минного поля рядом с вышкой";
+		values[] = {0,1,2,3,4,5,6,7,8,9,11};
+		texts[] = {"0%","10%","20%","30%","40%","50%","60%","70%","80%","90%","100%"};
+		default = 5;
+	};
+
+	class ArtilleryTargetTickTimeMin {
+		title = "Минимальный интервал стрельбы артиллерии";
+		values[] = {30,60,120,180,240,300,600,900};
+		texts[] = {"30 секунд","1 минута","2 минуты","3 минуты","4 минуты","5 минут","10 минут","15 минут"};
+		default = 60;
+	};
+
+	class ArtilleryTargetTickTimeMax {
+		title = "Максимаьный интервал стрельбы артиллерии";
+		values[] = {30,60,120,180,240,300,600,900};
+		texts[] = {"30 секунд","1 минута","2 минуты","3 минуты","4 минуты","5 минут","10 минут","15 минут"};
+		default = 180;
+	};
+
+	class ArtilleryTargetTickWarning {
+		title = "Предупреждение о залпе артилерии";
+		values[] = {1,0};
+		texts[] = {"Включено","Выключено"};
+		default = 1;
+	};
+
+	class AOSize {
+		title = "Диаметр маркера основной миссии";
+		values[] = {200,300,400,500,600,700,800,900,1000};
+		texts[] = {"200m","300m","400m","500m","600m","700m","800m","900m","1,000m"};
+		default = 1000;
+	};
+
+	class VehicleRespawnDistance {
+		title = "Расстояние от транспорта до игроков, при котором транспорт респавнится";
+		values[] = {10,50,100,200,300,400,500,1000,2000,5000,10000};
+		texts[] = {"10m","50m","100m","200m","300m","400m","500m","1km","2km","5km","10km"};
+		default = 500;
+	};
+
+	class GroupPatrol {
+		title = "Кол-во групп патрулей";
+		values[] = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+		texts[] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
+		default = 4; // default 11... remember, more AI = less FPS
+	};
+
+	class SniperTeamsPatrol {
+		title = "Кол-во групп снайперов";
+		values[] = {0,1,2,3};
+		texts[] = {1,2,3,4};
+		default = 0;
+	};
+
+	class StaticMG {
+		title = "Кол-во стационарных установок";
+		values[] = {0,1,2,3};
+		texts[] = {1,2,3,4};
+		default = 1;
+	};
+
+	class Overwatch {
+		title = "Кол-во разведывательных патрулей";
+		values[] = {0,1,2,3,4,5,6,7};
+		texts[] = {1,2,3,4,5,6,7,8};
+		default = 2;
+	};
+
+	class VEHPatrol {
+		title = "Кол-во техники";
+		values[] = {0,1,2,3,4,5,6};
+		texts[] = {1,2,3,4,5,6,7};
+		default = 2;
+	};
+
+	class AAPatrol {
+		title = "Кол-во ЗСУ";
+		values[] = {0,1,2,3,4};
+		texts[] = {0,1,2,3,4};
+		default = 2;
+	};
+
+	class AirPatrol {
+		title = "Шанс появления вражеского штурмовика";
+		values[] = {0,1,2,3,4,5,6,7,8,9,10};
+		texts[] = {0%,10%,20%,30%,40%,50%,60%,70%,80%,90%,100%};
+		default = 5;
+	};
+
+	class PilotRespawn {
+		title = "Респавн пилотов";
+		values[] = {0,1};
+		texts[] = {"Выключено","Включено"};
+		default = 1;
+	};
+
+	class Fatigue {
+		title = "Усталость игроков";
+		values[] = {0,1};
+		texts[] = {"Выключено","Включено"};
+		default = 1;
+	};
+
+	class AimingAccuracy {
+		title = "Точность противников";
+		values[] = {0,1,2,3,4};
+		texts[] = {"Слепые котята","По Сомалийски","Человеческая","Нечеловеческая","AIM + WALLHACK + NORECOIL"};
+		default = 2;
+	};
+};
+
+//------------------------- Notifications
+
+class CfgNotifications
+{
+	class Default
+	{
+		title = ""; 			// Tile displayed as text on black background. Filled by arguments.
+		iconPicture = ""; 		// Small icon displayed in left part. Colored by "color", filled by arguments.
+		iconText = ""; 			// Short text displayed over the icon. Colored by "color", filled by arguments.
+		description = ""; 		// Brief description displayed as structured text. Colored by "color", filled by arguments.
+		color[] = {1,1,1,1}; 	// Icon and text color
+		duration = 5; 			// How many seconds will the notification be displayed
+		priority = 0; 			// Priority; higher number = more important; tasks in queue are selected by priority
+		difficulty[] = {}; 		// Required difficulty settings. All listed difficulties has to be enabled
+	};
+
+	class NewMain
+	{
+		title = "ОСНОВНАЯ ЗАДАЧА";
+		description = "Захватить %1";
+		iconPicture = "media\images\notificons\main_objective.paa";
+		color[] = {1, 0.81, 0.06, 1};
+		priority = 9;
+	};
+
+	class CompletedMain
+	{
+		title = "ЗАДАЧА ВЫПОЛНЕНА";
+		description = "Точка %1 захвачена";
+		iconPicture = "media\images\notificons\main_objective_completed.paa";
+		color[] = {1, 0.81, 0.06, 1};
+		priority = 9;
+	};
+
+	class NewMainDefend
+	{
+		title = "КРУГОВАЯ ОБОРОНА";
+		description = "Защитить %1";
+		iconPicture = "media\images\notificons\defendtarget.paa";
+		color[] = {1, 0.81, 0.06, 1};
+		priority = 9;
+	};
+
+	class CompletedMainDefended
+	{
+		title = "ОБОРОНА ВЫСТОЯЛА";
+		description = "Точка %1 защищена";
+		iconPicture = "media\images\notificons\main_objective_completed.paa";
+		color[] = {1, 0.81, 0.06, 1};
+		priority = 9;
+	};
+
+	class NewSub
+	{
+		title = "НОВОЕ ДОПЗАДАНИЕ";
+		description = "%1";
+		iconPicture = "media\images\notificons\sub_objective.paa";
+		color[] = {1, 0.81, 0.06, 1};
+		priority = 8;
+	};
+
+	class CompletedSub
+	{
+		title = "ВТОРИЧНАЯ ЦЕЛЬ УНИЧТОЖЕНА";
+		description = "%1";
+		iconPicture = "media\images\notificons\sub_objective_completed.paa";
+		color[] = {1, 0.81, 0.06, 1};
+		priority = 8;
+	};
+
+	class NewSideMission
+	{
+		title = "НОВОЕ ДОПЗАДАНИЕ";
+		iconPicture = "media\images\notificons\side_mission.paa";
+		description = "%1";
+		color[] = {0, 0.7, 0.93, 1};
+		priority = 7;
+	};
+
+	class NewSideMissionFileData
+	{
+		title = "НОВОЕ ДОПЗАДАНИЕ";
+		iconPicture = "media\images\notificons\laptop.paa";
+		description = "%1";
+		color[] = {0, 0.7, 0.93, 1};
+		priority = 7;
+	};
+
+	class NewSideMissionFileDataComplete
+	{
+		title = "ДОПЗАДАНИЕ ВЫПОЛНЕНО";
+		description = "%1";
+		iconPicture = "media\images\notificons\laptop.paa";
+		color[] = {0.38, 0.81, 0.16, 1};
+		priority = 6;
+	};
+
+	class NewSideMissionRadar
+	{
+		title = "НОВОЕ ДОПЗАДАНИЕ";
+		iconPicture = "media\images\notificons\smdestroyradar.paa";
+		description = "%1";
+		color[] = {0, 0.7, 0.93, 1};
+		priority = 7;
+	};
+
+	class CompletedSideMission
+	{
+		title = "ДОПЗАДАНИЕ ВЫПОЛНЕНО";
+		iconPicture = "media\images\notificons\side_mission_completed.paa";
+		description = "%1";
+		color[] = {0, 0.7, 0.93, 1};
+		priority = 7;
+	};
+
+	class NewPriorityTarget
+	{
+		title = "НОВАЯ ВАЖНАЯ ЦЕЛЬ";
+		iconPicture = "media\images\notificons\priority_target.paa";
+		description = "%1";
+		color[] = {0.8, 0.13, 0.14, 1};
+		priority = 10;
+	};
+
+	class CompletedPriorityTarget
+	{
+		title = "ВАЖНАЯ ЦЕЛЬ НЕЙТРАЛИЗОВАНА";
+		iconPicture = "media\images\notificons\priority_target_neutralised.paa";
+		description = "%1";
+		color[] = {0.8, 0.13, 0.14, 1};
+		priority = 10;
+	};
+
+	class EnemyJetDown
+	{
+		title = "ВРАЖЕСКИЙ ШТУРМОВИК УНИЧТОЖЕН";
+		iconPicture = "media\images\notificons\down.paa";
+		description = "%1";
+		color[] = {1, 0.81, 0.06, 1};
+		priority = 8;
+	};
+
+	class EnemyJet
+	{
+		title = "ОБНАРУЖЕН ВРАЖЕСКИЙ ШТУРМОВИК";
+		iconPicture = "media\images\notificons\enemyJetinbound.paa";
+		description = "%1";
+		color[] = {0.8, 0.13, 0.14, 1};
+		priority = 8;
+	};
+
+	class NewSideMissionJet
+	{
+		title = "ОБНАРУЖЕН ВРАЖЕСКИЙ ШТУРМОВИК";
+		iconPicture = "media\images\notificons\enemyJetinbound.paa";
+		description = "%1";
+		color[] = {0.8, 0.13, 0.14, 1};
+		priority = 8;
+	};
+
+	class Reward
+	{
+		title = "НАГРАДА";
+		description = "%1";
+		iconPicture = "media\images\notificons\reward.paa";
+		color[] = {0.38, 0.81, 0.16, 1};
+		priority = 6;
+	};
+
+	class ScoreBonus
+	{
+		title = "БОНУС";
+		description = "%1";
+		iconPicture = "media\images\notificons\score_bonus.paa";
+		iconText = "+%2";
+		color[] = {0.38, 0.81, 0.16, 1};
+		priority = 5;
+	};
+};
+
+/*
+Authors:
+
+	Quiksilver & Rarek [AW]
+
+	Invade & Annex 2.00 was developed by Rarek [ahoyworld.co.uk] with hundreds of hours of work,
+	The current iterations have been developed by Quiksilver with hundreds of hours of work.
+
+	Contributors: Razgriz33 [AW], Jester [AW], Kamaradski [AW], David [AW], chucky [allFPS].
+
+	www.ahoyworld.co.uk
+	www.allfps.com.au
+
+	Please be respectful and do not remove/alter credits.
+
+File Reference:
+
+	https://community.bistudio.com/wiki/Description.ext
+*/
