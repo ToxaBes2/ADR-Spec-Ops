@@ -16,7 +16,7 @@ We welcome for any contributions to the ongoing development of this mission. You
   <a href="https://github.com/ToxaBes/ADR-Spec-Ops/raw/master/co30_ADR_Spec_Ops.Altis.pbo">
     <img src="https://img.shields.io/badge/Download-v0.0.1-green.svg?style=flat" alt="Download" />
   </a>
-  <a href="http://www.tehgam.com/">
+  <a href="http://www.tehgam.com/forum.php">
     <img src="https://img.shields.io/badge/TEHGAM-Forum-blue.svg?style=flat"
          alt="Forum" />
   </a>
