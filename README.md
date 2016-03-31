@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/ToxaBes/ADR-Spec-Ops">
-    <img src="https://raw.githubusercontent.com/ToxaBes/ADR-Spec-Ops/master/co30_ADR_Spec_Ops.Altis/media/images/adr_specops_loading"
+    <img src="https://raw.githubusercontent.com/ToxaBes/ADR-Spec-Ops/master/co30_ADR_Spec_Ops.Altis/media/images/adr_specops_loading.jpg"
          width="400" alt="ADR: Spec Ops" />
   </a>
 </p>
