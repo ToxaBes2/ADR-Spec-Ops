@@ -16,7 +16,7 @@ We welcome for any contributions to the ongoing development of this mission. You
   <a href="https://github.com/ToxaBes/ADR-Spec-Ops/raw/master/co30_ADR_Spec_Ops.Altis.pbo">
     <img src="https://img.shields.io/badge/Download-v0.0.1-green.svg?style=flat" alt="Download" />
   </a>
-  <a href="https://github.com/TEHGAM/ADR/issues">
+  <a href="https://github.com/ToxaBes/ADR-Spec-Ops/issues">
     <img src="http://img.shields.io/github/issues-raw/ToxaBes/ADR-Spec-Ops-blue.svg?label=Issues&style=flat" alt="Issues" />
   </a> 
   <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.ru">
