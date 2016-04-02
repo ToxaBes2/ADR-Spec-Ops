@@ -9,22 +9,26 @@ _________________________________________________*/
 private ["_opticsAllowed","_specialisedOptics","_basePos","_firstRun","_insideSafezone","_outsideSafezone"];
 
 #define AT_MSG "Только ракетчики ПТ могут использовать это оружие."
+#define AT_SMALL_MSG "Только ракетчики ПТ и командиры отделений могут использовать это оружие."
 #define SNIPER_MSG "Только снайперы могут использовать это оружие."
 #define AUTOTUR_MSG "Данное вооружение запрещено."
 #define UAV_MSG "Только инженеры могут использовать терминал управления."
 #define MG_MSG "Только пулеметчики могут использовать пулеметы."
 #define MRK_MSG "Только пехотные снайперы могут использовать это оружие."
 #define PILOT_MSG "Пилоты могут использовать только пистолеты и пистолеты-пулемёты."
-#define GRENADIER_MSG "Только командиры отделений могут использовать подствольные гранатометы."
-#define COMMANDER_MSG "Только командиры отделений могут использовать бинокли с лазерным целеуказателем."
-#define MARKSMANOPT_MSG "Только снайперы и пехотные снайперы могут использовать оптические прицелы LRPS, SOS, AMS, KAHLIA."
+#define GRENADIER_MSG "Использовать подствольные гранатометы могут только командиры отделений, медики и инженеры."
+#define COMMANDER_MSG "Использовать бинокли с лазерным целеуказателем могут только командиры отделений."
+#define MARKSMANOPT_MSG "Использовать оптические прицелы LRPS, SOS, AMS, KAHLIA могут только снайперы и пехотные снайперы."
 
 //===== UAV TERMINAL
 _uavOperator = ["B_engineer_F"];
 _uavRestricted = ["B_UavTerminal","O_UavTerminal","I_UavTerminal"];
-//===== AT / MISSILE LAUNCHERS (excl RPG)
+//===== AT / MISSILE LAUNCHERS
 _missileSoldiers = ["B_soldier_AT_F"];
-_missileSpecialised = ["launch_RPG32_F","launch_NLAW_F","launch_B_Titan_F","launch_O_Titan_F","launch_I_Titan_F","launch_B_Titan_short_F","launch_O_Titan_short_F","launch_I_Titan_short_F"];
+_missileSpecialised = ["launch_B_Titan_F","launch_O_Titan_F","launch_I_Titan_F","launch_B_Titan_short_F","launch_O_Titan_short_F","launch_I_Titan_short_F"];
+//===== SMALL MISSILE LAUNCHERS
+_missileSmallSoldiers = ["B_soldier_AT_F","B_Soldier_SL_F"];
+_missileSmallSpecialised = ["launch_RPG32_F","launch_NLAW_F"];
 //===== SNIPER RIFLES
 _snipers = ["B_sniper_F"];
 _sniperSpecialised = ["srifle_GM6_camo_F","srifle_GM6_camo_SOS_F","srifle_GM6_camo_LRPS_F","srifle_LRR_camo_F","srifle_LRR_camo_SOS_F","srifle_LRR_camo_LRPS_F","srifle_GM6_F","srifle_GM6_SOS_F","srifle_GM6_LRPS_F","srifle_LRR_F","srifle_LRR_SOS_F","srifle_LRR_LRPS_F"];
@@ -40,7 +44,7 @@ _marksmanGun = ["srifle_DMR_01_DMS_BI_F","srifle_DMR_01_DMS_snds_BI_F","srifle_E
 _pilot = ["B_Helipilot_F"];
 _pilotWeapons = ["hgun_PDW2000_F","hgun_PDW2000_snds_F","hgun_PDW2000_Holo_F","hgun_PDW2000_Holo_snds_F","SMG_01_F","SMG_01_Holo_F","SMG_01_Holo_pointer_snds_F","SMG_01_ACO_F","SMG_02_F","SMG_02_ACO_F","SMG_02_ARCO_pointg_F"];
 //=== GRENADIERS
-_grenadier = ["B_Soldier_SL_F"];
+_grenadier = ["B_Soldier_SL_F","B_medic_F","B_engineer_F"];
 _grenadierWeapons = ["arifle_Katiba_GL_F","arifle_TRG21_GL_F","arifle_TRG21_GL_MRCO_F","arifle_TRG21_GL_ACO_pointer_F","arifle_Katiba_GL_ACO_F","arifle_Katiba_GL_ARCO_pointer_F	","arifle_Katiba_GL_ACO_pointer_F","arifle_Katiba_GL_ACO_pointer_snds_F","arifle_Mk20_GL_F","arifle_Mk20_GL_plain_F","arifle_Mk20_GL_MRCO_pointer_F","arifle_Mk20_GL_ACO_F","arifle_MX_GL_F","arifle_MX_GL_ACO_F","arifle_MX_GL_ACO_pointer_F","arifle_MX_GL_Hamr_pointer_F","arifle_MX_GL_Holo_pointer_snds_F","arifle_MX_GL_Black_F","arifle_MX_GL_Black_Hamr_pointer_F"];
 //=== COMMANDERS
 _commanders = ["B_Soldier_SL_F"];
@@ -140,6 +144,15 @@ while {true} do {
 	};
 	sleep 0.1;
 
+	//------------------------------------- Small Launchers
+	if (({player hasWeapon _x} count _missileSmallSpecialised) > 0) then {
+		if (({player isKindOf _x} count _missileSmallSoldiers) < 1) then {
+			player removeWeapon (secondaryWeapon player);
+			titleText [AT_SMALL_MSG,"PLAIN",2];
+		};
+	};
+	sleep 0.1;
+
 	//------------------------------------- Thermal optics
 	_optics = primaryWeaponItems player;
 	if (({_x in _optics} count _ThermalOpt) > 0) then {
@@ -174,7 +187,7 @@ while {true} do {
 	};
 	sleep 0.1;
 
-	//------------------------------------- Ennemy turret backpacks
+	//------------------------------------- Enemy turret backpacks
 	if ((backpack player) in _backpackRestricted) then {
 		removeBackpack player;
 		titleText [AUTOTUR_MSG, "PLAIN", 2];

@@ -13,7 +13,7 @@ _objects = [];
 _cargo = false;
 _composition = [
     ["Land_Dome_Small_F", 0, 0, 0, 0, false, false, true],
-    ["Land_Dome_Big_F", 0, 0, 0, 0, false, false, true],
+    ["Land_Dome_Big_F", 0, 0, 0, 0, false, true, true],
     ["Land_Cargo_HQ_V3_F", 0, 0, 270, 0, false, false, true],
     ["Land_CncWall4_F", 14.1, 0, 0, 0, false, false, true],
     ["Land_BagBunker_Small_F", 20.8, 0, 180, 0, false, false, true],
@@ -89,6 +89,12 @@ _composition = [
             _x addCuratorEditableObjects [[_obj], true];
         } forEach allCurators;
         _obj animate ["door_3_rot", 1];
+    };
+    if (_name == "Land_CncWall1_F" || _name == "Land_CncWall4_F") then {
+        if (count _pos == 2) then {
+            _pos set [2, 0];
+        };
+        _pos set [2, (_pos select 2) - 0.3];
     };
     if (_name == "Box_East_WpsSpecial_F" || _name == "O_CargoNet_01_ammo_F") then {
         clearItemCargoGlobal _obj;

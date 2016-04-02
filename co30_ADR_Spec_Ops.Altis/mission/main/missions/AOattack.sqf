@@ -202,9 +202,9 @@ showNotification = ["CompletedMain", _nameAO]; publicVariable "showNotification"
 // DEFEND AO
 if (PARAMS_DefendAO == 1) then {
     if(random 1 >= 0.5) then { 
-        sleep 5;    
+        sleep 3;    
         DEFEND_AO = true; publicVariable "DEFEND_AO";
-	    _null = [_target, _enemiesArray] spawn {_this call compile preProcessFileLineNumbers "mission\main\missions\AOdefend.sqf";};
+	    [_target, _enemiesArray] spawn {_this call compile preProcessFileLineNumbers "mission\main\missions\AOdefend.sqf";};
         while {DEFEND_AO} do {
             sleep 10;
         };

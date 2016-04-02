@@ -43,9 +43,9 @@ vas_disableSafetyCheck = false;
 
 //If the arrays below are empty (as they are now) all weapons, magazines, items, backpacks and goggles will be available
 //Want to limit VAS to specific weapons? Place the classnames in the array!
-vas_weapons = ["srifle_GM6_camo_F", "srifle_LRR_camo_F", "hgun_Pistol_Signal_F", "hgun_P07_F", "hgun_Rook40_F", "hgun_Pistol_heavy_01_F", "hgun_Pistol_heavy_02_F", "SMG_01_F", 
-"SMG_02_F", "arifle_MX_F", "arifle_MXC_F", "arifle_MXM_F", "arifle_MX_GL_F", "arifle_MX_SW_F", "arifle_MX_Black_F", "arifle_MXC_Black_F", "arifle_MX_GL_Black_F", 
-"arifle_MX_SW_Black_F", "srifle_LRR_F", "launch_NLAW_F", "launch_B_Titan_F", "launch_B_Titan_short_F", "launch_RPG32_F", "hgun_ACPC2_F", "hgun_PDW2000_F", 
+vas_weapons = ["srifle_GM6_camo_F", "srifle_LRR_camo_F", "hgun_Pistol_Signal_F", "hgun_P07_F", "hgun_Rook40_F", "hgun_Pistol_heavy_01_MRD_F","hgun_P07_snds_F", "hgun_Pistol_heavy_01_snds_F", "hgun_Pistol_heavy_01_F", "hgun_Pistol_heavy_02_F", "SMG_01_F", 
+"SMG_02_F", "arifle_MX_F", "arifle_MXC_F", "arifle_MXM_F","arifle_MXM_Black_F", "arifle_MX_GL_F", "arifle_MX_SW_F", "arifle_MX_Black_F", "arifle_MXC_Black_F", "arifle_MX_GL_Black_F", "hgun_Pistol_heavy_02_Yorris_F", 
+"arifle_MX_SW_Black_F", "srifle_LRR_F", "launch_NLAW_F", "launch_B_Titan_F", "launch_B_Titan_short_F", "launch_RPG32_F", "hgun_ACPC2_F","hgun_ACPC2_snds_F", "hgun_PDW2000_F","hgun_Rook40_snds_F", 
 "arifle_Mk20_F", "arifle_Mk20C_F", "arifle_Mk20_GL_F", "arifle_Mk20_plain_F", "arifle_Mk20C_plain_F", "arifle_Mk20_GL_plain_F", "LMG_Mk200_F", "srifle_EBR_F", 
 "srifle_GM6_F", "arifle_TRG20_F", "arifle_TRG21_F", "arifle_TRG21_GL_F", "arifle_SDAR_F", "arifle_Katiba_GL_F", "arifle_Katiba_F", "arifle_Katiba_C_F", 
 "LMG_Zafir_F", "srifle_DMR_01_F", "Binocular", "Rangefinder", "Laserdesignator", "MineDetector", "LMG_Mk200_BI_F", "srifle_DMR_02_F", "srifle_DMR_02_camo_F", 
@@ -64,7 +64,7 @@ vas_magazines = ["30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_green", "30Rn
 "HandGrenade", "MiniGrenade", "SmokeShell", "SmokeShellYellow", "SmokeShellGreen", "SmokeShellRed", "SmokeShellPurple", "SmokeShellOrange", "SmokeShellBlue", 
 "Chemlight_green", "Chemlight_red", "Chemlight_yellow", "Chemlight_blue", "DemoCharge_Remote_Mag", "SatchelCharge_Remote_Mag", "ATMine_Range_Mag", 
 "ClaymoreDirectionalMine_Remote_Mag", "APERSMine_Range_Mag", "APERSBoundingMine_Range_Mag", "SLAMDirectionalMine_Wire_Mag", "APERSTripMine_Wire_Mag", 
-"IEDUrbanSmall_Remote_Mag", "IEDLandSmall_Remote_Mag", "IEDUrbanBig_Remote_Mag", "IEDLandBig_Remote_Mag", "RPG32_F", "RPG32_HE_F", "NLAW_F", "Laserbatteries"];
+"IEDUrbanSmall_Remote_Mag", "IEDLandSmall_Remote_Mag", "IEDUrbanBig_Remote_Mag", "IEDLandBig_Remote_Mag", "RPG32_F", "RPG32_HE_F", "NLAW_F", "Titan_AT", "Titan_AA", "Laserbatteries"];
 //Want to limit VAS to specific items? Place the classnames in the array!
 vas_items = ["U_B_CombatUniform_mcam", "U_B_CombatUniform_mcam_tshirt", "U_B_CombatUniform_mcam_vest", "U_B_GhillieSuit", "U_B_HeliPilotCoveralls", "U_B_Wetsuit", "U_OrestesBody", 
 "U_B_CombatUniform_mcam_worn", "U_B_SpecopsUniform_sgg", "U_B_PilotCoveralls", "U_B_CTRG_1", "U_B_CTRG_2", "U_B_CTRG_3", "U_B_survival_uniform", "U_B_FullGhillie_lsh", 
