@@ -218,7 +218,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={15309.843,17.695997,17389.768};
+					position[]={15312.547,17.758076,17384.82};
 					class args
 					{
 						items=10;
@@ -291,7 +291,7 @@ class Mission
 					skill=0.60000002;
 					text="resp_kvadr";
 					syncId=0;
-					synchronizations[]={3,4,5};
+					synchronizations[]={8,7,6,5,4};
 				};
 			};
 		};
@@ -376,6 +376,7 @@ class Mission
 					skill=0.60000002;
 					text="resp_kvadr_1";
 					syncId=1;
+					synchronizations[]={9,10};
 				};
 			};
 		};
@@ -972,7 +973,8 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={15090.94,17.91,16981.811};
+					position[]={15089.981,17.91,16981.721};
+					azimut=64.200401;
 					class args
 					{
 						items=10;
@@ -1044,6 +1046,8 @@ class Mission
 					lock="UNLOCKED";
 					skill=0.60000002;
 					text="resp_kvadr_1_2";
+					syncId=2;
+					synchronizations[]={11,12};
 				};
 			};
 		};
@@ -1528,8 +1532,8 @@ class Mission
 			side="EMPTY";
 			vehicle="Land_HelipadCivil_F";
 			skill=0.60000002;
-			syncId=2;
-			synchronizations[]={2};
+			syncId=3;
+			synchronizations[]={3};
 		};
 		class Item28
 		{
@@ -2875,6 +2879,8 @@ class Mission
 			vehicle="B_Quadbike_01_F";
 			skill=0.60000002;
 			text="kvadr4";
+			syncId=4;
+			synchronizations[]={0};
 		};
 		class Item158
 		{
@@ -2885,6 +2891,8 @@ class Mission
 			vehicle="B_Quadbike_01_F";
 			skill=0.60000002;
 			text="kvadr3";
+			syncId=5;
+			synchronizations[]={0};
 		};
 		class Item159
 		{
@@ -2895,16 +2903,20 @@ class Mission
 			vehicle="B_Quadbike_01_F";
 			skill=0.60000002;
 			text="kvadr2";
+			syncId=6;
+			synchronizations[]={0};
 		};
 		class Item160
 		{
-			position[]={15306.48,17.810369,17385.463};
+			position[]={15306.363,17.809286,17385.656};
 			azimut=135;
 			id=203;
 			side="EMPTY";
 			vehicle="B_Quadbike_01_F";
 			skill=0.60000002;
 			text="kvadr1";
+			syncId=7;
+			synchronizations[]={7,0};
 		};
 		class Item161
 		{
@@ -3172,7 +3184,7 @@ class Mission
 			vehicle="B_Quadbike_01_F";
 			skill=0.60000002;
 			text="kvadr5";
-			syncId=3;
+			syncId=8;
 			synchronizations[]={0};
 		};
 		class Item183
@@ -3254,7 +3266,7 @@ class Mission
 			side="EMPTY";
 			vehicle="B_Quadbike_01_F";
 			skill=0.60000002;
-			syncId=4;
+			syncId=9;
 			synchronizations[]={1};
 		};
 		class Item191
@@ -3265,7 +3277,7 @@ class Mission
 			side="EMPTY";
 			vehicle="B_Quadbike_01_F";
 			skill=0.60000002;
-			syncId=5;
+			syncId=10;
 			synchronizations[]={1};
 		};
 		class Item192
@@ -3626,15 +3638,19 @@ class Mission
 			side="EMPTY";
 			vehicle="B_Quadbike_01_F";
 			skill=0.60000002;
+			syncId=11;
+			synchronizations[]={2};
 		};
 		class Item229
 		{
-			position[]={15093.69,17.91,16981.764};
+			position[]={15093.734,17.91,16982.244};
 			azimut=240;
 			id=272;
 			side="EMPTY";
 			vehicle="B_Quadbike_01_F";
 			skill=0.60000002;
+			syncId=12;
+			synchronizations[]={2};
 		};
 		class Item230
 		{

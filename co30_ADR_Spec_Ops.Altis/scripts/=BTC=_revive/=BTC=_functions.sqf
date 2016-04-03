@@ -1249,7 +1249,7 @@ BTC_player_killed = {
 				BTC_r_u_camera = "camera" camCreate (position player);
 				BTC_r_u_camera camSetTarget player;
 				BTC_r_u_camera cameraEffect ["internal", "BACK"];
-				BTC_r_u_camera camSetPos [(getpos player select 0) + 15,(getpos player select 1) + 15,10];
+				BTC_r_u_camera camSetPos [(getpos player select 0) + 8,(getpos player select 1) + 8, 5];
 				BTC_r_u_camera camCommit 0;
 				disableSerialization;
 				_r_dlg = createDialog "BTC_spectating_dialog";
@@ -1837,7 +1837,7 @@ BTC_r_create_dialog_mobile =
 		BTC_r_camera = "camera" camCreate (position BTC_r_base_spawn);
 		BTC_r_camera camSetTarget BTC_r_base_spawn;
 		BTC_r_camera cameraEffect ["internal", "BACK"];
-		BTC_r_camera camSetPos (BTC_r_base_spawn modelToWorld [-15,-15,15]);
+		BTC_r_camera camSetPos (BTC_r_base_spawn modelToWorld [-8,-8,5]);
 		BTC_r_camera camCommit 0;
 		BTC_r_chosen = false;
 		BTC_r_list = [];
@@ -1942,7 +1942,7 @@ BTC_r_change_target =
 	BTC_r_mobile_selected = _target;
 	BTC_r_camera camSetTarget BTC_r_mobile_selected;
 	BTC_r_camera cameraEffect ["internal", "BACK"];
-	BTC_r_camera camSetPos (BTC_r_mobile_selected modelToWorld [-15,-15,15]);
+	BTC_r_camera camSetPos (BTC_r_mobile_selected modelToWorld [-8,-8,5]);
 	BTC_r_camera camCommit 0;
 };
 //Spectating
@@ -2019,7 +2019,7 @@ BTC_r_spectator =
 	BTC_r_s_camera = "camera" camCreate (position BTC_r_base_spawn);
 	BTC_r_s_camera camSetTarget BTC_r_base_spawn;
 	BTC_r_s_camera cameraEffect ["internal", "BACK"];
-	BTC_r_s_camera camSetPos [(getpos BTC_r_base_spawn select 0) + 15,(getpos BTC_r_base_spawn select 1) + 15,10];
+	BTC_r_s_camera camSetPos [(getpos BTC_r_base_spawn select 0) + 8,(getpos BTC_r_base_spawn select 1) + 8, 5];
 	BTC_r_s_camera camCommit 0;
 	player enableSimulation false;
 	disableSerialization;
