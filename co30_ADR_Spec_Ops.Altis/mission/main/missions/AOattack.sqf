@@ -8,7 +8,7 @@ Description: All main AO's in one file
 #define RADIO_TOWERS "Land_TTowerBig_1_F","Land_TTowerBig_2_F"
 #define ALLOWED_EXPLOSIVES "IEDUrbanBig_Remote_Ammo","IEDUrbanBig_Remote_Ammo","IEDLandBig_Remote_Ammo","IEDUrbanSmall_Remote_Ammo","IEDLandSmall_Remote_Ammo","SatchelCharge_Remote_Ammo","DemoCharge_Remote_Ammo",""
 
-private ["_target","_nameAO","_positionAO","_dt","_chance","_bunkerType","_bunkerPos","_bunkerObjects","_obj","_bunkerPositions ","_smallZ","_bigZ","_position","_flatPos","_res","_distance","_tower","_campPos","_hasMines","_groundPos","_hasMines","_minesArray","_newPos","_cargo","_nearestObject","_campObjects","_enemiesArray","_targetStartText","_showTowerMessage","_showBunkerMessage","_radioTowerDownText","_bunkerText","_null","_targetCompleteText","_tower","_tower_dmg","_units","_unitTypes","_vehicles","_isReward","_curVeh"];
+private ["_target","_nameAO","_positionAO","_dt","_chance","_bunkerType","_bunkerPos","_bunkerObjects","_obj","_bunkerPositions ","_smallZ","_bigZ","_position","_flatPos","_res","_distance","_tower","_campPos","_hasMines","_groundPos","_hasMines","_minesArray","_newPos","_cargo","_nearestObject","_campObjects","_enemiesArray","_targetStartText","_showTowerMessage","_showBunkerMessage","_radioTowerDownText","_bunkerText","_null","_targetCompleteText","_tower","_tower_dmg","_units","_unitTypes","_vehicles","_isReward","_curVeh","_defend"];
 
 eastSide = createCenter ENEMY_SIDE;
 _target = [] call QS_fnc_getMainAO;
@@ -200,18 +200,19 @@ GlobalHint = _targetCompleteText; hint parseText GlobalHint; publicVariable "Glo
 showNotification = ["CompletedMain", _nameAO]; publicVariable "showNotification";
 
 // DEFEND AO
-//if (PARAMS_DefendAO == 1) then {
-    //if(random 1 >= 0.5) then { 
+DEFEND_AO_VICTORY = true; publicVariable "DEFEND_AO_VICTORY";
+if (PARAMS_DefendAO == 1) then {
+    _chanceDefend = random 10;
+    if (_chanceDefend > 5) then {
         sleep 3;    
-        DEFEND_AO = true; publicVariable "DEFEND_AO";
-	    [_target] spawn {_this call compile preProcessFileLineNumbers "mission\main\missions\AOdefend.sqf";};
-        while {DEFEND_AO} do {
+	    _defend = [_target] spawn {_this call compile preProcessFileLineNumbers "mission\main\missions\AOdefend.sqf";};
+        waitUntil {
             sleep 10;
+            scriptDone _defend;
         };
-    //} else {
-    //    DEFEND_AO_VICTORY = true; publicVariable "DEFEND_AO_VICTORY";
-    //};
-//};
+    };
+};
+
 { _x setMarkerPos [-10000, -10000, -10000]; } forEach ["aoCircle_2", "aoMarker_2"];
 
 // DE-BRIEF
@@ -262,3 +263,4 @@ _units = nearestObjects [_positionAO, _unitTypes, PARAMS_AOSize];
 {
     deleteVehicle _x;
 } foreach _units;
+true

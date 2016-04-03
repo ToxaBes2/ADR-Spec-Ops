@@ -95,6 +95,7 @@ while {_inside && _aliveBots > PARAMS_EnemyLeftThreshhold} do {
     	};
     } forEach allGroups;
     sleep 10;
+    //[WEST,"HQ"] sideChat format ["inside: %1, bots: %2", _inside, _aliveBots];    
 };
 if (!_inside) then {
 	hqSideChat = "Противник захватил наши позиции!"; 
@@ -103,8 +104,10 @@ if (!_inside) then {
     hqSideChat = "Атака врага отбита, противник отступает!";
     DEFEND_AO_VICTORY = true;
 };
-publicVariable "hqSideChat"; [WEST,"HQ"] sideChat hqSideChat;
 publicVariable "DEFEND_AO_VICTORY";
-DEFEND_AO = false; publicVariable "DEFEND_AO";
+publicVariable "hqSideChat"; [WEST,"HQ"] sideChat hqSideChat;
+DEFEND_AO = false; 
+publicVariable "DEFEND_AO";
 [DEFEND_AO_VEHICLES] spawn QS_fnc_TBdeleteObjects;
 [_enemiesArray] spawn QS_fnc_TBdeleteObjects;
+true

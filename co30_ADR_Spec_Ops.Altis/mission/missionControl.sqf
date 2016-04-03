@@ -29,18 +29,15 @@ while { true } do {
 	    waitUntil {
 	    	sleep _loopTimeout;
 	    	scriptDone _currentMission;
-	    };
-	    sleep _loopTimeout;
+	    };	    
     };	
     if (PARAMS_SideObjectives == 1) then {
         hqSideChat = "Вторичная цель выявлена, ждите указаний!"; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
-	    sleep 3;
 	    _mission = _missionList call BIS_fnc_selectRandom;
 	    _currentMission = [_mission] spawn {_this call compile preProcessFileLineNumbers format ["mission\side\missions\%1.sqf", _this select 0]};
 	    waitUntil {
 	    	sleep _loopTimeout;
 	    	scriptDone _currentMission;
 	    };
-	    sleep _loopTimeout;
 	};
 };
