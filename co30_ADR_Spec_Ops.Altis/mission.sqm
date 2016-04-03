@@ -4301,7 +4301,7 @@ class Mission
 		};
 		class Item66
 		{
-			position[]={15115.408,17.91,17202.268};
+			position[]={15136.887,17.91,16986.441};
 			name="Repair_1";
 			text="Сервис вертолетов";
 			type="o_maint";
