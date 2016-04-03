@@ -1621,7 +1621,7 @@ class Mission
 		};
 		class Item36
 		{
-			position[]={15297.509,17.539923,17446.797};
+			position[]={15300.767,17.513863,17450.832};
 			azimut=135;
 			id=79;
 			side="EMPTY";
@@ -1634,7 +1634,7 @@ class Mission
 		};
 		class Item37
 		{
-			position[]={15302.552,17.49958,17451.803};
+			position[]={15304.336,17.48955,17454.09};
 			azimut=135;
 			id=80;
 			side="EMPTY";
@@ -3608,8 +3608,8 @@ class Mission
 		};
 		class Item227
 		{
-			position[]={15126.725,17.91,16996.971};
-			azimut=45;
+			position[]={15123.777,17.91,16999.805};
+			azimut=225;
 			id=270;
 			side="EMPTY";
 			vehicle="B_Truck_01_medical_F";
