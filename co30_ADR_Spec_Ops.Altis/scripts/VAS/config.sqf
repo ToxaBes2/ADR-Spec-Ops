@@ -53,18 +53,7 @@ vas_weapons = ["srifle_GM6_camo_F", "srifle_LRR_camo_F", "hgun_Pistol_Signal_F",
 "srifle_DMR_04_F", "srifle_DMR_04_Tan_F", "srifle_DMR_05_blk_F", "srifle_DMR_05_hex_F", "srifle_DMR_05_tan_f", "srifle_DMR_06_camo_F", "srifle_DMR_06_olive_F", 
 "MMG_01_hex_F", "MMG_01_tan_F", "MMG_02_camo_F", "MMG_02_black_F", "MMG_02_sand_F", "MMG_02_black_RCO_BI_F"];
 //Want to limit VAS to specific magazines? Place the classnames in the array!
-vas_magazines = ["30Rnd_65x39_caseless_mag", "30Rnd_65x39_caseless_green", "30Rnd_65x39_caseless_mag_Tracer", "30Rnd_65x39_caseless_green_mag_Tracer", "100Rnd_65x39_caseless_mag", 
-"100Rnd_65x39_caseless_mag_Tracer", "200Rnd_65x39_cased_Box", "200Rnd_65x39_cased_Box_Tracer", "20Rnd_762x51_Mag", "7Rnd_408_Mag", "5Rnd_127x108_Mag", 
-"30Rnd_9x21_Mag", "16Rnd_9x21_Mag", "150Rnd_762x54_Box", "150Rnd_762x54_Box_Tracer", "10Rnd_338_Mag", "130Rnd_338_Mag", "10Rnd_127x54_Mag", "150Rnd_93x64_Mag", 
-"10Rnd_93x64_DMR_05_Mag", "UGL_FlareWhite_F", "UGL_FlareGreen_F", "UGL_FlareRed_F", "UGL_FlareYellow_F", "UGL_FlareCIR_F", "1Rnd_HE_Grenade_shell", 
-"1Rnd_Smoke_Grenade_shell", "1Rnd_SmokeRed_Grenade_shell", "1Rnd_SmokeGreen_Grenade_shell", "1Rnd_SmokeYellow_Grenade_shell", "1Rnd_SmokePurple_Grenade_shell", 
-"1Rnd_SmokeBlue_Grenade_shell", "1Rnd_SmokeOrange_Grenade_shell", "3Rnd_HE_Grenade_shell", "3Rnd_UGL_FlareWhite_F", "3Rnd_UGL_FlareGreen_F", "3Rnd_UGL_FlareRed_F", 
-"3Rnd_UGL_FlareYellow_F", "3Rnd_UGL_FlareCIR_F", "3Rnd_Smoke_Grenade_shell", "3Rnd_SmokeRed_Grenade_shell", "3Rnd_SmokeGreen_Grenade_shell", 
-"3Rnd_SmokeYellow_Grenade_shell", "3Rnd_SmokePurple_Grenade_shell", "3Rnd_SmokeBlue_Grenade_shell", "3Rnd_SmokeOrange_Grenade_shell", "B_IR_Grenade", 
-"HandGrenade", "MiniGrenade", "SmokeShell", "SmokeShellYellow", "SmokeShellGreen", "SmokeShellRed", "SmokeShellPurple", "SmokeShellOrange", "SmokeShellBlue", 
-"Chemlight_green", "Chemlight_red", "Chemlight_yellow", "Chemlight_blue", "DemoCharge_Remote_Mag", "SatchelCharge_Remote_Mag", "ATMine_Range_Mag", 
-"ClaymoreDirectionalMine_Remote_Mag", "APERSMine_Range_Mag", "APERSBoundingMine_Range_Mag", "SLAMDirectionalMine_Wire_Mag", "APERSTripMine_Wire_Mag", 
-"IEDUrbanSmall_Remote_Mag", "IEDLandSmall_Remote_Mag", "IEDUrbanBig_Remote_Mag", "IEDLandBig_Remote_Mag", "RPG32_F", "RPG32_HE_F", "NLAW_F", "Titan_AT", "Titan_AA", "Laserbatteries"];
+vas_magazines = [];
 //Want to limit VAS to specific items? Place the classnames in the array!
 vas_items = ["U_B_CombatUniform_mcam", "U_B_CombatUniform_mcam_tshirt", "U_B_CombatUniform_mcam_vest", "U_B_GhillieSuit", "U_B_HeliPilotCoveralls", "U_B_Wetsuit", "U_OrestesBody", 
 "U_B_CombatUniform_mcam_worn", "U_B_SpecopsUniform_sgg", "U_B_PilotCoveralls", "U_B_CTRG_1", "U_B_CTRG_2", "U_B_CTRG_3", "U_B_survival_uniform", "U_B_FullGhillie_lsh", 

@@ -4,7 +4,6 @@ Description: When AO is complete, a chance that OPFOR will counterattack.
 */
 private ["_target","_enemiesArray","_nameAO","_positionAO","_defendMessages","_targetStartText","_playersOnlineHint","_selectedType","_group","_inside","_allPlayers"];
 _target = _this select 0;
-_enemiesArray = _this select 1;
 _nameAO = _target select 0;
 _positionAO = _target select 1;
 _defendMessages = [
@@ -15,6 +14,7 @@ _targetStartText = format [
 	"<t align='center' size='2.2'>Оборона</t><br/><t size='1.5' align='center' color='#0d4e8f'>%1</t><br/>____________________<br/>Враг контратакует! Займите оборонительные позиции!",
 	_nameAO
 ];
+_enemiesArray = [];
 GlobalHint = _targetStartText; publicVariable "GlobalHint"; hint parseText GlobalHint;
 showNotification = ["NewMainDefend", _nameAO]; publicVariable "showNotification";
 {_x setMarkerPos _positionAO;} forEach ["aoCircle_2", "aoMarker_2"];

@@ -12,11 +12,15 @@ if (isServer) then {
         InGameTime = date;
         publicVariable "InGameTime";
         setDate InGameTime;
-        if (dayTime < 5 || dayTime > 20) then {
-            setTimeMultiplier _nightK;            
+        if ((dayTime >= 5 && dayTime <= 6) || (dayTime >= 19 && dayTime <= 20)) then {
+            setTimeMultiplier (_dayK/2);
         } else {
-            setTimeMultiplier _dayK;
-        };
+            if (dayTime > 20 && dayTime < 5) then {
+                setTimeMultiplier _nightK;            
+            } else {
+                setTimeMultiplier _dayK;
+            };
+        };        
         _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\weather\weather.sqf"};
         sleep _delay;
     };

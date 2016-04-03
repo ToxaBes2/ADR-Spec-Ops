@@ -122,17 +122,36 @@ for "_c" from 0 to 6 do {
 BLOCKED_DEVICES = 0; publicVariable "BLOCKED_DEVICES";
 _devices = nearestObjects [[_startPoint select 0, _startPoint select 1], ["Land_Device_disassembled_F"], 200];
 while {count _devices < 2} do {
-    _safePos = [_subPos, 5, 50, 1, 2, 10, 0] call BIS_fnc_findSafePos;
+    _safePos = [_subPos, 5, 50, 1, 2, 15, 0] call BIS_fnc_findSafePos;
     _devicePos = [_safePos select 0, _safePos select 1, getTerrainHeightASL _safePos];
     _device = createVehicle ["Land_Device_disassembled_F", [0,0,0], [], 0, "NONE"];
-    waitUntil {alive _device}; 
+    waitUntil {alive _device};
+    _device allowDamage false; 
     _device setPos _devicePos;
     _device setDir (random 360);
     _device setMass 1000;
+    sleep 2;
+    _device setPos _devicePos;
     [_device, "QS_fnc_addActionBlock", nil, true] spawn BIS_fnc_MP;
     _chemlight = createVehicle ["Chemlight_red", _devicePos, [], 0, "NONE"];
     _unitsArray = _unitsArray + [_device, _chemlight];
     _devices = nearestObjects [[_startPoint select 0, _startPoint select 1], ["Land_Device_disassembled_F"], 200];
+};
+
+// doublecheck devices
+_devices = nearestObjects [[_startPoint select 0, _startPoint select 1], ["Land_Device_disassembled_F"], 200];
+if (count _devices < 2) then {
+    for "_c" from 0 to 1 do { 
+        _safePos = [_subPos, 5, 150, 1, 2, 15, 0] call BIS_fnc_findSafePos;
+        _devicePos = [_safePos select 0, _safePos select 1, getTerrainHeightASL _safePos];
+        _device = createVehicle ["Land_Device_disassembled_F", _devicePos, [], 0, "NONE"];
+        _device allowDamage false;
+        _device setMass 1000;
+        _device setDir (random 360);    
+        [_device, "QS_fnc_addActionBlock", nil, true] spawn BIS_fnc_MP;
+        _chemlight = createVehicle ["Chemlight_red", _devicePos, [], 0, "NONE"];
+        _unitsArray = _unitsArray + [_device, _chemlight];
+    };
 };
 
 // spawn 5 SDVs

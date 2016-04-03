@@ -59,10 +59,10 @@ _isHidden = {
 //================================================================ CONFIG
 
 deleteManagerPublic = TRUE;						// To terminate script via debug console
-_checkPlayerCount = FALSE;						// dynamic sleep. Set TRUE to have sleep automatically adjust based on # of players.
-_checkFrequencyDefault = 300;					// sleep default
-_checkFrequencyAccelerated = 30;				// sleep accelerated
-_playerThreshold = 20;							// How many players before accelerated cycle kicks in?
+_checkPlayerCount = TRUE;						// dynamic sleep. Set TRUE to have sleep automatically adjust based on # of players.
+_checkFrequencyDefault = 480;					// sleep default
+_checkFrequencyAccelerated = 240;				// sleep accelerated
+_playerThreshold = 24;							// How many players before accelerated cycle kicks in?
 
 _deadMenLimit = 50;								// Bodies. Set -1 to disable.
 _deadMenDistCheck = TRUE;						// TRUE to delete any bodies that are far from players.
@@ -71,9 +71,9 @@ _currentDeadMan = objNull;						// Set dynamically, do not touch!
 _deadVehiclesLimit = 10;						// Wrecks. Set -1 to disable.
 _deadVehicleDistCheck = TRUE;					// TRUE to delete any destroyed vehicles that are far from players.
 _deadVehicleDist = 5000;						// Distance (meters) from players that destroyed vehicles are not deleted if below max.
-_craterLimit = 10;								// Craters. Set -1 to disable.
-_craterDistCheck = TRUE;						// TRUE to delete any craters that are far from players.
-_craterDist = 5000;								// Distance (meters) from players that craters are not deleted if below max.
+_craterLimit = 0;								// Craters. Set -1 to disable.
+_craterDistCheck = FALSE;						// TRUE to delete any craters that are far from players.
+_craterDist = 1000;								// Distance (meters) from players that craters are not deleted if below max.
 _weaponHolderLimit = 30;						// Weapon Holders. Set -1 to disable.
 _weaponHolderDistCheck = TRUE;					// TRUE to delete any weapon holders that are far from players.
 _weaponHolderDist = 5000;						// Distance (meters) from players that ground garbage is not deleted if below max.

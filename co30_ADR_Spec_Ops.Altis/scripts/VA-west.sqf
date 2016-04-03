@@ -473,6 +473,7 @@ _myBox = _this select 0;
 "RPG32_HE_F",
 "NLAW_F",
 "Titan_AT",
+"Titan_AP",
 "Titan_AA",
 "Laserbatteries"
 ],true] call BIS_fnc_addVirtualMagazineCargo;

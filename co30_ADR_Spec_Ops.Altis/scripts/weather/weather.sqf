@@ -24,7 +24,6 @@ if (_hour == 20 && lastWeatherTime != _hour) then {
         _null = [_delay] spawn { 
             sleep (_this select 0);   
             forceWeatherChange;
-            simulWeatherSync;
         };
     };
     lastWeatherTime = _hour; publicVariable "lastWeatherTime";
@@ -88,7 +87,7 @@ if (_hour == 20 && lastWeatherTime != _hour) then {
         } else {
             _null = [_delay] spawn { 
                 sleep (_this select 0);   
-                forceWeatherChange;
+                //forceWeatherChange;
                 simulWeatherSync;
             };
         };

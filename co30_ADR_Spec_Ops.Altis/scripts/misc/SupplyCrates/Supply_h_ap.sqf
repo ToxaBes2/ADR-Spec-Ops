@@ -6,6 +6,8 @@ if (!(BACO_ammoSuppAvail2)) exitWith {
 
 BACO_ammoSuppAvail2 = FALSE; publicVariable "BACO_ammoSuppAvail2";
 
+//------------------------------------------------------- Переменные
+
 _crateType =  "B_supplyCrate_F";
 _smokeType =  "SmokeShellPurple";
 _lightType =  "Chemlight_blue";
@@ -13,13 +15,19 @@ _timereload = 300;
 _timedel = 600; // +timereload
 _cargo_pos = [0,0,0];
 
+//--------------------------------------------------------- Создание посылки
+
 _cargo = _crateType createVehicle (getMarkerPos "Ammo_Supply_drop"); publicVariable "_cargo";
 _cargo allowDamage false;
+
+//---------------------------------------------------- Разгрузка посылки
 
 clearWeaponCargoGlobal _cargo;
 clearMagazineCargoGlobal _cargo;
 clearItemCargoGlobal _cargo;
 clearBackpackCargoGlobal _cargo;
+
+//---------------------------------------------------- Загрузка посылки
 
 _cargo addMagazineCargoGlobal ["30Rnd_556x45_Stanag", 10];
 _cargo addMagazineCargoGlobal ["30Rnd_556x45_Stanag_Tracer_Green", 10];
@@ -63,7 +71,7 @@ sleep 0.5;
 waitUntil{!isNull (ropeAttachedTo _cargo)};
 sleep 0.5;
 waitUntil{isNull (ropeAttachedTo _cargo)};
-sleep 3;
+sleep 2;
 waitUntil{(getPos _cargo select 2)<=120};
 
 _velocity = velocity _cargo;
@@ -88,5 +96,8 @@ _Signal = _smokeType createVehicle [getPos _cargo select 0, getPos _cargo select
 
 sleep _timereload;
 BACO_ammoSuppAvail2 = TRUE; publicVariable "BACO_ammoSuppAvail2";
+
+//--------------------------------------------------------- Удаление контейнера
+
 sleep _timedel;
 deleteVehicle _cargo;

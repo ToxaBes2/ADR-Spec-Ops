@@ -165,7 +165,7 @@ class Params {
 		title = "Кол-во групп снайперов";
 		values[] = {0,1,2,3};
 		texts[] = {1,2,3,4};
-		default = 0;
+		default = 1;
 	};
 
 	class StaticMG {

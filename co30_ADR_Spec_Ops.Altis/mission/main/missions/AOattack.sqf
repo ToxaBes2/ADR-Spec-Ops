@@ -200,18 +200,18 @@ GlobalHint = _targetCompleteText; hint parseText GlobalHint; publicVariable "Glo
 showNotification = ["CompletedMain", _nameAO]; publicVariable "showNotification";
 
 // DEFEND AO
-if (PARAMS_DefendAO == 1) then {
-    if(random 1 >= 0.5) then { 
+//if (PARAMS_DefendAO == 1) then {
+    //if(random 1 >= 0.5) then { 
         sleep 3;    
         DEFEND_AO = true; publicVariable "DEFEND_AO";
-	    [_target, _enemiesArray] spawn {_this call compile preProcessFileLineNumbers "mission\main\missions\AOdefend.sqf";};
+	    [_target] spawn {_this call compile preProcessFileLineNumbers "mission\main\missions\AOdefend.sqf";};
         while {DEFEND_AO} do {
             sleep 10;
         };
-    } else {
-        DEFEND_AO_VICTORY = true; publicVariable "DEFEND_AO_VICTORY";
-    };
-};
+    //} else {
+    //    DEFEND_AO_VICTORY = true; publicVariable "DEFEND_AO_VICTORY";
+    //};
+//};
 { _x setMarkerPos [-10000, -10000, -10000]; } forEach ["aoCircle_2", "aoMarker_2"];
 
 // DE-BRIEF
