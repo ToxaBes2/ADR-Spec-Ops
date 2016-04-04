@@ -1,6 +1,6 @@
 _uavs = ["B_UAV_01_F","B_UAV_02_F","B_UAV_02_CAS_F","B_UGV_01_F","B_UGV_01_rcws_F","I_UAV_01_F","I_UAV_02_F","I_UAV_02_CAS_F","I_UGV_01_F","I_UGV_01_rcws_F",
 "O_UAV_01_F","O_UAV_02_F","O_UAV_02_CAS_F","O_UGV_01_F","O_UGV_01_rcws_F"];
-if ((typeOf cameraOn) in _uavs) exitWith {hint "Снаряжение недоступно пока вы подключены к БПЛА/БПА.";};
+if ((typeOf cameraOn) in _uavs) exitWith {hint "Арсенал недоступен пока вы подключены к БПЛА/БПА.";};
 _myBox = _this select 0;
 ["AmmoboxInit", [_myBox, false]] call BIS_fnc_arsenal;
 
