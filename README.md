@@ -10,7 +10,7 @@ This is hardcore variant of [ADR:Blue Shark](https://github.com/TEHGAM/ADR) miss
 We welcome for any contributions to the ongoing development of this mission. You can help us by leaving your feedback about the project in our section of [Tehgam](http://www.tehgam.com/forum.php) forum.<br/>
 <hr />
 <p align="center"><sup><strong>Миссия на основе ADR: Blue Shark</strong></sup></p>
-Данная миссия является усложененным вариантом миссии [ADR:Blue Shark](https://github.com/TEHGAM/ADR) которая в свою очередь основана на [AW Invade & Annex](http://www.ahoyworld.co.uk/) для [Arma 3](https://arma3.com/).<br/>
+Данная миссия является усложненным вариантом миссии [ADR:Blue Shark](https://github.com/TEHGAM/ADR) которая в свою очередь основана на [AW Invade & Annex](http://www.ahoyworld.co.uk/) для [Arma 3](https://arma3.com/).<br/>
 Мы приветствуем любой вклад в развитие данной миссии. Вы можете помочь нам в этом оставляя свои отзывы на форуме [Tehgam](http://www.tehgam.com/forum.php).<br/>
 <p align="center">
   <a href="https://github.com/ToxaBes/ADR-Spec-Ops/raw/master/co30_ADR_Spec_Ops.Altis.pbo">
