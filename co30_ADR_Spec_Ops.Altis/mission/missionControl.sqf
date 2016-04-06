@@ -34,6 +34,13 @@ while { true } do {
     if (PARAMS_SideObjectives == 1) then {
         hqSideChat = "Вторичная цель выявлена, ждите указаний!"; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
 	    _mission = _missionList call BIS_fnc_selectRandom;
+	    if !(isNull LAST_SIDE_MISSION) then {           
+            while {_mission == LAST_SIDE_MISSION} do {
+                _mission = _missionList call BIS_fnc_selectRandom;
+            };
+	    };
+	    LAST_SIDE_MISSION = _mission;
+	    publicVariable "LAST_SIDE_MISSION";
 	    _currentMission = [_mission] spawn {_this call compile preProcessFileLineNumbers format ["mission\side\missions\%1.sqf", _this select 0]};
 	    waitUntil {
 	    	sleep _loopTimeout;
