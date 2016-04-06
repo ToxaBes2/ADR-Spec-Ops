@@ -24,7 +24,7 @@ allowFunctionsLog = 0; 									// Log functions to .rpt. disabled with 0
 
 //------------------------- Misc
 
-disableChannels[]={0,2}; 								// 0 = Global, 1 = Side, 2 = Command, 3 = Group, 4 = Vehicle, 5 = Direct, 6 = System. Admin/server/BattlEye can still use Global.
+disableChannels[]={0,1,2}; 						    // 0 = Global, 1 = Side, 2 = Command, 3 = Group, 4 = Vehicle, 5 = Direct, 6 = System. Admin/server/BattlEye can still use Global.
 disabledAI = 1;											// No AI in playable units
 aiKills = 0; 											// disable scorelist for AI players
 enableItemsDropping = 0; 								// disabled with 0
@@ -52,7 +52,6 @@ corpseRemovalMaxTime = 120;								// Max time before removal
 #include "scripts\taw_vd\dialog.hpp" 					// TAW View Distance
 #include "scripts\vehicle\crew\common.hpp"  			// vehicle crew hud
 #include "scripts\=BTC=_revive\=BTC=_respawn.h"			// BTC medic revive system
-#include "scripts\DOM_squad\SquadManagement.hpp"		// Squad manager
 #include "scripts\rules\dialog.hpp"		                // Server rules dialog
 
 class CfgFunctions
@@ -73,6 +72,35 @@ class RscTitles
 	{
 		#include "scripts\vehicle\crew\namesleft.hpp"	// Occupants HUD for vehicles
 	};
+
+class CfgSounds
+{
+	sounds[] = {};
+	class playerRadioStart
+	{
+		name = "player radio start";
+		sound[] = {"media\sounds\player_start.wav", db+5, 1};
+		titles[] = {};
+	};
+	class playerRadioEnd
+	{
+		name = "player radio end";
+		sound[] = {"media\sounds\player_end.wav", db+9, 1};
+		titles[] = {};
+	};
+	class playerOperativeStart
+	{
+		name = "operative radio start";
+		sound[] = {"media\sounds\operative_start.wav", db+5, 1};
+		titles[] = {};
+	};
+	class playerOperativeEnd
+	{
+		name = "operative radio end";
+		sound[] = {"media\sounds\operative_end.wav", db+9, 1};
+		titles[] = {};
+	};
+};
 
 //------------------------- Parameters
 

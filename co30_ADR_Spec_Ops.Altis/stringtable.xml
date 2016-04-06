@@ -510,74 +510,6 @@
 		</Key>
 	</Package>
 </Project>
-<Project name="DOM_Squad">
-	<Package name="DOM_Squad">
-		<Key ID="STRD_squadm">
-			<Original>Squad Menu</Original>
-			<Russian>Меню отрядов</Russian>
-		</Key>
-		<Key ID="STRD_manage">
-			<Original>Squad Management</Original>
-			<Russian>Управление Отрядом</Russian>
-		</Key>
-		<Key ID="STRD_namegroup">
-			<Original>Group Name</Original>
-			<Russian>Название отряда</Russian>
-		</Key>
-		<Key ID="STRD_locked">
-			<Original>Locked</Original>
-			<Russian>Закрыт</Russian>
-		</Key>
-		<Key ID="STRD_Quit">
-			<Original>Quit</Original>
-			<Russian>Выйти</Russian>
-		</Key>
-		<Key ID="STRD_Lock">
-			<Original>Lock</Original>
-			<Russian>Закрыть</Russian>
-		</Key>
-		<Key ID="STRD_Unlock">
-			<Original>Unlock</Original>
-			<Russian>Открыть</Russian>
-		</Key>
-		<Key ID="STRD_Remove">
-			<Original>Kick</Original>
-			<Russian>Выгнать</Russian>
-		</Key>
-		<Key ID="STRD_Leave">
-			<Original>Leave</Original>
-			<Russian>Покинуть</Russian>
-		</Key>
-		<Key ID="STRD_Join">
-			<Original>Join</Original>
-			<Russian>Вступить</Russian>
-		</Key>
-		<Key ID="STRD_Invite">
-			<Original>Invite</Original>
-			<Russian>Пригласить</Russian>
-		</Key>
-		<Key ID="STRD_Rank">
-			<Original>Promote</Original>
-			<Russian>Повысить</Russian>
-		</Key>
-		<Key ID="STRD_Kicked">
-			<Original>%1 have kicked %2</Original>
-			<Russian>%1 выгнал %2</Russian>
-		</Key>
-		<Key ID="STRD_Teamlead">
-			<Original>%1 gave leadership to %2</Original>
-			<Russian>%1 передал командование %2</Russian>
-		</Key>
-		<Key ID="STRD_SendInvite">
-			<Original>%1 has invited %2 to %3</Original>
-			<Russian>%1 пригласил %2 в %3</Russian>
-		</Key>
-		<Key ID="STRD_Hint">
-			<Original>In order to give leadership to other squad member, click twice on his name and press the 'Promote' button</Original>
-			<Russian>Для передачи лидерства нажмите на игрока 2 раза левой кнопкой мыши, затем на кнопку 'Повысить'</Russian>
-		</Key>
-	</Package>
-</Project>
 <Project name="TEHGAM_Rules">
 	<Package name="TEHGAM_Rules">
 		<Key ID="STR_TEHGAM_RULES_Title">
@@ -598,4 +530,19 @@
 		</Key>
     </Package>
 </Project>
-
+<Project name="Custom_Channels">
+	<Package name="Custom_Channels">
+		<Key ID="STR_CHANNEL_EMERGENCY">
+			<Original>Экстренный канал</Original>
+			<Russian>Экстренный канал</Russian>
+		</Key>
+		<Key ID="STR_CHANNEL_COMMANDER">
+			<Original>Командирский канал</Original>
+			<Russian>Командирский канал</Russian>
+		</Key>
+		<Key ID="STR_CHANNEL_OPERATIVE">
+			<Original>Оперативный канал</Original>
+			<Russian>Оперативный канал</Russian>
+		</Key>
+    </Package>
+</Project>

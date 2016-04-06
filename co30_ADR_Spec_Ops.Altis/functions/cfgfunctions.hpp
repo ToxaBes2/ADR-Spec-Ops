@@ -43,6 +43,7 @@ class QS
 		class loadInventory {};
 		class moveToHC {};
 		class PTenemyEAST {};
+		class RadioSound {};
 		class removeAction {};
 		class removeAction0 {};
 		class removeAction1 {};

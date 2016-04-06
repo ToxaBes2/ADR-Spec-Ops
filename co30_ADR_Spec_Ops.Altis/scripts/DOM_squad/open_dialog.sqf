@@ -1,1 +1,0 @@
-createDialog "XD_SquadManagementDialog";

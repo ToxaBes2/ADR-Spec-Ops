@@ -54,6 +54,7 @@ _enemiesArray = _enemiesArray + [_group];
 hint "Вблизи захваченной территории, обнаружены вражеские силы.";
 sleep 5;
 hqSideChat = "Обороняйтесь, противник начинает штурм!"; publicVariable "hqSideChat"; [WEST,"HQ"] sideChat hqSideChat;
+sleep 120;
 _inside = false;
 _allPlayers = [] call BIS_fnc_listPlayers;
 {

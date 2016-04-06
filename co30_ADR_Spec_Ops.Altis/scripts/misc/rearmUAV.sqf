@@ -1,9 +1,9 @@
 private ["_veh"];
 _veh = _this select 0;
-
+_uavs = ["B_UAV_02_CAS_F", "B_UAV_02_F"];
 if (_veh isKindOf "ParachuteBase" || !alive _veh) exitWith {};
 
-if (!(_veh isKindOf "B_UAV_02_CAS_F")) exitWith { 
+if !((typeOf _veh) in _uavs) exitWith { 
 	_veh vehicleChat "Эта площадка для БПЛА!"; 
 };
 
