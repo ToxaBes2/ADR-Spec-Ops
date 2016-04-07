@@ -38,6 +38,24 @@ if (!isDedicated) then {
     };
 };
 
+// Radio channels
+_playerType = typeOf player;
+switch (_playerType) do { 
+    case "B_Helipilot_F" : {
+    
+        // pilots have access to operative channels
+        (RADIO_CHANNELS select 1) radioChannelAdd [player];
+    }; 
+    case "B_Soldier_SL_F" : {
+
+        // add all players to emergency channel
+        (RADIO_CHANNELS select 1) radioChannelAdd [player];
+        (RADIO_CHANNELS select 2) radioChannelAdd [player];
+    }; 
+    default {}; 
+};
+(RADIO_CHANNELS select 0) radioChannelAdd [player];
+
 // Hide objects near heli landing
 ((getMarkerPos "respawn_west") nearestObject 492374) hideObject true;
 ((getMarkerPos "respawn_west") nearestObject 492375) hideObject true;
