@@ -73,6 +73,7 @@ class RscTitles
 		#include "scripts\vehicle\crew\namesleft.hpp"	// Occupants HUD for vehicles
 	};
 
+// this sounds taken from task-force-arma-3-radio (https://github.com/michail-nikolaev/task-force-arma-3-radio) by Michail Nicolaev
 class CfgSounds
 {
 	sounds[] = {};

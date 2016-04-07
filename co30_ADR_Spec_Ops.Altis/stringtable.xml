@@ -544,5 +544,9 @@
 			<Original>Оперативный канал</Original>
 			<Russian>Оперативный канал</Russian>
 		</Key>
+        <Key ID="STR_CHANNEL_NOT_ALLOWED">
+		    <Original>Talking in emergency channel is not allowed (only chat))!\nPlease change Your channel with %1 or %2</Original>
+		    <Russian>Голосовая связь в экстренном канале запрещена (только чат)!\nСмените канал при помощи клавиш %1 или %2</Russian>
+		</Key>
     </Package>
 </Project>

@@ -37,3 +37,12 @@ if (!isDedicated) then {
         createDialog "tehgam_rules";
     };
 };
+
+// Hide objects near heli landing
+((getMarkerPos "respawn_west") nearestObject 492374) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 492375) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 492438) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 492359) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 492364) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 492365) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 492366) hideObject true;

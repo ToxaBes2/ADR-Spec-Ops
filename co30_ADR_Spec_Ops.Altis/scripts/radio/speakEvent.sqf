@@ -28,11 +28,19 @@ if (!isDedicated) then {
                     VoN_isOn = true;
                     _ctrlText = ctrlText (findDisplay 63 displayCtrl 101);
                     VoN_channelId = _ctrlText call VoN_ChannelId_fnc;
+                    if(VoN_channelId == 6) then {
+                        cutText [format[localize "STR_CHANNEL_NOT_ALLOWED", actionKeysNames ["nextChannel",1], actionKeysNames ["prevChannel",1]], "PLAIN", 1];
+                        VoN_channelId = 3;
+                        setCurrentChannel VoN_channelId;
+                    }; 
                     [netId player, VoN_channelId, "start"] remoteExecCall ["QS_fnc_RadioSound"];
                     findDisplay 55 displayAddEventHandler ["Unload", {
                         VoN_isOn = false;
-                        [netId player, VoN_channelId, "end"] remoteExecCall ["QS_fnc_RadioSound"];                        
-                    }]; 
+                        [netId player, VoN_channelId, "end"] remoteExecCall ["QS_fnc_RadioSound"];  
+                        if(VoN_channelId == 6) then {
+                            setCurrentChannel 3;
+                        };                     
+                    }];                    
                 };
             };
             false
@@ -41,18 +49,5 @@ if (!isDedicated) then {
         findDisplay 46 displayAddEventHandler ["KeyDown", _fncDown];        
         findDisplay 46 displayAddEventHandler ["MouseButtonDown", _fncDown];        
         findDisplay 46 displayAddEventHandler ["JoystickButton", _fncDown];
-        //_fncUp = {
-        //    if (VoN_isOn) then {
-        //        _ctrlText = ctrlText (findDisplay 63 displayCtrl 101);
-        //        newVoN_channelId = _ctrlText call VoN_ChannelId_fnc;
-        //        if (VoN_channelId != newVoN_channelId) then {
-        //            [netId player, VoN_channelId, "end"] remoteExecCall ["QS_fnc_RadioSound"];
-        //            [netId player, newVoN_channelId, "start"] remoteExecCall ["QS_fnc_RadioSound"];                    
-        //        };
-        //    };
-        //    false
-        //};
-        //findDisplay 46 displayAddEventHandler ["KeyUp", _fncUp];
-        //findDisplay 46 displayAddEventHandler ["MouseButtonUp", _fncUp];
     };
 };

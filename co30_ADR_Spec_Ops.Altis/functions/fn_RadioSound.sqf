@@ -26,7 +26,6 @@ switch (_channelId) do {
   }; 
   case 6 : {
       // emergency channel
-      _play = true;
   };
   case 7 : {
       // operative channel
