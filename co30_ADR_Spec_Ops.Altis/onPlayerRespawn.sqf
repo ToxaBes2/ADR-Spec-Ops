@@ -42,18 +42,20 @@ if (!isDedicated) then {
 _playerType = typeOf player;
 switch (_playerType) do { 
     case "B_Helipilot_F" : {
-    
+
         // pilots have access to operative channels
         (RADIO_CHANNELS select 1) radioChannelAdd [player];
     }; 
     case "B_Soldier_SL_F" : {
 
-        // add all players to emergency channel
+        // commanders have access to operative and commander channels
         (RADIO_CHANNELS select 1) radioChannelAdd [player];
         (RADIO_CHANNELS select 2) radioChannelAdd [player];
     }; 
     default {}; 
 };
+
+// add all players to emergency channel
 (RADIO_CHANNELS select 0) radioChannelAdd [player];
 
 // Hide objects near heli landing
