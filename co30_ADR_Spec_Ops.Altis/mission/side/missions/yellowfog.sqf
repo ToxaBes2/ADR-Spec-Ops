@@ -413,7 +413,7 @@ while { sideMissionUp } do {
         sleep 2;
         deleteGroup _camp;
         { 
-            [_x] spawn QS_fnc_SMdelete;
+            [_x] spawn QS_fnc_TBdeleteObjects;
         } forEach [_enemiesArray];
     };
     sleep 3;

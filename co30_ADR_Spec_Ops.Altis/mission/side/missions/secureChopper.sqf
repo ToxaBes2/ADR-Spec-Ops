@@ -97,7 +97,7 @@ while { sideMissionUp } do {
 		sleep 120;
 		{ deleteVehicle _x } forEach [sideObj, house];
 		deleteVehicle nearestObject [getPos sideObj, "Land_TentHangar_V1_ruins_F"];
-		[_enemiesArray] spawn QS_fnc_SMdelete;
+		[_enemiesArray] spawn QS_fnc_TBdeleteObjects;
 	};
 	
 	if (SM_SUCCESS) exitWith {
@@ -121,6 +121,6 @@ while { sideMissionUp } do {
 		sleep 120;
 		{ deleteVehicle _x } forEach [sideObj, house];
 		deleteVehicle nearestObject [getPos sideObj, "Land_TentHangar_V1_ruins_F"];
-		[_enemiesArray] spawn QS_fnc_SMdelete;
+		[_enemiesArray] spawn QS_fnc_TBdeleteObjects;
 	};
 };

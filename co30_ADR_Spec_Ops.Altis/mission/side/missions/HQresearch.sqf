@@ -94,7 +94,7 @@ while { sideMissionUp } do {
 		{ deleteVehicle _x } forEach [sideObj, veh];
 		sleep 0.1;
 		deleteVehicle nearestObject [getPos sideObj, "Land_Research_HQ_ruins_F"];
-		{ [_x] spawn QS_fnc_SMdelete } forEach [_enemiesArray];
+		{ [_x] spawn QS_fnc_TBdeleteObjects; } forEach [_enemiesArray];
 	};
 
 	//--------------------------------------------- IF PACKAGE SECURED [SUCCESS]
@@ -119,6 +119,6 @@ while { sideMissionUp } do {
 		sleep 120;
 		{ deleteVehicle _x } forEach [sideObj, veh];
 		deleteVehicle nearestObject [getPos sideObj, "Land_Research_HQ_ruins_F"];
-		{ [_x] spawn QS_fnc_SMdelete } forEach [_enemiesArray];
+		{ [_x] spawn QS_fnc_TBdeleteObjects; } forEach [_enemiesArray];
 	};
 };

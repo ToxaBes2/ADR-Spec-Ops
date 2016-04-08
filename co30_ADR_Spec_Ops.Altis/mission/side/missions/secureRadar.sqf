@@ -105,7 +105,7 @@ while { sideMissionUp } do {
 		sleep 120;
 		{ deleteVehicle _x } forEach [sideObj, house, tower1, tower2, tower3];
 		deleteVehicle nearestObject [getPos sideObj, "Land_Radar_Small_ruins_F"];
-		[_enemiesArray] spawn QS_fnc_SMdelete;
+		[_enemiesArray] spawn QS_fnc_TBdeleteObjects;
 	};
 	
 	if (SM_SUCCESS) exitWith {
@@ -131,6 +131,6 @@ while { sideMissionUp } do {
 		sleep 120;
 		{ deleteVehicle _x } forEach [sideObj, house, tower1, tower2, tower3];
 		deleteVehicle nearestObject [getPos sideObj, "Land_Radar_Small_ruins_F"];
-		[_enemiesArray] spawn QS_fnc_SMdelete;
+		[_enemiesArray] spawn QS_fnc_TBdeleteObjects;
 	};
 };

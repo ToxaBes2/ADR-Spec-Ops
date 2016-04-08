@@ -554,7 +554,7 @@ while { sideMissionUp } do {
         } forEach _nearestMines;
 
         sleep 120;
-        { [_x] spawn QS_fnc_SMdelete } forEach [_enemiesArray, _unitsArray];
+        { [_x] spawn QS_fnc_TBdeleteObjects; } forEach [_enemiesArray, _unitsArray];
     };
 
     sleep 3;

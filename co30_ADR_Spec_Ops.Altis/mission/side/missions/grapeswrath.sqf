@@ -210,7 +210,7 @@ while { sideMissionUp } do {
         } forEach _unitsArray;
         sleep 2;                
         { 
-            [_x] spawn QS_fnc_SMdelete;
+            [_x] spawn QS_fnc_TBdeleteObjects;
         } forEach [_enemiesArray];
     };
     sleep 3;

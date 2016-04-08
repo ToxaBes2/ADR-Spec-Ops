@@ -1412,7 +1412,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=240;
+		items=246;
 		class Item0
 		{
 			position[]={23375.334,12.825771,19807.545};
@@ -3949,6 +3949,66 @@ class Mission
 			skill=0.54007941;
 			text="offroad3";
 			init="0 = [this,60,65,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+		};
+		class Item240
+		{
+			position[]={-4870.6978,0,-2958.0918};
+			id=300;
+			side="EMPTY";
+			vehicle="Box_NATO_AmmoOrd_F";
+			skill=0.60000002;
+			text="explosivesDummy2";
+			init="this allowDamage false;";
+		};
+		class Item241
+		{
+			position[]={-4870.6274,0,-2956.4453};
+			id=301;
+			side="EMPTY";
+			vehicle="Box_NATO_AmmoOrd_F";
+			skill=0.60000002;
+			text="explosivesDummy1";
+			init="this allowDamage false;";
+		};
+		class Item242
+		{
+			position[]={-4868.1157,0,-2962.1387};
+			id=302;
+			side="EMPTY";
+			vehicle="Land_CampingTable_small_F";
+			skill=0.60000002;
+			text="researchTable";
+			init="this allowDamage false;";
+		};
+		class Item243
+		{
+			position[]={-4865.4946,0,-2966.062};
+			id=303;
+			side="EMPTY";
+			vehicle="Land_Laptop_unfolded_F";
+			skill=0.60000002;
+			text="power2";
+			init="this allowDamage false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\gps_ca.paa' size='1.0'/> Скачать данные...</t>"",""mission\priority\actions\getpower.sqf"",[],21,true,true,"""",'((vehicle player) == player) && ((player distance _target) < 5)'];";
+		};
+		class Item244
+		{
+			position[]={-4865.5552,0,-2964.5659};
+			id=304;
+			side="EMPTY";
+			vehicle="Land_Laptop_device_F";
+			skill=0.60000002;
+			text="power1";
+			init="this allowDamage false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\gps_ca.paa' size='1.0'/> Скачать данные...</t>"",""mission\priority\actions\getpower.sqf"",[],21,true,true,"""",'((vehicle player) == player) && ((player distance _target) < 5)'];";
+		};
+		class Item245
+		{
+			position[]={-4865.4941,0,-2962.4036};
+			id=305;
+			side="EMPTY";
+			vehicle="Land_SatellitePhone_F";
+			skill=0.60000002;
+			text="GetPowerUnit";
+			init="this allowDamage false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\gps_ca.paa' size='1.0'/>Починить и запустить генератор</t>"",""mission\priority\actions\powerfix.sqf"",[],21,true,true,"""",'((vehicle player) == player) && ((player distance _target) < 5)'];";
 		};
 	};
 	class Markers

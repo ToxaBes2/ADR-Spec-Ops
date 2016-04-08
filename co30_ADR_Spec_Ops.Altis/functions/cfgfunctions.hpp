@@ -20,7 +20,6 @@ class QS
 		class addActionTakeControl {};
 		class addActionTimer {};
 		class addFurniture {};
-		class AOdelete {};
 		class AOenemy {};
 		class AOminefield {};
 		class conditionClearInventory {};
@@ -29,9 +28,11 @@ class QS
 		class conditionUH80TurretActionUnlock {};
 		class createBunker {};
 		class defendAO {};
+		class DeleteEnemyEAST {};
 		class deleteOldSMUnits {};
 		class deleteUnits {};
 		class enemyCAS {};
+		class EWattack {};
 		class FindPosBuilding {};
 		class FillBots {};
 		class FillCargoPatrol {};
@@ -54,8 +55,7 @@ class QS
 		class setSkill1 {};
 		class setSkill2 {};
 		class setSkill3 {};
-		class setSkill4 {};		
-		class SMdelete {};
+		class setSkill4 {};
 		class SMenemyEAST {};
 		class SMenemyEASTintel {};
 		class SMenemyFIA {};

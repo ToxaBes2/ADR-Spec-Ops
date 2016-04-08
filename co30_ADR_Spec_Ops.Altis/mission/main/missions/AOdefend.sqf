@@ -109,6 +109,5 @@ publicVariable "DEFEND_AO_VICTORY";
 publicVariable "hqSideChat"; [WEST,"HQ"] sideChat hqSideChat;
 DEFEND_AO = false; 
 publicVariable "DEFEND_AO";
-[DEFEND_AO_VEHICLES] spawn QS_fnc_TBdeleteObjects;
-[_enemiesArray] spawn QS_fnc_TBdeleteObjects;
-true
+[DEFEND_AO_VEHICLES] call QS_fnc_TBdeleteObjects;
+[_enemiesArray] call QS_fnc_TBdeleteObjects;

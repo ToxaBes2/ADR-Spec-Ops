@@ -28,7 +28,7 @@ _dt setTriggerStatements ["this", "", ""];
 
 // spawn bunker or tower outpost
 _chance = random 10;
-if (_chance > 5) then {
+if (_chance < 5) then {
     _bunkerType = 1;
     _bunkerPos = [_positionAO, 1, (PARAMS_AOSize/2), 30, 0, 4, 0] call BIS_fnc_findSafePos;    
     _distance = _positionAO distance2D _bunkerPos;
@@ -200,16 +200,14 @@ GlobalHint = _targetCompleteText; hint parseText GlobalHint; publicVariable "Glo
 showNotification = ["CompletedMain", _nameAO]; publicVariable "showNotification";
 
 // DEFEND AO
-DEFEND_AO_VICTORY = true; publicVariable "DEFEND_AO_VICTORY";
 if (PARAMS_DefendAO == 1) then {
     _chanceDefend = random 10;
     if (_chanceDefend > 5) then {
         sleep 3;    
-	    _defend = [_target] spawn {_this call compile preProcessFileLineNumbers "mission\main\missions\AOdefend.sqf";};
-        waitUntil {
-            sleep 10;
-            scriptDone _defend;
-        };
+	    _null = [_target] spawn {_this call compile preProcessFileLineNumbers "mission\main\missions\AOdefend.sqf";};
+        waitUntil {sleep 10; !isNil "DEFEND_AO_VICTORY"};
+    } else {
+        DEFEND_AO_VICTORY = true; publicVariable "DEFEND_AO_VICTORY";
     };
 };
 
@@ -241,7 +239,7 @@ sleep 120;
 deleteVehicle _dt;
 deleteVehicle radioTower;
 if (_chance < PARAMS_RadioTowerMineFieldChance) then {
-    [_minesArray] spawn QS_fnc_AOdelete; 
+    [_minesArray] call QS_fnc_TBdeleteObjects; 
 };
 _units = nearestObjects [_campPos, _campObjects, 50];
 {
@@ -251,7 +249,7 @@ _units = nearestObjects [_bunkerPos, _bunkerObjects, 50];
 {
     deleteVehicle _x;
 } foreach _units;
-[_enemiesArray] spawn QS_fnc_TBdeleteObjects;
+[_enemiesArray] call QS_fnc_TBdeleteObjects;
 sleep 10;
 _unitTypes = ["O_Soldier_F","O_Soldier_GL_F","O_Soldier_AR_F","O_Soldier_SL_F","O_Soldier_TL_F","O_soldier_M_F","O_Soldier_LAT_F",
 "O_medic_F","O_soldier_repair_F","O_soldier_exp_F","O_Soldier_AT_F","O_Soldier_AA_F","O_engineer_F","O_soldier_PG_F","O_recon_F",
