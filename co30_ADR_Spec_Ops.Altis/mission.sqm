@@ -116,7 +116,7 @@ class Mission
 	class Intel
 	{
 		briefingName="Co-30 ADR: Spec Ops (AW Invade & Annex)";
-		overviewText="version 0.0.1";
+		overviewText="version 0.0.2";
 		resistanceWest=0;
 		resistanceEast=1;
 		timeOfChanges=28800;
