@@ -17,12 +17,14 @@ _aircraft_nocopilot = [
 "B_Heli_Transport_03_F",				//Хурон
 "O_Heli_Transport_04_covered_F",		//Тару транспортный
 "O_Heli_Transport_04_F",				//Тару грузовой
+"O_Heli_Transport_04_bench_F",			//Тару сидения
 "O_Heli_Light_02_unarmed_F",			//Касатка транспортная
 "O_Heli_Light_02_F",					//Касатка боевая
 "B_Heli_Transport_01_F",				//Гостхок
 "B_Heli_Transport_01_camo_F",			//Гостхок кам
 "I_Heli_Transport_02_F",				//Мохаук
 "I_Heli_light_03_unarmed_F",			//Хелкат транспортный
+"I_Heli_light_03_F",					//Хелкат боевой
 "B_Heli_Light_01_armed_F",				//Пауни
 "B_Heli_Light_01_F"						//Хамингберд
 ];
@@ -33,6 +35,7 @@ _aircraft_nopilot = [
 "B_Heli_Transport_03_F",				//Хурон
 "O_Heli_Transport_04_covered_F",		//Тару транспортный
 "O_Heli_Transport_04_F",				//Тару грузовой
+"O_Heli_Transport_04_bench_F",			//Тару сидения
 "O_Heli_Light_02_unarmed_F",			//Касатка транспортная
 "O_Heli_Light_02_F",					//Касатка боевая
 "B_Heli_Attack_01_F",					//Блэкфут
@@ -56,7 +59,8 @@ _aircraft_nopilot = [
 //---------- Место loadmaster заблокировано
 _aircraft_noloadmaster = [
 "O_Heli_Transport_04_covered_F",	//Тару транспортный
-"O_Heli_Transport_04_F"				//Тару грузовой
+"O_Heli_Transport_04_F",			//Тару грузовой
+"O_Heli_Transport_04_bench_F"		//Тару сидения
 ];
 
 waitUntil {player == player};
