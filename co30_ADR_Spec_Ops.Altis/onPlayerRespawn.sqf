@@ -68,3 +68,4 @@ switch (_playerType) do {
 ((getMarkerPos "respawn_west") nearestObject 492366) hideObject true;
 ((getMarkerPos "respawn_west") nearestObject 529331) hideObject true;
 ((getMarkerPos "respawn_west") nearestObject 493984) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 491093) allowDamage false;
