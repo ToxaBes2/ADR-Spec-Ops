@@ -8,7 +8,7 @@ Description: All main AO's in one file
 #define RADIO_TOWERS "Land_TTowerBig_1_F","Land_TTowerBig_2_F"
 #define ALLOWED_EXPLOSIVES "IEDUrbanBig_Remote_Ammo","IEDUrbanBig_Remote_Ammo","IEDLandBig_Remote_Ammo","IEDUrbanSmall_Remote_Ammo","IEDLandSmall_Remote_Ammo","SatchelCharge_Remote_Ammo","DemoCharge_Remote_Ammo",""
 
-private ["_target","_nameAO","_positionAO","_dt","_chance","_bunkerType","_bunkerPos","_bunkerObjects","_obj","_bunkerPositions ","_smallZ","_bigZ","_position","_flatPos","_res","_distance","_tower","_campPos","_hasMines","_groundPos","_hasMines","_minesArray","_newPos","_cargo","_nearestObject","_campObjects","_enemiesArray","_targetStartText","_showTowerMessage","_showBunkerMessage","_radioTowerDownText","_bunkerText","_null","_targetCompleteText","_tower","_tower_dmg","_units","_unitTypes","_vehicles","_isReward","_curVeh","_defend"];
+private ["_target","_nameAO","_positionAO","_dt","_chance","_bunkerType","_bunkerPos","_bunkerObjects","_obj","_bunkerPositions ","_smallZ","_bigZ","_position","_flatPos","_res","_distance","_tower","_campPos","_hasMines","_groundPos","_hasMines","_minesArray","_newPos","_cargo","_nearestObject","_campObjects","_enemiesArray","_targetStartText","_showTowerMessage","_showBunkerMessage","_radioTowerDownText","_bunkerText","_null","_targetCompleteText","_tower","_tower_dmg","_units","_unitTypes","_vehicles","_isReward","_curVeh","_defend","_aliveBots"];
 
 eastSide = createCenter ENEMY_SIDE;
 _target = [] call QS_fnc_getMainAO;
@@ -201,8 +201,20 @@ showNotification = ["CompletedMain", _nameAO]; publicVariable "showNotification"
 
 // DEFEND AO
 if (PARAMS_DefendAO == 1) then {
+
+    // check bots count
+    _aliveBots = 0;
+    {
+        if (side _x == EAST) then {
+            {
+                if (_positionAO distance2D _x <= 500) then {
+                    _aliveBots = _aliveBots + 1; 
+                };
+            } forEach (units _x);
+        };
+    } forEach allGroups;
     _chanceDefend = random 10;
-    if (_chanceDefend > 5) then {
+    if (_chanceDefend > 5 && _aliveBots > 25) then {
         sleep 3;    
 	    _null = [_target] spawn {_this call compile preProcessFileLineNumbers "mission\main\missions\AOdefend.sqf";};
         waitUntil {sleep 10; !isNil "DEFEND_AO_VICTORY"};
