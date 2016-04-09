@@ -3600,7 +3600,7 @@ class Mission
 			vehicle="B_Slingload_01_Medevac_F";
 			skill=1;
 			fuel=0;
-			init="this allowdamage false; this enableSimulationGlobal false;";
+			init="this allowDamage false; this enableRopeAttach false;";
 		};
 		class Item214
 		{
