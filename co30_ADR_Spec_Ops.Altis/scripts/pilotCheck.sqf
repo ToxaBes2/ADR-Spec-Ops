@@ -1,8 +1,3 @@
-/*
-Обновление 24.07.15 версия миссии 3.5
-Изменена система блокировки вертолетов
-*/
-
 _uid = getPlayerUID player;
 _whitelist = [
 	"76561198114622790"	// ToxaBes
@@ -66,14 +61,30 @@ _aircraft_noloadmaster = [
 waitUntil {player == player};
 
 _iampilot = ({typeOf player == _x} count _pilots) > 0;
-
+_players = objNull;
+if (isMultiplayer) then {
+	_players = playableUnits;
+} else {
+	_players = switchableUnits;
+};
+_playersCount = count _players;
 while { true } do {
 	_oldvehicle = vehicle player;
 	waitUntil {vehicle player != _oldvehicle};
 
 	if(vehicle player != player) then {
 		_veh = vehicle player;
-
+   
+        // allow Humminbird co-pilot for all if less than 7 players on server
+        if (_playersCount < 7 && (typeOf _veh) == "B_Heli_Light_01_F") then {
+        	_pilotsOnServer = false;
+        	{
+                if ((typeOf _x) in _pilots) then {
+                    _pilotsOnServer = true;
+                };
+            } forEach _players;
+            if !(_pilotsOnServer) exitWith {};
+        };
 		if((_veh isKindOf "Helicopter" || _veh isKindOf "Plane") && !(_veh isKindOf "ParachuteBase")) then {
 			if(!_iampilot && ({typeOf _veh == _x} count _aircraft_nocopilot) > 0) then {
 				_forbidden = [_veh turretUnit [0]];
