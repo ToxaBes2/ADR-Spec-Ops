@@ -13,6 +13,8 @@ call compile preprocessFile "scripts\=BTC=_TK_punishment\=BTC=_tk_init.sqf";
 ((getMarkerPos "respawn_west") nearestObject 492364) hideObject true;
 ((getMarkerPos "respawn_west") nearestObject 492365) hideObject true;
 ((getMarkerPos "respawn_west") nearestObject 492366) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 529331) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 493984) hideObject true;
 
 if (isDedicated) exitWith {
 	"addToScore" addPublicVariableEventHandler { 
