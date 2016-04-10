@@ -3,9 +3,9 @@ Author: Quiksilver
 Last modified: 13/10/2014 ArmA 1.30 by Quiksilver
 Description: Separate pilot respawn
 */
-
-if (PARAMS_PilotRespawn == 0) exitWith {};
-
+if !(isNil "PARAMS_PilotRespawn") then {
+    if (PARAMS_PilotRespawn == 0) exitWith {};
+};
 _pos = getMarkerPos "respawn_pilot";
 _pilots = ["B_Pilot_F","B_Helipilot_F"];
 _iampilot = ({typeOf player == _x} count _pilots) > 0;
