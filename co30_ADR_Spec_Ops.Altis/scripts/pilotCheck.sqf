@@ -21,7 +21,8 @@ _aircraft_nocopilot = [
 "I_Heli_light_03_unarmed_F",			//Хелкат транспортный
 "I_Heli_light_03_F",					//Хелкат боевой
 "B_Heli_Light_01_armed_F",				//Пауни
-"B_Heli_Light_01_F"						//Хамингберд
+"B_Heli_Light_01_F",					//Хамингберд желтый
+"B_Heli_Light_01_stripped_F"            //Хамингберд зеленый
 ];
 
 //---------- Место пилота заблокировано
@@ -42,7 +43,8 @@ _aircraft_nopilot = [
 "I_Heli_light_03_unarmed_F",			//Хелкат транспортный
 "I_Heli_light_03_F",					//Хелкат боевой
 "B_Heli_Light_01_armed_F",				//Пауни
-"B_Heli_Light_01_F",					//Хамингберд
+"B_Heli_Light_01_F",					//Хамингберд желтый
+"B_Heli_Light_01_stripped_F",           //Хамингберд зеленый
 
 //--- Самолеты
 "B_Plane_CAS_01_F",						//А10
@@ -76,7 +78,7 @@ while { true } do {
 		_veh = vehicle player;
    
         // allow Humminbird co-pilot for all if less than 7 players on server
-        if (_playersCount < 7 && (typeOf _veh) == "B_Heli_Light_01_F") then {
+        if (_playersCount < 7 && (typeOf _veh) == "B_Heli_Light_01_stripped_F") then {
         	_pilotsOnServer = false;
         	{
                 if ((typeOf _x) in _pilots) then {
