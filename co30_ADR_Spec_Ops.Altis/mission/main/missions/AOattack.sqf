@@ -28,9 +28,6 @@ _dt setTriggerStatements ["this", "", ""];
 
 // spawn bunker or tower outpost
 _chance = random 10;
-_anotherChance = random 10;
-_uav = objNull;
-_uavPos = [0,0,0];
 if (_chance < 5) then {
     _bunkerType = 1;
     _bunkerPos = [_positionAO, 1, (PARAMS_AOSize/2), 30, 0, 4, 0] call BIS_fnc_findSafePos;    
@@ -51,15 +48,6 @@ if (_chance < 5) then {
     } forEach allCurators;
     _obj allowDamage false;       
     _bunkerObjects = [_obj] call QS_fnc_addFurniture;
-
-    // add UAV with MK200    
-    if (_anotherChance < 4) then {
-        _uavPos = _obj buildingPos 10;
-        _uav = createVehicle ["B_UAV_01_F", _uavPos, [], 0, "NONE"];   
-        _uav addWeapon ("LMG_Mk200_F");
-        _uav addMagazine ("200Rnd_65x39_cased_Box_Tracer");
-        createVehicleCrew _uav;
-    };
 } else {
     _bunkerType = 2;
     _bunkerPositions = _target select 2;
@@ -68,17 +56,18 @@ if (_chance < 5) then {
     _smallZ = _bunkerPosition select 2;
     _bigZ = _bunkerPosition select 3;    
     _bunkerObjects = [_bunkerPos, _smallZ, _bigZ] call QS_fnc_createBunker;
+};
 
-    // add UAV with MK200    
-    if (_anotherChance < 4) then {
-        _objects = nearestObjects [_bunkerPos, ["Land_Cargo_HQ_V3_F"], 50];
-        _obj = _objects select 0;
-        _uavPos = _obj buildingPos 8;
-        _uav = createVehicle ["B_UAV_01_F", _uavPos, [], 0, "NONE"];   
-        _uav addWeapon ("LMG_Mk200_F");
-        _uav addMagazine ("200Rnd_65x39_cased_Box_Tracer");
-        createVehicleCrew _uav;
-    };
+// add UAV with MK200
+_anotherChance = random 10;
+_uav = objNull;
+_uavPos = [0,0,0];    
+if (_anotherChance < 4) then {
+    _uavPos = [_bunkerPos, 40, 200, 3, 0, 20, 0] call BIS_fnc_findSafePos;
+    _uav = createVehicle ["B_UAV_01_F", _uavPos, [], 0, "NONE"];   
+    _uav addWeapon ("LMG_Mk200_F");
+    _uav addMagazine ("200Rnd_65x39_cased_Box_Tracer");
+    createVehicleCrew _uav;
 };
 
 // Spawn radiotower
