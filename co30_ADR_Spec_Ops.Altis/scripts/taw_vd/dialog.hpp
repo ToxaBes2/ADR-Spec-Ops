@@ -269,7 +269,7 @@ class TAW_VD
       colorBackground[] = {0, 0, 0, 0.7};
       idc = -1;
       x = 0.3; y = 0.2 + (11 / 250);
-      w = 0.5; h = 0.57 - (22 / 250);
+      w = 0.5; h = 0.67 - (22 / 250);
     };
 
     class VDonFoot : TAWVD_RscText
@@ -316,6 +316,16 @@ class TAW_VD
     {
       text = "Настройка объектов";
       y = 0.55;
+    };
+
+    class VDColorSet : TAWVD_RscText
+    {
+      idc = -1;
+      text = "Цветокоррекция";
+      shadow = 0;
+      colorBackground[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.3843])", "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.7019])", "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.8862])", "(profilenamespace getvariable ['GUI_BCG_RGB_A',0.7])"};
+      x = 0.30; y = 0.72;
+      w = 0.5; h = (1 / 25);
     };
   };
 
@@ -457,12 +467,46 @@ class TAW_VD
       w = 0.275; h = 0.04;
     };
 
+
+    class VD_color_low : TAWVD_activeText
+    {
+      idc = -1;
+      text = "Мало";
+      action = "['None', 0, false] call BIS_fnc_setPPeffectTemplate;";
+      tooltip = "Без цветокоррекции";
+      sizeEx = 0.04;
+      x = 0.42; y = 0.77;
+      w = 0.275; h = 0.04;
+    };
+
+    class VD_color_normal : TAWVD_activeText
+    {
+      idc = -1;
+      text = "Средне";
+      action = "['Mediterranean', 0, false] call BIS_fnc_setPPeffectTemplate;";
+      tooltip = "Средиземноморье";
+      sizeEx = 0.04;
+      x = 0.51; y = 0.77;
+      w = 0.275; h = 0.04;
+    };
+
+    class VD_color_high : TAWVD_activeText
+    {
+      idc = -1;
+      text = "Много";
+      action = "['EastWind', 0, false] call BIS_fnc_setPPeffectTemplate;";
+      tooltip = "Восточный ветер";
+      sizeEx = 0.04;
+      x = 0.62; y = 0.77;
+      w = 0.275; h = 0.04;
+    };
+
     class ButtonClose : TAWVD_RscButtonMenu
     {
       idc = -1;
       text = "Закрыть";
       onButtonClick = "closeDialog 0;";
-      x = 0.48; y = 0.77 - (1 / 25);
+      x = 0.48; y = 0.89 - (1 / 25);
       w = (6.25 / 40); h = (1 / 25);
     };
   };
