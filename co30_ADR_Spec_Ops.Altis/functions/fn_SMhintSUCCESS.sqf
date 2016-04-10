@@ -50,6 +50,8 @@ showNotification = ["Reward", format["Ваша команда получила %
 if (_reward isKindOf "I_Heli_light_03_F") then {
 	_reward addWeapon ("autocannon_35mm");
 	_reward addMagazine ("680Rnd_35mm_AA_shells_Tracer_Yellow");
+	_reward addWeapon "Laserdesignator_mounted";
+ 	_reward addMagazine "Laserbatteries";
 };
 
 if (_reward isKindOf "O_APC_Wheeled_02_rcws_F") then {
