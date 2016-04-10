@@ -1221,6 +1221,10 @@ BTC_player_killed = {
 			player setVelocity [0,0,0];
 			player setPosATL _pos;
 			deletevehicle _body;
+            _lostWeapons = nearestObjects[getPosATL player, ["WeaponHolderSimulated"], 3];
+            {
+                deleteVehicle _x;
+            } forEach _lostWeapons;
 			_side = playerSide;
 			_injured = player;
 			if (BTC_injured_marker == 1) then {BTC_marker_pveh = [0,BTC_side,_pos,_body_marker];publicVariable "BTC_marker_pveh";};
