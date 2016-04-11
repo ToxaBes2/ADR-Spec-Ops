@@ -1723,7 +1723,7 @@ class Mission
 			azimut=135;
 			id=80;
 			side="EMPTY";
-			vehicle="B_Heli_Light_01_stripped_F";
+			vehicle="B_Heli_Light_01_F";
 			lock="UNLOCKED";
 			skill=0.60000002;
 			text="LB_1";

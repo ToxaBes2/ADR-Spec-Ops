@@ -1,6 +1,6 @@
 _uid = getPlayerUID player;
 _whitelist = [
-	"76561198114622790"	// ToxaBes
+	//"76561198114622790"	// ToxaBes
 ];
 
 if (_uid in _whitelist) exitWith {};
@@ -78,7 +78,7 @@ while { true } do {
 		_veh = vehicle player;
    
         // allow Humminbird co-pilot for all if less than 7 players on server
-        if (_playersCount < 7 && (typeOf _veh) == "B_Heli_Light_01_stripped_F") then {
+        if (_playersCount < 7 && (typeOf _veh) == "B_Heli_Light_01_F") then {
         	_pilotsOnServer = false;
         	{
                 if ((typeOf _x) in _pilots) then {
