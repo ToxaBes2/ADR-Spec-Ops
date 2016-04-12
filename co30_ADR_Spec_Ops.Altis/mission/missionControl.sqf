@@ -23,7 +23,7 @@ _missionList = [
 	//"swordfish",
 	"secureRadar",
 	//"yellowfog",	
-	//"destroyUrban",
+	"destroyUrban",
 	"grapeswrath"
 ];
 while { true } do {

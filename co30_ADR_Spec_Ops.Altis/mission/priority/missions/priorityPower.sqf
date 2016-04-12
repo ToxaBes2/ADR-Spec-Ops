@@ -83,7 +83,7 @@ sleep 0.3;
 // SPAWN FORCE PROTECTION
 _enemiesArray = [sideObj] call QS_fnc_SMenemyEAST;
 _fuzzyPos = [((_flatPos select 0) - 300) + (random 600), ((_flatPos select 1) - 300) + (random 600), 0];
-_guardsGroup = [_fuzzyPos, 300, 15, ENEMY_SIDE, false, [], 0.8] call QS_fnc_FillBots; 
+_guardsGroup = [_fuzzyPos, 300, 15, ENEMY_SIDE] call QS_fnc_FillBots; 
 _enemiesArray = _enemiesArray + [_guardsGroup];
 
 // BRIEF

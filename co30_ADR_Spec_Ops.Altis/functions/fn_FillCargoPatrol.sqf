@@ -13,6 +13,16 @@ if (count _startPos > 2) then {
 _radius = _this select 1;
 _side = _this select 2;
 _accuracy = _this param [3, -1];
+if (_accuracy == -1) then {
+    switch (PARAMS_AimingAccuracy) do { 
+        case 0 : {  _accuracy = 0.1; }; 
+        case 1 : {  _accuracy = 0.3; }; 
+        case 2 : {  _accuracy = 0.5; }; 
+        case 3 : {  _accuracy = 0.7; }; 
+        case 4 : {  _accuracy = 1; }; 
+        default {   _accuracy = 1; }; 
+    };
+};
 _positions = [
     [-1.5,-1.5,4],
     [-1.5,1.5,4],

@@ -92,7 +92,7 @@ _enemiesArray = [priorityObj1] call QS_fnc_PTenemyEAST;
 
 // fill bots in radius
 _fuzzyPos = [((_flatPos select 0) - 300) + (random 600),((_flatPos select 1) - 300) + (random 600), 0];
-_guardsGroup = [_fuzzyPos, 300, 15, ENEMY_SIDE, false, [], 0.8] call QS_fnc_FillBots; 
+_guardsGroup = [_fuzzyPos, 300, 15, ENEMY_SIDE] call QS_fnc_FillBots; 
 _enemiesArray = _enemiesArray + [_guardsGroup];
 
 // 6. THAT GIRL IS SO DANGEROUS!

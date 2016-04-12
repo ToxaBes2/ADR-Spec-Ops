@@ -8,23 +8,28 @@ if (typeName _objects != "ARRAY") then {
     _objects = [_objects];
 };
 {
-    switch (typeName _x) do { 
+    _obj = _x;
+    switch (typeName _obj) do { 
     	case "GROUP" : {
     	    {
     	        [_x] call QS_fnc_TBdeleteObjects;
-            } forEach (units _x);    
-            deleteGroup _x;	    
+            } forEach (units _obj);  
+            if (_obj in allGroups) then {
+                deleteGroup _obj;
+            };            	    
         }; 
     	case "OBJECT" : {
-            if !(_x isKindOf "Man") then {
+            if !(_obj isKindOf "Man") then {
 			    {
 			        deleteVehicle _x;
-			    } forEach (crew _x);
+			    } forEach (crew _obj);
 		    };
-		    deleteVehicle _x;
+		    deleteVehicle _obj;
         }; 
         case "ARRAY" : {
-            [_x] call QS_fnc_TBdeleteObjects;
+            {
+                [_x] call QS_fnc_TBdeleteObjects;
+            } forEach _obj;   
         };
     	default {};
     };

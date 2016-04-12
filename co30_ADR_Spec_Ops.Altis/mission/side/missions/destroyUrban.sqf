@@ -1,26 +1,21 @@
 /*
-@file: destroyUrban.sqf
-Author:
-
-	Quiksilver 	(credit to Jester [AW] for initial build)
-				(credit to chucky [allFPS] for initial help with addAction)
-				(credit to BangaBob [EOS] for EOS)
-Last modified:
-
-	29/04/2014
-
+Author:	Quiksilver 	
+    (credit to Jester [AW] for initial build)
+	(credit to chucky [allFPS] for initial help with addAction)
+	(credit to BangaBob [EOS] for EOS)
 Description:
-
 	Objective appears in urban area, with selection of OPFOR Uinfantry, and civilians.
 	Inf and civs spawn in foot patrols and randomly placed in and around buildings.
 	Vehicle spawning can be unstable and the veh can spawn into buildings.
 	Good CQB mission and players seem to enjoy it.
+*/
+#define OUR_SIDE WEST
+#define ENEMY_SIDE EAST
+#define CIV_SIDE CIVILIAN
 
-_____________________________________________________________________*/
+private ["_object", "_briefing", "_smPos", "_c4Message", "_sideGroup1", "_sideGroup2", "_sideGroup3"];
 
-private ["_object", "_briefing", "_smPos", "_c4Message"];
-
-//-------------------- PREPARE MISSION. SELECT OBJECT, POSITION AND MESSAGES FROM ARRAYS
+// PREPARE MISSION. SELECT OBJECT, POSITION AND MESSAGES FROM ARRAYS
 _object = [crate1,crate2] call BIS_fnc_selectRandom;
 
 currentSM = [
@@ -36,17 +31,17 @@ _c4Message = [
 	"Взрывчатка на месте! 30 секунд до взрыва. Уходим!"
 ] call BIS_fnc_selectRandom;
 
-//-------------------- SPAWN OBJECTIVE (okay okay, setPos not spawn/create)
+// SPAWN OBJECTIVE
 _smPos = getMarkerPos currentSM;
 sleep 1;
 _object setPosATL _smPos;
 
-//-------------------- SPAWN GUARDS and CIVILIANS
-//[[currentSM], [6, 1], [7, 1], [0, 0], [0], [0], [0, 0], [5, 1, 1200, EAST, FALSE, FALSE]] call EOS_Spawn; //guards
+_sideGroup1 = [_smPos, 50, 20, ENEMY_SIDE] call QS_fnc_FillBots;
+_sideGroup2 = [_smPos, 350, 40, ENEMY_SIDE] call QS_fnc_FillBots;
 sleep 1;
-//[[currentSM], [3, 1], [4, 1], [0, 0], [0], [0], [0, 0], [3, 1, 1100, EAST, FALSE, FALSE]] call EOS_Spawn; //civs
+_sideGroup3 = [_smPos, 100, 15, CIV_SIDE] call QS_fnc_FillBots;
 
-//-------------------- BRIEFING
+// BRIEFING
 "sideMarker" setMarkerPos (getMarkerPos currentSM);
 sideMarkerText = "Склад"; publicVariable "sideMarkerText";
 "sideMarker" setMarkerText "Допзадание: Склад"; publicVariable "sideMarker";
@@ -57,25 +52,26 @@ showNotification = ["NewSideMission", "Склад"]; publicVariable "showNotific
 sideMissionUp = true; publicVariable "sideMissionUp";
 SM_SUCCESS = false;	publicVariable "SM_SUCCESS";
 
-//--------------------- WAIT UNTIL OBJECTIVE COMPLETE: Sent to sabotage.sqf to wait for SM_SUCCESS var.
+// WAIT UNTIL OBJECTIVE COMPLETE: Sent to sabotage.sqf to wait for SM_SUCCESS var.
 waitUntil { sleep 3; SM_SUCCESS };
 
-//--------------------- BROADCAST BOMB PLANTED
+// BROADCAST BOMB PLANTED
 hqSideChat = _c4Message; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
 
-//-------------------- BOOM!
-sleep 30;											// ghetto bomb timer
-"M_NLAW_AT_F" createVehicle getPos _object; 		// default "Bo_Mk82"
-_object setPos [-10000, -10000, 0];					// hide objective
+// BOOM!
+sleep 30;
+"M_NLAW_AT_F" createVehicle getPos _object; 
+_object setPos [-10000, -10000, 0];	
 sleep 1;
 
-//-------------------- DE-BRIEFING
+// DE-BRIEFING
 sideMissionUp = false; publicVariable "sideMissionUp";
 [] call QS_fnc_SMhintSUCCESS;
 "sideMarker" setMarkerPos [-10000, -10000, -10000]; publicVariable "sideMarker";
 
-//--------------------- DELETE, DESPAWN, HIDE and RESET
-SM_SUCCESS = false; publicVariable "SM_SUCCESS";	// reset var for next cycle
-sleep 120;											// sleep to hide despawns from players. default 120, 1 for testing
-currentSM setmarkercolor "colorblack";
-currentSM setmarkerAlpha 0;
+// DELETE, DESPAWN, HIDE and RESET
+SM_SUCCESS = false; publicVariable "SM_SUCCESS";	
+sleep 120;									
+[_sideGroup1] call QS_fnc_TBdeleteObjects;
+[_sideGroup2] call QS_fnc_TBdeleteObjects;
+[_sideGroup3] call QS_fnc_TBdeleteObjects;

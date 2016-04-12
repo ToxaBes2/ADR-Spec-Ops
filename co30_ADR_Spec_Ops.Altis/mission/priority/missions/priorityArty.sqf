@@ -4,7 +4,7 @@ Description: find and destriy enemy artillery
 */
 #define OUR_SIDE WEST
 #define ENEMY_SIDE EAST
-private ["_flatPos", "_accepted", "_position", "_flatPos1", "_flatPos2", "_flatPos3", "_PTdir", "_unitsArray", "_priorityGroup", "_distance", "_dir", "_c", "_pos", "_barrier", "_enemiesArray", "_radius", "_unit", "_targetPos", "_firingMessages", "_fuzzyPos", "_briefing", "_completeText", "_priorityMan1", "_priorityMan2", "_aimAccuracy", "_guardsGroup"];
+private ["_flatPos", "_accepted", "_position", "_flatPos1", "_flatPos2", "_flatPos3", "_PTdir", "_unitsArray", "_priorityGroup", "_distance", "_dir", "_c", "_pos", "_barrier", "_enemiesArray", "_radius", "_unit", "_targetPos", "_firingMessages", "_fuzzyPos", "_briefing", "_completeText", "_priorityMan1", "_priorityMan2", "_guardsGroup"];
 
 // 1. FIND POSITION
 _flatPos = [0, 0, 0];
@@ -89,7 +89,7 @@ _enemiesArray = [priorityObj1] call QS_fnc_PTenemyEAST;
 
 // 6. Fill bots in radius
 _fuzzyPos = [((_flatPos select 0) - 300) + (random 600), ((_flatPos select 1) - 300) + (random 600), 0];
-_guardsGroup = [_fuzzyPos, 300, 15, ENEMY_SIDE, false, [], 0.8] call QS_fnc_FillBots; 
+_guardsGroup = [_fuzzyPos, 300, 15, ENEMY_SIDE] call QS_fnc_FillBots; 
 _enemiesArray = _enemiesArray + [_guardsGroup];
 
 // 7. BRIEF

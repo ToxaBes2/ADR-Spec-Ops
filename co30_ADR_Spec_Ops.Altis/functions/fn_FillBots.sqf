@@ -16,6 +16,16 @@ _side = _this select 3;
 _zeusCurator = _this param [4, false];
 _blackList = _this param [5, []];
 _accuracy = _this param [6, -1];
+if (_accuracy == -1) then {
+    switch (PARAMS_AimingAccuracy) do { 
+        case 0 : {  _accuracy = 0.1; }; 
+        case 1 : {  _accuracy = 0.3; }; 
+        case 2 : {  _accuracy = 0.5; }; 
+        case 3 : {  _accuracy = 0.7; }; 
+        case 4 : {  _accuracy = 1; }; 
+        default {   _accuracy = 1; }; 
+    };
+};
 _enemiesArray = [grpNull];
 _units = [];
 _bridges = ["Land_Bridge_HighWay_PathLod_F","Land_Bridge_Concrete_PathLod_F","Land_Bridge_Asphalt_PathLod_F","Land_Bridge_01_PathLod_F"];
@@ -47,6 +57,17 @@ switch (_side) do {
 "O_soldierU_AA_F", "O_soldierU_AAA_F", "O_soldierU_TL_F", "O_SoldierU_SL_F", "O_soldierU_medic_F", "O_soldierU_repair_F", "O_soldierU_exp_F",
 "O_engineer_U_F", "O_soldierU_A_F", "O_Sharpshooter_F"];
     }; 
+    case CIVILIAN : {
+        _units = ["C_man_1","C_man_1_1_F","C_man_1_2_F","C_man_1_3_F","C_man_polo_1_F","C_man_polo_1_F_afro","C_man_polo_1_F_euro","C_man_polo_1_F_asia",
+"C_man_polo_2_F","C_man_polo_2_F_afro","C_man_polo_2_F_euro","C_man_polo_2_F_asia","C_man_polo_3_F","C_man_polo_3_F_afro","C_man_polo_3_F_euro",
+"C_man_polo_3_F_asia","C_man_polo_4_F","C_man_polo_4_F_afro","C_man_polo_4_F_euro","C_man_polo_4_F_asia","C_man_polo_5_F","C_man_polo_5_F_afro",
+"C_man_polo_5_F_euro","C_man_polo_5_F_asia","C_man_polo_6_F","C_man_polo_6_F_afro","C_man_polo_6_F_euro","C_man_polo_6_F_asia","C_man_p_fugitive_F",
+"C_man_p_fugitive_F_afro","C_man_p_fugitive_F_euro","C_man_p_fugitive_F_asia","C_man_p_beggar_F","C_man_p_beggar_F_afro","C_man_p_beggar_F_euro",
+"C_man_p_beggar_F_asia","C_man_w_worker_F","C_man_hunter_1_F","C_man_p_shorts_1_F","C_man_p_shorts_1_F_afro","C_man_p_shorts_1_F_euro","C_man_p_shorts_1_F_asia",
+"C_man_shorts_1_F","C_man_shorts_1_F_afro","C_man_shorts_1_F_euro","C_man_shorts_1_F_asia","C_man_shorts_2_F","C_man_shorts_2_F_afro","C_man_shorts_2_F_euro",
+"C_man_shorts_2_F_asia","C_man_shorts_3_F","C_man_shorts_3_F_afro","C_man_shorts_3_F_euro","C_man_shorts_3_F_asia","C_man_shorts_4_F","C_man_shorts_4_F_afro",
+"C_man_shorts_4_F_euro","C_man_shorts_4_F_asia","C_Nikos","C_Nikos_aged"];
+    };
 };
 
 // find positions

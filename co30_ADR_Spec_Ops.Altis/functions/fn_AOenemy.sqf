@@ -12,16 +12,7 @@ Description: Spawn enemies in the AO.
 #define ENEMY_SIDE EAST
 #define ENEMY_SIDE_STR "EAST"
 
-private ["_enemiesArray","_randomPos","_patrolGroup","_AOvehGroup","_AOveh","_AOmrapGroup","_AOmrap","_pos","_spawnPos","_overwatchGroup","_x","_staticGroup","_static","_aaGroup","_aa","_airGroup","_air","_sniperGroup","_staticDir","_currentGuard","_aimAccuracy","_randPos"];
-
-switch (PARAMS_AimingAccuracy) do { 
-	case 0 : {  _aimAccuracy = 0.1; }; 
-	case 1 : {  _aimAccuracy = 0.3; }; 
-	case 2 : {  _aimAccuracy = 0.5; }; 
-	case 3 : {  _aimAccuracy = 0.7; }; 
-	case 4 : {  _aimAccuracy = 1; }; 
-	default {   _aimAccuracy = 1; }; 
-};
+private ["_enemiesArray","_randomPos","_patrolGroup","_AOvehGroup","_AOveh","_AOmrapGroup","_AOmrap","_pos","_spawnPos","_overwatchGroup","_x","_staticGroup","_static","_aaGroup","_aa","_airGroup","_air","_sniperGroup","_staticDir","_currentGuard","_randPos"];
 
 _pos = getMarkerPos (_this select 0);
 _bunkerPos = _this select 1;
@@ -32,7 +23,7 @@ _enemiesArray = [grpNull];
 
 // enemies in bunker
 if (_bunkerType == 1) then {
-    _bunkerGroup = [_bunkerPos, 40, 15, ENEMY_SIDE, false, [], _aimAccuracy] call QS_fnc_FillBots;
+    _bunkerGroup = [_bunkerPos, 40, 15, ENEMY_SIDE] call QS_fnc_FillBots;
     _enemiesArray = _enemiesArray + [_bunkerGroup];
 
     for "_i" from 1 to 2 do {
@@ -61,7 +52,7 @@ if (_bunkerType == 1) then {
     	_enemiesArray = _enemiesArray + [_staticGroup];
     } forEach _staticObjects;
     _smallBunkers = nearestObjects [_bunkerPos, ["Land_BagBunker_Small_F"], 30];
-    _bunkerGroup = [_bunkerPos, 10, 6, ENEMY_SIDE, false, _smallBunkers, _aimAccuracy] call QS_fnc_FillBots;
+    _bunkerGroup = [_bunkerPos, 10, 6, ENEMY_SIDE, false, _smallBunkers] call QS_fnc_FillBots;
     _enemiesArray = _enemiesArray + [_bunkerGroup];
 
     // add guards inside bunker
@@ -98,7 +89,7 @@ if (_bunkerType == 1) then {
     _guardGroup setCombatMode "RED";
     [(units _guardGroup)] call QS_fnc_setSkill3;
     _enemiesArray = _enemiesArray + [_guardGroup];
-    _guardGroup = [_bunkerPos, 50, ENEMY_SIDE, _aimAccuracy] call QS_fnc_FillCargoPatrol;
+    _guardGroup = [_bunkerPos, 50, ENEMY_SIDE] call QS_fnc_FillCargoPatrol;
     _enemiesArray = _enemiesArray + [_guardGroup];
 };
 
@@ -116,12 +107,12 @@ for "_i" from 1 to 2 do {
 
 // enemies near radiotower
 if (_hasMines) then {
-    _campGroup = [_flatPos, 100, ENEMY_SIDE, _aimAccuracy] call QS_fnc_FillCargoPatrol;
+    _campGroup = [_flatPos, 100, ENEMY_SIDE] call QS_fnc_FillCargoPatrol;
     _enemiesArray = _enemiesArray + [_campGroup];
-	_campPatrolGroup = [_flatPos, 70, 6, ENEMY_SIDE, false, [], _aimAccuracy] call QS_fnc_FillBots;
+	_campPatrolGroup = [_flatPos, 70, 6, ENEMY_SIDE] call QS_fnc_FillBots;
     _enemiesArray = _enemiesArray + [_campPatrolGroup];
 } else {
-    _campGroup = [_flatPos, 50, 10, ENEMY_SIDE, false, [], _aimAccuracy] call QS_fnc_FillBots; 
+    _campGroup = [_flatPos, 50, 10, ENEMY_SIDE] call QS_fnc_FillBots; 
     _enemiesArray = _enemiesArray + [_campGroup];  
 
     // patrols (2x2 bots)
@@ -143,7 +134,7 @@ _objects = _flatPos nearObjects ["building", 65];
 _blackList = _blackList + _objects;
 _objects = _bunkerPos nearObjects ["building", 65];
 _blackList = _blackList + _objects;
-_buildingGroup = [_pos, (PARAMS_AOSize / 2), 40, ENEMY_SIDE, false, _blackList, _aimAccuracy] call QS_fnc_FillBots; 
+_buildingGroup = [_pos, (PARAMS_AOSize / 2), 40, ENEMY_SIDE, false, _blackList] call QS_fnc_FillBots; 
 _enemiesArray = _enemiesArray + [_buildingGroup];  
 
 // AA vehicles
