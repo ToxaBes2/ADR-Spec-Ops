@@ -370,6 +370,7 @@ while { sideMissionUp } do {
         sleep 120;
         { [_x] call QS_fnc_TBdeleteObjects; } forEach [_enemiesArray, _guardsGroup];		
         deleteVehicle _heliObj;	
+        [_startPoint, 500] call QS_fnc_DeleteEnemyEAST;
 	};
 	sleep 3;
 };

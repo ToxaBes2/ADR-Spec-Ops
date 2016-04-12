@@ -93,6 +93,7 @@ while { sideMissionUp } do {
 		{ deleteVehicle _x } forEach [sideObj, tower1, tower2, tower3];
 		deleteVehicle nearestObject [getPos sideObj, "Land_Cargo_HQ_V2_ruins_F"];
 		{ [_x] call QS_fnc_TBdeleteObjects; } forEach [_enemiesArray, _guardsGroup];
+		[_fuzzyPos, 500] call QS_fnc_DeleteEnemyEAST;
 	};
 
 	// IF PACKAGE SECURED [SUCCESS]
@@ -117,5 +118,6 @@ while { sideMissionUp } do {
 		[_enemiesArray] call QS_fnc_TBdeleteObjects;
 		[_guardsGroup] call QS_fnc_TBdeleteObjects;
 		{ [_x] call QS_fnc_TBdeleteObjects; } forEach [_enemiesArray, _guardsGroup];
+		[_fuzzyPos, 500] call QS_fnc_DeleteEnemyEAST;
 	};
 };

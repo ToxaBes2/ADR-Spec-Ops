@@ -98,6 +98,7 @@ while { sideMissionUp } do {
 		{ deleteVehicle _x } forEach [sideObj, house, tower1, tower2, tower3];
 		deleteVehicle nearestObject [getPos sideObj, "Land_Radar_Small_ruins_F"];
 		{ [_x] call QS_fnc_TBdeleteObjects; } forEach [_enemiesArray, _guardsGroup];
+		[_fuzzyPos, 500] call QS_fnc_DeleteEnemyEAST;
 	};
 	
 	if (SM_SUCCESS) exitWith {
@@ -124,5 +125,6 @@ while { sideMissionUp } do {
 		{ deleteVehicle _x } forEach [sideObj, house, tower1, tower2, tower3];
 		deleteVehicle nearestObject [getPos sideObj, "Land_Radar_Small_ruins_F"];
 		{ [_x] call QS_fnc_TBdeleteObjects; } forEach [_enemiesArray, _guardsGroup];
+		[_fuzzyPos, 500] call QS_fnc_DeleteEnemyEAST;
 	};
 };

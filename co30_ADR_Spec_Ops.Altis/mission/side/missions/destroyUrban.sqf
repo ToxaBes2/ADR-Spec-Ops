@@ -75,3 +75,4 @@ sleep 120;
 [_sideGroup1] call QS_fnc_TBdeleteObjects;
 [_sideGroup2] call QS_fnc_TBdeleteObjects;
 [_sideGroup3] call QS_fnc_TBdeleteObjects;
+[_smPos, 500] call QS_fnc_DeleteEnemyEAST;

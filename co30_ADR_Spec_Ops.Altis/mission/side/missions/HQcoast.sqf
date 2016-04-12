@@ -129,6 +129,7 @@ while { sideMissionUp } do {
 		{ deleteVehicle _x } forEach [sideObj, boat, trawler, assaultBoat];
 		deleteVehicle nearestObject [getPos sideObj, "Land_Cargo_HQ_V1_ruins_F"];
 		{ [_x] call QS_fnc_TBdeleteObjects; } forEach [_unitsArray, _enemiesArray, _guardsGroup];
+		[_fuzzyPos, 500] call QS_fnc_DeleteEnemyEAST;
 	};
 
 	// IF WEAPONS ARE DESTROYED [SUCCESS]
@@ -161,5 +162,6 @@ while { sideMissionUp } do {
 		{ deleteVehicle _x } forEach [sideObj, boat, trawler, assaultBoat];
 		deleteVehicle nearestObject [getPos sideObj, "Land_Cargo_HQ_V1_ruins_F"];
 		{ [_x] call QS_fnc_TBdeleteObjects; } forEach [_unitsArray, _enemiesArray, _guardsGroup];
+		[_fuzzyPos, 500] call QS_fnc_DeleteEnemyEAST;
 	};
 };

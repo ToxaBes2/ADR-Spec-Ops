@@ -30,6 +30,7 @@ if (isServer) then {
 if (!isDedicated) then {
     waitUntil {!isNull player};
     waitUntil {player == player};
+    waitUntil {!isNil "RADIO_CHANNELS"};
     _playerType = typeOf player;
 
     // add all players to emergency channel

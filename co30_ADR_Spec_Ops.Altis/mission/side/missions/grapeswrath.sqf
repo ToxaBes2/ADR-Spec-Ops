@@ -215,6 +215,7 @@ while { sideMissionUp } do {
         { 
             [_x] call QS_fnc_TBdeleteObjects;
         } forEach [_enemiesArray];
+        [_startPoint, 500] call QS_fnc_DeleteEnemyEAST;
     };
     sleep 3;
 };
