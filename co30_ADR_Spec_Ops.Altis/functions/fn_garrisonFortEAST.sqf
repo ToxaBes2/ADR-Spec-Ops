@@ -189,5 +189,5 @@ _units = ["O_Soldier_GL_F", "O_Soldier_AR_F"];
 
 _newGrp setBehaviour "COMBAT";
 _newGrp setCombatMode "RED";
-[(units _newGrp)] call QS_fnc_setSkill2;
+[(units _newGrp)] call QS_fnc_setSkill3;
 _newGrp;

@@ -1,23 +1,16 @@
 /*
-Author:
-
-	Quiksilver (credit Rarek [AW] for initial design)
-
-Last modified:
-
-	25/04/2014
-
+Author:	Quiksilver (credit Rarek [AW] for initial design)
 Description:
-
 	Secure explosives crate on coastal HQ.
 	Destroying the HQ first yields failure.
 	Securing the weapons first yields success.
-
-_________________________________________________________________________________________*/
+*/
+#define OUR_SIDE WEST
+#define ENEMY_SIDE EAST
 
 private ["_flatPos", "_accepted", "_position", "_randomDir", "_x", "_briefing", "_enemiesArray", "_unitsArray", "_c4Message", "_object", "_secondary1", "_secondary2", "_secondary3", "_secondary4", "_secondary5", "_boatPos", "_trawlerPos", "_assaultBoatPos"];
 
-//-------------------- FIND SAFE POSITION FOR MISSION
+// FIND SAFE POSITION FOR MISSION
 _flatPos = [0,0,0];
 _accepted = false;
 while {!_accepted} do {
@@ -34,7 +27,7 @@ while {!_accepted} do {
 	};
 };
 
-//------------------------------------------- SPAWN OBJECTIVE AND AMBIENCE
+// SPAWN OBJECTIVE AND AMBIENCE
 _smuggleGroup = createGroup EAST;
 
 _randomDir = (random 360);
@@ -47,12 +40,12 @@ sideObj setVectorUp [0, 0, 1];
 _object = [crate3,crate4] call BIS_fnc_selectRandom;
 _object setPos [(getPos sideObj select 0), (getPos sideObj select 1), ((getPos sideObj select 2) + 5)];
 
-//--------- BOAT POSITIONS
+// BOAT POSITIONS
 _boatPos = [_flatPos, 50, 150, 10, 2, 1, 0] call BIS_fnc_findSafePos;
 _trawlerPos = [_flatPos, 200, 300, 10, 2, 1, 0] call BIS_fnc_findSafePos;
 _assaultBoatPos = [_flatPos, 15, 25, 10, 0, 1, 0] call BIS_fnc_findSafePos;
 
-//--------- ENEMY HMG BOAT (SEEMS RIGHT SINCE ITS BY THE COAST)
+// ENEMY HMG BOAT (SEEMS RIGHT SINCE ITS BY THE COAST)
 boat = "O_Boat_Armed_01_hmg_F" createVehicle _boatPos;
 waitUntil {sleep 0.3; alive boat};
 boat setDir random 360;
@@ -78,7 +71,7 @@ boat setDir random 360;
 
 _unitsArray = [_smuggleGroup];
 
-//---------- SHIPPING TRAWLER AND INFLATABLE BOAT FOR AMBIENCE
+// SHIPPING TRAWLER AND INFLATABLE BOAT FOR AMBIENCE
 trawler = "C_Boat_Civil_04_F" createVehicle _trawlerPos;
 trawler setDir random 360;
 trawler allowDamage false;
@@ -89,19 +82,19 @@ assaultBoat allowDamage false;
 
 { _x lock 0 } forEach [boat, assaultBoat];
 
-//------- POS FOR SECONDARY EXPLOSIONS, create a function for this?
+// POS FOR SECONDARY EXPLOSIONS, create a function for this?
 _secondary1 = [sideObj, random 30, random 360] call BIS_fnc_relPos;
 _secondary2 = [sideObj, random 30, random 360] call BIS_fnc_relPos;
 _secondary3 = [sideObj, random 30, random 360] call BIS_fnc_relPos;
 _secondary4 = [sideObj, random 50, random 360] call BIS_fnc_relPos;
 _secondary5 = [sideObj, random 70, random 360] call BIS_fnc_relPos;
 
-//-------------------- SPAWN FORCE PROTECTION
+// SPAWN FORCE PROTECTION
 _enemiesArray = [sideObj] call QS_fnc_SMenemyEAST;
-
-//-------------------- BRIEFING
 _fuzzyPos = [((_flatPos select 0) - 300) + (random 600), ((_flatPos select 1) - 300) + (random 600), 0];
+_guardsGroup = [_fuzzyPos, 400, 50, ENEMY_SIDE] call QS_fnc_FillBots;
 
+// BRIEFING
 { _x setMarkerPos _fuzzyPos; } forEach ["sideMarker", "sideCircle"];
 sideMarkerText = "Тайник"; publicVariable "sideMarkerText";
 "sideMarker" setMarkerText "Допзадание: Тайник";
@@ -109,37 +102,36 @@ publicVariable "sideMarker";
 publicVariable "sideObj";
 
 _c4Message = ["Заряд установлен! 30 секунд до взрыва.", "C-4 активирован! 30 секунд до детонации.", "Взрывчатка на месте! 30 секунд до взрыва."] call BIS_fnc_selectRandom;
-
 _briefing = "<t align='center'><t size='2.2'>Допзадание</t><br/><t size='1.5' color='#00B2EE'>Тайник</t><br/>____________________<br/>Противник тайно переправляет и складирует значительное количество взрывчатых веществ близи своего прибрежного лагеря.<br/><br/>Ваша задача — выдвинуться в указанный район, найти и обезвредить текущую партию взрывчатки.</t>";
 GlobalHint = _briefing; publicVariable "GlobalHint"; hint parseText GlobalHint;
 showNotification = ["NewSideMission", "Тайник"]; publicVariable "showNotification";
 sideMarkerText = "Тайник"; publicVariable "sideMarkerText";
 
-//-------------------- [ CORE LOOPS ]----------------------- [CORE LOOPS]
+// [CORE LOOPS]
 sideMissionUp = true; publicVariable "sideMissionUp";
 SM_SUCCESS = false; publicVariable "SM_SUCCESS";
 
 while { sideMissionUp } do {
 	sleep 0.3;
 
-	//----------------------------------------------------- IF HQ IS DESTROYED [FAIL]
+	// IF HQ IS DESTROYED [FAIL]
 	if (!alive sideObj) exitWith {
-		//-------------------- DE-BRIEFING
+		// DE-BRIEFING
 		sideMissionUp = false; publicVariable "sideMissionUp";
 		hqSideChat = "Цель уничтожена преждевременно. Задание провалено!"; publicVariable "hqSideChat"; [WEST,"HQ"] sideChat hqSideChat;
 		[] spawn QS_fnc_SMhintFAIL;
 		{ _x setMarkerPos [-10000, -10000, -10000]; } forEach ["sideMarker", "sideCircle"];
 		publicVariable "sideMarker";
 
-		//-------------------- DELETE
-		_object setPos [-10000, -10000, 0];			// hide objective
+		// DELETE
+		_object setPos [-10000, -10000, 0];			
 		sleep 120;
 		{ deleteVehicle _x } forEach [sideObj, boat, trawler, assaultBoat];
 		deleteVehicle nearestObject [getPos sideObj, "Land_Cargo_HQ_V1_ruins_F"];
-		{ [_x] spawn QS_fnc_TBdeleteObjects; } forEach [_unitsArray, _enemiesArray];
+		{ [_x] call QS_fnc_TBdeleteObjects; } forEach [_unitsArray, _enemiesArray, _guardsGroup];
 	};
 
-	//------------------------------------------------------ IF WEAPONS ARE DESTROYED [SUCCESS]
+	// IF WEAPONS ARE DESTROYED [SUCCESS]
 	if (SM_SUCCESS) exitWith {
 		//-------------------- BOOM!
 		hqSideChat = _c4Message; publicVariable "hqSideChat"; [WEST,"HQ"] sideChat hqSideChat;
@@ -148,13 +140,13 @@ while { sideMissionUp } do {
 		sleep 0.1;
 		_object setPos [-10000, -10000, 0];					// hide objective
 
-		//-------------------- DE-BRIEFING
+		// DE-BRIEFING
 		sideMissionUp = false; publicVariable "sideMissionUp";
 		[] call QS_fnc_SMhintSUCCESS;
 		{ _x setMarkerPos [-10000, -10000, -10000];} forEach ["sideMarker", "sideCircle"];
 		publicVariable "sideMarker";
 
-		//--------------------- SECONDARY EXPLOSIONS, create a function for this?
+		// SECONDARY EXPLOSIONS, create a function for this?
 		sleep 10 + (random 10);
 		"SmallSecondary" createVehicle _secondary1;
 		"SmallSecondary" createVehicle _secondary2;
@@ -164,10 +156,10 @@ while { sideMissionUp } do {
 		"SmallSecondary" createVehicle _secondary4;
 		"SmallSecondary" createVehicle _secondary5;
 
-		//--------------------- DELETE, DESPAWN, HIDE and RESET
+		// DELETE, DESPAWN, HIDE and RESET
 		sleep 120;
 		{ deleteVehicle _x } forEach [sideObj, boat, trawler, assaultBoat];
 		deleteVehicle nearestObject [getPos sideObj, "Land_Cargo_HQ_V1_ruins_F"];
-		{ [_x] spawn QS_fnc_TBdeleteObjects; } forEach [_unitsArray, _enemiesArray];
+		{ [_x] call QS_fnc_TBdeleteObjects; } forEach [_unitsArray, _enemiesArray, _guardsGroup];
 	};
 };

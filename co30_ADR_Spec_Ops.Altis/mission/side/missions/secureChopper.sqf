@@ -1,16 +1,9 @@
 /*
-Author:
-
-	Quiksilver
-
-Last modified:
-
-	25/04/2014
-
-Description:
-
-	Destroy chopper
-____________________________________*/
+Author:	Quiksilver
+Description: Destroy chopper
+*/
+#define OUR_SIDE WEST
+#define ENEMY_SIDE EAST
 
 #define CHOPPER_TYPE "O_Heli_Attack_02_black_F","O_Heli_Light_02_unarmed_F", "B_Heli_Attack_01_F"
 private ["_objPos", "_flatPos", "_accepted", "_position", "_randomDir", "_hangar", "_x", "_enemiesArray", "_briefing", "_fuzzyPos", "_unitsArray", "_dummy", "_object"];
@@ -21,8 +14,7 @@ _c4Message = [
 	"Данные прототипа захвачены. C-4 активирован! 30 секунд до детонации."
 ] call BIS_fnc_selectRandom;
 
-
-//-------------------- FIND SAFE POSITION FOR OBJECTIVE
+// FIND SAFE POSITION FOR OBJECTIVE
 _flatPos = [0,0,0];
 _accepted = false;
 while {!_accepted} do {
@@ -41,7 +33,7 @@ while {!_accepted} do {
 
 _objPos = [_flatPos, 25, 35, 10, 0, 0.5, 0] call BIS_fnc_findSafePos;
 
-//-------------------- SPAWN OBJECTIVE
+// SPAWN OBJECTIVE
 _randomDir = (random 360);
 _hangar = "Land_TentHangar_V1_F" createVehicle _flatPos;
 waitUntil {!isNull _hangar};
@@ -65,12 +57,12 @@ researchTable setPos [(getPos house select 0), (getPos house select 1), ((getPos
 sleep 1;
 [researchTable,_object,[0, 0, 0.82]] call BIS_fnc_relPosObject;
 
-//-------------------- SPAWN FORCE PROTECTION
+// SPAWN FORCE PROTECTION
 _enemiesArray = [sideObj] call QS_fnc_SMenemyEAST;
-
-//-------------------- BRIEF
 _fuzzyPos = [((_flatPos select 0) - 300) + (random 600), ((_flatPos select 1) - 300) + (random 600), 0];
+_guardsGroup = [_fuzzyPos, 400, 50, ENEMY_SIDE] call QS_fnc_FillBots;
 
+// BRIEF
 { _x setMarkerPos _fuzzyPos; } forEach ["sideMarker", "sideCircle"];
 sideMarkerText = "Прототип"; publicVariable "sideMarkerText";
 "sideMarker" setMarkerText "Допзадание: Прототип"; publicVariable "sideMarker";
@@ -86,41 +78,43 @@ SM_SUCCESS = false; publicVariable "SM_SUCCESS";
 
 while { sideMissionUp } do {
 	if (!alive sideObj) exitWith {
-		//-------------------- DE-BRIEFING
+
+		// DE-BRIEFING
 		hqSideChat = "Данные о прототипе утеряны. Задание провалено!"; publicVariable "hqSideChat"; [WEST,"HQ"] sideChat hqSideChat;
 		[] spawn QS_fnc_SMhintFAIL;
 		{ _x setMarkerPos [-10000, -10000, -10000]; } forEach ["sideMarker", "sideCircle"]; publicVariable "sideMarker";
 		sideMissionUp = false; publicVariable "sideMissionUp";
 		
-		//-------------------- DELETE
-		{ _x setPos [-10000, -10000, 0]; } forEach [_object, researchTable, _dummy];			// hide objective pieces
+		// DELETE
+		{ _x setPos [-10000, -10000, 0]; } forEach [_object, researchTable, _dummy];			
 		sleep 120;
 		{ deleteVehicle _x } forEach [sideObj, house];
 		deleteVehicle nearestObject [getPos sideObj, "Land_TentHangar_V1_ruins_F"];
-		[_enemiesArray] spawn QS_fnc_TBdeleteObjects;
+		{ [_x] call QS_fnc_TBdeleteObjects; } forEach [_enemiesArray, _guardsGroup];
 	};
 	
 	if (SM_SUCCESS) exitWith {
-		//-------------------- BOOM!
+
+		// BOOM!
 		hqSideChat = _c4Message; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
 		_dummy setPos [(getPos sideObj select 0), ((getPos sideObj select 1) +3), ((getPos sideObj select 2) + 0.5)];
 		sleep 0.1;
-		_object setPos [-10000, -10000, 0];					// hide objective
-		sleep 30;											// ghetto bomb timer
-		"Bo_GBU12_LGB" createVehicle getPos _dummy; 		// default "Bo_Mk82"
-		_dummy setPos [-10000, -10000, 1];					// hide dummy
-		researchTable setPos [-10000, -10000, 1];			// hide research table
+		_object setPos [-10000, -10000, 0];					
+		sleep 30;											
+		"Bo_GBU12_LGB" createVehicle getPos _dummy; 		
+		_dummy setPos [-10000, -10000, 1];					
+		researchTable setPos [-10000, -10000, 1];			
 		sleep 0.1;
 	
-		//-------------------- DE-BRIEFING
+		// DE-BRIEFING
 		[] call QS_fnc_SMhintSUCCESS;
 		{ _x setMarkerPos [-10000, -10000, -10000]; } forEach ["sideMarker", "sideCircle"]; publicVariable "sideMarker";
 		sideMissionUp = false; publicVariable "sideMissionUp";
 
-		//--------------------- DELETE
+		// DELETE
 		sleep 120;
 		{ deleteVehicle _x } forEach [sideObj, house];
 		deleteVehicle nearestObject [getPos sideObj, "Land_TentHangar_V1_ruins_F"];
-		[_enemiesArray] spawn QS_fnc_TBdeleteObjects;
+		{ [_x] call QS_fnc_TBdeleteObjects; } forEach [_enemiesArray, _guardsGroup];
 	};
 };

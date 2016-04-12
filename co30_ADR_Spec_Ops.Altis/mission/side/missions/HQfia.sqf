@@ -1,19 +1,11 @@
 /*
-@file: HQfia.sqf
-Author:
-
-	Quiksilver
-	
-Last modified:
-
-	24/04/2014
-
+Author:	Quiksilver
 Description:
-
 	Secure HQ supplies before destroying it.
 	Enemy type is FIA resistance who are hostile to blufor.
-
-____________________________________*/
+*/
+#define OUR_SIDE WEST
+#define ENEMY_SIDE EAST
 
 private ["_flatPos", "_accepted", "_position", "_enemiesArray", "_fuzzyPos", "_x", "_briefing", "_unitsArray", "_object", "_SMveh", "_SMaa", "_tower1", "_tower2", "_tower3", "_c4Message"];
 
@@ -23,7 +15,7 @@ _c4Message = [
 	"Боезапас террористов захвачен. Заряд установлен! 30 секунд до взрыва."
 ] call BIS_fnc_selectRandom;
 
-//-------------------- FIND POSITION FOR OBJECTIVE
+// FIND POSITION FOR OBJECTIVE
 _flatPos = [0, 0, 0];
 _accepted = false;
 while {!_accepted} do {
@@ -40,7 +32,7 @@ while {!_accepted} do {
 	};
 };
 
-//-------------------- SPAWN OBJECTIVE
+// SPAWN OBJECTIVE
 sideObj = "Land_Cargo_HQ_V2_F" createVehicle _flatPos;
 waitUntil {alive sideObj};
 sideObj setPos [(getPos sideObj select 0), (getPos sideObj select 1), (getPos sideObj select 2)];
@@ -64,12 +56,12 @@ tower3 setDir 60;
 { _x allowDamage false } forEach [tower1, tower2, tower3];
 sleep 0.3;
 
-//-------------------- SPAWN FORCE PROTECTION
+// SPAWN FORCE PROTECTION
 _enemiesArray = [sideObj] call QS_fnc_SMenemyFIA;
-
-//-------------------- SPAWN BRIEFING
 _fuzzyPos = [((_flatPos select 0) - 300) + (random 600), ((_flatPos select 1) - 300) + (random 600), 0];
+_guardsGroup = [_fuzzyPos, 400, 50, ENEMY_SIDE] call QS_fnc_FillBots;
 
+// SPAWN BRIEFING
 { _x setMarkerPos _fuzzyPos;} forEach ["sideMarker", "sideCircle"];
 sideMarkerText = "Лагерь"; publicVariable "sideMarkerText";
 "sideMarker" setMarkerText "Допзадание: Лагерь"; publicVariable "sideMarker";
@@ -80,45 +72,50 @@ GlobalHint = _briefing; hint parseText GlobalHint; publicVariable "GlobalHint";
 showNotification = ["NewSideMission", "Лагерь"]; publicVariable "showNotification";
 sideMarkerText = "Лагерь"; publicVariable "sideMarkerText";
 
-//-------------------- [ CORE LOOPS ] ------------------------ [ CORE LOOPS ]
+// [ CORE LOOPS ]
 sideMissionUp = true; publicVariable "sideMissionUp";
 SM_SUCCESS = false; publicVariable "SM_SUCCESS";
 
 while { sideMissionUp } do {
-	//--------------------------------------------- IF PACKAGE DESTROYED [FAIL]
+
+	// IF PACKAGE DESTROYED [FAIL]
 	if (!alive sideObj) exitWith {
-		//-------------------- DE-BRIEFING
+
+		// DE-BRIEFING
 		sideMissionUp = false; publicVariable "sideMissionUp";
 		hqSideChat = "Цель уничтожена преждевременно. Задание провалено!"; publicVariable "hqSideChat"; [WEST,"HQ"] sideChat hqSideChat;
 		[] spawn QS_fnc_SMhintFAIL;
 		{ _x setMarkerPos [-10000, -10000, -10000]; } forEach ["sideMarker", "sideCircle"]; publicVariable "sideMarker";
 
-		//-------------------- DELETE
+		// DELETE
 		_object setPos [-10000, -10000, 0];
 		sleep 120;
 		{ deleteVehicle _x } forEach [sideObj, tower1, tower2, tower3];
 		deleteVehicle nearestObject [getPos sideObj, "Land_Cargo_HQ_V2_ruins_F"];
-		[_enemiesArray] spawn QS_fnc_TBdeleteObjects;
+		{ [_x] call QS_fnc_TBdeleteObjects; } forEach [_enemiesArray, _guardsGroup];
 	};
 
-	//----------------------------------------------- IF PACKAGE SECURED [SUCCESS]
+	// IF PACKAGE SECURED [SUCCESS]
 	if (SM_SUCCESS) exitWith {
-		//-------------------- BOOM!
-		hqSideChat = _c4Message; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
-		sleep 30;											// ghetto bomb timer
-		"Bo_Mk82" createVehicle getPos _object; 			// default "Bo_Mk82"
-		sleep 0.1;
-		_object setPos [-10000, -10000, 0];					// hide objective
 
-		//-------------------- DE-BRIEFING
+		// BOOM!
+		hqSideChat = _c4Message; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
+		sleep 30;											
+		"Bo_Mk82" createVehicle getPos _object; 			
+		sleep 0.1;
+		_object setPos [-10000, -10000, 0];					
+
+		// DE-BRIEFING
 		sideMissionUp = false; publicVariable "sideMissionUp";
 		[] call QS_fnc_SMhintSUCCESS;
 		{ _x setMarkerPos [-10000, -10000, -10000]; } forEach ["sideMarker", "sideCircle"]; publicVariable "sideMarker";
 
-		//--------------------- DELETE
+		// DELETE
 		sleep 120;
 		{ deleteVehicle _x } forEach [sideObj, tower1, tower2, tower3];
 		deleteVehicle nearestObject [getPos sideObj, "Land_Cargo_HQ_V1_ruins_F"];
-		[_enemiesArray] spawn QS_fnc_TBdeleteObjects;
+		[_enemiesArray] call QS_fnc_TBdeleteObjects;
+		[_guardsGroup] call QS_fnc_TBdeleteObjects;
+		{ [_x] call QS_fnc_TBdeleteObjects; } forEach [_enemiesArray, _guardsGroup];
 	};
 };

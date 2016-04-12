@@ -1,17 +1,9 @@
 /*
-@file: destroyRadar.sqf
-Author:
-
-	Quiksilver
-
-Last modified:
-
-	25/04/2014
-
-Description:
-
-	Get radar telemetry from enemy radar site, then destroy it.
-_________________________________________________________________________*/
+Author: Quiksilver
+Description: Get radar telemetry from enemy radar site, then destroy it.
+*/
+#define OUR_SIDE WEST
+#define ENEMY_SIDE EAST
 
 private ["_objPos", "_flatPos", "_accepted", "_position", "_randomDir", "_hangar", "_x", "_enemiesArray", "_briefing", "_fuzzyPos", "_unitsArray", "_dummy", "_object", "_tower1", "_tower2", "_tower3"];
 
@@ -21,7 +13,7 @@ _c4Message = [
 	"Данные радара считаны. Заряд установлен! 30 секунд до взрыва."
 ] call BIS_fnc_selectRandom;
 
-//-------------------- FIND SAFE POSITION FOR OBJECTIVE
+// FIND SAFE POSITION FOR OBJECTIVE
 _flatPos = [0, 0, 0];
 _accepted = false;
 while {!_accepted} do {
@@ -40,7 +32,7 @@ while {!_accepted} do {
 
 _objPos = [_flatPos, 15, 30, 10, 0, 0.5, 0] call BIS_fnc_findSafePos;
 
-//-------------------- SPAWN OBJECTIVE
+// SPAWN OBJECTIVE
 sideObj = "Land_Radar_Small_F" createVehicle _flatPos;
 waitUntil {!isNull sideObj};
 sideObj setDir random 360;
@@ -74,12 +66,12 @@ tower3 setDir 60;
 { _x allowDamage false } forEach [tower1, tower2, tower3];
 sleep 0.3;
 
-//-------------------- SPAWN FORCE PROTECTION
+// SPAWN FORCE PROTECTION
 _enemiesArray = [sideObj] call QS_fnc_SMenemyEAST;
-
-//-------------------- BRIEF
 _fuzzyPos = [((_flatPos select 0) - 300) + (random 600), ((_flatPos select 1) - 300) + (random 600), 0];
+_guardsGroup = [_fuzzyPos, 400, 50, ENEMY_SIDE] call QS_fnc_FillBots;
 
+// BRIEF
 { _x setMarkerPos _fuzzyPos; } forEach ["sideMarker", "sideCircle"];
 sideMarkerText = "Радар"; publicVariable "sideMarkerText";
 "sideMarker" setMarkerText "Допзадание: Радар"; publicVariable "sideMarker";
@@ -94,43 +86,43 @@ SM_SUCCESS = false; publicVariable "SM_SUCCESS";
 
 while { sideMissionUp } do {
 	if (!alive sideObj) exitWith {
-		//-------------------- DE-BRIEFING
+		// DE-BRIEFING
 		hqSideChat = "Данные радара утеряны. Задание провалено!"; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
 		[] spawn QS_fnc_SMhintFAIL;
 		{ _x setMarkerPos [-10000, -10000, -10000]; } forEach ["sideMarker", "sideCircle"]; publicVariable "sideMarker";
 		sideMissionUp = false; publicVariable "sideMissionUp";
 
-		//-------------------- DELETE
-		{ _x setPos [-10000, -10000, 0]; } forEach [_object, researchTable, _dummy];			// hide objective pieces
+		// DELETE
+		{ _x setPos [-10000, -10000, 0]; } forEach [_object, researchTable, _dummy];			
 		sleep 120;
 		{ deleteVehicle _x } forEach [sideObj, house, tower1, tower2, tower3];
 		deleteVehicle nearestObject [getPos sideObj, "Land_Radar_Small_ruins_F"];
-		[_enemiesArray] spawn QS_fnc_TBdeleteObjects;
+		{ [_x] call QS_fnc_TBdeleteObjects; } forEach [_enemiesArray, _guardsGroup];
 	};
 	
 	if (SM_SUCCESS) exitWith {
-		//-------------------- BOOM!
+		// BOOM!
 		hqSideChat = _c4Message; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
 
 		_dummy setPos [(getPos sideObj select 0), ((getPos sideObj select 1) +5), ((getPos sideObj select 2) + 0.5)];
 		sleep 0.1;
-		_object setPos [-10000, -10000, 0];					// hide objective
-		sleep 30;											// ghetto bomb timer
-		"Bo_Mk82" createVehicle getPos _dummy; 				// default "Bo_Mk82","Bo_GBU12_LGB"
-		_dummy setPos [-10000, -10000, 1];					// hide dummy
-		researchTable setPos [-10000, -10000, 1];			// hide research table
+		_object setPos [-10000, -10000, 0];					
+		sleep 30;											
+		"Bo_Mk82" createVehicle getPos _dummy; 				
+		_dummy setPos [-10000, -10000, 1];					
+		researchTable setPos [-10000, -10000, 1];			
 		sleep 0.1;
 
-		//-------------------- DE-BRIEFING
+		// DE-BRIEFING
 
 		[] call QS_fnc_SMhintSUCCESS;
 		{ _x setMarkerPos [-10000, -10000, -10000]; } forEach ["sideMarker", "sideCircle"]; publicVariable "sideMarker";
 		sideMissionUp = false; publicVariable "sideMissionUp";
 
-		//--------------------- DELETE
+		// DELETE
 		sleep 120;
 		{ deleteVehicle _x } forEach [sideObj, house, tower1, tower2, tower3];
 		deleteVehicle nearestObject [getPos sideObj, "Land_Radar_Small_ruins_F"];
-		[_enemiesArray] spawn QS_fnc_TBdeleteObjects;
+		{ [_x] call QS_fnc_TBdeleteObjects; } forEach [_enemiesArray, _guardsGroup];
 	};
 };

@@ -364,7 +364,7 @@ while { sideMissionUp } do {
         "sideMarker" setMarkerText ""; publicVariable "sideMarker";
 		[] call QS_fnc_SMhintSUCCESS;	
         sleep 120;
-        { [_x] spawn QS_fnc_TBdeleteObjects; } forEach [_enemiesArray];		
+        { [_x] call QS_fnc_TBdeleteObjects; } forEach [_enemiesArray];		
         deleteVehicle _heliObj;	
 	};
 	sleep 3;

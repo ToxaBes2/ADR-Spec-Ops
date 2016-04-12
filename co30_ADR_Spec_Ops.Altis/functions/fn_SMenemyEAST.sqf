@@ -96,10 +96,10 @@ _enemiesArray = _enemiesArray + [_SMaa];
 
 //---------- COMMON
 
-[(units _infteamPatrol)] call QS_fnc_setSkill2;
+[(units _infteamPatrol)] call QS_fnc_setSkill3;
 [(units _smSniperTeam)] call QS_fnc_setSkill3;
 [(units _SMaaPatrol)] call QS_fnc_setSkill4;
-[(units _SMvehPatrol)] call QS_fnc_setSkill2;
+[(units _SMvehPatrol)] call QS_fnc_setSkill3;
 
 //---------- GARRISON FORTIFICATIONS
 

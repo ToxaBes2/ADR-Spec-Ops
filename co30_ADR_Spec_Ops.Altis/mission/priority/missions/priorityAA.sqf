@@ -93,7 +93,6 @@ _enemiesArray = [priorityObj1] call QS_fnc_PTenemyEAST;
 // fill bots in radius
 _fuzzyPos = [((_flatPos select 0) - 300) + (random 600),((_flatPos select 1) - 300) + (random 600), 0];
 _guardsGroup = [_fuzzyPos, 300, 15, ENEMY_SIDE] call QS_fnc_FillBots; 
-_enemiesArray = _enemiesArray + [_guardsGroup];
 
 // 6. THAT GIRL IS SO DANGEROUS!
 [(units _priorityGroup)] call QS_fnc_setSkill4;
@@ -234,7 +233,8 @@ while {_loopVar} do {
 			{_x removeEventHandler ["Fired", 0];} forEach [priorityObj1, priorityObj2];
 			{_x removeEventHandler ["HandleDamage",1];} forEach [priorityObj1, priorityObj2];
 			sleep 60;
-			{[_x] call QS_fnc_TBdeleteObjects;} forEach [_enemiesArray, _unitsArray];			
+			{[_x] call QS_fnc_TBdeleteObjects;} forEach [_enemiesArray, _unitsArray];	
+			[_guardsGroup] call QS_fnc_TBdeleteObjects;		
 	};
 	sleep 5;
 };

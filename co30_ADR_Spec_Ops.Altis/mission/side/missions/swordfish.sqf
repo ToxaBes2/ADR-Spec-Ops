@@ -271,7 +271,7 @@ while { sideMissionUp } do {
 
         sleep 120;  
         { 
-            [_x] spawn QS_fnc_TBdeleteObjects;
+            [_x] call QS_fnc_TBdeleteObjects;
         } forEach [_enemiesArray, _unitsArray];
     };
     sleep 3;
