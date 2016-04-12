@@ -110,6 +110,9 @@ while {count _nearestDevices < 3} do {
     _guardsCount = [3,4,5,6] call BIS_fnc_selectRandom;
     _guardGroup = [(getPos _house), 8, _guardsCount, ENEMY_SIDE] call QS_fnc_FillBots;
     _enemiesArray = _enemiesArray + [_guardGroup];
+    {
+        _x addCuratorEditableObjects [[_device], true];
+    } forEach allCurators;
 };
 
 // spawn house guards

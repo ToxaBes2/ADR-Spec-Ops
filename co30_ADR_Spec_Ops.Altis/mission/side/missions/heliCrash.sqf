@@ -5,6 +5,8 @@ Description: Secure helicopter crash area and find scout equipment.
 
 // define some keywords and definitions
 #define INFANTRY_MISSION "Спецоперация: Прерванный полёт (техника запрещена)"
+#define OUR_SIDE WEST
+#define ENEMY_SIDE EAST
 #define INFANTRY_PATROL "OIA_InfSquad","OIA_InfSquad_Weapons","OIA_InfTeam","OIA_InfTeam_AA","OIA_InfTeam_AT","OI_reconPatrol"
 #define INFANTRY_STATIC "O_HMG_01_high_F","O_GMG_01_high_F"
 #define INFANTRY_HOUSE "O_Soldier_AR_F","O_soldier_M_F","O_Soldier_TL_F"
@@ -308,6 +310,8 @@ for "_x" from 1 to 2 do {
     _enemiesArray = _enemiesArray + [_technicalVehicle];
 };
 
+_guardsGroup = [_startPoint, 350, 40, ENEMY_SIDE] call QS_fnc_FillBots;
+
 // set skills
 [(units _patrolGroup)] call QS_fnc_setSkill3;
 [(units _houseGroup)] call QS_fnc_setSkill3;
@@ -364,7 +368,7 @@ while { sideMissionUp } do {
         "sideMarker" setMarkerText ""; publicVariable "sideMarker";
 		[] call QS_fnc_SMhintSUCCESS;	
         sleep 120;
-        { [_x] call QS_fnc_TBdeleteObjects; } forEach [_enemiesArray];		
+        { [_x] call QS_fnc_TBdeleteObjects; } forEach [_enemiesArray, _guardsGroup];		
         deleteVehicle _heliObj;	
 	};
 	sleep 3;
