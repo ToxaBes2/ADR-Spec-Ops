@@ -24,4 +24,8 @@ switch(_uid)do
 	{
 		player addAction ["<t color='#B0BEC5'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_debug_ca.paa' size='1.0'/> Инструменты</t>", "scripts\admin\tools.sqf", "", -99, false, true, "", ""];
 	};
+	case "76561198035772372": // 12s
+	{
+		player addAction ["<t color='#B0BEC5'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_debug_ca.paa' size='1.0'/> Инструменты</t>", "scripts\admin\tools.sqf", "", -99, false, true, "", ""];
+	};
 };

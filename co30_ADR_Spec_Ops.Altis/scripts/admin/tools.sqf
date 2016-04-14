@@ -5,9 +5,7 @@ adminmenu =
 [
 	["Инструменты", true],
 		["Телепорт", [2], "", -5, [["expression", format[_EXECscript1,"teleport.sqf"]]], "1", "1"],
-		["Телепорт игрока ко мне", [3], "", -5, [["expression", format[_EXECscript1,"tptome.sqf"]]], "1", "1"],		
-		["Неуязвимость вкл", [4], "", -5, [["expression", format[_EXECscript1,"godon.sqf"]]], "1", "1"],
-		["Неуязвимость выкл", [5], "", -5, [["expression", format[_EXECscript1,"godoff.sqf"]]], "1", "1"],
+		["Телепорт игрока ко мне", [3], "", -5, [["expression", format[_EXECscript1,"tptome.sqf"]]], "1", "1"],
 		["(separator)",       [3], "", -1, [["expression", ""]], "1", "1"],	// separator line
 		["Выход", [1], "", -3, [["expression", ""]], "1", "1"]
 ];
