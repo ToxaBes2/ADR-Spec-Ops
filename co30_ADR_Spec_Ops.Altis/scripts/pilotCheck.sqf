@@ -60,6 +60,12 @@ _aircraft_noloadmaster = [
 "O_Heli_Transport_04_bench_F"		//Тару сидения
 ];
 
+_mh9 = [
+"B_Heli_Light_01_F", 
+"B_Heli_Light_01_armed_F", 
+"B_Heli_Light_01_stripped_F"
+];
+
 waitUntil {player == player};
 
 _iampilot = ({typeOf player == _x} count _pilots) > 0;
@@ -78,37 +84,36 @@ while { true } do {
 		_veh = vehicle player;
    
         // allow Humminbird co-pilot for all if less than 7 players on server
-        if (_playersCount < 7 && (typeOf _veh) == "B_Heli_Light_01_F") then {
-        	_pilotsOnServer = false;
+        if (_playersCount < 7 && (typeOf _veh) in _mh9) then {
         	{
                 if ((typeOf _x) in _pilots) then {
                     _pilotsOnServer = true;
                 };
             } forEach _players;
-            if !(_pilotsOnServer) exitWith {};
-        };
-		if((_veh isKindOf "Helicopter" || _veh isKindOf "Plane") && !(_veh isKindOf "ParachuteBase")) then {
-			if(!_iampilot && ({typeOf _veh == _x} count _aircraft_nocopilot) > 0) then {
-				_forbidden = [_veh turretUnit [0]];
-				if(player in _forbidden) then {
-					systemChat "Вы должны быть пилотом, чтобы занять место 2-го пилота";
-					player action ["getOut", _veh];
-				};
-			};
-			if(!_iampilot && ({typeOf _veh == _x} count _aircraft_nopilot) > 0) then {
-				_forbidden = [driver _veh];
-				if(player in _forbidden) then {
-					systemChat "Вы должны быть пилотом, чтобы пилотировать данную технику.";
-					player action ["getOut", _veh];
-				};
-			};
-			if(!_iampilot && ({typeOf _veh == _x} count _aircraft_noloadmaster) > 0) then {
-				_forbidden = [gunner _veh];
-				if(player in _forbidden) then {
-					systemChat "Вы должны быть пилотом.";
-					player action ["getOut", _veh];
-				};
-			};
-		};
+        } else {
+		    if((_veh isKindOf "Helicopter" || _veh isKindOf "Plane") && !(_veh isKindOf "ParachuteBase")) then {
+		    	if(!_iampilot && ({typeOf _veh == _x} count _aircraft_nocopilot) > 0) then {
+		    		_forbidden = [_veh turretUnit [0]];
+		    		if(player in _forbidden) then {
+		    			systemChat "Вы должны быть пилотом, чтобы занять место 2-го пилота";
+		    			player action ["getOut", _veh];
+		    		};
+		    	};
+		    	if(!_iampilot && ({typeOf _veh == _x} count _aircraft_nopilot) > 0) then {
+		    		_forbidden = [driver _veh];
+		    		if(player in _forbidden) then {
+		    			systemChat "Вы должны быть пилотом, чтобы пилотировать данную технику.";
+		    			player action ["getOut", _veh];
+		    		};
+		    	};
+		    	if(!_iampilot && ({typeOf _veh == _x} count _aircraft_noloadmaster) > 0) then {
+		    		_forbidden = [gunner _veh];
+		    		if(player in _forbidden) then {
+		    			systemChat "Вы должны быть пилотом.";
+		    			player action ["getOut", _veh];
+		    		};
+		    	};
+		    };
+	    };
 	};
 };

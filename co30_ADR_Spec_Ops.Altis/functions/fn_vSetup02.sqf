@@ -65,10 +65,10 @@ if(_t in _hellcat) then {
 	_u addMagazine "Laserbatteries";
 };
 if(_t == "I_Heli_light_03_F") then {
-	_u removeWeapon ("M134_minigun");
-	_u removeMagazine ("5000Rnd_762x51_Yellow_Belt");
-    _u addWeapon ("LMG_Minigun_heli");
-    _u addMagazine ("2000Rnd_65x39_Belt_Tracer_Green_Splash");
+	_u removeMagazinesTurret ["5000Rnd_762x51_Yellow_Belt", [-1]];
+	_u removeWeaponTurret ["M134_minigun", [-1]]; 	
+    _u addWeaponTurret ["LMG_Minigun_heli", [-1]];
+    _u addMagazineTurret ["2000Rnd_65x39_Belt_Tracer_Green_Splash", [-1]];
 };
 
 //==== taru skins
