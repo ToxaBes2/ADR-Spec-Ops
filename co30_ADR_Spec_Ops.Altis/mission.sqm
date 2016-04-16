@@ -5435,7 +5435,7 @@ class Mission
 		};
 		class Item99
 		{
-			position[]={13646.714,15.544265,12264.02};
+			position[]={7123.79,15.544265,16452.5};
 			name="sm36";
 			markerType="ELLIPSE";
 			type="Empty";
@@ -5453,7 +5453,7 @@ class Mission
 		};
 		class Item101
 		{
-			position[]={13349.25,22.262657,11826.881};
+			position[]={4135.93,22.262657,11730.2};
 			name="sm38";
 			markerType="ELLIPSE";
 			type="Empty";
@@ -5462,7 +5462,7 @@ class Mission
 		};
 		class Item102
 		{
-			position[]={8528.4961,86.046898,25249.904};
+			position[]={10460.4,86.046898,11592.8};
 			name="sm39";
 			markerType="ELLIPSE";
 			type="Empty";
