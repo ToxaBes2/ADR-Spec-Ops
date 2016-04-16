@@ -12,7 +12,7 @@ if (isServer) then {
         if ((dayTime >= 5 && dayTime <= 6) || (dayTime >= 19 && dayTime <= 20)) then {
             setTimeMultiplier (_dayK/2);
         } else {
-            if (dayTime > 20 && dayTime < 5) then {
+            if (dayTime > 20 || dayTime < 5) then {
                 setTimeMultiplier _nightK;            
             } else {
                 setTimeMultiplier _dayK;
