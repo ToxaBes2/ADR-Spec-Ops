@@ -28,7 +28,7 @@ _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\admin_ui
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\3rd_view_restrictions.sqf";};                       // 3rd view restrictions
 
 // Color correction
-["EastWind", 0] call BIS_fnc_setPPeffectTemplate;
+["EastWind", 0, false] call BIS_fnc_setPPeffectTemplate;
 
 // PVEHs
 "showNotification" addPublicVariableEventHandler
