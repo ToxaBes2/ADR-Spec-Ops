@@ -8,7 +8,7 @@ _days = [0, 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
 _hours = [5, 9, 12, 15, 18];
 _hour = floor (date select 3);
 if (lastWeatherTime == _hour) exitWith {};
-if (_hour in _hours &&) then {
+if (_hour in _hours) then {
     _deltaDay = (missionStart select 2) - (date select 2); 
     _deltaMonth = (missionStart select 1) - (date select 1);
     _curDate  = date select 2;
