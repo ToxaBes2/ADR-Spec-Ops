@@ -11,19 +11,15 @@ _prioList = [
 	"priorityPower"
 ];
 _missionList = [	
-	"HQcoast",
-	"heliCrash",
-	"HQfia",
-	"rescueHostages",
-	"HQind",
-	"convoy",
-	"HQresearch",
-	"snatch",
-	"secureChopper",
-	//"swordfish",
-	"secureRadar",
-	//"yellowfog",	
+	"HQside",	
 	"destroyUrban",
+	"secureSide",
+	"rescueHostages",
+    "heliCrash",
+	"convoy",
+	"snatch",	
+	//"swordfish",	
+	//"yellowfog",	
 	"grapeswrath"
 ];
 while { true } do {
