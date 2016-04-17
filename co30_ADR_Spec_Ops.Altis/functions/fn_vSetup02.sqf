@@ -45,7 +45,7 @@ if (_t in _strider) then {
 
 //===== mh-9 skin
 if(_t in _mh9) then {
-	_u setObjectTextureGlobal [0, 'A3\air_f\Heli_Light_01\Data\skins\heli_light_01_ext_wasp_co.paa'];
+	//_u setObjectTextureGlobal [0, 'A3\air_f\Heli_Light_01\Data\skins\heli_light_01_ext_wasp_co.paa'];
 	_u addWeapon "CMFlareLauncher";
 	_u addMagazine "168Rnd_CMFlare_Chaff_Magazine";
 };
