@@ -20,7 +20,6 @@ smRewards =
 	["FV-720 «Мора»", "I_APC_tracked_03_cannon_F"],
 	["MSE-3 «Марид» с НУРС", "O_APC_Wheeled_02_rcws_F"],
 	["M2A1 «Сламмер»", "B_MBT_01_cannon_F"],
-	["IFV-6c «Пантера»", "B_APC_Tracked_01_rcws_F"],
 	["M5 РСЗО «Сэндсторм»", "B_MBT_01_mlrs_F"],
 	["M4 «Скорчер»", "B_MBT_01_arty_F"]
 ];
