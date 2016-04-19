@@ -80,8 +80,10 @@ while {_inside && _aliveBots > PARAMS_EnemyLeftThreshhold} do {
     _allPlayers = [] call BIS_fnc_listPlayers;
     {
         if (!_inside) then {
-            if (_positionAO distance2D _x <= 500) then {
-                _inside = true;
+            if (!captive _x) then {
+                if (_positionAO distance2D _x <= 500) then {
+                    _inside = true;
+                };
             };
         };
     } forEach _allPlayers;
@@ -96,6 +98,21 @@ while {_inside && _aliveBots > PARAMS_EnemyLeftThreshhold} do {
     	};
     } forEach allGroups;
     sleep 10;
+    if (!_inside) then {
+        hqSideChat = "В зоне БД не осталось наших бойцов! Мы теряем позиции, поторопитесь!"; 
+        publicVariable "hqSideChat"; [WEST,"HQ"] sideChat hqSideChat;
+        sleep 120;
+        _allPlayers = [] call BIS_fnc_listPlayers;
+        {
+            if (!_inside) then {
+                if (!captive _x) then {
+                    if (_positionAO distance2D _x <= 500) then {
+                        _inside = true;
+                    };
+                };
+            };
+        } forEach _allPlayers;
+    };
     //[WEST,"HQ"] sideChat format ["inside: %1, bots: %2", _inside, _aliveBots];    
 };
 if (!_inside) then {
@@ -107,7 +124,5 @@ if (!_inside) then {
 };
 publicVariable "DEFEND_AO_VICTORY";
 publicVariable "hqSideChat"; [WEST,"HQ"] sideChat hqSideChat;
-DEFEND_AO = false; 
-publicVariable "DEFEND_AO";
 [DEFEND_AO_VEHICLES] call QS_fnc_TBdeleteObjects;
 [_enemiesArray] call QS_fnc_TBdeleteObjects;

@@ -1253,7 +1253,7 @@ BTC_player_killed = {
 				BTC_r_u_camera = "camera" camCreate (position player);
 				BTC_r_u_camera camSetTarget player;
 				BTC_r_u_camera cameraEffect ["internal", "BACK"];
-				BTC_r_u_camera camSetPos [(getpos player select 0) + 8,(getpos player select 1) + 8, 5];
+				BTC_r_u_camera camSetPos [(getpos player select 0) + 3,(getpos player select 1) + 3, 2];
 				BTC_r_u_camera camCommit 0;
 				disableSerialization;
 				_r_dlg = createDialog "BTC_spectating_dialog";
