@@ -67,8 +67,7 @@ if (_hour in _hours) then {
     } else {
         _null = [_delay] spawn { 
             sleep (_this select 0);   
-            //forceWeatherChange;
-            simulWeatherSync;
+            forceWeatherChange;
         };
     };      
 } else {
@@ -84,7 +83,7 @@ if (_hour in _hours) then {
         _delay setWindForce _rand;
         simulWeatherSync;
         if (lastWeatherTime == 0) then {
-            forceWeatherChange;
+            forceWeatherChange;            
         } else {
             _null = [_delay] spawn { 
                 sleep (_this select 0);   

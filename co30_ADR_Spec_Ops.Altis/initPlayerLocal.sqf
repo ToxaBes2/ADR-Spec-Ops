@@ -27,6 +27,12 @@ _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\VAclient
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\admin_uid.sqf";};                                   // Admin tools
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\3rd_view_restrictions.sqf";};                       // 3rd view restrictions
 
+if !(isNil "EW_ATTACK") then {
+    if (EW_ATTACK) then {
+        _null = [] spawn {_this call QS_fnc_EWattack;};                                                                      // priority EW
+    };
+};
+
 // Color correction
 ["EastWind", 0, false] call BIS_fnc_setPPeffectTemplate;
 
