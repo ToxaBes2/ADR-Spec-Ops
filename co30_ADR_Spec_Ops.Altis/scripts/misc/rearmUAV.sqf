@@ -1,6 +1,6 @@
 private ["_veh"];
 _veh = _this select 0;
-_uavs = ["B_UAV_02_CAS_F", "B_UAV_02_F"];
+_uavs = ["B_UAV_02_CAS_F", "B_UAV_02_F", "B_UGV_01_F", "B_UGV_01_rcws_F"];
 if (_veh isKindOf "ParachuteBase" || !alive _veh) exitWith {};
 
 if !((typeOf _veh) in _uavs) exitWith { 
