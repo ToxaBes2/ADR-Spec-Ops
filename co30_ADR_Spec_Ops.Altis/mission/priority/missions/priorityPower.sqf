@@ -104,6 +104,16 @@ waitUntil{sleep 1; !isNil "EW_ATTACK"};
 waitUntil{sleep 1; !isNil "currentAOUp"};
 remoteExec ["QS_fnc_EWattack"];
 
+// remove Nightvision and add ligthnings for guards
+_bots = _fuzzyPos nearObjects ["Man", 600];
+{
+	if (side _x == ENEMY_SIDE) then {
+        _x unassignItem "NVGoggles_OPFOR";
+        _x removeItem "NVGoggles_OPFOR";
+        _x addPrimaryWeaponItem "acc_flashlight";
+	};
+} forEach _bots;
+
 // MAIN LOOP
 while {currentAOUp} do {			
 	if ((!alive sideObj || !alive power || !alive EWCar) && currentAOUp) exitWith {
