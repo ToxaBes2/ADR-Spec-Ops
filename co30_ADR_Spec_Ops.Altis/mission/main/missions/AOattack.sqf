@@ -215,24 +215,24 @@ showNotification = ["CompletedMain", _nameAO]; publicVariable "showNotification"
 if (PARAMS_DefendAO == 1) then {
 
     // check bots count
-    //_aliveBots = 0;
-    //{
-    //    if (side _x == EAST) then {
-    //        {
-    //            if (_positionAO distance2D _x <= 500) then {
-    //                _aliveBots = _aliveBots + 1; 
-    //            };
-    //        } forEach (units _x);
-    //    };
-    //} forEach allGroups;
-    //_chanceDefend = random 10;
-    //if (_chanceDefend > 5 && _aliveBots > 25) then {
+    _aliveBots = 0;
+    {
+        if (side _x == EAST) then {
+            {
+                if (_positionAO distance2D _x <= 500) then {
+                    _aliveBots = _aliveBots + 1; 
+                };
+            } forEach (units _x);
+        };
+    } forEach allGroups;
+    _chanceDefend = random 10;
+    if (_chanceDefend > 5 && _aliveBots > 25) then {
         sleep 3;    
 	    _null = [_target] spawn {_this call compile preProcessFileLineNumbers "mission\main\missions\AOdefend.sqf";};
         waitUntil {sleep 10; !isNil "DEFEND_AO_VICTORY"};
-    //} else {
-    //    DEFEND_AO_VICTORY = true; publicVariable "DEFEND_AO_VICTORY";
-    //};
+    } else {
+        DEFEND_AO_VICTORY = true; publicVariable "DEFEND_AO_VICTORY";
+    };
 };
 
 { _x setMarkerPos [-10000, -10000, -10000]; } forEach ["aoCircle_2", "aoMarker_2"];
