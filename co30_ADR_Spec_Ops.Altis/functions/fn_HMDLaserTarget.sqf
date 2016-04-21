@@ -6,8 +6,8 @@ Description: Create 3D icon on Laser Targets for pilots in Air vehicles with Pil
 private ["_player", "_vehicle", "_headgear", "_pilotHelmets", "_crew","_laserTargets", "_distance", "_alpha", "_iconSize"];
 
 //Get player and vehicle
-_player = _this select 1;
-_vehicle = _this select 0;
+_player = _this select 0;
+_vehicle = _this select 1;
 
 //Allowed pilot helmets with HMDs
 _pilotHelmets = ["H_PilotHelmetFighter_B", "H_CrewHelmetHeli_B", "H_PilotHelmetHeli_B"];

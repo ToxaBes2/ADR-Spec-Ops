@@ -1,4 +1,4 @@
-private ["_iampilot", "_btc_tk_prison"];
+private ["_pilots", "_iampilot", "_btc_tk_prison"];
 
 //=========================== PILOTS ONLY
 _pilots = ["B_Helipilot_F", "O_helipilot_F"];
@@ -12,6 +12,11 @@ if (_iampilot) then {
 	//===== FIELD REPAIR
 	vehicle_repaired = false;
 	player addAction ["<t color='#FF9800'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_debug_ca.paa' size='1.0'/> Полевой ремонт</t>", QS_fnc_actionPilotRepair, [1], 100, false, false, '', '[] call QS_fnc_conditionPilotRepair'];
+
+	//==== LASER TARGETS ON PILOTS HELMETS
+	player addEventHandler [ "GetInMan", {
+		[_this select 0, _this select 2] call QS_fnc_HMDLaserTarget;
+	}];
 };
 
 //====================== Clear vehicle inventory
@@ -40,19 +45,19 @@ if (!isDedicated) then {
 
 // Radio channels
 _playerType = typeOf player;
-switch (_playerType) do { 
+switch (_playerType) do {
     case "B_Helipilot_F" : {
 
         // pilots have access to operative channels
         (RADIO_CHANNELS select 1) radioChannelAdd [player];
-    }; 
+    };
     case "B_Soldier_SL_F" : {
 
         // commanders have access to operative and commander channels
         (RADIO_CHANNELS select 1) radioChannelAdd [player];
         (RADIO_CHANNELS select 2) radioChannelAdd [player];
-    }; 
-    default {}; 
+    };
+    default {};
 };
 
 // add all players to emergency channel
