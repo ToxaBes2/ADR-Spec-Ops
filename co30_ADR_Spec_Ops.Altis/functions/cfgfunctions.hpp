@@ -6,10 +6,10 @@ class QS
 		file = "functions";
 		class actionClearInventory {};
 		class actionMagRepack {};
-		class actionPilotRepair {};		
+		class actionPilotRepair {};
 		class addAction {};
 		class addActionBlock {};
-		class addActionDefuse {};		
+		class addActionDefuse {};
 		class addActionGetData {};
 		class addActionGetIntel {};
 		class addActionHack {};
@@ -40,6 +40,7 @@ class QS
 		class garrisonFortFIA {};
 		class garrisonFortIND {};
 		class getMainAO {};
+		class HMDLaserTarget {};
 		class killerCatcher {};
 		class loadInventory {};
 		class moveToHC {};
