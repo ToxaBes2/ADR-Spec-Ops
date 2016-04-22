@@ -33,7 +33,7 @@ if (((headgear _player) in _pilotHelmets) and ((typeOf _vehicle) isKindOf "Air")
 
 			//Check if player is not in cargo and the icon is inside HMDs screen (horizontaly)
 			if (((vehicle player) getCargoIndex player == -1) and (_dir < 13)) then {
-				drawIcon3D ["\A3\ui_f\data\gui\cfg\cursors\track_gs.paa", [0.40, 0.95, 0.70, _alpha], visiblePosition _x, _iconSize, _iconSize, 0, str(round _distance), 0, 0.035, "PuristaSemiBold", "center"];
+				drawIcon3D ["\A3\ui_f\data\gui\cfg\cursors\track_gs.paa", [0.35, 1.00, 0.70, _alpha], visiblePosition _x, _iconSize, _iconSize, 0, str(round _distance), 0, 0.035, "PuristaSemiBold", "center"];
 			};
 		} forEach _laserTargets;
 	}];
