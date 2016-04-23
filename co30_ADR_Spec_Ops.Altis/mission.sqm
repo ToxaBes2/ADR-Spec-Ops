@@ -4139,17 +4139,17 @@ class Mission
 			side="EMPTY";
 			vehicle="PortableHelipadLight_01_red_F";
 			skill=0.60000002;
-			init="this enableSimulation false; this allowDamage false;";
+			init="this allowDamage false;";
 		};
 		class Item256
 		{
-			position[]={15091.043,17.91,16837.531};
+			position[]={15085.314,17.91,16844.57};
 			azimut=45;
 			id=304;
 			side="EMPTY";
 			vehicle="PortableHelipadLight_01_red_F";
 			skill=0.60000002;
-			init="this enableSimulation false; this allowDamage false;";
+			init="this allowDamage false;";
 		};
 		class Item257
 		{
@@ -4159,7 +4159,7 @@ class Mission
 			side="EMPTY";
 			vehicle="PortableHelipadLight_01_red_F";
 			skill=0.60000002;
-			init="this enableSimulation false; this allowDamage false;";
+			init="this allowDamage false;";
 		};
 		class Item258
 		{
@@ -4169,7 +4169,7 @@ class Mission
 			side="EMPTY";
 			vehicle="PortableHelipadLight_01_red_F";
 			skill=0.60000002;
-			init="this enableSimulation false; this allowDamage false;";
+			init="this allowDamage false;";
 		};
 		class Item259
 		{
@@ -4179,7 +4179,7 @@ class Mission
 			side="EMPTY";
 			vehicle="PortableHelipadLight_01_red_F";
 			skill=0.60000002;
-			init="this enableSimulation false; this allowDamage false;";
+			init="this allowDamage false;";
 		};
 		class Item260
 		{
@@ -4649,13 +4649,13 @@ class Mission
 		};
 		class Item301
 		{
-			position[]={14452.721,17.845156,16181.588};
+			position[]={14446.826,17.852861,16188.065};
 			azimut=225;
 			id=349;
 			side="EMPTY";
 			vehicle="PortableHelipadLight_01_red_F";
 			skill=0.60000002;
-			init="this enableSimulation false; this allowDamage false;";
+			init="this allowDamage false;";
 		};
 		class Item302
 		{
