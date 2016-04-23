@@ -14,7 +14,9 @@ _obj addMPEventHandler ["MPkilled", {
     _respPos = getMarkerPos "respawn_west";
     _radius = 800;
     _period = 10;
+    _period2 = 5;
     _prisonTime = 600;
+    _prisonTime2 = 300;
     _person = false;
     if (_vehiclePos distance _respPos <= _radius) then {
         if (_killer isKindOf "LandVehicle" || _killer isKindOf "Air" || _killer isKindOf "Ship") then {
@@ -47,6 +49,21 @@ _obj addMPEventHandler ["MPkilled", {
             } else {
                 if (count _first > 0) then {
                     if (count _second == 0) then {
+                        _h1 = _first select 3;
+                        _h2 = _now select 3;
+                        _m1 = _first select 4;
+                        _m2 = _now select 4;
+                        if (_h2 < _h1) then {
+                            _h2 = _h2 + 24;
+                        };
+                        if (_h2 - _h1 <= 1) then {
+                            if (_m2 < _m1) then {
+                                _m2 = _m2 + 60;
+                            };
+                            if (_m2 - _m1 <= _period2) then {
+                                [[[_person, _prisonTime2, "STR_PRISON_VEHICLE"], "scripts\=BTC=_TK_punishment\Prison.sqf"], "BIS_fnc_execVM", true, false, false] call BIS_fnc_MP;     
+                            };
+                        };
                         _person setVariable ["VEHICLE_DESTROYED_1", _now]; 
                         _person setVariable ["VEHICLE_DESTROYED_2", _first]; 
                     } else {

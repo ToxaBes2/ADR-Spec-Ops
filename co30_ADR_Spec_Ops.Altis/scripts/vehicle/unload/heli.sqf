@@ -17,13 +17,7 @@ _wp1 setWayPointSpeed "FULL";
 _wp1 setWayPointType "MOVE";
 _wp1 setWayPointCombatMode "BLUE";
 waituntil {sleep 1; [_vehicle, _pos] call BIS_fnc_distance2D < 1000};
-_vehicle flyinheight 200;
-_wp2_pos = [_startPoint, 3000, (((random 180) + 180) % 360)] call BIS_fnc_relPos;
-_wp2 = _grp addWaypoint [_wp2_pos, 0];
-_wp2 setWaypointSpeed "FULL";
-_wp2 setWaypointType "MOVE";
-_wp2 setWayPointCombatMode "BLUE";
-_wp2 setWaypointStatements ["true", "{deleteVehicle _x} forEach crew (vehicle this) + [vehicle this];"];
+
 waituntil {sleep 0.2; [_vehicle, _pos] call BIS_fnc_distance2D < 350};
 {
 	unassignVehicle _x;
@@ -36,3 +30,11 @@ _getToMarker setWaypointSpeed "FULL";
 _getToMarker setWaypointBehaviour "AWARE";
 _getToMarker setWayPointCombatMode "RED";
 _getToMarker setWaypointFormation "NO CHANGE";
+sleep 3;
+_vehicle flyinheight 200;
+_wp2_pos = [_startPoint, 3000, random 360] call BIS_fnc_relPos;
+_wp2 = _grp addWaypoint [_wp2_pos, 50];
+_wp2 setWaypointSpeed "FULL";
+_wp2 setWaypointType "MOVE";
+_wp2 setWayPointCombatMode "BLUE";
+_wp2 setWaypointStatements ["true", "{deleteVehicle _x} forEach crew (vehicle this) + [vehicle this];"];

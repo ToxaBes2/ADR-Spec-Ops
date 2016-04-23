@@ -241,7 +241,7 @@ if (PARAMS_DefendAO == 1) then {
 if (DEFEND_AO_VICTORY) then {
     _targetCompleteText = format ["<t align='center' size='2.2'>Удержали</t><br/><t size='1.5' align='center' color='#00FF80'>%1</t><br/>____________________<br/><t align='left'>Хорошая работа! Возвращайтесь на базу для перегруппировки на следующее задание.</t>", _nameAO];
 } else {
-    _targetCompleteText = format ["<t align='center' size='2.2'>Отступление</t><br/><t size='1.5' align='center' color='#DF013A'>%1</t><br/>____________________<br/><t align='left'>Мы отступаем! Возвращайтесь на базу для перегруппировки на следующее задание.</t>", _nameAO];
+    _targetCompleteText = format ["<t align='center' size='2.2'>Отступление</t><br/><t size='1.5' align='center' color='#DF013A'>%1</t><br/>____________________<br/><t align='left'>Мы отступаем! Возвращайтесь на базу для перегруппировки на следующее задание.<br/><br/>Командование перебросило Вашу наградную технику более результативным подразделениям.</t>", _nameAO];
 
     // delete reward vehicles
     _vehicles = nearestObjects [[14714,16710], ["LandVehicle","Air","Ship"], 150];
