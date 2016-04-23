@@ -16,7 +16,9 @@ if (_iampilot) then {
 
 	//==== LASER TARGETS ON PILOTS HELMETS
 	player addEventHandler [ "GetInMan", {
-		[_this select 0, _this select 2] call QS_fnc_HMDLaserTarget;
+		if (typeOf (_this select 2) isKindOf "Air") then {
+		    [_this select 0, _this select 2] spawn QS_fnc_HMDLaserTarget;
+		};
 	}];
 };
 
