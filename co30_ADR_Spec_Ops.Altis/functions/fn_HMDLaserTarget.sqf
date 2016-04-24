@@ -24,7 +24,7 @@ if (((headgear _player) in _pilotHelmets) and ((typeOf _vehicle) in _attackAirVe
 
 		//Wait until there is at least one ally laser target in vicinity
 		waitUntil {
-			if (count (nearestObjects[player, ["LaserTargetW"], 3000]) > 0) exitWith {true};
+			if (count (_player nearObjects ["LaserTargetW", 2000]) > 0) exitWith {true};
 			sleep 2.5;
 
 			//Leave the while loop if player has left the vehicle
@@ -36,14 +36,14 @@ if (((headgear _player) in _pilotHelmets) and ((typeOf _vehicle) in _attackAirVe
 		laserDraw3D = addMissionEventHandler [ "Draw3D", {
 
 			//Find all ally laser targets in the vicinity
-			_laserTargets = nearestObjects[player, ["LaserTargetW"], 3000];
+			_laserTargets = player nearObjects ["LaserTargetW", 2000];
 
 			//Cycle through all found laser targets
 			{
 				//Get distance from player to laser target to scale icon and change opacity on far distances
 				_distance = player distance _x;
-				_alpha = linearConversion [2500, 3000, _distance, 1, 0, true];
-				_iconSize = linearConversion [0, 3000, _distance, 1, 0.1, true];
+				_alpha = linearConversion [1800, 2000, _distance, 1, 0, true];
+				_iconSize = linearConversion [0, 2000, _distance, 1, 0.1, true];
 
 				//Get horizontal angle between laser target and center of players screen
 				_relDirScreen = player getRelDir (screenToWorld [0.5, 0.5]);
@@ -56,14 +56,14 @@ if (((headgear _player) in _pilotHelmets) and ((typeOf _vehicle) in _attackAirVe
 				if (_dir < 13) then {
 
 					//Draw 3D Icon
-					drawIcon3D ["\A3\ui_f\data\gui\cfg\cursors\track_gs.paa", [0.35, 1.00, 0.70, _alpha], visiblePosition _x, _iconSize, _iconSize, 0, str(round _distance), 0, 0.035, "PuristaSemiBold", "center"];
+					drawIcon3D ["\A3\ui_f\data\gui\cfg\cursors\track_gs.paa", [0.35, 1.00, 0.70, _alpha], getPosVisual _x, _iconSize, _iconSize, 0, str(round _distance), 0, 0.035, "PuristaSemiBold", "center"];
 				};
 			} forEach _laserTargets;
 		}];
 
 		//Wait until there are no more ally laser targets in vicinity
 		waitUntil {
-			if (count (nearestObjects[player, ["LaserTargetW"], 3000]) == 0) exitWith {true};
+			if (count (_player nearObjects ["LaserTargetW", 2000]) == 0) exitWith {true};
 			sleep 2.5;
 
 			//Remove Draw3D event handler and leave the while loop if player has left the vehicle
