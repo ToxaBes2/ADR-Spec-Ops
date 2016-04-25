@@ -15,9 +15,9 @@ if (_iampilot) then {
 	player addItemToBackpack "ToolKit";
 
 	//==== LASER TARGETS ON PILOTS HELMETS
-	player addEventHandler [ "GetInMan", {
-		[_this select 0, _this select 2] spawn QS_fnc_HMDLaserTarget;
-	}];
+	//player addEventHandler [ "GetInMan", {
+	//	[_this select 0, _this select 2] spawn QS_fnc_HMDLaserTarget;
+	//}];
 };
 
 // Client executions
