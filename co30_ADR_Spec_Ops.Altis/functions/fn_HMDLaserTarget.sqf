@@ -24,19 +24,19 @@ if (((headgear _player) in _pilotHelmets) and ((typeOf _vehicle) in _attackAirVe
 
 		//Wait until there is at least one ally laser target in vicinity
 		waitUntil {
-			if (count (_player nearObjects ["LaserTargetW", 2000]) > 0) exitWith {true};
-			sleep 2.5;
+			if (count (_player nearEntities ["LaserTargetW", 2000]) > 0) exitWith {true};
+			sleep 1;
 
 			//Leave the while loop if player has left the vehicle
 			if (vehicle _player != _vehicle) then {breakTo "outsideWhile"};
-			sleep 2.5;
+			sleep 1;
 		};
 
 		//Create Draw3D EH
 		laserDraw3D = addMissionEventHandler [ "Draw3D", {
 
 			//Find all ally laser targets in the vicinity
-			_laserTargets = player nearObjects ["LaserTargetW", 2000];
+			_laserTargets = player nearEntities ["LaserTargetW", 2000];
 
 			//Cycle through all found laser targets
 			{
@@ -63,15 +63,15 @@ if (((headgear _player) in _pilotHelmets) and ((typeOf _vehicle) in _attackAirVe
 
 		//Wait until there are no more ally laser targets in vicinity
 		waitUntil {
-			if (count (_player nearObjects ["LaserTargetW", 2000]) == 0) exitWith {true};
-			sleep 2.5;
+			if (count (_player nearEntities ["LaserTargetW", 2000]) == 0) exitWith {true};
+			sleep 1;
 
 			//Remove Draw3D event handler and leave the while loop if player has left the vehicle
 			if (vehicle _player != _vehicle) then {
 				removeMissionEventHandler ["Draw3D", laserDraw3D];
 				breakTo "outsideWhile";
 			};
-			sleep 2.5;
+			sleep 1;
 		};
 
 		//Remove the Draw3D handler and start the next while loop
