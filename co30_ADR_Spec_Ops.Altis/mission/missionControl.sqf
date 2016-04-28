@@ -18,8 +18,8 @@ _missionList = [
     "heliCrash",
 	"convoy",
 	"snatch",	
-	//"swordfish",	
-	//"yellowfog",	
+	   //"swordfish",	
+	   //"yellowfog",	
 	"grapeswrath"
 ];
 while { true } do {

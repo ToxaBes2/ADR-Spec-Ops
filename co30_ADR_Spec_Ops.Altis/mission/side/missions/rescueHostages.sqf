@@ -470,6 +470,17 @@ _enemiesArray = _enemiesArray + [_houseGroup];
 
 _guardsGroup = [_startPoint, 350, 40, ENEMY_SIDE] call QS_fnc_FillBots;
 
+// add NV googles to all bots
+_bots = _startPoint nearObjects ["Man", 400];
+{
+    if (side _x == ENEMY_SIDE) then {
+        if !("NVGoggles_OPFOR" in (assignedItems _x)) then {
+            _x addItem "NVGoggles_OPFOR";
+            _x assignItem "NVGoggles_OPFOR";
+        };
+    };
+} forEach _bots;
+
 // show brief information
 _city = _position select 0;
 _briefing = format ["<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#FF9999'>Заложники</t><br/>____________________<br/>Отряд противника занял %1 и превратил его в укрепрайон. По приказу командира отряда часть местного населения была взята в заложники. Мы также получили ультиматум - покинуть остров в следующие 24 часа, в противном случае заложники будут убиты. Командование назначило пехотную спецоперацию<br/><br/>Ваша задача — выдвинуться в указанный район, обезвредить противника и освободить заложников. Будьте осторожны - противник имеет приказ уничтожить заложников в случае ликвидации командира.</t>", _city];
