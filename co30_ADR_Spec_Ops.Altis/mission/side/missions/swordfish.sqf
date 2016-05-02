@@ -240,7 +240,7 @@ for "_c" from 0 to 3 do {
     [_patrolGroup, _subPos, 40] call BIS_fnc_taskPatrol;   
     _enemiesArray = _enemiesArray + (units _patrolGroup);
 };
-
+[_startPoint, 200, ["vehicles", "fire"]] call QS_fnc_addHades;
 while { sideMissionUp } do {
     sleep 2;
 

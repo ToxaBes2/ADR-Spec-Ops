@@ -168,6 +168,7 @@ for "_c" from 1 to 2 do {
 } forEach [INFANTRY_VEHICLES];
 
 _nearestDevices = _flatPos nearObjects [INFANTRY_TERMINAL, 200];
+[_startPoint, 200, ["vehicles", "fire"]] call QS_fnc_addHades;
 while { sideMissionUp } do {
     sleep 3;
     

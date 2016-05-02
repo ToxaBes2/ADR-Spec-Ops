@@ -20,6 +20,7 @@ class QS
 		class addActionTakeControl {};
 		class addActionTimer {};
 		class addFurniture {};
+		class addHades {};
 		class AOenemy {};
 		class AOminefield {};
 		class conditionClearInventory {};
@@ -45,6 +46,7 @@ class QS
 		class loadInventory {};
 		class moveToHC {};
 		class PTenemyEAST {};
+		class punishObject {};
 		class RadioSound {};
 		class removeAction {};
 		class removeAction0 {};

@@ -330,6 +330,7 @@ SM_SUCCESS_SABOTAGE = false; publicVariable "SM_SUCCESS_SABOTAGE";
 SM_SUCCESS_GETDATA = false; publicVariable "SM_SUCCESS_GETDATA";
 _showSabotageMessage = true;
 _showGetdataMessage = true;
+[_startPoint, 200, ["vehicles", "fire"]] call QS_fnc_addHades;
 while { sideMissionUp } do {
     sleep 2;
 

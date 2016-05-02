@@ -44,7 +44,7 @@ if ((count enemyCasArray) < _jetLimit) then {
 	enemyCasGroup setCombatMode "RED";
 	enemyCasGroup setBehaviour "COMBAT";
 	enemyCasGroup setSpeedMode "FULL";
-	[(units enemyCasGroup)] call QS_fnc_setSkill2;
+	[(units enemyCasGroup)] call QS_fnc_setSkill3;
 	[enemyCasGroup,_aoPos] call BIS_fnc_taskAttack;
 
 	0 = enemyCasArray pushBack _jetActual;

@@ -380,7 +380,7 @@ _enemiesArray = _enemiesArray + (units _patrolGroup3);
     _x setCombatMode "RED";
     [(units _x)] call QS_fnc_setSkill3; 
 } forEach [_hqGroup, _houseGroup, _sniperGroup, _groundGroup, _patrolGroup1, _patrolGroup2, _patrolGroup3];
-
+[_startPoint, 200, ["vehicles", "fire"]] call QS_fnc_addHades;
 while { sideMissionUp } do {
     sleep 2;
 

@@ -495,6 +495,7 @@ SM_SUCCESS_HOSTAGES = false; publicVariable "SM_SUCCESS_HOSTAGES";
 SM_SUCCESS_OFFICER = false; publicVariable "SM_SUCCESS_OFFICER";
 _showHostagesMessage = true;
 _showOfficerMessage = true;
+[_startPoint, 200, ["vehicles", "fire"]] call QS_fnc_addHades;
 while { sideMissionUp } do {
     sleep 2;
 

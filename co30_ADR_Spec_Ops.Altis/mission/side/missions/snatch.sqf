@@ -381,7 +381,7 @@ for "_c" from 0 to 150 do {
 [(units _aaGroup)] call QS_fnc_setSkill3;
 [(units _staticGroup)] call QS_fnc_setSkill3;
 [(units _heliGroup)] call QS_fnc_setSkill3;
-
+[_startPoint, 200, ["vehicles", "fire"]] call QS_fnc_addHades;
 while { sideMissionUp } do {
     sleep 2;
 

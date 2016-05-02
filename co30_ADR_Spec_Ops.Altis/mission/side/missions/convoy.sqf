@@ -535,7 +535,7 @@ while {!SM_CONVOY_SUCCESS && !SM_CONVOY_FAIL && _attackersLeft > 0} do {
 
     sleep 2;
 };
-
+[_startPoint, 200, ["vehicles", "fire"]] call QS_fnc_addHades;
 while { sideMissionUp } do {
     sleep 2;
 
