@@ -169,6 +169,17 @@ for "_c" from 1 to 2 do {
 
 _nearestDevices = _flatPos nearObjects [INFANTRY_TERMINAL, 200];
 [_startPoint, 200, ["vehicles", "fire"]] call QS_fnc_addHades;
+
+//_terminal = nearestObject [_startPoint, INFANTRY_TERMINAL];
+//_markerPos = [((getPos _terminal) select 0) + (random 30) - (random 30), ((getPos _terminal) select 1) + (random 30) - (random 30)];
+//[WEST, "HQ"] sideChat format["%1", _markerPos]; 
+//_markerT = createMarker["terminalMarker", _markerPos];
+//_markerT setMarkerColor "colorRed";
+//_markerT setMarkerAlpha 1;
+//_markerT setMarkerShape "ELLIPSE";
+//_markerT setMarkerBrush "DIAGGRID";
+//_markerT setMarkerSize [50, 50];
+
 while { sideMissionUp } do {
     sleep 3;
     
@@ -207,7 +218,7 @@ while { sideMissionUp } do {
         } else {
             [] call QS_fnc_SMhintSUCCESS;                     
         };                  
-
+        //deleteVehicle _markerT;
         sleep 120;
         {
             deleteVehicle _x;
