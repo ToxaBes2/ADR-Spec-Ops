@@ -60,7 +60,8 @@ class Mission
 		"A3_Structures_F_Mil_Shelters",
 		"A3_Structures_F_Heli_Ind_Machines",
 		"A3_Structures_F_Heli_Items_Tools",
-		"A3_Structures_F_EPA_Civ_Constructions"
+		"A3_Structures_F_EPA_Civ_Constructions",
+		"A3_Air_F_Heli_Light_02"
 	};
 	addOnsAuto[]=
 	{
@@ -108,8 +109,9 @@ class Mission
 		"A3_Supplies_F_Heli_Slingload",
 		"A3_Boat_F_Boat_Transport_01",
 		"A3_Structures_F_Heli_Ind_AirPort",
-		"A3_Air_F_EPB_Heli_Light_03",
+		"A3_Air_F_Heli_Light_02",
 		"A3_Soft_F_HEMTT",
+		"A3_Air_F_EPB_Heli_Light_03",
 		"A3_Weapons_F_Bootcamp_Ammoboxes",
 		"A3_Structures_F_EPA_Civ_Camping",
 		"A3_Structures_F_EPC_Civ_Accessories",
@@ -3704,7 +3706,7 @@ class Mission
 			special="NONE";
 			id=262;
 			side="EMPTY";
-			vehicle="I_Heli_light_03_unarmed_F";
+			vehicle="O_Heli_Light_02_unarmed_F";
 			lock="UNLOCKED";
 			skill=0.60000002;
 			init="0 = [this,300,305,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
@@ -3834,7 +3836,7 @@ class Mission
 		};
 		class Item227
 		{
-			position[]={15122.358,17.91,17000.92};
+			position[]={15112.389,17.91,17021.68};
 			azimut=225;
 			id=275;
 			side="EMPTY";
@@ -4406,7 +4408,7 @@ class Mission
 		};
 		class Item279
 		{
-			position[]={15123.05,17.91,17001.324};
+			position[]={15112.887,17.91,17021.391};
 			azimut=440.33499;
 			special="NONE";
 			id=327;
@@ -5486,7 +5488,7 @@ class Mission
 		{
 			position[]={21579.258,-0.004926472,32311.875};
 			name="st";
-			text="Сайт - tehgam.com";
+			text="Site - tehgam.com";
 			type="mil_box";
 			colorName="ColorWhite";
 		};
