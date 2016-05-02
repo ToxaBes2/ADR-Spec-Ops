@@ -117,7 +117,7 @@ if (!isDedicated) then {
 	//======================================== BTC Medical Vehicle revive station
 
 	BTC_Medical_TruckToggle = 1;				// Set to 0 to disable medical truck heal stations
-	BTC_Medical_Trucks = ["B_Truck_01_medical_F","O_Truck_03_medical_F","I_Truck_02_medical_F","O_Truck_02_medical_F"];
+	BTC_Medical_Trucks = ["B_Truck_01_medical_F","O_Truck_03_medical_F","I_Truck_02_medical_F","O_Truck_02_medical_F","Land_Pod_Heli_Transport_04_medevac_F","B_Slingload_01_Medevac_F"];
 	BTC_Medical_Trucks_addActionText = "Первая помощь (Медицинский грузовик)";		// addAction text displayed when reviving someone near medical truck
 };	
 
