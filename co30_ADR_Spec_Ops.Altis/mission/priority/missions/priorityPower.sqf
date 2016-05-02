@@ -94,7 +94,7 @@ sleep 10;
 { _x setMarkerPos _fuzzyPos; } forEach ["priorityMarker", "priorityCircle"];
 priorityTargetText = "Узел связи"; publicVariable "priorityTargetText";
 "priorityMarker" setMarkerText "Приоритетная цель: Узел связи"; publicVariable "priorityMarker";
-_briefing = "<t align='center'><t size='2.2'>Внимание</t><br/><t size='1.5' color='#00B2EE'>Узел связи и РЭБ</t><br/>____________________<br/>Разведка сообщает, что для поддержки своего наступления противник развернул полевой узел связи и РЭБ. Пока они не уничтожены - работа нашего электронного оборудования частично парализована.</t>";
+_briefing = "<t align='center'><t size='2.2'>Внимание</t><br/><t size='1.5' color='#00B2EE'>Узел связи и РЭБ</t><br/>____________________<br/>Разведка сообщает, что для поддержки своего наступления противник развернул полевой узел связи и РЭБ. Пока они работают - работа нашего электронного оборудования частично парализована.</t>";
 GlobalHint = _briefing; hint parseText _briefing; publicVariable "GlobalHint";
 showNotification = ["NewPriorityTarget", "Уничтожить Узел связи и РЭБ"]; publicVariable "showNotification";
 SM_POWER = false; publicVariable "SM_POWER";
@@ -130,31 +130,28 @@ while {currentAOUp} do {
         EW_ATTACK = false; publicVariable "EW_ATTACK";        
         sleep 5;        
 	
-	    if (!currentAOUp) exitWith {
+		// BOOM!
+		if (random 10 > 5) then {
+		    hqSideChat = _c4Message; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
+		    _dummy setPos [(getPos sideObj select 0), ((getPos sideObj select 1) +5), ((getPos sideObj select 2) + 0.5)];
+		    sleep 0.1;
+		    _object setPos [-10000, -10000, 0];					
+		    getpowerunit setPos [-10000, -10000, 0];
+		    sleep 90;											
+		    "Bo_GBU12_LGB" createVehicle getPos _dummy; 			
+		    sleep 2;
+		    "Bo_GBU12_LGB" createVehicle getPos _dummy;
+		    sleep 2;
+		    "Bo_GBU12_LGB" createVehicle getPos _dummy;
+		    _dummy setPos [-10000, -10000, 1];			
+		    researchTable setPos [-10000, -10000, 1];
+		    sleep 0.1;
+		};		
 
-		    // BOOM!
-		    if (random 10 > 5) then {
-		        hqSideChat = _c4Message; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
-		        _dummy setPos [(getPos sideObj select 0), ((getPos sideObj select 1) +5), ((getPos sideObj select 2) + 0.5)];
-		        sleep 0.1;
-		        _object setPos [-10000, -10000, 0];					
-		        getpowerunit setPos [-10000, -10000, 0];
-		        sleep 90;											
-		        "Bo_GBU12_LGB" createVehicle getPos _dummy; 			
-		        sleep 2;
-		        "Bo_GBU12_LGB" createVehicle getPos _dummy;
-		        sleep 2;
-		        "Bo_GBU12_LGB" createVehicle getPos _dummy;
-		        _dummy setPos [-10000, -10000, 1];			
-		        researchTable setPos [-10000, -10000, 1];
-		        sleep 0.1;
-		    };		
-
-            hqSideChat = "В захваченных данных говорится о технике недалеко от узла связи!"; publicVariable "hqSideChat"; [OUR_SIDE, "HQ"] sideChat hqSideChat;
-            sleep 2;
-            hqSideChat = "Обыщите метсность в радиусе 200-300м"; publicVariable "hqSideChat"; [OUR_SIDE, "HQ"] sideChat hqSideChat;               
-		    award = "O_MBT_02_cannon_F" createVehicle _award;
-		};
+        hqSideChat = "В захваченных данных говорится о технике недалеко от узла связи!"; publicVariable "hqSideChat"; [OUR_SIDE, "HQ"] sideChat hqSideChat;
+        sleep 2;
+        hqSideChat = "Обыщите местность в радиусе 200-300м"; publicVariable "hqSideChat"; [OUR_SIDE, "HQ"] sideChat hqSideChat;               
+		award = "O_MBT_02_cannon_F" createVehicle _award;
 	};
 	sleep 1;		
 };
