@@ -21,7 +21,7 @@ _cargo = _crateType createVehicle (getMarkerPos "Ammo_Supply_drop"); publicVaria
 
 while {true} do {
     _cargo setAmmoCargo 0.41; // 12 000 ammo
-    if (getAmmoCargo _cargo != 0) exitWith {};
+    if (getAmmoCargo _cargo != 0) exitWith {}; // Due to very low values setAmmoCargo rounds to 0 on first try
 };
 
 //------------------------------------------------------- Действие с парашютом и контейнером

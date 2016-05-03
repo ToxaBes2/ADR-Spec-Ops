@@ -117,7 +117,7 @@ if ((_t in _ammoTrucks) or (_t in _ammoTrucksTempest)) then {
 				_u setAmmoCargo 0.41;      // 12 000 ammo
 			};
 		};
-		if (getAmmoCargo _u != 0) exitWith {};
+		if (getAmmoCargo _u != 0) exitWith {}; // Due to very low values setAmmoCargo rounds to 0 on first try
 	};
 };
 

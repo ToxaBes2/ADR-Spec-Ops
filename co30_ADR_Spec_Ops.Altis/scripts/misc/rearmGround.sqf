@@ -25,7 +25,7 @@ while {true} do {
             _veh setAmmoCargo 0.41;        // 12 000 ammo
         };
     };
-    if (getAmmoCargo _veh != 0) exitWith {};
+    if (getAmmoCargo _veh != 0) exitWith {}; // Due to very low values setAmmoCargo rounds to 0 on first try
 };
 
 //---------- REPAIRING
