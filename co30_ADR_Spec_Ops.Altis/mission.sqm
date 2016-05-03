@@ -1436,7 +1436,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=305;
+		items=306;
 		class Item0
 		{
 			position[]={23375.334,12.825771,19807.545};
@@ -1656,7 +1656,7 @@ class Mission
 		};
 		class Item20
 		{
-			position[]={15209.142,17.120861,17455.961};
+			position[]={15212.068,17.131514,17458.475};
 			azimut=135;
 			id=68;
 			side="EMPTY";
@@ -1718,7 +1718,7 @@ class Mission
 		};
 		class Item25
 		{
-			position[]={15200.291,17.098078,17447.877};
+			position[]={15200.749,17.108088,17447.74};
 			azimut=135;
 			special="NONE";
 			id=73;
@@ -1780,7 +1780,7 @@ class Mission
 		};
 		class Item31
 		{
-			position[]={15216.216,17.083191,17466.693};
+			position[]={15217.554,17.082184,17467.953};
 			azimut=135;
 			id=79;
 			side="EMPTY";
@@ -1792,7 +1792,7 @@ class Mission
 		};
 		class Item32
 		{
-			position[]={15220.442,17.063318,17470.82};
+			position[]={15221.073,17.057144,17471.609};
 			azimut=135;
 			id=80;
 			side="EMPTY";
@@ -2797,7 +2797,7 @@ class Mission
 		};
 		class Item129
 		{
-			position[]={15204.548,17.113499,17452.031};
+			position[]={15204.394,17.119061,17451.279};
 			azimut=135;
 			special="NONE";
 			id=177;
@@ -3745,7 +3745,7 @@ class Mission
 		};
 		class Item218
 		{
-			position[]={15213.88,17.129803,17460.48};
+			position[]={15215.836,17.124979,17462.348};
 			azimut=135;
 			id=266;
 			side="EMPTY";
@@ -4686,6 +4686,17 @@ class Mission
 			vehicle="Land_runway_edgelight_blue_F";
 			skill=0.60000002;
 		};
+		class Item305
+		{
+			position[]={15208.313,17.11957,17454.742};
+			azimut=135;
+			id=353;
+			side="EMPTY";
+			vehicle="B_Truck_01_ammo_F";
+			leader=1;
+			skill=0.60000002;
+			init="0 = [this,300,305,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+		};
 	};
 	class Markers
 	{
@@ -5193,7 +5204,7 @@ class Mission
 		};
 		class Item62
 		{
-			position[]={15213.995,17.190121,17453.396};
+			position[]={15215.292,17.193739,17454.457};
 			name="Vehicle depot_1";
 			text="Техника";
 			type="b_mech_inf";

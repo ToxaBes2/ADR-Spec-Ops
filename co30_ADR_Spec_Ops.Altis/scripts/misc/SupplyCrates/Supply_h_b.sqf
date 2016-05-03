@@ -15,7 +15,14 @@ _timedel = 600;									// Время до удаления
 
 //------------------------------------------------------- Создание посылки
 
-_cargo = _crateType createVehicle (getMarkerPos "Ammo_Supply_drop"); publicVariable "Supply_Ammo"; 
+_cargo = _crateType createVehicle (getMarkerPos "Ammo_Supply_drop"); publicVariable "Supply_Ammo";
+
+//------------------------------------------------------- Ограничиваем количество патронов в контейнере 12 000, вместо 10^12.
+
+while {true} do {
+    _cargo setAmmoCargo 0.0000000121; // 12 000 ammo
+    if (getAmmoCargo _cargo != 0) exitWith {};
+};
 
 //------------------------------------------------------- Действие с парашютом и контейнером
 sleep 0.1;

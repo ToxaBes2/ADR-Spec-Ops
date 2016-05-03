@@ -34,6 +34,8 @@ _mh9 = ["B_Heli_Light_01_F", "B_Heli_Light_01_armed_F", "B_Heli_Light_01_strippe
 //_orca = ["O_Heli_Light_02_unarmed_F"];														// Orca
 _uav = ["B_UAV_02_CAS_F", "B_UAV_02_F", "B_UGV_01_F", "B_UGV_01_rcws_F"];						// UAVs
 _hellcat = ["I_Heli_light_03_unarmed_F", "I_Heli_light_03_F"];									// Hellcat
+_ammoTrucks = ["B_Truck_01_ammo_F", "O_Truck_02_Ammo_F", "I_Truck_02_ammo_F"];					// Ammo trucks with 10^12 ammo
+_ammoTrucksTempest = ["O_Truck_03_ammo_F"];														// Ammo trucks with 30 000 ammo
 
 //============================================= SORT
 
@@ -66,7 +68,7 @@ if(_t in _hellcat) then {
 };
 if(_t == "I_Heli_light_03_F") then {
 	_u removeMagazinesTurret ["5000Rnd_762x51_Yellow_Belt", [-1]];
-	_u removeWeaponTurret ["M134_minigun", [-1]]; 	
+	_u removeWeaponTurret ["M134_minigun", [-1]];
     _u addWeaponTurret ["LMG_Minigun_heli", [-1]];
     _u addMagazineTurret ["2000Rnd_65x39_Belt_Tracer_Green_Splash", [-1]];
 };
@@ -102,6 +104,21 @@ if (_t in _uav) then {
 //===== Turret locking system
 if (_t in _gh_huron) then {
 	_u setVariable ["turrets_locked", false, true];
+};
+
+//==== Ammo trucks
+if ((_t in _ammoTrucks) or (_t in _ammoTrucksTempest)) then {
+	while {true} do {
+		call {
+			if (_t in _ammoTrucks) exitWith {
+				_u setAmmoCargo 0.0000000121; // 12 000 ammo
+			};
+			if (_t in _ammoTrucksTempest) exitWith {
+				_u setAmmoCargo 0.41;      // 12 000 ammo
+			};
+		};
+		if (getAmmoCargo _u != 0) exitWith {};
+	};
 };
 
 //===== Vehicle Killer monitor system
