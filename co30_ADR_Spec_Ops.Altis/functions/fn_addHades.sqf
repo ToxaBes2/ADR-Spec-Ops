@@ -14,7 +14,7 @@ _punishObject = objNull;
     _rule = _x;
     switch (_rule) do { 
     	case "vehicles" : {
-            _trigger = createTrigger ["EmptyDetector", _position, false]; 
+            _trigger = createTrigger ["EmptyDetector", _position, true]; 
             _trigger setTriggerArea [_radius, _radius, 0, false];
             _trigger setTriggerActivation ["WEST", "PRESENT", true];
             _trigger setTriggerStatements ["this", "
@@ -27,6 +27,7 @@ _punishObject = objNull;
                     };
                 } forEach thislist;
             ", ""];
+            AID_TRIGGER = _trigger; publicVariable "AID_TRIGGER";
         }; 
     	case "fire" : {
             _units = _position nearEntities [["Man", "LandVehicle"], _radius];
@@ -40,12 +41,15 @@ _punishObject = objNull;
                                 _veh = vehicle _curKiller;
                                 if (_veh isKindOf "LandVehicle" || _veh isKindOf "Air" || _veh isKindOf "Ship") then {
                                     if !(_veh isKindOf "StaticWeapon") then {
-                                        [_veh] call QS_fnc_punishObject;    
-                                        if (_veh isKindOf "Autonomous") then {
-                                        	{
-                                                _x setDamage 1;
-                                            } forEach crew _veh;
-                                        };                          
+                                        if (side _veh == OUR_SIDE) then {                                   
+                                            if (_veh isKindOf "Autonomous") then {
+                                                if (isUAVConnected _veh) then {
+                                                    _data = UAVControl _veh;
+                                                    (_data select 0) setDamage 1;
+                                                };
+                                            };         
+                                            [_veh] call QS_fnc_punishObject; 
+                                        };                            
                                     };
                                 };
                             }];
@@ -58,13 +62,16 @@ _punishObject = objNull;
                             _curKiller = _this select 1;
                             _veh = vehicle _curKiller;
                             if (_veh isKindOf "LandVehicle" || _veh isKindOf "Air" || _veh isKindOf "Ship") then {
-                                if !(_veh isKindOf "StaticWeapon") then {
-                                    [_veh] call QS_fnc_punishObject; 
-                                    if (_veh isKindOf "Autonomous") then {
-                                    	{
-                                            _x setDamage 1;
-                                        } forEach crew _veh;
-                                    };                               
+                                if !(_veh isKindOf "StaticWeapon") then { 
+                                    if (side _veh == OUR_SIDE) then {                                   
+                                        if (_veh isKindOf "Autonomous") then {
+                                        	if (isUAVConnected _veh) then {
+                                                _data = UAVControl _veh;
+                                                (_data select 0) setDamage 1;
+                                            };
+                                        };         
+                                        [_veh] call QS_fnc_punishObject; 
+                                    };                      
                                 };
                             };
                         }]; 
@@ -75,11 +82,3 @@ _punishObject = objNull;
     	default {}; 
     };
 } forEach _rules;
-waitUntil {!isNil "sideMissionUp"};
-while {true} do {
-	sleep 5;
-    if (!sideMissionUp) then {
-    	deleteVehicle _trigger;
-    };
-    sleep 5;
-};
