@@ -102,7 +102,11 @@ while {count _nearestDevices < 3} do {
     _device setVariable ["GRAPESWRATH_HACKED", "", true];
     [_device,"blue","purple","orange"] call BIS_fnc_DataTerminalColor;
     [_device, "QS_fnc_addActionHack", nil, true] spawn BIS_fnc_MP;
-    _device allowDamage false;
+    //_device allowDamage false;
+    _device addMPEventHandler ["MPKilled", {
+        SM_GRAPESWRATH_FAIL = true;
+        publicVariable "SM_GRAPESWRATH_FAIL";
+    }];
     _unitsArray = _unitsArray + [_device];
     _nearestDevices = _flatPos nearObjects [INFANTRY_TERMINAL, 200];    
 
@@ -170,18 +174,10 @@ for "_c" from 1 to 2 do {
 _nearestDevices = _flatPos nearObjects [INFANTRY_TERMINAL, 200];
 [_startPoint, 200, ["vehicles", "fire"]] call QS_fnc_addHades;
 
-//_terminal = nearestObject [_startPoint, INFANTRY_TERMINAL];
-//_markerPos = [((getPos _terminal) select 0) + (random 30) - (random 30), ((getPos _terminal) select 1) + (random 30) - (random 30)];
-//[WEST, "HQ"] sideChat format["%1", _markerPos]; 
-//_markerT = createMarker["terminalMarker", _markerPos];
-//_markerT setMarkerColor "colorRed";
-//_markerT setMarkerAlpha 1;
-//_markerT setMarkerShape "ELLIPSE";
-//_markerT setMarkerBrush "DIAGGRID";
-//_markerT setMarkerSize [50, 50];
-
+_showMarkers = false;
+_markers = [];
 while { sideMissionUp } do {
-    sleep 3;
+    sleep 3;    
     
     if (!SM_GRAPESWRATH_SUCCESS && !SM_GRAPESWRATH_FAIL) then {
         _s = 0;
@@ -205,6 +201,35 @@ while { sideMissionUp } do {
             };
         } forEach _nearestDevices;
         sleep 5;
+        _aliveBots = 0;
+        {
+            if (side _x == ENEMY_SIDE) then {
+                {
+                    if (_startPoint distance2D _x <= 200) then {
+                        _aliveBots = _aliveBots + 1; 
+                    };
+                } forEach (units _x);
+            };
+        } forEach allGroups;
+        if (_aliveBots < 6 && !_showMarkers) then {
+            _a = 1;
+            _showMarkers = true;
+            {
+                _terPos = getPos _x;
+                _markerPos = [(_terPos select 0) + (random 30) - (random 30), (_terPos select 1) + (random 30) - (random 30)];
+                _markerName = "markerT_" + (str _a);
+                _marker = createMarker[_markerName, _markerPos];
+                _markerName setMarkerColor "colorRed";
+                _markerName setMarkerAlpha 0.5;
+                _markerName setMarkerShape "ELLIPSE";
+                _markerName setMarkerBrush "DIAGGRID";
+                _markerName setMarkerSize [50, 50];
+                _markers = _markers + [_markerName];
+                _a = _a + 1;
+            } forEach _nearestDevices;
+            [OUR_SIDE, "HQ"] sideChat "проверьте карту - разведка обновила данные по терминалам";
+        };
+        sleep 5;
     };
     
     // de-briefing
@@ -217,8 +242,12 @@ while { sideMissionUp } do {
             [] call QS_fnc_SMhintFAIL;            
         } else {
             [] call QS_fnc_SMhintSUCCESS;                     
-        };                  
-        //deleteVehicle _markerT;
+        };             
+        if (_showMarkers) then {
+            {
+                deleteMarker _x;
+            } forEach _markers;
+        };             
         sleep 120;
         {
             deleteVehicle _x;
@@ -227,7 +256,7 @@ while { sideMissionUp } do {
         { 
             [_x] call QS_fnc_TBdeleteObjects;
         } forEach [_enemiesArray];
-        [_startPoint, 500] call QS_fnc_DeleteEnemyEAST;
+        [_startPoint, 500] call QS_fnc_DeleteEnemyEAST;        
     };
     sleep 3;
 };
