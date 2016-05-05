@@ -321,4 +321,34 @@ for "_x" from 1 to PARAMS_SniperTeamsPatrol do {
 	_enemiesArray = _enemiesArray + [_sniperGroup];
 };
 
+// Spawn AT/AA patrols (40%)
+if (random 10 > 6) then {
+    _mediana = ((getMarkerPos "respawn_west") distance2D (getMarkerPos currentAO)) / 2;
+    _medianaRes = 0;
+    if (_mediana <= 1000) then {
+    	_medianaRes = _mediana + (random 150) - (random 150);
+    } else {
+        _medianaRes = _mediana + (random 1000) - (random 1000);
+    };
+    _direction = [(getMarkerPos "respawn_west"), (getMarkerPos currentAO)] call BIS_fnc_dirTo;
+    _targetPos = [(getMarkerPos "respawn_west"), _medianaRes, _direction] call BIS_fnc_relPos;
+    _atPos = [_targetPos, 1, 500, 2, 0, 2, 0] call BIS_fnc_findSafePos;  
+    if (random 10 > 5) then {
+        _null = [_atPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam_AT")] call BIS_fnc_spawnGroup;
+    } else {
+    	_null = [_atPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam_AA")] call BIS_fnc_spawnGroup;
+    };
+    _atUnits = ["O_soldier_TL_F","O_soldier_AA_F","O_soldier_AAA_F","O_soldier_TL_F","O_soldier_AT_F","O_soldier_AAT_F"];
+    _nearestUnits = nearestObjects [_atPos, _atUnits, 50];
+    _ATGroup = createGroup EAST;
+    {
+        [_x] joinSilent _ATGroup;
+    } forEach _nearestUnits;
+    _ATGroup setBehaviour "COMBAT";
+    _ATGroup setCombatMode "RED";    
+    [(units _ATGroup)] call QS_fnc_setSkill3;
+    [_ATGroup, _atPos, 200] call BIS_fnc_taskPatrol;
+    _enemiesArray = _enemiesArray + [_ATGroup];
+};
+
 _enemiesArray;

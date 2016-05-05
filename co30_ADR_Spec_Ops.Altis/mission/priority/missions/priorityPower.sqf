@@ -150,7 +150,7 @@ while {currentAOUp} do {
 
         hqSideChat = "В захваченных данных говорится о технике недалеко от узла связи!"; publicVariable "hqSideChat"; [OUR_SIDE, "HQ"] sideChat hqSideChat;
         sleep 2;
-        hqSideChat = "Обыщите местность в радиусе 200-300м"; publicVariable "hqSideChat"; [OUR_SIDE, "HQ"] sideChat hqSideChat;               
+        hqSideChat = "Обыщите местность в радиусе 200-300м пока противник не забрал ее."; publicVariable "hqSideChat"; [OUR_SIDE, "HQ"] sideChat hqSideChat;               
 		award = "O_MBT_02_cannon_F" createVehicle _award;
 	};
 	sleep 1;		
@@ -160,8 +160,9 @@ EW_ATTACK = false; publicVariable "EW_ATTACK";
 
 // DELETE
 { _x setPos [-10000, -10000, 0]; } forEach [_object, researchTable, _dummy];
-sleep 60;
+sleep 30;
 { deleteVehicle _x } forEach [sideObj, house, tower1, tower2, tower3, power, barrels, light, EWCar, AwardCar];
 deleteVehicle nearestObject [getPos sideObj, "Land_Communication_F"];
 [_enemiesArray] call QS_fnc_TBdeleteObjects;
+sleep 270;
 [_fuzzyPos, 500] call QS_fnc_DeleteEnemyEAST;
