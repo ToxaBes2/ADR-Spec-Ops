@@ -169,9 +169,11 @@ call {
     	clearBackpackCargoGlobal _cargo;
     };
 };
+sleep 0.5;
 
 // Wait until cargo is droped off and attach smoke and light to it
 waitUntil{sleep 5; !isNull (ropeAttachedTo _cargo)};
+sleep 0.5;
 waitUntil{sleep 0.5; isNull (ropeAttachedTo _cargo)};
 sleep 2;
 waitUntil{sleep 0.1; (getPos _cargo select 2) <= 200};
