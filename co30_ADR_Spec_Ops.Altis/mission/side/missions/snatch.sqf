@@ -56,8 +56,8 @@ _helicopters = [
            ["B_Heli_Light_01_armed_F",    "M134_minigun",              "5000Rnd_762x51_Belt",                     "missiles_ASRAAM",              "2Rnd_AAA_missiles",                    "missiles_DAR",              "24Rnd_missiles",                 "Gatling_30mm_Plane_CAS_01_F",  "1000Rnd_Gatling_30mm_Plane_CAS_01_F"],
            ["B_Heli_Attack_01_F",         "missiles_DAGR",             "4Rnd_AAA_missiles",                       "missiles_ASRAAM",              "2Rnd_AAA_missiles",                    "gatling_20mm",              "1000Rnd_20mm_shells",            "Gatling_30mm_Plane_CAS_01_F",  "1000Rnd_Gatling_30mm_Plane_CAS_01_F"],
            ["I_Heli_light_03_F",          "M134_minigun",              "5000Rnd_762x51_Yellow_Belt",              "missiles_ASRAAM",              "2Rnd_AAA_missiles",                    "missiles_DAR",              "24Rnd_missiles",                 "missiles_DAGR",                "12Rnd_PG_missiles"],
-           ["B_Heli_Transport_01_camo_F", "LMG_Minigun_Transport",     "2000Rnd_65x39_Belt_Tracer_Red",           "Gatling_30mm_Plane_CAS_01_F",  "1000Rnd_Gatling_30mm_Plane_CAS_01_F",  "LMG_Minigun_Transport",    "2000Rnd_65x39_Belt_Tracer_Red",  "Gatling_30mm_Plane_CAS_01_F",  "1000Rnd_Gatling_30mm_Plane_CAS_01_F"],
-           ["B_Heli_Transport_01_F",      "LMG_Minigun_Transport",     "2000Rnd_65x39_Belt_Tracer_Red",           "autocannon_35mm",              "680Rnd_35mm_AA_shells_Tracer_Yellow",  "LMG_Minigun_Transport",    "2000Rnd_65x39_Belt_Tracer_Red",  "autocannon_35mm",  "680Rnd_35mm_AA_shells_Tracer_Yellow"],
+           ["B_Heli_Transport_01_camo_F", "LMG_Minigun_Transport",     "2000Rnd_65x39_Belt_Tracer_Red",           "Gatling_30mm_Plane_CAS_01_F",  "1000Rnd_Gatling_30mm_Plane_CAS_01_F",  "LMG_Minigun_Transport2",    "2000Rnd_65x39_Belt_Tracer_Red",  "Gatling_30mm_Plane_CAS_01_F",  "1000Rnd_Gatling_30mm_Plane_CAS_01_F"],
+           ["B_Heli_Transport_01_F",      "LMG_Minigun_Transport",     "2000Rnd_65x39_Belt_Tracer_Red",           "autocannon_35mm",              "680Rnd_35mm_AA_shells_Tracer_Yellow",  "LMG_Minigun_Transport2",    "2000Rnd_65x39_Belt_Tracer_Red",  "autocannon_35mm",  "680Rnd_35mm_AA_shells_Tracer_Yellow"],
            ["O_Heli_Light_02_F",          "LMG_Minigun_heli",          "2000Rnd_65x39_Belt_Tracer_Green_Splash",  "Cannon_30mm_Plane_CAS_02_F",   "500Rnd_Cannon_30mm_Plane_CAS_02_F"],
            ["O_Heli_Light_02_v2_F",       "LMG_Minigun_heli",          "2000Rnd_65x39_Belt_Tracer_Green_Splash",  "Gatling_30mm_Plane_CAS_01_F",  "1000Rnd_Gatling_30mm_Plane_CAS_01_F"]
 ];
@@ -161,11 +161,18 @@ if (count (_heliData) > 8) then {
     heliSnatch removeMagazine (_heliData select 6);
     heliSnatch addweapon (_heliData select 7);
     heliSnatch addMagazine (_heliData select 8); 
+    if (_heliType == "B_Heli_Transport_01_camo_F" || _heliType == "B_Heli_Transport_01_F") then {
+       heliSnatch removeWeaponTurret [_heliData select 5, [2]];
+       heliSnatch removeMagazinesTurret [_heliData select 6, [2]];
+       heliSnatch addWeaponTurret [_heliData select 7, [2]];
+       heliSnatch addMagazineTurret [_heliData select 8, [2]];
+    };
 };
 if (_heliType == "B_Heli_Light_01_armed_F") then {
     heliSnatch addweapon "CMFlareLauncher";
     heliSnatch addMagazine "168Rnd_CMFlare_Chaff_Magazine";
 };
+
 
 // set trigger for success heli out
 _trig = createTrigger ["EmptyDetector", _flatPos, false]; 
