@@ -52,7 +52,6 @@ call {
     if (_cargo_type == 11) exitWith {
         // Creating cargo
     	_cargo = "B_supplyCrate_F" createVehicle (getMarkerPos "Ammo_Supply_drop");
-    	_cargo allowDamage false;
         sleep 0.1;
 
     	// Clearing cargo
@@ -103,7 +102,6 @@ call {
     if (_cargo_type == 12) exitWith {
         // Creating cargo
     	_cargo = "B_Slingload_01_Cargo_F" createVehicle (getMarkerPos "Ammo_Supply_drop");
-        _cargo allowDamage false;
         sleep 0.1;
 
     	// Clearing cargo
@@ -159,7 +157,6 @@ call {
     if (_cargo_type == 13) exitWith {
         // Creating cargo
     	_cargo = "B_supplyCrate_F" createVehicle (getMarkerPos "Ammo_Supply_drop");
-    	_cargo allowDamage false;
         sleep 0.1;
 
     	// Clearing cargo
@@ -202,9 +199,9 @@ if (getPos _cargo select 2 > 50) then {
 
 // After landing wait for _deletionTime and delete the cargo
 sleep _deletionTime;
-deleteVehicle _cargo;
-deleteVehicle _light1;
-deleteVehicle _light2;
-deleteVehicle _light3;
-deleteVehicle _smoke1;
-deleteVehicle _smoke2;
+if (!isNil {_cargo}) then {deleteVehicle _cargo};
+if (!isNil {_light1}) then {deleteVehicle _light1};
+if (!isNil {_light2}) then {deleteVehicle _light2};
+if (!isNil {_light3}) then {deleteVehicle _light3};
+if (!isNil {_smoke1}) then {deleteVehicle _smoke1};
+if (!isNil {_smoke2}) then {deleteVehicle _smoke2};
