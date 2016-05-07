@@ -8,7 +8,7 @@ _c = false;
 if (!(vehicle_repaired)) then {
 	if ((vehicle player) == player) then {
 		if (alive _v) then {
-			if ((_v isKindOf "Helicopter") or (_v isKindOf "Air")) then {
+			if (_v isKindOf "Air") then {
 				if ((player distance _v) < 7) then {
 					if (("ToolKit" in (items player)) or ("ToolKit" in (itemCargo _v))) then {
 						_dmgList = getAllHitPointsDamage _v;

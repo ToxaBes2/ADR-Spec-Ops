@@ -103,7 +103,9 @@ if (_t in _uav) then {
 
 //===== Turret locking system
 if (_t in _gh_huron) then {
-	_u setVariable ["turrets_locked", false, true];
+	_u setVariable ["turrets_locked", true, true];
+	[[_u, 1, "LMG_Minigun_Transport", 0], "QS_fnc_uh80Turret", true, false] spawn BIS_fnc_MP;
+	[[_u, 2, "LMG_Minigun_Transport2", 0], "QS_fnc_uh80Turret", true, false] spawn BIS_fnc_MP;
 };
 
 //==== Ammo trucks
