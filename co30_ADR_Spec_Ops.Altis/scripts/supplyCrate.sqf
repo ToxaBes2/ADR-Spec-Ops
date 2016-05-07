@@ -182,7 +182,7 @@ _smoke1 = createVehicle [_smoke_type, position _cargo, [], 0, 'NONE'];
 _smoke1 attachTo [_cargo, [0, 0, 0]];
 
 // Attach parachute
-if (getPos _cargo select 2 > 50) then {
+if (getPos _cargo select 2 > 32) then {
 	_chute = createVehicle ["B_Parachute_02_F", position _cargo, [], 0, "CAN_COLLIDE"];
     _chute attachTo [_cargo, [0, 0, 0]];
     _velocity = velocity _cargo;
