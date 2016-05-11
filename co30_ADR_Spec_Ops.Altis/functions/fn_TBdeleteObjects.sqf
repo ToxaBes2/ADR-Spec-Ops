@@ -19,12 +19,15 @@ if (typeName _objects != "ARRAY") then {
             };            	    
         }; 
     	case "OBJECT" : {
-            if !(_obj isKindOf "Man") then {
-			    {
-			        deleteVehicle _x;
-			    } forEach (crew _obj);
-		    };
-		    deleteVehicle _obj;
+            _isReward = _obj getVariable ["IS_REWARD", false];
+            if !(_isReward) then {
+                if !(_obj isKindOf "Man") then {
+			        {
+			            deleteVehicle _x;
+			        } forEach (crew _obj);
+		        };
+		        deleteVehicle _obj;
+            };
         }; 
         case "ARRAY" : {
             {

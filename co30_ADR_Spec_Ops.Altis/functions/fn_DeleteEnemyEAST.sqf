@@ -2,6 +2,8 @@
 Author: ToxaBes
 Description: delete enemies in given radius
 */
+#define OUR_SIDE WEST
+#define ENEMY_SIDE EAST
 _pos = _this select 0;
 _radius = _this select 1;
 _unitTypes = ["O_Soldier_F","O_Soldier_GL_F","O_Soldier_AR_F","O_Soldier_SL_F","O_Soldier_TL_F","O_soldier_M_F","O_Soldier_LAT_F",
@@ -17,16 +19,20 @@ _unitTypes = ["O_Soldier_F","O_Soldier_GL_F","O_Soldier_AR_F","O_Soldier_SL_F","
 "I_G_Soldier_GL_F","I_G_soldier_M_F","I_G_officer_F","I_G_Soldier_F","I_G_soldier_LAT_F","I_G_Soldier_lite_F","I_G_Soldier_SL_F","I_G_Soldier_TL_F"];
 _units = nearestObjects [_pos, _unitTypes, _radius];
 {
-    if !(_x isKindOf "Man") then {
-	    {
-	        deleteVehicle _x;
-	    } forEach (crew _x);
-	};
-	deleteVehicle _x;
+	_isReward = _x getVariable ["IS_REWARD", false];
+	if (side _x == ENEMY_SIDE && !_isReward) then {
+        if !(_x isKindOf "Man") then {        	
+	        {
+	            deleteVehicle _x;
+	        } forEach (crew _x);
+	    };
+	    deleteVehicle _x;
+    };
 } foreach _units;
 _units = _pos nearObjects ["Man", _radius];
 {
-	if (side _x == EAST) then {
+	_isReward = _x getVariable ["IS_REWARD", false];
+	if (side _x == ENEMY_SIDE && !_isReward) then {
         deleteVehicle _x;
 	};
 } foreach _units;
