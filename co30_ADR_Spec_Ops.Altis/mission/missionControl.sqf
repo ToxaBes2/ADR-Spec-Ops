@@ -58,8 +58,10 @@ while { true } do {
 	    	sleep _loopTimeout;
 	    	scriptDone currentMission;
 	    };
-	    if !(isNull AID_TRIGGER) then {
-    	    deleteVehicle AID_TRIGGER;
+	    if !(isNil "AID_TRIGGER") then {
+	        if !(isNull AID_TRIGGER) then {
+    	        deleteVehicle AID_TRIGGER;
+            };
         };
 	};
 };

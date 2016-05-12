@@ -46,17 +46,17 @@ BTC_EH_killed = {
 			};
 			["//========================================", "diag_log", false] call BIS_fnc_MP;
             
-            _person = _this;
+            _killerName = name _killer;
             if (_veh_killer isKindOf "Autonomous") then {
                 if (isUAVConnected _veh_killer) then {
-                    _person = (UAVControl _killer) select 0;
+                	_killerName = name ((UAVControl _killer) select 0);   
                 };  
             };         
 
-			_killer spawn {
-				hint format ["Вас убил %1! Вы можете наказать игрока через меню действий (колесо мыши)", name _person];
+			_killerName spawn {
+				hint format ["Вас убил %1! Вы можете наказать игрока через меню действий (колесо мыши)", _this];
 				WaitUntil {alive player};
-				_action = player addAction [("<t color=""#EF5350""><img image='\a3\ui_f\gui\Rsc\RscDisplayArcadeMap\icon_exit_cross_ca.paa' size='1.0'/> ") + ("Наказать " + name _person) + "</t>","scripts\=BTC=_TK_punishment\=BTC=_punish_action.sqf",[name _person], 1, true, true, "", "true"];
+				_action = player addAction [("<t color=""#EF5350""><img image='\a3\ui_f\gui\Rsc\RscDisplayArcadeMap\icon_exit_cross_ca.paa' size='1.0'/> ") + ("Наказать " + _this) + "</t>","scripts\=BTC=_TK_punishment\=BTC=_punish_action.sqf",[_this], 1, true, true, "", "true"];
 				_timeout = time + 60;
 				WaitUntil {sleep 1; (_timeout < time)};
 				player removeAction _action;
