@@ -165,7 +165,7 @@ for "_i" from 0 to ((count _vehicles) - 1) do {
                     _radiusEMI = 1400;                   
                     _allObjects1 = nearestObjects [_epicenter,[], _radius];
                     {
-                        if (typeOf _x == "Land_Cargo_Tower_V1_F" || typeOf _x == "Land_Cargo_HQ_V3_F") then {
+                        if (_x isKindOf "Land_Cargo_Tower_V1_F" || _x isKindOf "Land_Cargo_HQ_V3_F") then {
                             // skip objects
                         } else {
                             _distance = [_epicenter, getPos _x] call BIS_fnc_distance2D;
