@@ -9,7 +9,7 @@ _player playMove "AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon";
 sleep 1;
 _object = _this select 0;
 _points = 10;
-_player addScore _points;
+[player, _points] call BIS_fnc_addScore;
 [_object,"QS_fnc_removeAction0",nil,true] spawn BIS_fnc_MP;
 MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";
 [_object, 0] call BIS_fnc_dataTerminalAnimate;
