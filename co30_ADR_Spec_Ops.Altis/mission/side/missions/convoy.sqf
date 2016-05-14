@@ -162,10 +162,10 @@ for "_i" from 0 to ((count _vehicles) - 1) do {
                 if (((_this select 0) distance _basePos) > 2200) then {      
                     _k = 1.66;
                     _radius = 900;
-                    _radiusEMI = 1400;                   
+                    _radiusEMI = 1400;    
                     _allObjects1 = nearestObjects [_epicenter,[], _radius];
                     {
-                        if (_x isKindOf "Land_Cargo_Tower_V1_F" || _x isKindOf "Land_Cargo_HQ_V3_F") then {
+                        if (_x isKindOf "Land_Cargo_Tower_V1_F" || _x isKindOf "Land_Cargo_HQ_V3_F" || _x isKindOf "Land_DataTerminal_01_F") then {
                             // skip objects
                         } else {
                             _distance = [_epicenter, getPos _x] call BIS_fnc_distance2D;
