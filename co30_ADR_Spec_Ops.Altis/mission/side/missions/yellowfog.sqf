@@ -83,11 +83,9 @@ _dir2 = 180;
 _dir3 = 180;
 for "_c" from 0 to 189 do {
     _pos = [_startPoint, 120, _dir1] call BIS_fnc_relPos;
-    _wall = createVehicle ["Land_Mil_WallBig_4m_F", [_pos select 0, _pos select 1, 0], [], 0, "CAN_COLLIDE"];     
-    _wall allowDamage false;    
+    _wall = createVehicle ["Land_Mil_WallBig_4m_F", [_pos select 0, _pos select 1, 0], [], 0, "CAN_COLLIDE"];         
     _wall setDir (_dir1 + 180);
     _wall setVectorUp (surfaceNormal (getPosATL _wall));
-    _wall enableSimulationGlobal false; 
     _pos = getPosATL _wall; 
     if (_pos select 2 > 0.2) then {
         _pos = [_pos select 0, _pos select 1, -0.1];
@@ -97,8 +95,7 @@ for "_c" from 0 to 189 do {
     if (_c < 95) then {
         _pos = [_startPoint, 125, _dir2] call BIS_fnc_relPos;
         _razor = createVehicle ["Land_Razorwire_F", [70,70,70], [], 0, "NONE"];
-        waitUntil {alive _razor};         
-        _razor allowDamage false;    
+        waitUntil {alive _razor};             
         _razor setDir (_dir2 + 180);
         _razor setPos [_pos select 0, _pos select 1, -0.1];    
         _razor setVectorUp (surfaceNormal (getPosATL _razor));  
@@ -109,7 +106,6 @@ for "_c" from 0 to 189 do {
         _pos = [_startPoint, 130, _dir3] call BIS_fnc_relPos;
         _fence = createVehicle ["Land_Mil_WiredFence_F", [70,70,70], [], 0, "CAN_COLLIDE"];
         waitUntil {alive _fence};         
-        _fence allowDamage false;
         _fence setDir (_dir3 + 180);
         _fence setPos [_pos select 0, _pos select 1, -0.1];    
         _fence setVectorUp (surfaceNormal (getPosATL _fence));  
@@ -391,12 +387,25 @@ while { sideMissionUp } do {
         "sideCircle" setMarkerSize [300, 300]; publicVariable "sideCircle";
         "sideMarker" setMarkerText ""; publicVariable "sideMarker";
         if (SM_YELLOWFOG_FAIL) then {
-            [] call QS_fnc_SMhintFAIL;            
+            [] call QS_fnc_SMhintFAIL;   
         } else {
-            [] call QS_fnc_SMhintSUCCESS;                     
+            [] call QS_fnc_SMhintSUCCESS;   
+
+            // spawn stomper
+            if (random 10 > 5) then {
+                hqSideChat = "Разведка сообщила о пустом БПА Стомпер недалеко от зоны спецоперации!"; publicVariable "hqSideChat"; [OUR_SIDE, "HQ"] sideChat hqSideChat;
+                _stomperPos = [_startPoint, 135, 200, 3, 0, 10, 0] call BIS_fnc_findSafePos;
+                _uavGroup = createGroup OUR_SIDE;
+                _spawn = [_stomperPos, (random 360), "B_UGV_01_rcws_F", _uavGroup] call BIS_fnc_spawnVehicle;
+                _uav = (_spawn select 0);
+                _uav addWeapon "missiles_titan";
+                _uav addMagazine "2Rnd_GAT_missiles"; 
+                _uav addWeapon "Missile_AA_03_Plane_CAS_02_F";
+                _uav addMagazine "2Rnd_Missile_AA_03_F";
+            };                   
         };                  
 
-        sleep 120;
+        sleep 60;
         {
             deleteVehicle _x;
         } forEach _unitsArray;
