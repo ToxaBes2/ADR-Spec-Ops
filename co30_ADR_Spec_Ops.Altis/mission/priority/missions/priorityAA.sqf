@@ -217,7 +217,6 @@ while {_loopVar} do {
 			};
 		};
 	};
-	sleep 60;
 
 	// Exit strategy
 	if ((!alive priorityObj1 && !alive priorityObj2) || !currentAOUp) then {
