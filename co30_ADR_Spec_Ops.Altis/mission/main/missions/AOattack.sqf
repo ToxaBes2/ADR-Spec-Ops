@@ -30,41 +30,41 @@ _dt setTriggerStatements ["this", "", ""];
 _chance = random 10;
 if (_chance < 5) then {
     _bunkerType = 1;
-    _bunkerPos = [_positionAO, 1, (PARAMS_AOSize/2), 30, 0, 4, 0] call BIS_fnc_findSafePos;    
+    _bunkerPos = [_positionAO, 1, (PARAMS_AOSize/2), 30, 0, 4, 0] call BIS_fnc_findSafePos;
     _distance = _positionAO distance2D _bunkerPos;
     _flatPos = _bunkerPos isFlatEmpty [5, 1, 0.3, 30, 0, false];
     _res = count _flatPos;
     while {_distance > (PARAMS_AOSize/1.5) || _res == 0} do {
-        _bunkerPos = [_positionAO, 1, (PARAMS_AOSize/2), 20, 0, 3, 0] call BIS_fnc_findSafePos;    
+        _bunkerPos = [_positionAO, 1, (PARAMS_AOSize/2), 20, 0, 3, 0] call BIS_fnc_findSafePos;
         _distance = _positionAO distance2D _bunkerPos;
         _flatPos = _bunkerPos isFlatEmpty [5, 1, 0.3, 15, 0, false];
         _res = count _flatPos;
     };
     _null = [_bunkerPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "Empty" >> "Military" >> "Outposts" >> "OutpostB")] call BIS_fnc_spawnGroup;
-    _bunkerPos set [2, 0];    
+    _bunkerPos set [2, 0];
     _obj = _bunkerPos nearestObject "Land_Cargo_Tower_V1_F";
     {
         _x addCuratorEditableObjects [[_obj], true];
     } forEach allCurators;
-    _obj allowDamage false;       
+    _obj allowDamage false;
     _bunkerObjects = [_obj] call QS_fnc_addFurniture;
 } else {
     _bunkerType = 2;
     _bunkerPositions = _target select 2;
     _bunkerPosition = _bunkerPositions call BIS_fnc_selectRandom;
-    _bunkerPos = [_bunkerPosition select 0, _bunkerPosition select 1, 0];        
+    _bunkerPos = [_bunkerPosition select 0, _bunkerPosition select 1, 0];
     _smallZ = _bunkerPosition select 2;
-    _bigZ = _bunkerPosition select 3;    
+    _bigZ = _bunkerPosition select 3;
     _bunkerObjects = [_bunkerPos, _smallZ, _bigZ] call QS_fnc_createBunker;
 };
 
 // add UAV with MK200
 _anotherChance = random 10;
 _uav = objNull;
-_uavPos = [0,0,0];    
+_uavPos = [0,0,0];
 if (_anotherChance < 4) then {
     _uavPos = [_bunkerPos, 40, 200, 3, 0, 20, 0] call BIS_fnc_findSafePos;
-    _uav = createVehicle ["B_UAV_01_F", _uavPos, [], 0, "NONE"];   
+    _uav = createVehicle ["B_UAV_01_F", _uavPos, [], 0, "NONE"];
     _uav addWeapon ("LMG_Mk200_F");
     _uav addMagazine ("200Rnd_65x39_cased_Box_Tracer");
     createVehicleCrew _uav;
@@ -139,7 +139,7 @@ if (_chance < PARAMS_RadioTowerMineFieldChance) then {
         _nearestObject = nearestObject [_campPos, "Land_BagBunker_Large_F"];
         deleteVehicle _nearestObject;
         _campObjects = ["Land_HBarrierBig_F","Land_BagBunker_Large_F","Land_HBarrier_5_F","Land_PortableLight_double_F","Land_ToiletBox_F","Land_Cargo20_military_green_F","Land_WaterTank_F","Land_WaterBarrel_F","Land_Cargo_Patrol_V1_F","Land_Pallets_F","Land_PaperBox_closed_F","Land_MetalBarrel_F","Land_BarrelEmpty_grey_F","Land_BarrelTrash_grey_F","Land_Pallets_stack_F"];
-    };    
+    };
 };
 publicVariable "radioTower";
 {
@@ -174,7 +174,7 @@ if (PARAMS_AOReinforcementJet == 1) then {
 		if (alive radioTower) then {
 			while {(alive radioTower)} do {
 				[] call QS_fnc_enemyCAS;
-				sleep (480 + (random 480));
+				sleep (240 + (random 600));
 			};
 		};
 	};
@@ -220,14 +220,14 @@ if (PARAMS_DefendAO == 1) then {
         if (side _x == EAST) then {
             {
                 if (_positionAO distance2D _x <= 500) then {
-                    _aliveBots = _aliveBots + 1; 
+                    _aliveBots = _aliveBots + 1;
                 };
             } forEach (units _x);
         };
     } forEach allGroups;
     _chanceDefend = random 10;
     if (_chanceDefend > 5 && _aliveBots > 25) then {
-        sleep 3;    
+        sleep 3;
 	    _null = [_target] spawn {_this call compile preProcessFileLineNumbers "mission\main\missions\AOdefend.sqf";};
         waitUntil {sleep 10; !isNil "DEFEND_AO_VICTORY"};
     } else {
@@ -256,7 +256,7 @@ if (DEFEND_AO_VICTORY) then {
             };
             deleteVehicle _curVeh;
         };
-    } forEach _vehicles;    
+    } forEach _vehicles;
 };
 DEFEND_AO_VICTORY = nil; publicVariable "DEFEND_AO_VICTORY";
 GlobalHint = _targetCompleteText; publicVariable "GlobalHint"; hint parseText GlobalHint;
@@ -264,7 +264,7 @@ sleep 120;
 deleteVehicle _dt;
 deleteVehicle radioTower;
 if (_chance < PARAMS_RadioTowerMineFieldChance) then {
-    [_minesArray] call QS_fnc_TBdeleteObjects; 
+    [_minesArray] call QS_fnc_TBdeleteObjects;
 };
 if (_anotherChance < 4) then {
     if (_uav distance _uavPos < 5) then {
@@ -284,7 +284,7 @@ sleep 10;
 _unitTypes = ["O_Soldier_F","O_Soldier_GL_F","O_Soldier_AR_F","O_Soldier_SL_F","O_Soldier_TL_F","O_soldier_M_F","O_Soldier_LAT_F",
 "O_medic_F","O_soldier_repair_F","O_soldier_exp_F","O_Soldier_AT_F","O_Soldier_AA_F","O_engineer_F","O_soldier_PG_F","O_recon_F",
 "O_recon_M_F","O_recon_LAT_F","O_recon_medic_F","O_recon_TL_F","O_Soldier_AAT_F","O_soldierU_M_F","O_SoldierU_GL_F",
-"O_HeavyGunner_F","O_Urban_HeavyGunner_F","O_support_MG_F","O_soldierU_F","O_soldierU_AR_F","O_soldierU_AAR_F","O_soldierU_LAT_F", 
+"O_HeavyGunner_F","O_Urban_HeavyGunner_F","O_support_MG_F","O_soldierU_F","O_soldierU_AR_F","O_soldierU_AAR_F","O_soldierU_LAT_F",
 "O_soldierU_AT_F","O_soldierU_AAT_F","O_soldierU_AA_F","O_soldierU_AAA_F","O_soldierU_TL_F","O_SoldierU_SL_F","O_soldierU_medic_F",
 "O_soldierU_repair_F","O_soldierU_exp_F","O_engineer_U_F","O_soldierU_A_F","O_Sharpshooter_F","O_Urban_Sharpshooter_F","O_sniper_F"];
 _units = nearestObjects [_positionAO, _unitTypes, PARAMS_AOSize];
