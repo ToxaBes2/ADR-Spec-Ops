@@ -71,7 +71,7 @@ if ((count enemyCasArray) < _casLimit) then {
 
 	//Add vehicle to array to check how many vehciles are currently alive, notify the players that CAS was spawned
 	0 = enemyCasArray pushBack _casVehicle;
-	showNotification = ["EnemyCas", "Вражеская авиаподдержка"]; publicVariable "showNotification";
+	showNotification = ["EnemyJet", "Вражеская авиаподдержка"]; publicVariable "showNotification";
 
 	//Rearm CAS and reveal air targets once every 5 minutes
 	[_casVehicle, _casCrew] spawn {
@@ -92,7 +92,7 @@ if ((count enemyCasArray) < _casLimit) then {
 	waitUntil {sleep 30; not alive _casVehicle};
 	sleep 30;
 	enemyCasArray = enemyCasArray - [_casVehicle];
-	showNotification = ["EnemyCasDown", "Авиаподдержка уничтожена! Хорошая работа!"]; publicVariable "showNotification";
+	showNotification = ["EnemyJetDown", "Авиаподдержка уничтожена! Хорошая работа!"]; publicVariable "showNotification";
 	sleep 30;
 	if (!isNil {_casVehicle}) then {deleteVehicle _casVehicle;};
 	if (!isNil {_casCrew}) then {{deleteVehicle _x;} forEach _casCrew;};

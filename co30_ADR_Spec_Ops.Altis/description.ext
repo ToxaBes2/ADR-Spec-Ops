@@ -135,7 +135,7 @@ class Params {
 	};
 
 	class AOReinforcementJet {
-		title = "Вражеский самолет оказывает поддержку";
+		title = "Вражеская авиация оказывает поддержку";
 		values[] = {1,0};
 		texts[] = {"Включено","Выключено"};
 		default = 1;
