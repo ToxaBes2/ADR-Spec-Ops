@@ -168,6 +168,7 @@ waitUntil{sleep 1; !isNil "currentAOUp"};
 _loopVar = TRUE;
 _doTargets = [];
 _targetSelect = objNull;
+sleep 180;
 while {_loopVar} do {
 
 	// Small targeting system routine
@@ -216,6 +217,7 @@ while {_loopVar} do {
 			};
 		};
 	};
+	sleep 60;
 
 	// Exit strategy
 	if ((!alive priorityObj1 && !alive priorityObj2) || !currentAOUp) then {
