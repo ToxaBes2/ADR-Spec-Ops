@@ -1,6 +1,6 @@
 /*
 Author: ToxaBes
-Description: add "Hades" system to monitor and punishplayers by given rules
+Description: add "Hades" system to monitor and punish players by given rules
 Format: [position, radius, [restriction rules]] call QS_fnc_addHades;
 */
 #define OUR_SIDE WEST
@@ -32,9 +32,12 @@ _punishObject = objNull;
     	case "fire" : {
             _units = _position nearEntities [["Man", "LandVehicle"], _radius];
             {                
+                _x setVariable ["AID_POSITION", _position];
+                _x setVariable ["AID_RADIUS", _radius];
                 if (_x isKindOf "LandVehicle") then {
                     {
                         if (side _x == ENEMY_SIDE) then { 
+                            
                             _x addMPEventHandler ["MPKilled", {
                                 _curUnit = _this select 0;
                                 _curKiller = _this select 1;
@@ -48,7 +51,11 @@ _punishObject = objNull;
                                                     (_data select 0) setDamage 1;
                                                 };
                                             };         
-                                            [_veh] call QS_fnc_punishObject; 
+                                            _aidPosition = _curUnit getVariable ["AID_POSITION", [0,0,0]];
+                                            _aidRadius = _curUnit getVariable ["AID_RADIUS", 200];
+                                            if (_curUnit distance _aidPosition <= _aidRadius) then {
+                                                [_veh] call QS_fnc_punishObject; 
+                                            };                                        
                                         };                            
                                     };
                                 };
@@ -70,7 +77,11 @@ _punishObject = objNull;
                                                 (_data select 0) setDamage 1;
                                             };
                                         };         
-                                        [_veh] call QS_fnc_punishObject; 
+                                        _aidPosition = _curUnit getVariable ["AID_POSITION", [0,0,0]];
+                                        _aidRadius = _curUnit getVariable ["AID_RADIUS", 200];
+                                        if (_curUnit distance _aidPosition <= _aidRadius) then {
+                                            [_veh] call QS_fnc_punishObject; 
+                                        };  
                                     };                      
                                 };
                             };
