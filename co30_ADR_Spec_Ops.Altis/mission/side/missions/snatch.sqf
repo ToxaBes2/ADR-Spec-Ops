@@ -19,7 +19,7 @@ Description: Snatch helicopter and return it to the base.
 #define INFANTRY_SOLDIERS "O_Soldier_F","O_Soldier_GL_F","O_Soldier_AR_F","O_Soldier_SL_F","O_Soldier_TL_F","O_soldier_M_F","O_Soldier_LAT_F","O_medic_F","O_soldier_repair_F","O_soldier_exp_F","O_Soldier_AT_F","O_Soldier_AA_F","O_engineer_F","O_soldier_PG_F","O_recon_F","O_recon_M_F","O_recon_LAT_F","O_recon_medic_F","O_recon_TL_F","O_Soldier_AAT_F","O_soldierU_M_F","O_SoldierU_GL_F"
 
 // define private variables
-private ["_targets","_accepted","_distance","_briefing","_position","_flatPos","_x","_enemiesArray","_startPoint"];         
+private ["_targets","_accepted","_distance","_briefing","_position","_flatPos","_x","_enemiesArray","_startPoint"];
 
 _enemiesArray = [grpNull];
 _unitsArray = [];
@@ -40,7 +40,7 @@ _targets = [
     [[13581.3,12129.8],   [1,2],     [13562.7,12095.5,0], [13589.3,12169.8,0], [13614.3,12247.7,0], [13578.5,12132.1,0], [[13643.8,12239.3,45],[13503,12076.1,204],[13550.7,12131.2,300]], [[13476,12145.7,1.7,297],[13635.6,12127.4,0.1,283],[13492.9,12017.7,0.1,211],[13668.2,12287.2,0.1,54],[13575.2,12196.3,4,263],[13574.5,12188.1,0.1,146]], [[13597.8,12170.2,0.1,221],[13595.5,12167,0.1,37]]],
     [[3122.71,21960.9],   [1,2],     [3078.34,22008.9,0], [3139.74,21977.4,0], [3136,22026,148],    [3167,21920,180],    [[3173.8,21806,181],[2950.61,21992.4,285],[3273.55,22051.3,131]], [[3080.01,22059.8,0.1,154],[3153.43,21987.2,0.1,231],[3160.18,21982,0.1,229],[3126.3,21988.8,0.1,148],[3050.95,21916,0.1,205],[3253.05,21937.9,0.1,165]], [[3157.7,21975.9,0.1,318],[3155.91,21978.3,0.1,145]]],
     [[25977.1,19847.4],   [1,2],     [26023.3,19806.2,0], [25873,19854,161],   [26048,19726,298],   [25843,19890,314],   [[26006,19964,353],[25850,19943,325],[25838.8,19758.3,274]],      [[26051,19709,0.1,320],[25951.9,19748.3,0.1,343],[26093.4,19946.2,0.1,71],[25804.2,19873.3,0.1,221],[25983.6,19872.3,0.1,319],[25873.2,19907.7,4,156]],   [[25875.6,19902.3,0.1,136],[25877.9,19900.8,0.1,300]]],
-    [[28289.8,25750.8],   [1,2],     [28281.9,25578.6,0], [28316.1,25775.2,0], [28345,25745,348],   [28271,25771,155],   [[28225,25600.9,187],[28158.4,25707.1,245],[28125,25767,239]],    [[28151.3,25658.1,0.1,233],[28379.3,25643.9,0.1,254],[28323,25785.2,18.3,232],[28298.1,25777.4,3.8,139],[28297.2,25787.9,0.3,318],[28341,25867,0.1,35]],  [[28320.2,25764,0.1,260],[28317.1,25763.3,0.24892,71]]],       
+    [[28289.8,25750.8],   [1,2],     [28281.9,25578.6,0], [28316.1,25775.2,0], [28345,25745,348],   [28271,25771,155],   [[28225,25600.9,187],[28158.4,25707.1,245],[28125,25767,239]],    [[28151.3,25658.1,0.1,233],[28379.3,25643.9,0.1,254],[28323,25785.2,18.3,232],[28298.1,25777.4,3.8,139],[28297.2,25787.9,0.3,318],[28341,25867,0.1,35]],  [[28320.2,25764,0.1,260],[28317.1,25763.3,0.24892,71]]],
     [[24809.8,23367.5],   [1,2],     [24816.5,23372.5,0], [24912.4,23372,204], [24862,23231,48],    [24731,23392,292],   [[24703.6,23437.9,345],[24758.4,23223.9,233],[24931,23290,94]],   [[24921.2,23414.4,0.1,201],[24757.8,23504.1,0.1,330],[24680.7,23309.6,0.1,287],[24968.8,23309.1,0.1,145],[24869,23366,0.1,357],[24873.8,23215.5,4,169]],  [[24842.3,23210.5,0.1,101],[24845.9,23209.8,0.1,283]]],
     [[11543.4,22864.9],   [1,2],     [11539.9,22936.3,0], [11481.9,22945,280], [11657,22754,197],   [11543,22865,144],   [[11449,22792,215],[11653,22889,81],[11551,22793,148]],           [[11422.3,22930.6,0.1,297],[11577,22966,0.1,90],[11656.7,22837.5,0.1,142],[11543,22754,0.1,174],[11437.4,22831.9,0.1,266],[11673.6,22748.3,0.5,90]],      [[11451.7,22964.4,7.8,122],[11455.7,22962.5,5.3,282]]],
     [[2284.69,22367],     [1,2],     [2169.99,22373.7,0], [2277,22347,327],    [2379,22318,320],    [2273,22262,37],     [[2359.53,22429.6,98],[2335.54,22283.3,99],[2203.73,22213,249]],  [[2422.92,22342.1,0.1,107],[2391.9,22277,0.1,356],[2169.27,22323.5,14.6,259],[2291.35,22428.7,6.5,187],[2461.6,22428.9,0.1,205],[2212,22269,0.1,258]],    [[2282.68,22374.8,0.1,82],[2286.84,22374.8,0.1,271]]],
@@ -50,7 +50,7 @@ _targets = [
 ];
 
 // format: ["heli name",                 "removed weapon1",           "removed magazine1",                       "added weapon1",                "added magazine1",                       "removed weapon2",            "removed magazine2",              "added weapon2",                "added magazine2"]
-_helicopters = [     
+_helicopters = [
            ["O_Heli_Attack_02_black_F",   "rockets_Skyfire",           "38Rnd_80mm_rockets",                      "missiles_ASRAAM",              "2Rnd_AAA_missiles"],
            ["B_Heli_Light_01_armed_F",    "M134_minigun",              "5000Rnd_762x51_Belt",                     "missiles_ASRAAM",              "2Rnd_AAA_missiles"],
            ["B_Heli_Light_01_armed_F",    "M134_minigun",              "5000Rnd_762x51_Belt",                     "missiles_ASRAAM",              "2Rnd_AAA_missiles",                    "missiles_DAR",              "24Rnd_missiles",                 "Gatling_30mm_Plane_CAS_01_F",  "1000Rnd_Gatling_30mm_Plane_CAS_01_F"],
@@ -66,15 +66,15 @@ _helicopters = [_helicopters, 7] call KK_fnc_arrayShufflePlus;
 // select correct place for mission
 if (PARAMS_AO == 1) then {
     _accepted = false;
-    while {!_accepted} do {    
+    while {!_accepted} do {
         _position = _targets call BIS_fnc_selectRandom;
-        _flatPos  = _position select 0;  
+        _flatPos  = _position select 0;
         _distance = [_flatPos, getMarkerPos currentAO] call BIS_fnc_distance2D;
         if (_distance > 3000) then {
             _distance = [_flatPos, getMarkerPos "priorityMarker"] call BIS_fnc_distance2D;
             if (_distance > 1500) then {
                 _accepted = true;
-            };  
+            };
         };
         sleep 5;
     };
@@ -93,7 +93,7 @@ SM_SNATCH_FAIL = false; publicVariable "SM_SNATCH_FAIL";
 SM_SNATCH_SUCCESS = false; publicVariable "SM_SNATCH_SUCCESS";
 
 // show brief information
-_briefing = "<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#FF9999'>Угон</t><br/>____________________<br/>Неделю назад противник атаковал один из наших складов и захватил экспериментальный вертолет. Сегодня наша разведка обнаружила его на одной из замаскированных баз противника. Командование назначило пехотную спецоперацию.<br/><br/>Ваша задача — выдвинуться в указанный район, захватить вертолет и вернуть его на базу.</t>";
+_briefing = "<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#FFC107'>Угон</t><br/>____________________<br/>Неделю назад противник атаковал один из наших складов и захватил экспериментальный вертолет. Сегодня наша разведка обнаружила его на одной из замаскированных баз противника. Командование назначило пехотную спецоперацию.<br/><br/>Ваша задача — выдвинуться в указанный район, захватить вертолет и вернуть его на базу.</t>";
 GlobalHint = _briefing; hint parseText GlobalHint; publicVariable "GlobalHint";
 showNotification = ["NewSideMission", "Угон"]; publicVariable "showNotification";
 sideMissionUp = true; publicVariable "sideMissionUp";
@@ -133,12 +133,12 @@ _enemiesArray = _enemiesArray + [_campGroup];
 // spawn heli
 _heliPos =  [(_position select 3) select 0, (_position select 3) select 1, 0];
 _heliDir = (_position select 3) select 2;
-_heliLand = createVehicle ["Land_HelipadSquare_F", _heliPos, [], 0, "CAN_COLLIDE"]; 
+_heliLand = createVehicle ["Land_HelipadSquare_F", _heliPos, [], 0, "CAN_COLLIDE"];
 _heliLand setDir (_heliDir + 180);
 _unitsArray = _unitsArray + [_heliLand];
 _heliData = _helicopters call BIS_fnc_selectRandom;
 _heliType = _heliData select 0;
-heliSnatch = createVehicle [_heliType, _heliPos, [], 0, "NONE"]; 
+heliSnatch = createVehicle [_heliType, _heliPos, [], 0, "NONE"];
 heliSnatch setDir _heliDir;
 heliSnatch addMPEventHandler ["MPKilled",
     {
@@ -155,12 +155,12 @@ clearMagazineCargo heliSnatch;
 heliSnatch removeWeapon (_heliData select 1);
 heliSnatch removeMagazine (_heliData select 2);
 heliSnatch addweapon (_heliData select 3);
-heliSnatch addMagazine (_heliData select 4);        
+heliSnatch addMagazine (_heliData select 4);
 if (count (_heliData) > 8) then {
     heliSnatch removeWeapon (_heliData select 5);
     heliSnatch removeMagazine (_heliData select 6);
     heliSnatch addweapon (_heliData select 7);
-    heliSnatch addMagazine (_heliData select 8); 
+    heliSnatch addMagazine (_heliData select 8);
     if (_heliType == "B_Heli_Transport_01_camo_F" || _heliType == "B_Heli_Transport_01_F") then {
        heliSnatch removeWeaponTurret [_heliData select 5, [2]];
        heliSnatch removeMagazinesTurret [_heliData select 6, [2]];
@@ -175,7 +175,7 @@ if (_heliType == "B_Heli_Light_01_armed_F") then {
 
 
 // set trigger for success heli out
-_trig = createTrigger ["EmptyDetector", _flatPos, false]; 
+_trig = createTrigger ["EmptyDetector", _flatPos, false];
 _trig setTriggerArea [1000, 1000, 0, false];
 _trig setTriggerActivation ["ANY", "PRESENT", false];
 _trig setTriggerStatements ["this && ((alive heliSnatch) && !(heliSnatch in thisList))", "SM_SNATCH_SUCCESS = true; publicVariable ""SM_SNATCH_SUCCESS""; heliSnatch removeAllMPEventHandlers ""MPKilled"";", ""];
@@ -191,40 +191,40 @@ for "_x" from 1 to 2 do {
 _n = (_position select 1) call BIS_fnc_selectRandom;
 for "_i" from 1 to _n do {
     _height = (random 20) + 15;
-    _posInit = [_campPos, 1, 100, 2, 1, 1, 0] call BIS_fnc_findSafePos;        
+    _posInit = [_campPos, 1, 100, 2, 1, 1, 0] call BIS_fnc_findSafePos;
     _posSpawn = [_posInit select 0, _posInit select 1, _height];
-    _uavData = [_posSpawn, 90, "B_UAV_01_F", ENEMY_SIDE] call BIS_fnc_spawnVehicle;     
-    _uav = _uavData select 0;   
-    _uavGroup = _uavData select 2;     
+    _uavData = [_posSpawn, 90, "B_UAV_01_F", ENEMY_SIDE] call BIS_fnc_spawnVehicle;
+    _uav = _uavData select 0;
+    _uavGroup = _uavData select 2;
     _uav addWeapon ("LMG_Mk200_F");
     _uav addMagazine ("200Rnd_65x39_cased_Box_Tracer");
     _uavGroup setBehaviour "SAFE";
     _uavGroup setCombatMode "RED";
-    [(units _uavGroup)] call QS_fnc_setSkill2;              
+    [(units _uavGroup)] call QS_fnc_setSkill2;
     [_uavGroup, _posSpawn, (40 + (random 80))] call BIS_fnc_taskPatrol;
     _unitsArray = _unitsArray + [_uav];
-    _enemiesArray = _enemiesArray + [_uavGroup]; 
+    _enemiesArray = _enemiesArray + [_uavGroup];
 };
 
 // spawn fuel vehicle
 _fuelPos =  [(_position select 4) select 0, (_position select 4) select 1, 0];
 _fuelDir = (_position select 4) select 2;
-_fuelNet = createVehicle [INFANTRY_CAMONET_BIG, _fuelPos, [], 0, "CAN_COLLIDE"]; 
+_fuelNet = createVehicle [INFANTRY_CAMONET_BIG, _fuelPos, [], 0, "CAN_COLLIDE"];
 _fuelNet setDir _fuelDir;
 _unitsArray = _unitsArray + [_fuelNet];
-_fuelVeh = createVehicle [INFANTRY_FUEL_VEHICLE, _fuelPos, [], 0, "CAN_COLLIDE"]; 
+_fuelVeh = createVehicle [INFANTRY_FUEL_VEHICLE, _fuelPos, [], 0, "CAN_COLLIDE"];
 _fuelVeh setDir _fuelDir;
 
 unitsArray = _unitsArray + [_fuelVeh];
 
 // spawn AA vehicle
-_aaGroup =  createGroup ENEMY_SIDE; 
+_aaGroup =  createGroup ENEMY_SIDE;
 _aaPos =  [(_position select 5) select 0, (_position select 5) select 1, 0];
 _aaDir = (_position select 5) select 2;
 _aaVeh = [_aaPos, _aaDir, INFANTRY_AA_VEHICLE, _aaGroup] call BIS_fnc_spawnVehicle;
 _aa = _aaVeh select 0;
 _aa setFuel 0;
-_aa setVehicleLock "LOCKED"; 
+_aa setVehicleLock "LOCKED";
 _aa lock true;
 _unitsArray = _unitsArray + [_aa];
 _aaGroup setBehaviour "SAFE";
@@ -238,8 +238,8 @@ _bunkers = _position select 6;
 
     // bunker
     _bunkerPos =  [_x select 0, _x select 1, 0];
-    _bunkerDir = (_x select 2) + 180;    
-    _bunkerBag = createVehicle ["Land_BagBunker_Small_F", _bunkerPos, [], 0, "CAN_COLLIDE"]; 
+    _bunkerDir = (_x select 2) + 180;
+    _bunkerBag = createVehicle ["Land_BagBunker_Small_F", _bunkerPos, [], 0, "CAN_COLLIDE"];
     _bunkerBag setDir _bunkerDir;
     _unitsArray = _unitsArray + [_bunkerBag];
 
@@ -247,26 +247,26 @@ _bunkers = _position select 6;
     _posBlock = [_bunkerBag, 5, _bunkerDir] call BIS_fnc_relPos;
     _block = createVehicle ["Land_Cargo20_military_green_F",[1,1,1],[],0,"CAN_COLLIDE"];
     _block setPos _posBlock;
-    _block setDir _bunkerDir;  
+    _block setDir _bunkerDir;
     _unitsArray = _unitsArray + [_block];
 
     // camonet for bunker
-    _bunkerCamonet = createVehicle [INFANTRY_CAMONET_SMALL, _bunkerPos, [], 0, "CAN_COLLIDE"]; 
+    _bunkerCamonet = createVehicle [INFANTRY_CAMONET_SMALL, _bunkerPos, [], 0, "CAN_COLLIDE"];
     _bunkerCamonet setDir _bunkerDir;
     _bunkerCamonet allowDamage false;
     _unitsArray = _unitsArray + [_bunkerCamonet];
 
     // camonet for cargo
-    _bunkerCamonet = createVehicle [INFANTRY_CAMONET_OPEN, [_posBlock select 0, _posBlock select 1, (_posBlock select 2) + 0.5], [], 0, "CAN_COLLIDE"]; 
+    _bunkerCamonet = createVehicle [INFANTRY_CAMONET_OPEN, [_posBlock select 0, _posBlock select 1, (_posBlock select 2) + 0.5], [], 0, "CAN_COLLIDE"];
     _bunkerCamonet setDir _bunkerDir;
     _bunkerCamonet allowDamage false;
     _unitsArray = _unitsArray + [_bunkerCamonet];
 
     // static weapon
-    _posATL = getPos _bunkerBag;  
+    _posATL = getPos _bunkerBag;
     _posATL = [(_posATL select 0), (_posATL select 1), (_posATL select 2) + 0.2];
-    _static = INFANTRY_STATIC createVehicle [10,10,10];      
-    waitUntil{!isNull _static}; 
+    _static = INFANTRY_STATIC createVehicle [10,10,10];
+    waitUntil{!isNull _static};
     _static allowDamage false;
     _static setPos _posATL;
     _static setDir _bunkerDir;
@@ -280,7 +280,7 @@ _bunkers = _position select 6;
     currentGuard allowDamage true;
     _static allowDamage true;
     _unitsArray = _unitsArray + [_static];
-    _static = nil; 
+    _static = nil;
 } forEach _bunkers;
 
 // spawn single guards
@@ -289,7 +289,7 @@ _singlePositions = _position select 7;
     ([INFANTRY_SOLDIERS] call BIS_fnc_selectRandom) createUnit [[10,10,10], _staticGroup, "currentGuard = this"];
     currentGuard setPos [_x select 0, _x select 1, _x select 2];
     currentGuard setDir (_x select 3);
-    [currentGuard,"STAND","FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;  
+    [currentGuard,"STAND","FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
 } forEach _singlePositions;
 
 _staticGroup setBehaviour "SAFE";
@@ -303,12 +303,12 @@ _pilotPos = _pilotPositions select 0;
 INFANTRY_HELI_PILOT createUnit [[10,10,10], _heliGroup, "currentGuard = this"];
 currentGuard setPos [_pilotPos select 0, _pilotPos select 1, _pilotPos select 2];
 currentGuard setDir (_pilotPos select 3);
-[currentGuard,"STAND","FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;  
+[currentGuard,"STAND","FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
 _crewPos = _pilotPositions select 1;
 INFANTRY_HELI_CREW createUnit [[10,10,10], _heliGroup, "currentGuard = this"];
 currentGuard setPos [_crewPos select 0, _crewPos select 1, _crewPos select 2];
 currentGuard setDir (_crewPos select 3);
-[currentGuard,"STAND","FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;  
+[currentGuard,"STAND","FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
 _heliGroup setBehaviour "SAFE";
 _heliGroup setCombatMode "RED";
 _enemiesArray = _enemiesArray + [_heliGroup];
@@ -325,14 +325,14 @@ for "_c" from 0 to 150 do {
         if (!surfaceIsWater _posSign) then {
             _sign = createVehicle ["Land_Sign_Mines_F", [70,70,70], [], 0, "CAN_COLLIDE"];
             waitUntil {alive _sign};
-            _sign allowDamage false; 
+            _sign allowDamage false;
             _sign setDir _dirSign;
-            _sign setPos [_posSign select 0, _posSign select 1, 0];            
-            _pos = getPosATL _sign; 
+            _sign setPos [_posSign select 0, _posSign select 1, 0];
+            _pos = getPosATL _sign;
             if (_pos select 2 > 0.2) then {
                 _pos = [_pos select 0, _pos select 1, 0];
                 _sign setPosATL _pos;
-            };      
+            };
             _unitsArray = _unitsArray + [_sign];
             _mine = createMine ["APERSBoundingMine", [(_posSign select 0) + random 3, (_posSign select 1) + random 3, 0.1], [], 0];
             waitUntil {alive _mine};
@@ -345,23 +345,23 @@ for "_c" from 0 to 150 do {
         _dirSign = _dirSign + 4;
     };
 
-    // AT/underwater mines    
+    // AT/underwater mines
     _minePos = [_startPoint, 195, _vehMineDir] call BIS_fnc_relPos;
-    if (surfaceIsWater _minePos) then {        
+    if (surfaceIsWater _minePos) then {
         _height = random (floor ((getTerrainHeightASL _minePos) * -1));
         _pos = [(_minePos select 0) + random 3, (_minePos select 1) + random 3, (0 - _height)];
-        _mine = createMine ["UnderwaterMine", _pos, [], 0];     
-        _vehMineDir = _vehMineDir + 6; 
+        _mine = createMine ["UnderwaterMine", _pos, [], 0];
+        _vehMineDir = _vehMineDir + 6;
     } else {
         _mine = createVehicle ["ATMine", [40,40,40], [], 0, "CAN_COLLIDE"];
-        _mine setPos [(_minePos select 0) + random 3, (_minePos select 1) + random 3, 0]; 
-        _pos = getPosATL _mine; 
+        _mine setPos [(_minePos select 0) + random 3, (_minePos select 1) + random 3, 0];
+        _pos = getPosATL _mine;
         if (_pos select 2 > 0.2) then {
             _pos = [_pos select 0, _pos select 1, 0];
             _mine setPosATL _pos;
-        };           
-        _vehMineDir = _vehMineDir + 3; 
-    };               
+        };
+        _vehMineDir = _vehMineDir + 3;
+    };
 
     // AP bounding mines
     _minePos = [_startPoint, 200, _apMineDir] call BIS_fnc_relPos;
@@ -369,7 +369,7 @@ for "_c" from 0 to 150 do {
         _height = random (floor ((getTerrainHeightASL _minePos) * -1));
         _pos = [(_minePos select 0) + random 3, (_minePos select 1) + random 3, (0 - _height)];
         _mine = createMine ["UnderwaterMine", _pos, [], 0];
-        _apMineDir = _apMineDir + 2; 
+        _apMineDir = _apMineDir + 2;
     } else {
         _mine = createMine ["APERSBoundingMine", [(_minePos select 0) + random 6, (_minePos select 1) + random 6, 0.1], [], 0];
         waitUntil {alive _mine};
@@ -378,9 +378,9 @@ for "_c" from 0 to 150 do {
             _pos = [_pos select 0, _pos select 1, 0];
             _mine setPosATL _pos;
         };
-        _apMineDir = _apMineDir + 4; 
+        _apMineDir = _apMineDir + 4;
     };
-    
+
 };
 
 // set skills
@@ -393,32 +393,32 @@ while { sideMissionUp } do {
     sleep 2;
 
     // de-briefing
-    if (SM_SNATCH_SUCCESS || SM_SNATCH_FAIL) exitWith {  
-        sideMissionUp = false; publicVariable "sideMissionUp";        
+    if (SM_SNATCH_SUCCESS || SM_SNATCH_FAIL) exitWith {
+        sideMissionUp = false; publicVariable "sideMissionUp";
         { _x setMarkerPos [-12000,-12000,-12000]; publicVariable _x; } forEach ["sideMarker", "sideCircle"];
         "sideCircle" setMarkerSize [300, 300]; publicVariable "sideCircle";
         "sideMarker" setMarkerText ""; publicVariable "sideMarker";
         if (SM_SNATCH_FAIL) then {
-            [] call QS_fnc_SMhintFAIL;            
+            [] call QS_fnc_SMhintFAIL;
         } else {
-            [] call QS_fnc_SMhintSUCCESS;                     
+            [] call QS_fnc_SMhintSUCCESS;
         };
 
         // delete mines
         {
             if (_x distance _startPoint < 300) then {
                deleteVehicle _x;
-            };            
+            };
         } forEach allMines;
-        _nearestMines = nearestObjects [_startPoint, ["ATMine","APERSTripMine","APERSBoundingMine","UnderwaterMinePDM","UnderwaterMine"], 300];   
+        _nearestMines = nearestObjects [_startPoint, ["ATMine","APERSTripMine","APERSBoundingMine","UnderwaterMinePDM","UnderwaterMine"], 300];
         {
             deleteVehicle _x;
         } forEach _nearestMines;
 
-        sleep 120;  
-        { 
+        sleep 120;
+        {
             [_x] call QS_fnc_TBdeleteObjects;
-        } forEach [_enemiesArray, _unitsArray];       
+        } forEach [_enemiesArray, _unitsArray];
         [_startPoint, 500] call QS_fnc_DeleteEnemyEAST;
     };
     sleep 3;

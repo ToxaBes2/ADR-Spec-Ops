@@ -1,5 +1,5 @@
 /*
-Author:	Quiksilver 	
+Author:	Quiksilver
     (credit to Jester [AW] for initial build)
 	(credit to chucky [allFPS] for initial help with addAction)
 	(credit to BangaBob [EOS] for EOS)
@@ -45,7 +45,7 @@ _sideGroup3 = [_smPos, 100, 15, CIV_SIDE] call QS_fnc_FillBots;
 "sideMarker" setMarkerPos (getMarkerPos currentSM);
 sideMarkerText = "Склад"; publicVariable "sideMarkerText";
 "sideMarker" setMarkerText "Допзадание: Склад"; publicVariable "sideMarker";
-_briefing = "<t align='center'><t size='2.2'>Допзадание</t><br/><t size='1.5' color='#00B2EE'>Склад</t><br/>____________________<br/>Враг поставляет боевикам современное оружие и взрывчатые вещества. Экипируйтесь с расчётом на ближний бой!<br/><br/>Ваша задача — выдвинуться в указанный район и уничтожить складируемый боезапас противника.</t>";
+_briefing = "<t align='center'><t size='2.2'>Допзадание</t><br/><t size='1.5' color='#FFC107'>Склад</t><br/>____________________<br/>Враг поставляет боевикам современное оружие и взрывчатые вещества. Экипируйтесь с расчётом на ближний бой!<br/><br/>Ваша задача — выдвинуться в указанный район и уничтожить складируемый боезапас противника.</t>";
 GlobalHint = _briefing; hint parseText GlobalHint; publicVariable "GlobalHint";
 showNotification = ["NewSideMission", "Склад"]; publicVariable "showNotification";
 
@@ -60,8 +60,8 @@ hqSideChat = _c4Message; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSi
 
 // BOOM!
 sleep 30;
-"M_NLAW_AT_F" createVehicle getPos _object; 
-_object setPos [-10000, -10000, 0];	
+"M_NLAW_AT_F" createVehicle getPos _object;
+_object setPos [-10000, -10000, 0];
 sleep 1;
 
 // DE-BRIEFING
@@ -70,8 +70,8 @@ sideMissionUp = false; publicVariable "sideMissionUp";
 "sideMarker" setMarkerPos [-10000, -10000, -10000]; publicVariable "sideMarker";
 
 // DELETE, DESPAWN, HIDE and RESET
-SM_SUCCESS = false; publicVariable "SM_SUCCESS";	
-sleep 120;									
+SM_SUCCESS = false; publicVariable "SM_SUCCESS";
+sleep 120;
 [_sideGroup1] call QS_fnc_TBdeleteObjects;
 [_sideGroup2] call QS_fnc_TBdeleteObjects;
 [_sideGroup3] call QS_fnc_TBdeleteObjects;

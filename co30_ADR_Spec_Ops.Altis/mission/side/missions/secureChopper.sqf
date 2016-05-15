@@ -68,7 +68,7 @@ sideMarkerText = "Прототип"; publicVariable "sideMarkerText";
 "sideMarker" setMarkerText "Допзадание: Прототип"; publicVariable "sideMarker";
 publicVariable "sideObj";
 
-_briefing = "<t align='center'><t size='2.2'>Допзадание</t><br/><t size='1.5' color='#00B2EE'>Прототип</t><br/>____________________<br/>Вражеские силы взяли на испытание новый прототип боевого вертолёта, который они скрывают в одном из своих ангаров.<br/><br/>Ваша задача — выдвинуться в указанный район, захватить данные о вертолёте и уничтожить прототип.</t>";
+_briefing = "<t align='center'><t size='2.2'>Допзадание</t><br/><t size='1.5' color='#FFC107'>Прототип</t><br/>____________________<br/>Вражеские силы взяли на испытание новый прототип боевого вертолёта, который они скрывают в одном из своих ангаров.<br/><br/>Ваша задача — выдвинуться в указанный район, захватить данные о вертолёте и уничтожить прототип.</t>";
 GlobalHint = _briefing; hint parseText _briefing; publicVariable "GlobalHint";
 showNotification = ["NewSideMission", "Прототип"]; publicVariable "showNotification";
 sideMarkerText = "Прототип"; publicVariable "sideMarkerText";
@@ -84,29 +84,29 @@ while { sideMissionUp } do {
 		[] spawn QS_fnc_SMhintFAIL;
 		{ _x setMarkerPos [-10000, -10000, -10000]; } forEach ["sideMarker", "sideCircle"]; publicVariable "sideMarker";
 		sideMissionUp = false; publicVariable "sideMissionUp";
-		
+
 		// DELETE
-		{ _x setPos [-10000, -10000, 0]; } forEach [_object, researchTable, _dummy];			
+		{ _x setPos [-10000, -10000, 0]; } forEach [_object, researchTable, _dummy];
 		sleep 120;
 		{ deleteVehicle _x } forEach [sideObj, house];
 		deleteVehicle nearestObject [getPos sideObj, "Land_TentHangar_V1_ruins_F"];
 		{ [_x] call QS_fnc_TBdeleteObjects; } forEach [_enemiesArray, _guardsGroup];
 		[_fuzzyPos, 500] call QS_fnc_DeleteEnemyEAST;
 	};
-	
+
 	if (SM_SUCCESS) exitWith {
 
 		// BOOM!
 		hqSideChat = _c4Message; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
 		_dummy setPos [(getPos sideObj select 0), ((getPos sideObj select 1) +3), ((getPos sideObj select 2) + 0.5)];
 		sleep 0.1;
-		_object setPos [-10000, -10000, 0];					
-		sleep 30;											
-		"Bo_GBU12_LGB" createVehicle getPos _dummy; 		
-		_dummy setPos [-10000, -10000, 1];					
-		researchTable setPos [-10000, -10000, 1];			
+		_object setPos [-10000, -10000, 0];
+		sleep 30;
+		"Bo_GBU12_LGB" createVehicle getPos _dummy;
+		_dummy setPos [-10000, -10000, 1];
+		researchTable setPos [-10000, -10000, 1];
 		sleep 0.1;
-	
+
 		// DE-BRIEFING
 		[] call QS_fnc_SMhintSUCCESS;
 		{ _x setMarkerPos [-10000, -10000, -10000]; } forEach ["sideMarker", "sideCircle"]; publicVariable "sideMarker";

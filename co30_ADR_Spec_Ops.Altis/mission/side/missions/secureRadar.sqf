@@ -76,7 +76,7 @@ _guardsGroup = [_fuzzyPos, 400, 50, ENEMY_SIDE] call QS_fnc_FillBots;
 sideMarkerText = "Радар"; publicVariable "sideMarkerText";
 "sideMarker" setMarkerText "Допзадание: Радар"; publicVariable "sideMarker";
 publicVariable "sideObj";
-_briefing = "<t align='center'><t size='2.2'>Допзадание</t><br/><t size='1.5' color='#00B2EE'>Радар</t><br/>____________________<br/>В целях поддержки своей авиации вражеские силы захватили небольшую радиостанцию.<br/><br/>Ваша задача — выдвинуться в указанный район, обезвредить противника, захватить радиолокационные данные, а затем уничтожить и сам радар.</t>";
+_briefing = "<t align='center'><t size='2.2'>Допзадание</t><br/><t size='1.5' color='#FFC107'>Радар</t><br/>____________________<br/>В целях поддержки своей авиации вражеские силы захватили небольшую радиостанцию.<br/><br/>Ваша задача — выдвинуться в указанный район, обезвредить противника, захватить радиолокационные данные, а затем уничтожить и сам радар.</t>";
 GlobalHint = _briefing; hint parseText _briefing; publicVariable "GlobalHint";
 showNotification = ["NewSideMission", "Радар"]; publicVariable "showNotification";
 sideMarkerText = "Радар"; publicVariable "sideMarkerText";
@@ -93,25 +93,25 @@ while { sideMissionUp } do {
 		sideMissionUp = false; publicVariable "sideMissionUp";
 
 		// DELETE
-		{ _x setPos [-10000, -10000, 0]; } forEach [_object, researchTable, _dummy];			
+		{ _x setPos [-10000, -10000, 0]; } forEach [_object, researchTable, _dummy];
 		sleep 120;
 		{ deleteVehicle _x } forEach [sideObj, house, tower1, tower2, tower3];
 		deleteVehicle nearestObject [getPos sideObj, "Land_Radar_Small_ruins_F"];
 		{ [_x] call QS_fnc_TBdeleteObjects; } forEach [_enemiesArray, _guardsGroup];
 		[_fuzzyPos, 500] call QS_fnc_DeleteEnemyEAST;
 	};
-	
+
 	if (SM_SUCCESS) exitWith {
 		// BOOM!
 		hqSideChat = _c4Message; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
 
 		_dummy setPos [(getPos sideObj select 0), ((getPos sideObj select 1) +5), ((getPos sideObj select 2) + 0.5)];
 		sleep 0.1;
-		_object setPos [-10000, -10000, 0];					
-		sleep 30;											
-		"Bo_Mk82" createVehicle getPos _dummy; 				
-		_dummy setPos [-10000, -10000, 1];					
-		researchTable setPos [-10000, -10000, 1];			
+		_object setPos [-10000, -10000, 0];
+		sleep 30;
+		"Bo_Mk82" createVehicle getPos _dummy;
+		_dummy setPos [-10000, -10000, 1];
+		researchTable setPos [-10000, -10000, 1];
 		sleep 0.1;
 
 		// DE-BRIEFING

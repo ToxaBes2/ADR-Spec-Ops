@@ -64,7 +64,7 @@ priorityGunner2 = ((units _priorityGroup) select 3);
 ((units _priorityGroup) select 3) moveInGunner priorityObj2;
 [(units _priorityGroup)] call QS_fnc_setSkill4;
 _priorityGroup setBehaviour "COMBAT";
-_priorityGroup setCombatMode "RED";	
+_priorityGroup setCombatMode "RED";
 _priorityGroup allowFleeing 0;
 _unitsArray = _unitsArray + [_priorityGroup];
 
@@ -78,7 +78,7 @@ for "_c" from 0 to 7 do {
 	waitUntil {alive _barrier};
 	_barrier setDir _dir;
 	_dir = _dir + 45;
-	_barrier allowDamage false; 
+	_barrier allowDamage false;
 	_barrier enableSimulation false;
 	_unitsArray = _unitsArray + [_barrier];
 };
@@ -89,14 +89,14 @@ _enemiesArray = [priorityObj1] call QS_fnc_PTenemyEAST;
 
 // 6. Fill bots in radius
 _fuzzyPos = [((_flatPos select 0) - 300) + (random 600), ((_flatPos select 1) - 300) + (random 600), 0];
-_guardsGroup = [_fuzzyPos, 300, 15, ENEMY_SIDE] call QS_fnc_FillBots; 
+_guardsGroup = [_fuzzyPos, 300, 15, ENEMY_SIDE] call QS_fnc_FillBots;
 _enemiesArray = _enemiesArray + [_guardsGroup];
 
 // 7. BRIEF
 { _x setMarkerPos _fuzzyPos; } forEach ["priorityMarker", "priorityCircle"];
 priorityTargetText = "Артиллерия"; publicVariable "priorityTargetText";
 "priorityMarker" setMarkerText "Приоритетная цель: Артиллерия"; publicVariable "priorityMarker";
-_briefing = "<t align='center' size='2.2'>Внимание</t><br/><t size='1.5' color='#d63333'>Артиллерия</t><br/>____________________<br/>Обнаружена точка укрепления артиллерийских орудий противника. Её близлежащее расположение от района дислокации грозит всей нашей наземной группировке.<br/><br/>Первый залп ожидается уже через 5 минут.";
+_briefing = "<t align='center' size='2.2'>Внимание</t><br/><t size='1.5' color='#F44336'>Артиллерия</t><br/>____________________<br/>Обнаружена точка укрепления артиллерийских орудий противника. Её близлежащее расположение от района дислокации грозит всей нашей наземной группировке.<br/><br/>Первый залп ожидается уже через 5 минут.";
 GlobalHint = _briefing; hint parseText _briefing; publicVariable "GlobalHint";
 showNotification = ["NewPriorityTarget", "Уничтожить артиллерию врага"]; publicVariable "showNotification";
 _firingMessages = [
@@ -123,42 +123,42 @@ while {(canMove priorityObj1 || canMove priorityObj2) && currentAOUp} do {
 	    		_unit = playableUnits select (floor (random (count playableUnits)));
 	    	} else {
 	    		_unit = switchableUnits select (floor (random (count switchableUnits)));
-	    	};		
+	    	};
 	    	if (!isNull _unit) then {
 	    		_targetPos = getPos _unit;
-	    	
-	    		if ((_targetPos distance (getMarkerPos "respawn_west")) > 1000 && vehicle _unit == _unit && side _unit == WEST) then { 
-	    			_accepted = true; 
+
+	    		if ((_targetPos distance (getMarkerPos "respawn_west")) > 1000 && vehicle _unit == _unit && side _unit == WEST) then {
+	    			_accepted = true;
 	    		} else {
-	    			sleep 7;															
+	    			sleep 7;
 	    		};
 	    	};
 	    	sleep 3;
 	    };
-	    
+
 	    if (PARAMS_ArtilleryTargetTickWarning == 1) then {
 	    	hqSideChat = _firingMessages call BIS_fnc_selectRandom; publicVariable "hqSideChat"; [WEST,"HQ"] sideChat hqSideChat;
-	    };	
-	    _dir = [_flatPos, _targetPos] call BIS_fnc_dirTo;	
-	    { _x setDir _dir; } forEach [priorityObj1, priorityObj2];	
-	    sleep 5;																		
+	    };
+	    _dir = [_flatPos, _targetPos] call BIS_fnc_dirTo;
+	    { _x setDir _dir; } forEach [priorityObj1, priorityObj2];
+	    sleep 5;
 	    {
 	    	if (alive _x) then {
 	    		for "_c" from 0 to 4 do {
-	    		_pos = 
+	    		_pos =
 	    		[
 	    			(_targetPos select 0) - _radius + (2 * random _radius),
 	    			(_targetPos select 1) - _radius + (2 * random _radius),
 	    			0
 	    		];
 	    			_x doArtilleryFire [_pos, "32Rnd_155mm_Mo_shells", 1];
-	    			sleep 8;														
+	    			sleep 8;
 	    		};
 	    	};
 	    } forEach [priorityObj1, priorityObj2];
-	    if (_radius > 10) then { 
+	    if (_radius > 10) then {
 	    	_radius = _radius - 10;
-	    };	
+	    };
 	    if (PARAMS_ArtilleryTargetTickTimeMax <= PARAMS_ArtilleryTargetTickTimeMin) then {
 	    	sleep PARAMS_ArtilleryTargetTickTimeMin;
 	    } else {
@@ -168,14 +168,14 @@ while {(canMove priorityObj1 || canMove priorityObj2) && currentAOUp} do {
 };
 
 // DE-BRIEF
-_completeText = "<t align='center' size='2.2'>Внимание</t><br/><t size='1.5' color='#08b000'>Артиллерия подавлена</t><br/>____________________<br/>Противник лишился артиллерийских орудий.<br/><br/>Возвращайтесь к выполнению основной задачи.";
+_completeText = "<t align='center' size='2.2'>Внимание</t><br/><t size='1.5' color='#C6FF00'>Артиллерия подавлена</t><br/>____________________<br/>Противник лишился артиллерийских орудий.<br/><br/>Возвращайтесь к выполнению основной задачи.";
 GlobalHint = _completeText; hint parseText _completeText; publicVariable "GlobalHint";
 showNotification = ["CompletedPriorityTarget", "Артиллерия нейтрализована"]; publicVariable "showNotification";
 { _x setMarkerPos [-10000, -10000, -10000] } forEach ["priorityMarker","priorityCircle"]; publicVariable "priorityMarker";
 
 // DELETE
 { _x removeEventHandler ["Fired", 0]; } forEach [priorityObj1, priorityObj2];
-{ deleteVehicle _x } forEach [priorityObj1, priorityObj2, ammoTruck];	
-sleep 60;														
+{ deleteVehicle _x } forEach [priorityObj1, priorityObj2, ammoTruck];
+sleep 60;
 {[_x] call QS_fnc_TBdeleteObjects;} forEach [_enemiesArray, _unitsArray];
 [_fuzzyPos, 500] call QS_fnc_DeleteEnemyEAST;

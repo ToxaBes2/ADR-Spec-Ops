@@ -134,7 +134,7 @@ class Params {
 		default = 3;
 	};
 
-	class AOReinforcementJet {
+	class AOReinforcementCas {
 		title = "Вражеская авиация оказывает поддержку";
 		values[] = {1,0};
 		texts[] = {"Включено","Выключено"};
@@ -281,163 +281,137 @@ class CfgNotifications
 	{
 		title = "ОСНОВНАЯ ЗАДАЧА";
 		description = "Захватить %1";
-		iconPicture = "media\images\notificons\main_objective.paa";
-		color[] = {1, 0.81, 0.06, 1};
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\tactical_view_ca.paa";
+		color[] = {1, 0.76, 0.03, 1};
 		priority = 9;
 	};
 
 	class CompletedMain
 	{
 		title = "ЗАДАЧА ВЫПОЛНЕНА";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\tactical_view_ca.paa";
 		description = "Точка %1 захвачена";
-		iconPicture = "media\images\notificons\main_objective_completed.paa";
-		color[] = {1, 0.81, 0.06, 1};
+		color[] = {0.78, 1, 0, 1};
 		priority = 9;
 	};
 
 	class NewMainDefend
 	{
 		title = "КРУГОВАЯ ОБОРОНА";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\normaldamage_ca.paa";
 		description = "Защитить %1";
-		iconPicture = "media\images\notificons\defendtarget.paa";
-		color[] = {1, 0.81, 0.06, 1};
+		color[] = {1, 0.76, 0.03, 1};
 		priority = 9;
 	};
 
 	class CompletedMainDefended
 	{
 		title = "ОБОРОНА ВЫСТОЯЛА";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\normaldamage_ca.paa";
 		description = "Точка %1 защищена";
-		iconPicture = "media\images\notificons\main_objective_completed.paa";
-		color[] = {1, 0.81, 0.06, 1};
+		color[] = {0.78, 1, 0, 1};
+		priority = 9;
+	};
+
+	class FailedMainDefended
+	{
+		title = "ПРОТИВНИК ЗАХВАТИЛ НАШИ ПОЗИЦИИ";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\normaldamage_ca.paa";
+		description = "Точка %1 потеряна";
+		color[] = {0.97, 0.26, 0.21, 1};
 		priority = 9;
 	};
 
 	class NewSub
 	{
-		title = "НОВОЕ ДОПЗАДАНИЕ";
+		title = "НОВОЕ ПОДЗАДАНИЕ";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\rules_ca.paa";
 		description = "%1";
-		iconPicture = "media\images\notificons\sub_objective.paa";
-		color[] = {1, 0.81, 0.06, 1};
-		priority = 8;
+		color[] = {1, 0.76, 0.03, 1};
+		priority = 6;
 	};
 
 	class CompletedSub
 	{
 		title = "ВТОРИЧНАЯ ЦЕЛЬ УНИЧТОЖЕНА";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\tasks_ca.paa";
 		description = "%1";
-		iconPicture = "media\images\notificons\sub_objective_completed.paa";
-		color[] = {1, 0.81, 0.06, 1};
-		priority = 8;
+		color[] = {0.78, 1, 0, 1};
+		priority = 6;
 	};
 
 	class NewSideMission
 	{
 		title = "НОВОЕ ДОПЗАДАНИЕ";
-		iconPicture = "media\images\notificons\side_mission.paa";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\map_ca.paa";
 		description = "%1";
-		color[] = {0, 0.7, 0.93, 1};
-		priority = 7;
-	};
-
-	class NewSideMissionFileData
-	{
-		title = "НОВОЕ ДОПЗАДАНИЕ";
-		iconPicture = "media\images\notificons\laptop.paa";
-		description = "%1";
-		color[] = {0, 0.7, 0.93, 1};
-		priority = 7;
-	};
-
-	class NewSideMissionFileDataComplete
-	{
-		title = "ДОПЗАДАНИЕ ВЫПОЛНЕНО";
-		description = "%1";
-		iconPicture = "media\images\notificons\laptop.paa";
-		color[] = {0.38, 0.81, 0.16, 1};
-		priority = 6;
-	};
-
-	class NewSideMissionRadar
-	{
-		title = "НОВОЕ ДОПЗАДАНИЕ";
-		iconPicture = "media\images\notificons\smdestroyradar.paa";
-		description = "%1";
-		color[] = {0, 0.7, 0.93, 1};
+		color[] = {1, 0.76, 0.03, 1};
 		priority = 7;
 	};
 
 	class CompletedSideMission
 	{
 		title = "ДОПЗАДАНИЕ ВЫПОЛНЕНО";
-		iconPicture = "media\images\notificons\side_mission_completed.paa";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\map_ca.paa";
 		description = "%1";
-		color[] = {0, 0.7, 0.93, 1};
+		color[] = {0.78, 1, 0, 1};
 		priority = 7;
 	};
 
 	class NewPriorityTarget
 	{
 		title = "НОВАЯ ВАЖНАЯ ЦЕЛЬ";
-		iconPicture = "media\images\notificons\priority_target.paa";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\target_ca.paa";
 		description = "%1";
-		color[] = {0.8, 0.13, 0.14, 1};
-		priority = 10;
+		color[] = {0.97, 0.26, 0.21, 1};
+		priority = 8;
 	};
 
 	class CompletedPriorityTarget
 	{
 		title = "ВАЖНАЯ ЦЕЛЬ НЕЙТРАЛИЗОВАНА";
-		iconPicture = "media\images\notificons\priority_target_neutralised.paa";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\target_ca.paa";
 		description = "%1";
-		color[] = {0.8, 0.13, 0.14, 1};
-		priority = 10;
-	};
-
-	class EnemyJetDown
-	{
-		title = "ВРАЖЕСКИЙ ШТУРМОВИК УНИЧТОЖЕН";
-		iconPicture = "media\images\notificons\down.paa";
-		description = "%1";
-		color[] = {1, 0.81, 0.06, 1};
+		color[] = {0.78, 1, 0, 1};
 		priority = 8;
 	};
 
-	class EnemyJet
+	class EnemyCas
 	{
-		title = "ОБНАРУЖЕН ВРАЖЕСКИЙ ШТУРМОВИК";
-		iconPicture = "media\images\notificons\enemyJetinbound.paa";
+		title = "ОБНАРУЖЕНА ВРАЖЕСКАЯ АВИАПОДДЕРЖКА";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\countermeasures_ca.paa";
 		description = "%1";
-		color[] = {0.8, 0.13, 0.14, 1};
-		priority = 8;
+		color[] = {0.97, 0.26, 0.21, 1};
+		priority = 5;
 	};
 
-	class NewSideMissionJet
+	class EnemyCasDown
 	{
-		title = "ОБНАРУЖЕН ВРАЖЕСКИЙ ШТУРМОВИК";
-		iconPicture = "media\images\notificons\enemyJetinbound.paa";
+		title = "ВРАЖЕСКИЙ АВИАПОДДЕРЖКА УНИЧТОЖЕНА";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\countermeasures_ca.paa";
 		description = "%1";
-		color[] = {0.8, 0.13, 0.14, 1};
-		priority = 8;
+		color[] = {0.78, 1, 0, 1};
+		priority = 5;
 	};
 
 	class Reward
 	{
 		title = "НАГРАДА";
-		description = "%1";
-		iconPicture = "media\images\notificons\reward.paa";
-		color[] = {0.38, 0.81, 0.16, 1};
-		priority = 6;
+		description = "Ваша команда получила %1";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\vehiclecommanding_ca.paa";
+		color[] = {0.78, 1, 0, 1};
+		priority = 4;
 	};
 
 	class ScoreBonus
 	{
 		title = "БОНУС";
-		description = "%1";
-		iconPicture = "media\images\notificons\score_bonus.paa";
+		iconPicture = "\a3\ui_f\data\gui\rsc\rscdisplaymultiplayer\mp_serverempty_ca.paa";
 		iconText = "+%2";
-		color[] = {0.38, 0.81, 0.16, 1};
-		priority = 5;
+		description = "%1";
+		color[] = {0.78, 1, 0, 1};
+		difficulty[] = {"scoreTable"};
+		priority = 4;
 	};
 };
 

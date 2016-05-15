@@ -13,7 +13,7 @@ Description: download data from 3 data terminals in enemy town
 #define INFANTRY_VEHICLE_CREW "O_engineer_F"
 
 // define private variables
-private ["_targets","_accepted","_distance","_briefing","_position","_flatPos","_x","_enemiesArray","_startPoint"];         
+private ["_targets","_accepted","_distance","_briefing","_position","_flatPos","_x","_enemiesArray","_startPoint"];
 
 _enemiesArray = [grpNull];
 _unitsArray = [];
@@ -30,20 +30,20 @@ _targets = [
     [[18098,15256]],
     [[20952,16961]],
     [[16812,12709]]
-];   
+];
 
 // select correct place for mission
 if (PARAMS_AO == 1) then {
     _accepted = false;
-    while {!_accepted} do {    
+    while {!_accepted} do {
         _position = _targets call BIS_fnc_selectRandom;
-        _flatPos  = _position select 0;  
+        _flatPos  = _position select 0;
         _distance = [_flatPos, getMarkerPos currentAO] call BIS_fnc_distance2D;
         if (_distance > 3000) then {
             _distance = [_flatPos, getMarkerPos "priorityMarker"] call BIS_fnc_distance2D;
             if (_distance > 1500) then {
                 _accepted = true;
-            };  
+            };
         };
         sleep 5;
     };
@@ -62,7 +62,7 @@ SM_GRAPESWRATH_SUCCESS = false; publicVariable "SM_GRAPESWRATH_SUCCESS";
 SM_GRAPESWRATH_FAIL = false; publicVariable "SM_GRAPESWRATH_FAIL";
 
 // show brief information
-_briefing = "<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#FF9999'>Гроздья Гнева</t><br/>____________________<br/>Противник получил контроль над нашим ударным орбитальным комплексом ""Гроздья Гнева"". Комплекс состоит из трех спутников, каждый имеет на вооружении волоконный лазер мощностью до 500 кВт способный уничтожать ракеты, БПЛА и пехоту. Вернуть контроль над спутниками можно только взломав терминалы управления. Командование назначило поисковую спецоперацию.<br/><br/>Ваша задача: выдвинуться в указанный район, провести поисковую операцию и взломать три терминала управления спутниками.</t>";
+_briefing = "<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#FFC107'>Гроздья Гнева</t><br/>____________________<br/>Противник получил контроль над нашим ударным орбитальным комплексом ""Гроздья Гнева"". Комплекс состоит из трех спутников, каждый имеет на вооружении волоконный лазер мощностью до 500 кВт способный уничтожать ракеты, БПЛА и пехоту. Вернуть контроль над спутниками можно только взломав терминалы управления. Командование назначило поисковую спецоперацию.<br/><br/>Ваша задача: выдвинуться в указанный район, провести поисковую операцию и взломать три терминала управления спутниками.</t>";
 GlobalHint = _briefing; hint parseText GlobalHint; publicVariable "GlobalHint";
 showNotification = ["NewSideMission", "Гроздья Гнева"]; publicVariable "showNotification";
 sideMissionUp = true; publicVariable "sideMissionUp";
@@ -72,7 +72,7 @@ _goodPos = [];
 _houseList = _flatPos nearObjects ["building", 190];
 {
     _c = 0;
-    while { format ["%1", _x buildingPos _c] != "[0,0,0]" } do { 
+    while { format ["%1", _x buildingPos _c] != "[0,0,0]" } do {
         _goodPos set [(count _goodPos), [_x, _x buildingPos _c]];
         _c = _c + 1;
     };
@@ -85,16 +85,16 @@ _nearestDevices = _flatPos nearObjects [INFANTRY_TERMINAL, 200];
 
 // spawn 3 devices
 while {count _nearestDevices < 3} do {
-    _groundPos = _goodPoses call BIS_fnc_selectRandom; 
-    _dst = _devicePos distance (_groundPos select 1);    
+    _groundPos = _goodPoses call BIS_fnc_selectRandom;
+    _dst = _devicePos distance (_groundPos select 1);
     _dst = _dst + (floor (random 70));
     while {_dst < 30} do {
-        _groundPos = _goodPoses call BIS_fnc_selectRandom;                
+        _groundPos = _goodPoses call BIS_fnc_selectRandom;
     };
     _house = _groundPos select 0;
     _devicePos = _groundPos select 1;
-    _usedPoses pushBack _groundPos;    
-    _blackList pushBack _house;    
+    _usedPoses pushBack _groundPos;
+    _blackList pushBack _house;
     _device = createVehicle [INFANTRY_TERMINAL, [0,0,0], [], 0, "CAN_COLLIDE"];
     _device setPosATL _devicePos;
     _deviceDir = [_house, _device] call BIS_fnc_dirTo;
@@ -108,7 +108,7 @@ while {count _nearestDevices < 3} do {
         publicVariable "SM_GRAPESWRATH_FAIL";
     }];
     _unitsArray = _unitsArray + [_device];
-    _nearestDevices = _flatPos nearObjects [INFANTRY_TERMINAL, 200];    
+    _nearestDevices = _flatPos nearObjects [INFANTRY_TERMINAL, 200];
 
     // protect device with guards
     _guardsCount = [3,4,5,6] call BIS_fnc_selectRandom;
@@ -124,7 +124,7 @@ _commonGroup = [_startPoint, 200, 50, ENEMY_SIDE, false, _blackList] call QS_fnc
 _enemiesArray = _enemiesArray + [_commonGroup];
 
 // patrols (2 bots)
-for "_c" from 1 to 4 do { 
+for "_c" from 1 to 4 do {
     _groundPos = [_startPoint, 0, 10, 2, 0, 10, 0] call BIS_fnc_findSafePos;
     _patrolGroup = [_groundPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "UInfantry" >> "OIA_GuardSentry")] call BIS_fnc_spawnGroup;
     [_patrolGroup, _startPoint, 90] call BIS_fnc_taskPatrol;
@@ -135,7 +135,7 @@ for "_c" from 1 to 4 do {
 };
 
 // patrols (4 bots)
-for "_c" from 1 to 2 do { 
+for "_c" from 1 to 2 do {
     _groundPos = [_startPoint, 10, 110, 2, 0, 10, 0] call BIS_fnc_findSafePos;
     _patrolGroup = [_groundPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "UInfantry" >> "OIA_GuardTeam")] call BIS_fnc_spawnGroup;
     [_patrolGroup, _startPoint, 50] call BIS_fnc_taskPatrol;
@@ -177,17 +177,17 @@ _nearestDevices = _flatPos nearObjects [INFANTRY_TERMINAL, 200];
 _showMarkers = false;
 _markers = [];
 while { sideMissionUp } do {
-    sleep 3;    
-    
+    sleep 3;
+
     if (!SM_GRAPESWRATH_SUCCESS && !SM_GRAPESWRATH_FAIL) then {
         _s = 0;
         _f = 0;
         {
             _status = _x getVariable "GRAPESWRATH_HACKED";
-            switch (_status) do { 
-                case "hacked" : { _s = _s + 1; }; 
-                case "failed" : { _f = _f + 1; }; 
-                default {}; 
+            switch (_status) do {
+                case "hacked" : { _s = _s + 1; };
+                case "failed" : { _f = _f + 1; };
+                default {};
             };
             _res = _s + _f;
             if (_res == 3) then {
@@ -206,7 +206,7 @@ while { sideMissionUp } do {
             if (side _x == ENEMY_SIDE) then {
                 {
                     if (_startPoint distance2D _x <= 200) then {
-                        _aliveBots = _aliveBots + 1; 
+                        _aliveBots = _aliveBots + 1;
                     };
                 } forEach (units _x);
             };
@@ -231,32 +231,32 @@ while { sideMissionUp } do {
         };
         sleep 5;
     };
-    
+
     // de-briefing
-    if (SM_GRAPESWRATH_SUCCESS || SM_GRAPESWRATH_FAIL) exitWith {  
+    if (SM_GRAPESWRATH_SUCCESS || SM_GRAPESWRATH_FAIL) exitWith {
         sideMissionUp = false; publicVariable "sideMissionUp";
         { _x setMarkerPos [-12000,-12000,-12000]; publicVariable _x; } forEach ["sideMarker", "sideCircle"];
         "sideCircle" setMarkerSize [300, 300]; publicVariable "sideCircle";
         "sideMarker" setMarkerText ""; publicVariable "sideMarker";
         if (SM_GRAPESWRATH_FAIL) then {
-            [] call QS_fnc_SMhintFAIL;            
+            [] call QS_fnc_SMhintFAIL;
         } else {
-            [] call QS_fnc_SMhintSUCCESS;                     
-        };             
+            [] call QS_fnc_SMhintSUCCESS;
+        };
         if (_showMarkers) then {
             {
                 deleteMarker _x;
             } forEach _markers;
-        };             
+        };
         sleep 120;
         {
             deleteVehicle _x;
         } forEach _unitsArray;
-        sleep 2;                
-        { 
+        sleep 2;
+        {
             [_x] call QS_fnc_TBdeleteObjects;
         } forEach [_enemiesArray];
-        [_startPoint, 500] call QS_fnc_DeleteEnemyEAST;        
+        [_startPoint, 500] call QS_fnc_DeleteEnemyEAST;
     };
     sleep 3;
 };

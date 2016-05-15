@@ -13,7 +13,7 @@ Description: Ambush convoy and defuse the bomb.
 #define INFANTRY_SOLDIERS "O_Soldier_F","O_Soldier_GL_F","O_Soldier_AR_F","O_Soldier_SL_F","O_Soldier_TL_F","O_soldier_M_F","O_Soldier_LAT_F","O_medic_F","O_soldier_repair_F","O_soldier_exp_F","O_Soldier_AT_F","O_Soldier_AA_F","O_engineer_F","O_soldier_PG_F","O_recon_F","O_recon_M_F","O_recon_LAT_F","O_recon_medic_F","O_recon_TL_F","O_Soldier_AAT_F","O_soldierU_M_F","O_SoldierU_GL_F"
 
 // define private variables
-private ["_targets","_accepted","_distance","_briefing","_position","_city","_flatPos","_x","_enemiesArray","_startPoint"];         
+private ["_targets","_accepted","_distance","_briefing","_position","_city","_flatPos","_x","_enemiesArray","_startPoint"];
 
 _enemiesArray = [grpNull];
 
@@ -32,7 +32,7 @@ _targets = [
     ["Панохори",          [5090,11262],         [[5221.58,11111.1,306],[4957.62,11412,323]],     [[5472.25,10902.1,0.1,289],[5494.45,10902.1,0.1,264],[5515.18,10909,0.1,252],[5533.93,10918,0.1,241],[5552.16,10928,0.1,241]],          [[5220.05,11113,0],[4719.08,11760.9,0]]],
     ["Нери",              [4152,11745.9],       [[4321.78,11851.7,239],[3994.25,11623.5,238]],   [[4258.99,12146.3,0.1,156],[4249.86,12165.2,0.1,153],[4240.22,12183.1,0.1,152],[4230.47,12200.1,0.1,151],[4219.99,12217.9,0.1,151]],    [[4331.31,12046.4,0],[4360.16,11884.1,0],[4166.46,11789.7,0],[3828.47,11526.8,0],[3802.1,11340,0]]],
     ["Кавала",            [3612.34,13024],      [[3638.48,13222.5,192],[3677.03,12834.9,158]],   [[3563.66,13288,0.1,123],[3545.63,13301.3,0.1,125],[3520.26,13324.1,0.1,130],[3509.48,13336.7,0.1,132],[3480.17,13357.1,0.1,116]],      [[3646.27,13267.6,0],[3649.71,13255,0],[3623.03,12965,0],[3665.88,12925.2,0],[3985.68,12586.6,0]]],
-    ["Аггелохори",        [3869.5,13742.1],     [[4042.27,13842.9,233],[3717.87,13872.4,304]],   [[4343.7,13956,0.1,243],[4362.95,13965.5,0.1,243],[4381.83,13975,0.1,243],[4401.21,13985.3,0.1,243],[4420.02,13994.9,0.1,243]],         [[4087.92,13893.5,0],[3880.61,13742.5,0],[3641.39,13929.9,0],[3645.09,14233.4,0]]],   
+    ["Аггелохори",        [3869.5,13742.1],     [[4042.27,13842.9,233],[3717.87,13872.4,304]],   [[4343.7,13956,0.1,243],[4362.95,13965.5,0.1,243],[4381.83,13975,0.1,243],[4401.21,13985.3,0.1,243],[4420.02,13994.9,0.1,243]],         [[4087.92,13893.5,0],[3880.61,13742.5,0],[3641.39,13929.9,0],[3645.09,14233.4,0]]],
     ["Парос",             [20931.3,16934],      [[20781.9,16801.1,49],[21081.7,17065.7,59]],     [[20464.7,16761.1,0.1,96],[20443,16765.4,0.1,98],[20422.3,16773.4,0.1,110],[20401.5,16782.2,0.1,112],[20380.5,16788.7,0.1,111]],        [[20609.3,16733.8,0],[20912.7,16921.7,0],[21379.8,17269,0]]],
     ["Пиргос",            [16738.7,12796],      [[16933.7,12840.8,229],[16784.4,12601.3,180.]],  [[16945.7,13170.1,0.1,179],[16949.5,13192.1,0.1,183],[16954.4,13213.2,0.1,189],[16960.6,13234.6,0.1,196],[16972.1,13254.2,0.1,208]],    [[16873.5,12853.6,0],[16803.3,12685.9,0],[16846.6,12245.1,0]]],
     ["Халкея",            [20251.8,11677.5],    [[20175.1,11492.5,345],[20399.7,11812,51]],      [[20342.2,11251,0.1,344],[20347,11230.4,0.1,346],[20350.9,11210.6,0.1,348],[20354.4,11189.8,0.1,347],[20358.1,11168.5,0.1,350]],        [[20175.2,11584.5,0],[20309.7,11756.7,0],[20742,11823.5,0]]]
@@ -41,15 +41,15 @@ _targets = [
 // select correct place for mission
 if (PARAMS_AO == 1) then {
     _accepted = false;
-    while {!_accepted} do {    
+    while {!_accepted} do {
         _position = _targets call BIS_fnc_selectRandom;
-        _flatPos  = _position select 1;  
+        _flatPos  = _position select 1;
         _distance = [_flatPos, getMarkerPos currentAO] call BIS_fnc_distance2D;
         if (_distance > 3000) then {
             _distance = [_flatPos, getMarkerPos "priorityMarker"] call BIS_fnc_distance2D;
             if (_distance > 1500) then {
                 _accepted = true;
-            };  
+            };
         };
         sleep 5;
     };
@@ -86,14 +86,14 @@ _arrows = _position select 2;
 
 // show brief information
 _city = _position select 0;
-_briefing = format ["<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#FF9999'>Конвой</t><br/>____________________<br/>Недалеко от %1 разведка обнаружила конвой противника перевозящий Тактический Ядерный Заряд. Цель перемещения неизвестна, но визуальный осмотр показал что Заряд поврежден - есть угроза возникновения неконтролируемой ядерной реакции. Командование назначило пехотную спецоперацию.<br/><br/>Ваша задача — выдвинуться в указанный район, остановить конвой и обезвредить Заряд. Будьте осторожны - любое повреждение объекта может запустить цепную реакцию.</t>", _city];
+_briefing = format ["<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#FFC107'>Конвой</t><br/>____________________<br/>Недалеко от %1 разведка обнаружила конвой противника перевозящий Тактический Ядерный Заряд. Цель перемещения неизвестна, но визуальный осмотр показал что Заряд поврежден - есть угроза возникновения неконтролируемой ядерной реакции. Командование назначило пехотную спецоперацию.<br/><br/>Ваша задача — выдвинуться в указанный район, остановить конвой и обезвредить Заряд. Будьте осторожны - любое повреждение объекта может запустить цепную реакцию.</t>", _city];
 GlobalHint = _briefing; hint parseText GlobalHint; publicVariable "GlobalHint";
 showNotification = ["NewSideMission", "Конвой"]; publicVariable "showNotification";
 sideMissionUp = true; publicVariable "sideMissionUp";
 
 // wait for player in zone, then wait a bit and spawn convoy
 canStart = false;
-_trig = createTrigger ["EmptyDetector", _flatPos, false]; 
+_trig = createTrigger ["EmptyDetector", _flatPos, false];
 _trig setTriggerArea [150, 150, 0, false];
 _trig setTriggerActivation ["WEST", "PRESENT", false];
 _trig setTriggerStatements ["this", "canStart = true;", ""];
@@ -105,7 +105,7 @@ hqSideChat = "Конвой будет в зоне операции через н
 sleep 30 + (random 60);
 
 _convoyCenter = createCenter ENEMY_SIDE;
-_convoyGroup = createGroup ENEMY_SIDE;  
+_convoyGroup = createGroup ENEMY_SIDE;
 _convoyGroup setSpeedMode "NORMAL";
 _convoyGroup setBehaviour "SAFE";
 _convoyGroup setCombatMode "RED";
@@ -115,11 +115,11 @@ _convoyGroup allowFleeing 0;
 _currentWP = false;
 _wayPoints = _position select 4;
 _cntWaypoints = count _wayPoints;
-for "_i" from 0 to (_cntWaypoints -1) do { 
+for "_i" from 0 to (_cntWaypoints -1) do {
     _currentWP = (_wayPoints select _i);
     _wp = _convoyGroup addWaypoint [_currentWP, 0];
     [_convoyGroup,_i] setWaypointType "MOVE";
-    [_convoyGroup,_i] setWaypointCompletionRadius 10;    
+    [_convoyGroup,_i] setWaypointCompletionRadius 10;
     [_convoyGroup,_i] setWaypointFormation "FILE";
     [_convoyGroup,_i] setWaypointBehaviour "SAFE";
     [_convoyGroup,_i] setWaypointCombatMode "NO CHANGE";
@@ -142,7 +142,7 @@ for "_i" from 0 to ((count _vehicles) - 1) do {
     _initPosition = [(_positions select _i) select 0, (_positions select _i) select 1, (_positions select _i) select 2];
     _currentVeh = _vehicles select _i;
     _spawn = [_initPosition, 180, _currentVeh, _convoyGroup] call BIS_fnc_spawnVehicle;
-    _spawned = (_spawn select 0);    
+    _spawned = (_spawn select 0);
     _initDir = (_positions select _i) select 3;
     _spawned setPos _initPosition;
     _spawned setDir _initDir;
@@ -155,14 +155,14 @@ for "_i" from 0 to ((count _vehicles) - 1) do {
             _basePos = getMarkerPos "respawn_west";
             _curObj = _this select 0;
             _curObj setDamage 0.9;
-            _epicenter = getPos _curObj;            
+            _epicenter = getPos _curObj;
             if (isServer) then {
-                convoyVclDestroyed = true; publicVariable "convoyVclDestroyed";   
-                _bigBomb = createVehicle ["Bo_GBU12_LGB", _epicenter, [], 0, "NONE"];   
-                if (((_this select 0) distance _basePos) > 2200) then {      
+                convoyVclDestroyed = true; publicVariable "convoyVclDestroyed";
+                _bigBomb = createVehicle ["Bo_GBU12_LGB", _epicenter, [], 0, "NONE"];
+                if (((_this select 0) distance _basePos) > 2200) then {
                     _k = 1.66;
                     _radius = 900;
-                    _radiusEMI = 1400;    
+                    _radiusEMI = 1400;
                     _allObjects1 = nearestObjects [_epicenter,[], _radius];
                     {
                         if (_x isKindOf "Land_Cargo_Tower_V1_F" || _x isKindOf "Land_Cargo_HQ_V3_F" || _x isKindOf "Land_DataTerminal_01_F") then {
@@ -170,59 +170,59 @@ for "_i" from 0 to ((count _vehicles) - 1) do {
                         } else {
                             _distance = [_epicenter, getPos _x] call BIS_fnc_distance2D;
                             _x setDamage (abs ((_distance / _radius) - _k));
-                        };                        
+                        };
                     } foreach _allObjects1;
                     _allObjects2 = nearestObjects [_epicenter, ["LandVehicle","Air","Ship"], _radiusEMI];
                     {
                         _x engineOn false;
-                        _x setfuel 0;        
+                        _x setfuel 0;
                     } foreach _allObjects2;
-                };     
+                };
                 [_curObj, "QS_fnc_removeAction0", nil, true] spawn BIS_fnc_MP;
-                deleteVehicle _curObj;                
+                deleteVehicle _curObj;
             };
 
             // show nuke explotion effect for players
             if (hasInterface) then {
                 //[[_epicenter], "scripts\nuke.sqf"] call BIS_fnc_execVM;
                 [_epicenter] execVM "scripts\nuke.sqf";
-            };            
+            };
         }];
 
-        // remove passengers from device vehicle        
+        // remove passengers from device vehicle
         {
             if (_x != driver _spawned) then {
                 deleteVehicle _x;
             };
         } forEach (crew _spawned);
     } else {
-        _spawned setVehicleLock "LOCKED"; 
-        _spawned lock true; 
+        _spawned setVehicleLock "LOCKED";
+        _spawned lock true;
         _convoyVehs = _convoyVehs + [_spawned];
-         
+
     };
     _spawned addEventHandler ["dammaged", {
             convoyVclDestroyed = true; publicVariable "convoyVclDestroyed";
         }
-    ];    
+    ];
     _convoy = _convoy + [_spawned];
 
     // fill cargo places
-    if (_currentVeh != INFANTRY_DEVICE_VEHICLE && _currentVeh != INFANTRY_FIRST_VEHICLE) then { 
+    if (_currentVeh != INFANTRY_DEVICE_VEHICLE && _currentVeh != INFANTRY_FIRST_VEHICLE) then {
         _cargoPlaces = _spawned emptyPositions "cargo";
         if (_cargoPlaces > 0) then {
             _cargoPos =  _initPosition findEmptyPosition [10, 100];
             sleep 0.2;
             if (_cargoPos select 0 > 0)then {
-                for "_i" from 1 to _cargoPlaces do { 
+                for "_i" from 1 to _cargoPlaces do {
                     ([INFANTRY_SOLDIERS] call BIS_fnc_selectRandom) createUnit [_cargoPos, _convoyGroup, "currentSoldier = this"];
                     sleep 0.1;
                     currentSoldier moveInCargo _spawned;
                 };
-            };        
+            };
         };
     };
-    sleep 3;  
+    sleep 3;
 };
 [(units _convoyGroup)] call QS_fnc_setSkill3;
 _enemiesArray = _enemiesArray + [_convoyGroup];
@@ -232,7 +232,7 @@ while {!convoyVclDestroyed && !SM_CONVOY_SUCCESS && !SM_CONVOY_FAIL} do {
     {
 
         // check destination point
-        if ((typeOf _x) == INFANTRY_DEVICE_VEHICLE) then {            
+        if ((typeOf _x) == INFANTRY_DEVICE_VEHICLE) then {
             if (((getPos _x) distance2D _currentWP) < 100) then {
                 SM_CONVOY_FAIL = true; publicVariable "SM_CONVOY_FAIL";
             };
@@ -242,24 +242,24 @@ while {!convoyVclDestroyed && !SM_CONVOY_SUCCESS && !SM_CONVOY_FAIL} do {
             convoyVclDestroyed = true; publicVariable "convoyVclDestroyed";
         };
     } foreach _convoy;
-    sleep 4;    
+    sleep 4;
 };
 
 // Convoy under attack - remove waypoints
-for "_i" from 0 to (_cntWaypoints -1) do { 
+for "_i" from 0 to (_cntWaypoints -1) do {
     deleteWaypoint [_convoyGroup, _i];
 };
 
-// Stop all vehicles   
+// Stop all vehicles
 _outGroup = [];
-_defPoint = [0,0,0]; 
+_defPoint = [0,0,0];
 {
     _vcl = _x;
     if (alive _vcl) then {
-        _vcl forceSpeed 0; 
+        _vcl forceSpeed 0;
         _vcl engineOn false;
         _driver = driver _vcl;
-        if ((typeOf _vcl) in ["O_APC_Wheeled_02_rcws_F","O_MRAP_02_hmg_F","O_Truck_03_device_F"]) then {            
+        if ((typeOf _vcl) in ["O_APC_Wheeled_02_rcws_F","O_MRAP_02_hmg_F","O_Truck_03_device_F"]) then {
             if ((typeOf _vcl) == "O_Truck_03_device_F") then {
                 _defPoint = getPos _vcl;
                 if (!isNull _driver) then {
@@ -284,11 +284,11 @@ _convoyGroup setBehaviour "COMBAT";
 _convoyGroup setCombatMode "RED";
 
 // Disembark
-_outUnits = [];  
-{                         
+_outUnits = [];
+{
     _unit = _x select 0;
-    if (alive _unit) then {   
-        _unit action ["Eject", (vehicle _unit)]; 
+    if (alive _unit) then {
+        _unit action ["Eject", (vehicle _unit)];
         _outUnits = _outUnits + [_unit];
     };
 } forEach _outGroup;
@@ -322,18 +322,18 @@ _n = 1;
         _i = 0;
         _n = _n + 1;
     };
-    switch (_n) do { 
-        case 1 : { _units1 = _units1 + [_x]; }; 
-        case 2 : { _units2 = _units2 + [_x]; }; 
-        case 3 : { _units3 = _units3 + [_x]; }; 
-        case 4 : { _units4 = _units4 + [_x]; }; 
-        case 5 : { _units5 = _units5 + [_x]; }; 
-        case 6 : { _units6 = _units6 + [_x]; }; 
-        case 7 : { _units7 = _units7 + [_x]; }; 
-        case 8 : { _units8 = _units8 + [_x]; }; 
-        case 9 : { _units9 = _units9 + [_x]; }; 
-        default { _units10 = _units10 + [_x]; }; 
-    };   
+    switch (_n) do {
+        case 1 : { _units1 = _units1 + [_x]; };
+        case 2 : { _units2 = _units2 + [_x]; };
+        case 3 : { _units3 = _units3 + [_x]; };
+        case 4 : { _units4 = _units4 + [_x]; };
+        case 5 : { _units5 = _units5 + [_x]; };
+        case 6 : { _units6 = _units6 + [_x]; };
+        case 7 : { _units7 = _units7 + [_x]; };
+        case 8 : { _units8 = _units8 + [_x]; };
+        case 9 : { _units9 = _units9 + [_x]; };
+        default { _units10 = _units10 + [_x]; };
+    };
     _i = _i + 1;
 } foreach _outUnits;
 _units1 joinSilent _unitsGroup1;
@@ -376,12 +376,12 @@ _attackersLeft = count (units _unitsGroup1) + count (units _unitsGroup2) + count
 while {!SM_CONVOY_SUCCESS && !SM_CONVOY_FAIL && _attackersLeft > 0} do {
     sleep 2;
     _attackersLeft = count (units _unitsGroup1) + count (units _unitsGroup2) + count (units _unitsGroup3) + count (units _unitsGroup4) + count (units _unitsGroup5) + count (units _unitsGroup6) + count (units _unitsGroup7) + count (units _unitsGroup8) + count (units _unitsGroup9) + count (units _unitsGroup10);
-    if (!alive _enemy1) then {     
+    if (!alive _enemy1) then {
         _enemy1 = _leader1 findNearestEnemy (getPos _leader1);
         if (!isNull _enemy1) then {
             _posEnemy = getPos _enemy1;
             if ((_posEnemy distance2D _defPoint) < _checkDistance) then {
-                {                
+                {
                     _x doMove _posEnemy;
                 } forEach (units _unitsGroup1);
             };
@@ -391,12 +391,12 @@ while {!SM_CONVOY_SUCCESS && !SM_CONVOY_FAIL && _attackersLeft > 0} do {
             } forEach (units _unitsGroup1);
         };
     };
-    if (!alive _enemy2) then {     
+    if (!alive _enemy2) then {
         _enemy2 = _leader2 findNearestEnemy (getPos _leader2);
         if (!isNull _enemy2) then {
             _posEnemy = getPos _enemy2;
             if ((_posEnemy distance2D _defPoint) < _checkDistance) then {
-                {                
+                {
                     _x doMove _posEnemy;
                 } forEach (units _unitsGroup2);
             };
@@ -406,12 +406,12 @@ while {!SM_CONVOY_SUCCESS && !SM_CONVOY_FAIL && _attackersLeft > 0} do {
             } forEach (units _unitsGroup2);
         };
     };
-    if (!alive _enemy3) then {     
+    if (!alive _enemy3) then {
         _enemy3 = _leader6 findNearestEnemy (getPos _leader3);
         if (!isNull _enemy3) then {
             _posEnemy = getPos _enemy3;
             if ((_posEnemy distance2D _defPoint) < _checkDistance) then {
-                {                
+                {
                     _x doMove _posEnemy;
                 } forEach (units _unitsGroup3);
             };
@@ -421,12 +421,12 @@ while {!SM_CONVOY_SUCCESS && !SM_CONVOY_FAIL && _attackersLeft > 0} do {
             } forEach (units _unitsGroup3);
         };
     };
-    if (!alive _enemy4) then {     
+    if (!alive _enemy4) then {
         _enemy4 = _leader4 findNearestEnemy (getPos _leader4);
         if (!isNull _enemy4) then {
             _posEnemy = getPos _enemy4;
             if ((_posEnemy distance2D _defPoint) < _checkDistance) then {
-                {                
+                {
                     _x doMove _posEnemy;
                 } forEach (units _unitsGroup4);
             };
@@ -436,12 +436,12 @@ while {!SM_CONVOY_SUCCESS && !SM_CONVOY_FAIL && _attackersLeft > 0} do {
             } forEach (units _unitsGroup4);
         };
     };
-    if (!alive _enemy5) then {     
+    if (!alive _enemy5) then {
         _enemy5w = _leader5 findNearestEnemy (getPos _leader5);
         if (!isNull _enemy5) then {
             _posEnemy = getPos _enemy5;
             if ((_posEnemy distance2D _defPoint) < _checkDistance) then {
-                {                
+                {
                     _x doMove _posEnemy;
                 } forEach (units _unitsGroup5);
             };
@@ -451,12 +451,12 @@ while {!SM_CONVOY_SUCCESS && !SM_CONVOY_FAIL && _attackersLeft > 0} do {
             } forEach (units _unitsGroup5);
         };
     };
-    if (!alive _enemy6) then {     
+    if (!alive _enemy6) then {
         _enemy6 = _leader6 findNearestEnemy (getPos _leader6);
         if (!isNull _enemy6) then {
             _posEnemy = getPos _enemy6;
             if ((_posEnemy distance2D _defPoint) < _checkDistance) then {
-                {                
+                {
                     _x doMove _posEnemy;
                 } forEach (units _unitsGroup6);
             };
@@ -466,12 +466,12 @@ while {!SM_CONVOY_SUCCESS && !SM_CONVOY_FAIL && _attackersLeft > 0} do {
             } forEach (units _unitsGroup6);
         };
     };
-    if (!alive _enemy7) then {     
+    if (!alive _enemy7) then {
         _enemy6 = _leader7 findNearestEnemy (getPos _leader7);
         if (!isNull _enemy7) then {
             _posEnemy = getPos _enemy7;
             if ((_posEnemy distance2D _defPoint) < _checkDistance) then {
-                {                
+                {
                     _x doMove _posEnemy;
                 } forEach (units _unitsGroup7);
             };
@@ -481,12 +481,12 @@ while {!SM_CONVOY_SUCCESS && !SM_CONVOY_FAIL && _attackersLeft > 0} do {
             } forEach (units _unitsGroup7);
         };
     };
-    if (!alive _enemy8) then {     
+    if (!alive _enemy8) then {
         _enemy6 = _leader8 findNearestEnemy (getPos _leader8);
         if (!isNull _enemy8) then {
             _posEnemy = getPos _enemy8;
             if ((_posEnemy distance2D _defPoint) < _checkDistance) then {
-                {                
+                {
                     _x doMove _posEnemy;
                 } forEach (units _unitsGroup8);
             };
@@ -496,12 +496,12 @@ while {!SM_CONVOY_SUCCESS && !SM_CONVOY_FAIL && _attackersLeft > 0} do {
             } forEach (units _unitsGroup8);
         };
     };
-    if (!alive _enemy9) then {     
+    if (!alive _enemy9) then {
         _enemy6 = _leader9 findNearestEnemy (getPos _leader9);
         if (!isNull _enemy9) then {
             _posEnemy = getPos _enemy9;
             if ((_posEnemy distance2D _defPoint) < _checkDistance) then {
-                {                
+                {
                     _x doMove _posEnemy;
                 } forEach (units _unitsGroup9);
             };
@@ -511,12 +511,12 @@ while {!SM_CONVOY_SUCCESS && !SM_CONVOY_FAIL && _attackersLeft > 0} do {
             } forEach (units _unitsGroup9);
         };
     };
-    if (!alive _enemy10) then {     
+    if (!alive _enemy10) then {
         _enemy6 = _leader10 findNearestEnemy (getPos _leader10);
         if (!isNull _enemy10) then {
             _posEnemy = getPos _enemy10;
             if ((_posEnemy distance2D _defPoint) < _checkDistance) then {
-                {                
+                {
                     _x doMove _posEnemy;
                 } forEach (units _unitsGroup10);
             };
@@ -530,7 +530,7 @@ while {!SM_CONVOY_SUCCESS && !SM_CONVOY_FAIL && _attackersLeft > 0} do {
     // check destination point
     {
         _vcl = _x;
-        if ((typeOf _vcl) == "O_Truck_03_device_F") then {            
+        if ((typeOf _vcl) == "O_Truck_03_device_F") then {
             if (((getPos _vcl) distance2D _currentWP) < 100) then {
                 SM_CONVOY_FAIL = true; publicVariable "SM_CONVOY_FAIL";
             };
@@ -544,18 +544,18 @@ while { sideMissionUp } do {
     sleep 2;
 
     // de-briefing
-    if (SM_CONVOY_SUCCESS || SM_CONVOY_FAIL) exitWith {  
+    if (SM_CONVOY_SUCCESS || SM_CONVOY_FAIL) exitWith {
         _delConvoy = [];
-        sideMissionUp = false; publicVariable "sideMissionUp";        
+        sideMissionUp = false; publicVariable "sideMissionUp";
         { _x setMarkerPos [-12000,-12000,-12000]; publicVariable _x; } forEach ["sideMarker", "sideCircle"];
         "sideCircle" setMarkerSize [300, 300]; publicVariable "sideCircle";
         "sideMarker" setMarkerText ""; publicVariable "sideMarker";
         if (SM_CONVOY_FAIL) then {
             _delConvoy = _convoy;
-            [] call QS_fnc_SMhintFAIL;            
+            [] call QS_fnc_SMhintFAIL;
         } else {
             _delConvoy = _convoyVehs;
-            [] call QS_fnc_SMhintSUCCESS;  
+            [] call QS_fnc_SMhintSUCCESS;
 
             // change event to prevent next convoy fail on destroy device from previous mission
             vehDevice removeAllMPEventHandlers "MPKilled";
@@ -563,13 +563,13 @@ while { sideMissionUp } do {
                 _basePos = getMarkerPos "respawn_west";
                 _curObj = _this select 0;
                 _curObj setDamage 0.9;
-                _epicenter = getPos _curObj;            
-                if (isServer) then {  
-                    _bigBomb = createVehicle ["Bo_GBU12_LGB", _epicenter, [], 0, "NONE"];   
-                    if (((_this select 0) distance _basePos) > 2200) then {      
+                _epicenter = getPos _curObj;
+                if (isServer) then {
+                    _bigBomb = createVehicle ["Bo_GBU12_LGB", _epicenter, [], 0, "NONE"];
+                    if (((_this select 0) distance _basePos) > 2200) then {
                         _k = 1.66;
                         _radius = 900;
-                        _radiusEMI = 1400;                   
+                        _radiusEMI = 1400;
                         _allObjects1 = nearestObjects [_epicenter,[], _radius];
                         {
                             _distance = [_epicenter, getPos _x] call BIS_fnc_distance2D;
@@ -578,18 +578,18 @@ while { sideMissionUp } do {
                         _allObjects2 = nearestObjects [_epicenter, ["LandVehicle","Air","Ship"], _radiusEMI];
                         {
                             _x engineOn false;
-                            _x setfuel 0;        
+                            _x setfuel 0;
                         } foreach _allObjects2;
                     };
                     [_curObj, "QS_fnc_removeAction0", nil, true] spawn BIS_fnc_MP;
-                    deleteVehicle _curObj;                
+                    deleteVehicle _curObj;
                 };
-    
+
                 // show nuke explotion effect for players
                 if (hasInterface) then {
                     //[[_epicenter], "scripts\nuke.sqf"] call BIS_fnc_execVM;
                     [_epicenter] execVM "scripts\nuke.sqf";
-                };            
+                };
             }];
         };
         _i = 0;
@@ -599,12 +599,12 @@ while { sideMissionUp } do {
             _i = _i + 1;
         } forEach _markers;
         sleep 120;
-        { 
+        {
             if (alive _x) then {
                 deleteVehicle _x;
             };
-        } forEach _delConvoy;  
-        { 
+        } forEach _delConvoy;
+        {
             if (typeName _x == "GROUP") then {
                 {
                     deleteVehicle _x;
@@ -613,7 +613,7 @@ while { sideMissionUp } do {
                 deleteVehicle _x;
             };
             sleep 0.5;
-        } forEach _enemiesArray; 
+        } forEach _enemiesArray;
     };
     sleep 3;
 };

@@ -16,7 +16,7 @@ Description: capture the enemy warehouse and neutralize barrels with gas
 #define INFANTRY_RECONS "O_recon_M_F","O_recon_TL_F","O_Soldier_AAA_F","O_Soldier_AA_F"
 
 // define private variables
-private ["_targets","_accepted","_distance","_briefing","_position","_flatPos","_x","_enemiesArray","_startPoint"];         
+private ["_targets","_accepted","_distance","_briefing","_position","_flatPos","_x","_enemiesArray","_startPoint"];
 
 _enemiesArray = [grpNull];
 _unitsArray = [];
@@ -39,20 +39,20 @@ _targets = [
     [[11578,7040],         [11578,7040,0],      [11578,7040,0]],
     [[17025,11324],        [17025,11324,0],     [17025,11324,0]],
     [[8999,15486],         [8999,15486,0],      [8999,15486,0]]
-];   
+];
 
 // select correct place for mission
 if (PARAMS_AO == 1) then {
     _accepted = false;
-    while {!_accepted} do {    
+    while {!_accepted} do {
         _position = _targets call BIS_fnc_selectRandom;
-        _flatPos  = _position select 0;  
+        _flatPos  = _position select 0;
         _distance = [_flatPos, getMarkerPos currentAO] call BIS_fnc_distance2D;
         if (_distance > 3000) then {
             _distance = [_flatPos, getMarkerPos "priorityMarker"] call BIS_fnc_distance2D;
             if (_distance > 1500) then {
                 _accepted = true;
-            };  
+            };
         };
         sleep 5;
     };
@@ -72,7 +72,7 @@ SM_YELLOWFOG_FAIL = false; publicVariable "SM_YELLOWFOG_FAIL";
 SM_YELLOWFOG_STARTPOINT = _startPoint; publicVariable "SM_YELLOWFOG_STARTPOINT";
 
 // show brief information
-_briefing = "<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#FF9999'>Желтый туман</t><br/>____________________<br/>Нам поступила информация о странном складе ГСМ противника. Охрана склада часто ходит в противогазах и комплектах химзащиты. Есть подозрние что часть емкостей сожержит иприт. Командование назначило десантную спецоперацию.<br/><br/>Ваша задача: выдвинуться в указанный район, проникнуть на базу и обезвредить бочки с химоружием.</t>";
+_briefing = "<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#FFC107'>Желтый туман</t><br/>____________________<br/>Нам поступила информация о странном складе ГСМ противника. Охрана склада часто ходит в противогазах и комплектах химзащиты. Есть подозрние что часть емкостей сожержит иприт. Командование назначило десантную спецоперацию.<br/><br/>Ваша задача: выдвинуться в указанный район, проникнуть на базу и обезвредить бочки с химоружием.</t>";
 GlobalHint = _briefing; hint parseText GlobalHint; publicVariable "GlobalHint";
 showNotification = ["NewSideMission", "Желтый туман"]; publicVariable "showNotification";
 sideMissionUp = true; publicVariable "sideMissionUp";
@@ -83,33 +83,33 @@ _dir2 = 180;
 _dir3 = 180;
 for "_c" from 0 to 189 do {
     _pos = [_startPoint, 120, _dir1] call BIS_fnc_relPos;
-    _wall = createVehicle ["Land_Mil_WallBig_4m_F", [_pos select 0, _pos select 1, 0], [], 0, "CAN_COLLIDE"];         
+    _wall = createVehicle ["Land_Mil_WallBig_4m_F", [_pos select 0, _pos select 1, 0], [], 0, "CAN_COLLIDE"];
     _wall setDir (_dir1 + 180);
     _wall setVectorUp (surfaceNormal (getPosATL _wall));
-    _pos = getPosATL _wall; 
+    _pos = getPosATL _wall;
     if (_pos select 2 > 0.2) then {
         _pos = [_pos select 0, _pos select 1, -0.1];
         _wall setPosATL _pos;
     };
-    _dir1 = _dir1 + 1.9; 
+    _dir1 = _dir1 + 1.9;
     if (_c < 95) then {
         _pos = [_startPoint, 125, _dir2] call BIS_fnc_relPos;
         _razor = createVehicle ["Land_Razorwire_F", [70,70,70], [], 0, "NONE"];
-        waitUntil {alive _razor};             
+        waitUntil {alive _razor};
         _razor setDir (_dir2 + 180);
-        _razor setPos [_pos select 0, _pos select 1, -0.1];    
-        _razor setVectorUp (surfaceNormal (getPosATL _razor));  
-        _dir2 = _dir2 + 3.8; 
+        _razor setPos [_pos select 0, _pos select 1, -0.1];
+        _razor setVectorUp (surfaceNormal (getPosATL _razor));
+        _dir2 = _dir2 + 3.8;
         _unitsArray = _unitsArray + [_razor];
     };
     if (_c < 103) then {
         _pos = [_startPoint, 130, _dir3] call BIS_fnc_relPos;
         _fence = createVehicle ["Land_Mil_WiredFence_F", [70,70,70], [], 0, "CAN_COLLIDE"];
-        waitUntil {alive _fence};         
+        waitUntil {alive _fence};
         _fence setDir (_dir3 + 180);
-        _fence setPos [_pos select 0, _pos select 1, -0.1];    
-        _fence setVectorUp (surfaceNormal (getPosATL _fence));  
-        _dir3 = _dir3 + 3.5;  
+        _fence setPos [_pos select 0, _pos select 1, -0.1];
+        _fence setVectorUp (surfaceNormal (getPosATL _fence));
+        _dir3 = _dir3 + 3.5;
         _unitsArray = _unitsArray + [_fence];
     };
     _unitsArray = _unitsArray + [_wall];
@@ -146,7 +146,7 @@ while {surfaceIsWater _barrelPos} do {
 };
 _barrel = createVehicle ["CargoNet_01_barrels_F", _barrelPos, [], 0, "NONE"];
 [_barrel, "QS_fnc_addActionNeutralize", nil, true] spawn BIS_fnc_MP;
-SM_YELLOWFOG_POS = getPos _barrel; 
+SM_YELLOWFOG_POS = getPos _barrel;
 SM_YELLOWFOG_POS set [2, ((SM_YELLOWFOG_POS select 2) + 1)];
 publicVariable "SM_YELLOWFOG_POS";
 _unitsArray = _unitsArray + [_barrel];
@@ -239,22 +239,22 @@ for "_i" from 1 to 20 do {
 _barrel addEventHandler ["EpeContactStart", {
 
     if (!SM_YELLOWFOG_FAIL) then {
-        SM_YELLOWFOG_FAIL = true; 
-        publicVariable "SM_YELLOWFOG_FAIL"; 
-        _obj removeEventHandler ['EpeContact', 0]; 
-        [[[SM_YELLOWFOG_POS, 120], "scripts\fog.sqf"], "BIS_fnc_execVM", true, false] spawn BIS_fnc_MP;           
-        [] spawn {                        
+        SM_YELLOWFOG_FAIL = true;
+        publicVariable "SM_YELLOWFOG_FAIL";
+        _obj removeEventHandler ['EpeContact', 0];
+        [[[SM_YELLOWFOG_POS, 120], "scripts\fog.sqf"], "BIS_fnc_execVM", true, false] spawn BIS_fnc_MP;
+        [] spawn {
             _n = 0;
             _nearestTargets = nearestObjects [SM_YELLOWFOG_STARTPOINT, ["Man"], 130];
-            while {_n <= 120} do {            
+            while {_n <= 120} do {
                 {
                     _x setDamage 0.1 * _n / 10;
                 } forEach _nearestTargets;
                 _n = _n + 10;
                 sleep 10;
-            };                
+            };
         };
-    };           
+    };
 }];
 
 // spawn guards
@@ -263,15 +263,15 @@ _nearestHQ = nearestObjects [_startPoint, ["Land_Cargo_HQ_V1_F"], 130];
 {
     _cargoHQ = _x;
 
-    // guards with static weapons on cargoHQ   
+    // guards with static weapons on cargoHQ
     {
         _posATL = _cargoHQ buildingPos _x;
         _posATL = [(_posATL select 0), (_posATL select 1), ((_posATL select 2) + 0.2)];
-        _static = INFANTRY_STATIC createVehicle [10,10,10];       
-        waitUntil{!isNull _static}; 
+        _static = INFANTRY_STATIC createVehicle [10,10,10];
+        waitUntil{!isNull _static};
         _static allowDamage false;
         _static setPos _posATL;
-        _static setDir (random 360); 
+        _static setDir (random 360);
         ([INFANTRY_GUNNERS] call BIS_fnc_selectRandom) createUnit [[10,10,10], _hqGroup, "currentGuard = this", 0, ([INFANTRY_RANK] call BIS_fnc_selectRandom)];
         currentGuard allowDamage false;
         sleep 0.2;
@@ -284,17 +284,17 @@ _nearestHQ = nearestObjects [_startPoint, ["Land_Cargo_HQ_V1_F"], 130];
         currentGuard allowDamage true;
         _static allowDamage true;
         _static = nil;
-    } forEach [5]; 
+    } forEach [5];
 
     // other guards
     {
         _posHQ = _cargoHQ buildingPos _x;
-        ([INFANTRY_SUPPORT] call BIS_fnc_selectRandom) createUnit [_posHQ, _hqGroup, "currentGuard = this", 0, ([INFANTRY_RANK] call BIS_fnc_selectRandom)];  
+        ([INFANTRY_SUPPORT] call BIS_fnc_selectRandom) createUnit [_posHQ, _hqGroup, "currentGuard = this", 0, ([INFANTRY_RANK] call BIS_fnc_selectRandom)];
         currentGuard allowDamage false;
         sleep 0.2;
         currentGuard setPosASL _posHQ;
-        currentGuard setDir (random 360); 
-        currentGuard setUnitPos "UP";   
+        currentGuard setDir (random 360);
+        currentGuard setUnitPos "UP";
         currentGuard allowDamage true;
         [currentGuard,(["WATCH","WATCH1","WATCH2"] call BIS_fnc_selectRandom),"FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
         _enemiesArray = _enemiesArray + [currentGuard];
@@ -308,12 +308,12 @@ _nearestCargo = nearestObjects [_startPoint, ["Land_Cargo_House_V1_F"], 130];
 {
     _house = _x;
     _posHouse = _house buildingPos ([1,2,3] call BIS_fnc_selectRandom);
-    ([INFANTRY_SUPPORT] call BIS_fnc_selectRandom) createUnit [_posHouse, _houseGroup, "currentGuard = this", 0, ([INFANTRY_RANK] call BIS_fnc_selectRandom)];  
+    ([INFANTRY_SUPPORT] call BIS_fnc_selectRandom) createUnit [_posHouse, _houseGroup, "currentGuard = this", 0, ([INFANTRY_RANK] call BIS_fnc_selectRandom)];
     currentGuard allowDamage false;
     sleep 0.2;
     currentGuard setPosASL _posHouse;
-    currentGuard setDir (random 360); 
-    currentGuard setUnitPos "UP";   
+    currentGuard setDir (random 360);
+    currentGuard setUnitPos "UP";
     currentGuard allowDamage true;
     [currentGuard,(["WATCH","WATCH1","WATCH2"] call BIS_fnc_selectRandom),"FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
     _enemiesArray = _enemiesArray + [currentGuard];
@@ -326,12 +326,12 @@ _nearestPatrolHouse = nearestObjects [_startPoint, ["Land_Cargo_Patrol_V1_F"], 1
     _patrolHouse = _x;
     {
         _posPatrolHouse = _patrolHouse buildingPos _x;
-        ([INFANTRY_RECONS] call BIS_fnc_selectRandom) createUnit [_posPatrolHouse, _sniperGroup, "currentGuard = this", 0, ([INFANTRY_RANK] call BIS_fnc_selectRandom)];  
+        ([INFANTRY_RECONS] call BIS_fnc_selectRandom) createUnit [_posPatrolHouse, _sniperGroup, "currentGuard = this", 0, ([INFANTRY_RANK] call BIS_fnc_selectRandom)];
         currentGuard allowDamage false;
         sleep 0.2;
         currentGuard setPosASL _posPatrolHouse;
-        currentGuard setDir (random 360); 
-        currentGuard setUnitPos "UP";   
+        currentGuard setDir (random 360);
+        currentGuard setUnitPos "UP";
         currentGuard allowDamage true;
         [currentGuard,(["WATCH","WATCH1","WATCH2"] call BIS_fnc_selectRandom),"FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
         _enemiesArray = _enemiesArray + [currentGuard];
@@ -340,13 +340,13 @@ _nearestPatrolHouse = nearestObjects [_startPoint, ["Land_Cargo_Patrol_V1_F"], 1
 
 // ground guards
 _groundGroup  = createGroup ENEMY_SIDE;
-for "_c" from 1 to 10 do { 
+for "_c" from 1 to 10 do {
     _groundPos = [_startPoint, 0, 110, 2, 0, 10, 0] call BIS_fnc_findSafePos;
-    ([INFANTRY_RECONS] call BIS_fnc_selectRandom) createUnit [_groundPos, _groundGroup, "currentGuard = this", 0, ([INFANTRY_RANK] call BIS_fnc_selectRandom)];  
+    ([INFANTRY_RECONS] call BIS_fnc_selectRandom) createUnit [_groundPos, _groundGroup, "currentGuard = this", 0, ([INFANTRY_RANK] call BIS_fnc_selectRandom)];
     currentGuard allowDamage false;
     sleep 0.2;
-    currentGuard setDir (random 360); 
-    currentGuard setUnitPos "UP";   
+    currentGuard setDir (random 360);
+    currentGuard setUnitPos "UP";
     currentGuard allowDamage true;
     [currentGuard,(["WATCH","WATCH1","WATCH2"] call BIS_fnc_selectRandom),"FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
     _enemiesArray = _enemiesArray + [currentGuard];
@@ -374,22 +374,22 @@ _enemiesArray = _enemiesArray + (units _patrolGroup3);
 {
     _x setBehaviour "SAFE";
     _x setCombatMode "RED";
-    [(units _x)] call QS_fnc_setSkill3; 
+    [(units _x)] call QS_fnc_setSkill3;
 } forEach [_hqGroup, _houseGroup, _sniperGroup, _groundGroup, _patrolGroup1, _patrolGroup2, _patrolGroup3];
 [_startPoint, 200, ["vehicles", "fire"]] call QS_fnc_addHades;
 while { sideMissionUp } do {
     sleep 2;
 
     // de-briefing
-    if (SM_YELLOWFOG_SUCCESS || SM_YELLOWFOG_FAIL) exitWith {  
+    if (SM_YELLOWFOG_SUCCESS || SM_YELLOWFOG_FAIL) exitWith {
         sideMissionUp = false; publicVariable "sideMissionUp";
         { _x setMarkerPos [-12000,-12000,-12000]; publicVariable _x; } forEach ["sideMarker", "sideCircle"];
         "sideCircle" setMarkerSize [300, 300]; publicVariable "sideCircle";
         "sideMarker" setMarkerText ""; publicVariable "sideMarker";
         if (SM_YELLOWFOG_FAIL) then {
-            [] call QS_fnc_SMhintFAIL;   
+            [] call QS_fnc_SMhintFAIL;
         } else {
-            [] call QS_fnc_SMhintSUCCESS;   
+            [] call QS_fnc_SMhintSUCCESS;
 
             // spawn stomper
             if (random 10 > 5) then {
@@ -399,17 +399,17 @@ while { sideMissionUp } do {
                 _spawn = [_stomperPos, (random 360), "B_UGV_01_rcws_F", _uavGroup] call BIS_fnc_spawnVehicle;
                 _uav = (_spawn select 0);
                 _uav addWeapon "missiles_titan";
-                _uav addMagazine "2Rnd_GAT_missiles"; 
+                _uav addMagazine "2Rnd_GAT_missiles";
                 _uav addWeapon "Missile_AA_03_Plane_CAS_02_F";
                 _uav addMagazine "2Rnd_Missile_AA_03_F";
-            };                   
-        };                  
+            };
+        };
 
         sleep 60;
         {
             deleteVehicle _x;
         } forEach _unitsArray;
-        sleep 2;        
+        sleep 2;
         _nearestTargets = nearestObjects [_startPoint, [INFANTRY_CARGO], 200];
         {
             deleteVehicle _x;
@@ -421,7 +421,7 @@ while { sideMissionUp } do {
         } foreach _nearestTargets;
         sleep 2;
         deleteGroup _camp;
-        { 
+        {
             [_x] call QS_fnc_TBdeleteObjects;
         } forEach [_enemiesArray];
         [_startPoint, 500] call QS_fnc_DeleteEnemyEAST;

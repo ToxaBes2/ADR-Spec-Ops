@@ -61,7 +61,7 @@ _guardsGroup = [_fuzzyPos, 400, 50, ENEMY_SIDE] call QS_fnc_FillBots;
 sideMarkerText = "Пусковые установки"; publicVariable "sideMarkerText";
 "sideMarker" setMarkerText "Допзадание: Пусковые установки"; publicVariable "sideMarker";
 publicVariable "sideObj";
-_briefing = "<t align='center'><t size='2.2'>Новое допзадание</t><br/><t size='1.5' color='#00B2EE'>Пусковые установки</t><br/>____________________<br/>Предатель в рядах союзных войск передаёт вражеским силам новейшие вооружение и пусковые установки.<br/><br/>Ваша задача — выдвинуться в указанный район, найти и захватить пусковые установки, ликвидируя группировки врага по ходу операции.</t>";
+_briefing = "<t align='center'><t size='2.2'>Новое допзадание</t><br/><t size='1.5' color='#FFC107'>Пусковые установки</t><br/>____________________<br/>Предатель в рядах союзных войск передаёт вражеским силам новейшие вооружение и пусковые установки.<br/><br/>Ваша задача — выдвинуться в указанный район, найти и захватить пусковые установки, ликвидируя группировки врага по ходу операции.</t>";
 GlobalHint = _briefing; hint parseText GlobalHint; publicVariable "GlobalHint";
 showNotification = ["NewSideMission", "Пусковые установки"]; publicVariable "showNotification";
 sideMarkerText = "Система ПВО"; publicVariable "sideMarkerText";
@@ -91,7 +91,7 @@ while { sideMissionUp } do {
 	};
 
 	// IF PACKAGE SECURED [SUCCESS]
-	if (SM_SUCCESS) exitWith {	
+	if (SM_SUCCESS) exitWith {
 
 		// BOOM!
 		hqSideChat = _c4Message; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;

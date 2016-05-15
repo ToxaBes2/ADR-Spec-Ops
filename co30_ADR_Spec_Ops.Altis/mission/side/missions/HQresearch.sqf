@@ -64,7 +64,7 @@ sideMarkerText = "Шпионаж"; publicVariable "sideMarkerText";
 "sideMarker" setMarkerText "Допзадание: Шпионаж"; publicVariable "sideMarker";
 publicVariable "sideObj";
 
-_briefing = "<t align='center'><t size='2.2'>Новое допзадание</t><br/><t size='1.5' color='#00B2EE'>Шпионаж</t><br/>____________________<br/>Силы противника проводят НИР с целью производства новых типов оружия.<br/><br/>Ваша задача — выдвинуться в указанный район, найти и захватить научные данные и затем уничтожить исследовательский центр.</t>";
+_briefing = "<t align='center'><t size='2.2'>Новое допзадание</t><br/><t size='1.5' color='#FFC107'>Шпионаж</t><br/>____________________<br/>Силы противника проводят НИР с целью производства новых типов оружия.<br/><br/>Ваша задача — выдвинуться в указанный район, найти и захватить научные данные и затем уничтожить исследовательский центр.</t>";
 GlobalHint = _briefing; publicVariable "GlobalHint"; hint parseText GlobalHint;
 showNotification = ["NewSideMission", "Шпионаж"]; publicVariable "showNotification";
 sideMarkerText = "Шпионаж"; publicVariable "sideMarkerText";
@@ -100,11 +100,11 @@ while { sideMissionUp } do {
 		hqSideChat = _c4Message; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
 		_dummy setPos [(getPos sideObj select 0), (getPos sideObj select 1), ((getPos sideObj select 2) + 2)];
 		sleep 0.1;
-		_object setPos [-10000, -10000, 0];					
-		sleep 30;											
-		"Bo_Mk82" createVehicle getPos _dummy; 				
-		_dummy setPos [-10000, -10000, 1];					
-		researchTable setPos [-10000, -10000, 1];			
+		_object setPos [-10000, -10000, 0];
+		sleep 30;
+		"Bo_Mk82" createVehicle getPos _dummy;
+		_dummy setPos [-10000, -10000, 1];
+		researchTable setPos [-10000, -10000, 1];
 		sleep 0.1;
 
 		// DE-BRIEFING

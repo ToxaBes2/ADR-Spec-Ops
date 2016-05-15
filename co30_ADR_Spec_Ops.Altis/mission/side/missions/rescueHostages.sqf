@@ -82,15 +82,15 @@ _targets = [
 // select correct place for mission
 if (PARAMS_AO == 1) then {
     _accepted = false;
-    while {!_accepted} do {    
+    while {!_accepted} do {
         _position = _targets call BIS_fnc_selectRandom;
-        _flatPos  = _position select 1;  
+        _flatPos  = _position select 1;
         _distance = [_flatPos, getMarkerPos currentAO] call BIS_fnc_distance2D;
         if (_distance > 3000) then {
             _distance = [_flatPos, getMarkerPos "priorityMarker"] call BIS_fnc_distance2D;
             if (_distance > 1500) then {
                 _accepted = true;
-            };  
+            };
         };
         sleep 5;
     };
@@ -117,12 +117,12 @@ _dir4 = 180;
 for "_c" from 0 to 109 do {
     _pos1 = [_startPoint, 180, _dir1] call BIS_fnc_relPos;
     _sign1 = createVehicle ["Land_Razorwire_F", [70,70,70], [], 0, "CAN_COLLIDE"];
-    waitUntil {alive _sign1};     
-    _sign1 allowDamage false;    
+    waitUntil {alive _sign1};
+    _sign1 allowDamage false;
     _sign1 setDir _dir1;
-    _sign1 setPos [_pos1 select 0, _pos1 select 1, 0];    
+    _sign1 setPos [_pos1 select 0, _pos1 select 1, 0];
     _sign1 setVectorUp (surfaceNormal (getPosATL _sign1));
-    _pos = getPosATL _sign1; 
+    _pos = getPosATL _sign1;
     if (_pos select 2 > 0.2) then {
         _pos = [_pos select 0, _pos select 1, 0];
         _sign1 setPosATL _pos;
@@ -130,7 +130,7 @@ for "_c" from 0 to 109 do {
     if ((random 10) > 1) then {
         _minePos = [_startPoint, 179.8, (_dir1 + 2.2)] call BIS_fnc_relPos;
         if (surfaceIsWater _minePos) then {
-            _minePos = [_minePos select 0, _minePos select 1, getTerrainHeightASL _minePos];        
+            _minePos = [_minePos select 0, _minePos select 1, getTerrainHeightASL _minePos];
             _mine = createMine ["UnderwaterMinePDM", [_minePos select 0, _minePos select 1], [], 0];
             waitUntil {alive _mine};
             _mine setPosATL [_minePos select 0,_minePos select 1, (getPosATL _mine select 2) - 2];
@@ -148,18 +148,18 @@ for "_c" from 0 to 109 do {
             _minesArray = _minesArray + [_mine];
         };
     };
-    _dir1 = _dir1 + 3.3;        
+    _dir1 = _dir1 + 3.3;
     _unitsArray = _unitsArray + [_sign1];
 
     _pos3 = [_startPoint, 200, _dir3] call BIS_fnc_relPos;
     _sign3 = createVehicle ["Land_Sign_Mines_F", [70,70,70], [], 0, "CAN_COLLIDE"];
     waitUntil {alive _sign3};
-    _sign3 allowDamage false; 
+    _sign3 allowDamage false;
     _sign3 setDir _dir3;
-    _sign3 setPos [_pos3 select 0, _pos3 select 1, 0];    
+    _sign3 setPos [_pos3 select 0, _pos3 select 1, 0];
     _dir3 = _dir3 + 3.6;
     _sign3 setDir ((getDir _sign3) + 180);
-    _pos = getPosATL _sign3; 
+    _pos = getPosATL _sign3;
     if (_pos select 2 > 0.2) then {
         _pos = [_pos select 0, _pos select 1, 0];
         _sign3 setPosATL _pos;
@@ -170,31 +170,31 @@ for "_c" from 0 to 109 do {
     if (surfaceIsWater _minePos) then {
         _height = random (floor ((getTerrainHeightASL _minePos) * -1));
         _pos = [_minePos select 0, _minePos select 1, (0 - _height)];
-        _mine = createMine ["UnderwaterMine", _pos, [], 0]; 
+        _mine = createMine ["UnderwaterMine", _pos, [], 0];
     } else {
         _mine = createVehicle ["ATMine", [40,40,40], [], 0, "CAN_COLLIDE"];
         waitUntil {alive _mine};
-        _mine setPos [_minePos select 0, _minePos select 1, 0]; 
-        _pos = getPosATL _mine; 
+        _mine setPos [_minePos select 0, _minePos select 1, 0];
+        _pos = getPosATL _mine;
         if (_pos select 2 > 0.2) then {
             _pos = [_pos select 0, _pos select 1, 0];
             _mine setPosATL _pos;
-        };           
-    };         
-    _dir4 = _dir4 + 3.45;    
+        };
+    };
+    _dir4 = _dir4 + 3.45;
     if (!isNil "_mine") then {
         _minesArray = _minesArray + [_mine];
     };
 
     if (_c <= 56) then {
-        _pos2 = [_flatPos, 90, _dir2] call BIS_fnc_relPos;    
+        _pos2 = [_flatPos, 90, _dir2] call BIS_fnc_relPos;
         _sign2 = createVehicle ["Land_Razorwire_F", [40,40,40], [], 0, "CAN_COLLIDE"];
         waitUntil {alive _sign2};
-        _sign2 allowDamage false;        
+        _sign2 allowDamage false;
         _sign2 setDir _dir2;
-        _sign2 setPos [_pos2 select 0, _pos2 select 1, 0];       
+        _sign2 setPos [_pos2 select 0, _pos2 select 1, 0];
         _sign2 setVectorUp (surfaceNormal (getPosATL _sign2));
-        _pos = getPosATL _sign2; 
+        _pos = getPosATL _sign2;
         if (_pos select 2 > 0.2) then {
             _pos = [_pos select 0, _pos select 1, 0];
             _sign2 setPosATL _pos;
@@ -213,11 +213,11 @@ for "_c" from 0 to 109 do {
                 _minesArray = _minesArray + [_mine];
             };
         };
-        _dir2 = _dir2 + 6.5;        
+        _dir2 = _dir2 + 6.5;
         _unitsArray = _unitsArray + [_sign2];
         _sign2 enableSimulation false;
-    };    
-    _sign1 enableSimulation false; 
+    };
+    _sign1 enableSimulation false;
 };
 _unitsArray = _unitsArray + _minesArray;
 
@@ -249,7 +249,7 @@ _unitsArray = _unitsArray + _bunkerTowers;
 _enemiesArray = [grpNull];
 _hostagesArray = [grpNull];
 
-// hostages with guards 
+// hostages with guards
 _houseGroup = createGroup ENEMY_SIDE;
 _hostagesGroup = createGroup Civilian;
 _hostagesPlaced = 0;
@@ -260,38 +260,38 @@ _unitPos = ["UP", "MIDDLE"];
     {
         _pos = [(_x select 0), (_x select 1), (_x select 2)];
         _holyRandom = floor random 10;
-        if (_hostagesPlaced < 4) then {           
-            ([INFANTRY_HOSTAGES] call BIS_fnc_selectRandom) createUnit [_pos, _hostagesGroup, "currentHostage = this"];   
+        if (_hostagesPlaced < 4) then {
+            ([INFANTRY_HOSTAGES] call BIS_fnc_selectRandom) createUnit [_pos, _hostagesGroup, "currentHostage = this"];
             currentHostage allowDamage false;
             doStop currentHostage;
             commandStop currentHostage;
             currentHostage setPosASL _pos;
-            currentHostage setDir (_x select 3); 
+            currentHostage setDir (_x select 3);
             currentHostage setCaptive true;
-            currentHostage setUnitPos (_unitPos call BIS_fnc_selectRandom);        
+            currentHostage setUnitPos (_unitPos call BIS_fnc_selectRandom);
             currentHostage disableAI "MOVE";
             currentHostage addEventHandler ["killed", {SM_FAIL_RESCUE = SM_FAIL_RESCUE + 1;publicVariable "SM_FAIL_RESCUE";[(_this select 0),"QS_fnc_removeAction0",nil,true] spawn BIS_fnc_MP;(_this select 0) removeWeapon "hgun_Rook40_F";}];
-            [currentHostage, "QS_fnc_addActionRescue",nil,true] spawn BIS_fnc_MP;  
+            [currentHostage, "QS_fnc_addActionRescue",nil,true] spawn BIS_fnc_MP;
             _hostagesPlaced = _hostagesPlaced + 1;
-            _withHostages = true;   
-            currentHostage allowDamage true;      
+            _withHostages = true;
+            currentHostage allowDamage true;
         } else {
             if (_holyRandom > 3 || _withHostages) then {
-                ([INFANTRY_SUPPORT] call BIS_fnc_selectRandom) createUnit [_pos, _houseGroup, "currentGuard = this"];  
+                ([INFANTRY_SUPPORT] call BIS_fnc_selectRandom) createUnit [_pos, _houseGroup, "currentGuard = this"];
                 currentGuard allowDamage false;
                 doStop currentGuard;
                 commandStop currentGuard;
                 currentGuard setPosASL _pos;
-                currentGuard setDir (_x select 3); 
-                currentGuard setUnitPos (_unitPos call BIS_fnc_selectRandom);   
+                currentGuard setDir (_x select 3);
+                currentGuard setUnitPos (_unitPos call BIS_fnc_selectRandom);
                 currentGuard disableAI "MOVE";
-                currentGuard addEventHandler ["hit", {(_this select 0) enableAI "MOVE";}];            
+                currentGuard addEventHandler ["hit", {(_this select 0) enableAI "MOVE";}];
                 _withHostages = false;
                 currentGuard allowDamage true;
             };
         };
-    } forEach _positions;  
-} forEach _cargoHouses; 
+    } forEach _positions;
+} forEach _cargoHouses;
 
 // officer
 _commanderGroup = createGroup ENEMY_SIDE;
@@ -301,7 +301,7 @@ _posATL = [(_posATL select 0), (_posATL select 1), ((_posATL select 2) + 0.2)];
 ([INFANTRY_OFFICER] call BIS_fnc_selectRandom) createUnit [[1,1,0], _commanderGroup, "officer = this"];
 waitUntil{!isNull officer};
 officer allowDamage false;
-officer setPos _posATL;    
+officer setPos _posATL;
 doStop officer;
 commandStop officer;
 officer disableAI "MOVE";
@@ -323,11 +323,11 @@ _staticGroup = createGroup ENEMY_SIDE;
 {
     _posATL = _cargoHQ buildingPos _x;
     _posATL = [(_posATL select 0), (_posATL select 1), ((_posATL select 2) + 0.2)];
-    _static = ([INFANTRY_STATIC] call BIS_fnc_selectRandom) createVehicle [10,10,10];       
-    waitUntil{!isNull _static}; 
+    _static = ([INFANTRY_STATIC] call BIS_fnc_selectRandom) createVehicle [10,10,10];
+    waitUntil{!isNull _static};
     _static allowDamage false;
     _static setPos _posATL;
-    _static setDir (random 360); 
+    _static setDir (random 360);
     ([INFANTRY_GUNNERS] call BIS_fnc_selectRandom) createUnit [[10,10,10], _staticGroup, "currentGuard = this"];
     currentGuard allowDamage false;
     sleep 0.2;
@@ -339,14 +339,14 @@ _staticGroup = createGroup ENEMY_SIDE;
     currentGuard allowDamage true;
     _static allowDamage true;
     _static = nil;
-} forEach [5,7]; 
+} forEach [5,7];
 
 // other guards in cargoHQ
 {
     _y = 0;
-    _posATL = _cargoHQ buildingPos _x;  
+    _posATL = _cargoHQ buildingPos _x;
     _posATL = [(_posATL select 0), (_posATL select 1), (_posATL select 2) + 0.3];
-    ([INFANTRY_HOUSE] call BIS_fnc_selectRandom) createUnit [[10,10,10], _houseGroup, "currentGuard = this"];  
+    ([INFANTRY_HOUSE] call BIS_fnc_selectRandom) createUnit [[10,10,10], _houseGroup, "currentGuard = this"];
     currentGuard allowDamage false;
     sleep 0.1;
     currentGuard setPos _posATL;
@@ -361,19 +361,19 @@ _staticGroup = createGroup ENEMY_SIDE;
         _y = -20;
     };
     currentGuard setDir (([currentGuard, _cargoHQ] call BIS_fnc_dirTo) + _y);
-    currentGuard setUnitPos (_unitPos call BIS_fnc_selectRandom);  
+    currentGuard setUnitPos (_unitPos call BIS_fnc_selectRandom);
     currentGuard allowDamage true;
-} forEach [0,2,3,4,8,9,10,11];  
+} forEach [0,2,3,4,8,9,10,11];
 
 // guards in small bunkers
 {
-    _posATL = getPos _x;  
+    _posATL = getPos _x;
     _posATL = [(_posATL select 0), (_posATL select 1), (_posATL select 2) + 0.2];
-    _static = ([INFANTRY_STATIC] call BIS_fnc_selectRandom) createVehicle [10,10,10];      
-    waitUntil{!isNull _static}; 
+    _static = ([INFANTRY_STATIC] call BIS_fnc_selectRandom) createVehicle [10,10,10];
+    waitUntil{!isNull _static};
     _static allowDamage false;
     _static setPos _posATL;
-    _static setDir (([_static, _startPoint] call BIS_fnc_dirTo) + 180); 
+    _static setDir (([_static, _startPoint] call BIS_fnc_dirTo) + 180);
     ([INFANTRY_GUNNERS] call BIS_fnc_selectRandom) createUnit [[10,10,10], _staticGroup, "currentGuard = this"];
     currentGuard allowDamage false;
     sleep 0.1;
@@ -384,8 +384,8 @@ _staticGroup = createGroup ENEMY_SIDE;
     _enemiesArray = _enemiesArray + [_static];
     currentGuard allowDamage true;
     _static allowDamage true;
-    _static = nil; 
-} forEach _bunkerTowers;  
+    _static = nil;
+} forEach _bunkerTowers;
 
 // spawn infantry patrols inside second wire level
 for "_x" from 1 to 2 do {
@@ -425,7 +425,7 @@ for "_x" from 1 to 2 do {
             _initAngle = _initAngle + 45;
         } else {
             _initAngle = _initAngle - 45;
-        };            
+        };
         _newPos = [_startPoint, _initDistance, _initAngle] call BIS_fnc_relPos;
         _wp = _patrolGroup addWaypoint [_newPos, 0];
         _wp setWaypointType "MOVE";
@@ -483,7 +483,7 @@ _bots = _startPoint nearObjects ["Man", 400];
 
 // show brief information
 _city = _position select 0;
-_briefing = format ["<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#FF9999'>Заложники</t><br/>____________________<br/>Отряд противника занял %1 и превратил его в укрепрайон. По приказу командира отряда часть местного населения была взята в заложники. Мы также получили ультиматум - покинуть остров в следующие 24 часа, в противном случае заложники будут убиты. Командование назначило пехотную спецоперацию<br/><br/>Ваша задача — выдвинуться в указанный район, обезвредить противника и освободить заложников. Будьте осторожны - противник имеет приказ уничтожить заложников в случае ликвидации командира.</t>", _city];
+_briefing = format ["<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#FFC107'>Заложники</t><br/>____________________<br/>Отряд противника занял %1 и превратил его в укрепрайон. По приказу командира отряда часть местного населения была взята в заложники. Мы также получили ультиматум - покинуть остров в следующие 24 часа, в противном случае заложники будут убиты. Командование назначило пехотную спецоперацию<br/><br/>Ваша задача — выдвинуться в указанный район, обезвредить противника и освободить заложников. Будьте осторожны - противник имеет приказ уничтожить заложников в случае ликвидации командира.</t>", _city];
 GlobalHint = _briefing; hint parseText GlobalHint; publicVariable "GlobalHint";
 showNotification = ["NewSideMission", "Заложники"]; publicVariable "showNotification";
 
@@ -504,14 +504,14 @@ while { sideMissionUp } do {
         if (SM_SUCCESS_RESCUE >= 2) then {
             SM_SUCCESS_HOSTAGES = true;
             if (SM_SUCCESS_OFFICER) then {
-                hqSideChat = format ["%1 из 4х заложников спасены!", SM_SUCCESS_RESCUE]; 
+                hqSideChat = format ["%1 из 4х заложников спасены!", SM_SUCCESS_RESCUE];
             } else {
-                hqSideChat = format ["%1 из 4х заложников спасены! Уничтожьте вражеского командира.", SM_SUCCESS_RESCUE]; 
-            }; 
-            publicVariable "hqSideChat"; [OUR_SIDE,"HQ"] sideChat hqSideChat;            
+                hqSideChat = format ["%1 из 4х заложников спасены! Уничтожьте вражеского командира.", SM_SUCCESS_RESCUE];
+            };
+            publicVariable "hqSideChat"; [OUR_SIDE,"HQ"] sideChat hqSideChat;
         };
         if (SM_FAIL_RESCUE > 2) then {
-            hqSideChat = format ["%1 из 4х заложников погибли!", SM_FAIL_RESCUE]; 
+            hqSideChat = format ["%1 из 4х заложников погибли!", SM_FAIL_RESCUE];
             publicVariable "hqSideChat"; [OUR_SIDE,"HQ"] sideChat hqSideChat;
             SM_FAIL = true; publicVariable "SM_FAIL";
         };
@@ -519,50 +519,50 @@ while { sideMissionUp } do {
     };
 
     // officer killed
-    if ((!alive officer || (lifeState officer == "DEAD")) && _showOfficerMessage) then {   
-        SM_SUCCESS_OFFICER = true; publicVariable "SM_SUCCESS_OFFICER";    
+    if ((!alive officer || (lifeState officer == "DEAD")) && _showOfficerMessage) then {
+        SM_SUCCESS_OFFICER = true; publicVariable "SM_SUCCESS_OFFICER";
         if (SM_SUCCESS_HOSTAGES) then {
-            hqSideChat = "Вражеский командир уничтожен!"; 
+            hqSideChat = "Вражеский командир уничтожен!";
         } else {
             hqSideChat = "Вражеский командир уничтожен. Противник пытается ликвидировать заложников!";
-            {    
+            {
                 _x setCaptive false;
-                _x addRating -10000;    
+                _x addRating -10000;
                 _x addWeapon "hgun_Rook40_F";
             } foreach (units _hostagesGroup);
-        };        
-        publicVariable "hqSideChat"; [OUR_SIDE,"HQ"] sideChat hqSideChat;                
-        _showOfficerMessage = false;  
+        };
+        publicVariable "hqSideChat"; [OUR_SIDE,"HQ"] sideChat hqSideChat;
+        _showOfficerMessage = false;
 
-        // kill order   
-        sleep 5;     
-        { 
-            ENEMY_SIDE setFriend [CIVILIAN, 0];  
-            sleep 1;       
-            _x enableAI "AUTOTARGET";  
+        // kill order
+        sleep 5;
+        {
+            ENEMY_SIDE setFriend [CIVILIAN, 0];
+            sleep 1;
+            _x enableAI "AUTOTARGET";
             _x enableAI "MOVE";
         } foreach (units _houseGroup);
     };
 
     // de-briefing
-    if ((SM_SUCCESS_HOSTAGES && SM_SUCCESS_OFFICER) || SM_FAIL) exitWith {  
-        sideMissionUp = false; publicVariable "sideMissionUp";        
+    if ((SM_SUCCESS_HOSTAGES && SM_SUCCESS_OFFICER) || SM_FAIL) exitWith {
+        sideMissionUp = false; publicVariable "sideMissionUp";
         { _x setMarkerPos [-12000,-12000,-12000]; publicVariable _x; } forEach ["sideMarker", "sideCircle"];
         "sideCircle" setMarkerSize [300, 300]; publicVariable "sideCircle";
         "sideMarker" setMarkerText ""; publicVariable "sideMarker";
         if (SM_FAIL) then {
             [] call QS_fnc_SMhintFAIL;
         } else {
-            [] call QS_fnc_SMhintSUCCESS;   
+            [] call QS_fnc_SMhintSUCCESS;
         };
 
         // delete mines
         {
             if (_x distance _startPoint < 300) then {
                deleteVehicle _x;
-            };            
+            };
         } forEach allMines;
-        _nearestMines = nearestObjects [_startPoint, ["ATMine","APERSTripMine","APERSBoundingMine","UnderwaterMinePDM","UnderwaterMine"], 300];   
+        _nearestMines = nearestObjects [_startPoint, ["ATMine","APERSTripMine","APERSBoundingMine","UnderwaterMinePDM","UnderwaterMine"], 300];
         {
             deleteVehicle _x;
         } forEach _nearestMines;

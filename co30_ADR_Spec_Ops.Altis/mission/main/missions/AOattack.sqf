@@ -107,7 +107,7 @@ radioTower addEventHandler
 	    _points = 10;
         _unit = _this select 1;
         _unit addScore _points;
-		["ScoreBonus", ["Уничтожил Радиовышку!", _points]] remoteExec ["BIS_fnc_showNotification", _unit];
+		["ScoreBonus", ["Радиовышка уничтожена!", _points]] remoteExec ["BIS_fnc_showNotification", _unit];
 	}
 ];
 
@@ -154,7 +154,7 @@ _enemiesArray = [currentAO, _bunkerPos, _flatPos, _hasMines, _bunkerType] call Q
 // Set target start text
 _targetStartText = format
 [
-	"<t align='center' size='2.2'>Захватить</t><br/><t size='1.5' align='center' color='#FFCF11'>%1</t><br/>____________________<br/>Начинайте наступление.<br/><br/>Захватите командный пункт и уничтожьте радиовышку чтобы лишить противника авиаподдержки.",
+	"<t align='center' size='2.2'>Захватить</t><br/><t size='1.5' align='center' color='#FFC107'>%1</t><br/>____________________<br/>Начинайте наступление.<br/><br/>Захватите командный пункт и уничтожьте радиовышку чтобы лишить противника авиаподдержки.",
 	_nameAO
 ];
 
@@ -168,7 +168,7 @@ MAIN_AO_SUCCESS = false; publicVariable "MAIN_AO_SUCCESS";
 
 // CORE LOOP
 currentAOUp = true; publicVariable "currentAOUp";
-if (PARAMS_AOReinforcementJet == 1) then {
+if (PARAMS_AOReinforcementCas == 1) then {
 	[] spawn {
 		sleep (30 + (random 180));
 		if (alive radioTower) then {
@@ -188,7 +188,7 @@ while {alive radioTower || !MAIN_AO_SUCCESS || !_showTowerMessage || !_showBunke
 
         // RADIO TOWER DESTROYED
         radioTowerAlive = false; publicVariable "radioTowerAlive";
-        _radioTowerDownText = "<t align='center' size='2.2'>Радиовышка</t><br/><t size='1.5' color='#08b000' align='center'>Уничтожена</t><br/>____________________<br/><t size='1.2' color='#08b000' align='center'>Теперь противник не сможет вызвать авиаподдержку.</t><br/>";
+        _radioTowerDownText = "<t align='center' size='2.2'>Радиовышка</t><br/><t size='1.5' color='#C6FF00' align='center'>Уничтожена</t><br/>____________________<br/>Теперь противник не сможет вызвать авиаподдержку.";
         GlobalHint = _radioTowerDownText; hint parseText GlobalHint; publicVariable "GlobalHint";
         showNotification = ["CompletedSub", "Радиовышка уничтожена!"]; publicVariable "showNotification";
     };
@@ -197,7 +197,7 @@ while {alive radioTower || !MAIN_AO_SUCCESS || !_showTowerMessage || !_showBunke
         _showBunkerMessage = true;
 
         // BUNKER UNDER OUR CONTROL
-        _bunkerText = "<t align='center' size='2.2'>Командный пункт</t><br/><t size='1.5' color='#08b000' align='center'>Захвачен</t><br/>____________________<br/><t size='1.2' color='#08b000' align='center'>Противник дезорганизован.</t><br/>";
+        _bunkerText = "<t align='center' size='2.2'>Командный пункт</t><br/><t size='1.5' color='#C6FF00' align='center'>Захвачен</t><br/>____________________<br/>Противник дезорганизован.";
         GlobalHint = _bunkerText; hint parseText GlobalHint; publicVariable "GlobalHint";
         showNotification = ["CompletedSub", "Командный пункт захвачен!"]; publicVariable "showNotification";
     };
@@ -206,7 +206,7 @@ currentAOUp = false; publicVariable "currentAOUp";
 
 // DE-BRIEF 1
 sleep 3;
-_targetCompleteText = format ["<t align='center' size='2.2'>Захватили</t><br/><t size='1.5' align='center' color='#FFCF11'>%1</t><br/>", _nameAO];
+_targetCompleteText = format ["<t align='center' size='2.2'>Захватили</t><br/><t size='1.5' align='center' color='#FFC107'>%1</t><br/>", _nameAO];
 { _x setMarkerPos [-10000, -10000, -10000];} forEach ["aoCircle", "aoMarker"];
 GlobalHint = _targetCompleteText; hint parseText GlobalHint; publicVariable "GlobalHint";
 showNotification = ["CompletedMain", _nameAO]; publicVariable "showNotification";
@@ -239,9 +239,9 @@ if (PARAMS_DefendAO == 1) then {
 
 // DE-BRIEF
 if (DEFEND_AO_VICTORY) then {
-    _targetCompleteText = format ["<t align='center' size='2.2'>Удержали</t><br/><t size='1.5' align='center' color='#00FF80'>%1</t><br/>____________________<br/><t align='left'>Хорошая работа! Возвращайтесь на базу для перегруппировки на следующее задание.</t>", _nameAO];
+    _targetCompleteText = format ["<t align='center' size='2.2'>Удержали</t><br/><t size='1.5' align='center' color='#C6FF00'>%1</t><br/>____________________<br/>Хорошая работа! Возвращайтесь на базу для перегруппировки на следующее задание.", _nameAO];
 } else {
-    _targetCompleteText = format ["<t align='center' size='2.2'>Отступление</t><br/><t size='1.5' align='center' color='#DF013A'>%1</t><br/>____________________<br/><t align='left'>Мы отступаем! Возвращайтесь на базу для перегруппировки на следующее задание.<br/><br/>Командование перебросило Вашу наградную технику более результативным подразделениям.</t>", _nameAO];
+    _targetCompleteText = format ["<t align='center' size='2.2'>Отступление</t><br/><t size='1.5' align='center' color='#F44336'>%1</t><br/>____________________<br/>Мы отступаем! Возвращайтесь на базу для перегруппировки на следующее задание.<br/><br/>Командование перебросило Вашу наградную технику более результативным подразделениям.", _nameAO];
 
     // delete reward vehicles
     _vehicles = nearestObjects [[14714,16710], ["LandVehicle","Air","Ship"], 150];

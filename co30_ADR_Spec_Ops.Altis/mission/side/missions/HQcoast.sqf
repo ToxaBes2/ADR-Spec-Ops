@@ -102,7 +102,7 @@ publicVariable "sideMarker";
 publicVariable "sideObj";
 
 _c4Message = ["Заряд установлен! 30 секунд до взрыва.", "C-4 активирован! 30 секунд до детонации.", "Взрывчатка на месте! 30 секунд до взрыва."] call BIS_fnc_selectRandom;
-_briefing = "<t align='center'><t size='2.2'>Допзадание</t><br/><t size='1.5' color='#00B2EE'>Тайник</t><br/>____________________<br/>Противник тайно переправляет и складирует значительное количество взрывчатых веществ близи своего прибрежного лагеря.<br/><br/>Ваша задача — выдвинуться в указанный район, найти и обезвредить текущую партию взрывчатки.</t>";
+_briefing = "<t align='center'><t size='2.2'>Допзадание</t><br/><t size='1.5' color='#FFC107'>Тайник</t><br/>____________________<br/>Противник тайно переправляет и складирует значительное количество взрывчатых веществ близи своего прибрежного лагеря.<br/><br/>Ваша задача — выдвинуться в указанный район, найти и обезвредить текущую партию взрывчатки.</t>";
 GlobalHint = _briefing; publicVariable "GlobalHint"; hint parseText GlobalHint;
 showNotification = ["NewSideMission", "Тайник"]; publicVariable "showNotification";
 sideMarkerText = "Тайник"; publicVariable "sideMarkerText";
@@ -124,7 +124,7 @@ while { sideMissionUp } do {
 		publicVariable "sideMarker";
 
 		// DELETE
-		_object setPos [-10000, -10000, 0];			
+		_object setPos [-10000, -10000, 0];
 		sleep 120;
 		{ deleteVehicle _x } forEach [sideObj, boat, trawler, assaultBoat];
 		deleteVehicle nearestObject [getPos sideObj, "Land_Cargo_HQ_V1_ruins_F"];

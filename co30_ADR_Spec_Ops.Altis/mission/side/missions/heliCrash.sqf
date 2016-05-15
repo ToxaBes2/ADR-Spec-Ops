@@ -21,7 +21,7 @@ private ["_targets","_accepted","_distance","_briefing","_position","_city","_fl
 _enemiesArray = [grpNull];
 
 // init area coords - we use 3 "interesting" landing places in each city with 40% of luck. Other 60% are random.
-// format: 
+// format:
 //  [city name,           [center coords x,y,z],   [heli 1 crash x,y,z,azimut], [heli 2 crash x,y,z,azimut], [heli 3 crash x,y,z,azimut]]
 _targets = [
     ["Ореокастро",        [4549.12,21415.7,20000], [4538,21337,3.5,280],        [4593.12,21356.5,1.8,235],   [4526.5,21388,2,0]        ],
@@ -69,15 +69,15 @@ _targets = [
 // select correct place for mission
 if (PARAMS_AO == 1) then {
     _accepted = false;
-    while {!_accepted} do {    
+    while {!_accepted} do {
         _position = _targets call BIS_fnc_selectRandom;
-        _flatPos  = _position select 1;  
+        _flatPos  = _position select 1;
         _distance = [_flatPos, getMarkerPos currentAO] call BIS_fnc_distance2D;
         if (_distance > 3000) then {
             _distance = [_flatPos, getMarkerPos "priorityMarker"] call BIS_fnc_distance2D;
             if (_distance > 1500) then {
                 _accepted = true;
-            };  
+            };
         };
         sleep 5;
     };
@@ -102,24 +102,24 @@ if ((random 10) < 6) then {
 } else {
 
     // choose one of 3 pre-selected interesting positions for landing
-	_heliCoords = [_position select 2, _position select 3, _position select 4] call BIS_fnc_selectRandom;   
-	_fullyRandom = false; 
+	_heliCoords = [_position select 2, _position select 3, _position select 4] call BIS_fnc_selectRandom;
+	_fullyRandom = false;
 };
 _heliPos = [_heliCoords select 0, _heliCoords select 1, _heliCoords select 2];
 _azimut  = _heliCoords select 3;
 
-_heliObj = createVehicle ["O_Heli_Attack_02_F", [300,300,300], [], 0, "NONE"];  
+_heliObj = createVehicle ["O_Heli_Attack_02_F", [300,300,300], [], 0, "NONE"];
 waitUntil {!isNull _heliObj};
 _heliObj allowDamage false;
 _heliObj setDir _azimut;
 _heliObj setPos _heliPos;
-_heliObj setVehicleLock "LOCKED"; 
+_heliObj setVehicleLock "LOCKED";
 _heliObj lock true;
 sleep 0.5;
 
 _distance = [_heliPos, _startPoint] call BIS_fnc_distance2D;
 if (_distance > 200) then {
-    _fullyRandom = true; 
+    _fullyRandom = true;
 };
 
 if (_fullyRandom) then {
@@ -136,7 +136,7 @@ if (_fullyRandom) then {
 _heliObj setDamage 0.9;
 
 // set sabotage action
-[_heliObj,"QS_fnc_addActionSabotage",nil,true] spawn BIS_fnc_MP; 
+[_heliObj,"QS_fnc_addActionSabotage",nil,true] spawn BIS_fnc_MP;
 
 // spawn red chemlight
 _chemPosRed = [(getPos _heliObj select 0) + (random 10), (getPos _heliObj select 1) + (random 10), (getPos _heliObj select 2) + (random 10)];
@@ -148,7 +148,7 @@ _goodPos = [];
 _houseList = _startPoint nearObjects ["House", 200];
 {
 	_c = 0;
-    while { format ["%1", _x buildingPos _c] != "[0,0,0]" } do { 
+    while { format ["%1", _x buildingPos _c] != "[0,0,0]" } do {
         _goodPos set [(count _goodPos), _x buildingPos _c];
         _c = _c + 1;
     };
@@ -160,7 +160,7 @@ if ((count _goodPos) == 0) then {
     _houseList = _startPoint nearObjects ["building", 200];
     {
     	_c = 0;
-        while { format ["%1", _x buildingPos _c] != "[0,0,0]" } do { 
+        while { format ["%1", _x buildingPos _c] != "[0,0,0]" } do {
             _goodPos set [(count _goodPos), _x buildingPos _c];
             _c = _c + 1;
         };
@@ -226,17 +226,17 @@ for "_x" from 1 to 6 do {
 // spawn house guards
 _unitPos = ["UP", "MIDDLE"];
 _houseGroup = createGroup EAST;
-for "_x" from 1 to 10 do {      
+for "_x" from 1 to 10 do {
     if ((count _goodPos) > 0) then {
         _randomPos = _goodPos call BIS_fnc_selectRandom;
     } else {
         _randomPos = [_startPoint, 0, 180, 2, 0, 0.5, 0] call BIS_fnc_findSafePos;
     };
-    ([INFANTRY_HOUSE] call BIS_fnc_selectRandom) createUnit [_randomPos, _houseGroup, "currentGuard = this"];  
+    ([INFANTRY_HOUSE] call BIS_fnc_selectRandom) createUnit [_randomPos, _houseGroup, "currentGuard = this"];
     doStop currentGuard;
     commandStop currentGuard;
-    currentGuard setPosASL _randomPos; 
-    currentGuard setUnitPos (_unitPos call BIS_fnc_selectRandom);        
+    currentGuard setPosASL _randomPos;
+    currentGuard setUnitPos (_unitPos call BIS_fnc_selectRandom);
     currentGuard disableAI "MOVE";
 };
 _houseGroup setBehaviour "COMBAT";
@@ -249,15 +249,15 @@ for "_x" from 1 to 2 do {
     _randomPos = [_startPoint, 800, 10, 50] call BIS_fnc_findOverwatch;
     _sniperGroup = [_randomPos, EAST,(configfile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Infantry" >> "OI_SniperTeam")] call BIS_fnc_spawnGroup;
     _sniperGroup setBehaviour "COMBAT";
-    _sniperGroup setCombatMode "RED";    
-    sleep 0.2;    
+    _sniperGroup setCombatMode "RED";
+    sleep 0.2;
     _enemiesArray = _enemiesArray + [_sniperGroup];
 };
 
 // spawn static weapons and put it on roads or overwatch positions
 _nearRoads = [_flatPos select 0,_flatPos select 1] nearRoads 150;
 for "_x" from 1 to 2 do {
-    _staticGroup = createGroup EAST;    
+    _staticGroup = createGroup EAST;
     if((count _nearRoads) > 0) then {
         _roadSegment = _nearRoads call BIS_fnc_selectRandom;
         _randomPos = getPos _roadSegment;
@@ -265,9 +265,9 @@ for "_x" from 1 to 2 do {
     } else {
         _randomPos = [_startPoint, 200, 10, 10] call BIS_fnc_findOverwatch;
         _direction = getDir random 360;
-    };    
+    };
     _static = [INFANTRY_STATIC] call BIS_fnc_selectRandom createVehicle _randomPos;
-    waitUntil{!isNull _static}; 
+    waitUntil{!isNull _static};
     _static setDir random 360;
     "O_support_MG_F" createUnit [_randomPos,_staticGroup];
     ((units _staticGroup) select 0) assignAsGunner _static;
@@ -275,7 +275,7 @@ for "_x" from 1 to 2 do {
     _staticGroup setBehaviour "COMBAT";
     _staticGroup setCombatMode "RED";
     _static setVectorUp [0,0,1];
-    _static lock 3;    
+    _static lock 3;
     _enemiesArray = _enemiesArray + [_staticGroup];
     sleep 0.2;
     _enemiesArray = _enemiesArray + [_static];
@@ -291,7 +291,7 @@ for "_x" from 1 to 2 do {
     } else {
         _randomPos = [[[_startPoint, 200],[]],["water","out"]] call BIS_fnc_randomPos;
         _direction = getDir random 360;
-    };    
+    };
     _technicalVehicle = [INFANTRY_MOTORIZED] call BIS_fnc_selectRandom createVehicle _randomPos;
     waitUntil{!isNull _technicalVehicle};
     "O_engineer_F" createUnit [_randomPos,_technicalGroup];
@@ -303,7 +303,7 @@ for "_x" from 1 to 2 do {
     [_technicalGroup, _startPoint, 200] call BIS_fnc_taskPatrol;
     _technicalVehicle lock 3;
     _technicalGroup setBehaviour "COMBAT";
-    _technicalGroup setCombatMode "RED";  
+    _technicalGroup setCombatMode "RED";
     sleep 1;
     _enemiesArray = _enemiesArray + [_technicalGroup];
     sleep 0.2;
@@ -321,7 +321,7 @@ _guardsGroup = [_startPoint, 350, 40, ENEMY_SIDE] call QS_fnc_FillBots;
 
 // show brief information
 _city = _position select 0;
-_briefing = format ["<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#FF9999'>Прерванный полёт</t><br/>____________________<br/>Противник сбил наш вертолет разведки над %1. Пилоты спрятали блок с разведанными недалеко от места падения, после чего выдвинулись на точку эвакуации. Командование назначило пехотную спецоперацию<br/><br/>Ваша задача — выдвинуться в указанный район, обезвредить противника, найти данные разведки и уничтожить вертолет.</t>", _city];
+_briefing = format ["<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#FFC107'>Прерванный полёт</t><br/>____________________<br/>Противник сбил наш вертолет разведки над %1. Пилоты спрятали блок с разведанными недалеко от места падения, после чего выдвинулись на точку эвакуации. Командование назначило пехотную спецоперацию<br/><br/>Ваша задача — выдвинуться в указанный район, обезвредить противника, найти данные разведки и уничтожить вертолет.</t>", _city];
 GlobalHint = _briefing; hint parseText GlobalHint; publicVariable "GlobalHint";
 showNotification = ["NewSideMission", "Прерванный полёт"]; publicVariable "showNotification";
 
@@ -336,41 +336,41 @@ while { sideMissionUp } do {
 
 	// Heli part done
     if ((SM_SUCCESS_SABOTAGE || !alive _heliObj) && _showSabotageMessage) then {
-    	hint "";    
-    	_showSabotageMessage = false;	     	   
+    	hint "";
+    	_showSabotageMessage = false;
         if (SM_SUCCESS_GETDATA) then {
-        	hqSideChat = "Вертолет уничтожен!"; 
+        	hqSideChat = "Вертолет уничтожен!";
         } else {
             hqSideChat = "Вертолет уничтожен! Продолжайте поиск разведданных.";
-        };         
-        deleteVehicle _chemlightRed; 
-    	publicVariable "hqSideChat"; [WEST,"HQ"] sideChat hqSideChat;		
+        };
+        deleteVehicle _chemlightRed;
+    	publicVariable "hqSideChat"; [WEST,"HQ"] sideChat hqSideChat;
     };
 
     // Scout box part done
     if (SM_SUCCESS_GETDATA && _showGetdataMessage) then {
-        hint "";            
-        _showGetdataMessage = false;        
+        hint "";
+        _showGetdataMessage = false;
         if (SM_SUCCESS_SABOTAGE) then {
             hqSideChat = "Данные захвачены!";
         } else {
-            hqSideChat = "Данные захвачены! Найдите и уничтожите вертолет."; 
+            hqSideChat = "Данные захвачены! Найдите и уничтожите вертолет.";
         };
-        publicVariable "hqSideChat"; [WEST,"HQ"] sideChat hqSideChat;     
+        publicVariable "hqSideChat"; [WEST,"HQ"] sideChat hqSideChat;
         { deleteVehicle _x; } forEach [_scoutBox,_chemlightBlue];
         deleteMarker "scoutMarker";
     };
-  
+
     // All done, de-briefing
-	if (SM_SUCCESS_SABOTAGE && SM_SUCCESS_GETDATA) exitWith {		
-		sideMissionUp = false; publicVariable "sideMissionUp";        
+	if (SM_SUCCESS_SABOTAGE && SM_SUCCESS_GETDATA) exitWith {
+		sideMissionUp = false; publicVariable "sideMissionUp";
 		{ _x setMarkerPos [-12000,-12000,-12000]; publicVariable _x; } forEach ["sideMarker", "sideCircle"];
         "sideCircle" setMarkerSize [300, 300]; publicVariable "sideCircle";
         "sideMarker" setMarkerText ""; publicVariable "sideMarker";
-		[] call QS_fnc_SMhintSUCCESS;	
+		[] call QS_fnc_SMhintSUCCESS;
         sleep 120;
-        { [_x] call QS_fnc_TBdeleteObjects; } forEach [_enemiesArray, _guardsGroup];		
-        deleteVehicle _heliObj;	
+        { [_x] call QS_fnc_TBdeleteObjects; } forEach [_enemiesArray, _guardsGroup];
+        deleteVehicle _heliObj;
         [_startPoint, 500] call QS_fnc_DeleteEnemyEAST;
 	};
 	sleep 3;

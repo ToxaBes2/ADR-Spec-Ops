@@ -52,7 +52,6 @@ class QS
 		class removeAction0 {};
 		class removeAction1 {};
 		class respawnPilot {};
-		class rewardPlusHintJet {};
 		class saveInventory {};
 		class serverMapTP {};
 		class setSkill1 {};

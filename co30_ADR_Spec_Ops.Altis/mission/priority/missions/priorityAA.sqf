@@ -82,7 +82,7 @@ for "_c" from 0 to 7 do {
 	waitUntil {alive _barrier};
 	_barrier setDir _dir;
 	_dir = _dir + 45;
-	_barrier allowDamage false; 
+	_barrier allowDamage false;
 	_barrier enableSimulation false;
 	_unitsArray = _unitsArray + [_barrier];
 };
@@ -92,12 +92,12 @@ _enemiesArray = [priorityObj1] call QS_fnc_PTenemyEAST;
 
 // fill bots in radius
 _fuzzyPos = [((_flatPos select 0) - 300) + (random 600),((_flatPos select 1) - 300) + (random 600), 0];
-_guardsGroup = [_fuzzyPos, 300, 15, ENEMY_SIDE] call QS_fnc_FillBots; 
+_guardsGroup = [_fuzzyPos, 300, 15, ENEMY_SIDE] call QS_fnc_FillBots;
 
 // 6. THAT GIRL IS SO DANGEROUS!
 [(units _priorityGroup)] call QS_fnc_setSkill4;
 _priorityGroup setBehaviour "COMBAT";
-_priorityGroup setCombatMode "RED";	
+_priorityGroup setCombatMode "RED";
 _priorityGroup allowFleeing 0;
 
 // 6a. UNLIMITED AMMO
@@ -146,7 +146,7 @@ priorityObj2 addEventHandler
 				_selections set [count _selections, _selection];
 				_gethit set [count _gethit, 0];
 			};
-			
+
 			_i = _selections find _selection;
 			_olddamage = _gethit select _i;
 			_damage = _olddamage + ((_this select 2) - _olddamage) * 0.25;
@@ -156,10 +156,10 @@ priorityObj2 addEventHandler
 ];
 
 // 7. BRIEFING
-{ _x setMarkerPos _fuzzyPos; } forEach ["priorityMarker", "priorityCircle"];  
+{ _x setMarkerPos _fuzzyPos; } forEach ["priorityMarker", "priorityCircle"];
 priorityTargetText = "Зенитная батарея"; publicVariable "priorityTargetText";
 "priorityMarker" setMarkerText "Приоритетная цель: Зенитная батарея"; publicVariable "priorityMarker";
-_briefing = "<t align='center' size='2.2'>Внимание</t><br/><t size='1.5' color='#b60000'>Зенитная батарея</t><br/>____________________<br/>Обнаружена точка укрепления зенитных орудий противника. Её близлежащее расположение грозит как группам десантирования, так и всей нашей авиации в целом.";
+_briefing = "<t align='center' size='2.2'>Внимание</t><br/><t size='1.5' color='#F44336'>Зенитная батарея</t><br/>____________________<br/>Обнаружена точка укрепления зенитных орудий противника. Её близлежащее расположение грозит как группам десантирования, так и всей нашей авиации в целом.";
 GlobalHint = _briefing; hint parseText _briefing; publicVariable "GlobalHint";
 showNotification = ["NewPriorityTarget", "Зенитная батарея"]; publicVariable "showNotification";
 
@@ -182,14 +182,14 @@ while {_loopVar} do {
 			if ((side _x) == west) then {
 				0 = _targetListEnemy pushBack _x;
 			};
-		} count _targetList;	
+		} count _targetList;
 		if ((count _targetListEnemy) > 0) then {
 			{
 				if ((getPos _x select 2) > 25) then {
 					0 = _doTargets pushBack _x;
 				};
 			} count _targetListEnemy;
-			
+
 			if ((count _doTargets) > 0) then {
 				_targetSelect = _doTargets select (floor (random (count _doTargets)));
 				if (canFire priorityObj1) then {
@@ -224,18 +224,18 @@ while {_loopVar} do {
 
 			// 9. DE-BRIEF
 			sleep 5;
-			_completeText = "<t align='center' size='2.2'>Внимание</t><br/><t size='1.5' color='#08b000'>Зенитная батарея уничтожена!</t><br/>____________________<br/>Противник лишился основных средств ПВО.<br/><br/>Возвращайтесь к выполнению основной задачи.";
+			_completeText = "<t align='center' size='2.2'>Внимание</t><br/><t size='1.5' color='#C6FF00'>Зенитная батарея уничтожена!</t><br/>____________________<br/>Противник лишился основных средств ПВО.<br/><br/>Возвращайтесь к выполнению основной задачи.";
 			GlobalHint = _completeText; hint parseText _completeText; publicVariable "GlobalHint";
 			showNotification = ["CompletedPriorityTarget", "Зенитная батарея нейтрализована"]; publicVariable "showNotification";
 			{_x setMarkerPos [-10000, -10000, -10000];} forEach ["priorityMarker","priorityCircle"]; publicVariable "priorityMarker";
 
 			// 10. DELETE
-			{deleteVehicle _x;} forEach [priorityObj1, priorityObj2, ammoTruck];			
+			{deleteVehicle _x;} forEach [priorityObj1, priorityObj2, ammoTruck];
 			{_x removeEventHandler ["Fired", 0];} forEach [priorityObj1, priorityObj2];
 			{_x removeEventHandler ["HandleDamage",1];} forEach [priorityObj1, priorityObj2];
 			sleep 60;
-			{[_x] call QS_fnc_TBdeleteObjects;} forEach [_enemiesArray, _unitsArray];	
-			[_guardsGroup] call QS_fnc_TBdeleteObjects;		
+			{[_x] call QS_fnc_TBdeleteObjects;} forEach [_enemiesArray, _unitsArray];
+			[_guardsGroup] call QS_fnc_TBdeleteObjects;
 	};
 	sleep 5;
 };

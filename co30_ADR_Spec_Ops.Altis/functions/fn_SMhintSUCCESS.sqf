@@ -33,7 +33,7 @@ _vehName = _veh select 0;
 _vehVarname = _veh select 1;
 
 _completeText = format[
-"<t align='center'><t size='2.2'>Допзадание</t><br/><t size='1.5' color='#08b000'>Выполнено</t><br/>____________________<br/>За успешное проведение, непосредственные участники задания получают в награду:<br/><br/>%1.<br/><br/>Выдвигайтесь обратно на базу или прямиком на точку захвата.</t>", _vehName];
+"<t align='center'><t size='2.2'>Допзадание</t><br/><t size='1.5' color='#C6FF00'>Выполнено</t><br/>____________________<br/>За успешное проведение, непосредственные участники задания получают в награду:<br/><br/>%1.<br/><br/>Выдвигайтесь обратно на базу или прямиком на точку захвата.</t>", _vehName];
 
 _reward = createVehicle [_vehVarname, getMarkerPos "smReward1", smMarkerList, 0, "NONE"];
 waitUntil {!isNull _reward};
@@ -47,7 +47,7 @@ if (count sideMarkerText == 2) then {
     sideMarkerText = sideMarkerText select 0;
 };
 showNotification = ["CompletedSideMission", sideMarkerText]; publicVariable "showNotification";
-showNotification = ["Reward", format["Ваша команда получила %1!", _vehName]]; publicVariable "showNotification";
+showNotification = ["Reward", _vehName]; publicVariable "showNotification";
 
 if (_reward isKindOf "I_Heli_light_03_F") then {
 	_reward addWeapon ("autocannon_35mm");

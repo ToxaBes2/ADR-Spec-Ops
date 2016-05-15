@@ -26,7 +26,7 @@ while {!_accepted} do {
 		_position = [] call BIS_fnc_randomPos;
 		_flatPos = _position isFlatEmpty [10, 1, 0.2, sizeOf "Land_Dome_Small_F", 0, false];
 	};
-	
+
 	if ((_flatPos distance (getMarkerPos "respawn_west")) > 1700 && (_flatPos distance (getMarkerPos currentAO)) > 500) then {
 		_accepted = true;
 	};
@@ -67,7 +67,7 @@ sideMarkerText = "Лагерь"; publicVariable "sideMarkerText";
 "sideMarker" setMarkerText "Допзадание: Лагерь"; publicVariable "sideMarker";
 publicVariable "sideObj";
 
-_briefing = "<t align='center'><t size='2.2'>Новое допзадание</t><br/><t size='1.5' color='#00B2EE'>Лагерь</t><br/>____________________<br/>Противник проводит подготовку боевиков на территории острова.<br/><br/>Ваша задача — выдвинуться в указанный район, найти и уничтожить врага и захватить их боезапас.</t>";
+_briefing = "<t align='center'><t size='2.2'>Новое допзадание</t><br/><t size='1.5' color='#FFC107'>Лагерь</t><br/>____________________<br/>Противник проводит подготовку боевиков на территории острова.<br/><br/>Ваша задача — выдвинуться в указанный район, найти и уничтожить врага и захватить их боезапас.</t>";
 GlobalHint = _briefing; hint parseText GlobalHint; publicVariable "GlobalHint";
 showNotification = ["NewSideMission", "Лагерь"]; publicVariable "showNotification";
 sideMarkerText = "Лагерь"; publicVariable "sideMarkerText";
@@ -101,10 +101,10 @@ while { sideMissionUp } do {
 
 		// BOOM!
 		hqSideChat = _c4Message; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
-		sleep 30;											
-		"Bo_Mk82" createVehicle getPos _object; 			
+		sleep 30;
+		"Bo_Mk82" createVehicle getPos _object;
 		sleep 0.1;
-		_object setPos [-10000, -10000, 0];					
+		_object setPos [-10000, -10000, 0];
 
 		// DE-BRIEFING
 		sideMissionUp = false; publicVariable "sideMissionUp";
