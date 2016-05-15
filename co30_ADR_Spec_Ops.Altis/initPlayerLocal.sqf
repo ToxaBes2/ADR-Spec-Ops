@@ -42,6 +42,18 @@ if !(isNil "EW_ATTACK") then {
 // Color correction
 ["EastWind", 0, false] call BIS_fnc_setPPeffectTemplate;
 
+// Remove CSAT helmets from iventory
+player addEventHandler [ "Take", {
+	_player = _this select 0;
+	_helmet = _this select 2;
+	_csatHelmets = ["H_HelmetO_ocamo", "H_Beret_ocamo", "H_MilCap_ocamo", "H_HelmetLeaderO_ocamo", "H_PilotHelmetHeli_O", "H_HelmetCrew_O", "H_PilotHelmetFighter_O", "H_CrewHelmetHeli_O", "H_HelmetSpecO_ocamo", "H_HelmetSpecO_blk", "H_HelmetO_oucamo", "H_HelmetLeaderO_oucamo"];
+	if(_helmet in _csatHelmets) then {
+		_player unassignItem _helmet;
+		_player removeItem _helmet;
+		systemChat "Головные уборы противника запрещены";
+	};
+}];
+
 // PVEHs
 "showNotification" addPublicVariableEventHandler
 {
