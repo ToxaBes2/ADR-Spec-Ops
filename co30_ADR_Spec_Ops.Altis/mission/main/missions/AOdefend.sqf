@@ -117,11 +117,11 @@ while {_inside && _aliveBots > PARAMS_EnemyLeftThreshhold} do {
 };
 if (!_inside) then {
 	hqSideChat = "Противник захватил наши позиции!";
-	showNotification = ["CompletedMainDefended", _nameAO]; publicVariable "showNotification";
+	showNotification = ["FailedMainDefended", _nameAO]; publicVariable "showNotification";
 	DEFEND_AO_VICTORY = false;
 } else {
     hqSideChat = "Атака врага отбита, противник отступает!";
-	showNotification = ["FailedMainDefended", _nameAO]; publicVariable "showNotification";
+	showNotification = ["CompletedMainDefended", _nameAO]; publicVariable "showNotification";
     DEFEND_AO_VICTORY = true;
 };
 publicVariable "DEFEND_AO_VICTORY";
