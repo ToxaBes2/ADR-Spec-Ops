@@ -10,6 +10,7 @@ Description: Defend submarine.
 #define INFANTRY_RANK "CAPTAIN","MAJOR","COLONEL"
 #define INFANTRY_SDV "O_SDV_01_F","I_SDV_01_F"
 #define INFANTRY_DIVERS "O_diver_F","O_diver_TL_F","O_diver_exp_F","I_diver_F","I_diver_exp_F","I_diver_TL_F"
+#define INFANTRY_HQ_GUARDS "O_recon_TL_F","O_recon_F","O_recon_F","O_recon_F","O_recon_LAT_F","O_recon_LAT_F","O_recon_LAT_F","O_recon_M_F","O_recon_M_F","O_recon_M_F","O_recon_JTAC_F","O_recon_JTAC_F","O_recon_JTAC_F"
 #define INFANTRY_WRECKED_VECHICLES "Land_UWreck_FishingBoat_F","Land_UWreck_Heli_Attack_02_F","Land_UWreck_MV22_F","Land_Wreck_Heli_Attack_02_F","Land_Wreck_Plane_Transport_01_F","Land_Wreck_Traw_F","Land_Wreck_Traw2_F","Land_Cargo20_grey_F","Land_Cargo20_light_green_F","Land_Cargo20_military_green_F"
 
 // define private variables
@@ -48,24 +49,8 @@ _targets = [
 ];
 
 // select correct place for mission
-if (PARAMS_AO == 1) then {
-    _accepted = false;
-    while {!_accepted} do {
-        _position = _targets call BIS_fnc_selectRandom;
-        _flatPos  = _position select 0;
-        _distance = [_flatPos, getMarkerPos currentAO] call BIS_fnc_distance2D;
-        if (_distance > 3000) then {
-            _distance = [_flatPos, getMarkerPos "priorityMarker"] call BIS_fnc_distance2D;
-            if (_distance > 1500) then {
-                _accepted = true;
-            };
-        };
-        sleep 5;
-    };
-} else {
-    _position = _targets call BIS_fnc_selectRandom;
-    _flatPos  = _position select 0;
-};
+_position = _targets call BIS_fnc_selectRandom;
+_flatPos  = _position select 0;
 
 // set zone area
 _startPoint = [(_flatPos select 0),(_flatPos select 1),1];
@@ -240,6 +225,72 @@ for "_c" from 0 to 3 do {
     [_patrolGroup, _subPos, 40] call BIS_fnc_taskPatrol;
     _enemiesArray = _enemiesArray + (units _patrolGroup);
 };
+
+// HQ: boats
+_boatPos1 = [_startPoint, 400, 1000, 10, 0, 0.2, 1] call BIS_fnc_findSafePos;
+if (_startPoint distance _boatPos1 > 1000) then {
+    _boatPos1 = [_startPoint, 300, 4000, 6, 0, 0.3, 1] call BIS_fnc_findSafePos;
+};
+_dirBoat1 = random 360;
+_boat1 = createVehicle ["O_Boat_Transport_01_F", _boatPos1, [], 0, "CAN_COLLIDE"];
+_boat1 setDir _dirBoat1;
+_dirBoat2 = _dirBoat1 + (random 15) - (random 15);
+_botPos2 = [((getPos _boat1) select 0) + random 3, ((getPos _boat1) select 1) + random 3, 0.3];
+_boat2 = createVehicle ["O_Boat_Transport_01_F", _botPos2, [], 0, "CAN_COLLIDE"];
+_boat2 setDir _dirBoat2;
+_dirBoat3 = _dirBoat2 + (random 15) - (random 15);
+_botPos3 = [((getPos _boat2) select 0) + random 3, ((getPos _boat2) select 1) + random 3, 0.3];
+_boat3 = createVehicle ["O_Boat_Transport_01_F", _botPos3, [], 0, "CAN_COLLIDE"];
+_boat3 setDir _dirBoat3;
+_unitsArray = _unitsArray + [_boat1, _boat2, _boat3];
+
+// HQ: camonet
+_places = selectBestPlaces [_boatPos1, 300, "forest + trees", 1, 1];
+_campPos = (_places select 0) select 0;
+if (_campPos distance _boatPos1 > 301) then {
+    _campPos = [_boatPos1, 50, 300, 6, 0, 0.4, 0] call BIS_fnc_findSafePos;
+};
+_camo = createVehicle ["CamoNet_OPFOR_F", _campPos, [], 0, "CAN_COLLIDE"];
+_camo setDir (random 360);
+_unitsArray = _unitsArray + [_camo];
+
+// HQ: commander
+_hqGroup = createGroup EAST;
+"O_officer_F" createUnit [_campPos, _hqGroup, "currentOfficier = this"];
+doStop currentOfficier;
+commandStop currentOfficier;
+currentOfficier addPrimaryWeaponItem "muzzle_snds_H";
+currentOfficier setUnitPos "MIDDLE";
+
+// HQ: add action
+[currentOfficier, "QS_fnc_addActionRetreat", nil, true] spawn BIS_fnc_MP;
+
+// HQ: guards
+{
+   _guardPos = [_campPos, 2, 100, 2, 0, 0.4, 0] call BIS_fnc_findSafePos;
+   _x createUnit [_guardPos, _hqGroup, "currentGuard = this"];
+   currentGuard setDir (([currentOfficier, currentGuard] call BIS_fnc_dirTo) + 180);
+   currentGuard setUnitPos "AUTO";
+} forEach [INFANTRY_HQ_GUARDS];
+
+// HQ: sniper
+// Arma developers broke BIS_fnc_findOverwatch function so we can't use it
+_sniperPlaces = selectBestPlaces [_campPos, 600, "hills", 1, 1];
+_sniperPos = (_sniperPlaces select 0) select 0;
+if (_sniperPos distance _campPos > 600) then {
+    _sniperPos = [_campPos, 80, 600, 2, 0, 0.4, 0] call BIS_fnc_findSafePos;
+};
+"O_ghillie_ard_F" createUnit [_sniperPos, _hqGroup, "currentSniper = this"];
+currentSniper setDir ([currentOfficier, currentSniper] call BIS_fnc_dirTo);
+currentSniper setUnitPos "DOWN";
+
+// HQ: group settings
+_hqGroup setBehaviour "STEALTH";
+_hqGroup setCombatMode "RED";
+[(units _hqGroup)] call QS_fnc_setSkill4;
+[_hqGroup, _campPos] call bis_fnc_taskDefend;
+_enemiesArray = _enemiesArray + (units _hqGroup);
+
 [_startPoint, 200, ["vehicles", "fire"]] call QS_fnc_addHades;
 while { sideMissionUp } do {
     sleep 2;

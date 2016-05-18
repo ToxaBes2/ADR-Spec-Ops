@@ -18,7 +18,7 @@ _missionList = [
     "heliCrash",
 	"convoy",
 	"snatch",	
-	//"swordfish",	
+	"swordfish",
 	"yellowfog",
 	"grapeswrath"
 ];

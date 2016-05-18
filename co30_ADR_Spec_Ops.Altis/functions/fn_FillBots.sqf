@@ -35,7 +35,7 @@ switch (_side) do {
         _units = ["B_Soldier_02_f", "B_Soldier_03_f", "B_Soldier_04_f", "B_Soldier_05_f", "B_Soldier_F", "B_Soldier_lite_F", "B_Soldier_GL_F", 
 "B_soldier_AR_F", "B_Soldier_SL_F", "B_Soldier_TL_F", "B_soldier_M_F", "B_soldier_LAT_F", "B_medic_F", "B_soldier_repair_F", 
 "B_soldier_exp_F", "B_Soldier_A_F", "B_soldier_AT_F", "B_soldier_AA_F", "B_engineer_F", "B_crew_F", "B_officer_F", 
-"B_soldier_PG_F", "B_soldier_UAV_F", "b_soldier_unarmed_f", "B_recon_F", "B_recon_LAT_F", "B_recon_exp_F", "B_recon_medic_F", 
+"B_soldier_UAV_F", "b_soldier_unarmed_f", "B_recon_F", "B_recon_LAT_F", "B_recon_exp_F", "B_recon_medic_F", 
 "B_recon_TL_F", "B_recon_M_F", "B_recon_JTAC_F", "B_spotter_F", "B_sniper_F", "b_soldier_survival_F", "B_CTRG_soldier_GL_LAT_F", 
 "B_CTRG_soldier_engineer_exp_F", "B_CTRG_soldier_M_medic_F", "B_CTRG_soldier_AR_A_F", "B_soldier_AAR_F", "B_soldier_AAT_F", 
 "B_soldier_AAA_F", "B_support_MG_F", "B_support_GMG_F", "B_support_Mort_F", "B_support_AMG_F", "B_support_AMort_F", 
@@ -51,7 +51,7 @@ switch (_side) do {
     }; 
 	case EAST : {
         _units = ["O_Soldier_F","O_Soldier_GL_F","O_Soldier_AR_F","O_Soldier_SL_F","O_Soldier_TL_F","O_soldier_M_F","O_Soldier_LAT_F","O_medic_F",
-"O_soldier_repair_F","O_soldier_exp_F","O_Soldier_AT_F","O_Soldier_AA_F","O_engineer_F","O_soldier_PG_F","O_recon_F","O_recon_M_F",
+"O_soldier_repair_F","O_soldier_exp_F","O_Soldier_AT_F","O_Soldier_AA_F","O_engineer_F","O_recon_F","O_recon_M_F",
 "O_recon_LAT_F","O_recon_medic_F","O_recon_TL_F","O_Soldier_AAT_F","O_soldierU_M_F","O_SoldierU_GL_F","O_Urban_Sharpshooter_F", "O_HeavyGunner_F",
 "O_Urban_HeavyGunner_F","O_support_MG_F","O_soldierU_F", "O_soldierU_AR_F", "O_soldierU_AAR_F", "O_soldierU_LAT_F", "O_soldierU_AT_F", "O_soldierU_AAT_F",
 "O_soldierU_AA_F", "O_soldierU_AAA_F", "O_soldierU_TL_F", "O_SoldierU_SL_F", "O_soldierU_medic_F", "O_soldierU_repair_F", "O_soldierU_exp_F",

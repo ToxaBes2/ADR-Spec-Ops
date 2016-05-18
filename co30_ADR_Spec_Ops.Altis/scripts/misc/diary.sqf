@@ -351,12 +351,20 @@ player createDiaryRecord ["credits",
 "ADR:Spec Ops",
 "
 <br />
-<font size='18' color='#3E9D3F'>Авторы</font>
+<font size='18' color='#3E9D3F'>Автор</font>
 <br />
 <font size='14'>
     • ToxaBes
 </font>
-<br /><br />
+<br />
+<font size='18' color='#3E9D3F'>Разработчики</font>
+<br />
+<font size='14'>
+    • ToxaBes
+<br />
+    • evil_c0okie
+</font>
+<br />
 <font size='14'>
 Данная миссия основана на ADR:Blue Shark [www.tehgam.com].
 </font>

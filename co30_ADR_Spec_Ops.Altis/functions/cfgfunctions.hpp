@@ -15,6 +15,7 @@ class QS
 		class addActionHack {};
 		class addActionNeutralize {};
 		class addActionRescue {};
+		class addActionRetreat {};
 		class addActionSabotage {};
 		class addActionSurrender {};
 		class addActionTakeControl {};

@@ -16,7 +16,7 @@ Description: Snatch helicopter and return it to the base.
 #define INFANTRY_HELI_CREW "O_helicrew_F"
 #define INFANTRY_STATIC "O_HMG_01_high_F"
 #define INFANTRY_GUNNERS "O_support_MG_F", "O_support_GMG_F", "O_support_AMG_F"
-#define INFANTRY_SOLDIERS "O_Soldier_F","O_Soldier_GL_F","O_Soldier_AR_F","O_Soldier_SL_F","O_Soldier_TL_F","O_soldier_M_F","O_Soldier_LAT_F","O_medic_F","O_soldier_repair_F","O_soldier_exp_F","O_Soldier_AT_F","O_Soldier_AA_F","O_engineer_F","O_soldier_PG_F","O_recon_F","O_recon_M_F","O_recon_LAT_F","O_recon_medic_F","O_recon_TL_F","O_Soldier_AAT_F","O_soldierU_M_F","O_SoldierU_GL_F"
+#define INFANTRY_SOLDIERS "O_Soldier_F","O_Soldier_GL_F","O_Soldier_AR_F","O_Soldier_SL_F","O_Soldier_TL_F","O_soldier_M_F","O_Soldier_LAT_F","O_medic_F","O_soldier_repair_F","O_soldier_exp_F","O_Soldier_AT_F","O_Soldier_AA_F","O_engineer_F","O_recon_F","O_recon_M_F","O_recon_LAT_F","O_recon_medic_F","O_recon_TL_F","O_Soldier_AAT_F","O_soldierU_M_F","O_SoldierU_GL_F"
 
 // define private variables
 private ["_targets","_accepted","_distance","_briefing","_position","_flatPos","_x","_enemiesArray","_startPoint"];
@@ -64,24 +64,8 @@ _helicopters = [
 _helicopters = [_helicopters, 7] call KK_fnc_arrayShufflePlus;
 
 // select correct place for mission
-if (PARAMS_AO == 1) then {
-    _accepted = false;
-    while {!_accepted} do {
-        _position = _targets call BIS_fnc_selectRandom;
-        _flatPos  = _position select 0;
-        _distance = [_flatPos, getMarkerPos currentAO] call BIS_fnc_distance2D;
-        if (_distance > 3000) then {
-            _distance = [_flatPos, getMarkerPos "priorityMarker"] call BIS_fnc_distance2D;
-            if (_distance > 1500) then {
-                _accepted = true;
-            };
-        };
-        sleep 5;
-    };
-} else {
-    _position = _targets call BIS_fnc_selectRandom;
-    _flatPos  = _position select 0;
-};
+_position = _targets call BIS_fnc_selectRandom;
+_flatPos  = _position select 0;
 
 // set zone area
 _startPoint = [(_flatPos select 0),(_flatPos select 1),1];

@@ -10,7 +10,7 @@ Description: Ambush convoy and defuse the bomb.
 #define INFANTRY_DEVICE_VEHICLE "O_Truck_03_device_F"
 #define INFANTRY_FIRST_VEHICLE "O_APC_Wheeled_02_rcws_F"
 #define INFANTRY_CONVOY "O_APC_Wheeled_02_rcws_F","O_Truck_03_covered_F","O_Truck_03_device_F","O_Truck_03_transport_F","O_MRAP_02_hmg_F"
-#define INFANTRY_SOLDIERS "O_Soldier_F","O_Soldier_GL_F","O_Soldier_AR_F","O_Soldier_SL_F","O_Soldier_TL_F","O_soldier_M_F","O_Soldier_LAT_F","O_medic_F","O_soldier_repair_F","O_soldier_exp_F","O_Soldier_AT_F","O_Soldier_AA_F","O_engineer_F","O_soldier_PG_F","O_recon_F","O_recon_M_F","O_recon_LAT_F","O_recon_medic_F","O_recon_TL_F","O_Soldier_AAT_F","O_soldierU_M_F","O_SoldierU_GL_F"
+#define INFANTRY_SOLDIERS "O_Soldier_F","O_Soldier_GL_F","O_Soldier_AR_F","O_Soldier_SL_F","O_Soldier_TL_F","O_soldier_M_F","O_Soldier_LAT_F","O_medic_F","O_soldier_repair_F","O_soldier_exp_F","O_Soldier_AT_F","O_Soldier_AA_F","O_engineer_F","O_recon_F","O_recon_M_F","O_recon_LAT_F","O_recon_medic_F","O_recon_TL_F","O_Soldier_AAT_F","O_soldierU_M_F","O_SoldierU_GL_F"
 
 // define private variables
 private ["_targets","_accepted","_distance","_briefing","_position","_city","_flatPos","_x","_enemiesArray","_startPoint"];
@@ -39,24 +39,8 @@ _targets = [
 ];
 
 // select correct place for mission
-if (PARAMS_AO == 1) then {
-    _accepted = false;
-    while {!_accepted} do {
-        _position = _targets call BIS_fnc_selectRandom;
-        _flatPos  = _position select 1;
-        _distance = [_flatPos, getMarkerPos currentAO] call BIS_fnc_distance2D;
-        if (_distance > 3000) then {
-            _distance = [_flatPos, getMarkerPos "priorityMarker"] call BIS_fnc_distance2D;
-            if (_distance > 1500) then {
-                _accepted = true;
-            };
-        };
-        sleep 5;
-    };
-} else {
-    _position = _targets call BIS_fnc_selectRandom;
-    _flatPos  = _position select 1;
-};
+_position = _targets call BIS_fnc_selectRandom;
+_flatPos  = _position select 1;
 
 // set zone area
 _startPoint = [(_flatPos select 0),(_flatPos select 1),1];
