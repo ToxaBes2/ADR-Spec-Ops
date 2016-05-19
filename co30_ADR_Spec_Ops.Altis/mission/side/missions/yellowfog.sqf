@@ -221,21 +221,23 @@ for "_i" from 1 to 20 do {
 
 // add fog event
 _barrel addEventHandler ["EpeContactStart", {
-
     if (!SM_YELLOWFOG_FAIL) then {
-        SM_YELLOWFOG_FAIL = true;
-        publicVariable "SM_YELLOWFOG_FAIL";
-        _obj removeEventHandler ['EpeContact', 0];
-        [[[SM_YELLOWFOG_POS, 120], "scripts\fog.sqf"], "BIS_fnc_execVM", true, false] spawn BIS_fnc_MP;
-        [] spawn {
-            _n = 0;
-            _nearestTargets = nearestObjects [SM_YELLOWFOG_STARTPOINT, ["Man"], 130];
-            while {_n <= 120} do {
-                {
-                    _x setDamage 0.1 * _n / 10;
-                } forEach _nearestTargets;
-                _n = _n + 10;
-                sleep 10;
+        _force = _this select 4;
+        if (_force > 8) then {
+            SM_YELLOWFOG_FAIL = true;
+            publicVariable "SM_YELLOWFOG_FAIL";
+            _obj removeEventHandler ['EpeContact', 0];
+            [[[SM_YELLOWFOG_POS, 120], "scripts\fog.sqf"], "BIS_fnc_execVM", true, false] spawn BIS_fnc_MP;
+            [] spawn {
+                _n = 0;
+                _nearestTargets = nearestObjects [SM_YELLOWFOG_STARTPOINT, ["Man"], 130];
+                while {_n <= 120} do {
+                    {
+                        _x setDamage 0.1 * _n / 10;
+                    } forEach _nearestTargets;
+                    _n = _n + 10;
+                    sleep 10;
+                };
             };
         };
     };
