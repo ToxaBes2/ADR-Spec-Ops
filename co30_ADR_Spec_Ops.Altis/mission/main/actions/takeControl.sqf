@@ -12,5 +12,5 @@ _points = 10;
 [_object,"QS_fnc_removeAction0",nil,true] spawn BIS_fnc_MP;
 MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";
 [_object, 0] call BIS_fnc_dataTerminalAnimate;
-["ScoreBonus", ["Захватил командный пункт!", _points]] remoteExec ["BIS_fnc_showNotification", _player];
+["ScoreBonus", ["Командный пункт захвачен!", _points]] remoteExec ["BIS_fnc_showNotification", _player];
 [_player, _points] remoteExec ["addScore", 2];

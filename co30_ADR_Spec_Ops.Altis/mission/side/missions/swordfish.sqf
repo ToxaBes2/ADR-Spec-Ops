@@ -63,7 +63,7 @@ SM_SWORDFISH_SUCCESS = false; publicVariable "SM_SWORDFISH_SUCCESS";
 // show brief information
 _briefing = "<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#FFC107'>Рыба-меч</t><br/>____________________<br/>Атомная подводная лодка класса Рыба-Меч терпит бедствие недалеко от нашей зоны ответственности. Есть информация что противник перехватил сигнал SOS и отправил группу захвата по полученным координатам. Командование назначило подводную спецоперацию.<br/><br/>Ваша задача: выдвинуться в указанный район, найти подводную лодку и оборонять ее до подхода спасателей.</t>";
 GlobalHint = _briefing; hint parseText GlobalHint; publicVariable "GlobalHint";
-showNotification = ["NewSideMission", "Рыба-меч"]; publicVariable "showNotification";
+showNotification = ["NewSpecMission", "Рыба-меч"]; publicVariable "showNotification";
 sideMissionUp = true; publicVariable "sideMissionUp";
 
 // spawn submarine
@@ -307,7 +307,7 @@ while { sideMissionUp } do {
         { _x setMarkerPos [-12000,-12000,-12000]; publicVariable _x; } forEach ["sideMarker", "sideCircle"];
         "sideCircle" setMarkerSize [300, 300]; publicVariable "sideCircle";
         "sideMarker" setMarkerText ""; publicVariable "sideMarker";
-        [] call QS_fnc_SMhintSUCCESS;
+        [true] call QS_fnc_SMhintSUCCESS;
 
         // delete mines
         {

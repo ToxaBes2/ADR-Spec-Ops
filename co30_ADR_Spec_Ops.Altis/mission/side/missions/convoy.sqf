@@ -72,7 +72,7 @@ _arrows = _position select 2;
 _city = _position select 0;
 _briefing = format ["<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#FFC107'>Конвой</t><br/>____________________<br/>Недалеко от %1 разведка обнаружила конвой противника перевозящий Тактический Ядерный Заряд. Цель перемещения неизвестна, но визуальный осмотр показал что Заряд поврежден - есть угроза возникновения неконтролируемой ядерной реакции. Командование назначило пехотную спецоперацию.<br/><br/>Ваша задача — выдвинуться в указанный район, остановить конвой и обезвредить Заряд. Будьте осторожны - любое повреждение объекта может запустить цепную реакцию.</t>", _city];
 GlobalHint = _briefing; hint parseText GlobalHint; publicVariable "GlobalHint";
-showNotification = ["NewSideMission", "Конвой"]; publicVariable "showNotification";
+showNotification = ["NewSpecMission", "Конвой"]; publicVariable "showNotification";
 sideMissionUp = true; publicVariable "sideMissionUp";
 
 // wait for player in zone, then wait a bit and spawn convoy
@@ -536,10 +536,10 @@ while { sideMissionUp } do {
         "sideMarker" setMarkerText ""; publicVariable "sideMarker";
         if (SM_CONVOY_FAIL) then {
             _delConvoy = _convoy;
-            [] call QS_fnc_SMhintFAIL;
+            [true] call QS_fnc_SMhintFAIL;
         } else {
             _delConvoy = _convoyVehs;
-            [] call QS_fnc_SMhintSUCCESS;
+            [true] call QS_fnc_SMhintSUCCESS;
 
             // change event to prevent next convoy fail on destroy device from previous mission
             vehDevice removeAllMPEventHandlers "MPKilled";

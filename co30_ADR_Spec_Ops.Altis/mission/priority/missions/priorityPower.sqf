@@ -96,7 +96,7 @@ priorityTargetText = "Узел связи"; publicVariable "priorityTargetText";
 "priorityMarker" setMarkerText "Приоритетная цель: Узел связи"; publicVariable "priorityMarker";
 _briefing = "<t align='center'><t size='2.2'>Внимание</t><br/><t size='1.5' color='#F44336'>Узел связи и РЭБ</t><br/>____________________<br/>Разведка сообщает, что для поддержки своего наступления противник развернул полевой узел связи и РЭБ. Пока они работают - работа нашего электронного оборудования частично парализована.</t>";
 GlobalHint = _briefing; hint parseText _briefing; publicVariable "GlobalHint";
-showNotification = ["NewPriorityTarget", "Уничтожить Узел связи и РЭБ"]; publicVariable "showNotification";
+showNotification = ["NewPriorityTarget", ["Уничтожить Узел связи и РЭБ", "\a3\ui_f\data\gui\cfg\hints\uavconncetion_ca.paa"]]; publicVariable "showNotification";
 SM_POWER = false; publicVariable "SM_POWER";
 POWERFIX = false; publicVariable "POWERFIX";
 EW_ATTACK = true; publicVariable "EW_ATTACK";
@@ -119,14 +119,14 @@ while {currentAOUp} do {
 	if ((!alive sideObj || !alive power || !alive EWCar) && currentAOUp) exitWith {
 		_completeText = "<t align='center' size='2.2'>Внимание</t><br/><t size='1.5' color='#F44336'>Приоритетная цель провалена!</t><br/>____________________<br/>Данные невозможно перехватить т.к. оборудование потеряно.<br/><br/>Возвращайтесь к выполнению основной задачи.";
         GlobalHint = _completeText; hint parseText _completeText; publicVariable "GlobalHint";
-        showNotification = ["CompletedPriorityTarget", "Приоритетная цель провалена!"]; publicVariable "showNotification";
+        showNotification = ["FailedPriorityTarget", ["Приоритетная цель провалена!", "\a3\ui_f\data\gui\cfg\hints\uavconncetion_ca.paa"]]; publicVariable "showNotification";
         EW_ATTACK = false; publicVariable "EW_ATTACK";
 	};
 
 	if (SM_POWER && POWERFIX && currentAOUp) exitWith {
         _completeText = "<t align='center' size='2.2'>Внимание</t><br/><t size='1.5' color='#C6FF00'>РЭБ противника подавлена</t><br/>____________________<br/>Противник лишился РЭБ и узла связи, захвачены важные данные.<br/><br/>Возвращайтесь к выполнению основной задачи.";
         GlobalHint = _completeText; hint parseText _completeText; publicVariable "GlobalHint";
-        showNotification = ["CompletedPriorityTarget", "РЭБ противника подавлена"]; publicVariable "showNotification";
+        showNotification = ["CompletedPriorityTarget", ["РЭБ противника подавлена", "\a3\ui_f\data\gui\cfg\hints\uavconncetion_ca.paa"]]; publicVariable "showNotification";
         EW_ATTACK = false; publicVariable "EW_ATTACK";
         sleep 5;
 

@@ -161,8 +161,8 @@ _targetStartText = format
 // Show global target start hint
 GlobalHint = _targetStartText; publicVariable "GlobalHint"; hint parseText GlobalHint;
 showNotification = ["NewMain", _nameAO]; publicVariable "showNotification";
-showNotification = ["NewSub", "Уничтожить радиовышку противника"]; publicVariable "showNotification";
-showNotification = ["NewSub", "Захватить командный пункт"]; publicVariable "showNotification";
+showNotification = ["NewSub", ["Уничтожить радиовышку противника", "\a3\ui_f\data\gui\cfg\hints\mines_ca.paa"]]; publicVariable "showNotification";
+showNotification = ["NewSub", ["Захватить командный пункт", "\a3\ui_f\data\gui\cfg\hints\commanding_ca.paa"]]; publicVariable "showNotification";
 sleep 2;
 MAIN_AO_SUCCESS = false; publicVariable "MAIN_AO_SUCCESS";
 
@@ -190,7 +190,7 @@ while {alive radioTower || !MAIN_AO_SUCCESS || !_showTowerMessage || !_showBunke
         radioTowerAlive = false; publicVariable "radioTowerAlive";
         _radioTowerDownText = "<t align='center' size='2.2'>Радиовышка</t><br/><t size='1.5' color='#C6FF00' align='center'>Уничтожена</t><br/>____________________<br/>Теперь противник не сможет вызвать авиаподдержку.";
         GlobalHint = _radioTowerDownText; hint parseText GlobalHint; publicVariable "GlobalHint";
-        showNotification = ["CompletedSub", "Радиовышка уничтожена!"]; publicVariable "showNotification";
+        showNotification = ["CompletedSub", ["Радиовышка уничтожена!", "\a3\ui_f\data\gui\cfg\hints\mines_ca.paa"]]; publicVariable "showNotification";
     };
     sleep 3;
     if (MAIN_AO_SUCCESS && !_showBunkerMessage) then {
@@ -199,7 +199,7 @@ while {alive radioTower || !MAIN_AO_SUCCESS || !_showTowerMessage || !_showBunke
         // BUNKER UNDER OUR CONTROL
         _bunkerText = "<t align='center' size='2.2'>Командный пункт</t><br/><t size='1.5' color='#C6FF00' align='center'>Захвачен</t><br/>____________________<br/>Противник дезорганизован.";
         GlobalHint = _bunkerText; hint parseText GlobalHint; publicVariable "GlobalHint";
-        showNotification = ["CompletedSub", "Командный пункт захвачен!"]; publicVariable "showNotification";
+        showNotification = ["CompletedSub", ["Командный пункт захвачен!", "\a3\ui_f\data\gui\cfg\hints\commanding_ca.paa"]]; publicVariable "showNotification";
     };
 };
 currentAOUp = false; publicVariable "currentAOUp";

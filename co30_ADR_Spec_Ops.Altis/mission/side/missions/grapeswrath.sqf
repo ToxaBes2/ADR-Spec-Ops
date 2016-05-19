@@ -48,7 +48,7 @@ SM_GRAPESWRATH_FAIL = false; publicVariable "SM_GRAPESWRATH_FAIL";
 // show brief information
 _briefing = "<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#FFC107'>Гроздья Гнева</t><br/>____________________<br/>Противник получил контроль над нашим ударным орбитальным комплексом ""Гроздья Гнева"". Комплекс состоит из трех спутников, каждый имеет на вооружении волоконный лазер мощностью до 500 кВт способный уничтожать ракеты, БПЛА и пехоту. Вернуть контроль над спутниками можно только взломав терминалы управления. Командование назначило поисковую спецоперацию.<br/><br/>Ваша задача: выдвинуться в указанный район, провести поисковую операцию и взломать три терминала управления спутниками.</t>";
 GlobalHint = _briefing; hint parseText GlobalHint; publicVariable "GlobalHint";
-showNotification = ["NewSideMission", "Гроздья Гнева"]; publicVariable "showNotification";
+showNotification = ["NewSpecMission", "Гроздья Гнева"]; publicVariable "showNotification";
 sideMissionUp = true; publicVariable "sideMissionUp";
 
 // prepare positions
@@ -223,9 +223,9 @@ while { sideMissionUp } do {
         "sideCircle" setMarkerSize [300, 300]; publicVariable "sideCircle";
         "sideMarker" setMarkerText ""; publicVariable "sideMarker";
         if (SM_GRAPESWRATH_FAIL) then {
-            [] call QS_fnc_SMhintFAIL;
+            [true] call QS_fnc_SMhintFAIL;
         } else {
-            [] call QS_fnc_SMhintSUCCESS;
+            [true] call QS_fnc_SMhintSUCCESS;
         };
         if (_showMarkers) then {
             {

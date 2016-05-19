@@ -325,7 +325,7 @@ class CfgNotifications
 	class NewSub
 	{
 		title = "НОВОЕ ПОДЗАДАНИЕ";
-		iconPicture = "\a3\ui_f\data\gui\cfg\hints\rules_ca.paa";
+		iconPicture = "%2";
 		description = "%1";
 		color[] = {1, 0.76, 0.03, 1};
 		priority = 6;
@@ -333,8 +333,8 @@ class CfgNotifications
 
 	class CompletedSub
 	{
-		title = "ВТОРИЧНАЯ ЦЕЛЬ УНИЧТОЖЕНА";
-		iconPicture = "\a3\ui_f\data\gui\cfg\hints\tasks_ca.paa";
+		title = "ПОДЗАДАНИЕ ВЫПОЛНЕНО";
+		iconPicture = "%2";
 		description = "%1";
 		color[] = {0.78, 1, 0, 1};
 		priority = 6;
@@ -358,10 +358,46 @@ class CfgNotifications
 		priority = 7;
 	};
 
+	class FailedSideMission
+	{
+		title = "ДОПЗАДАНИЕ ПРОВАЛЕНО";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\map_ca.paa";
+		description = "%1";
+		color[] = {0.97, 0.26, 0.21, 1};
+		priority = 7;
+	};
+
+	class NewSpecMission
+	{
+		title = "НОВАЯ СПЕЦОПЕРАЦИЯ";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\stamina_ca.paa";
+		description = "%1";
+		color[] = {1, 0.76, 0.03, 1};
+		priority = 7;
+	};
+
+	class CompletedSpecMission
+	{
+		title = "СПЕЦОПЕРАЦИЯ ВЫПОЛНЕНА";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\stamina_ca.paa";
+		description = "%1";
+		color[] = {0.78, 1, 0, 1};
+		priority = 7;
+	};
+
+	class FailedSpecMission
+	{
+		title = "СПЕЦОПЕРАЦИЯ ПРОВАЛЕНА";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\stamina_ca.paa";
+		description = "%1";
+		color[] = {0.97, 0.26, 0.21, 1};
+		priority = 7;
+	};
+
 	class NewPriorityTarget
 	{
-		title = "НОВАЯ ВАЖНАЯ ЦЕЛЬ";
-		iconPicture = "\a3\ui_f\data\gui\cfg\hints\target_ca.paa";
+		title = "НОВАЯ ПРИОРИТЕТНАЯ ЦЕЛЬ";
+		iconPicture = "%2";
 		description = "%1";
 		color[] = {0.97, 0.26, 0.21, 1};
 		priority = 8;
@@ -369,10 +405,19 @@ class CfgNotifications
 
 	class CompletedPriorityTarget
 	{
-		title = "ВАЖНАЯ ЦЕЛЬ НЕЙТРАЛИЗОВАНА";
-		iconPicture = "\a3\ui_f\data\gui\cfg\hints\target_ca.paa";
+		title = "ПРИОРИТЕТНАЯ ЦЕЛЬ НЕЙТРАЛИЗОВАНА";
+		iconPicture = "%2";
 		description = "%1";
 		color[] = {0.78, 1, 0, 1};
+		priority = 8;
+	};
+
+	class FailedPriorityTarget
+	{
+		title = "ПРИОРИТЕТНАЯ ЦЕЛЬ ПРОВАЛЕНА";
+		iconPicture = "%2";
+		description = "%1";
+		color[] = {0.97, 0.26, 0.21, 1};
 		priority = 8;
 	};
 

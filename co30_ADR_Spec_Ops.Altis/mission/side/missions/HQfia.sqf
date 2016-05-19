@@ -84,7 +84,7 @@ while { sideMissionUp } do {
 		// DE-BRIEFING
 		sideMissionUp = false; publicVariable "sideMissionUp";
 		hqSideChat = "Цель уничтожена преждевременно. Задание провалено!"; publicVariable "hqSideChat"; [WEST,"HQ"] sideChat hqSideChat;
-		[] spawn QS_fnc_SMhintFAIL;
+		[false] spawn QS_fnc_SMhintFAIL;
 		{ _x setMarkerPos [-10000, -10000, -10000]; } forEach ["sideMarker", "sideCircle"]; publicVariable "sideMarker";
 
 		// DELETE
@@ -108,7 +108,7 @@ while { sideMissionUp } do {
 
 		// DE-BRIEFING
 		sideMissionUp = false; publicVariable "sideMissionUp";
-		[] call QS_fnc_SMhintSUCCESS;
+		[false] call QS_fnc_SMhintSUCCESS;
 		{ _x setMarkerPos [-10000, -10000, -10000]; } forEach ["sideMarker", "sideCircle"]; publicVariable "sideMarker";
 
 		// DELETE
