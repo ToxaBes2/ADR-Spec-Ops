@@ -32,9 +32,6 @@ _veh = smRewards call BIS_fnc_selectRandom;
 _vehName = _veh select 0;
 _vehVarname = _veh select 1;
 
-_completeText = format[
-"<t align='center'><t size='2.2'>Допзадание</t><br/><t size='1.5' color='#C6FF00'>Выполнено</t><br/>____________________<br/>За успешное проведение, непосредственные участники задания получают в награду:<br/><br/>%1.<br/><br/>Выдвигайтесь обратно на базу или прямиком на точку захвата.</t>", _vehName];
-
 _reward = createVehicle [_vehVarname, getMarkerPos "smReward1", smMarkerList, 0, "NONE"];
 waitUntil {!isNull _reward};
 
@@ -42,11 +39,21 @@ waitUntil {!isNull _reward};
 _reward setDir 135;
 _reward setVariable ["IS_REWARD", true];
 
-GlobalHint = _completeText; publicVariable "GlobalHint"; hint parseText _completeText;
 if (count sideMarkerText == 2) then {
     sideMarkerText = sideMarkerText select 0;
 };
-showNotification = ["CompletedSideMission", sideMarkerText]; publicVariable "showNotification";
+
+if (_this select 0) then {
+	_completeText = format["<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#C6FF00'>Выполнена</t><br/>____________________<br/>За успешное проведение, непосредственные участники задания получают в награду:<br/><br/>%1.<br/><br/>Выдвигайтесь обратно на базу или прямиком на точку захвата.</t>", _vehName];
+	showNotification = ["CompletedSpecMission", sideMarkerText];
+} else {
+	_completeText = format["<t align='center'><t size='2.2'>Допзадание</t><br/><t size='1.5' color='#C6FF00'>Выполнено</t><br/>____________________<br/>За успешное проведение, непосредственные участники задания получают в награду:<br/><br/>%1.<br/><br/>Выдвигайтесь обратно на базу или прямиком на точку захвата.</t>", _vehName];
+	showNotification = ["CompletedSideMission", sideMarkerText];
+};
+
+GlobalHint = _completeText; publicVariable "GlobalHint"; hint parseText _completeText;
+
+publicVariable "showNotification";
 showNotification = ["Reward", _vehName]; publicVariable "showNotification";
 
 if (_reward isKindOf "I_Heli_light_03_F") then {

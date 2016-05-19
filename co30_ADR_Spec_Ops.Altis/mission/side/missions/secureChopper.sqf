@@ -81,7 +81,7 @@ while { sideMissionUp } do {
 
 		// DE-BRIEFING
 		hqSideChat = "Данные о прототипе утеряны. Задание провалено!"; publicVariable "hqSideChat"; [WEST,"HQ"] sideChat hqSideChat;
-		[] spawn QS_fnc_SMhintFAIL;
+		[false] spawn QS_fnc_SMhintFAIL;
 		{ _x setMarkerPos [-10000, -10000, -10000]; } forEach ["sideMarker", "sideCircle"]; publicVariable "sideMarker";
 		sideMissionUp = false; publicVariable "sideMissionUp";
 
@@ -108,7 +108,7 @@ while { sideMissionUp } do {
 		sleep 0.1;
 
 		// DE-BRIEFING
-		[] call QS_fnc_SMhintSUCCESS;
+		[false] call QS_fnc_SMhintSUCCESS;
 		{ _x setMarkerPos [-10000, -10000, -10000]; } forEach ["sideMarker", "sideCircle"]; publicVariable "sideMarker";
 		sideMissionUp = false; publicVariable "sideMissionUp";
 

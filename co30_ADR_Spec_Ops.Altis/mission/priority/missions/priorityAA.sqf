@@ -161,7 +161,7 @@ priorityTargetText = "Зенитная батарея"; publicVariable "priority
 "priorityMarker" setMarkerText "Приоритетная цель: Зенитная батарея"; publicVariable "priorityMarker";
 _briefing = "<t align='center' size='2.2'>Внимание</t><br/><t size='1.5' color='#F44336'>Зенитная батарея</t><br/>____________________<br/>Обнаружена точка укрепления зенитных орудий противника. Её близлежащее расположение грозит как группам десантирования, так и всей нашей авиации в целом.";
 GlobalHint = _briefing; hint parseText _briefing; publicVariable "GlobalHint";
-showNotification = ["NewPriorityTarget", "Зенитная батарея"]; publicVariable "showNotification";
+showNotification = ["NewPriorityTarget", ["Зенитная батарея", "\a3\ui_f\data\gui\cfg\hints\target_ca.paa"]]; publicVariable "showNotification";
 
 // 8. CORE LOOP
 waitUntil{sleep 1; !isNil "currentAOUp"};
@@ -226,7 +226,7 @@ while {_loopVar} do {
 			sleep 5;
 			_completeText = "<t align='center' size='2.2'>Внимание</t><br/><t size='1.5' color='#C6FF00'>Зенитная батарея уничтожена!</t><br/>____________________<br/>Противник лишился основных средств ПВО.<br/><br/>Возвращайтесь к выполнению основной задачи.";
 			GlobalHint = _completeText; hint parseText _completeText; publicVariable "GlobalHint";
-			showNotification = ["CompletedPriorityTarget", "Зенитная батарея нейтрализована"]; publicVariable "showNotification";
+			showNotification = ["CompletedPriorityTarget", ["Зенитная батарея нейтрализована", "\a3\ui_f\data\gui\cfg\hints\target_ca.paa"]]; publicVariable "showNotification";
 			{_x setMarkerPos [-10000, -10000, -10000];} forEach ["priorityMarker","priorityCircle"]; publicVariable "priorityMarker";
 
 			// 10. DELETE

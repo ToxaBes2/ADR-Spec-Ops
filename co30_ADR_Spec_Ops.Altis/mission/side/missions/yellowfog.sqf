@@ -58,7 +58,7 @@ SM_YELLOWFOG_STARTPOINT = _startPoint; publicVariable "SM_YELLOWFOG_STARTPOINT";
 // show brief information
 _briefing = "<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#FFC107'>Желтый туман</t><br/>____________________<br/>Нам поступила информация о странном складе ГСМ противника. Охрана склада часто ходит в противогазах и комплектах химзащиты. Есть подозрние что часть емкостей сожержит иприт. Командование назначило десантную спецоперацию.<br/><br/>Ваша задача: выдвинуться в указанный район, проникнуть на базу и обезвредить бочки с химоружием.</t>";
 GlobalHint = _briefing; hint parseText GlobalHint; publicVariable "GlobalHint";
-showNotification = ["NewSideMission", "Желтый туман"]; publicVariable "showNotification";
+showNotification = ["NewSpecMission", "Желтый туман"]; publicVariable "showNotification";
 sideMissionUp = true; publicVariable "sideMissionUp";
 
 // spawn walls
@@ -371,9 +371,9 @@ while { sideMissionUp } do {
         "sideCircle" setMarkerSize [300, 300]; publicVariable "sideCircle";
         "sideMarker" setMarkerText ""; publicVariable "sideMarker";
         if (SM_YELLOWFOG_FAIL) then {
-            [] call QS_fnc_SMhintFAIL;
+            [true] call QS_fnc_SMhintFAIL;
         } else {
-            [] call QS_fnc_SMhintSUCCESS;
+            [true] call QS_fnc_SMhintSUCCESS;
 
             // spawn stomper
             if (random 10 > 5) then {

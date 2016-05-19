@@ -57,12 +57,13 @@ player addEventHandler [ "Take", {
 // PVEHs
 "showNotification" addPublicVariableEventHandler
 {
-	private ["_type", "_message"];
+	private ["_array", "_type", "_message"];
 	_array = _this select 1;
 	_type = _array select 0;
 	_message = "";
-	if (count _array > 1) then { _message = _array select 1; };
-	[_type, [_message]] call BIS_fnc_showNotification;
+	if (count _array > 1) then { _message = _array select 1;};
+	if ((typeName _message) != "ARRAY") then {_message = [_message];};
+	[_type, _message] call BIS_fnc_showNotification;
 };
 
 "GlobalHint" addPublicVariableEventHandler

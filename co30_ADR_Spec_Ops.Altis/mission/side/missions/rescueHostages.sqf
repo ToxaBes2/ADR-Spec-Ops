@@ -469,7 +469,7 @@ _bots = _startPoint nearObjects ["Man", 400];
 _city = _position select 0;
 _briefing = format ["<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#FFC107'>Заложники</t><br/>____________________<br/>Отряд противника занял %1 и превратил его в укрепрайон. По приказу командира отряда часть местного населения была взята в заложники. Мы также получили ультиматум - покинуть остров в следующие 24 часа, в противном случае заложники будут убиты. Командование назначило пехотную спецоперацию<br/><br/>Ваша задача — выдвинуться в указанный район, обезвредить противника и освободить заложников. Будьте осторожны - противник имеет приказ уничтожить заложников в случае ликвидации командира.</t>", _city];
 GlobalHint = _briefing; hint parseText GlobalHint; publicVariable "GlobalHint";
-showNotification = ["NewSideMission", "Заложники"]; publicVariable "showNotification";
+showNotification = ["NewSpecMission", "Заложники"]; publicVariable "showNotification";
 
 sideMissionUp = true; publicVariable "sideMissionUp";
 SM_FAIL = false; publicVariable "SM_FAIL";
@@ -535,9 +535,9 @@ while { sideMissionUp } do {
         "sideCircle" setMarkerSize [300, 300]; publicVariable "sideCircle";
         "sideMarker" setMarkerText ""; publicVariable "sideMarker";
         if (SM_FAIL) then {
-            [] call QS_fnc_SMhintFAIL;
+            [true] call QS_fnc_SMhintFAIL;
         } else {
-            [] call QS_fnc_SMhintSUCCESS;
+            [true] call QS_fnc_SMhintSUCCESS;
         };
 
         // delete mines

@@ -79,7 +79,7 @@ SM_SNATCH_SUCCESS = false; publicVariable "SM_SNATCH_SUCCESS";
 // show brief information
 _briefing = "<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#FFC107'>Угон</t><br/>____________________<br/>Неделю назад противник атаковал один из наших складов и захватил экспериментальный вертолет. Сегодня наша разведка обнаружила его на одной из замаскированных баз противника. Командование назначило пехотную спецоперацию.<br/><br/>Ваша задача — выдвинуться в указанный район, захватить вертолет и вернуть его на базу.</t>";
 GlobalHint = _briefing; hint parseText GlobalHint; publicVariable "GlobalHint";
-showNotification = ["NewSideMission", "Угон"]; publicVariable "showNotification";
+showNotification = ["NewSpecMission", "Угон"]; publicVariable "showNotification";
 sideMissionUp = true; publicVariable "sideMissionUp";
 
 // spawn camp
@@ -383,9 +383,9 @@ while { sideMissionUp } do {
         "sideCircle" setMarkerSize [300, 300]; publicVariable "sideCircle";
         "sideMarker" setMarkerText ""; publicVariable "sideMarker";
         if (SM_SNATCH_FAIL) then {
-            [] call QS_fnc_SMhintFAIL;
+            [true] call QS_fnc_SMhintFAIL;
         } else {
-            [] call QS_fnc_SMhintSUCCESS;
+            [true] call QS_fnc_SMhintSUCCESS;
         };
 
         // delete mines

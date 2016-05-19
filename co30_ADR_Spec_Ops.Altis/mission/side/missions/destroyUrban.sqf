@@ -66,7 +66,7 @@ sleep 1;
 
 // DE-BRIEFING
 sideMissionUp = false; publicVariable "sideMissionUp";
-[] call QS_fnc_SMhintSUCCESS;
+[false] call QS_fnc_SMhintSUCCESS;
 "sideMarker" setMarkerPos [-10000, -10000, -10000]; publicVariable "sideMarker";
 
 // DELETE, DESPAWN, HIDE and RESET

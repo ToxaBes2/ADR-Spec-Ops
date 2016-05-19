@@ -307,7 +307,7 @@ _guardsGroup = [_startPoint, 350, 40, ENEMY_SIDE] call QS_fnc_FillBots;
 _city = _position select 0;
 _briefing = format ["<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#FFC107'>Прерванный полёт</t><br/>____________________<br/>Противник сбил наш вертолет разведки над %1. Пилоты спрятали блок с разведанными недалеко от места падения, после чего выдвинулись на точку эвакуации. Командование назначило пехотную спецоперацию<br/><br/>Ваша задача — выдвинуться в указанный район, обезвредить противника, найти данные разведки и уничтожить вертолет.</t>", _city];
 GlobalHint = _briefing; hint parseText GlobalHint; publicVariable "GlobalHint";
-showNotification = ["NewSideMission", "Прерванный полёт"]; publicVariable "showNotification";
+showNotification = ["NewSpecMission", "Прерванный полёт"]; publicVariable "showNotification";
 
 sideMissionUp = true; publicVariable "sideMissionUp";
 SM_SUCCESS_SABOTAGE = false; publicVariable "SM_SUCCESS_SABOTAGE";
@@ -351,7 +351,7 @@ while { sideMissionUp } do {
 		{ _x setMarkerPos [-12000,-12000,-12000]; publicVariable _x; } forEach ["sideMarker", "sideCircle"];
         "sideCircle" setMarkerSize [300, 300]; publicVariable "sideCircle";
         "sideMarker" setMarkerText ""; publicVariable "sideMarker";
-		[] call QS_fnc_SMhintSUCCESS;
+		[true] call QS_fnc_SMhintSUCCESS;
         sleep 120;
         { [_x] call QS_fnc_TBdeleteObjects; } forEach [_enemiesArray, _guardsGroup];
         deleteVehicle _heliObj;

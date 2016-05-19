@@ -98,7 +98,7 @@ priorityTargetText = "Артиллерия"; publicVariable "priorityTargetText"
 "priorityMarker" setMarkerText "Приоритетная цель: Артиллерия"; publicVariable "priorityMarker";
 _briefing = "<t align='center' size='2.2'>Внимание</t><br/><t size='1.5' color='#F44336'>Артиллерия</t><br/>____________________<br/>Обнаружена точка укрепления артиллерийских орудий противника. Её близлежащее расположение от района дислокации грозит всей нашей наземной группировке.<br/><br/>Первый залп ожидается уже через 5 минут.";
 GlobalHint = _briefing; hint parseText _briefing; publicVariable "GlobalHint";
-showNotification = ["NewPriorityTarget", "Уничтожить артиллерию врага"]; publicVariable "showNotification";
+showNotification = ["NewPriorityTarget", ["Уничтожить артиллерию врага", "\a3\ui_f\data\gui\cfg\hints\artillerycall_ca.paa"]]; publicVariable "showNotification";
 _firingMessages = [
 	"Противник выпустил артиллерийский залп. По укрытиям!",
 	"Наши позиции обстреливает артиллерия врага. Ищите укрытие!",
@@ -170,7 +170,7 @@ while {(canMove priorityObj1 || canMove priorityObj2) && currentAOUp} do {
 // DE-BRIEF
 _completeText = "<t align='center' size='2.2'>Внимание</t><br/><t size='1.5' color='#C6FF00'>Артиллерия подавлена</t><br/>____________________<br/>Противник лишился артиллерийских орудий.<br/><br/>Возвращайтесь к выполнению основной задачи.";
 GlobalHint = _completeText; hint parseText _completeText; publicVariable "GlobalHint";
-showNotification = ["CompletedPriorityTarget", "Артиллерия нейтрализована"]; publicVariable "showNotification";
+showNotification = ["CompletedPriorityTarget", ["Артиллерия нейтрализована", "\a3\ui_f\data\gui\cfg\hints\artillerycall_ca.paa"]]; publicVariable "showNotification";
 { _x setMarkerPos [-10000, -10000, -10000] } forEach ["priorityMarker","priorityCircle"]; publicVariable "priorityMarker";
 
 // DELETE
