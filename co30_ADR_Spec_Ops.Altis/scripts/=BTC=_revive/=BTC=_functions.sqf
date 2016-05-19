@@ -1186,7 +1186,7 @@ BTC_player_killed = {
     _playerOld = _this select 0;
     profileNamespace setVariable ["primary_weapon", primaryWeapon _playerOld];
     profileNamespace setVariable ["primary_items", primaryWeaponItems _playerOld];
-    profileNamespace setVariable ["primary_magazine", primaryWeaponMagazine _playerOld];
+    profileNamespace setVariable ["primary_magazine", primaryWeaponMagazine _playerOld];   
     profileNamespace setVariable ["secondary_weapon", secondaryWeapon _playerOld];
     profileNamespace setVariable ["secondary_items", secondaryWeaponItems _playerOld];
     profileNamespace setVariable ["secondary_magazine", secondaryWeaponMagazine _playerOld];
@@ -2070,7 +2070,7 @@ BTC_addMissingItems = {
     if (primaryWeapon _player == "") then {
         _primaryWeapon = profileNamespace getVariable "primary_weapon";   
         _primaryWeaponItems = profileNamespace getVariable "primary_items";  
-        _primaryWeaponMagazines = profileNamespace getVariable "primary_magazine";        
+        _primaryWeaponMagazines = profileNamespace getVariable "primary_magazine";    
         _player addWeaponGlobal _primaryWeapon;            
         {
             if (_x != "") then {
@@ -2085,6 +2085,27 @@ BTC_addMissingItems = {
             } forEach _primaryWeaponMagazines;
         };
         _player selectWeapon _primaryWeapon;
+    } else {
+        
+        // grenade launcher fix
+        _launchers = ["EGLM", "GL_3GL_F", "3GL"];
+        _primaryWeaponMagazines = profileNamespace getVariable "primary_magazine";
+        _muzzles = getArray(configFile >> "CfgWeapons" >> (primaryWeapon player) >> "muzzles");
+        if (count _muzzles > 0 && count _primaryWeaponMagazines > 0) then {
+            {
+                _muzzle = _x;
+                if (_muzzle in _launchers) then {                    
+                    {                   
+                        if (_x != "") then {
+                        	_magType = getNumber(configFile >> "CfgMagazines" >> _x >> "type");
+                            if (_magType == 16) then {
+                                _player addMagazines [_x, 1];                                
+                            };
+                        };               
+                    } forEach _primaryWeaponMagazines;
+                };                 
+            } forEach _muzzles;             
+        };
     };
 
     //load secondary weapon
