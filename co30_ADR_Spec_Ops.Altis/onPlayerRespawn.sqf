@@ -58,6 +58,13 @@ switch (_playerType) do {
 // add all players to emergency channel
 (RADIO_CHANNELS select 0) radioChannelAdd [player];
 
+// add sticky C4 event
+_null = player addEventHandler ["Fired", {
+    if (_this select 4 == "DemoCharge_Remote_Ammo") then {
+        [_this select 0] call C4_Attach;
+    };
+}];
+
 // Hide objects near heli landing
 ((getMarkerPos "respawn_west") nearestObject 492374) hideObject true;
 ((getMarkerPos "respawn_west") nearestObject 492375) hideObject true;
@@ -69,3 +76,5 @@ switch (_playerType) do {
 ((getMarkerPos "respawn_west") nearestObject 529331) hideObject true;
 ((getMarkerPos "respawn_west") nearestObject 493984) hideObject true;
 ((getMarkerPos "respawn_west") nearestObject 491093) allowDamage false;
+((getMarkerPos "respawn_west") nearestObject 491010) allowDamage false;
+((getMarkerPos "respawn_west") nearestObject 493386) allowDamage false;
