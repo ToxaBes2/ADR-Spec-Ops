@@ -6,12 +6,25 @@ _iampilot = ({typeOf player == _x} count _pilots) > 0;
 
 if (_iampilot) then {
 	//===== HELI TURRETS LOCK
-	player addAction ["<t color='#FF9800'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> Разрешить стрельбу</t>", QS_fnc_uh80TurretActions, 0, -95, false, false, '', '[] call QS_fnc_conditionUH80TurretActionUnlock'];
-	player addAction ["<t color='#FF9800'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> Запретить стрельбу</t>", QS_fnc_uh80TurretActions, 1, -95, false, false, '', '[] call QS_fnc_conditionUH80TurretActionLock'];
+	player addAction ["<t color='#FFC107'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> Разрешить стрельбу</t>", QS_fnc_uh80TurretActions, 0, -95, false, false, '', '[] call QS_fnc_conditionUH80TurretActionUnlock'];
+	player addAction ["<t color='#FFC107'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> Запретить стрельбу</t>", QS_fnc_uh80TurretActions, 1, -95, false, false, '', '[] call QS_fnc_conditionUH80TurretActionLock'];
 
 	//===== FIELD REPAIR
 	vehicle_repaired = false;
-	player addAction ["<t color='#FF9800'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_debug_ca.paa' size='1.0'/> Полевой ремонт</t>", QS_fnc_actionPilotRepair, '', 100, false, false, '', '[] call QS_fnc_conditionPilotRepair'];
+	player addAction ["<t color='#FFC107'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_debug_ca.paa' size='1.0'/> Полевой ремонт</t>", QS_fnc_actionPilotRepair, '', 100, false, false, '', '[] call QS_fnc_conditionPilotRepair'];
+
+	//===== Aircraft weapon loadout selection
+	//Hellcat
+	player addAction["<t color='#FFC107'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> M134 Minigun 7.62 mm[5000]; DAR[24]</t>", QS_fnc_actionChangeLoadout, 0, 99, false, false, "", "(typeOf (vehicle player) == 'I_Heli_light_03_F') && (((vehicle player) distance2D (getMarkerPos 'changeLoadout')) < 7) && ((getPos (vehicle player) select 2) < 1)"];
+	player addAction["<t color='#FFC107'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> Gatling 6.5 mm[2000]; GMG 40 mm[200]</t>", QS_fnc_actionChangeLoadout, 1, 98, false, false, "", "(typeOf (vehicle player) == 'I_Heli_light_03_F') && (((vehicle player) distance2D (getMarkerPos 'changeLoadout')) < 7) && ((getPos (vehicle player) select 2) < 1)"];
+	player addAction["<t color='#FFC107'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> Gatling Cannon 20 mm[2000]</t>", QS_fnc_actionChangeLoadout, 2, 97, false, false, "", "(typeOf (vehicle player) == 'I_Heli_light_03_F') && (((vehicle player) distance2D (getMarkerPos 'changeLoadout')) < 7) && ((getPos (vehicle player) select 2) < 1)"];
+	//Buzzard
+	player addAction["<t color='#FFC107'><img image='\a3\ui_f\data\map\VehicleIcons\iconplane_ca.paa' size='1.0'/> Twin Cannon 20mm[300]; Zephyr[4]; ASRAAM[2]</t>", QS_fnc_actionChangeLoadout, 3, 96, false, false, "", "(typeOf (vehicle player) == 'I_Plane_Fighter_03_AA_F') && (((vehicle player) distance2D (getMarkerPos 'changeLoadout')) < 7) && ((getPos (vehicle player) select 2) < 1)"];
+	player addAction["<t color='#FFC107'><img image='\a3\ui_f\data\map\VehicleIcons\iconplane_ca.paa' size='1.0'/> Twin Cannon 20mm[300]; Skalpel ATGM[2]; ASRAAM[2]; GBU-12[2]</t>", QS_fnc_actionChangeLoadout, 4, 95, false, false, "", "(typeOf (vehicle player) == 'I_Plane_Fighter_03_AA_F') && (((vehicle player) distance2D (getMarkerPos 'changeLoadout')) < 7) && ((getPos (vehicle player) select 2) < 1)"];
+	player addAction["<t color='#FFC107'><img image='\a3\ui_f\data\map\VehicleIcons\iconplane_ca.paa' size='1.0'/> Twin Cannon 20mm[300]; ASRAAM[2]; GBU-12[4]</t>", QS_fnc_actionChangeLoadout, 5, 94, false, false, "", "(typeOf (vehicle player) == 'I_Plane_Fighter_03_AA_F') && (((vehicle player) distance2D (getMarkerPos 'changeLoadout')) < 7) && ((getPos (vehicle player) select 2) < 1)"];
+	player addAction["<t color='#FFC107'><img image='\a3\ui_f\data\map\VehicleIcons\iconplane_ca.paa' size='1.0'/> Twin Cannon 20mm[300]; Skalpel ATGM[2]; GBU-12[4]</t>", QS_fnc_actionChangeLoadout, 6, 93, false, false, "", "(typeOf (vehicle player) == 'I_Plane_Fighter_03_AA_F') && (((vehicle player) distance2D (getMarkerPos 'changeLoadout')) < 7) && ((getPos (vehicle player) select 2) < 1)"];
+	player addAction["<t color='#FFC107'><img image='\a3\ui_f\data\map\VehicleIcons\iconplane_ca.paa' size='1.0'/> Twin Cannon 20mm[300]; Tratnyr AP[20]; ASRAAM[2]; GBU-12[2]</t>", QS_fnc_actionChangeLoadout, 7, 92, false, false, "", "(typeOf (vehicle player) == 'I_Plane_Fighter_03_AA_F') && (((vehicle player) distance2D (getMarkerPos 'changeLoadout')) < 7) && ((getPos (vehicle player) select 2) < 1)"];
+	player addAction["<t color='#FFC107'><img image='\a3\ui_f\data\map\VehicleIcons\iconplane_ca.paa' size='1.0'/> Twin Cannon 20mm[300]; Tratnyr HE[40]; ASRAAM[2]</t>", QS_fnc_actionChangeLoadout, 8, 91, false, false, "", "(typeOf (vehicle player) == 'I_Plane_Fighter_03_AA_F') && (((vehicle player) distance2D (getMarkerPos 'changeLoadout')) < 7) && ((getPos (vehicle player) select 2) < 1)"];
 };
 
 //====================== Clear vehicle inventory

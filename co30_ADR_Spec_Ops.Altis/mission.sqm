@@ -1436,7 +1436,7 @@ class Mission
 	};
 	class Vehicles
 	{
-		items=306;
+		items=322;
 		class Item0
 		{
 			position[]={23375.334,12.825771,19807.545};
@@ -2780,7 +2780,7 @@ class Mission
 		class Item127
 		{
 			position[]={15090.965,17.91,16837.539};
-			azimut=210;
+			azimut=225;
 			id=175;
 			side="EMPTY";
 			vehicle="Land_HelipadCircle_F";
@@ -4624,7 +4624,7 @@ class Mission
 		};
 		class Item298
 		{
-			position[]={15095.021,17.91,16837.398};
+			position[]={15095.09,17.91,16836.424};
 			azimut=-67.160812;
 			id=346;
 			side="EMPTY";
@@ -4633,7 +4633,7 @@ class Mission
 		};
 		class Item299
 		{
-			position[]={15089.126,17.91,16834.26};
+			position[]={15087.869,17.91,16834.645};
 			azimut=-67.160812;
 			id=347;
 			side="EMPTY";
@@ -4642,7 +4642,7 @@ class Mission
 		};
 		class Item300
 		{
-			position[]={15088.817,17.91,16840.852};
+			position[]={15089.619,17.91,16841.586};
 			azimut=-67.160812;
 			id=348;
 			side="EMPTY";
@@ -4697,10 +4697,182 @@ class Mission
 			skill=0.60000002;
 			init="0 = [this,300,305,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 		};
+		class Item306
+		{
+			position[]={15119.42,17.91,16903.49};
+			azimut=225;
+			id=354;
+			side="EMPTY";
+			vehicle="Land_HelipadSquare_F";
+			skill=0.60000002;
+		};
+		class Item307
+		{
+			position[]={15113.06,17.91,16909.721};
+			azimut=45;
+			id=355;
+			side="EMPTY";
+			vehicle="PortableHelipadLight_01_red_F";
+			skill=0.60000002;
+			init="this allowDamage false;";
+		};
+		class Item308
+		{
+			position[]={15119.393,17.91,16910.924};
+			azimut=-67.160812;
+			id=356;
+			side="EMPTY";
+			vehicle="Land_runway_edgelight_blue_F";
+			skill=0.60000002;
+		};
+		class Item309
+		{
+			position[]={15119.404,17.91,16896.146};
+			azimut=-67.160812;
+			id=357;
+			side="EMPTY";
+			vehicle="Land_runway_edgelight_blue_F";
+			skill=0.60000002;
+		};
+		class Item310
+		{
+			position[]={15111.931,17.91,16903.418};
+			azimut=-67.160812;
+			id=358;
+			side="EMPTY";
+			vehicle="Land_runway_edgelight_blue_F";
+			skill=0.60000002;
+		};
+		class Item311
+		{
+			position[]={15105.437,17.91,16892.115};
+			azimut=135;
+			id=359;
+			side="EMPTY";
+			vehicle="Land_JetEngineStarter_01_F";
+			skill=0.60000002;
+			init="this enableSimulationGlobal false; this allowDamage false;";
+		};
+		class Item312
+		{
+			position[]={15110.949,17.91,16885.105};
+			azimut=50;
+			special="NONE";
+			id=360;
+			side="EMPTY";
+			vehicle="Land_MobileLandingPlatform_01_F";
+			leader=1;
+			skill=0.60000002;
+			init="this enableSimulationGlobal false; this allowDamage false;";
+		};
+		class Item313
+		{
+			position[]={15102.262,17.91,16897.834};
+			azimut=265;
+			special="NONE";
+			id=361;
+			side="EMPTY";
+			vehicle="Land_PortableLight_double_F";
+			leader=1;
+			skill=0.60000002;
+			init="this allowDamage false;";
+		};
+		class Item314
+		{
+			position[]={15102.216,17.91,16894.766};
+			azimut=403.98199;
+			special="NONE";
+			id=362;
+			side="EMPTY";
+			vehicle="Land_DieselGroundPowerUnit_01_F";
+			leader=1;
+			skill=0.60000002;
+			init="this enableSimulationGlobal false; this allowDamage false;";
+		};
+		class Item315
+		{
+			position[]={15095.146,17.91,16892.008};
+			azimut=140;
+			special="NONE";
+			id=363;
+			side="EMPTY";
+			vehicle="Land_Cargo40_military_green_F";
+			leader=1;
+			skill=0.60000002;
+			init="this enableSimulationGlobal false; this allowDamage false;";
+		};
+		class Item316
+		{
+			position[]={15107.377,17.91,16887.961};
+			azimut=130;
+			special="NONE";
+			id=364;
+			side="EMPTY";
+			vehicle="Land_PaperBox_open_full_F";
+			leader=1;
+			skill=0.60000002;
+			init="this enableSimulationGlobal false; this allowDamage false;";
+		};
+		class Item317
+		{
+			position[]={15108.67,17.91,16889.465};
+			azimut=130;
+			special="NONE";
+			id=365;
+			side="EMPTY";
+			vehicle="Land_Pallet_MilBoxes_F";
+			leader=1;
+			skill=0.60000002;
+			init="this enableSimulationGlobal false; this allowDamage false;";
+		};
+		class Item318
+		{
+			position[]={15114.012,17.91,16882.602};
+			azimut=140;
+			special="NONE";
+			id=366;
+			side="EMPTY";
+			vehicle="Land_PitotTubeCover_01_F";
+			leader=1;
+			skill=0.60000002;
+			init="this enableSimulationGlobal false; this allowDamage false;";
+		};
+		class Item319
+		{
+			position[]={15100.46,17.91,16894.918};
+			azimut=140;
+			offsetY=2;
+			special="NONE";
+			id=367;
+			side="EMPTY";
+			vehicle="Windsock_01_F";
+			leader=1;
+			skill=0.60000002;
+			init="this allowDamage false;";
+		};
+		class Item320
+		{
+			position[]={15126.016,17.91,16897.74};
+			azimut=45;
+			id=368;
+			side="EMPTY";
+			vehicle="PortableHelipadLight_01_red_F";
+			skill=0.60000002;
+			init="this allowDamage false;";
+		};
+		class Item321
+		{
+			position[]={15126.805,17.91,16903.447};
+			azimut=-67.160812;
+			id=369;
+			side="EMPTY";
+			vehicle="Land_runway_edgelight_blue_F";
+			skill=0.60000002;
+		};
 	};
 	class Markers
 	{
-		items=110;
+		items=111;
 		class Item0
 		{
 			position[]={-15683.114,0.00013337692,-3827.8438};
@@ -5634,10 +5806,20 @@ class Mission
 			a=100;
 			b=100;
 		};
+		class Item110
+		{
+			position[]={15119.477,17.91,16903.354};
+			name="changeLoadout";
+			text="Перевооружение авийции";
+			type="o_service";
+			colorName="ColorUNKNOWN";
+			a=0.5;
+			b=0.5;
+		};
 	};
 	class Sensors
 	{
-		items=15;
+		items=16;
 		class Item0
 		{
 			position[]={-256.8938,-0.001949284,658.35046};
@@ -5878,6 +6060,21 @@ class Mission
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
 			expActiv="_handle = [(thisList select 0)] spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmHelicopter.sqf"";};";
+			class Effects
+			{
+			};
+		};
+		class Item15
+		{
+			position[]={15119.551,17.91,16903.654};
+			a=8;
+			b=8;
+			activationBy="WEST";
+			repeating=1;
+			interruptable=1;
+			age="UNKNOWN";
+			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
+			expActiv="_handle = [(thisList select 0)] spawn {_this call compile preProcessFileLineNumbers ""scripts\changeLoadoutWarning.sqf"";};";
 			class Effects
 			{
 			};
