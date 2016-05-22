@@ -7,7 +7,7 @@ private ["_loadout_type", "_veh", "_vehType", "_allowedVehicles", "_damage", "_m
 _loadout_type = _this select 3;
 _veh = vehicle player;
 _vehType = typeOf _veh;
-_allowedVehicles = ["I_Heli_light_03_F", "I_Plane_Fighter_03_AA_F"];
+_allowedVehicles = ["I_Heli_light_03_F", "I_Plane_Fighter_03_AA_F", "I_Plane_Fighter_03_CAS_F"];
 
 if (_vehType in _allowedVehicles) then {
 
