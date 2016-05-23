@@ -5810,7 +5810,7 @@ class Mission
 		{
 			position[]={15119.477,17.91,16903.354};
 			name="changeLoadout";
-			text="Перевооружение авийции";
+			text="Перевооружение авиации";
 			type="o_service";
 			colorName="ColorUNKNOWN";
 			a=0.5;
