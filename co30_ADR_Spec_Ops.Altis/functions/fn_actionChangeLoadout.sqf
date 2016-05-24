@@ -164,6 +164,18 @@ if (_vehType in _allowedVehicles) then {
 			    _veh addWeaponTurret [_x, [-1]];
 			} forEach ["Twin_Cannon_20mm", "Rocket_03_HE_Plane_CAS_02_F", "missiles_ASRAAM", "CMFlareLauncher"];
 		};
+
+		//Twin Cannon 20mm[300]; Skalpel ATGM[2]; Tratnyr HE[20]; ASRAAM[2]
+		if (_loadout_type == 9) exitWith {
+			{
+				uiSleep 1;
+			    _veh addMagazineTurret [_x, [-1]];
+			} forEach ["300Rnd_20mm_shells", "2Rnd_LG_scalpel", "20Rnd_Rocket_03_HE_F", "2Rnd_AAA_missiles", "120Rnd_CMFlare_Chaff_Magazine"];
+				{
+				uiSleep 3;
+			    _veh addWeaponTurret [_x, [-1]];
+			} forEach ["Twin_Cannon_20mm", "missiles_SCALPEL", "Rocket_03_HE_Plane_CAS_02_F", "missiles_ASRAAM", "CMFlareLauncher"];
+		};
 	};
 
 	//Refuel
