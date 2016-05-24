@@ -72,7 +72,7 @@ if (_reward isKindOf "O_APC_Wheeled_02_rcws_F") then {
 if (_reward isKindOf "B_MBT_01_arty_F") then {
  	_reward removeMagazine ("6Rnd_155mm_Mo_AT_mine");
  	_reward removeMagazine ("6Rnd_155mm_Mo_mine");
-}
+};
 
 // Setting reward vehicle timmer.
 _lockTime = 600;

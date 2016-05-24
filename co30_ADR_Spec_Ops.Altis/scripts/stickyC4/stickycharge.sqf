@@ -18,9 +18,8 @@ C4_Attach = {
                 _explosive = nearestObject [_unit, "DemoCharge_Remote_Ammo"];        
                 _explosive setPosASL _objPos;  
                 _explosive setVectorUp _objVectorUp;
-                _newPos = _obj worldToModel (position _explosive);                
-                _explosive attachTo [_obj, _newPos];    
-                _explosive setVectorUp _objVectorUp;
+                _newPos = _obj worldToModel (position _explosive);       
+                [_explosive, _obj, _newPos, _objVectorUp] remoteExec ["QS_fnc_attachMP", 0, TRUE];                
               	_unit setVariable ["charges",(_unit getVariable ["charges",[]]) + [_explosive]];
             };
         };

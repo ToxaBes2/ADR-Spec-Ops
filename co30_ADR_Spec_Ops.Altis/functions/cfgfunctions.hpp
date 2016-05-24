@@ -23,6 +23,7 @@ class QS
 		class addActionTimer {};
 		class addFurniture {};
 		class addHades {};
+		class attachMP {};
 		class AOenemy {};
 		class AOminefield {};
 		class conditionClearInventory {};
