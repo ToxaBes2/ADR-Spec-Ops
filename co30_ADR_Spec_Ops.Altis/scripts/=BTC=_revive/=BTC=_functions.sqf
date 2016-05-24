@@ -1356,14 +1356,13 @@ BTC_check_healer =
 {
 	_pos = getpos player;
 	_men = [];_veh = [];_dist = 501;_healer = objNull;_healers = [];
-	_msg = "No medics nearby.";
+	_msg = "Рядом нет медиков или других игроков";
 	_men = nearestObjects [_pos, BTC_who_can_revive, 500];
 	_veh = nearestObjects [_pos, ["LandVehicle", "Air", "Ship"], 500];
 	{
 		{private ["_man"];_man = _x;if (isPlayer _man && ({_man isKindOf _x} count BTC_who_can_revive) > 0) then {_men = _men + [_man];};} foreach crew _x;
-	} foreach _veh;
-	if (count _men > 0) then
-	{
+	} foreach _veh;   
+	if (count _men > 0) then {
 		{if (Alive _x && format ["%1",_x getVariable "BTC_need_revive"] != "1" && ([_x,player] call BTC_can_revive) && isPlayer _x && side _x == BTC_side) then {_healers = _healers + [_x];};} foreach _men;
 		if (count _healers > 0) then
 		{
@@ -1372,7 +1371,13 @@ BTC_check_healer =
 			} foreach _healers;
 			if !(isNull _healer) then {_msg = format ["Ближайший медик (%1) находится на расстоянии %2м.", name _healer,round(_healer distance _pos)];};
 		};
-	};
+    } else {
+        _men = nearestObjects [_pos, ["B_Soldier_SL_F","B_soldier_AR_F","B_soldier_AT_F","B_soldier_M_F","B_sniper_F","B_engineer_F","B_Helipilot_F"], 500];
+        if (count _men > 0) then {
+            _healer = _men select 0;
+            if !(isNull _healer) then {_msg = format ["Ближайший игрок (%1) находится на расстоянии %2м.", name _healer,round(_healer distance _pos)];};
+        };
+    };
 	_msg
 };
 
