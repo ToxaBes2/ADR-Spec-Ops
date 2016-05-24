@@ -1372,9 +1372,16 @@ BTC_check_healer =
 			if !(isNull _healer) then {_msg = format ["Ближайший медик (%1) находится на расстоянии %2м.", name _healer,round(_healer distance _pos)];};
 		};
     } else {
+        _healer = objNull;
         _men = nearestObjects [_pos, ["B_Soldier_SL_F","B_soldier_AR_F","B_soldier_AT_F","B_soldier_M_F","B_sniper_F","B_engineer_F","B_Helipilot_F"], 500];
         if (count _men > 0) then {
-            _healer = _men select 0;
+        	{
+                if (isPlayer _x && isNull _healer) then {
+                	if !(captive _x) then {
+                        _healer = _x;
+                    };
+                };
+            } forEach _men;
             if !(isNull _healer) then {_msg = format ["Ближайший игрок (%1) находится на расстоянии %2м.", name _healer,round(_healer distance _pos)];};
         };
     };
