@@ -171,7 +171,9 @@ for "_c" from 0 to 15 do {
     waitUntil {alive currentGuard};
     currentGuard setPos _diverPos;
     currentGuard setDir (random 360);
-    [currentGuard,(["WATCH","WATCH1","WATCH2"] call BIS_fnc_selectRandom),"FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
+    doStop currentGuard
+    commandStop currentGuard;
+    //[currentGuard,(["WATCH","WATCH1","WATCH2"] call BIS_fnc_selectRandom),"FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
     removeAllWeapons currentGuard;
     currentGuard addWeapon "arifle_SDAR_F";
     currentGuard addmagazines["20Rnd_556x45_UW_mag", 10];
