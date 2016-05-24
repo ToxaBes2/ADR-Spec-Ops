@@ -162,7 +162,7 @@ if (_vehType in _allowedVehicles) then {
 			{
 				uiSleep 3;
 			    _veh addWeaponTurret [_x, [-1]];
-			} forEach ["Twin_Cannon_20mm", "Rocket_03_HE_Plane_CAS_02_F", "missiles_ASRAAM", "GBU12BombLauncher", "CMFlareLauncher"];
+			} forEach ["Twin_Cannon_20mm", "Rocket_03_HE_Plane_CAS_02_F", "missiles_ASRAAM", "CMFlareLauncher"];
 		};
 	};
 
