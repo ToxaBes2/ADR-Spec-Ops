@@ -12,6 +12,15 @@ if(!isMultiplayer) exitWith {};
 tawvd_foot = viewDistance;
 tawvd_car = viewDistance;
 tawvd_air = viewDistance;
+if (tawvd_foot > 3000) then {
+    tawvd_foot = 3000;
+};
+if (tawvd_car > 5000) then {
+    tawvd_car = 5000;
+};
+if (tawvd_air > 6000) then {
+    tawvd_air = 6000;
+};
 tawvd_syncObject = true; //Enable the automatic syncing of Object View rendering with the current view distance.
 tawvd_object = tawvd_foot;
 
