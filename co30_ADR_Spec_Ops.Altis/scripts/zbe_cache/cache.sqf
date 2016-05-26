@@ -1,5 +1,5 @@
 zbe_aiCacheDist				= 2000;
-zbe_debug					= true;
+zbe_debug					= false;
 zbe_cachedGroups   			= [];
 call compileFinal preprocessFileLineNumbers "scripts\zbe_cache\zbe_functions.sqf";
 [] spawn  {
