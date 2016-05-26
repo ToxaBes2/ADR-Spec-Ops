@@ -17,7 +17,7 @@ if (isServer) then {
 
     // red - Emergency channel available for all players
     _emergencyChannel = radioChannelCreate [[0.67,0.14,0.13,1], localize "STR_CHANNEL_EMERGENCY", "HELP! [%UNIT_NAME]", []];
-
+    //_emergencyChannel enableChannel [true, false];
     // Operative channel available for commanders and pilots
     _operativeChannel = radioChannelCreate [[0.118,0.565,1,1], localize "STR_CHANNEL_OPERATIVE", "%UNIT_NAME", []];
 
