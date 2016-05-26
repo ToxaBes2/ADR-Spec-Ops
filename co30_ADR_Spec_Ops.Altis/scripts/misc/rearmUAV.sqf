@@ -20,7 +20,7 @@ uiSleep 2;
 
 //Repair
 _dmgList = getAllHitPointsDamage _veh;
-_dmgMax = 0;
+_dmgSum = 0;
 {_dmgSum = _dmgSum + _x;} forEach (_dmgList select 2);
 if (_dmgSum > 0) then {
 	_veh vehicleChat "Ремонт ...";

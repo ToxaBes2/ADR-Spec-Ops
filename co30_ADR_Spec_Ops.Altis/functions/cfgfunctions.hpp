@@ -26,6 +26,7 @@ class QS
 		class attachMP {};
 		class AOenemy {};
 		class AOminefield {};
+		class cacheDebug {};
 		class conditionClearInventory {};
 		class conditionPilotRepair {};
 		class conditionUH80TurretActionLock {};
