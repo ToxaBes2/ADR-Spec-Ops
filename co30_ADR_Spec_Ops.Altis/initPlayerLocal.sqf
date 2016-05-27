@@ -31,7 +31,7 @@ _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\icons.sq
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\VAclient.sqf";};									// Virtual Arsenal
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\admin_uid.sqf";};                                   // Admin tools
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\3rd_view_restrictions.sqf";};                       // 3rd view restrictions
-_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\heliRearRamp.sqf";};                                // Block rear ramp actions for non-pilots  
+_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\heliRearRamp.sqf";};                                // Block rear ramp actions for non-pilots
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\stickyC4\stickycharge.sqf";};                       // Sticky C4 logic
 
 if !(isNil "EW_ATTACK") then {
@@ -42,6 +42,23 @@ if !(isNil "EW_ATTACK") then {
 
 // Color correction
 ["EastWind", 0, false] call BIS_fnc_setPPeffectTemplate;
+
+// Put earplugs on when entering a helicopter
+player addEventHandler [ "GetInMan", {
+    [_this select 0, _this select 2, _index] spawn {
+        private ["_player", "_vehicle"];
+        _player  = _this select 0;
+        _vehicle = _this select 1;
+        if (_vehicle isKindOf "Helicopter") then {
+            1 fadeSound 0.5;
+            waitUntil {
+                sleep 5;
+                vehicle _player != _vehicle;
+            };
+            1 fadeSound 1;
+        };
+    };
+}];
 
 // Remove CSAT helmets from iventory
 player addEventHandler [ "Take", {

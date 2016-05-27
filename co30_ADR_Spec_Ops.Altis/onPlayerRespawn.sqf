@@ -35,6 +35,10 @@ player addAction ["<t color='#2196F3'><img image='\a3\ui_f\data\gui\rsc\rscdispl
 //====================== Magazine Repack
 player addAction ["<t color='#84FFFF'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\cargomag_ca.paa' size='1.0'/> " + localize "STR_ADR_MagRepack" + "</t>", QS_fnc_actionMagRepack, '', -97, false, false, ''];
 
+//====================== Earplugs
+player addAction ["<t color='#FFEB3B'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\radio_ca.paa' size='1.0'/> Вставить беруши</t>", {1 fadeSound 0.5}, [], -95, false, false, "", "soundVolume == 1"];
+player addAction ["<t color='#FFEB3B'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\radio_ca.paa' size='1.0'/> Вытащить беруши</t>", {1 fadeSound 1}, [], -95, false, false, "", "soundVolume != 1"];
+
 //====================== Prison check
 if (!isDedicated) then {
     _btc_tk_prison = profileNamespace getVariable ["btc_tk_prison", 0];
