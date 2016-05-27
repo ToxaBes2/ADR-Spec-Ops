@@ -55,7 +55,9 @@ player addEventHandler [ "GetInMan", {
                 sleep 5;
                 vehicle _player != _vehicle;
             };
-            1 fadeSound 1;
+			if (soundVolume != 1) then {
+			    1 fadeSound 1;
+			};
         };
     };
 }];
