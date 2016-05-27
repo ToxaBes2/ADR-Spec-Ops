@@ -1371,32 +1371,25 @@ BTC_check_healer =
 			if !(isNull _healer) then {_msg = format ["Ближайший медик (%1) находится на расстоянии %2м.", name _healer,round(_healer distance _pos)];};
 		};
     } else {
-        _men = nearestObjects [_pos, ["B_Soldier_SL_F", "B_soldier_AR_F", "B_soldier_AT_F", "B_soldier_M_F", "B_sniper_F", "B_engineer_F", "B_Helipilot_F"], 500];
-		_veh = nearestObjects [_pos, ["LandVehicle", "Air", "Ship"], 500];
-		{
-			{
-				private ["_man"];
-				_man = _x;
-				if ((typeOf _man) in ["B_Soldier_SL_F", "B_soldier_AR_F", "B_soldier_AT_F", "B_soldier_M_F", "B_sniper_F", "B_engineer_F", "B_Helipilot_F"]) then {
-					_men = _men + [_man];
-				};
-			} foreach crew _x;
-		} foreach _veh;
+        _others = ["B_Soldier_SL_F", "B_soldier_AR_F", "B_soldier_AT_F", "B_soldier_M_F", "B_sniper_F", "B_engineer_F", "B_Helipilot_F"];
+        _men = nearestObjects [_pos, _others, 500];
         if (count _men > 0) then {
-			{
-				if (alive _x && format ["%1", _x getVariable "BTC_need_revive"] != "1" && isPlayer _x && side _x == BTC_side) then {
-				_healers = _healers + [_x];
-				};
-			} foreach _men;
-			if (count _healers > 0) then {
-				{
-					if (_x distance _pos < _dist) then {_healer = _x; _dist = _x distance _pos;};
-				} foreach _healers;
-				if !(isNull _healer) then {
-					_msg = format ["Ближайший игрок (%1) находится на расстоянии %2м.", name _healer,round(_healer distance _pos)];
-				};
-			};
-        };
+            _healer = _men select 0;
+        } else {
+            _veh = nearestObjects [_pos, ["LandVehicle", "Air", "Ship"], 500];           
+            {
+                if (isNull _healer) then {
+		            {
+		                if (isPlayer _x && side _x == BTC_side && isNull _healer) then {
+		        	        _healer = _x;
+		                };
+		            } foreach (crew _x);
+		        };
+	        } foreach _veh;
+        }		
+		if !(isNull _healer) then {
+			_msg = format ["Ближайший игрок (%1) находится на расстоянии %2м.", name _healer,round(_healer distance _pos)];
+		};
     };
 	_msg
 };

@@ -433,7 +433,7 @@ class CfgNotifications
 
 	class EnemyCasDown
 	{
-		title = "ВРАЖЕСКИЙ АВИАПОДДЕРЖКА УНИЧТОЖЕНА";
+		title = "ВРАЖЕСКАЯ АВИАПОДДЕРЖКА УНИЧТОЖЕНА";
 		iconPicture = "\a3\ui_f\data\gui\cfg\hints\countermeasures_ca.paa";
 		description = "%1";
 		color[] = {0.78, 1, 0, 1};
