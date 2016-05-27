@@ -111,7 +111,7 @@ _composition = [
     };
     _obj allowDamage _damage;
     _obj enableSimulation _simulation;
-    _obj addEventHandler ["Killed", {MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";}];
+    _obj addMPEventHandler ["MPKilled", {MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";}];
     if !(_name in _objects) then {
         _objects set [count _objects, _name];
     };
@@ -120,7 +120,7 @@ sleep 2;
 _terminal = nearestObject [_startPoint, "Land_DataTerminal_01_F"];
 [_terminal, "red", "orange", "green"] call BIS_fnc_DataTerminalColor;
 [_terminal, 3] call BIS_fnc_dataTerminalAnimate;
-_terminal addEventHandler ["Killed", {MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";}];
+_terminal addMPEventHandler ["MPKilled", {MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";}];
 
 // add terminal action
 [_terminal, "QS_fnc_addActionTakeControl", nil, true] spawn BIS_fnc_MP;
