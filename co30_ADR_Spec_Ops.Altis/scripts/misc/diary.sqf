@@ -396,6 +396,8 @@ player createDiaryRecord ["credits",
     • ToxaBes
 <br />
     • evil_c0okie
+<br />
+    • Noart
 </font>
 <br />
 <font size='14'>
