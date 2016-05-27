@@ -221,7 +221,7 @@ BTC_set_gear =
     };
 
     // load missing items
-    [player] spawn BTC_addMissingItems; 
+    [player] spawn BTC_addMissingItems;
 };
 
 BTC_fnc_handledamage_gear =
@@ -1049,10 +1049,10 @@ BTC_first_aid =
 			["ScoreBonus", ["Поднял соотрядника.", "2"]] call bis_fnc_showNotification;
 		};
 		_injured playMoveNow "AinjPpneMstpSnonWrflDnon_rolltoback";
-		
+
 		// load missing items
         //[_injured] spawn BTC_addMissingItems;
-        [[_injured],"BTC_addMissingItems",nil,true] spawn BIS_fnc_MP; 
+        [[_injured],"BTC_addMissingItems",nil,true] spawn BIS_fnc_MP;
 	};
 };
 
@@ -1186,11 +1186,11 @@ BTC_player_killed = {
     _playerOld = _this select 0;
     profileNamespace setVariable ["primary_weapon", primaryWeapon _playerOld];
     profileNamespace setVariable ["primary_items", primaryWeaponItems _playerOld];
-    profileNamespace setVariable ["primary_magazine", primaryWeaponMagazine _playerOld];   
+    profileNamespace setVariable ["primary_magazine", primaryWeaponMagazine _playerOld];
     profileNamespace setVariable ["secondary_weapon", secondaryWeapon _playerOld];
     profileNamespace setVariable ["secondary_items", secondaryWeaponItems _playerOld];
     profileNamespace setVariable ["secondary_magazine", secondaryWeaponMagazine _playerOld];
-    saveProfileNamespace;  
+    saveProfileNamespace;
 	BTC_gear = [player] call BTC_get_gear;
 	titleText ["", "BLACK OUT"];
 	_body = _this select 0;
@@ -1213,7 +1213,7 @@ BTC_player_killed = {
 			player setVariable ["BTC_need_revive",1,true];
 			player switchMove "AinjPpneMstpSnonWrflDnon";
 			_actions = [] spawn BTC_assign_actions;
-			[player,[player,"KilledInventory"]] call BIS_fnc_loadInventory;            
+			[player,[player,"KilledInventory"]] call BIS_fnc_loadInventory;
 			//if (!isNil killed_PrimaryWeapon) then {player addWeapon killed_PrimaryWeapon;{player addPrimaryWeaponItem _x;} count killed_PrimaryWeaponItems;};
 			WaitUntil {animationstate player == "ainjppnemstpsnonwrfldnon"};
 			sleep 2;
@@ -1268,7 +1268,7 @@ BTC_player_killed = {
 				//    };
 				//} foreach BTC_camera_unc_type;
 			};
-			while {(format ["%1", player getVariable "BTC_need_revive"] == "1") && {(time < _timeout)} && {(!BTC_respawn_cond)}} do {				
+			while {(format ["%1", player getVariable "BTC_need_revive"] == "1") && {(time < _timeout)} && {(!BTC_respawn_cond)}} do {
 				if (BTC_disable_respawn == 0) then {if (BTC_black_screen == 1 || (BTC_black_screen == 0 && BTC_action_respawn == 0)) then {if (!Dialog && !BTC_respawn_cond) then {_dlg = createDialog "BTC_respawn_button_dialog";};};};
 				_healer = call BTC_check_healer;
 				_lifes = "";
@@ -1347,7 +1347,7 @@ BTC_player_killed = {
                 };
             };
 
-            
+
 		};
 	};
 };
@@ -1361,28 +1361,41 @@ BTC_check_healer =
 	_veh = nearestObjects [_pos, ["LandVehicle", "Air", "Ship"], 500];
 	{
 		{private ["_man"];_man = _x;if (isPlayer _man && ({_man isKindOf _x} count BTC_who_can_revive) > 0) then {_men = _men + [_man];};} foreach crew _x;
-	} foreach _veh;   
+	} foreach _veh;
 	if (count _men > 0) then {
-		{if (Alive _x && format ["%1",_x getVariable "BTC_need_revive"] != "1" && ([_x,player] call BTC_can_revive) && isPlayer _x && side _x == BTC_side) then {_healers = _healers + [_x];};} foreach _men;
-		if (count _healers > 0) then
-		{
+		{if (alive _x && format ["%1", _x getVariable "BTC_need_revive"] != "1" && ([_x,player] call BTC_can_revive) && isPlayer _x && side _x == BTC_side) then {_healers = _healers + [_x];};} foreach _men;
+		if (count _healers > 0) then {
 			{
-				if (_x distance _pos < _dist) then {_healer = _x;_dist = _x distance _pos;};
+				if (_x distance _pos < _dist) then {_healer = _x; _dist = _x distance _pos;};
 			} foreach _healers;
 			if !(isNull _healer) then {_msg = format ["Ближайший медик (%1) находится на расстоянии %2м.", name _healer,round(_healer distance _pos)];};
 		};
     } else {
-        _healer = objNull;
-        _men = nearestObjects [_pos, ["B_Soldier_SL_F","B_soldier_AR_F","B_soldier_AT_F","B_soldier_M_F","B_sniper_F","B_engineer_F","B_Helipilot_F"], 500];
+        _men = nearestObjects [_pos, ["B_Soldier_SL_F", "B_soldier_AR_F", "B_soldier_AT_F", "B_soldier_M_F", "B_sniper_F", "B_engineer_F", "B_Helipilot_F"], 500];
+		_veh = nearestObjects [_pos, ["LandVehicle", "Air", "Ship"], 500];
+		{
+			{
+				private ["_man"];
+				_man = _x;
+				if ((typeOf _man) in ["B_Soldier_SL_F", "B_soldier_AR_F", "B_soldier_AT_F", "B_soldier_M_F", "B_sniper_F", "B_engineer_F", "B_Helipilot_F"]) then {
+					_men = _men + [_man];
+				};
+			} foreach crew _x;
+		} foreach _veh;
         if (count _men > 0) then {
-        	{
-                if (isPlayer _x && isNull _healer) then {
-                	if !(captive _x) then {
-                        _healer = _x;
-                    };
-                };
-            } forEach _men;
-            if !(isNull _healer) then {_msg = format ["Ближайший игрок (%1) находится на расстоянии %2м.", name _healer,round(_healer distance _pos)];};
+			{
+				if (alive _x && format ["%1", _x getVariable "BTC_need_revive"] != "1" && isPlayer _x && side _x == BTC_side) then {
+				_healers = _healers + [_x];
+				};
+			} foreach _men;
+			if (count _healers > 0) then {
+				{
+					if (_x distance _pos < _dist) then {_healer = _x; _dist = _x distance _pos;};
+				} foreach _healers;
+				if !(isNull _healer) then {
+					_msg = format ["Ближайший игрок (%1) находится на расстоянии %2м.", name _healer,round(_healer distance _pos)];
+				};
+			};
         };
     };
 	_msg
@@ -2074,31 +2087,31 @@ BTC_addMissingItems = {
     if ("Laserdesignator" in _allItems || "Laserdesignator_02" in _allItems || "Laserdesignator_03" in _allItems) then {
         if (!("Laserbatteries" in _allItems)) then {
             _player addItem "Laserbatteries";
-        };           
+        };
     };
     sleep 1;
 
-    //load primary weapon   
+    //load primary weapon
     if (primaryWeapon _player == "") then {
-        _primaryWeapon = profileNamespace getVariable "primary_weapon";   
-        _primaryWeaponItems = profileNamespace getVariable "primary_items";  
-        _primaryWeaponMagazines = profileNamespace getVariable "primary_magazine";    
-        _player addWeaponGlobal _primaryWeapon;            
+        _primaryWeapon = profileNamespace getVariable "primary_weapon";
+        _primaryWeaponItems = profileNamespace getVariable "primary_items";
+        _primaryWeaponMagazines = profileNamespace getVariable "primary_magazine";
+        _player addWeaponGlobal _primaryWeapon;
         {
             if (_x != "") then {
                 _player addPrimaryWeaponItem _x;
-            };            
+            };
         } forEach _primaryWeaponItems;
         if (count _primaryWeaponMagazines > 0) then {
             {
                 if (_x != "") then {
                     _player addMagazine _x;
-                };               
+                };
             } forEach _primaryWeaponMagazines;
         };
         _player selectWeapon _primaryWeapon;
     } else {
-        
+
         // grenade launcher fix
         _launchers = ["EGLM", "GL_3GL_F", "3GL"];
         _primaryWeaponMagazines = profileNamespace getVariable "primary_magazine";
@@ -2106,40 +2119,40 @@ BTC_addMissingItems = {
         if (count _muzzles > 0 && count _primaryWeaponMagazines > 0) then {
             {
                 _muzzle = _x;
-                if (_muzzle in _launchers) then {                    
-                    {                   
+                if (_muzzle in _launchers) then {
+                    {
                         if (_x != "") then {
                         	_magType = getNumber(configFile >> "CfgMagazines" >> _x >> "type");
                             if (_magType == 16) then {
-                                _player addMagazines [_x, 1];                                
+                                _player addMagazines [_x, 1];
                             };
-                        };               
+                        };
                     } forEach _primaryWeaponMagazines;
-                };                 
-            } forEach _muzzles;             
+                };
+            } forEach _muzzles;
         };
     };
 
     //load secondary weapon
     if (secondaryWeapon _player == "") then {
-        _secondaryWeapon = profileNamespace getVariable "secondary_weapon";   
-        _secondaryWeaponItems = profileNamespace getVariable "secondary_items";  
-        _secondaryWeaponMagazines = profileNamespace getVariable "secondary_magazine";     
-        if (_secondaryWeapon != "") then {   
-            _player addWeaponGlobal _secondaryWeapon;         
+        _secondaryWeapon = profileNamespace getVariable "secondary_weapon";
+        _secondaryWeaponItems = profileNamespace getVariable "secondary_items";
+        _secondaryWeaponMagazines = profileNamespace getVariable "secondary_magazine";
+        if (_secondaryWeapon != "") then {
+            _player addWeaponGlobal _secondaryWeapon;
             {
                 if (_x != "") then {
                     _player addSecondaryWeaponItem _x;
-                };            
+                };
             } forEach _secondaryWeaponItems;
             if (count _secondaryWeaponMagazines > 0) then {
                 {
                     if (_x != "") then {
                         _player addMagazine _x;
-                    };               
+                    };
                 } forEach _secondaryWeaponMagazines;
             };
-        }; 
+        };
     };
 
 };
