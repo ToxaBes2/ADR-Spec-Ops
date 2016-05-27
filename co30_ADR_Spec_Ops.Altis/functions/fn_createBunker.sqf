@@ -10,7 +10,6 @@ _big = _this select 2;
 _startPoint = [_flatPos select 0, _flatPos select 1, 0];
 _startDir = 0;
 _objects = [];
-_cargo = false;
 _composition = [
     ["Land_Dome_Small_F", 0, 0, 0, 0, false, false, true],
     ["Land_Dome_Big_F", 0, 0, 0, 0, false, true, true],
@@ -73,7 +72,7 @@ _composition = [
     _damage = _x select 6;
     _simulation = _x select 7;
     _deltaCoords = _x param [8, []];
-    _dir = _startDir + _d;    
+    _dir = _startDir + _d;
     _pos = [_startPoint, _len, _dir] call BIS_fnc_relPos;
     _obj = createVehicle [_name, [0,0,0], [], 0, "NONE"];
     _obj setVariable ["BIS_enableRandomization", _randomization];
@@ -99,19 +98,20 @@ _composition = [
     if (_name == "Box_East_WpsSpecial_F" || _name == "O_CargoNet_01_ammo_F") then {
         clearItemCargoGlobal _obj;
     };
-    _obj setDir _objDir;      
+    _obj setDir _objDir;
     if (count _deltaCoords > 0) then {
         _cargoPos = getPosASL _cargo;
         _pos = [(_cargoPos select 0) + (_deltaCoords select 0), (_cargoPos select 1) + (_deltaCoords select 1), (_cargoPos select 2) + (_deltaCoords select 2)];
         _obj setPosASL _pos;
     } else {
         _obj setPos _pos;
-    };    
+    };
     if (_name == "Land_Cargo_HQ_V3_F") then {
         _cargo = _obj;
     };
     _obj allowDamage _damage;
     _obj enableSimulation _simulation;
+    _obj addEventHandler ["Killed", {MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";}];
     if !(_name in _objects) then {
         _objects set [count _objects, _name];
     };
@@ -120,6 +120,7 @@ sleep 2;
 _terminal = nearestObject [_startPoint, "Land_DataTerminal_01_F"];
 [_terminal, "red", "orange", "green"] call BIS_fnc_DataTerminalColor;
 [_terminal, 3] call BIS_fnc_dataTerminalAnimate;
+_terminal addEventHandler ["Killed", {MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";}];
 
 // add terminal action
 [_terminal, "QS_fnc_addActionTakeControl", nil, true] spawn BIS_fnc_MP;
