@@ -119,23 +119,20 @@ while {(canMove priorityObj1 || canMove priorityObj2) && currentAOUp} do {
 	    _unit = objNull;
 	    _targetPos = [0, 0, 0];
 	    while {!_accepted} do {
-	    	if (isMultiplayer) then {
-	    		_unit = playableUnits select (floor (random (count playableUnits)));
-	    	} else {
-	    		_unit = switchableUnits select (floor (random (count switchableUnits)));
-	    	};
+            _total = playableUnits + switchableUnits;
+            if (count _total > 0) then {
+                _unit = _total select (floor (random (count _total)));
+            };
 	    	if (!isNull _unit) then {
 	    		_targetPos = getPos _unit;
-
 	    		if ((_targetPos distance (getMarkerPos "respawn_west")) > 1000 && vehicle _unit == _unit && side _unit == WEST) then {
 	    			_accepted = true;
 	    		} else {
 	    			sleep 7;
 	    		};
 	    	};
-	    	sleep 3;
+	    	sleep 10;
 	    };
-
 	    if (PARAMS_ArtilleryTargetTickWarning == 1) then {
 	    	hqSideChat = _firingMessages call BIS_fnc_selectRandom; publicVariable "hqSideChat"; [WEST,"HQ"] sideChat hqSideChat;
 	    };
