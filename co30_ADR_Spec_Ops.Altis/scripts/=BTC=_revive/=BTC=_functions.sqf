@@ -1374,7 +1374,11 @@ BTC_check_healer =
         _others = ["B_Soldier_SL_F", "B_soldier_AR_F", "B_soldier_AT_F", "B_soldier_M_F", "B_sniper_F", "B_engineer_F", "B_Helipilot_F"];
         _men = nearestObjects [_pos, _others, 500];
         if (count _men > 0) then {
-            _healer = _men select 0;
+        	{
+                if (isPlayer _x && side _x == BTC_side && player != _x && isNull _healer) then {
+                    _healer = _x;
+                };
+            } forEach _men;            
         } else {
             _veh = nearestObjects [_pos, ["LandVehicle", "Air", "Ship"], 500];           
             {
@@ -1382,7 +1386,7 @@ BTC_check_healer =
                 	_crew = crew _x;
                 	if (count _crew > 0) then {
 		                {		                
-		                    if (isPlayer _x && side _x == BTC_side && isNull _healer) then {
+		                    if (isPlayer _x && side _x == BTC_side && player != _x && isNull _healer) then {
 		        	            _healer = _x;
 		                    };
 		                } forEach _crew;
