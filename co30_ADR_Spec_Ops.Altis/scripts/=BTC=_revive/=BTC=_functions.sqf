@@ -1379,14 +1379,17 @@ BTC_check_healer =
             _veh = nearestObjects [_pos, ["LandVehicle", "Air", "Ship"], 500];           
             {
                 if (isNull _healer) then {
-		            {
-		                if (isPlayer _x && side _x == BTC_side && isNull _healer) then {
-		        	        _healer = _x;
-		                };
-		            } foreach (crew _x);
+                	_crew = crew _x;
+                	if (count _crew > 0) then {
+		                {		                
+		                    if (isPlayer _x && side _x == BTC_side && isNull _healer) then {
+		        	            _healer = _x;
+		                    };
+		                } forEach _crew;
+		            };
 		        };
 	        } foreach _veh;
-        }		
+        };		
 		if !(isNull _healer) then {
 			_msg = format ["Ближайший игрок (%1) находится на расстоянии %2м.", name _healer,round(_healer distance _pos)];
 		};
