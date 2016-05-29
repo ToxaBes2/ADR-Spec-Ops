@@ -18,7 +18,7 @@ _terminalDir = [_terminal, _hq] call BIS_fnc_dirTo;
 _terminal setDir (_terminalDir + 180);
 [_terminal, "red", "orange", "green"] call BIS_fnc_DataTerminalColor;
 [_terminal, 3] call BIS_fnc_dataTerminalAnimate;
-_terminal addEventHandler ["Killed", {MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";}];
+_terminal addMPEventHandler ["MPKilled", {MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";}];
 
 // add terminal action
 [_terminal, "QS_fnc_addActionTakeControl", nil, true] spawn BIS_fnc_MP;
