@@ -30,12 +30,12 @@ if (_vehType in _allowedVehicles) then {
 
 	//Remove current magazines and weapons
 	_veh vehicleChat "Снимамаем навесное вооружение ...";
-	_magazines = _veh magazinesTurret [-1];
+	_magazines = magazinesAllTurrets _veh;
 	_weapons = _veh weaponsTurret [-1];
 
 	{
 		uiSleep 1;
-		_veh removeMagazineTurret [_x, [-1]];
+		_veh removeMagazineTurret [_x select 0, _x select 1];
 	} forEach _magazines;
 
 	{
