@@ -860,13 +860,27 @@ BTC_fnc_wait_for_revive =
 	player switchMove "AinjPpneMstpSnonWrflDnon";
 	while {format ["%1", player getVariable "BTC_need_revive"] == "1" && time < BTC_r_timeout && !BTC_respawn_cond} do
 	{
-		if (BTC_disable_respawn == 0) then {if (BTC_black_screen == 1 || (BTC_black_screen == 0 && BTC_action_respawn == 0)) then {if (!Dialog && !BTC_respawn_cond) then {_dlg = createDialog "BTC_respawn_button_dialog";};};};
+		if (BTC_disable_respawn == 0) then {
+			if (BTC_black_screen == 1 || (BTC_black_screen == 0 && BTC_action_respawn == 0)) then {
+				if (!Dialog && !BTC_respawn_cond) then {
+					_dlg = createDialog "BTC_respawn_button_dialog";
+				};
+			};
+		};
 		_healer = call BTC_check_healer;
 		_lifes = "";
-		if (BTC_active_lifes == 1) then {_lifes = format ["Lifes remaining: %1",BTC_lifes];};
-		if (BTC_black_screen == 1) then {titleText [format ["%1\n%2\n%3", round (BTC_r_timeout - time),_healer,_lifes], "BLACK FADED"]} else {hintSilent format ["%1\n%2\n%3", round (BTC_r_timeout - time),_healer,_lifes];};
-		if (format ["%1", player getVariable "BTC_need_revive"] == "0" || BTC_respawn_cond) then {closeDialog 0;};
-		sleep 0.5;
+		if (BTC_active_lifes == 1) then {
+			_lifes = format ["Lifes remaining: %1",BTC_lifes];
+		};
+		if (BTC_black_screen == 1) then {
+			titleText [format ["%1\n%2\n%3", round (BTC_r_timeout - 1),_healer,_lifes], "BLACK FADED"];
+		} else {
+		    hintSilent format ["%1\n%2\n%3", round (BTC_r_timeout - 1),_healer,_lifes];
+		};
+		if (format ["%1", player getVariable "BTC_need_revive"] == "0" || BTC_respawn_cond) then {
+			closeDialog 0;
+		};
+		uiSleep 1;
 	};
 	//diag_log text format ["WHY!!!",""];diag_log text format ["%1 %2 %3",format ["%1", player getVariable "BTC_need_revive"] == "1" , time < BTC_r_timeout , !BTC_respawn_cond];
 	closedialog 0;
@@ -1242,14 +1256,11 @@ BTC_player_killed = {
 			BTC_respawn_cond = false;
 			if (BTC_disable_respawn == 1) then {player enableSimulation false;};
 			if (BTC_disable_respawn == 0 && BTC_action_respawn == 1) then {BTC_action_respawn_id = player addAction [("<t color=""#ED2744"">") + ("Respawn") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_player_respawn], 9, true, true, "", "true"];};
-			if (BTC_camera_unc == 0) then
-			{
+			if (BTC_camera_unc == 0) then {
 				if (BTC_black_screen == 0 && BTC_disable_respawn == 0) then {if (BTC_action_respawn == 0) then {disableSerialization;_dlg = createDialog "BTC_respawn_button_dialog";};};
 				if (BTC_black_screen == 1 && BTC_disable_respawn == 0 && !Dialog) then {_dlg = createDialog "BTC_respawn_button_dialog";};
 				BTC_display_EH = (findDisplay 46) displayAddEventHandler ["KeyDown", "_anim = [] spawn {sleep 1;player switchMove ""AinjPpneMstpSnonWrflDnon"";};"];
-			}
-			else
-			{
+			} else {
 				BTC_r_u_camera = "camera" camCreate (position player);
 				BTC_r_u_camera camSetTarget player;
 				BTC_r_u_camera cameraEffect ["internal", "BACK"];
@@ -1261,29 +1272,30 @@ BTC_player_killed = {
 				(_ui displayCtrl 120) ctrlShow false;
 				if (BTC_disable_respawn == 1) then {(_ui displayCtrl 122) ctrlShow false;};
 				BTC_r_camera_EH_keydown = (findDisplay 46) displayAddEventHandler ["KeyDown", "_keydown = _this spawn BTC_r_s_keydown"];
-				//{
-				//    _lb = lbAdd [121,_x];
-				//    if (_x == BTC_camera_unc_type select 0) then {
-				//    	lbSetCurSel [121,_lb];
-				//    };
-				//} foreach BTC_camera_unc_type;
 			};
 			while {(format ["%1", player getVariable "BTC_need_revive"] == "1") && {(time < _timeout)} && {(!BTC_respawn_cond)}} do {
 				if (BTC_disable_respawn == 0) then {if (BTC_black_screen == 1 || (BTC_black_screen == 0 && BTC_action_respawn == 0)) then {if (!Dialog && !BTC_respawn_cond) then {_dlg = createDialog "BTC_respawn_button_dialog";};};};
 				_healer = call BTC_check_healer;
 				_lifes = "";
-				if (BTC_active_lifes == 1) then {_lifes = format ["Lifes remaining: %1",BTC_lifes];};
-				if (BTC_black_screen == 1 && BTC_camera_unc == 0) then {titleText [format ["%1\n%2\n%3", round (_timeout - time),_healer,_lifes], "BLACK FADED"]} else {hintSilent format ["%1\n%2\n%3", round (_timeout - time),_healer,_lifes];};
+				if (BTC_active_lifes == 1) then {
+					_lifes = format ["Lifes remaining: %1",BTC_lifes];
+				};
+				if (BTC_black_screen == 1 && BTC_camera_unc == 0) then {
+					titleText [format ["%1\n%2\n%3", round (_timeout - 1),_healer,_lifes], "BLACK FADED"]
+				} else {
+				    hintSilent format ["%1\n%2\n%3", round (_timeout - 1),_healer,_lifes];
+				};
 				if (BTC_camera_unc == 1) then {
-					titleText [format ["%1\n%2\n%3", round (_timeout - time),_healer,_lifes], "PLAIN"]; titleFadeOut 1;
+					titleText [format ["%1\n%2\n%3", round (_timeout - 1),_healer,_lifes], "PLAIN"]; titleFadeOut 1;
 					if (!dialog) then {
-						disableSerialization;_r_dlg = createDialog "BTC_spectating_dialog";sleep 0.01;_ui = uiNamespace getVariable "BTC_r_spectating";(_ui displayCtrl 120) ctrlShow false;if (BTC_disable_respawn == 1) then {(_ui displayCtrl 122) ctrlShow false;};
-						//{
-						//    _lb = lbAdd [121,_x];
-						//    if (_x == BTC_camera_unc_type select 0) then {
-						//    	lbSetCurSel [121,_lb];
-						//    };
-						//} foreach BTC_camera_unc_type;
+						disableSerialization;
+						_r_dlg = createDialog "BTC_spectating_dialog";
+						sleep 0.01;
+						_ui = uiNamespace getVariable "BTC_r_spectating";
+						(_ui displayCtrl 120) ctrlShow false;
+						if (BTC_disable_respawn == 1) then {
+							(_ui displayCtrl 122) ctrlShow false;
+						};
 					};
 					[_timeout] spawn {
 						private ["_timeout"];
@@ -1291,31 +1303,30 @@ BTC_player_killed = {
 						while {(format ["%1", player getVariable "BTC_need_revive"] == "1") && {(time < _timeout)} && {(!BTC_respawn_cond)}} do {
 							BTC_r_u_camera attachTo [player,BTC_r_s_cam_view];
 							BTC_r_u_camera camCommit 0;
-							if (BTC_r_camera_nvg) then {camusenvg true;} else {camusenvg false;};
+							if (BTC_r_camera_nvg) then {
+								camusenvg true;
+							} else {
+							    camusenvg false;
+							};
 							sleep 0.01;
 						};
 					};
 				};
-				sleep 1.5;
+				uiSleep 1;
 			};
-			if (BTC_camera_unc == 0) then
-			{
+			if (BTC_camera_unc == 0) then {
 				(findDisplay 46) displayRemoveEventHandler ["KeyDown",BTC_display_EH];
-			}
-			else
-			{
+			} else {
 				player cameraEffect ["TERMINATE", "BACK"];
 				camDestroy BTC_r_u_camera;
 				BTC_r_u_camera = objNull;
 				(findDisplay 46) displayRemoveEventHandler ["KeyDown",BTC_r_camera_EH_keydown];
 			};
 			closedialog 0;
-			if (time > _timeout && format ["%1", player getVariable "BTC_need_revive"] == "1") then
-			{
+			if (time > _timeout && format ["%1", player getVariable "BTC_need_revive"] == "1") then {
 				_respawn = [] spawn BTC_player_respawn;
 			};
-			if (format ["%1", player getVariable "BTC_need_revive"] == "0" && !BTC_respawn_cond) then
-			{
+			if (format ["%1", player getVariable "BTC_need_revive"] == "0" && !BTC_respawn_cond) then {
 				if (BTC_black_screen == 1) then {titleText ["", "BLACK IN"]; titleFadeOut 1;} else {hintSilent "";};
 				if (BTC_need_first_aid == 1 && ((items player) find "FirstAidKit" != -1)) then {player removeItem "FirstAidKit";};
 				player playMove "amovppnemstpsraswrfldnon";
@@ -1363,12 +1374,20 @@ BTC_check_healer =
 		{private ["_man"];_man = _x;if (isPlayer _man && ({_man isKindOf _x} count BTC_who_can_revive) > 0) then {_men = _men + [_man];};} foreach crew _x;
 	} foreach _veh;
 	if (count _men > 0) then {
-		{if (alive _x && format ["%1", _x getVariable "BTC_need_revive"] != "1" && ([_x,player] call BTC_can_revive) && isPlayer _x && side _x == BTC_side) then {_healers = _healers + [_x];};} foreach _men;
+		{
+		    if (alive _x && format ["%1", _x getVariable "BTC_need_revive"] != "1" && ([_x,player] call BTC_can_revive) && isPlayer _x && side _x == BTC_side) then {
+		    	_healers = _healers + [_x];
+		    };
+		} foreach _men;
 		if (count _healers > 0) then {
 			{
-				if (_x distance _pos < _dist) then {_healer = _x; _dist = _x distance _pos;};
+				if (_x distance _pos < _dist) then {
+					_healer = _x; _dist = _x distance _pos;
+				};
 			} foreach _healers;
-			if !(isNull _healer) then {_msg = format ["Ближайший медик (%1) находится на расстоянии %2м.", name _healer,round(_healer distance _pos)];};
+			if !(isNull _healer) then {
+				_msg = format ["Ближайший медик (%1) находится на расстоянии %2м.", name _healer,round(_healer distance _pos)];
+			};
 		};
     } else {
         _others = ["B_Soldier_SL_F", "B_soldier_AR_F", "B_soldier_AT_F", "B_soldier_M_F", "B_sniper_F", "B_engineer_F", "B_Helipilot_F"];
