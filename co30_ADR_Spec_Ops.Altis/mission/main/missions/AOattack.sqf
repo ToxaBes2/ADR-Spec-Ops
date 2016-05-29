@@ -47,6 +47,7 @@ if (_chance < 5) then {
         _x addCuratorEditableObjects [[_obj], true];
     } forEach allCurators;
     _obj allowDamage false;
+    _obj addEventHandler ["HandleDamage", {0}];
     _obj addMPEventHandler ["MPKilled", {MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";}];
     _bunkerObjects = [_obj] call QS_fnc_addFurniture;
 } else {

@@ -108,21 +108,21 @@ _composition = [
     };
     if (_name == "Land_Cargo_HQ_V3_F") then {
         _cargo = _obj;
+        _cargo addEventHandler ["HandleDamage", {0}];
+        _cargo addMPEventHandler ["MPKilled", {MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";}];
+    };
+    if (_name == "Land_DataTerminal_01_F") then {
+        _obj addEventHandler ["HandleDamage", {0}];
+        _obj addMPEventHandler ["MPKilled", {MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";}];
+        [_obj, "red", "orange", "green"] call BIS_fnc_DataTerminalColor;
+        [_obj, 3] call BIS_fnc_dataTerminalAnimate;
+        [_obj, "QS_fnc_addActionTakeControl", nil, true] spawn BIS_fnc_MP; // add terminal action
     };
     _obj allowDamage _damage;
     _obj enableSimulation _simulation;
-    _obj addMPEventHandler ["MPKilled", {MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";}];
     if !(_name in _objects) then {
         _objects set [count _objects, _name];
     };
 } forEach _composition;
 sleep 2;
-_terminal = nearestObject [_startPoint, "Land_DataTerminal_01_F"];
-[_terminal, "red", "orange", "green"] call BIS_fnc_DataTerminalColor;
-[_terminal, 3] call BIS_fnc_dataTerminalAnimate;
-_terminal addMPEventHandler ["MPKilled", {MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";}];
-
-// add terminal action
-[_terminal, "QS_fnc_addActionTakeControl", nil, true] spawn BIS_fnc_MP;
-
 _objects
