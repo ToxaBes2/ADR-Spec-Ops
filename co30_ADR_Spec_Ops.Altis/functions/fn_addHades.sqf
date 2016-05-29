@@ -19,9 +19,10 @@ _punishObject = objNull;
             _trigger setTriggerActivation ["WEST", "PRESENT", true];
             _trigger setTriggerStatements ["this", "
                 {
+                    _allowed = ['O_Truck_03_covered_F', 'O_Truck_03_device_F', 'O_Truck_03_transport_F'];
                     _veh = vehicle _x;
                     if (_veh isKindOf 'LandVehicle' || _veh isKindOf 'Ship') then {
-                    	if !(_veh isKindOf 'StaticWeapon') then {
+                    	if !(_veh isKindOf 'StaticWeapon' || (typeOf _veh) in _allowed) then {
                             [_veh] call QS_fnc_punishObject;
                         };
                     };
