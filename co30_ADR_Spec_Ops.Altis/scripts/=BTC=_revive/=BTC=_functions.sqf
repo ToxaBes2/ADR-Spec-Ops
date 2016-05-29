@@ -873,9 +873,9 @@ BTC_fnc_wait_for_revive =
 			_lifes = format ["Lifes remaining: %1",BTC_lifes];
 		};
 		if (BTC_black_screen == 1) then {
-			titleText [format ["%1\n%2\n%3", round (BTC_r_timeout - 1),_healer,_lifes], "BLACK FADED"];
+			titleText [format ["%1\n%2\n%3", round (BTC_r_timeout - time),_healer,_lifes], "BLACK FADED"];
 		} else {
-		    hintSilent format ["%1\n%2\n%3", round (BTC_r_timeout - 1),_healer,_lifes];
+		    hintSilent format ["%1\n%2\n%3", round (BTC_r_timeout - time),_healer,_lifes];
 		};
 		if (format ["%1", player getVariable "BTC_need_revive"] == "0" || BTC_respawn_cond) then {
 			closeDialog 0;
@@ -1281,12 +1281,12 @@ BTC_player_killed = {
 					_lifes = format ["Lifes remaining: %1",BTC_lifes];
 				};
 				if (BTC_black_screen == 1 && BTC_camera_unc == 0) then {
-					titleText [format ["%1\n%2\n%3", round (_timeout - 1),_healer,_lifes], "BLACK FADED"]
+					titleText [format ["%1\n%2\n%3", round (_timeout - time),_healer,_lifes], "BLACK FADED"]
 				} else {
-				    hintSilent format ["%1\n%2\n%3", round (_timeout - 1),_healer,_lifes];
+				    hintSilent format ["%1\n%2\n%3", round (_timeout - time),_healer,_lifes];
 				};
 				if (BTC_camera_unc == 1) then {
-					titleText [format ["%1\n%2\n%3", round (_timeout - 1),_healer,_lifes], "PLAIN"]; titleFadeOut 1;
+					titleText [format ["%1\n%2\n%3", round (_timeout - time),_healer,_lifes], "PLAIN"]; titleFadeOut 1;
 					if (!dialog) then {
 						disableSerialization;
 						_r_dlg = createDialog "BTC_spectating_dialog";
