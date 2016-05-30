@@ -9,7 +9,7 @@ Description: capture the enemy warehouse and neutralize barrels with gas
 #define ENEMY_SIDE EAST
 #define INFANTRY_RANK "CAPTAIN","MAJOR","COLONEL"
 #define INFANTRY_CARGO "Land_Cargo20_grey_F","Land_Cargo20_light_green_F","Land_Cargo20_military_green_F","Land_Cargo20_sand_F"
-#define INFANTRY_BARRELS "Land_WaterBarrel_F","FlexibleTank_01_forest_F","FlexibleTank_01_sand_F","B_Slingload_01_Fuel_F"
+#define INFANTRY_BARRELS "Land_WaterBarrel_F","FlexibleTank_01_forest_F","FlexibleTank_01_sand_F","B_Slingload_01_Fuel_F","CargoNet_01_barrels_F"
 #define INFANTRY_GUNNERS "O_support_MG_F", "O_support_GMG_F", "O_support_AMG_F"
 #define INFANTRY_STATIC "O_HMG_01_high_F"
 #define INFANTRY_SUPPORT "O_G_Soldier_AR_F","O_Soldier_AR_F"
@@ -119,7 +119,7 @@ _unitsArray = _unitsArray + [_cargoHQ];
 // spawn several metal barells
 for "_i" from 1 to 5 do {
     _barrelPos = [_startPoint, 0, 90, 3, 0, 10, 0] call BIS_fnc_findSafePos;
-    _barrel = createVehicle ["CargoNet_01_barrels_F", _barrelPos, [], 0, "CAN_COLLIDE"];
+    _barrel = createVehicle ["Land_MetalBarrel_F", _barrelPos, [], 0, "CAN_COLLIDE"];
     _unitsArray = _unitsArray + [_barrel];
 };
 
@@ -128,7 +128,7 @@ _barrelPos = [_startPoint, 0, 70, 3, 0, 10, 0] call BIS_fnc_findSafePos;
 while {surfaceIsWater _barrelPos} do {
     _barrelPos = [_startPoint, 0, 70, 8, 0, 10, 0] call BIS_fnc_findSafePos;
 };
-_barrel = createVehicle ["CargoNet_01_barrels_F", _barrelPos, [], 0, "NONE"];
+_barrel = createVehicle ["Land_MetalBarrel_F", _barrelPos, [], 0, "NONE"];
 [_barrel, "QS_fnc_addActionNeutralize", nil, true] spawn BIS_fnc_MP;
 SM_YELLOWFOG_POS = getPos _barrel;
 SM_YELLOWFOG_POS set [2, ((SM_YELLOWFOG_POS select 2) + 1)];
@@ -220,13 +220,10 @@ for "_i" from 1 to 20 do {
 };
 
 // add fog event
-_barrel addEventHandler ["EpeContactStart", {
+_barrel addEventHandler ["HandleDamage", {
     if (!SM_YELLOWFOG_FAIL) then {
-        _force = _this select 4;
-        if (_force > 8) then {
-            SM_YELLOWFOG_FAIL = true;
-            publicVariable "SM_YELLOWFOG_FAIL";
-            _obj removeEventHandler ['EpeContact', 0];
+        if ((_this select 2) > 0.2) then {
+            (_this select 0) removeEventHandler ['HandleDamage', 0];
             [[[SM_YELLOWFOG_POS, 120], "scripts\fog.sqf"], "BIS_fnc_execVM", true, false] spawn BIS_fnc_MP;
             [] spawn {
                 _n = 0;
@@ -238,6 +235,29 @@ _barrel addEventHandler ["EpeContactStart", {
                     _n = _n + 10;
                     sleep 10;
                 };
+            };
+            _nearbyPlayers = [];
+            {
+                if ((_x distance SM_YELLOWFOG_STARTPOINT) < 500) then {
+                    _nearbyPlayers = _nearbyPlayers pushBack _x;
+                };
+            } forEach allPlayers;
+            [{
+                for "_x" from 1 to 20 do {
+                    uiSleep 3;
+                    playSound "Alarm";
+                };
+            },"BIS_fnc_spawn", _nearbyPlayers, false] spawn BIS_fnc_MP;
+            [_this select 3] spawn {
+                _swearWords = ["Черт побери", "Крейсер мне в бухту", "Японский городовой", "Екарный бабай", "Едрить-колотить", "Ешкин кот", "Калаш мне в зад"] call BIS_fnc_selectRandom;
+                if (isNull (_this select 0)) then {
+                    hqSideChat = format ["%1! Бочка с ипритом повреждена. Срочная эвакуация!", _swearWords];
+                } else {
+                    hqSideChat = format ["%1! %2 повредил бочку с ипритом. Срочная эвакуация!", _swearWords, name (_this select 0)];
+                };
+                publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
+                sleep 10;
+                SM_YELLOWFOG_FAIL = true; publicVariable "SM_YELLOWFOG_FAIL";
             };
         };
     };
