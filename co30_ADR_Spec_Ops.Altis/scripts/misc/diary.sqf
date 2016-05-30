@@ -398,6 +398,25 @@ player createDiaryRecord ["credits",
     • evil_c0okie
 <br />
     • Noart
+<br />
+</font>
+<br />
+<font size='18' color='#3E9D3F'>Администраторы</font>
+<br />
+<font size='14'>
+    • 12s
+<br />
+    • evil_c0okie
+<br />
+    • kovt
+<br />
+    • Noart
+<br />
+    • ToxaBes
+<br />
+    • tym32167
+<br />
+    • vosur
 </font>
 <br />
 <font size='14'>
