@@ -40,8 +40,8 @@ if !(isNil "EW_ATTACK") then {
     };
 };
 
-// Color correction
-["EastWind", 0, false] call BIS_fnc_setPPeffectTemplate;
+// Color correction (disabled because ugly after v1.6)
+//["EastWind", 0, false] call BIS_fnc_setPPeffectTemplate;
 
 // Put earplugs on when entering a helicopter
 player addEventHandler [ "GetInMan", {

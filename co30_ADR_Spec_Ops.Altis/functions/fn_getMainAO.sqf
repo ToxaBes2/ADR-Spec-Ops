@@ -70,4 +70,12 @@ _targets = [
 ];
 
 _target = _targets call BIS_fnc_selectRandom;
+
+_rareTargets = ["Молос","Аэродром Молос","Аванпост Селакано","Ветряки Аристи","Ветряки Дидимос","Электростанция Софии","Солнечная ферма Гатолия","Аэродром Крия Нера"];
+if ((_target select 0) in _rareTargets) then {
+    if (random 10 > 5) then {
+        _target = _targets call BIS_fnc_selectRandom;
+    };
+};
+
 _target

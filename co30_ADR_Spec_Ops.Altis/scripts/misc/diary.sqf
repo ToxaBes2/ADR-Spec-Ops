@@ -388,6 +388,7 @@ player createDiaryRecord ["credits",
 <br />
 <font size='14'>
     • ToxaBes
+<br />
 </font>
 <br />
 <font size='18' color='#3E9D3F'>Разработчики</font>
@@ -417,6 +418,7 @@ player createDiaryRecord ["credits",
     • tym32167
 <br />
     • vosur
+<br />
 </font>
 <br />
 <font size='14'>

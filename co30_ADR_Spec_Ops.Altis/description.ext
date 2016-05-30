@@ -24,8 +24,8 @@ allowFunctionsLog = 0; 									// Log functions to .rpt. disabled with 0
 
 //------------------------- Misc
 
-disableChannels[]={0,1,2}; 						    // 0 = Global, 1 = Side, 2 = Command, 3 = Group, 4 = Vehicle, 5 = Direct, 6 = System. Admin/server/BattlEye can still use Global.
-//disableChannels[]={{0, true, true},{1, false, true},{2, true, true},{3, false, false},{4, false, false},{5, false, false},{6, false, false}};
+//disableChannels[]={0,1,2}; 						    // 0 = Global, 1 = Side, 2 = Command, 3 = Group, 4 = Vehicle, 5 = Direct, 6 = System. Admin/server/BattlEye can still use Global.
+disableChannels[]={{0, true, true},{1, false, true},{2, true, true},{3, false, false},{4, false, false},{5, false, false},{6, false, false}};
 disabledAI = 1;											// No AI in playable units
 aiKills = 0; 											// disable scorelist for AI players
 enableItemsDropping = 0; 								// disabled with 0
