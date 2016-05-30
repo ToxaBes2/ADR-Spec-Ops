@@ -48,3 +48,6 @@ if (!isDedicated) then {
         (RADIO_CHANNELS select 1) radioChannelAdd [player];
     };
 };
+
+// disable voice for side channel
+1 enableChannel [true, false];

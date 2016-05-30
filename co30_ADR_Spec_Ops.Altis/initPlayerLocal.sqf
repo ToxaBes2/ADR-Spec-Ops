@@ -121,3 +121,6 @@ player addEventHandler [ "Take", {
 	"priorityCircle" setMarkerPosLocal (markerPos "priorityCircle");
 	"priorityMarker" setMarkerTextLocal format["Вторичная цель: %1",priorityTargetText];
 };
+
+// disable voice for side channel
+1 enableChannel [true, false];
