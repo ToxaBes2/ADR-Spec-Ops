@@ -76,8 +76,11 @@ switch (_playerType) do {
 // add all players to emergency channel
 (RADIO_CHANNELS select 0) radioChannelAdd [player];
 
-// disable voice for side channel
+// disable channels
+0 enableChannel false;
 1 enableChannel [true, false];
+2 enableChannel false;
+(RADIO_CHANNELS select 0) enableChannel [true, false];
 
 // add sticky C4 event
 _null = player addEventHandler ["Fired", {

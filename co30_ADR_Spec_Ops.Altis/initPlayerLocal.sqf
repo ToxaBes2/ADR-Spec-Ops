@@ -122,5 +122,7 @@ player addEventHandler [ "Take", {
 	"priorityMarker" setMarkerTextLocal format["Вторичная цель: %1",priorityTargetText];
 };
 
-// disable voice for side channel
+// disable channels
+0 enableChannel false;
 1 enableChannel [true, false];
+2 enableChannel false;
