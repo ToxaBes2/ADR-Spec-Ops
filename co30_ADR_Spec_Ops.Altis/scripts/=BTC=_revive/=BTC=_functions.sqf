@@ -1194,7 +1194,7 @@ BTC_pull_out_check =
 };
 
 BTC_player_killed = {
-	private ["_type_backpack","_weapons","_magazines","_weapon_backpack","_ammo_backpack","_score","_score_array","_name","_body_marker","_ui","_color"];
+	private ["_type_backpack","_weapons","_magazines","_weapon_backpack","_ammo_backpack","_score","_score_array","_name","_body_marker","_ui"];
 
 	// save primary weapon
     _playerOld = _this select 0;
