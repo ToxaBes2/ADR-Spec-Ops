@@ -1,8 +1,4 @@
-_uavs = ["B_UAV_01_F","B_UAV_02_F","B_UAV_02_CAS_F","B_UGV_01_F","B_UGV_01_rcws_F","I_UAV_01_F","I_UAV_02_F","I_UAV_02_CAS_F","I_UGV_01_F","I_UGV_01_rcws_F",
-"O_UAV_01_F","O_UAV_02_F","O_UAV_02_CAS_F","O_UGV_01_F","O_UGV_01_rcws_F"];
-if ((typeOf cameraOn) in _uavs) exitWith {hint "Арсенал недоступен пока вы подключены к БПЛА/БПА.";};
 _myBox = _this select 0;
-["AmmoboxInit", [_myBox, false]] call BIS_fnc_arsenal;
 
 //--- Рюкзаки
 [_myBox,[
@@ -54,7 +50,7 @@ _myBox = _this select 0;
 "B_HMG_01_high_weapon_F",
 "B_GMG_01_weapon_F",
 "B_HMG_01_weapon_F"
-],true] call BIS_fnc_addVirtualBackpackCargo;
+],true, false] call BIS_fnc_addVirtualBackpackCargo;
 
 [_myBox,[
 //--- НАТО
@@ -376,7 +372,7 @@ _myBox = _this select 0;
 "U_C_Scientist",
 "U_C_WorkerCoveralls",
 "U_C_HunterBody_grn"
-],true] call BIS_fnc_addVirtualItemCargo;
+], true, false] call BIS_fnc_addVirtualItemCargo;
 
 //--- Патроны
 [_myBox,[
@@ -479,7 +475,7 @@ _myBox = _this select 0;
 "Titan_AP",
 "Titan_AA",
 "Laserbatteries"
-],true] call BIS_fnc_addVirtualMagazineCargo;
+], true, false] call BIS_fnc_addVirtualMagazineCargo;
 
 //--- Оружие
 [_myBox,[
@@ -560,4 +556,4 @@ _myBox = _this select 0;
 "MMG_02_black_F",
 "MMG_02_sand_F",
 "MMG_02_black_RCO_BI_F"
-],true] call BIS_fnc_addVirtualWeaponCargo;
+], true, false] call BIS_fnc_addVirtualWeaponCargo;
