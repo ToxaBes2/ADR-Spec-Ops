@@ -1194,7 +1194,7 @@ BTC_pull_out_check =
 };
 
 BTC_player_killed = {
-	private ["_type_backpack","_weapons","_magazines","_weapon_backpack","_ammo_backpack","_score","_score_array","_name","_body_marker","_ui"];
+	private ["_type_backpack","_weapons","_magazines","_weapon_backpack","_ammo_backpack","_score","_score_array","_name","_body_marker","_ui","_color"];
 
 	// save primary weapon
     _playerOld = _this select 0;
@@ -1286,7 +1286,8 @@ BTC_player_killed = {
 				    hintSilent format ["%1\n%2\n%3", round (_timeout - time),_healer,_lifes];
 				};
 				if (BTC_camera_unc == 1) then {
-					titleText [format ["%1\n%2\n%3", round (_timeout - time),_healer,_lifes], "PLAIN"]; titleFadeOut 1;
+					//titleText [format ["%1\n%2\n%3", round (_timeout - time),_healer,_lifes], "PLAIN"]; titleFadeOut 1;
+					[format ["<t color='#F44336' size = '0.61'>%1</t><br /><t size = '.46'>%2<br />%3</t>", round (_timeout - time), _healer, _lifes], 0, 0.75, 2, 0, 0] spawn BIS_fnc_dynamicText;
 					if (!dialog) then {
 						disableSerialization;
 						_r_dlg = createDialog "BTC_spectating_dialog";
@@ -1397,14 +1398,14 @@ BTC_check_healer =
                 if (isPlayer _x && side _x == BTC_side && player != _x && isNull _healer) then {
                     _healer = _x;
                 };
-            } forEach _men;            
+            } forEach _men;
         } else {
-            _veh = nearestObjects [_pos, ["LandVehicle", "Air", "Ship"], 500];           
+            _veh = nearestObjects [_pos, ["LandVehicle", "Air", "Ship"], 500];
             {
                 if (isNull _healer) then {
                 	_crew = crew _x;
                 	if (count _crew > 0) then {
-		                {		                
+		                {
 		                    if (isPlayer _x && side _x == BTC_side && player != _x && isNull _healer) then {
 		        	            _healer = _x;
 		                    };
@@ -1412,7 +1413,7 @@ BTC_check_healer =
 		            };
 		        };
 	        } foreach _veh;
-        };		
+        };
 		if !(isNull _healer) then {
 			_msg = format ["Ближайший игрок (%1) находится на расстоянии %2м.", name _healer,round(_healer distance _pos)];
 		};
