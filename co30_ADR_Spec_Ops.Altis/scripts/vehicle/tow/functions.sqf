@@ -380,11 +380,13 @@ SA_Attach_Tow_Ropes = {
 					[["Трос слишком короткий. Поставьте технику ближе.", false],"SA_Hint",_player] call SA_RemoteExec;
 				} else {		
 					[_vehicle,_player] call SA_Drop_Tow_Ropes;
-					_helper = "Land_Can_V2_F" createVehicle position _cargo;
+					_helper = "Land_Can_V3_F" createVehicle position _cargo;
 					_helper attachTo [_cargo, _cargoHitch];
 					_helper setVariable ["SA_Cargo",_cargo,true];
 					hideObject _helper;
-					[[_helper],"SA_Hide_Object_Global"] call SA_RemoteExecServer;
+					//[[_helper],"SA_Hide_Object_Global"] call SA_RemoteExecServer;
+					_helper remoteExec ["hideObject", -2];
+					_helper remoteExec ["hideObjectGlobal", 2]; 
 					[_helper, [0,0,0], [0,0,-1]] ropeAttachTo (_towRopes select 0);
 					[_vehicle,_vehicleHitch,_cargo,_cargoHitch,_ropeLength] spawn SA_Simulate_Towing;
 				};
@@ -423,13 +425,15 @@ SA_Pickup_Tow_Ropes = {
 			} forEach (_vehicle getVariable ["SA_Tow_Ropes",[]]);
 			deleteVehicle _attachedObj;
 		} forEach ropeAttachedObjects _vehicle;
-		_helper = "Land_Can_V2_F" createVehicle position _player;
+		_helper = "Land_Can_V3_F" createVehicle position _player;
 		{
 			[_helper, [0, 0, 0], [0,0,-1]] ropeAttachTo _x;
 			_helper attachTo [_player, [-0.1, 0.1, 0.15], "Pelvis"];
 		} forEach (_vehicle getVariable ["SA_Tow_Ropes",[]]);
 		hideObject _helper;
-		[[_helper],"SA_Hide_Object_Global"] call SA_RemoteExecServer;
+		//[[_helper],"SA_Hide_Object_Global"] call SA_RemoteExecServer;
+		_helper remoteExec ["hideObject", -2];
+		_helper remoteExec ["hideObjectGlobal", 2];
 		_player setVariable ["SA_Tow_Ropes_Vehicle", _vehicle,true];
 		_player setVariable ["SA_Tow_Ropes_Pick_Up_Helper", _helper,true];
 	} else {
@@ -732,7 +736,7 @@ SA_Hint = {
 
 SA_Hide_Object_Global = {
 	params ["_obj"];
-	if( _obj isKindOf "Land_Can_V2_F" ) then {
+	if( _obj isKindOf "Land_Can_V3_F" ) then {
 		hideObjectGlobal _obj;
 	};
 };

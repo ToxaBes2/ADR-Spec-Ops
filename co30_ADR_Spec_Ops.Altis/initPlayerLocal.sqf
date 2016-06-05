@@ -124,6 +124,6 @@ player addEventHandler [ "Take", {
 };
 
 // disable channels
-0 enableChannel false;
+0 enableChannel [true, false];
 1 enableChannel [true, false];
-2 enableChannel false;
+2 enableChannel [false, false];
