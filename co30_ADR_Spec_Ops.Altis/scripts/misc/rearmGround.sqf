@@ -28,14 +28,14 @@ _veh setDamage 0;
 
 //Rearming
 _mags = magazinesAllTurrets _veh;
-_ammo = 0;
-{_ammo = _ammo + (_x select 2) / (getNumber (configFile >> "CfgMagazines" >> (_x select 0) >> "count"));} forEach _mags;
-if ((count _mags) > 0) then {
+if (count _mags != 0) then {
+    _ammo = 0;
+    {_ammo = _ammo + (_x select 2) / (getNumber (configFile >> "CfgMagazines" >> (_x select 0) >> "count"));} forEach _mags;
     _ammo = _ammo / (count _mags);
-};
-if (_ammo < 1) then {
-	_veh vehicleChat "Перезарядка ...";
-	uiSleep (5 + (1 - _ammo) * 30);
+    if (_ammo < 1) then {
+    	_veh vehicleChat "Перезарядка ...";
+    	uiSleep (5 + (1 - _ammo) * 30);
+    };
 };
 _veh setVehicleAmmo 1;
 
