@@ -51,7 +51,7 @@ player addEventHandler [ "GetInMan", {
         _player  = _this select 0;
         _vehicle = _this select 1;
         if (_vehicle isKindOf "Helicopter") then {
-            1 fadeSound 0.5;
+            1 fadeSound 0.33;
             waitUntil {
                 sleep 5;
                 vehicle _player != _vehicle;
