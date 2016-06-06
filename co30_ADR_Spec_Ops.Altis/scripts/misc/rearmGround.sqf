@@ -39,14 +39,14 @@ if (_ammo < 1) then {
 };
 _veh setVehicleAmmo 1;
 
-// Rearm ammo trucks cargo ammo to 12 000 ammo (One full M5 Sandstorm MLRS rearm (12 rockets))
+// Rearm ammo trucks cargo ammo to 32 562 ammo (one full AA rearm)
 while {true} do {
     call {
         if ((typeOf _veh) in ["B_Truck_01_ammo_F", "O_Truck_02_Ammo_F", "I_Truck_02_ammo_F"]) exitWith {
-            _veh setAmmoCargo 0.0000000121; // 12 000 ammo
+            _veh setAmmoCargo 0.000000032562; // 32 562 ammo
         };
         if ((typeOf _veh) == "O_Truck_03_ammo_F") exitWith {
-            _veh setAmmoCargo 0.41;        // 12 000 ammo
+            _veh setAmmoCargo 1.08538;        // 32 562 ammo
         };
     };
     if (getAmmoCargo _veh != 0) exitWith {}; // Due to very low values setAmmoCargo rounds to 0 on first try
