@@ -3727,7 +3727,7 @@ class Mission
 			azimut=315;
 			id=264;
 			side="EMPTY";
-			vehicle="B_MRAP_01_F";
+			vehicle="B_G_Offroad_01_repair_F";
 			leader=1;
 			lock="UNLOCKED";
 			skill=0.60000002;
