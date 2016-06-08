@@ -1110,7 +1110,7 @@ class Mission
 					vehicle="b_soldier_unarmed_f";
 					leader=1;
 					skill=0.60000002;
-					init="removeAllWeapons this; this allowDamage false; this enableSimulationGlobal false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacearsenal_ca.paa' size='1.0'/> Арсенал</t>"",{['Open',[false, ammo1, player]] call BIS_fnc_arsenal},[],15,true,true,'','((vehicle player) == player) && ((player distance _target) < 8) && isNull (getConnectedUav player)']; this addAction [""<t color='#FF9800'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa' size='1.0'/> Снаряжение</t>"",""scripts\VAS\open.sqf"",[],14,true,true,'','((vehicle player) == player) && ((player distance _target) < 8) && isNull (getConnectedUav player)']; this addAction [""<t color='#FFEB3B'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArcadeMap\icon_save_ca.paa' size='1.0'/> Сохранение снаржения"",QS_fnc_saveInventory,[],13,true,true,'','((vehicle player) == player) && ((player distance _target) < 8) && isNull (getConnectedUav player)']; this addAction [""<t color='#C6FF00'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_toolbox_modules_ca.paa' size='1.0'/> "" + localize 'STR_VAS_Menu_Title' + ""</t>"",""createDialog 'VAS_Info_Diag';"",[],12,true,true,'','((vehicle player) == player) && ((player distance _target) < 8) && isNull (getConnectedUav player)'];";
+					init="removeAllWeapons this; this allowDamage false; this enableSimulationGlobal false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacearsenal_ca.paa' size='1.0'/> Арсенал</t>"",{['Open',[false, ammo1, player]] call BIS_fnc_arsenal},[],15,true,true,'','((player distance _target) < 8) && isNull (getConnectedUav player)']; this addAction [""<t color='#FF9800'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa' size='1.0'/> Снаряжение</t>"",""scripts\VAS\open.sqf"",[],14,true,true,'','((player distance _target) < 8) && isNull (getConnectedUav player)']; this addAction [""<t color='#FFEB3B'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArcadeMap\icon_save_ca.paa' size='1.0'/> Сохранение снаржения"",QS_fnc_saveInventory,[],13,true,true,'','((player distance _target) < 8) && isNull (getConnectedUav player)']; this addAction [""<t color='#C6FF00'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_toolbox_modules_ca.paa' size='1.0'/> "" + localize 'STR_VAS_Menu_Title' + ""</t>"",""createDialog 'VAS_Info_Diag';"",[],12,true,true,'','((player distance _target) < 8) && isNull (getConnectedUav player)'];";
 				};
 			};
 		};
@@ -2749,7 +2749,7 @@ class Mission
 			skill=0.60000002;
 			ammo=0;
 			text="ammo1";
-			init="removeAllWeapons this; this allowDamage false; this enableSimulationGlobal false; _K = [this] spawn {_this call compile preProcessFileLineNumbers ""scripts\VA-west.sqf"";}; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacearsenal_ca.paa' size='1.0'/> Арсенал</t>"",{['Open',[false, ammo1, player]] call BIS_fnc_arsenal},[],15,true,true,'','((vehicle player) == player) && ((player distance _target) < 8) && isNull (getConnectedUav player)']; this addAction [""<t color='#FF9800'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa' size='1.0'/> Снаряжение</t>"",""scripts\VAS\open.sqf"",[],14,true,true,'','((vehicle player) == player) && ((player distance _target) < 8) && isNull (getConnectedUav player)']; this addAction [""<t color='#FFEB3B'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArcadeMap\icon_save_ca.paa' size='1.0'/> Сохранение снаржения"",QS_fnc_saveInventory,[],13,true,true,'','((vehicle player) == player) && ((player distance _target) < 8) && isNull (getConnectedUav player)']; this addAction [""<t color='#C6FF00'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_toolbox_modules_ca.paa' size='1.0'/> "" + localize 'STR_VAS_Menu_Title' + ""</t>"",""createDialog 'VAS_Info_Diag';"",[],12,true,true,'','((vehicle player) == player) && ((player distance _target) < 8) && isNull (getConnectedUav player)'];";
+			init="removeAllWeapons this; this allowDamage false; this enableSimulationGlobal false; _K = [this] spawn {_this call compile preProcessFileLineNumbers ""scripts\VA-west.sqf"";}; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacearsenal_ca.paa' size='1.0'/> Арсенал</t>"",{['Open',[false, ammo1, player]] call BIS_fnc_arsenal},[],15,true,true,'','((player distance _target) < 8) && isNull (getConnectedUav player)']; this addAction [""<t color='#FF9800'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa' size='1.0'/> Снаряжение</t>"",""scripts\VAS\open.sqf"",[],14,true,true,'','((player distance _target) < 8) && isNull (getConnectedUav player)']; this addAction [""<t color='#FFEB3B'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArcadeMap\icon_save_ca.paa' size='1.0'/> Сохранение снаржения"",QS_fnc_saveInventory,[],13,true,true,'','((player distance _target) < 8) && isNull (getConnectedUav player)']; this addAction [""<t color='#C6FF00'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_toolbox_modules_ca.paa' size='1.0'/> "" + localize 'STR_VAS_Menu_Title' + ""</t>"",""createDialog 'VAS_Info_Diag';"",[],12,true,true,'','((player distance _target) < 8) && isNull (getConnectedUav player)'];";
 		};
 		class Item125
 		{
@@ -3615,7 +3615,7 @@ class Mission
 			vehicle="O_supplyCrate_F";
 			skill=0.60000002;
 			text="ammo2_1_1";
-			init="this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacearsenal_ca.paa' size='1.0'/> Снаряжение</t>"",""scripts\VAS\open.sqf"",[],10,true,true,'((vehicle player) == player) && ((player distance _target) < 5) && isNull (getConnectedUav player)']; this allowDamage false; this enableSimulation false;";
+			init="this allowDamage false; this enableSimulation false; this addAction [""<t color='#FF9800'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa' size='1.0'/> Снаряжение</t>"",""scripts\VAS\open.sqf"",[],14,true,true,'','((player distance _target) < 8) && isNull (getConnectedUav player)'];";
 		};
 		class Item205
 		{
@@ -5868,7 +5868,8 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="_handle = [(thisList select 0)] spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
+
 			class Effects
 			{
 			};
@@ -5885,7 +5886,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="_handle = [(thisList select 0)] spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 			class Effects
 			{
 			};
@@ -5902,7 +5903,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="_handle = [(thisList select 0)] spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 			class Effects
 			{
 			};
@@ -5919,7 +5920,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="_handle = [(thisList select 0)] spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 			class Effects
 			{
 			};
@@ -5934,7 +5935,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="_handle = [(thisList select 0)] spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmHelicopter.sqf"";};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmHelicopter.sqf"";};};";
 			class Effects
 			{
 			};
@@ -5949,7 +5950,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="_handle = [(thisList select 0)] spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmPlane.sqf"";};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmPlane.sqf"";};};";
 			class Effects
 			{
 			};
@@ -5964,7 +5965,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="_handle = [(thisList select 0)] spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmUAV.sqf"";};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmUAV.sqf"";};};";
 			class Effects
 			{
 			};
@@ -5981,7 +5982,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="_handle = [(thisList select 0)] spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 			class Effects
 			{
 			};
@@ -5998,7 +5999,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="_handle = [(thisList select 0)] spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 			class Effects
 			{
 			};
@@ -6015,7 +6016,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="_handle = [(thisList select 0)] spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 			class Effects
 			{
 			};
@@ -6032,7 +6033,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="_handle = [(thisList select 0)] spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 			class Effects
 			{
 			};
@@ -6047,7 +6048,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="_handle = [(thisList select 0)] spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmHelicopter.sqf"";};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmHelicopter.sqf"";};};";
 			class Effects
 			{
 			};
@@ -6064,7 +6065,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="_handle = [(thisList select 0)] spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 			class Effects
 			{
 			};
@@ -6079,7 +6080,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="_handle = [(thisList select 0)] spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmHelicopter.sqf"";};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 			class Effects
 			{
 			};
@@ -6111,7 +6112,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="_handle = [(thisList select 0)] spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 			class Effects
 			{
 			};
