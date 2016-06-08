@@ -4,11 +4,21 @@ Description: Repair, rearm and refuel a ground vehicle
 */
 
 private ["_veh", "_fuel", "_dmgList", "_dmgSum", "_mags", "_ammo"];
+scopeName "Main";
 _veh = _this;
 _uavs = ["B_UAV_01_F","B_UAV_02_F","B_UAV_02_CAS_F","B_UGV_01_F","B_UGV_01_rcws_F","I_UAV_01_F","I_UAV_02_F","I_UAV_02_CAS_F","I_UGV_01_F","I_UGV_01_rcws_F",
 "O_UAV_01_F","O_UAV_02_F","O_UAV_02_CAS_F","O_UGV_01_F","O_UGV_01_rcws_F"];
 
 if (_veh isKindOf "ParachuteBase" || !alive _veh) exitWith {};
+
+// Check if current AO is nearby and turn off the vehicle service
+if (!(isNil {CURRENT_AO_POSITION})) then {
+    if (((getPos _veh) distance2D CURRENT_AO_POSITION < 2500) and ((getPos _veh) distance2D (getMarkerPos "Side") > 1000)) exitWith {
+        systemChat "Сервис техники не работает. Регион захвачен противником.";
+        breakOut "Main";
+    };
+};
+
 if (!(_veh isKindOf "LandVehicle") or ((typeOf _veh) in _uavs)) exitWith {
     systemChat "Этот сервис только для наземной техники";
 };

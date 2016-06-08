@@ -8,7 +8,7 @@ Description: All main AO's in one file
 #define RADIO_TOWERS "Land_TTowerBig_1_F","Land_TTowerBig_2_F"
 #define ALLOWED_EXPLOSIVES "IEDUrbanBig_Remote_Ammo","IEDUrbanBig_Remote_Ammo","IEDLandBig_Remote_Ammo","IEDUrbanSmall_Remote_Ammo","IEDLandSmall_Remote_Ammo","SatchelCharge_Remote_Ammo","DemoCharge_Remote_Ammo",""
 
-private ["_target","_nameAO","_positionAO","_dt","_chance","_bunkerType","_bunkerPos","_bunkerObjects","_obj","_bunkerPositions ","_smallZ","_bigZ","_position","_flatPos","_res","_distance","_tower","_campPos","_hasMines","_groundPos","_hasMines","_minesArray","_newPos","_cargo","_nearestObject","_campObjects","_enemiesArray","_targetStartText","_showTowerMessage","_showBunkerMessage","_radioTowerDownText","_bunkerText","_null","_targetCompleteText","_tower","_tower_dmg","_units","_unitTypes","_vehicles","_isReward","_curVeh","_defend","_aliveBots","_anotherChance","_uavPos","_uav"];
+private ["_target","_nameAO","_positionAO","_serviceMarkers","_dt","_chance","_bunkerType","_bunkerPos","_bunkerObjects","_obj","_bunkerPositions ","_smallZ","_bigZ","_position","_flatPos","_res","_distance","_tower","_campPos","_hasMines","_groundPos","_hasMines","_minesArray","_newPos","_cargo","_nearestObject","_campObjects","_enemiesArray","_targetStartText","_showTowerMessage","_showBunkerMessage","_radioTowerDownText","_bunkerText","_null","_targetCompleteText","_tower","_tower_dmg","_units","_unitTypes","_vehicles","_isReward","_curVeh","_defend","_aliveBots","_anotherChance","_uavPos","_uav"];
 
 eastSide = createCenter ENEMY_SIDE;
 _target = [] call QS_fnc_getMainAO;
@@ -19,6 +19,20 @@ _positionAO = _target select 1;
 {_x setMarkerPos _positionAO;} forEach ["aoCircle", "aoMarker"];
 "aoMarker" setMarkerText format["Захватить: %1", _nameAO];
 sleep 1;
+
+// Color nearby vehicle service markers in grey(inactive) while AO is up
+CURRENT_AO_POSITION = _positionAO; publicVariable "CURRENT_AO_POSITION";
+_serviceMarkers = [];
+{
+    if (markerText _x == "Сервис техники") then {
+        if ((getMarkerPos _x) distance2D _positionAO < 2500) then {
+            if ((getMarkerPos _x) distance2D (getMarkerPos "Side") > 1000) then {
+                _x setMarkerColor "ColorGrey";
+                _serviceMarkers pushBackUnique _x;
+            };
+        };
+    };
+} forEach allMapMarkers;
 
 // Create AO detection trigger
 _dt = createTrigger ["EmptyDetector", _positionAO];
@@ -262,6 +276,11 @@ if (DEFEND_AO_VICTORY) then {
 };
 DEFEND_AO_VICTORY = nil; publicVariable "DEFEND_AO_VICTORY";
 GlobalHint = _targetCompleteText; publicVariable "GlobalHint"; hint parseText GlobalHint;
+
+// Restore yellow color of nearby vehicle service markers
+CURRENT_AO_POSITION = nil; publicVariable "CURRENT_AO_POSITION";
+{_x setMarkerColor "ColorUNKNOWN";} forEach _serviceMarkers;
+
 sleep 120;
 deleteVehicle _dt;
 deleteVehicle radioTower;
