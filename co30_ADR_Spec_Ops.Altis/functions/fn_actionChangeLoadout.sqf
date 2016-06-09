@@ -13,7 +13,7 @@ if (_vehType in _allowedVehicles) then {
 
 	//Start the procedure
 	ADR_aircraftChangeLoadout = true; //Restrict use of this action while procedure is in progress
-	_veh vehicleChat "Обслуживание. Пожалуйста ждите ...";
+	systemChat "Обслуживание. Пожалуйста ждите ...";
 	_fuel = fuel _veh;
 	_veh setFuel 0;
 	uiSleep 2;
@@ -23,13 +23,13 @@ if (_vehType in _allowedVehicles) then {
 	_dmgSum = 0;
 	{_dmgSum = _dmgSum + _x;} forEach (_dmgList select 2);
 	if (_dmgSum > 0) then {
-		_veh vehicleChat "Ремонт ...";
+		systemChat "Ремонт ...";
 		uiSleep (5 + _dmgSum * 4);
 	};
 	_veh setDamage 0;
 
 	//Remove current magazines and weapons
-	_veh vehicleChat "Снимамаем навесное вооружение ...";
+	systemChat "Снимамаем навесное вооружение ...";
 	_magazines = magazinesAllTurrets _veh;
 	_weapons = _veh weaponsTurret [-1];
 
@@ -44,7 +44,7 @@ if (_vehType in _allowedVehicles) then {
 	} forEach _weapons;
 
 	//Add new magazines and weapons
-	_veh vehicleChat "Устанавливаем новое вооружение ...";
+	systemChat "Устанавливаем новое вооружение ...";
 	call {
 		//Hellcat
 		//M134 Minigun 7.62 mm[5000]; DAR[24]
@@ -179,13 +179,13 @@ if (_vehType in _allowedVehicles) then {
 	};
 
 	//Refuel
-	_veh vehicleChat "Заправка ...";
+	systemChat "Заправка ...";
 	uiSleep (1 + (1 - _fuel) * 30);
 	_veh setFuel 1;
 
 	//Finished
-	_veh vehicleChat "Обслуживание завершено. Приятного полета!";
+	systemChat "Обслуживание завершено. Приятного полета!";
 	ADR_aircraftChangeLoadout = nil; //Remove action use restriction after procedure is finished
 } else {
-	_veh vehicleChat "Сменна вооружения для данной технике не доступна";
+	systemChat "Сменна вооружения для данной технике не доступна";
 };
