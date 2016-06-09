@@ -13,7 +13,7 @@ _vehicle = _this select 1;
 _pilotHelmets = ["H_PilotHelmetFighter_B", "H_CrewHelmetHeli_B", "H_PilotHelmetHeli_B"];
 
 //Allowed vehicles
-_attackAirVehicles = ["B_Heli_Light_01_armed_F", "B_Heli_Attack_01_F", "B_Plane_CAS_01_F", "O_Heli_Light_02_F", "O_Heli_Attack_02_F", "O_Heli_Attack_02_black_F", "O_Plane_CAS_02_F", "I_Heli_light_03_F", "_Plane_Fighter_03_CAS_F", "I_Plane_Fighter_03_AA_F"];
+_attackAirVehicles = ["B_Heli_Light_01_armed_F", "B_Heli_Attack_01_F", "B_Plane_CAS_01_F", "O_Heli_Light_02_F", "O_Heli_Attack_02_F", "O_Heli_Attack_02_black_F", "O_Plane_CAS_02_F", "I_Heli_light_03_F", "I_Plane_Fighter_03_CAS_F", "I_Plane_Fighter_03_AA_F"];
 
 //Check if player is in pilot helmet, is in attack air vehicle and is not in cargo
 if (((headgear _player) in _pilotHelmets) and ((typeOf _vehicle) in _attackAirVehicles) and (_vehicle getCargoIndex _player == -1)) then {
