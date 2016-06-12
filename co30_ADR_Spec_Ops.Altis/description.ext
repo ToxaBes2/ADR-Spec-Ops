@@ -1,8 +1,8 @@
 //------------------------- On Load
 
-author = "based on ADR:Blue Shark [www.tehgam.com]";
+author = "ToxaBes";
 onLoadName = "ADR: Spec Ops";
-OnLoadMission = "version 0.0.5 by ToxaBes";
+OnLoadMission = "Version 0.0.5. Based on ADR:Blue Shark [www.tehgam.com]";
 loadScreen = "media\images\adr_specops_loading.jpg";
 overviewPicture = "media\images\adr_specops_loading.jpg";
 
