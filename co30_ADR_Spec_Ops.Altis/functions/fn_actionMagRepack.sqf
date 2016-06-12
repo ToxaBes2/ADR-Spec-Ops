@@ -28,19 +28,6 @@ _newMags = 0;
 
 _stance = stance player;
 
-// Play animation
-call {
-    if (_stance == "STAND") exitWith {
-        player playMove "AinvPercMstpSrasWrflDnon";
-    };
-    if (_stance == "CROUCH") exitWith {
-        player playMove "AinvPknlMstpSrasWrflDnon";
-    };
-    if (_stance == "PRONE") exitWith {
-        player playMove "AinvPpneMstpSrasWrflDnon";
-    };
-};
-
 // Remove old magazines and add new ones
 {
     _currentMag = _x select 0;
