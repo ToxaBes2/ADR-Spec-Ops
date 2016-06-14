@@ -49,6 +49,7 @@ class QS
 		class killerCatcher {};
 		class loadInventory {};
 		class moveToHC {};
+		class pilotCheck {};
 		class PTenemyEAST {};
 		class punishObject {};
 		class RadioSound {};
