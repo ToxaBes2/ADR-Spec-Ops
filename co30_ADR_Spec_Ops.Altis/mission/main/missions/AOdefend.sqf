@@ -23,7 +23,7 @@ sleep 10;
 currentAOUp = true; publicVariable "currentAOUp";
 radioTowerAlive = false; publicVariable "radioTowerAlive";
 _playersOnlineHint = format [
-	"<t size='1.5' align='left' color='#F44336'>Контратака</t><br/><br/>____________________<br/>Противник перегруппировал часть своих сил на контратаку захваченной нами точки.",
+	"<t size='1.5' align='center' color='#F44336'>Контратака</t><br/><br/>____________________<br/>Противник перегруппировал часть своих сил на контратаку захваченной нами точки.",
 	_nameAO
 ];
 GlobalHint = _playersOnlineHint; publicVariable "GlobalHint"; hint parseText GlobalHint;

@@ -7,16 +7,16 @@ if (!isServer) exitWith {};
 private ["_startPoint","_infantry","_lightVehicles ","_lightVehiclesGroups","_lightVehiclesSize","_armoredVehicles","_helicopters","_helicopterGroups","_helicopterSize","_side","_enemyUnits","_group","_vehicles","_groundPos","_patrolGroup","_getToMarker","_bGroup","_vehType","_isWater","_vehicle","_cargoGrp","_emptySeats","_unitType","_unit","_null","_wp","_cGroup","_fGroup","_wp1","_curGroup"];
 
 _startPoint = _this select 0;
-_infantry = _this select 1; 
-_lightVehicles = _this select 2; 
-_lightVehiclesGroups = _lightVehicles select 0; 
+_infantry = _this select 1;
+_lightVehicles = _this select 2;
+_lightVehiclesGroups = _lightVehicles select 0;
 _lightVehiclesSize = _lightVehicles select 1;
-_armoredVehicles = _this select 3; 
+_armoredVehicles = _this select 3;
 _helicopters = _this select 4;
-_helicopterGroups = _helicopters select 0; 
+_helicopterGroups = _helicopters select 0;
 _helicopterSize = _helicopters select 1;
 _side = _this select 5;
-_enemyUnits = ["O_Soldier_F", "O_Soldier_lite_F", "O_Soldier_GL_F", "O_Soldier_AR_F", "O_Soldier_SL_F", "O_Soldier_TL_F", "O_soldier_M_F", "O_Soldier_LAT_F", "O_medic_F", "O_Soldier_AA_F", "O_officer_F", "O_recon_F", "O_recon_LAT_F", "O_recon_medic_F", "O_recon_TL_F", "O_recon_M_F", "O_Sharpshooter_F", "O_Recon_Sharpshooter_F", "O_HeavyGunner_F"];
+_enemyUnits = ["O_Soldier_F", "O_Soldier_lite_F", "O_Soldier_GL_F", "O_Soldier_AR_F", "O_Soldier_SL_F", "O_Soldier_TL_F", "O_soldier_M_F", "O_Soldier_LAT_F", "O_medic_F", "O_Soldier_AA_F", "O_officer_F", "O_recon_F", "O_recon_LAT_F", "O_recon_medic_F", "O_recon_TL_F", "O_recon_M_F", "O_Sharpshooter_F", "O_HeavyGunner_F"];
 _group = [];
 _vehicles = [];
 
@@ -34,7 +34,7 @@ for "_counter" from 1 to _infantry do {
     _getToMarker = _patrolGroup addWaypoint [_startPoint, 50];
 	_getToMarker setWaypointType "SAD";
 	_getToMarker setWaypointSpeed "FULL";
-	_getToMarker setWaypointBehaviour "AWARE"; 
+	_getToMarker setWaypointBehaviour "AWARE";
 	_getToMarker setWaypointFormation "NO CHANGE";
 };
 
@@ -43,11 +43,11 @@ for "_counter" from 1 to _lightVehiclesGroups do {
 	_bGroup = createGroup _side;
 	_groundPos = [_startPoint, 600, 750, 2, 1, 10, 0] call BIS_fnc_findSafePos;
 	if (surfaceiswater _groundPos) then {
-		_vehType = "O_Boat_Armed_01_hmg_F"; 
-		_isWater = true;      
+		_vehType = "O_Boat_Armed_01_hmg_F";
+		_isWater = true;
 	} else {
 	    _vehType = ["O_MRAP_02_hmg_F", "O_MRAP_02_gmg_F", "O_Truck_02_covered_F", "O_Truck_03_covered_F"] call BIS_fnc_selectRandom;
-	    _isWater = false;  
+	    _isWater = false;
 	};
     _vehicle = createVehicle [_vehType, _groundPos, [], 0, "CAN_COLLIDE"];
     _vehicles = _vehicles + [_vehicle];
@@ -81,7 +81,7 @@ for "_counter" from 1 to _lightVehiclesGroups do {
 		_wp = _bGroup addWaypoint [_startPoint, 50];
 		_wp setWaypointType "SAD";
 		_wp setWaypointSpeed "FULL";
-		_wp setWaypointBehaviour "AWARE"; 
+		_wp setWaypointBehaviour "AWARE";
 		_wp setWaypointFormation "NO CHANGE";
 	};
 	sleep 1;
@@ -104,7 +104,7 @@ for "_counter" from 1 to _armoredVehicles do {
 	_getToMarker = _cGroup addWaypoint [_startPoint, 50];
 	_getToMarker setWaypointType "SAD";
 	_getToMarker setWaypointSpeed "FULL";
-	_getToMarker setWaypointBehaviour "AWARE"; 
+	_getToMarker setWaypointBehaviour "AWARE";
 	_getToMarker setWaypointFormation "NO CHANGE";
 	sleep 1;
 };
