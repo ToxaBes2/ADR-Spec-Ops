@@ -4851,145 +4851,97 @@ class Mission
 		{
 			position[]={3554.4929,5.5459957,13158.432};
 			name="sm1";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item15
 		{
 			position[]={3397.0959,2.7861407,13208.425};
 			name="sm2";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item16
 		{
 			position[]={3783.668,14.277186,13563.16};
 			name="sm3";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item17
 		{
 			position[]={4882.0044,77.778679,16164.666};
 			name="sm4";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item18
 		{
 			position[]={5088.6494,49.293159,11245.991};
 			name="sm5";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item19
 		{
 			position[]={3554.4282,8.6042385,13003.049};
 			name="sm6";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item20
 		{
 			position[]={3675.6145,11.342771,13202.041};
 			name="sm7";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item21
 		{
 			position[]={9018.4922,25.458481,12015.355};
 			name="sm8";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item22
 		{
 			position[]={3684.7217,14.434865,13034.656};
 			name="sm9";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item23
 		{
 			position[]={8626.9053,181.29066,18272.701};
 			name="sm10";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item24
 		{
 			position[]={3895.9624,28.817654,13819.074};
 			name="sm11";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item25
 		{
 			position[]={16884.857,19.041054,12693.294};
 			name="sm12";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item26
 		{
 			position[]={16585.125,11,12817.53};
 			name="sm13";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item27
 		{
 			position[]={25698.387,20.354019,21343.031};
 			name="sm15";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item28
 		{
 			position[]={16745.809,19.639225,12646.466};
 			name="sm16";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item29
 		{
 			position[]={20818.158,35.102921,6732.6641};
 			name="sm17";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item30
 		{
@@ -5005,19 +4957,13 @@ class Mission
 		{
 			position[]={21750.713,39.432732,21016.926};
 			name="sm18";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item32
 		{
 			position[]={21836.875,29.759571,21009.621};
 			name="sm19";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item33
 		{
@@ -5348,10 +5294,7 @@ class Mission
 		{
 			position[]={10323.044,125.45004,19054.752};
 			name="sm30";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item78
 		{
@@ -5363,136 +5306,91 @@ class Mission
 		{
 			position[]={20959.561,41.669949,16995.479};
 			name="sm20";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item80
 		{
 			position[]={21394.869,19.690849,16361.631};
 			name="sm21";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item81
 		{
 			position[]={18781.994,32.387646,16622.205};
 			name="sm22";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item82
 		{
 			position[]={18139.816,24.626047,15224.491};
 			name="sm23";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item83
 		{
 			position[]={19378.332,38.266418,13253.047};
 			name="sm24";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item84
 		{
 			position[]={20253.166,51.629848,11691.579};
 			name="sm25";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item85
 		{
 			position[]={21707.564,15.053529,7573.6763};
 			name="sm26";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item86
 		{
 			position[]={10659.307,16.619148,12278.5};
 			name="sm27";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item87
 		{
 			position[]={10974.731,28.256243,13443.52};
 			name="sm28";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item88
 		{
 			position[]={12551.526,13.803149,14350.047};
 			name="sm29";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item89
 		{
 			position[]={12965.013,27.7344,15047.364};
 			name="sm31";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item90
 		{
 			position[]={9355.1289,119.01081,15904.493};
 			name="sm32";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item91
 		{
 			position[]={4598.7905,299.54059,21375.836};
 			name="sm33";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item92
 		{
 			position[]={9449.5527,125.5268,20282.477};
 			name="sm34";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item93
 		{
 			position[]={14022.552,26.759851,18708.402};
 			name="sm35";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item94
 		{
@@ -5534,37 +5432,25 @@ class Mission
 		{
 			position[]={7123.79,15.544265,16452.5};
 			name="sm36";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item100
 		{
 			position[]={13504.448,10.999852,12013.117};
 			name="sm37";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item101
 		{
 			position[]={4135.9302,22.262657,11730.2};
 			name="sm38";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item102
 		{
 			position[]={10460.4,86.046898,11592.8};
 			name="sm39";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item103
 		{
@@ -5600,10 +5486,7 @@ class Mission
 		{
 			position[]={27067.074,21.766018,23258.516};
 			name="sm14";
-			markerType="ELLIPSE";
 			type="Empty";
-			a=100;
-			b=100;
 		};
 		class Item107
 		{

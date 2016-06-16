@@ -29,13 +29,10 @@ _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\misc\air
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\clean.sqf";};					// cleanup
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\misc\clearItemsBASE.sqf";};		// clear items around base
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\time.sqf"};                     // time and weather
-_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\zbe_cache\cache.sqf"};          // ZBE Cache 
-
-_urbanMarkers =["sm1","sm2","sm3","sm4","sm5","sm6","sm7","sm8","sm9","sm10","sm11","sm12","sm13","sm14","sm15","sm16","sm17","sm18","sm19","sm20","sm21","sm22","sm23","sm24","sm25","sm26","sm27","sm28","sm29","sm30","sm31","sm32","sm33","sm34","sm35","sm36","sm37","sm38","sm39"];
-{ _x setMarkerAlpha 0; } count _urbanMarkers;
+_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\zbe_cache\cache.sqf"};          // ZBE Cache
 
 crossroad disableAI "ANIM";
 enemyCasArray = [];
-enemyCasGroup = createGroup east; 
-sleep 0.1; 
+enemyCasGroup = createGroup east;
+sleep 0.1;
 deleteGroup enemyCasGroup;
