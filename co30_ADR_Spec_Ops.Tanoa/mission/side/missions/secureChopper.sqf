@@ -26,8 +26,14 @@ while {!_accepted} do {
 		_flatPos = _position isFlatEmpty [5, 0, 0.2, sizeOf "Land_TentHangar_V1_F", 0, false];
 	};
 
-	if ((_flatPos distance (getMarkerPos "respawn_west")) > 1000 && (_flatPos distance (getMarkerPos currentAO)) > 500) then {
-		_accepted = true;
+	if ((_flatPos distance (getMarkerPos "respawn_west")) > 1000) then {
+		if !(getMarkerColor "currentAO" == "") then {
+			if ((_flatPos distance (getMarkerPos currentAO)) > 500) then {
+				_accepted = true;
+			};
+		} else {
+			_accepted = true;
+		};
 	};
 };
 

@@ -13,14 +13,14 @@ _prioList = [
 _missionList = [
 	"HQside",
 	"destroyUrban",
-	"secureSide",
-	"rescueHostages",
-    "heliCrash",
-	"convoy",
-	"snatch",
-	"swordfish",
-	"yellowfog",
-	"grapeswrath"
+	"secureSide"//,
+	//"rescueHostages",
+    //"heliCrash",
+	//"convoy",
+	//"snatch",
+	//"swordfish",
+	//"yellowfog",
+	//"grapeswrath"
 ];
 while { true } do {
 	if (PARAMS_AO == 1) then {
@@ -43,7 +43,6 @@ while { true } do {
 	    	scriptDone currentMission;
 	    };
     };
-	/*
     if (PARAMS_SideObjectives == 1) then {
         hqSideChat = "Вторичная цель выявлена, ждите указаний!"; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
 	    _mission = _missionList call BIS_fnc_selectRandom;
@@ -65,5 +64,4 @@ while { true } do {
             };
         };
 	};
-	*/
 };

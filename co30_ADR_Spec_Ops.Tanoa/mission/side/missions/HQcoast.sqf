@@ -22,8 +22,14 @@ while {!_accepted} do {
 		_flatPos = _position isFlatEmpty [2, 0, 0.3, 1, 1, true];
 	};
 
-	if ((_flatPos distance (getMarkerPos "respawn_west")) > 1700 && (_flatPos distance (getMarkerPos currentAO)) > 500) then {
-		_accepted = true;
+	if ((_flatPos distance (getMarkerPos "respawn_west")) > 1700) then {
+		if !(getMarkerColor "currentAO" == "") then {
+			if ((_flatPos distance (getMarkerPos currentAO)) > 500) then {
+				_accepted = true;
+			};
+		} else {
+			_accepted = true;
+		};
 	};
 };
 

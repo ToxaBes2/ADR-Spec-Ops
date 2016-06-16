@@ -21,8 +21,7 @@ _object = [crate1,crate2] call BIS_fnc_selectRandom;
 currentSM = [
 	"sm1", "sm2", "sm3", "sm4", "sm5", "sm6", "sm7", "sm8", "sm9", "sm10", "sm11",
 	"sm12", "sm13", "sm14", "sm15", "sm16", "sm17", "sm18", "sm19", "sm20",	"sm21",
-	"sm22", "sm23", "sm24", "sm25", "sm26", "sm27", "sm28", "sm29", "sm30",	"sm31",
-	"sm32", "sm33", "sm34", "sm35", "sm36", "sm37", "sm38", "sm39"
+	"sm22", "sm23", "sm24", "sm25"
 ] call BIS_fnc_selectRandom;
 
 _c4Message = [

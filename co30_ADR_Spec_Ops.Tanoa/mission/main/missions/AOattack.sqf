@@ -41,7 +41,7 @@ _dt setTriggerActivation [ENEMY_SIDE_STR, "PRESENT", false];
 _dt setTriggerStatements ["this", "", ""];
 
 // spawn bunker or tower outpost
-_chance = 10; //random 10;
+_chance = random 10;
 if (_chance < 5) then {
     _bunkerType = 1;
     _bunkerPos = [_positionAO, 1, (PARAMS_AOSize/2), 30, 0, 4, 0] call BIS_fnc_findSafePos;
