@@ -29,10 +29,14 @@ _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\misc\air
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\clean.sqf";};					// cleanup
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\misc\clearItemsBASE.sqf";};		// clear items around base
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\time.sqf"};                     // time and weather
-//_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\zbe_cache\cache.sqf"};          // ZBE Cache
+_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\zbe_cache\cache.sqf"};          // ZBE Cache
 
 crossroad disableAI "ANIM";
 enemyCasArray = [];
 enemyCasGroup = createGroup east;
 sleep 0.1;
 deleteGroup enemyCasGroup;
+
+// Animate arsenal models. Does not always work in their inits.
+[base_arsenal_infantry, "STAND_U2", "ASIS"] call BIS_fnc_ambientAnim;
+[base_arsenal_pilots, "STAND_U3", "ASIS"] call BIS_fnc_ambientAnim;

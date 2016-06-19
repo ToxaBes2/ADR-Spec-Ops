@@ -52,15 +52,15 @@ _trawlerPos = [_flatPos, 200, 300, 10, 2, 1, 0] call BIS_fnc_findSafePos;
 _assaultBoatPos = [_flatPos, 15, 25, 10, 0, 1, 0] call BIS_fnc_findSafePos;
 
 // ENEMY HMG BOAT (SEEMS RIGHT SINCE ITS BY THE COAST)
-boat = "O_Boat_Armed_01_hmg_F" createVehicle _boatPos;
+boat = "O_T_Boat_Armed_01_hmg_F" createVehicle _boatPos;
 waitUntil {sleep 0.3; alive boat};
 boat setDir random 360;
 
-"B_diver_TL_F" createUnit [_boatPos, _smuggleGroup];
-"B_diver_F" createUnit [_boatPos, _smuggleGroup];
-"B_diver_F" createUnit [_boatPos, _smuggleGroup];
-"B_diver_F" createUnit [_boatPos, _smuggleGroup];
-"B_diver_F" createUnit [_boatPos, _smuggleGroup];
+"O_T_Diver_TL_F" createUnit [_boatPos, _smuggleGroup];
+"O_T_Diver_F" createUnit [_boatPos, _smuggleGroup];
+"O_T_Diver_F" createUnit [_boatPos, _smuggleGroup];
+"O_T_Diver_F" createUnit [_boatPos, _smuggleGroup];
+"O_T_Diver_F" createUnit [_boatPos, _smuggleGroup];
 
 ((units _smuggleGroup) select 0) assignAsCommander boat;
 ((units _smuggleGroup) select 0) moveInCommander boat;

@@ -3,10 +3,10 @@
 Author:	Quiksilver (credits: Ahoyworld.co.uk. Rarek et al for AW_fnc_spawnUnits.)
 Description: Spawn enemies in the AO.
 */
-#define INF_TYPE "OIA_InfSentry","OIA_InfSquad","OIA_InfSquad_Weapons","OIA_InfTeam","OIA_InfTeam_AA","OIA_InfTeam_AT","OI_reconPatrol","OI_reconSentry","OI_reconTeam"
+#define INF_TYPE "O_T_InfSentry","O_T_InfSquad","O_T_InfSquad_Weapons","O_T_InfTeam","O_T_InfTeam_AA","O_T_InfTeam_AT","O_T_reconPatrol","O_T_reconSentry","O_T_reconTeam"
 #define INF_URBANTYPE "OIA_GuardSentry","OIA_GuardSquad","OIA_GuardTeam"
-#define MRAP_TYPE "O_MRAP_02_gmg_F","O_MRAP_02_hmg_F"
-#define VEH_TYPE "O_MBT_02_cannon_F","O_APC_Tracked_02_cannon_F","O_APC_Wheeled_02_rcws_F","O_APC_Tracked_02_cannon_F","I_APC_Wheeled_03_cannon_F","I_APC_tracked_03_cannon_F","I_MBT_03_cannon_F"
+#define MRAP_TYPE "O_T_MRAP_02_hmg_ghex_F","O_T_MRAP_02_gmg_ghex_F","O_T_LSV_02_armed_F"
+#define VEH_TYPE "O_T_APC_Tracked_02_cannon_ghex_F","O_T_APC_Wheeled_02_rcws_ghex_F","O_T_MBT_02_cannon_ghex_F","I_APC_Wheeled_03_cannon_F","I_APC_tracked_03_cannon_F","I_MBT_03_cannon_F"
 #define AIR_TYPE "O_Heli_Attack_02_F","O_Heli_Attack_02_black_F","I_Heli_light_03_F","O_Heli_Light_02_F"
 #define STATIC_TYPE "O_HMG_01_F","O_HMG_01_high_F","O_Mortar_01_F"
 #define ENEMY_SIDE EAST
@@ -28,12 +28,12 @@ if (_bunkerType == 1) then {
 
     for "_i" from 1 to 2 do {
         _groundPos = [_bunkerPos, 10, 50, 2, 0, 10, 0] call BIS_fnc_findSafePos;
-        _patrolGroup = [_groundPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> ENEMY_SIDE_STR >> "OPF_F" >> "UInfantry" >> "OIA_GuardSentry")] call BIS_fnc_spawnGroup;
+        _patrolGroup = [_groundPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> ENEMY_SIDE_STR >> "OPF_T_F" >> "Infantry" >> "O_T_InfSentry")] call BIS_fnc_spawnGroup;
         [_patrolGroup, true] call QS_fnc_moveToHC;
         {
             _currentGuard = _x;
-            [_currentGuard,(["WATCH1","WATCH2"] call BIS_fnc_selectRandom),"FULL", {_currentGuard findNearestEnemy (getPos _currentGuard) != objNull || lifestate _currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;  
-        } forEach (units _patrolGroup);       
+            [_currentGuard,(["WATCH1","WATCH2"] call BIS_fnc_selectRandom),"FULL", {_currentGuard findNearestEnemy (getPos _currentGuard) != objNull || lifestate _currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
+        } forEach (units _patrolGroup);
         _patrolGroup setBehaviour "COMBAT";
         _patrolGroup setCombatMode "RED";
         [(units _patrolGroup)] call QS_fnc_setSkill3;
@@ -43,7 +43,7 @@ if (_bunkerType == 1) then {
 	_staticObjects = nearestObjects [_bunkerPos, ["O_HMG_01_high_F"], 45];
     {
         _staticGroup = createGroup ENEMY_SIDE;
-        "O_support_MG_F" createUnit [(getPos _x), _staticGroup, "[this] call QS_fnc_moveToHC;"];
+        "O_T_support_MG_F" createUnit [(getPos _x), _staticGroup, "[this] call QS_fnc_moveToHC;"];
         ((units _staticGroup) select 0) assignAsGunner _x;
         ((units _staticGroup) select 0) moveInGunner _x;
         _staticGroup setBehaviour "COMBAT";
@@ -76,11 +76,11 @@ if (_bunkerType == 1) then {
         _unitPos = [_bunkerPos, _len, _dir] call BIS_fnc_relPos;
         _unitPos set [2, _deltaZ];
         _unitType createUnit [_unitPos, _guardGroup, "[this] call QS_fnc_moveToHC;currentGuard = this;", 0, (["CAPTAIN","MAJOR","COLONEL"] call BIS_fnc_selectRandom)];
-        currentGuard setVariable ["BIS_enableRandomization", false];   
-        currentGuard allowDamage false;      
+        currentGuard setVariable ["BIS_enableRandomization", false];
+        currentGuard allowDamage false;
         currentGuard setPos _unitPos;
         currentGuard setDir _unitDir;
-        doStop currentGuard;    
+        doStop currentGuard;
         currentGuard setUnitPos "UP";
         currentGuard setBehaviour "SAFE";
         currentGuard allowDamage true;
@@ -96,7 +96,7 @@ if (_bunkerType == 1) then {
 // patrols (2x2 bots)
 for "_i" from 1 to 2 do {
     _groundPos = [_bunkerPos, 40, 80, 2, 0, 10, 0] call BIS_fnc_findSafePos;
-    _patrolGroup = [_groundPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> ENEMY_SIDE_STR >> "OPF_F" >> "UInfantry" >> "OIA_GuardSentry")] call BIS_fnc_spawnGroup;
+    _patrolGroup = [_groundPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> ENEMY_SIDE_STR >> "OPF_T_F" >> "Infantry" >> "O_T_InfSentry")] call BIS_fnc_spawnGroup;
     [_patrolGroup, true] call QS_fnc_moveToHC;
     [_patrolGroup, _bunkerPos, 25] call BIS_fnc_taskPatrol;
     _patrolGroup setBehaviour "COMBAT";
@@ -112,20 +112,20 @@ if (_hasMines) then {
 	_campPatrolGroup = [_flatPos, 70, 6, ENEMY_SIDE] call QS_fnc_FillBots;
     _enemiesArray = _enemiesArray + [_campPatrolGroup];
 } else {
-    _campGroup = [_flatPos, 50, 10, ENEMY_SIDE] call QS_fnc_FillBots; 
-    _enemiesArray = _enemiesArray + [_campGroup];  
+    _campGroup = [_flatPos, 50, 10, ENEMY_SIDE] call QS_fnc_FillBots;
+    _enemiesArray = _enemiesArray + [_campGroup];
 
     // patrols (2x2 bots)
     for "_i" from 1 to 2 do {
         _groundPos = [_flatPos, 0, 40, 2, 0, 10, 0] call BIS_fnc_findSafePos;
-        _patrolGroup = [_groundPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> ENEMY_SIDE_STR >> "OPF_F" >> "UInfantry" >> "OIA_GuardSentry")] call BIS_fnc_spawnGroup;
+        _patrolGroup = [_groundPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> ENEMY_SIDE_STR >> "OPF_T_F" >> "Infantry" >> "O_T_InfSentry")] call BIS_fnc_spawnGroup;
         [_patrolGroup, true] call QS_fnc_moveToHC;
         [_patrolGroup, _flatPos, 25] call BIS_fnc_taskPatrol;
         _patrolGroup setBehaviour "COMBAT";
         _patrolGroup setCombatMode "RED";
         [(units _patrolGroup)] call QS_fnc_setSkill3;
         _enemiesArray = _enemiesArray + [_patrolGroup];
-    }; 
+    };
 };
 
 // add bots to buildings in zone
@@ -134,8 +134,8 @@ _objects = _flatPos nearObjects ["building", 65];
 _blackList = _blackList + _objects;
 _objects = _bunkerPos nearObjects ["building", 65];
 _blackList = _blackList + _objects;
-_buildingGroup = [_pos, (PARAMS_AOSize / 2), 40, ENEMY_SIDE, false, _blackList] call QS_fnc_FillBots; 
-_enemiesArray = _enemiesArray + [_buildingGroup];  
+_buildingGroup = [_pos, (PARAMS_AOSize / 2), 40, ENEMY_SIDE, false, _blackList] call QS_fnc_FillBots;
+_enemiesArray = _enemiesArray + [_buildingGroup];
 
 // AA vehicles
 for "_x" from 1 to PARAMS_AAPatrol do {
@@ -148,11 +148,11 @@ for "_x" from 1 to PARAMS_AAPatrol do {
         _randPos = _randomPos isFlatEmpty[3, 1, 0.3, 15, 0, false];
         _res = count _randPos;
     };
-	_aa = "O_APC_Tracked_02_AA_F" createVehicle _randomPos;
+	_aa = "O_T_APC_Tracked_02_AA_ghex_F" createVehicle _randomPos;
 	waitUntil{!isNull _aa};
-	"O_engineer_F" createUnit [_randomPos,_aaGroup];
-	"O_engineer_F" createUnit [_randomPos,_aaGroup];
-	"O_engineer_F" createUnit [_randomPos,_aaGroup];
+	"O_T_Engineer_F" createUnit [_randomPos,_aaGroup];
+	"O_T_Engineer_F" createUnit [_randomPos,_aaGroup];
+	"O_T_Engineer_F" createUnit [_randomPos,_aaGroup];
 	((units _aaGroup) select 0) assignAsDriver _aa;
 	((units _aaGroup) select 0) moveInDriver _aa;
 	((units _aaGroup) select 1) assignAsGunner _aa;
@@ -175,7 +175,7 @@ for "_x" from 1 to PARAMS_AAPatrol do {
 for "_x" from 1 to PARAMS_GroupPatrol do {
 	_patrolGroup = createGroup east;
 	_randomPos = [[[getMarkerPos currentAO, (PARAMS_AOSize / 1.5)], []], ["water", "out"]] call BIS_fnc_randomPos;
-	_patrolGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> [INF_TYPE] call BIS_fnc_selectRandom)] call BIS_fnc_spawnGroup;
+	_patrolGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "Infantry" >> [INF_TYPE] call BIS_fnc_selectRandom)] call BIS_fnc_spawnGroup;
 	[_patrolGroup, true] call QS_fnc_moveToHC;
 	[_patrolGroup, getMarkerPos currentAO, 400] call BIS_fnc_taskPatrol;
 	[(units _patrolGroup)] call QS_fnc_setSkill3;
@@ -187,9 +187,9 @@ for "_x" from 1 to PARAMS_StaticMG do {
 	_staticGroup = createGroup EAST;
 	_randomPos = [getMarkerPos currentAO, 200, 10, 10] call BIS_fnc_findOverwatch;
 	_static = [STATIC_TYPE] call BIS_fnc_selectRandom createVehicle _randomPos;
-	waitUntil{!isNull _static};	
+	waitUntil{!isNull _static};
 	_static setDir random 360;
-	"O_support_MG_F" createUnit [_randomPos,_staticGroup];
+	"O_T_Support_MG_F" createUnit [_randomPos,_staticGroup];
 	((units _staticGroup) select 0) assignAsGunner _static;
 	((units _staticGroup) select 0) moveInGunner _static;
 	_staticGroup setBehaviour "COMBAT";
@@ -226,9 +226,9 @@ for "_x" from 0 to 1 do {
     };
 	_AOmrap = [MRAP_TYPE] call BIS_fnc_selectRandom createVehicle _randomPos;
 	waitUntil {!isNull _AOmrap};
-	"O_engineer_F" createUnit [_randomPos,_AOmrapGroup];
-	"O_engineer_F" createUnit [_randomPos,_AOmrapGroup];
-	"O_engineer_F" createUnit [_randomPos,_AOmrapGroup];
+	"O_T_Engineer_F" createUnit [_randomPos,_AOmrapGroup];
+	"O_T_Engineer_F" createUnit [_randomPos,_AOmrapGroup];
+	"O_T_Engineer_F" createUnit [_randomPos,_AOmrapGroup];
 	((units _AOmrapGroup) select 0) assignAsDriver _AOmrap;
 	((units _AOmrapGroup) select 0) moveInDriver _AOmrap;
 	((units _AOmrapGroup) select 1) assignAsGunner _AOmrap;
@@ -246,7 +246,7 @@ for "_x" from 0 to 1 do {
 };
 
 // Ground vehicles
-for "_x" from 0 to (1 + (random 2)) do {
+for "_x" from 0 to (1 + (random 1)) do {
 	_AOvehGroup = createGroup EAST;
 	_randomPos = [[[getMarkerPos currentAO, (PARAMS_AOSize / 1.6)], []], ["water", "out"]] call BIS_fnc_randomPos;
 	_randPos = _randomPos isFlatEmpty[3, 1, 0.5, 10, 0, false];
@@ -293,10 +293,10 @@ if((random 10 <= PARAMS_AirPatrol)) then {
 			sleep 0.1;
 		};
 	};
-	"O_helipilot_F" createUnit [_randomPos,_airGroup];
+	"O_T_Helipilot_F" createUnit [_randomPos,_airGroup];
 	((units _airGroup) select 0) assignAsDriver _air;
 	((units _airGroup) select 0) moveInDriver _air;
-	"O_helipilot_F" createUnit [_randomPos,_airGroup];
+	"O_T_Helicrew_F" createUnit [_randomPos,_airGroup];
 	((units _airGroup) select 1) assignAsGunner _air;
 	((units _airGroup) select 1) moveInGunner _air;
 	[_airGroup, getMarkerPos currentAO, 800] call BIS_fnc_taskPatrol;
@@ -313,7 +313,7 @@ if((random 10 <= PARAMS_AirPatrol)) then {
 for "_x" from 1 to PARAMS_SniperTeamsPatrol do {
 	_sniperGroup = createGroup EAST;
 	_randomPos = [getMarkerPos currentAO, 1200, 100, 10] call BIS_fnc_findOverwatch;
-	_sniperGroup = [_randomPos, EAST,(configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OI_SniperTeam")] call BIS_fnc_spawnGroup;
+	_sniperGroup = [_randomPos, EAST,(configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "Infantry" >> "O_T_SniperTeam")] call BIS_fnc_spawnGroup;
 	[_sniperGroup, true] call QS_fnc_moveToHC;
 	_sniperGroup setBehaviour "COMBAT";
 	_sniperGroup setCombatMode "RED";
@@ -332,20 +332,20 @@ if (random 10 > 6) then {
     };
     _direction = [(getMarkerPos "respawn_west"), (getMarkerPos currentAO)] call BIS_fnc_dirTo;
     _targetPos = [(getMarkerPos "respawn_west"), _medianaRes, _direction] call BIS_fnc_relPos;
-    _atPos = [_targetPos, 1, 500, 2, 0, 2, 0] call BIS_fnc_findSafePos;  
+    _atPos = [_targetPos, 1, 500, 2, 0, 2, 0] call BIS_fnc_findSafePos;
     if (random 10 > 5) then {
-        _null = [_atPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam_AT")] call BIS_fnc_spawnGroup;
+        _null = [_atPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "Infantry" >> "O_T_InfTeam_AT")] call BIS_fnc_spawnGroup;
     } else {
-    	_null = [_atPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam_AA")] call BIS_fnc_spawnGroup;
+    	_null = [_atPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "Infantry" >> "O_T_InfTeam_AA")] call BIS_fnc_spawnGroup;
     };
-    _atUnits = ["O_soldier_TL_F","O_soldier_AA_F","O_soldier_AAA_F","O_soldier_TL_F","O_soldier_AT_F","O_soldier_AAT_F"];
+    _atUnits = ["O_T_soldier_TL_F","O_T_soldier_AA_F","O_T_soldier_AAA_F","O_T_soldier_AT_F","O_T_soldier_AAT_F"];
     _nearestUnits = nearestObjects [_atPos, _atUnits, 50];
     _ATGroup = createGroup EAST;
     {
         [_x] joinSilent _ATGroup;
     } forEach _nearestUnits;
     _ATGroup setBehaviour "COMBAT";
-    _ATGroup setCombatMode "RED";    
+    _ATGroup setCombatMode "RED";
     [(units _ATGroup)] call QS_fnc_setSkill3;
     [_ATGroup, _atPos, 200] call BIS_fnc_taskPatrol;
     _enemiesArray = _enemiesArray + [_ATGroup];

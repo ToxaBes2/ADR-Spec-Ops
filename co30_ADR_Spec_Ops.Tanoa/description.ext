@@ -3,8 +3,8 @@
 author = "ToxaBes";
 onLoadName = "ADR: Spec Ops";
 OnLoadMission = "Version 0.0.1  www.tehgam.com";
-loadScreen = "media\images\adr_specops_loading.jpg";
-overviewPicture = "media\images\adr_specops_loading.jpg";
+loadScreen = "media\images\adr_specops_tanoa_loading.jpg";
+overviewPicture = "media\images\adr_specops_tanoa_loading.jpg";
 
 onLoadIntro = "";										// Displays a message while the intro is loading.
 onLoadIntroTime = 0;									// Time and date displayed while the intro loads. 1 visible, 0 hidden.
@@ -195,7 +195,7 @@ class Params {
 		title = "Кол-во групп патрулей";
 		values[] = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
 		texts[] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
-		default = 4; // default 11... remember, more AI = less FPS
+		default = 5; // default 11... remember, more AI = less FPS
 	};
 
 	class SniperTeamsPatrol {
@@ -230,7 +230,7 @@ class Params {
 		title = "Кол-во ЗСУ";
 		values[] = {0,1,2,3,4};
 		texts[] = {0,1,2,3,4};
-		default = 2;
+		default = 1;
 	};
 
 	class AirPatrol {
