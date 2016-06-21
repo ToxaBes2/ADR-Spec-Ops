@@ -223,7 +223,7 @@ _bunkers = _position select 6;
     // bunker
     _bunkerPos =  [_x select 0, _x select 1, 0];
     _bunkerDir = (_x select 2) + 180;
-    _bunkerBag = createVehicle ["Land_BagBunker_Small_F", _bunkerPos, [], 0, "CAN_COLLIDE"];
+    _bunkerBag = createVehicle ["Land_BagBunker_01_small_green_F", _bunkerPos, [], 0, "CAN_COLLIDE"];
     _bunkerBag setDir _bunkerDir;
     _unitsArray = _unitsArray + [_bunkerBag];
 

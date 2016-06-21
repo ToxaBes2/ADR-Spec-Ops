@@ -43,7 +43,7 @@ sideObj = "Land_Radar_Small_F" createVehicle _flatPos;
 waitUntil {!isNull sideObj};
 sideObj setDir random 360;
 
-house = "Land_Cargo_House_V3_F" createVehicle _objPos;
+house = "Land_Cargo_House_V4_F" createVehicle _objPos;
 house setDir random 360;
 house allowDamage false;
 
@@ -61,9 +61,9 @@ _tower1 = [sideObj, 50, 0] call BIS_fnc_relPos;
 _tower2 = [sideObj, 50, 120] call BIS_fnc_relPos;
 _tower3 = [sideObj, 50, 240] call BIS_fnc_relPos;
 sleep 0.3;
-tower1 = "Land_Cargo_Patrol_V3_F" createVehicle _tower1;
-tower2 = "Land_Cargo_Patrol_V3_F" createVehicle _tower2;
-tower3 = "Land_Cargo_Patrol_V3_F" createVehicle _tower3;
+tower1 = "Land_Cargo_Patrol_V4_F" createVehicle _tower1;
+tower2 = "Land_Cargo_Patrol_V4_F" createVehicle _tower2;
+tower3 = "Land_Cargo_Patrol_V4_F" createVehicle _tower3;
 sleep 0.3;
 tower1 setDir 180;
 tower2 setDir 300;

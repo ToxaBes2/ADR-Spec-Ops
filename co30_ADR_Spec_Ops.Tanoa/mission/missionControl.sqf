@@ -13,8 +13,8 @@ _prioList = [
 _missionList = [
 	"HQside",
 	"destroyUrban",
-	"secureSide"//,
-	//"rescueHostages",
+	"secureSide",
+	"rescueHostages"//,
     //"heliCrash",
 	//"convoy",
 	//"snatch",

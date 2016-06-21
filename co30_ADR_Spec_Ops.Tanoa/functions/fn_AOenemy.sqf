@@ -51,7 +51,7 @@ if (_bunkerType == 1) then {
     	[(units _staticGroup)] call QS_fnc_setSkill3;
     	_enemiesArray = _enemiesArray + [_staticGroup];
     } forEach _staticObjects;
-    _smallBunkers = nearestObjects [_bunkerPos, ["Land_BagBunker_Small_F"], 30];
+    _smallBunkers = nearestObjects [_bunkerPos, ["Land_BagBunker_01_small_green_F"], 30];
     _bunkerGroup = [_bunkerPos, 10, 6, ENEMY_SIDE, false, _smallBunkers] call QS_fnc_FillBots;
     _enemiesArray = _enemiesArray + [_bunkerGroup];
 

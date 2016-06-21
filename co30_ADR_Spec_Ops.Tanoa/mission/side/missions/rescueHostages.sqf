@@ -8,13 +8,13 @@ Description: Secure area and rescue the hostages.
 #define OUR_SIDE WEST
 #define ENEMY_SIDE EAST
 #define INFANTRY_HOSTAGES "C_man_1_3_F","C_man_polo_1_F_afro","C_man_polo_2_F_euro"
-#define INFANTRY_SUPPORT "O_G_Soldier_AR_F","O_Soldier_AR_F"
-#define INFANTRY_PATROL "OIA_GuardTeam","OI_reconPatrol","OIA_InfTeam","OIA_InfTeam_AA","OIA_InfTeam_AT"
+#define INFANTRY_SUPPORT "O_T_Soldier_AR_F"
+#define INFANTRY_PATROL "O_T_reconPatrol","O_T_InfTeam","O_T_InfTeam_AA","O_T_InfTeam_AT"
 #define INFANTRY_STATIC "O_HMG_01_high_F","O_GMG_01_high_F"
-#define INFANTRY_HOUSE "O_Soldier_AR_F","O_soldier_M_F","O_Soldier_TL_F","O_G_Soldier_AR_F","O_G_Soldier_lite_F","O_G_Soldier_M_F", "O_recon_LAT_F", "O_recon_medic_F", "O_recon_JTAC_F"
-#define INFANTRY_SNIPERS "O_ghillie_lsh_F", "O_ghillie_ard_F", "O_recon_exp_F", "O_G_Soldier_M_F", "O_sniper_F"
-#define INFANTRY_GUNNERS "O_support_MG_F", "O_support_GMG_F", "O_support_AMG_F"
-#define INFANTRY_OFFICER "O_officer_F", "O_G_officer_F"
+#define INFANTRY_HOUSE "O_T_Soldier_AR_F","O_T_Soldier_M_F","O_T_Soldier_TL_F","O_T_Recon_LAT_F", "O_T_Recon_Medic_F", "O_T_Recon_JTAC_F"
+#define INFANTRY_SNIPERS "O_T_ghillie_tna_F", "O_T_Recon_Exp_F", "O_T_Soldier_M_F", "O_T_Sniper_F"
+#define INFANTRY_GUNNERS "O_T_Support_MG_F", "O_T_Support_GMG_F", "O_T_Support_AMG_F"
+#define INFANTRY_OFFICER "O_T_Officer_F"
 
 // define all priviate variables
 private ["_targets","_accepted","_distance","_briefing","_position","_city","_flatPos","_heliCoords","_mkrScout","_z","_fullyRandom","_heliObj",
@@ -37,46 +37,24 @@ KK_fnc_arrayShufflePlus = {
 
 // format: [city name,    [coords x,y]]
 _targets = [
-    ["Ореокастро",        [4549.12,21415.7]],
-    ["Крия-Нера",         [9705.16,22267.7]],
-    ["Фрини",             [14607.8,20773.2]],
-    ["Атира",             [14020,18720]],
-    ["Галати",            [10311,19070]],
-    ["Абдера",            [9423,20223]],
-    ["Сирта",             [8583.91,18270]],
-    ["Айос-Константинос", [3844,17696]],
-    ["Айос-Константинос", [4239,16946]],
-    ["Негадес",           [4873.59,16148]],
-    ["Коре",              [7109.11,16436.2]],
-    ["Айос-Дионисиос",    [9283.31,15856.3]],
-    ["Лакка",             [12328.6,15681.4]],
-    ["Неохори",           [12523.7,14378.8]],
-    ["Аликампос",         [11132.3,14560.6]],
-    ["Стройка",           [11380.6,14178.2]],
-    ["Каталаки",          [11759.9,13702.4]],
-    ["Полиакко",          [10977.8,13432.1]],
-    ["Териса",            [10680.5,12271.3]],
-    ["Зарос",             [9050,11977]],
-    ["Панохори",          [5090,11262]],
-    ["Атанос",            [3685.56,10236.7]],
-    ["Нери",              [3710.22,11630.3]],
-    ["Нери",              [4152,11745.9]],
-    ["Кавала",            [3612.34,13024]],
-    ["Кавала",            [3659.82,13439.3]],
-    ["Аггелохори",        [3869.5,13742.1]],
-    ["Антракия",          [16645,16163]],
-    ["Родополи",          [18813.8,16609.3]],
-    ["Харкия",            [18109.8,15241.1]],
-    ["Калохори",          [21365,16347]],
-    ["Парос",             [20931.3,16934]],
-    ["Иоанина",           [23187.5,19966.4]],
-    ["София",             [25710,21363.4]],
-    ["Молос",             [27013.7,23224.3]],
-    ["Дорида",            [19404,13247.3]],
-    ["Пиргос",            [16738.7,12796]],
-    ["Халкея",            [20251.8,11677.5]],
-    ["Ферес",             [21695.2,7597.3]],
-    ["Селекано",          [20790.9,6740.9]]
+    ["Туванака",          [1805.49,11987.9]],
+    ["Бельфор",           [3071.17,11136.1]],
+    ["Каткоула",          [5479.27,4053.19]],
+    ["Янукка",            [3010.93,3395.25]],
+    ["Модергат",          [9413.66,4021.67]],
+    ["Лиджинхавен",       [11639.7,2722.74]],
+    ["Лиджинхавен",       [11788.1,2291.44]],
+    ["Харкорт",           [11212.3,5230.01]],
+    ["Котомо",            [10876.4,6303.11]],
+    ["Оумере",            [12839.7,7439.41]],
+    ["Ла-Рошель",         [9738.04,13511]],
+    ["Ла-Рошель",         [9537.64,13538.2]],
+    ["Джорджтаун",        [5765.85,10603.3]],
+    ["Джорджтаун",        [5717.94,10236.1]],
+    ["Джорджтаун",        [5623.16,9940.89]],
+    ["Регина",            [5105.03,8621.51]],
+    ["Сахарный завод",    [8349.19,10323.5]],
+    ["Таноука",           [8878.71,10204.9]]
 ];
 
 // select correct place for mission
@@ -206,24 +184,29 @@ for "_c" from 0 to 109 do {
 _unitsArray = _unitsArray + _minesArray;
 
 // set Cargo HQ
-_cargoPos = [_startPoint, 0, 85, 3, 0, 15, 0] call BIS_fnc_findSafePos;
-_cargoHQ = createVehicle ["Land_Cargo_HQ_V1_F", _cargoPos, [], 0, "CAN_COLLIDE"];
+_cargoPos = [_startPoint, 0, 85, 2, 0, 5, 0] call BIS_fnc_findSafePos;
+_cargoHQ = createVehicle ["Land_Cargo_HQ_V4_F", _cargoPos, [], 0, "CAN_COLLIDE"];
 _unitsArray = _unitsArray + [_cargoHQ];
 
 // set 3 Cargo Houses
 _cargoHouses = [];
 for "_i" from 1 to 3 do {
-    _cargoPos = [_startPoint, 0, 85, 3, 0, 15, 0] call BIS_fnc_findSafePos;
-    _cargoHouse = createVehicle ["Land_Cargo_House_V1_F", _cargoPos, [], 0, "CAN_COLLIDE"];
+    _cargoPos = [_startPoint, 0, 85, 2, 0, 5, 0] call BIS_fnc_findSafePos;
+    _cargoHouse = createVehicle ["Land_Cargo_House_V4_F", _cargoPos, [], 0, "CAN_COLLIDE"];
     _cargoHouses = _cargoHouses + [_cargoHouse];
 };
 _unitsArray = _unitsArray + _cargoHouses;
+
+// Add cargo houses to Zeus
+{
+	_x addCuratorEditableObjects [_cargoHouses + [_cargoHQ], false];
+} foreach allCurators;
 
 // set 6 Bag Bunkers for static guards
 _bunkerTowers = [];
 for "_i" from 1 to 6 do {
     _cargoPos = [_startPoint, 100, 170, 3, 0, 2, 0] call BIS_fnc_findSafePos;
-    _cargoHouse = createVehicle ["Land_BagBunker_Small_F", _cargoPos, [], 0, "CAN_COLLIDE"];
+    _cargoHouse = createVehicle ["Land_BagBunker_01_small_green_F", _cargoPos, [], 0, "CAN_COLLIDE"];
     _cargoHouse setDir ([_cargoHouse, _startPoint] call BIS_fnc_dirTo);
     _bunkerTowers = _bunkerTowers + [_cargoHouse];
 };
@@ -375,7 +358,7 @@ _staticGroup = createGroup ENEMY_SIDE;
 for "_x" from 1 to 2 do {
     _patrolGroup = createGroup ENEMY_SIDE;
     _randomPos = [[[_startPoint, 80],[]],["water","out"]] call BIS_fnc_randomPos;
-    _patrolGroup = [_randomPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> [INFANTRY_PATROL] call BIS_fnc_selectRandom)] call BIS_fnc_spawnGroup;
+    _patrolGroup = [_randomPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "Infantry" >> [INFANTRY_PATROL] call BIS_fnc_selectRandom)] call BIS_fnc_spawnGroup;
     _patrolGroup setBehaviour "COMBAT";
     _patrolGroup setCombatMode "RED";
     [(units _patrolGroup)] call QS_fnc_setSkill3;
@@ -395,7 +378,7 @@ for "_x" from 1 to 2 do {
         _initDistance = _initDistance + 30;
     };
     _startPos = [_startPoint, _initDistance, _initAngle] call BIS_fnc_relPos;
-    _patrolGroup = [_startPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> [INFANTRY_PATROL] call BIS_fnc_selectRandom)] call BIS_fnc_spawnGroup;
+    _patrolGroup = [_startPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "Infantry" >> [INFANTRY_PATROL] call BIS_fnc_selectRandom)] call BIS_fnc_spawnGroup;
     _patrolGroup setBehaviour "COMBAT";
     _patrolGroup setCombatMode "RED";
     [(units _patrolGroup)] call QS_fnc_setSkill3;

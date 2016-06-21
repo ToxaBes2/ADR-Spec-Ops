@@ -139,22 +139,22 @@ if (_chance < PARAMS_RadioTowerMineFieldChance) then {
         while {_groundPos distance _newPos < 30} do {
             _newPos = [_campPos, 40, 60, 3, 0, 15, 0] call BIS_fnc_findSafePos;
         };
-        _cargo = createVehicle ["Land_Cargo_Patrol_V3_F", [0,0,0], [], 0, "NONE"];
+        _cargo = createVehicle ["Land_Cargo_Patrol_V4_F", [0,0,0], [], 0, "NONE"];
         _groundPos = _newPos;
         _cargo setPos _groundPos;
-        _campObjects = ["Land_Cargo_Patrol_V3_F"];
+        _campObjects = ["Land_Cargo_Patrol_V4_F"];
 	};
 } else {
     _type = ["OutpostA", "OutpostE"] call BIS_fnc_selectRandom;
 	if (_type == "OutpostE") then {
         _campPos = [(_flatPos select 0) - 2, (_flatPos select 1) + 10, _flatPos select 2];
-        _campObjects = ["Land_HBarrier_5_F","Land_Cargo_House_V1_F","Land_Razorwire_F","Land_HBarrier_1_F","Land_HBarrier_3_F","Land_PortableLight_double_F","Land_PaperBox_closed_F","Land_WaterTank_F","Land_ToiletBox_F","Land_TTowerSmall_2_F","Land_GarbageBarrel_01_F","Land_Cargo_Patrol_V1_F"];
+        _campObjects = ["Land_HBarrier_5_F","Land_Cargo_House_V1_F","Land_Razorwire_F","Land_HBarrier_1_F","Land_HBarrier_3_F","Land_PortableLight_double_F","Land_PaperBox_closed_F","Land_WaterTank_F","Land_ToiletBox_F","Land_TTowerSmall_2_F","Land_GarbageBarrel_01_F","Land_Cargo_Patrol_V4_F"];
     };
     _null = [_campPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "Empty" >> "Military" >> "Outposts" >> _type)] call BIS_fnc_spawnGroup;
     if (_type == "OutpostA") then {
         _nearestObject = nearestObject [_campPos, "Land_BagBunker_Large_F"];
         deleteVehicle _nearestObject;
-        _campObjects = ["Land_HBarrierBig_F","Land_BagBunker_Large_F","Land_HBarrier_5_F","Land_PortableLight_double_F","Land_ToiletBox_F","Land_Cargo20_military_green_F","Land_WaterTank_F","Land_WaterBarrel_F","Land_Cargo_Patrol_V1_F","Land_Pallets_F","Land_PaperBox_closed_F","Land_MetalBarrel_F","Land_BarrelEmpty_grey_F","Land_BarrelTrash_grey_F","Land_Pallets_stack_F"];
+        _campObjects = ["Land_HBarrierBig_F","Land_BagBunker_Large_F","Land_HBarrier_5_F","Land_PortableLight_double_F","Land_ToiletBox_F","Land_Cargo20_military_green_F","Land_WaterTank_F","Land_WaterBarrel_F","Land_Cargo_Patrol_V4_F","Land_Pallets_F","Land_PaperBox_closed_F","Land_MetalBarrel_F","Land_BarrelEmpty_grey_F","Land_BarrelTrash_grey_F","Land_Pallets_stack_F"];
     };
 };
 publicVariable "radioTower";

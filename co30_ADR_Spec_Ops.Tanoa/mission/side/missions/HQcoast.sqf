@@ -37,7 +37,7 @@ while {!_accepted} do {
 _smuggleGroup = createGroup EAST;
 
 _randomDir = (random 360);
-sideObj = "Land_Cargo_HQ_V1_F" createVehicle _flatPos;
+sideObj = "Land_Cargo_HQ_V4_F" createVehicle _flatPos;
 waitUntil {alive sideObj};
 sideObj setDir _randomDir;
 sideObj setPos [(getPos sideObj select 0), (getPos sideObj select 1), ((getPos sideObj select 2))];
@@ -133,7 +133,7 @@ while { sideMissionUp } do {
 		_object setPos [-10000, -10000, 0];
 		sleep 120;
 		{ deleteVehicle _x } forEach [sideObj, boat, trawler, assaultBoat];
-		deleteVehicle nearestObject [getPos sideObj, "Land_Cargo_HQ_V1_ruins_F"];
+		deleteVehicle nearestObject [getPos sideObj, "Land_Cargo_HQ_V4_ruins_F"];
 		{ [_x] call QS_fnc_TBdeleteObjects; } forEach [_unitsArray, _enemiesArray, _guardsGroup];
 		[_fuzzyPos, 500] call QS_fnc_DeleteEnemyEAST;
 	};
@@ -166,7 +166,7 @@ while { sideMissionUp } do {
 		// DELETE, DESPAWN, HIDE and RESET
 		sleep 120;
 		{ deleteVehicle _x } forEach [sideObj, boat, trawler, assaultBoat];
-		deleteVehicle nearestObject [getPos sideObj, "Land_Cargo_HQ_V1_ruins_F"];
+		deleteVehicle nearestObject [getPos sideObj, "Land_Cargo_HQ_V4_ruins_F"];
 		{ [_x] call QS_fnc_TBdeleteObjects; } forEach [_unitsArray, _enemiesArray, _guardsGroup];
 		[_fuzzyPos, 500] call QS_fnc_DeleteEnemyEAST;
 	};

@@ -49,7 +49,7 @@ waitUntil {!isNull sideObj};
 {_x setDir _randomDir} forEach [sideObj, _hangar];
 sideObj lock 3;
 
-house = "Land_Cargo_House_V3_F" createVehicle _objPos;
+house = "Land_Cargo_House_V4_F" createVehicle _objPos;
 house setDir random 360;
 house allowDamage false;
 

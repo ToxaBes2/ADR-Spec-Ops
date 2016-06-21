@@ -120,7 +120,7 @@ while { sideMissionUp } do {
 		// DELETE
 		sleep 120;
 		{ deleteVehicle _x } forEach [sideObj, tower1, tower2, tower3];
-		deleteVehicle nearestObject [getPos sideObj, "Land_Cargo_HQ_V1_ruins_F"];
+		deleteVehicle nearestObject [getPos sideObj, "Land_Cargo_HQ_V2_ruins_F"];
 		[_enemiesArray] call QS_fnc_TBdeleteObjects;
 		[_guardsGroup] call QS_fnc_TBdeleteObjects;
 		{ [_x] call QS_fnc_TBdeleteObjects; } forEach [_enemiesArray, _guardsGroup];

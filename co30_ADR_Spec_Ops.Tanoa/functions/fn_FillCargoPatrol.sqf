@@ -41,7 +41,7 @@ switch (_side) do {
     };
 };
 _groups = [];
-_nearestTargets = nearestObjects [_startPos, ["Land_Cargo_Patrol_V1_F","Land_Cargo_Patrol_V2_F","Land_Cargo_Patrol_V3_F"], _radius];
+_nearestTargets = nearestObjects [_startPos, ["Land_Cargo_Patrol_V1_F","Land_Cargo_Patrol_V2_F","Land_Cargo_Patrol_V3_F","Land_Cargo_Patrol_V4_F"], _radius];
 {
     _guardGroup = createGroup _side;
     _hqPos = getPosASL _x;

@@ -113,7 +113,7 @@ _cargoPos = [_startPoint, 0, 90, 5, 0, 10, 0] call BIS_fnc_findSafePos;
 while {surfaceIsWater _cargoPos} do {
     _cargoPos = [_startPoint, 0, 90, 5, 0, 10, 0] call BIS_fnc_findSafePos;
 };
-_cargoHQ = createVehicle ["Land_Cargo_HQ_V1_F", _cargoPos, [], 0, "CAN_COLLIDE"];
+_cargoHQ = createVehicle ["Land_Cargo_HQ_V4_F", _cargoPos, [], 0, "CAN_COLLIDE"];
 _unitsArray = _unitsArray + [_cargoHQ];
 
 // spawn several metal barells
@@ -142,7 +142,7 @@ for "_i" from 1 to 8 do {
     while {surfaceIsWater _cargoPos || _cargoPos distance _gasPos < 2} do {
         _cargoPos = [_startPoint, 0, 100, 8, 0, 10, 0] call BIS_fnc_findSafePos;
     };
-    _cargoHouse = createVehicle ["Land_Cargo_House_V1_F", _cargoPos, [], 0, "NONE"];
+    _cargoHouse = createVehicle ["Land_Cargo_House_V4_F", _cargoPos, [], 0, "NONE"];
     _unitsArray = _unitsArray + [_cargoHouse];
 };
 
@@ -265,7 +265,7 @@ _barrel addEventHandler ["HandleDamage", {
 
 // spawn guards
 _hqGroup = createGroup ENEMY_SIDE;
-_nearestHQ = nearestObjects [_startPoint, ["Land_Cargo_HQ_V1_F"], 130];
+_nearestHQ = nearestObjects [_startPoint, ["Land_Cargo_HQ_V4_F"], 130];
 {
     _cargoHQ = _x;
 
@@ -310,7 +310,7 @@ _nearestHQ = nearestObjects [_startPoint, ["Land_Cargo_HQ_V1_F"], 130];
 
 // house guards
 _houseGroup = createGroup ENEMY_SIDE;
-_nearestCargo = nearestObjects [_startPoint, ["Land_Cargo_House_V1_F"], 130];
+_nearestCargo = nearestObjects [_startPoint, ["Land_Cargo_House_V4_F"], 130];
 {
     _house = _x;
     _posHouse = _house buildingPos ([1,2,3] call BIS_fnc_selectRandom);
@@ -327,7 +327,7 @@ _nearestCargo = nearestObjects [_startPoint, ["Land_Cargo_House_V1_F"], 130];
 
 //  Spawn snipers
 _sniperGroup = createGroup ENEMY_SIDE;
-_nearestPatrolHouse = nearestObjects [_startPoint, ["Land_Cargo_Patrol_V1_F"], 130];
+_nearestPatrolHouse = nearestObjects [_startPoint, ["Land_Cargo_Patrol_V4_F"], 130];
 {
     _patrolHouse = _x;
     {

@@ -13,23 +13,23 @@ _objects = [];
 _composition = [
     ["Land_Dome_Small_F", 0, 0, 0, 0, false, false, true],
     ["Land_Dome_Big_F", 0, 0, 0, 0, false, true, true],
-    ["Land_Cargo_HQ_V3_F", 0, 0, 270, 0, false, false, true],
+    ["Land_Cargo_HQ_V4_F", 0, 0, 270, 0, false, false, true],
     ["Land_CncWall4_F", 14.1, 0, 0, 0, false, false, true],
-    ["Land_BagBunker_Small_F", 20.8, 0, 180, 0, false, false, true],
+    ["Land_BagBunker_01_small_green_F", 20.8, 0, 180, 0, false, false, true],
     ["Land_CncBarrierMedium_F", 23.5, -7.5, 0, 0, false, false, true],
     ["Land_CncBarrierMedium_F", 23.5, 7.5, 0, 0, false, false, true],
     ["O_HMG_01_high_F", 22.5, 0, 0, 0, false, false, true],
     ["Land_CncWall4_F", 21.5, 97, 0, 0, false, false, true],
     ["Land_CncWall4_F", 17.5, 99, 0, 0, false, false, true],
-    ["Land_BagBunker_Small_F", 18, 35, 320, 0, false, false, true],
+    ["Land_BagBunker_01_small_green_F", 18, 35, 320, 0, false, false, true],
     ["O_HMG_01_high_F", 19, 35, 140, 0, false, false, true],
-    ["Land_Cargo_Patrol_V3_F", 19.3, 111.5, 180, -1.6, false, false, true],
+    ["Land_Cargo_Patrol_V4_F", 19.3, 111.5, 180, -1.6, false, false, true],
     ["Land_CncWall4_F", 23.2, 180, 0, 0, false, false, true],
     ["Land_CncWall1_F", 23.2, -188, 0, 0, false, false, true],
     ["Land_CncWall1_F", 23.2, 188, 0, 0, false, false, true],
-    ["Land_BagBunker_Small_F", 21, 182, 125, 0, false, false, true],
+    ["Land_BagBunker_01_small_green_F", 21, 182, 125, 0, false, false, true],
     ["O_HMG_01_high_F", 19.7, 183, 305, 0, false, false, true],
-    ["Land_Cargo_Patrol_V3_F", 20, 159, 90, -1.6, false, false, true],
+    ["Land_Cargo_Patrol_V4_F", 20, 159, 90, -1.6, false, false, true],
     ["Land_PortableLight_double_F", 9, 145, 50, 0, false, true, true],
     ["Land_PortableLight_single_F", 22, 195, 150, 0, false, true, true],
     ["Land_PortableLight_double_F", 23, 12, 330, 0, false, true, true],
@@ -106,7 +106,7 @@ _composition = [
     } else {
         _obj setPos _pos;
     };
-    if (_name == "Land_Cargo_HQ_V3_F") then {
+    if (_name == "Land_Cargo_HQ_V4_F") then {
         _cargo = _obj;
         _cargo addEventHandler ["HandleDamage", {0}];
         _cargo addMPEventHandler ["MPKilled", {MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";}];

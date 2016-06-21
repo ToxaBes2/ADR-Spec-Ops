@@ -149,12 +149,8 @@ for "_i" from 0 to ((count _vehicles) - 1) do {
                     _radiusEMI = 1400;
                     _allObjects1 = nearestObjects [_epicenter,[], _radius];
                     {
-                        if (_x isKindOf "Land_Cargo_Tower_V1_F" || _x isKindOf "Land_Cargo_HQ_V3_F" || _x isKindOf "Land_DataTerminal_01_F") then {
-                            // skip objects
-                        } else {
-                            _distance = [_epicenter, getPos _x] call BIS_fnc_distance2D;
-                            _x setDamage (abs ((_distance / _radius) - _k));
-                        };
+                        _distance = [_epicenter, getPos _x] call BIS_fnc_distance2D;
+                        _x setDamage (abs ((_distance / _radius) - _k));
                     } foreach _allObjects1;
                     _allObjects2 = nearestObjects [_epicenter, ["LandVehicle","Air","Ship"], _radiusEMI];
                     {
