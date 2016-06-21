@@ -5540,7 +5540,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 			class Effects
 			{
 			};
@@ -5557,7 +5557,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 			class Effects
 			{
 			};
@@ -5574,7 +5574,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 			class Effects
 			{
 			};
@@ -5591,7 +5591,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 			class Effects
 			{
 			};
@@ -5606,7 +5606,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmHelicopter.sqf"";};};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmHelicopter.sqf"";};};";
 			class Effects
 			{
 			};
@@ -5621,7 +5621,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmPlane.sqf"";};};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmPlane.sqf"";};};";
 			class Effects
 			{
 			};
@@ -5636,7 +5636,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmUAV.sqf"";};};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmUAV.sqf"";};};";
 			class Effects
 			{
 			};
@@ -5653,7 +5653,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 			class Effects
 			{
 			};
@@ -5670,7 +5670,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 			class Effects
 			{
 			};
@@ -5687,7 +5687,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 			class Effects
 			{
 			};
@@ -5704,7 +5704,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 			class Effects
 			{
 			};
@@ -5721,7 +5721,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 			class Effects
 			{
 			};
@@ -5753,7 +5753,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="this and ((getPos (thisList select 0)) select 2 < 1)";
-			expActiv="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
+			expActiv="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 			class Effects
 			{
 			};

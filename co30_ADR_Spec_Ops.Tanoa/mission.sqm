@@ -19435,7 +19435,7 @@ class Mission
 			class Attributes
 			{
 				condition="this and ((getPos (thisList select 0)) select 2 < 1)";
-				onActivation="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
+				onActivation="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 				sizeA=5;
 				sizeB=5;
 				sizeC=5;
@@ -19947,7 +19947,7 @@ class Mission
 			class Attributes
 			{
 				condition="this and ((getPos (thisList select 0)) select 2 < 1)";
-				onActivation="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmPlane.sqf"";};};";
+				onActivation="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmPlane.sqf"";};};";
 				sizeA=5;
 				sizeB=5;
 				sizeC=5;
@@ -20091,7 +20091,7 @@ class Mission
 			class Attributes
 			{
 				condition="this and ((getPos (thisList select 0)) select 2 < 1)";
-				onActivation="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmUAV.sqf"";};};";
+				onActivation="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmUAV.sqf"";};};";
 				sizeA=5;
 				sizeB=5;
 				sizeC=5;
@@ -20235,7 +20235,7 @@ class Mission
 			class Attributes
 			{
 				condition="this and ((getPos (thisList select 0)) select 2 < 1)";
-				onActivation="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmHelicopter.sqf"";};};";
+				onActivation="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmHelicopter.sqf"";};};";
 				sizeA=5;
 				sizeB=5;
 				sizeC=5;
@@ -24859,7 +24859,7 @@ class Mission
 			class Attributes
 			{
 				condition="this and ((getPos (thisList select 0)) select 2 < 1)";
-				onActivation="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
+				onActivation="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 				sizeA=5;
 				sizeB=5;
 				sizeC=5;
@@ -25020,7 +25020,7 @@ class Mission
 			class Attributes
 			{
 				condition="this and ((getPos (thisList select 0)) select 2 < 1)";
-				onActivation="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
+				onActivation="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 				sizeA=5;
 				sizeB=5;
 				sizeC=5;
@@ -25182,7 +25182,7 @@ class Mission
 			class Attributes
 			{
 				condition="this and ((getPos (thisList select 0)) select 2 < 1)";
-				onActivation="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
+				onActivation="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 				sizeA=5;
 				sizeB=5;
 				sizeC=5;
@@ -25343,7 +25343,7 @@ class Mission
 			class Attributes
 			{
 				condition="this and ((getPos (thisList select 0)) select 2 < 1)";
-				onActivation="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
+				onActivation="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 				sizeA=5;
 				sizeB=5;
 				sizeC=5;
@@ -25504,7 +25504,7 @@ class Mission
 			class Attributes
 			{
 				condition="this and ((getPos (thisList select 0)) select 2 < 1)";
-				onActivation="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
+				onActivation="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 				sizeA=5;
 				sizeB=5;
 				sizeC=5;
@@ -25665,7 +25665,7 @@ class Mission
 			class Attributes
 			{
 				condition="this and ((getPos (thisList select 0)) select 2 < 1)";
-				onActivation="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
+				onActivation="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 				sizeA=5;
 				sizeB=5;
 				sizeC=5;
@@ -25826,7 +25826,7 @@ class Mission
 			class Attributes
 			{
 				condition="this and ((getPos (thisList select 0)) select 2 < 1)";
-				onActivation="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
+				onActivation="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 				sizeA=5;
 				sizeB=5;
 				sizeC=5;
@@ -25986,7 +25986,7 @@ class Mission
 			class Attributes
 			{
 				condition="this and ((getPos (thisList select 0)) select 2 < 1)";
-				onActivation="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
+				onActivation="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 				sizeA=5;
 				sizeB=5;
 				sizeC=5;
@@ -26147,7 +26147,7 @@ class Mission
 			class Attributes
 			{
 				condition="this and ((getPos (thisList select 0)) select 2 < 1)";
-				onActivation="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
+				onActivation="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 				sizeA=5;
 				sizeB=5;
 				sizeC=5;
@@ -26308,7 +26308,7 @@ class Mission
 			class Attributes
 			{
 				condition="this and ((getPos (thisList select 0)) select 2 < 1)";
-				onActivation="if ((getConnectedUav player == thisList select 0) or (driver (thisList select 0) == player)) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
+				onActivation="if ((getConnectedUav player == thisList select 0) or (player in (crew (thisList select 0)))) then {(thisList select 0) spawn {_this call compile preProcessFileLineNumbers ""scripts\misc\rearmGround.sqf"";};};";
 				sizeA=5;
 				sizeB=5;
 				sizeC=5;
