@@ -32,8 +32,8 @@ if (_bunkerType == 1) then {
         [_patrolGroup, true] call QS_fnc_moveToHC;
         {
             _currentGuard = _x;
-            [_currentGuard,(["WATCH1","WATCH2"] call BIS_fnc_selectRandom),"FULL", {_currentGuard findNearestEnemy (getPos _currentGuard) != objNull || lifestate _currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;  
-        } forEach (units _patrolGroup);       
+            [_currentGuard,(["WATCH1","WATCH2"] call BIS_fnc_selectRandom),"FULL", {_currentGuard findNearestEnemy (getPos _currentGuard) != objNull || lifestate _currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
+        } forEach (units _patrolGroup);
         _patrolGroup setBehaviour "COMBAT";
         _patrolGroup setCombatMode "RED";
         [(units _patrolGroup)] call QS_fnc_setSkill3;
@@ -76,11 +76,11 @@ if (_bunkerType == 1) then {
         _unitPos = [_bunkerPos, _len, _dir] call BIS_fnc_relPos;
         _unitPos set [2, _deltaZ];
         _unitType createUnit [_unitPos, _guardGroup, "[this] call QS_fnc_moveToHC;currentGuard = this;", 0, (["CAPTAIN","MAJOR","COLONEL"] call BIS_fnc_selectRandom)];
-        currentGuard setVariable ["BIS_enableRandomization", false];   
-        currentGuard allowDamage false;      
+        currentGuard setVariable ["BIS_enableRandomization", false];
+        currentGuard allowDamage false;
         currentGuard setPos _unitPos;
         currentGuard setDir _unitDir;
-        doStop currentGuard;    
+        doStop currentGuard;
         currentGuard setUnitPos "UP";
         currentGuard setBehaviour "SAFE";
         currentGuard allowDamage true;
@@ -112,8 +112,8 @@ if (_hasMines) then {
 	_campPatrolGroup = [_flatPos, 70, 6, ENEMY_SIDE] call QS_fnc_FillBots;
     _enemiesArray = _enemiesArray + [_campPatrolGroup];
 } else {
-    _campGroup = [_flatPos, 50, 10, ENEMY_SIDE] call QS_fnc_FillBots; 
-    _enemiesArray = _enemiesArray + [_campGroup];  
+    _campGroup = [_flatPos, 50, 10, ENEMY_SIDE] call QS_fnc_FillBots;
+    _enemiesArray = _enemiesArray + [_campGroup];
 
     // patrols (2x2 bots)
     for "_i" from 1 to 2 do {
@@ -125,7 +125,7 @@ if (_hasMines) then {
         _patrolGroup setCombatMode "RED";
         [(units _patrolGroup)] call QS_fnc_setSkill3;
         _enemiesArray = _enemiesArray + [_patrolGroup];
-    }; 
+    };
 };
 
 // add bots to buildings in zone
@@ -134,8 +134,8 @@ _objects = _flatPos nearObjects ["building", 65];
 _blackList = _blackList + _objects;
 _objects = _bunkerPos nearObjects ["building", 65];
 _blackList = _blackList + _objects;
-_buildingGroup = [_pos, (PARAMS_AOSize / 2), 40, ENEMY_SIDE, false, _blackList] call QS_fnc_FillBots; 
-_enemiesArray = _enemiesArray + [_buildingGroup];  
+_buildingGroup = [_pos, (PARAMS_AOSize / 2), 40, ENEMY_SIDE, false, _blackList] call QS_fnc_FillBots;
+_enemiesArray = _enemiesArray + [_buildingGroup];
 
 // AA vehicles
 for "_x" from 1 to PARAMS_AAPatrol do {
@@ -187,7 +187,7 @@ for "_x" from 1 to PARAMS_StaticMG do {
 	_staticGroup = createGroup EAST;
 	_randomPos = [getMarkerPos currentAO, 200, 10, 10] call BIS_fnc_findOverwatch;
 	_static = [STATIC_TYPE] call BIS_fnc_selectRandom createVehicle _randomPos;
-	waitUntil{!isNull _static};	
+	waitUntil{!isNull _static};
 	_static setDir random 360;
 	"O_support_MG_F" createUnit [_randomPos,_staticGroup];
 	((units _staticGroup) select 0) assignAsGunner _static;
@@ -330,9 +330,12 @@ if (random 10 > 6) then {
     } else {
         _medianaRes = _mediana + (random 1000) - (random 1000);
     };
+    if (_medianaRes < 800) then {
+        _medianaRes = 800;
+    };
     _direction = [(getMarkerPos "respawn_west"), (getMarkerPos currentAO)] call BIS_fnc_dirTo;
     _targetPos = [(getMarkerPos "respawn_west"), _medianaRes, _direction] call BIS_fnc_relPos;
-    _atPos = [_targetPos, 1, 500, 2, 0, 2, 0] call BIS_fnc_findSafePos;  
+    _atPos = [_targetPos, 1, 500, 2, 0, 2, 0] call BIS_fnc_findSafePos;
     if (random 10 > 5) then {
         _null = [_atPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfTeam_AT")] call BIS_fnc_spawnGroup;
     } else {
@@ -345,7 +348,7 @@ if (random 10 > 6) then {
         [_x] joinSilent _ATGroup;
     } forEach _nearestUnits;
     _ATGroup setBehaviour "COMBAT";
-    _ATGroup setCombatMode "RED";    
+    _ATGroup setCombatMode "RED";
     [(units _ATGroup)] call QS_fnc_setSkill3;
     [_ATGroup, _atPos, 200] call BIS_fnc_taskPatrol;
     _enemiesArray = _enemiesArray + [_ATGroup];

@@ -330,6 +330,9 @@ if (random 10 > 6) then {
     } else {
         _medianaRes = _mediana + (random 1000) - (random 1000);
     };
+    if (_medianaRes < 800) then {
+        _medianaRes = 800;
+    };
     _direction = [(getMarkerPos "respawn_west"), (getMarkerPos currentAO)] call BIS_fnc_dirTo;
     _targetPos = [(getMarkerPos "respawn_west"), _medianaRes, _direction] call BIS_fnc_relPos;
     _atPos = [_targetPos, 1, 500, 2, 0, 2, 0] call BIS_fnc_findSafePos;
