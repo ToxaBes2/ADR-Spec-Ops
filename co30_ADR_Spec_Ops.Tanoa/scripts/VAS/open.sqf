@@ -1,5 +1,5 @@
 _uavs = ["B_UAV_01_F","B_UAV_02_F","B_UAV_02_CAS_F","B_UGV_01_F","B_UGV_01_rcws_F","I_UAV_01_F","I_UAV_02_F","I_UAV_02_CAS_F","I_UGV_01_F","I_UGV_01_rcws_F",
-"O_UAV_01_F","O_UAV_02_F","O_UAV_02_CAS_F","O_UGV_01_F","O_UGV_01_rcws_F"];
+"O_UAV_01_F","O_UAV_02_F","O_UAV_02_CAS_F","O_UGV_01_F","O_UGV_01_rcws_F","B_T_UAV_03_F","O_T_UAV_04_CAS_F"];
 if ((typeOf cameraOn) in _uavs) exitWith {hint "Снаряжение недоступно пока вы подключены к БПЛА/БПА.";};
 if(isNil "VAS_init_complete") exitWith {hint "VAS never initialized.\n\nThis means CfgFunctions.hpp was never called via Description.ext";};
 if(!VAS_init_complete && !vas_disableSafetyCheck) exitWith {if((time - VAS_init_timeOnStart) > 25) then {[] call VAS_fnc_mainInit;}; hint "VAS hasn't finished loading yet."};
@@ -12,7 +12,7 @@ VAS_box_backpacks = (_this select 0) getVariable "bis_backpacks";
 VAS_box_goggles = (_this select 0) getVariable "bis_goggles";
 
 createDialog "VAS_Diag";
-["guns",false] spawn VAS_fnc_mainDisplay; 
+["guns",false] spawn VAS_fnc_mainDisplay;
 ctrlShow [2507,false];
 ctrlShow [2508,false];
 ctrlShow [2509,false];
