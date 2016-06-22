@@ -107,7 +107,7 @@ if (_distance > 200) then {
 };
 
 if (_fullyRandom) then {
-    _z = (getPos _heliObj) select 2;
+    _z = (getPosATL _heliObj) select 2;
     while {_z < -1 || _z > 2 || surfaceIsWater (getPos _heliObj)} do {
         while {true} do {
             _heliPos = [(_flatPos select 0) + (random 160), (_flatPos select 1) + (random 160), 10];
@@ -115,7 +115,7 @@ if (_fullyRandom) then {
         };
         _heliObj setPos _heliPos;
         sleep 5;
-        _z = (getPos _heliObj) select 2;
+        _z = (getPosATL _heliObj) select 2;
     };
 };
 
