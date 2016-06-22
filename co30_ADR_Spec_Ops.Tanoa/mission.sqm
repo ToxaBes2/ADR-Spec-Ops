@@ -1,14 +1,14 @@
 version=52;
 class EditorData
 {
-	moveGridStep=0.25;
+	moveGridStep=15.093437;
 	angleGridStep=0.017453292;
 	scaleGridStep=1;
 	autoGroupingDist=10;
 	toggles=33;
 	class ItemIDProvider
 	{
-		nextID=1904;
+		nextID=2103;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={6990.6133,114.11028,7021.4521};
-		dir[]={-0.18298441,-0.45542893,0.87126964};
-		up[]={-0.093608119,0.89027131,0.44570813};
-		aside[]={0.97865409,-6.6720531e-008,0.20553783};
+		pos[]={7099.7886,132.91754,7251.7397};
+		dir[]={-0.84504938,-0.51651335,0.13826263};
+		up[]={-0.50973809,0.85627788,0.083401114};
+		aside[]={0.16146983,1.607259e-008,0.98688412};
 	};
 };
 binarizationWanted=0;
@@ -18180,7 +18180,7 @@ class Mission
 			};
 			id=806;
 			type="Windsock_01_F";
-			atlOffset=3.3872328;
+			atlOffset=3.362376;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -27040,8 +27040,8 @@ class Mission
 						};
 						class Attribute1
 						{
-							property="enableStamina";
-							expression="_this enablestamina _value;";
+							property="face";
+							expression="_this setface _value;";
 							class Value
 							{
 								class data
@@ -27050,10 +27050,10 @@ class Mission
 									{
 										type[]=
 										{
-											"BOOL"
+											"STRING"
 										};
 									};
-									value=0;
+									value="WhiteHead_15";
 								};
 							};
 						};
@@ -27116,8 +27116,8 @@ class Mission
 						};
 						class Attribute5
 						{
-							property="face";
-							expression="_this setface _value;";
+							property="enableStamina";
+							expression="_this enablestamina _value;";
 							class Value
 							{
 								class data
@@ -27126,10 +27126,10 @@ class Mission
 									{
 										type[]=
 										{
-											"STRING"
+											"BOOL"
 										};
 									};
-									value="WhiteHead_15";
+									value=0;
 								};
 							};
 						};

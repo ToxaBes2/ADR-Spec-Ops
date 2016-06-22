@@ -108,8 +108,11 @@ if (_distance > 200) then {
 
 if (_fullyRandom) then {
     _z = (getPos _heliObj) select 2;
-    while {_z < -1 || _z > 2} do {
-        _heliPos = [(_flatPos select 0) + (random 160), (_flatPos select 1) + (random 160), 10];
+    while {_z < -1 || _z > 2 || surfaceIsWater (getPos _heliObj)} do {
+        while {true} do {
+            _heliPos = [(_flatPos select 0) + (random 160), (_flatPos select 1) + (random 160), 10];
+            if !(surfaceIsWater _heliPos) exitWith {};
+        };
         _heliObj setPos _heliPos;
         sleep 5;
         _z = (getPos _heliObj) select 2;
@@ -133,7 +136,9 @@ _houseList = _startPoint nearObjects ["House", 200];
 {
 	_c = 0;
     while { format ["%1", _x buildingPos _c] != "[0,0,0]" } do {
-        _goodPos set [(count _goodPos), _x buildingPos _c];
+        if ((_x buildingPos _c) select 2 < 2.5) then {
+            _goodPos set [(count _goodPos), _x buildingPos _c];
+        };
         _c = _c + 1;
     };
 } forEach _houseList;
@@ -145,7 +150,9 @@ if ((count _goodPos) == 0) then {
     {
     	_c = 0;
         while { format ["%1", _x buildingPos _c] != "[0,0,0]" } do {
-            _goodPos set [(count _goodPos), _x buildingPos _c];
+            if ((_x buildingPos _c) select 2 < 2.5) then {
+                _goodPos set [(count _goodPos), _x buildingPos _c];
+            };
             _c = _c + 1;
         };
     } forEach _houseList;
@@ -153,14 +160,15 @@ if ((count _goodPos) == 0) then {
 };
 
 if ((count _goodPos) > 0) then {
-
 	// put it inside some house or building if possible
     _scoutPos = _goodPos call BIS_fnc_selectRandom;
     _fullyRandom = false;
 } else {
-
     // no houses, no buildings - put it somewhere in 150m of area center
-	_scoutPos = [(_flatPos select 0) + (random 150), (_flatPos select 1) + (random 150), 1];
+    while {true} do {
+        _scoutPos = [(_flatPos select 0) + (random 150), (_flatPos select 1) + (random 150), 1];
+        if !(surfaceIsWater _scoutPos) exitWith {};
+    };
 	_fullyRandom = true;
 };
 
@@ -171,8 +179,11 @@ _scoutBox setPos _scoutPos;
 
 if (_fullyRandom) then {
     _z = (getPos _scoutBox) select 2;
-    while {_z < -0.5 || _z > 1.5} do {
-        _scoutPos = [(_flatPos select 0) + (random 150), (_flatPos select 1) + (random 150), 10];
+    while {_z < -0.5 || _z > 1.5 || surfaceIsWater (getPos _scoutBox)} do {
+        while {true} do {
+            _scoutPos = [(_flatPos select 0) + (random 150), (_flatPos select 1) + (random 150), 10];
+            if !(surfaceIsWater _scoutPos) exitWith {};
+        };
         _scoutBox setPos _scoutPos;
         sleep 5;
         _z = (getPos _scoutPos) select 2;
@@ -245,10 +256,8 @@ for "_x" from 1 to 2 do {
     if((count _nearRoads) > 0) then {
         _roadSegment = _nearRoads call BIS_fnc_selectRandom;
         _randomPos = getPos _roadSegment;
-        _direction = getDir _roadSegment;
     } else {
         _randomPos = [_startPoint, 200, 10, 10] call BIS_fnc_findOverwatch;
-        _direction = getDir random 360;
     };
     _static = [INFANTRY_STATIC] call BIS_fnc_selectRandom createVehicle _randomPos;
     waitUntil{!isNull _static};
@@ -271,10 +280,8 @@ for "_x" from 1 to 2 do {
     if((count _nearRoads) > 0) then {
         _roadSegment = _nearRoads call BIS_fnc_selectRandom;
         _randomPos = getPos _roadSegment;
-        _direction = getDir _roadSegment;
     } else {
         _randomPos = [[[_startPoint, 200],[]],["water","out"]] call BIS_fnc_randomPos;
-        _direction = getDir random 360;
     };
     _technicalVehicle = [INFANTRY_MOTORIZED] call BIS_fnc_selectRandom createVehicle _randomPos;
     waitUntil{!isNull _technicalVehicle};
