@@ -5,12 +5,12 @@ _pilots = ["B_Helipilot_F", "B_T_Helipilot_F"];
 
 if ((typeOf player) in _pilots) then {
 	//===== HELI TURRETS LOCK
-	player addAction ["<t color='#FFC107'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> Разрешить стрельбу</t>", QS_fnc_uh80TurretActions, 0, -95, false, true, '', '[] call QS_fnc_conditionUH80TurretActionUnlock'];
-	player addAction ["<t color='#FFC107'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> Запретить стрельбу</t>", QS_fnc_uh80TurretActions, 1, -95, false, true, '', '[] call QS_fnc_conditionUH80TurretActionLock'];
+	player addAction ["<t color='#FFC107'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> Разрешить стрельбу</t>", QS_fnc_uh80TurretActions, 0, -95, false, true, "", "[] call QS_fnc_conditionUH80TurretActionUnlock"];
+	player addAction ["<t color='#FFC107'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> Запретить стрельбу</t>", QS_fnc_uh80TurretActions, 1, -95, false, true, "", "[] call QS_fnc_conditionUH80TurretActionLock"];
 
 	//===== FIELD REPAIR
 	vehicle_repaired = false;
-	player addAction ["<t color='#FFC107'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_debug_ca.paa' size='1.0'/> Полевой ремонт</t>", QS_fnc_actionPilotRepair, '', 100, false, true, '', '[] call QS_fnc_conditionPilotRepair'];
+	player addAction ["<t color='#FFC107'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_debug_ca.paa' size='1.0'/> Полевой ремонт</t>", QS_fnc_actionPilotRepair, "", 100, false, true, "", "[] call QS_fnc_conditionPilotRepair"];
 
 	//===== Aircraft weapon loadout selection
 	//Hellcat
@@ -29,14 +29,14 @@ if ((typeOf player) in _pilots) then {
 
 //====================== Clear vehicle inventory
 inventory_cleared = false;
-player addAction ["<t color='#2196F3'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_toolbox_modules_ca.paa' size='1.0'/> Освободить грузоотсек</t>", QS_fnc_actionClearInventory, '', -96, false, true, '', '[] call QS_fnc_conditionClearInventory'];
+player addAction ["<t color='#2196F3'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_toolbox_modules_ca.paa' size='1.0'/> Освободить грузоотсек</t>", QS_fnc_actionClearInventory, "", -96, false, true, "", "[] call QS_fnc_conditionClearInventory"];
 
 //====================== Magazine Repack
-player addAction ["<t color='#84FFFF'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\cargomag_ca.paa' size='1.0'/> " + localize "STR_ADR_MagRepack" + "</t>", QS_fnc_actionMagRepack, '', -97, false, true, ''];
+player addAction ["<t color='#84FFFF'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\cargomag_ca.paa' size='1.0'/> " + localize "STR_ADR_MagRepack" + "</t>", QS_fnc_actionMagRepack, "", -97, false, true, ""];
 
 //====================== Earplugs
-player addAction ["<t color='#FFEB3B'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\radio_ca.paa' size='1.0'/> Вставить беруши</t>", {1 fadeSound 0.33}, [], -95, false, true, "", "(soundVolume == 1) and (vehicle player != player)"];
-player addAction ["<t color='#FFEB3B'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\radio_ca.paa' size='1.0'/> Вытащить беруши</t>", {1 fadeSound 1}, [], -95, false, true, "", "(soundVolume != 1) and (vehicle player != player)"];
+player addAction ["<t color='#FFEB3B'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\radio_ca.paa' size='1.0'/> Вставить беруши</t>", {1 fadeSound 0.33}, "", -95, false, true, "", "(soundVolume == 1) and (vehicle player != player)"];
+player addAction ["<t color='#FFEB3B'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\radio_ca.paa' size='1.0'/> Вытащить беруши</t>", {1 fadeSound 1}, "", -95, false, true, "", "(soundVolume != 1) and (vehicle player != player)"];
 
 //====================== Prison check
 if (!isDedicated) then {
