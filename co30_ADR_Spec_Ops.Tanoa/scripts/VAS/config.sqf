@@ -87,7 +87,9 @@ vas_glasses = ["G_Aviator", "G_Balaclava_blk", "G_balaclava_combat", "G_Balaclav
 //Below are variables you can use to restrict certain items from being used.
 //Weapons to remove from VAS
 vas_r_weapons = [
-	"Laserdesignator_03", "Laserdesignator_02"				//Laser Designator [AAF],[OPFOR] // если запретить НАТОвский вариант, то все три запрещаются.
+	"Laserdesignator_03",
+	"Laserdesignator_02",
+	"Laserdesignator_02_ghex_F"
 ];
 //Backpacks to remove from VAS
 vas_r_backpacks = [
@@ -182,9 +184,7 @@ vas_r_items = [
 	"U_O_SpecopsUniform_blk",
 	"U_O_SpecopsUniform_ocamo",
 	"U_O_OfficerUniform_ocamo",
-	"U_O_GhillieSuit",
 	"U_O_PilotCoveralls",
-	"U_O_Wetsuit",
 	"U_I_CombatUniform",
 	"U_I_CombatUniform_shortsleeve",
 	"U_I_CombatUniform_tshirt",
@@ -243,8 +243,41 @@ vas_r_items = [
 	"U_O_V_Soldier_Viper_hex_F",
 	"V_BandollierB_ghex_F",
 	"V_HarnessOGL_ghex_F",
-	"V_HarnessO_ghex_F"
+	"V_HarnessO_ghex_F",
 
+	// Extra enemy gear
+	"H_Booniehat_dgtl",
+	"H_Cap_blk_Raven",
+	"H_Cap_brn_SPECOPS",
+	"H_CrewHelmetHeli_I",
+	"H_CrewHelmetHeli_O",
+	"H_HelmetCrew_I",
+	"H_HelmetCrew_O",
+	"H_HelmetLeaderO_ocamo",
+	"H_HelmetO_ocamo",
+	"H_HelmetSpecO_blk",
+	"H_HelmetSpecO_ocamo",
+	"H_MilCap_dgtl",
+	"H_MilCap_ocamo",
+	"H_PilotHelmetFighter_I",
+	"H_PilotHelmetFighter_O",
+	"H_PilotHelmetHeli_I",
+	"H_PilotHelmetHeli_O",
+	"U_B_Protagonist_VR",
+	"U_I_FullGhillie_ard",
+	"U_I_FullGhillie_lsh",
+	"U_I_FullGhillie_sard",
+	"U_I_Protagonist_VR",
+	"U_O_FullGhillie_ard",
+	"U_O_FullGhillie_lsh",
+	"U_O_FullGhillie_sard",
+	"U_O_Protagonist_VR",
+	"V_HarnessO_ghex_F",
+	"V_PlateCarrierIA1_dgtl",
+	"V_PlateCarrierIA2_dgtl",
+	"V_PlateCarrierIAGL_dgtl",
+	"V_RebreatherIA",
+	"V_RebreatherIR"
 ];
 
 //Goggles to remove from VAS
