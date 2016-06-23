@@ -75,6 +75,7 @@ for "_c" from 0 to 189 do {
         _pos = [_pos select 0, _pos select 1, -0.1];
         _wall setPosATL _pos;
     };
+    sleep 0.01;
     _dir1 = _dir1 + 1.9;
     if (_c < 95) then {
         _pos = [_startPoint, 125, _dir2] call BIS_fnc_relPos;
@@ -86,6 +87,7 @@ for "_c" from 0 to 189 do {
         _dir2 = _dir2 + 3.8;
         _unitsArray = _unitsArray + [_razor];
     };
+    sleep 0.01;
     if (_c < 103) then {
         _pos = [_startPoint, 130, _dir3] call BIS_fnc_relPos;
         _fence = createVehicle ["Land_Mil_WiredFence_F", [70,70,70], [], 0, "CAN_COLLIDE"];
@@ -97,16 +99,20 @@ for "_c" from 0 to 189 do {
         _unitsArray = _unitsArray + [_fence];
     };
     _unitsArray = _unitsArray + [_wall];
+    sleep 0.01;
 };
 
 // spawn camp
 _campPos  = _position select 1;
 _camp = [_campPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "Empty" >> "Military" >> "Outposts" >> "OutpostA")] call BIS_fnc_spawnGroup;
+sleep 0.1;
 
 // spawn tower
 _towerPos = _position select 2;
 _tower = createVehicle ["Land_TTowerBig_2_F", _towerPos, [], 0, "CAN_COLLIDE"];
+_tower setVectorUp [0, 0, 1];
 _unitsArray = _unitsArray + [_tower];
+sleep 0.1;
 
 // spawn cargo HQ
 _cargoPos = [_startPoint, 0, 90, 5, 0, 10, 0] call BIS_fnc_findSafePos;
@@ -115,12 +121,14 @@ while {surfaceIsWater _cargoPos} do {
 };
 _cargoHQ = createVehicle ["Land_Cargo_HQ_V1_F", _cargoPos, [], 0, "CAN_COLLIDE"];
 _unitsArray = _unitsArray + [_cargoHQ];
+sleep 0.1;
 
 // spawn several metal barells
 for "_i" from 1 to 5 do {
     _barrelPos = [_startPoint, 0, 90, 3, 0, 10, 0] call BIS_fnc_findSafePos;
     _barrel = createVehicle ["Land_MetalBarrel_F", _barrelPos, [], 0, "CAN_COLLIDE"];
     _unitsArray = _unitsArray + [_barrel];
+    sleep 0.1;
 };
 
 // spawn one metal barell with gas
@@ -135,6 +143,7 @@ SM_YELLOWFOG_POS set [2, ((SM_YELLOWFOG_POS select 2) + 1)];
 publicVariable "SM_YELLOWFOG_POS";
 _unitsArray = _unitsArray + [_barrel];
 _gasPos = getPos _barrel;
+sleep 0.1;
 
 // spawn cargo houses
 for "_i" from 1 to 8 do {
@@ -144,6 +153,7 @@ for "_i" from 1 to 8 do {
     };
     _cargoHouse = createVehicle ["Land_Cargo_House_V1_F", _cargoPos, [], 0, "NONE"];
     _unitsArray = _unitsArray + [_cargoHouse];
+    sleep 0.1;
 };
 
 // spawn some cargo boxes
@@ -162,6 +172,7 @@ for "_i" from 1 to 5 do {
     _cargo3 = createVehicle [([INFANTRY_CARGO] call BIS_fnc_selectRandom), _pos3, [], 0, "CAN_COLLIDE"];
     _cargo3 setDir (_dir + 90);
     _unitsArray = _unitsArray + [_cargo1, _cargo2, _cargo3];
+    sleep 0.1;
 };
 for "_i" from 1 to 5 do {
     _pos1 = [_startPoint, 0, 120, 3, 0, 10, 0] call BIS_fnc_findSafePos;
@@ -178,6 +189,7 @@ for "_i" from 1 to 5 do {
     _cargo3 = createVehicle [([INFANTRY_CARGO] call BIS_fnc_selectRandom), _pos3, [], 0, "CAN_COLLIDE"];
     _cargo3 setDir (_dir + 90);
     _unitsArray = _unitsArray + [_cargo1, _cargo2, _cargo3];
+    sleep 0.1;
 };
 for "_i" from 1 to 5 do {
     _pos1 = [_startPoint, 0, 120, 3, 0, 10, 0] call BIS_fnc_findSafePos;
@@ -197,6 +209,7 @@ for "_i" from 1 to 5 do {
     _cargo3 = createVehicle [([INFANTRY_CARGO] call BIS_fnc_selectRandom), _pos4, [], 0, "CAN_COLLIDE"];
     _cargo3 setDir (_dir + 90);
     _unitsArray = _unitsArray + [_cargo1, _cargo2, _cargo3];
+    sleep 0.1;
 };
 for "_i" from 1 to 5 do {
     _pos1 = [_startPoint, 0, 120, 3, 0, 10, 0] call BIS_fnc_findSafePos;
@@ -207,6 +220,7 @@ for "_i" from 1 to 5 do {
     _cargo1 = createVehicle [([INFANTRY_CARGO] call BIS_fnc_selectRandom), _pos1, [], 0, "CAN_COLLIDE"];
     _cargo1 setDir _dir;
     _unitsArray = _unitsArray + [_cargo1];
+    sleep 0.1;
 };
 
 // spawn misc barrels
@@ -217,6 +231,7 @@ for "_i" from 1 to 20 do {
     };
    _barrel1 = createVehicle [([INFANTRY_BARRELS] call BIS_fnc_selectRandom), _pos1, [], 0, "NONE"];
    _unitsArray = _unitsArray + [_barrel1];
+   sleep 0.1;
 };
 
 // add fog event
@@ -262,6 +277,7 @@ _barrel addEventHandler ["HandleDamage", {
         };
     };
 }];
+sleep 0.1;
 
 // spawn guards
 _hqGroup = createGroup ENEMY_SIDE;
@@ -290,6 +306,7 @@ _nearestHQ = nearestObjects [_startPoint, ["Land_Cargo_HQ_V1_F"], 130];
         currentGuard allowDamage true;
         _static allowDamage true;
         _static = nil;
+        sleep 0.1;
     } forEach [5];
 
     // other guards
@@ -304,8 +321,10 @@ _nearestHQ = nearestObjects [_startPoint, ["Land_Cargo_HQ_V1_F"], 130];
         currentGuard allowDamage true;
         [currentGuard,(["WATCH","WATCH1","WATCH2"] call BIS_fnc_selectRandom),"FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
         _enemiesArray = _enemiesArray + [currentGuard];
+        sleep 0.1;
     } forEach [1,3,6,7,9];
 
+sleep 0.1;
 } forEach _nearestHQ;
 
 // house guards
@@ -323,6 +342,7 @@ _nearestCargo = nearestObjects [_startPoint, ["Land_Cargo_House_V1_F"], 130];
     currentGuard allowDamage true;
     [currentGuard,(["WATCH","WATCH1","WATCH2"] call BIS_fnc_selectRandom),"FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
     _enemiesArray = _enemiesArray + [currentGuard];
+    sleep 0.1;
 } forEach _nearestCargo;
 
 //  Spawn snipers
@@ -341,7 +361,9 @@ _nearestPatrolHouse = nearestObjects [_startPoint, ["Land_Cargo_Patrol_V1_F"], 1
         currentGuard allowDamage true;
         [currentGuard,(["WATCH","WATCH1","WATCH2"] call BIS_fnc_selectRandom),"FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
         _enemiesArray = _enemiesArray + [currentGuard];
+        sleep 0.1;
     } forEach [1,2,3];
+    sleep 0.1;
 } forEach _nearestPatrolHouse;
 
 // ground guards
@@ -356,6 +378,7 @@ for "_c" from 1 to 10 do {
     currentGuard allowDamage true;
     [currentGuard,(["WATCH","WATCH1","WATCH2"] call BIS_fnc_selectRandom),"FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
     _enemiesArray = _enemiesArray + [currentGuard];
+    sleep 0.1;
 };
 
 // patrols (2 bots)
@@ -363,18 +386,21 @@ _groundPos1 = [_startPoint, 0, 110, 2, 0, 10, 0] call BIS_fnc_findSafePos;
 _patrolGroup1 = [_groundPos1, ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "UInfantry" >> "OIA_GuardSentry")] call BIS_fnc_spawnGroup;
 [_patrolGroup1, _startPoint, 90] call BIS_fnc_taskPatrol;
 _enemiesArray = _enemiesArray + (units _patrolGroup1);
+sleep 0.1;
 
 //patrol (4 bots)
 _groundPos2 = [_startPoint, 0, 90, 2, 0, 10, 0] call BIS_fnc_findSafePos;
 _patrolGroup2 = [_groundPos2, ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "UInfantry" >> "OIA_GuardTeam")] call BIS_fnc_spawnGroup;
 [_patrolGroup2, _startPoint, 60] call BIS_fnc_taskPatrol;
 _enemiesArray = _enemiesArray + (units _patrolGroup2);
+sleep 0.1;
 
 // patrol (8 bots)
 _groundPos3 = [_startPoint, 0, 30, 2, 0, 10, 0] call BIS_fnc_findSafePos;
 _patrolGroup3 = [_groundPos3 , ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "UInfantry" >> "OIA_GuardSquad")] call BIS_fnc_spawnGroup;
 [_patrolGroup3, _startPoint, 20] call BIS_fnc_taskPatrol;
 _enemiesArray = _enemiesArray + (units _patrolGroup3);
+sleep 0.1;
 
 // Set skills and behaviour
 {

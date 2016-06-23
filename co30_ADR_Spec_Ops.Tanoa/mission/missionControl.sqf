@@ -15,12 +15,12 @@ _missionList = [
 	"destroyUrban",
 	"secureSide",
 	"rescueHostages",
-    "heliCrash"//,
-	//"convoy",
-	//"snatch",
-	//"swordfish",
-	//"yellowfog",
-	//"grapeswrath"
+    "heliCrash",
+	//"convoy",     // NOT DONE
+	//"snatch",     // NOT DONE
+	//"swordfish",  // NOT DONE
+	"yellowfog"//,
+	//"grapeswrath" // NOT DONE
 ];
 while { true } do {
 	if (PARAMS_AO == 1) then {
