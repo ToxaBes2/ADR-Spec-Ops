@@ -413,6 +413,7 @@ _myBox = _this select 0;
 "U_B_CTRG_Soldier_urb_3_F",
 "U_B_GEN_Commander_F",
 "U_B_GEN_Soldier_F",
+"U_B_T_FullGhillie_tna_F",
 "U_B_T_Sniper_F",
 "U_B_T_Soldier_AR_F",
 "U_B_T_Soldier_F",
