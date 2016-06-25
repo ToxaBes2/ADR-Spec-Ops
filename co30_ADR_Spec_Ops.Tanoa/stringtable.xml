@@ -5,10 +5,6 @@
 			<Original>Repack magazines</Original>
 			<Russian>Перепаковать магазины</Russian>
 		</Key>
-		<Key ID="STR_ADR_MagRepack_ChatMsg">
-			<Original>Magazines have been repacked. You had %1, now %2.</Original>
-			<Russian>Магазины перепакованы. Было %1, стало %2.</Russian>
-		</Key>
 	</Package>
 </Project>
 <Project name="Virtual Ammobox System">

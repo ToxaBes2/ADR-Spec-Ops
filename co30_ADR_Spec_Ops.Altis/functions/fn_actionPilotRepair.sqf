@@ -20,9 +20,9 @@ if ((_heavyDmgArray select 0) isEqualTo 0) then {
 	_heavyDmgArray = _heavyDmgArray - [0];
 };
 
-systemChat str(_heavyDmgArray);
 _partsAmount = count _heavyDmgArray;
 _vehicle_repairing = true;
+_vehName = getText ( configFile >> "CfgVehicles" >> typeOf _v >> "displayName");
 
 while {_vehicle_repairing} do {
 	scopeName "main";
@@ -31,10 +31,10 @@ while {_vehicle_repairing} do {
 		player playAction "MedicStartRightSide";
 		_t = 0;
 
-		while {_t < ((_x select 1) * 5)} do {
-			sleep 0.1;
+		while {_t < ((_x select 1) * 10)} do {
+			uiSleep 0.1;
 			_t = _t + 0.1;
-			if ((!(alive player)) or ((player distance _v) > 7) or (vehicle player != player) or ((speed _v) > 3) or ((speed player) > 1) or (!(alive _v))) then {
+			if ((!(alive player)) or ((player distance _v) > 8) or (vehicle player != player) or ((speed _v) > 3) or ((speed player) > 1) or (!(alive _v))) then {
 				vehicle_repaired = false;
 				breakTo "main";
 			};
@@ -50,12 +50,14 @@ while {_vehicle_repairing} do {
 				sleep 30;
 				vehicle_repaired = false;
 			};
-			systemChat format["Полевой ремонт %1 полностью завершен.", typeOf _v];
+			systemChat format["Полевой ремонт %1 полностью завершен.", _vehName];
 		};
 	} forEach _heavyDmgArray;
 
 	if (!vehicle_repaired) then {
 		_vehicle_repairing = false;
-		systemChat format["Полевой ремонт %1 прерван.", typeOf _v];
+		systemChat format["Полевой ремонт %1 прерван.", _vehName];
 	};
 };
+
+player playMove "AmovPknlMstpSrasWrflDnon";
