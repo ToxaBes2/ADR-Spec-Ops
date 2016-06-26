@@ -2,7 +2,7 @@
 Author:	malashin
 Description: Repack ammo in players magazines
 */
-private ["_magList", "_currentMagClass", "_currentMagAmmo", "_currentMagSize", "_counter", "_currentAmmoArray", "_previousAnimation", "_playerInVehicle", "_stance", "_vehicle", "_repackInProgress", "_repackTime", "_index", "_previousMagAmmo", "_magAmmoSum", "_t", "_progress", "_start", "_end", "_currentMagName"];
+private ["_magList", "_currentMagClass", "_currentMagAmmo", "_currentMagSize", "_counter", "_currentAmmoArray", "_playerInVehicle", "_stance", "_vehicle", "_repackInProgress", "_repackTime", "_index", "_previousMagAmmo", "_magAmmoSum", "_t", "_progress", "_start", "_end", "_currentMagName"];
 
 
 scopeName "main";
@@ -47,11 +47,7 @@ _magList = [];
 
 
 // Warn player that movement will break the process
-["<t size = '.46'>Перепаковываю магазины</t><br /><t color='#F44336' size = '.48'>Не двигайтесь!</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
-
-
-// Save previous animation state of the player to restore it after the script is done
-_previousAnimation = animationState player;
+["<t size = '.46'>Перепаковываю магазины</t><br /><t color='#F44336' size = '.48'>Не двигайтесь!</t>", 0, 0.8, 5, 0.5, 0] spawn BIS_fnc_dynamicText;
 
 
 // Play animation if player is not in a vehicle
@@ -111,6 +107,7 @@ if (vehicle player == player) then {
 };
 
 
+// Start the repacking process, combine only two magazines per cycle
 _repackInProgress = true;
 while {_repackInProgress} do {
     _repackTime = 0;
@@ -118,7 +115,7 @@ while {_repackInProgress} do {
 
 
     // Create new array by combining only two magazines that are closest to being full
-    // Count ammo transfered from the second magazines as _repackTime
+    // Count ammo transfered from the second magazines as _repackTime (2 seconds for 1 bullet)
     {
         scopeName "magList";
         _index = _forEachIndex;
@@ -133,13 +130,13 @@ while {_repackInProgress} do {
             } else {
                 _magAmmoSum = _previousMagAmmo + _currentMagAmmo;
                 if (_magAmmoSum <= _currentMagSize) then {
-                    _repackTime = _currentMagAmmo;
+                    _repackTime = _currentMagAmmo * 2;
                     _currentAmmoArray set [(_forEachIndex - 1), _magAmmoSum];
                     _currentAmmoArray deleteAt _forEachIndex;
                     _magList set [_index, [_currentMagClass, _currentAmmoArray]];
                     breakOut "magList";
                 } else {
-                    _repackTime = _magAmmoSum - _currentMagSize;
+                    _repackTime = (_magAmmoSum - _currentMagSize) * 2;
                     _currentAmmoArray set [(_forEachIndex - 1), _currentMagSize];
                     _currentAmmoArray set [(_forEachIndex), _currentMagSize - _previousMagAmmo];
                     breakOut "magList";
@@ -149,11 +146,13 @@ while {_repackInProgress} do {
     } forEach _magList;
 
 
-    // Repack one magazine for _repackTime seconds
     // Wait until player is fully transitioned to the specified animation
-    if (vehicle player == player) then {
+    if !(_playerInVehicle) then {
         waitUntil {animationState player in ["ainvpercmstpsraswrfldnon","ainvpercmstpsraswpstdnon","ainvpercmstpsraswlnrdnon","ainvpercmstpsnonwnondnon","ainvpknlmstpsraswrfldnon","ainvpknlmstpsraswpstdnon","ainvpknlmstpsraswlnrdnon","ainvpknlmstpsnonwnondnon","ainvppnemstpsraswrfldnon","ainvppnemstpsraswpstdnon","ainvppnemstpsnonwnondnon"]};
     };
+
+
+    // Get the start time
     _t = time;
 
 
@@ -180,6 +179,7 @@ while {_repackInProgress} do {
     };
 
 
+    // Repack one magazine for _repackTime seconds
     // Break the process if animation is interupted or player gets out of the vehicle
     while {time < (_t + _repackTime)} do {
         uiSleep 0.2;
@@ -203,10 +203,13 @@ while {_repackInProgress} do {
     };
 
 
+    // Delete gui elements once process is finished
     ctrlDelete (uiNamespace getVariable "magRepack_progressBar");
     ctrlDelete (uiNamespace getVariable "magRepack_text");
 
 
+    // Tell the player that one mag was repacked
+    // If there are no more mags to repack, tell the player that the process is finished
     if (_repackTime == 0) then {
         _repackInProgress = false;
         ["<t color='#C6FF00' size = '.48'>Перепаковка магазинов завершена</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
@@ -225,12 +228,9 @@ while {_repackInProgress} do {
 };
 
 
-// Delete the gui once more for safety, restore previous animation if player was not in a vehicle
+// Delete the gui once more in case it gets stuck
 ctrlDelete (uiNamespace getVariable "magRepack_progressBar");
 ctrlDelete (uiNamespace getVariable "magRepack_text");
-if !(_playerInVehicle) then {
-    player playMove _previousAnimation;
-};
 
 
 //Remove action use restriction after procedure is finished
