@@ -224,16 +224,16 @@ BTC_respawn_cond = false;
 	player setVariable ["BTC_dragged",0,true];
 
 	if ([player] call BTC_is_class_can_revive) then {
-		player addAction [("<t color=""#F44336""><img image='\a3\ui_f\data\map\VehicleIcons\pictureheal_ca.paa' size='1.0'/> ") + ("Первая помощь") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_first_aid], 8, true, true, "", "[] call BTC_check_action_first_aid"];
+		player addAction [("<t color=""#F44336""><img image='\a3\ui_f\data\map\VehicleIcons\pictureheal_ca.paa' size='1.0'/> ") + ("Первая помощь") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_first_aid], 8, true, true, "", "[] call BTC_check_action_first_aid", 10];
 	};
 	if (BTC_Medical_TruckToggle != 0) then {
 		if (!([player] call BTC_is_class_can_revive)) then {
-			player addAction [("<t color=""#F44336""><img image='\a3\ui_f\data\map\VehicleIcons\pictureheal_ca.paa' size='1.0'/> ") + (BTC_Medical_Trucks_addActionText) + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_first_aid], 8, true, true, "", "[] call BTC_check_action_HEMTT"];
+			player addAction [("<t color=""#F44336""><img image='\a3\ui_f\data\map\VehicleIcons\pictureheal_ca.paa' size='1.0'/> ") + (BTC_Medical_Trucks_addActionText) + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_first_aid], 8, true, true, "", "[] call BTC_check_action_HEMTT", 10];
 		};
 	};
-	player addAction [("<t color=""#EF5350""><img image='\a3\ui_f\data\map\VehicleIcons\pictureheal_ca.paa' size='1.0'/> ") + ("Тащить") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_drag], 8, true, true, "", "[] call BTC_check_action_drag"];
-	player addAction [("<t color=""#EF5350""><img image='\a3\ui_f\data\map\VehicleIcons\pictureheal_ca.paa' size='1.0'/> ") + ("Нести") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_carry], 8, true, true, "", "[] call BTC_check_action_drag"];
-	player addAction [("<t color=""#EF5350""><img image='\a3\ui_f\data\map\VehicleIcons\pictureheal_ca.paa' size='1.0'/> ") + ("Выгрузить раненого") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_pull_out], 8, true, true, "", "[] call BTC_pull_out_check"];
+	player addAction [("<t color=""#EF5350""><img image='\a3\ui_f\data\map\VehicleIcons\pictureheal_ca.paa' size='1.0'/> ") + ("Тащить") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_drag], 8, true, true, "", "[] call BTC_check_action_drag", 10];
+	player addAction [("<t color=""#EF5350""><img image='\a3\ui_f\data\map\VehicleIcons\pictureheal_ca.paa' size='1.0'/> ") + ("Нести") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_carry], 8, true, true, "", "[] call BTC_check_action_drag", 10];
+	player addAction [("<t color=""#EF5350""><img image='\a3\ui_f\data\map\VehicleIcons\pictureheal_ca.paa' size='1.0'/> ") + ("Выгрузить раненого") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_pull_out], 8, true, true, "", "[] call BTC_pull_out_check", 10];
 
 	if (BTC_active_mobile == 1) then {
 
