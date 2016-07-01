@@ -14,8 +14,8 @@
 	|----
 */
 
-outlw_MR_bulletTime = 0.8; // Seconds per individual bullet.
-outlw_MR_beltTime = 4; // Seconds per belt magazine.
+outlw_MR_bulletTime = 2.0; // Seconds per individual bullet.
+outlw_MR_beltTime = 20; // Seconds per belt magazine.
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
