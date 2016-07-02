@@ -35,6 +35,7 @@ call compile preprocessFile "scripts\=BTC=_TK_punishment\=BTC=_tk_init.sqf";
 ((getMarkerPos "respawn_west") nearestObject 136246) hideObject true; // netfence_01_m_8m_f.p3d
 ((getMarkerPos "respawn_west") nearestObject 136239) hideObject true; // netfence_01_m_d_f.p3d
 ((getMarkerPos "respawn_west") nearestObject 136321) hideObject true; // lamphalogen_f.p3d
+((getMarkerPos "respawn_west") nearestObject 136265) hideObject true; // ttowersmall_2_f.p3d
 ((getMarkerPos "respawn_west") nearestObject 136260) allowDamage false; // airport_01_hangar_f.p3d
 ((getMarkerPos "respawn_west") nearestObject 135897) allowDamage false; // airport_01_hangar_f.p3d
 ((getMarkerPos "respawn_west") nearestObject 136460) allowDamage false; // airport_02_hangar_left_f.p3d
