@@ -5,11 +5,11 @@ Description: Change weather by real date/month and in-game time
 private ["_delay", "_days", "_hours", "_hour", "_null", "_deltaDay", "_deltaMonth", "_curDate", "_curMonth", "_resDate", "_resMonth", "_dayOfYear", "_row", "_data", "_wind", "_waves", "_rand"];
 _delay = 1200;
 _days = [0, 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
-_hours = [5, 9, 12, 15, 18];
+_hours = [6, 9, 12, 15, 18];
 _hour = floor (date select 3);
 if (lastWeatherTime == _hour) exitWith {};
 if (_hour in _hours) then {
-    _deltaDay = (missionStart select 2) - (date select 2); 
+    _deltaDay = (missionStart select 2) - (date select 2);
     _deltaMonth = (missionStart select 1) - (date select 1);
     _curDate  = date select 2;
     _curMonth = date select 1;
@@ -26,26 +26,26 @@ if (_hour in _hours) then {
     	_resMonth = _resMonth + 1;
     };
     if (_resMonth > 12) then {
-        _resMonth = _resMonth - 12;	
+        _resMonth = _resMonth - 12;
     };
     _dayOfYear = (_days select _resMonth) + _resDate;
     if (_dayOfYear > 365 || _dayOfYear <= 0) then {
-        _dayOfYear = 365;	
-    };        
+        _dayOfYear = 365;
+    };
     _n = 1;
-    switch (_hour) do { 
-    	case 5 :  { _n = 1; }; 
+    switch (_hour) do {
+    	case 6 :  { _n = 1; };
     	case 9 :  { _n = 2; };
     	case 12 : { _n = 3; };
     	case 15 : { _n = 4; };
-    	case 18 : { _n = 5; }; 
-    	default   { _n = 1; }; 
+    	case 18 : { _n = 5; };
+    	default   { _n = 1; };
     };
     _row = ((_dayOfYear - 1) * 5) + _n;
     if (_row > 1825) then {
         _row = 1825;
     };
-    _data = [_row] call compile preprocessFileLineNumbers "scripts\weather\data.sqf"; 
+    _data = [_row] call compile preprocessFileLineNumbers "scripts\weather\data.sqf";
     _waves = _data select 5;
     _wind = _data select 7;
     if (_waves == 0 && _wind == 0) then {
@@ -65,28 +65,28 @@ if (_hour in _hours) then {
     if (lastWeatherTime == 0) then {
         forceWeatherChange;
     } else {
-        _null = [_delay] spawn { 
-            sleep (_this select 0);   
+        _null = [_delay] spawn {
+            sleep (_this select 0);
             forceWeatherChange;
         };
-    };      
+    };
 } else {
-    if (_hour == 20) then {
+    if (_hour == 19) then {
         _delay setOvercast 0;
         _delay setRain 0;
         _delay setFog [0, 0, 0];
         0 setRainbow 0;
         0 setLightnings 0;
         _rand = (random 10) / 10;
-        _delay setWaves _rand;    
+        _delay setWaves _rand;
         _delay setWindStr _rand;
         _delay setWindForce _rand;
         simulWeatherSync;
         if (lastWeatherTime == 0) then {
-            forceWeatherChange;            
+            forceWeatherChange;
         } else {
-            _null = [_delay] spawn { 
-                sleep (_this select 0);   
+            _null = [_delay] spawn {
+                sleep (_this select 0);
                 forceWeatherChange;
             };
         };
