@@ -57,7 +57,9 @@ _houseList = _flatPos nearObjects ["building", 190];
 {
     _c = 0;
     while { format ["%1", _x buildingPos _c] != "[0,0,0]" } do {
-        _goodPos set [(count _goodPos), [_x, _x buildingPos _c]];
+        if (((_x buildingPos _c) select 2 < 2.5) and !(surfaceIsWater (_x buildingPos _c))) then {
+            _goodPos set [(count _goodPos), [_x, _x buildingPos _c]];
+        };
         _c = _c + 1;
     };
 } forEach _houseList;

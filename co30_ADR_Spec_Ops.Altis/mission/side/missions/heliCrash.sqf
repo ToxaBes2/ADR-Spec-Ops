@@ -136,7 +136,7 @@ _houseList = _startPoint nearObjects ["House", 200];
 {
 	_c = 0;
     while { format ["%1", _x buildingPos _c] != "[0,0,0]" } do {
-        if ((_x buildingPos _c) select 2 < 2.5) then {
+        if (((_x buildingPos _c) select 2 < 2.5) and !(surfaceIsWater (_x buildingPos _c))) then {
             _goodPos set [(count _goodPos), _x buildingPos _c];
         };
         _c = _c + 1;
@@ -150,7 +150,7 @@ if ((count _goodPos) == 0) then {
     {
     	_c = 0;
         while { format ["%1", _x buildingPos _c] != "[0,0,0]" } do {
-            if ((_x buildingPos _c) select 2 < 2.5) then {
+            if (((_x buildingPos _c) select 2 < 2.5) and !(surfaceIsWater (_x buildingPos _c))) then {
                 _goodPos set [(count _goodPos), _x buildingPos _c];
             };
             _c = _c + 1;

@@ -59,7 +59,9 @@ switch (_side) do {
         _units = ["O_T_Soldier_A_F","O_T_Soldier_AAR_F","O_T_Support_AMG_F","O_T_Support_AMort_F","O_T_Soldier_AAA_F","O_T_Soldier_AAT_F","O_T_Soldier_AR_F",
         "O_T_Medic_F","O_T_Engineer_F","O_T_Soldier_Exp_F","O_T_Soldier_GL_F","O_T_Soldier_M_F","O_T_Soldier_AA_F","O_T_Soldier_AT_F","O_T_Officer_F",
         "O_T_Soldier_Repair_F","O_T_Soldier_F","O_T_Soldier_LAT_F","O_T_Soldier_SL_F","O_T_Soldier_TL_F","O_T_Recon_Exp_F","O_T_Recon_JTAC_F","O_T_Recon_M_F",
-        "O_T_Recon_Medic_F","O_T_Recon_F","O_T_Recon_LAT_F","O_T_Recon_TL_F"];
+        "O_T_Recon_Medic_F","O_T_Recon_F","O_T_Recon_LAT_F","O_T_Recon_TL_F","O_soldierU_M_F","O_SoldierU_GL_F","O_Urban_Sharpshooter_F","O_Urban_HeavyGunner_F",
+        "O_support_MG_F","O_soldierU_F","O_soldierU_AR_F","O_soldierU_AAR_F","O_soldierU_LAT_F","O_soldierU_AT_F","O_soldierU_AAT_F","O_soldierU_AA_F",
+        "O_soldierU_AAA_F","O_soldierU_TL_F","O_SoldierU_SL_F","O_soldierU_medic_F","O_soldierU_repair_F","O_soldierU_exp_F","O_engineer_U_F","O_soldierU_A_F"];
     };
     case CIVILIAN : {
         _units = ["C_man_1","C_man_1_1_F","C_man_1_2_F","C_man_1_3_F","C_man_polo_1_F","C_man_polo_1_F_afro","C_man_polo_1_F_euro","C_man_polo_1_F_asia",

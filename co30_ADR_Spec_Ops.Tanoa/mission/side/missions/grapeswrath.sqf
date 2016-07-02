@@ -9,8 +9,8 @@ Description: download data from 3 data terminals in enemy town
 #define ENEMY_SIDE EAST
 #define INFANTRY_RANK "CAPTAIN","MAJOR","COLONEL"
 #define INFANTRY_TERMINAL "Land_DataTerminal_01_F"
-#define INFANTRY_VEHICLES "O_MRAP_02_hmg_F","O_MRAP_02_hmg_F","O_APC_Wheeled_02_rcws_F","O_MBT_02_cannon_F"
-#define INFANTRY_VEHICLE_CREW "O_engineer_F"
+#define INFANTRY_VEHICLES "O_T_MRAP_02_hmg_ghex_F","O_T_MRAP_02_gmg_ghex_F","O_T_LSV_02_armed_F","O_T_APC_Wheeled_02_rcws_ghex_F","O_T_APC_Tracked_02_cannon_ghex_F","O_T_MBT_02_cannon_ghex_F"
+#define INFANTRY_VEHICLE_CREW "O_T_Engineer_F"
 
 // define private variables
 private ["_targets","_accepted","_distance","_briefing","_position","_flatPos","_x","_enemiesArray","_startPoint"];
@@ -20,16 +20,15 @@ _unitsArray = [];
 
 // format: [[zone x,y]]
 _targets = [
-    [[3617,12848]],
-    [[3587,13180]],
-    [[3801,13711]],
-    [[9023,12038]],
-    [[10949,13424]],
-    [[12505,14329]],
-    [[14003,18694]],
-    [[18098,15256]],
-    [[20952,16961]],
-    [[16812,12709]]
+    [[5479,4053]],
+    [[11667,2694]],
+    [[11273,5220]],
+    [[12826,7414]],
+    [[9553,13508]],
+    [[5811,10489]],
+    [[5710,10121]],
+    [[8845,10207]],
+    [[1837,11964]]
 ];
 
 // select correct place for mission
@@ -57,7 +56,9 @@ _houseList = _flatPos nearObjects ["building", 190];
 {
     _c = 0;
     while { format ["%1", _x buildingPos _c] != "[0,0,0]" } do {
-        _goodPos set [(count _goodPos), [_x, _x buildingPos _c]];
+        if (((_x buildingPos _c) select 2 < 2.5) and !(surfaceIsWater (_x buildingPos _c))) then {
+            _goodPos set [(count _goodPos), [_x, _x buildingPos _c]];
+        };
         _c = _c + 1;
     };
 } forEach _houseList;
