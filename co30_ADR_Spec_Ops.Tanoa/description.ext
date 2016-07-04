@@ -1,6 +1,6 @@
 //------------------------- On Load
 
-author = "ToxaBes";
+author = "ToxaBes, evil_c0okie";
 onLoadName = "ADR: Spec Ops";
 OnLoadMission = "Version 0.0.1 [www.tehgam.com]";
 loadScreen = "media\images\adr_specops_tanoa_loading.jpg";

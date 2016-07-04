@@ -75,12 +75,14 @@ _submarine setMass 9999999;
 _submarine setPos _subPos;
 _submarine setDir _subDir;
 _unitsArray = _unitsArray + [_submarine];
+sleep 3;
 _mod = 1;
 for "_c" from 0 to 4 do {
     _chemPos = [(_sub select 0) + (random 20) *_mod, (_sub select 1) + (random 20) * _mod, 10];
     _chemlight = createVehicle ["Chemlight_yellow", _chemPos, [], 0, "NONE"];
     _mod = _mod * -1;
     _unitsArray = _unitsArray + [_chemlight];
+    sleep 0.1;
 };
 
 // spawn mines
@@ -89,18 +91,20 @@ for "_c" from 0 to 50 do {
     _height = random (floor ((getTerrainHeightASL _minePos) * -1));
     _pos = [_minePos select 0, _minePos select 1, (0 - _height)];
     _mine = createMine ["UnderwaterMine", _pos, [], 0];
+    sleep 0.1;
 };
 
 //spawn wreck vehicles
 for "_c" from 0 to 6 do {
     _wreck = [INFANTRY_WRECKED_VECHICLES] call BIS_fnc_selectRandom;
-    _wreckPos = [_subPos, 40, 120, 3, 2, 20, 0] call BIS_fnc_findSafePos;
+    _wreckPos = [_subPos, 40, 120, 5, 2, 20, 0] call BIS_fnc_findSafePos;
     _wreckVeh = createVehicle [_wreck, [0,0,0], [], 0, "CAN_COLLIDE"];
     _wreckVeh setPos [_wreckPos select 0, _wreckPos select 1, getTerrainHeightASL _wreckPos];
     _wreckVeh setDir (random 360);
     _chemPos = [_wreckPos select 0, _wreckPos select 1, 10];
     _chemlight = createVehicle ["Chemlight_blue", _chemPos, [], 0, "NONE"];
     _unitsArray = _unitsArray + [_wreckVeh, _chemlight];
+    sleep 0.1;
 };
 
 // spawn 2 devices
@@ -121,6 +125,7 @@ while {count _devices < 2} do {
     _chemlight = createVehicle ["Chemlight_red", _devicePos, [], 0, "NONE"];
     _unitsArray = _unitsArray + [_device, _chemlight];
     _devices = nearestObjects [[_startPoint select 0, _startPoint select 1], ["Land_Device_disassembled_F"], 200];
+    sleep 0.1;
 };
 
 // doublecheck devices
@@ -136,8 +141,10 @@ if (count _devices < 2) then {
         [_device, "QS_fnc_addActionBlock", nil, true] spawn BIS_fnc_MP;
         _chemlight = createVehicle ["Chemlight_red", _devicePos, [], 0, "NONE"];
         _unitsArray = _unitsArray + [_device, _chemlight];
+        sleep 0.1;
     };
 };
+sleep 1;
 
 // spawn 5 SDVs
 for "_c" from 0 to 4 do {
@@ -147,6 +154,7 @@ for "_c" from 0 to 4 do {
     _sdv setPos [_safePos select 0, _safePos select 1, getTerrainHeightASL _safePos];
     _sdv setDir (random 360);
     _unitsArray = _unitsArray + [_sdv];
+    sleep 0.1;
 };
 
 // spawn 5 lights
@@ -157,6 +165,7 @@ _safePos = [_subPos, 15, 40, 4, 2, 20, 0] call BIS_fnc_findSafePos;
     _light setDir (([_light, _submarine] call BIS_fnc_dirTo) + 180);
     _light setMass 20;
     _unitsArray = _unitsArray + [_light];
+    sleep 0.1;
 };
 
 // spawn 2 groups of single divers
@@ -177,6 +186,7 @@ for "_c" from 0 to 15 do {
     removeAllWeapons currentGuard;
     currentGuard addWeapon "arifle_SDAR_F";
     currentGuard addmagazines["20Rnd_556x45_UW_mag", 10];
+    sleep 0.1;
 };
 _diversGroup1 setBehaviour "SAFE";
 _diversGroup1 setCombatMode "RED";
@@ -198,6 +208,7 @@ for "_c" from 0 to 25 do {
     removeAllWeapons currentGuard;
     currentGuard addWeapon "arifle_SDAR_F";
     currentGuard addmagazines["20Rnd_556x45_UW_mag", 10];
+    sleep 0.1;
 };
 _diversGroup2 setBehaviour "SAFE";
 _diversGroup2 setCombatMode "RED";
@@ -226,25 +237,29 @@ for "_c" from 0 to 3 do {
     [(units _patrolGroup)] call QS_fnc_setSkill3;
     [_patrolGroup, _subPos, 40] call BIS_fnc_taskPatrol;
     _enemiesArray = _enemiesArray + (units _patrolGroup);
+    sleep 0.1;
 };
 
 // HQ: boats
 _boatPos1 = [_startPoint, 400, 1000, 10, 0, 0.2, 1] call BIS_fnc_findSafePos;
 if (_startPoint distance _boatPos1 > 1000) then {
-    _boatPos1 = [_startPoint, 300, 4000, 6, 0, 0.3, 1] call BIS_fnc_findSafePos;
+    _boatPos1 = [_startPoint, 300, 4000, 5, 0, 0.3, 1] call BIS_fnc_findSafePos;
 };
 _dirBoat1 = random 360;
 _boat1 = createVehicle ["O_Boat_Transport_01_F", _boatPos1, [], 0, "CAN_COLLIDE"];
 _boat1 setDir _dirBoat1;
+sleep 0.1;
 _dirBoat2 = _dirBoat1 + (random 15) - (random 15);
 _botPos2 = [((getPos _boat1) select 0) + random 3, ((getPos _boat1) select 1) + random 3, 0.3];
 _boat2 = createVehicle ["O_Boat_Transport_01_F", _botPos2, [], 0, "CAN_COLLIDE"];
 _boat2 setDir _dirBoat2;
+sleep 0.1;
 _dirBoat3 = _dirBoat2 + (random 15) - (random 15);
 _botPos3 = [((getPos _boat2) select 0) + random 3, ((getPos _boat2) select 1) + random 3, 0.3];
 _boat3 = createVehicle ["O_Boat_Transport_01_F", _botPos3, [], 0, "CAN_COLLIDE"];
 _boat3 setDir _dirBoat3;
 _unitsArray = _unitsArray + [_boat1, _boat2, _boat3];
+sleep 0.1;
 
 // HQ: camonet
 _places = selectBestPlaces [_boatPos1, 300, "forest + trees", 1, 1];
@@ -255,6 +270,7 @@ if (_campPos distance _boatPos1 > 301) then {
 _camo = createVehicle ["CamoNet_OPFOR_F", _campPos, [], 0, "CAN_COLLIDE"];
 _camo setDir (random 360);
 _unitsArray = _unitsArray + [_camo];
+sleep 0.1;
 
 // HQ: commander
 _hqGroup = createGroup EAST;
@@ -263,6 +279,7 @@ doStop currentOfficier;
 commandStop currentOfficier;
 currentOfficier addPrimaryWeaponItem "muzzle_snds_H";
 currentOfficier setUnitPos "MIDDLE";
+sleep 0.1;
 
 // HQ: add action
 [currentOfficier, "QS_fnc_addActionRetreat", nil, true] spawn BIS_fnc_MP;
@@ -273,6 +290,7 @@ currentOfficier setUnitPos "MIDDLE";
    _x createUnit [_guardPos, _hqGroup, "currentGuard = this"];
    currentGuard setDir (([currentOfficier, currentGuard] call BIS_fnc_dirTo) + 180);
    currentGuard setUnitPos "AUTO";
+   sleep 0.1;
 } forEach [INFANTRY_HQ_GUARDS];
 
 // HQ: sniper
@@ -285,6 +303,7 @@ if (_sniperPos distance _campPos > 600) then {
 "O_ghillie_ard_F" createUnit [_sniperPos, _hqGroup, "currentSniper = this"];
 currentSniper setDir ([currentOfficier, currentSniper] call BIS_fnc_dirTo);
 currentSniper setUnitPos "DOWN";
+sleep 0.1;
 
 // HQ: group settings
 _hqGroup setBehaviour "STEALTH";
