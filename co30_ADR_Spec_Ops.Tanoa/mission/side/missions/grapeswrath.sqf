@@ -212,7 +212,7 @@ while { sideMissionUp } do {
                 _markers = _markers + [_markerName];
                 _a = _a + 1;
             } forEach _nearestDevices;
-            [OUR_SIDE, "HQ"] sideChat "проверьте карту - разведка обновила данные по терминалам";
+            hqSideChat = "Проверьте карту - разведка обновила данные по терминалам"; publicVariable "hqSideChat"; [OUR_SIDE, "HQ"] sideChat hqSideChat;
         };
         sleep 5;
     };
