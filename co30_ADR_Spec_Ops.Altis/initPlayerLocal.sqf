@@ -44,13 +44,13 @@ if !(isNil "EW_ATTACK") then {
 // Color correction (disabled because ugly after v1.6)
 //["EastWind", 0, false] call BIS_fnc_setPPeffectTemplate;
 
-// Put earplugs on when entering a helicopter
+// Put earplugs on when entering a helicopter or VTOL
 player addEventHandler [ "GetInMan", {
-    [_this select 0, _this select 2, _index] spawn {
+    [_this select 0, _this select 2] spawn {
         private ["_player", "_vehicle"];
         _player  = _this select 0;
         _vehicle = _this select 1;
-        if (_vehicle isKindOf "Helicopter") then {
+        if ((_vehicle isKindOf "Helicopter") or (_vehicle isKindOf "VTOL_Base_F")) then {
             1 fadeSound 0.33;
             waitUntil {
                 sleep 5;
@@ -61,6 +61,13 @@ player addEventHandler [ "GetInMan", {
 			};
         };
     };
+}];
+
+// Put earplugs out after leaving any vehicle
+player addEventHandler [ "GetOutMan", {
+	if (soundVolume != 1) then {
+		1 fadeSound 1;
+	};
 }];
 
 // Remove CSAT helmets from iventory
