@@ -19,3 +19,8 @@ ctrlShow [2509,false];
 ctrlShow [2850,false];
 ctrlShow [2851,false];
 disableSerialization;
+
+VAS_blur = ppEffectCreate ["DynamicBlur", 401];
+VAS_blur ppEffectEnable true;
+VAS_blur ppEffectAdjust [1.5];
+VAS_blur ppEffectCommit 0;

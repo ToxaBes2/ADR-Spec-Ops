@@ -116,3 +116,8 @@ _ctrl lnbSetPicture [[45, 0], "\A3\weapons_F\Data\UI\gear_acco_Sniper_CA.paa"];
 _ctrl lnbSetPicture [[46, 0], "\A3\Weapons_F_Mark\Data\UI\gear_acco_ams_blk_CA.paa"];
 _ctrl lnbSetPicture [[47, 0], "\A3\Weapons_F_Mark\Data\UI\gear_acco_khs_blk_CA.paa"];
 _ctrl lnbSetPicture [[48, 0], "\A3\Weapons_F_EPB\Acc\Data\UI\gear_acco_sniper02_CA.paa"];
+
+VAS_blur = ppEffectCreate ["DynamicBlur", 401];
+VAS_blur ppEffectEnable true;
+VAS_blur ppEffectAdjust [1.5];
+VAS_blur ppEffectCommit 0;

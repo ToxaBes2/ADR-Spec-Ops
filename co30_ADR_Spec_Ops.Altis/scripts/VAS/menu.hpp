@@ -11,7 +11,7 @@ class VAS_Diag {
 	movingEnable = 1;
 	enableSimulation = true;
 	onLoad = "";
-	onUnload = "VAS_box_weapons = nil; VAS_box_magazines = nil; VAS_box_items = nil; VAS_box_backpacks = nil; VAS_box_goggles = nil;"; //When the dialog is gone set these back to nil.
+	onUnload = "ppEffectDestroy VAS_blur; VAS_box_weapons = nil; VAS_box_magazines = nil; VAS_box_items = nil; VAS_box_backpacks = nil; VAS_box_goggles = nil;"; //When the dialog is gone set these back to nil.
 
 	class controlsBackground {
 		class VAS_RscTitleBackground:VAS_RscText {
@@ -425,6 +425,7 @@ class VAS_Info_Diag {
 	movingEnable = false;
 	enableSimulation = true;
 	onLoad = "[1] spawn VAS_fnc_SaveLoad; uiNamespace setVariable ['VAS_Info_Dispaly', (_this select 0)];_null = [] spawn {_this call compile preProcessFileLineNumbers 'scripts\VAS\info.sqf';};";
+	onUnload = "ppEffectDestroy VAS_blur;";
 
     class controlsBackground {
 		class VAS_BackGround : VAS_RscBG {
@@ -459,24 +460,24 @@ class VAS_Info_Diag {
 			colorText[] = {1, 1, 1, 1};
 			text = "";
 		};
-		
+
         class VAS_XD_CloseButton: VAS_XD_ButtonBase {
 			idc = 9999;
-			text = "$STR_VAS_Main_btnClose"; 
-			action = "closeDialog 0";
+			text = "$STR_VAS_Main_btnClose";
+			action = "closeDialog 0;";
 			default = true;
 			x = "SafeZoneX + SafeZoneW - 0.3";
 			y = "SafeZoneY + SafeZoneH - 0.07";
 			colorFocused[] = { 1, 1, 1, 1 };
 			colorBackgroundFocused[] = { 1, 1, 1, 0 };
-		};		
+		};
 
         class Table: VAS_RscListNBox {
             idc = 7777;
             type = 102;
             columns[] = {0.005,0.055,0.15,0.25,0.33,0.42,0.54,0.62,0.68,0.75};
             drawSideArrows = 0;
-            idcLeft = -1; 
+            idcLeft = -1;
             idcRight = -1;
             maxHistoryDelay = 1;
             rowHeight = 0.05;
@@ -486,13 +487,13 @@ class VAS_Info_Diag {
 			h = "SafeZoneH - 0.3";
 			font = "PuristaLight";
 	        sizeEx = 0.03921;
-		    soundSelect[] = {"", 0.1, 1}; 
+		    soundSelect[] = {"", 0.1, 1};
 		    colorBackground[] = {0.149, 0.196, 0.219, 0.9};
 		    colorPicture[] = {1,1,1,1};
             colorPictureSelected[] = {1,1,1,1};
             colorPictureDisabled[] = {1,1,1,1};
 		    class ListScrollBar {
-		    	width = 0.7; 
+		    	width = 0.7;
 		    	height = 0.7;
 		    	scrollSpeed = 0.01;
 		    	arrowEmpty = "\A3\ui_f\data\gui\cfg\scrollbar\arrowEmpty_ca.paa";
@@ -500,7 +501,7 @@ class VAS_Info_Diag {
 		    	border = "\A3\ui_f\data\gui\cfg\scrollbar\border_ca.paa";
 		    	thumb = "\A3\ui_f\data\gui\cfg\scrollbar\thumb_ca.paa";
 		    	color[] = {1,1,1,1};
-		    };			        
+		    };
         };
 
         class Table_Header : Table {
@@ -514,7 +515,7 @@ class VAS_Info_Diag {
 			colorSelectBackground[] = {0.149, 0.196, 0.219, 0};
 			colorSelectBackground2[] = {0.149, 0.196, 0.219, 0};
 			class ListScrollBar {
-		    	width = 0; 
+		    	width = 0;
 		    	height = 0;
 		    	scrollSpeed = 0.01;
 		    	arrowEmpty = "\A3\ui_f\data\gui\cfg\scrollbar\arrowEmpty_ca.paa";
@@ -522,7 +523,7 @@ class VAS_Info_Diag {
 		    	border = "\A3\ui_f\data\gui\cfg\scrollbar\border_ca.paa";
 		    	thumb = "\A3\ui_f\data\gui\cfg\scrollbar\thumb_ca.paa";
 		    	color[] = {1,1,1,1};
-		    };	
+		    };
         };
 	};
 };
