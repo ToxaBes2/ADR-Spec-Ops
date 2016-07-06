@@ -2,6 +2,9 @@
 Author:	ToxaBes
 Description: Fill allowed weapons dialog
 */
+
+private ["_display", "_title", "_head", "_ctrl", "_normalFont", "_bigFont"];
+
 disableSerialization;
 _display = uiNamespace getVariable['VAS_Info_Dispaly', displayNull];
 
