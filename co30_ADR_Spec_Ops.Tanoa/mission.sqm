@@ -8,7 +8,7 @@ class EditorData
 	toggles=33;
 	class ItemIDProvider
 	{
-		nextID=2277;
+		nextID=2279;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={6859.4922,45.366348,7173.4976};
-		dir[]={0.76631516,-0.58687723,-0.26186907};
-		up[]={0.55539215,0.80961555,-0.18978894};
-		aside[]={-0.32340509,1.9599684e-006,-0.94638318};
+		pos[]={6878.333,12.07535,7286.7349};
+		dir[]={-0.86636907,-0.44743726,0.22236772};
+		up[]={-0.43346915,0.89425242,0.11125465};
+		aside[]={0.24863926,1.6293488e-006,0.96871787};
 	};
 };
 binarizationWanted=0;
@@ -357,7 +357,7 @@ class AddonsMetaData
 randomSeed=10629672;
 class ScenarioData
 {
-	author="ToxaBes, evil_c0okie";
+	author="ToxaBes & evil_c0okie";
 	overViewPicture="media\images\adr_specops_tanoa_loading.jpg";
 	overViewPictureLocked="media\images\adr_specops_tanoa_loading.jpg";
 	loadScreen="media\images\adr_specops_tanoa_loading.jpg";
@@ -27046,8 +27046,8 @@ class Mission
 						};
 						class Attribute1
 						{
-							property="enableStamina";
-							expression="_this enablestamina _value;";
+							property="face";
+							expression="_this setface _value;";
 							class Value
 							{
 								class data
@@ -27056,10 +27056,10 @@ class Mission
 									{
 										type[]=
 										{
-											"BOOL"
+											"STRING"
 										};
 									};
-									value=0;
+									value="WhiteHead_15";
 								};
 							};
 						};
@@ -27122,8 +27122,8 @@ class Mission
 						};
 						class Attribute5
 						{
-							property="face";
-							expression="_this setface _value;";
+							property="enableStamina";
+							expression="_this enablestamina _value;";
 							class Value
 							{
 								class data
@@ -27132,10 +27132,10 @@ class Mission
 									{
 										type[]=
 										{
-											"STRING"
+											"BOOL"
 										};
 									};
-									value="WhiteHead_15";
+									value=0;
 								};
 							};
 						};
