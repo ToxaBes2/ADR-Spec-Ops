@@ -27,7 +27,7 @@ if (_bunkerType == 1) then {
     _enemiesArray = _enemiesArray + [_bunkerGroup];
 
     for "_i" from 1 to 2 do {
-        _groundPos = [_bunkerPos, 10, 50, 2, 0, 10, 0] call BIS_fnc_findSafePos;
+        _groundPos = [_bunkerPos, 10, 50, 2, 0, 10, 0, [], _bunkerPos] call BIS_fnc_findSafePos;
         _patrolGroup = [_groundPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> ENEMY_SIDE_STR >> "OPF_T_F" >> "Infantry" >> "O_T_InfSentry")] call BIS_fnc_spawnGroup;
         [_patrolGroup, true] call QS_fnc_moveToHC;
         {
@@ -95,7 +95,7 @@ if (_bunkerType == 1) then {
 
 // patrols (2x2 bots)
 for "_i" from 1 to 2 do {
-    _groundPos = [_bunkerPos, 40, 80, 2, 0, 10, 0] call BIS_fnc_findSafePos;
+    _groundPos = [_bunkerPos, 40, 80, 2, 0, 10, 0, [], _bunkerPos] call BIS_fnc_findSafePos;
     _patrolGroup = [_groundPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> ENEMY_SIDE_STR >> "OPF_T_F" >> "Infantry" >> "O_T_InfSentry")] call BIS_fnc_spawnGroup;
     [_patrolGroup, true] call QS_fnc_moveToHC;
     [_patrolGroup, _bunkerPos, 25] call BIS_fnc_taskPatrol;
@@ -117,7 +117,7 @@ if (_hasMines) then {
 
     // patrols (2x2 bots)
     for "_i" from 1 to 2 do {
-        _groundPos = [_flatPos, 0, 40, 2, 0, 10, 0] call BIS_fnc_findSafePos;
+        _groundPos = [_flatPos, 0, 40, 2, 0, 10, 0, [], _flatPos] call BIS_fnc_findSafePos;
         _patrolGroup = [_groundPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> ENEMY_SIDE_STR >> "OPF_T_F" >> "Infantry" >> "O_T_InfSentry")] call BIS_fnc_spawnGroup;
         [_patrolGroup, true] call QS_fnc_moveToHC;
         [_patrolGroup, _flatPos, 25] call BIS_fnc_taskPatrol;
@@ -335,7 +335,7 @@ if (random 10 > 6) then {
     };
     _direction = [(getMarkerPos "respawn_west"), (getMarkerPos currentAO)] call BIS_fnc_dirTo;
     _targetPos = [(getMarkerPos "respawn_west"), _medianaRes, _direction] call BIS_fnc_relPos;
-    _atPos = [_targetPos, 1, 500, 2, 0, 2, 0] call BIS_fnc_findSafePos;
+    _atPos = [_targetPos, 1, 500, 2, 0, 2, 0, [], _targetPos] call BIS_fnc_findSafePos;
     if (random 10 > 5) then {
         _null = [_atPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "Infantry" >> "O_T_InfTeam_AT")] call BIS_fnc_spawnGroup;
     } else {

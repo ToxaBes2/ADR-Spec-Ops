@@ -36,7 +36,7 @@ while {!_accepted} do {
 	};
 };
 
-_objPos = [_flatPos, 15, 30, 10, 0, 0.5, 0] call BIS_fnc_findSafePos;
+_objPos = [_flatPos, 15, 30, 10, 0, 0.5, 0, [], _flatPos] call BIS_fnc_findSafePos;
 
 // SPAWN OBJECTIVE
 sideObj = "Land_Radar_Small_F" createVehicle _flatPos;

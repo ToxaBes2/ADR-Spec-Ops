@@ -184,14 +184,14 @@ for "_c" from 0 to 109 do {
 _unitsArray = _unitsArray + _minesArray;
 
 // set Cargo HQ
-_cargoPos = [_startPoint, 0, 85, 2, 0, 5, 0] call BIS_fnc_findSafePos;
+_cargoPos = [_startPoint, 0, 85, 2, 0, 5, 0, [], _startPoint] call BIS_fnc_findSafePos;
 _cargoHQ = createVehicle ["Land_Cargo_HQ_V4_F", _cargoPos, [], 0, "CAN_COLLIDE"];
 _unitsArray = _unitsArray + [_cargoHQ];
 
 // set 3 Cargo Houses
 _cargoHouses = [];
 for "_i" from 1 to 3 do {
-    _cargoPos = [_startPoint, 0, 85, 2, 0, 5, 0] call BIS_fnc_findSafePos;
+    _cargoPos = [_startPoint, 0, 85, 2, 0, 5, 0, [], _startPoint] call BIS_fnc_findSafePos;
     _cargoHouse = createVehicle ["Land_Cargo_House_V4_F", _cargoPos, [], 0, "CAN_COLLIDE"];
     _cargoHouses = _cargoHouses + [_cargoHouse];
 };
@@ -205,7 +205,7 @@ _unitsArray = _unitsArray + _cargoHouses;
 // set 6 Bag Bunkers for static guards
 _bunkerTowers = [];
 for "_i" from 1 to 6 do {
-    _cargoPos = [_startPoint, 100, 170, 3, 0, 2, 0] call BIS_fnc_findSafePos;
+    _cargoPos = [_startPoint, 100, 170, 3, 0, 2, 0, [], _startPoint] call BIS_fnc_findSafePos;
     _cargoHouse = createVehicle ["Land_BagBunker_01_small_green_F", _cargoPos, [], 0, "CAN_COLLIDE"];
     _cargoHouse setDir ([_cargoHouse, _startPoint] call BIS_fnc_dirTo);
     _bunkerTowers = _bunkerTowers + [_cargoHouse];

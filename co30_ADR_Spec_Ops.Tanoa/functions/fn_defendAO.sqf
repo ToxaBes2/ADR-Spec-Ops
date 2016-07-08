@@ -22,7 +22,7 @@ _vehicles = [];
 
 // spawn patrols
 for "_counter" from 1 to _infantry do {
-    _groundPos = [_startPoint, 500, 600, 2, 0, 10, 0] call BIS_fnc_findSafePos;
+    _groundPos = [_startPoint, 500, 600, 2, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
     _patrolGroup = [_groundPos, _side, (configfile >> "CfgGroups" >> "EAST" >> "OPF_T_F" >> "Infantry" >> "O_T_InfSentry")] call BIS_fnc_spawnGroup;
     [_patrolGroup, true] call QS_fnc_moveToHC;
     [_patrolGroup, _startPoint] call BIS_fnc_taskAttack;
@@ -41,7 +41,7 @@ for "_counter" from 1 to _infantry do {
 // spawn trucks with infantry or light vehicles
 for "_counter" from 1 to _lightVehiclesGroups do {
 	_bGroup = createGroup _side;
-	_groundPos = [_startPoint, 600, 750, 2, 1, 10, 0] call BIS_fnc_findSafePos;
+	_groundPos = [_startPoint, 600, 750, 2, 1, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
 	if (surfaceiswater _groundPos) then {
 		_vehType = "O_T_Boat_Armed_01_hmg_F";
 		_isWater = true;
@@ -90,7 +90,7 @@ for "_counter" from 1 to _lightVehiclesGroups do {
 // spawn armored vehicles
 for "_counter" from 1 to _armoredVehicles do {
 	_cGroup = createGroup _side;
-    _groundPos = [_startPoint, 700, 1000, 2, 0, 10, 0] call BIS_fnc_findSafePos;
+    _groundPos = [_startPoint, 700, 1000, 2, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
     _vehType = ["O_T_APC_Tracked_02_AA_ghex_F","O_T_APC_Tracked_02_cannon_ghex_F","O_T_APC_Wheeled_02_rcws_ghex_F","O_T_MBT_02_cannon_ghex_F"] call BIS_fnc_selectRandom;
     _vehicle = createVehicle [_vehType, _groundPos, [], 0, "CAN_COLLIDE"];
     _vehicles = _vehicles + [_vehicle];
@@ -117,7 +117,7 @@ for "_counter" from 1 to _helicopterGroups do {
 	} else {
 	    _vehType = ["O_Heli_Attack_02_F", "I_Heli_light_03_F", "O_Heli_Light_02_F"] call BIS_fnc_selectRandom;
     };
-	_groundPos = [_startPoint, 2000, 3000, 1, 0, 10, 0] call BIS_fnc_findSafePos;
+	_groundPos = [_startPoint, 2000, 3000, 1, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
     _vehicle = createVehicle [_vehType, _groundPos, [], 0, "FLY"];
     _vehicles = _vehicles + [_vehicle];
     createVehicleCrew _vehicle;

@@ -7,7 +7,7 @@ _startPoint = _this select 0;
 _vehicle = _this select 1;
 _grp = _this select 2;
 _cargoGrp = _this select 3;
-_pos = [_startPoint, 150, 300, 1, 0, 10, 0] call BIS_fnc_findSafePos;
+_pos = [_startPoint, 150, 300, 1, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
 {_x allowFleeing 0} forEach units _grp;
 {_x allowFleeing 0} forEach units _cargoGrp;
 {_x addBackpack "B_Parachute"} forEach units _cargoGrp;
