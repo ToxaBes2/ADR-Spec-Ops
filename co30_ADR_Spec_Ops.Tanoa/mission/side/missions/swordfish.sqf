@@ -228,10 +228,7 @@ for "_c" from 0 to 3 do {
 };
 
 // HQ: boats
-_boatPos1 = [_startPoint, 400, 1000, 5, 0, 0.2, 1] call BIS_fnc_findSafePos;
-if (_startPoint distance _boatPos1 > 1000) then {
-    _boatPos1 = [_startPoint, 300, 2500, 5, 0, 0.3, 1] call BIS_fnc_findSafePos;
-};
+_boatPos1 = [_startPoint, [400, 1000], 5, 0.2] call QS_fnc_getPosShore;
 _dirBoat1 = random 360;
 _boat1 = createVehicle ["O_T_Boat_Transport_01_F", _boatPos1, [], 0, "CAN_COLLIDE"];
 _boat1 setDir _dirBoat1;
