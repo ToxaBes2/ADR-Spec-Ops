@@ -280,7 +280,7 @@ officer addHeadgear "H_Cap_red";
 sleep 0.5;
 _distance = [_posATL, getPos officer] call BIS_fnc_distance2D;
 if (_distance > 100) then {
-    _posATL = [(getPos _cargoHQ), 0, 20, 3, 0, 15, 0] call BIS_fnc_findSafePos;
+    _posATL = [(getPos _cargoHQ), 0, 20, 3, 0, 15, 0, [], (getPos _cargoHQ)] call BIS_fnc_findSafePos;
     officer setPos _posATL;
 };
 officer allowDamage true;
