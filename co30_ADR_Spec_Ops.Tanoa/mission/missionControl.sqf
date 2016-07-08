@@ -11,19 +11,18 @@ _prioList = [
 	"priorityPower"
 ];
 _missionList = [
-	//"HQside",
-	//"destroyUrban",
-	//"secureSide",
-	//"rescueHostages",
-    //"heliCrash",
+	"HQside",
+	"destroyUrban",
+	"secureSide",
+	"rescueHostages",
+    "heliCrash",
 	//"convoy",     // NOT DONE
 	//"snatch",     // NOT DONE
-	"swordfish"//,
-	//"yellowfog",
-	//"grapeswrath"
+	"swordfish",
+	"yellowfog",
+	"grapeswrath"
 ];
 while { true } do {
-	/*
 	if (PARAMS_AO == 1) then {
 	    currentMission = [] spawn {_this call compile preProcessFileLineNumbers "mission\main\missions\AOattack.sqf"};
 	    _chance = random 10;
@@ -44,7 +43,6 @@ while { true } do {
 	    	scriptDone currentMission;
 	    };
     };
-	*/
 	if (PARAMS_SideObjectives == 1) then {
         hqSideChat = "Вторичная цель выявлена, ждите указаний!"; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
 	    _mission = _missionList call BIS_fnc_selectRandom;
