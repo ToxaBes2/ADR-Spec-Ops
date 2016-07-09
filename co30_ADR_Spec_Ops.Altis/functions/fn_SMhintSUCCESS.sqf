@@ -1,6 +1,6 @@
-private ["_veh", "_vehName", "_vehVarname", "_completeText", "_reward", "_GAU", "_mortar", "_GMG", "_HEL"];
+private ["_smRewards", "_smMarkerList", "_veh", "_vehName", "_vehVarname", "_marker", "_spawn", "_reward", "_completeText", "_lockTime"];
 
-smRewards =
+_smRewards =
 [
 	["То-199 «Неофрон» (штурмовик)", "O_Plane_CAS_02_F"],
 	["А-164 «Вайпаут» (штурмовик)", "B_Plane_CAS_01_F"],
@@ -15,7 +15,6 @@ smRewards =
 	["MBT-52 «Кума»", "I_MBT_03_cannon_F"],
 	["M2A4 «Сламмер» UP", "B_MBT_01_TUSK_F"],
 	["Страйдер с пулеметом", "I_MRAP_03_hmg_F"],
-	["WY-55 Хелкат c 35мм пушкой", "I_Heli_light_03_F"],
 	["FV-720 «Мора»", "I_APC_tracked_03_cannon_F"],
 	["MSE-3 «Марид» с НУРС", "O_APC_Wheeled_02_rcws_F"],
 	["M2A1 «Сламмер»", "B_MBT_01_cannon_F"],
@@ -26,13 +25,21 @@ smRewards =
 smMarkerList =
 ["smReward1", "smReward2", "smReward3", "smReward4", "smReward5", "smReward6", "smReward7", "smReward8", "smReward9", "smReward10", "smReward11", "smReward12", "smReward13", "smReward14", "smReward15", "smReward16", "smReward17", "smReward18", "smReward19", "smReward20", "smReward21", "smReward22", "smReward23", "smReward24", "smReward25", "smReward26", "smReward27"];
 
-_veh = smRewards call BIS_fnc_selectRandom;
+_veh = selectRandom _smRewards;
 
 _vehName = _veh select 0;
 _vehVarname = _veh select 1;
 
-_reward = createVehicle [_vehVarname, getMarkerPos "smReward1", smMarkerList, 0, "NONE"];
+_reward = createVehicle [_vehVarname, getMarkerPos "smReward1", _smMarkerList, 0, "NONE"];
+
 waitUntil {!isNull _reward};
+
+if (_vehVarname in ["B_T_UAV_03_F", "O_T_UAV_04_CAS_F"]) then {
+	createVehicleCrew _reward;
+	if (_vehVarname == "O_T_UAV_04_CAS_F") then {
+		(crew _reward) joinSilent (createGroup WEST);
+	};
+};
 
 [_reward] call QS_fnc_killerCatcher;
 _reward setDir 135;
@@ -43,10 +50,10 @@ if (count sideMarkerText == 2) then {
 };
 
 if (_this select 0) then {
-	_completeText = format["<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#C6FF00'>Выполнена</t><br/>____________________<br/>За успешное проведение, непосредственные участники задания получают в награду:<br/><br/>%1.<br/><br/>Выдвигайтесь обратно на базу или прямиком на точку захвата.</t>", _vehName];
+	_completeText = format["<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#C6FF00'>Выполнена</t><br/>____________________<br/>За успешное проведение, непосредственные участники задания получают в награду:<br/><br/><t size='1.1' color='#FFC107'>%1</t><br/><br/>Выдвигайтесь обратно на базу или прямиком на точку захвата.</t>", _vehName];
 	showNotification = ["CompletedSpecMission", sideMarkerText];
 } else {
-	_completeText = format["<t align='center'><t size='2.2'>Допзадание</t><br/><t size='1.5' color='#C6FF00'>Выполнено</t><br/>____________________<br/>За успешное проведение, непосредственные участники задания получают в награду:<br/><br/>%1.<br/><br/>Выдвигайтесь обратно на базу или прямиком на точку захвата.</t>", _vehName];
+	_completeText = format["<t align='center'><t size='2.2'>Допзадание</t><br/><t size='1.5' color='#C6FF00'>Выполнено</t><br/>____________________<br/>За успешное проведение, непосредственные участники задания получают в награду:<br/><br/><t size='1.1' color='#FFC107'>%1</t><br/><br/>Выдвигайтесь обратно на базу или прямиком на точку захвата.</t>", _vehName];
 	showNotification = ["CompletedSideMission", sideMarkerText];
 };
 
@@ -55,27 +62,30 @@ GlobalHint = _completeText; publicVariable "GlobalHint"; hint parseText _complet
 publicVariable "showNotification";
 showNotification = ["Reward", _vehName]; publicVariable "showNotification";
 
-if (_reward isKindOf "I_Heli_light_03_F") then {
-	_reward addWeapon ("autocannon_35mm");
-	_reward addMagazine ("680Rnd_35mm_AA_shells_Tracer_Yellow");
-	_reward addWeapon "Laserdesignator_mounted";
- 	_reward addMagazine "Laserbatteries";
-};
+// Add stuff to custom reward vehicles
+call {
+	if (_reward isKindOf "I_APC_Wheeled_03_cannon_F") exitWith {
+		_reward setObjectTextureGlobal [0, "A3\Armor_F_Gamma\APC_Wheeled_03\Data\apc_wheeled_03_ext_co.paa"];
+		_reward setObjectTextureGlobal [1, "A3\Armor_F_Gamma\APC_Wheeled_03\Data\apc_wheeled_03_ext2_co.paa"];
+		_reward setObjectTextureGlobal [2, "A3\Armor_F_Gamma\APC_Wheeled_03\Data\rcws30_co.paa"];
+		_reward setObjectTextureGlobal [3, "A3\Armor_F_Gamma\APC_Wheeled_03\Data\apc_wheeled_03_ext_alpha_co.paa"];
+	};
 
-if (_reward isKindOf "O_APC_Wheeled_02_rcws_F") then {
-	_reward addWeapon ("Rocket_04_AP_Plane_CAS_01_F");
-	_reward addMagazine ("7Rnd_Rocket_04_AP_F");
-	_reward addWeapon ("Rocket_04_HE_Plane_CAS_01_F");
-	_reward addMagazine ("7Rnd_Rocket_04_HE_F");
-};
+	if (_reward isKindOf "O_APC_Wheeled_02_rcws_F") exitWith {
+		_reward addWeapon ("Rocket_04_AP_Plane_CAS_01_F");
+		_reward addMagazine ("7Rnd_Rocket_04_AP_F");
+		_reward addWeapon ("Rocket_04_HE_Plane_CAS_01_F");
+		_reward addMagazine ("7Rnd_Rocket_04_HE_F");
+	};
 
-if (_reward isKindOf "B_MBT_01_arty_F") then {
- 	_reward removeMagazine ("6Rnd_155mm_Mo_AT_mine");
- 	_reward removeMagazine ("6Rnd_155mm_Mo_mine");
+	if (_reward isKindOf "B_MBT_01_arty_F") exitWith {
+		_reward removeMagazine ("6Rnd_155mm_Mo_AT_mine");
+		_reward removeMagazine ("6Rnd_155mm_Mo_mine");
+	};
 };
 
 // Setting reward vehicle timmer.
-_lockTime = 600;
+_lockTime = 300;
 
 // Spawn vehicle lock, timer and Draw3D EH in different thread.
 [_reward, _lockTime] spawn {
