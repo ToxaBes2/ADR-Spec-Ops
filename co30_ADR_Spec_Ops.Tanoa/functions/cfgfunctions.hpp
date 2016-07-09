@@ -44,7 +44,7 @@ class QS
 		class garrisonFortFIA {};
 		class garrisonFortIND {};
 		class getMainAO {};
-		class getPosShore {};
+		class getShorePos {};
 		class HMDLaserTarget {};
 		class killerCatcher {};
 		class loadInventory {};

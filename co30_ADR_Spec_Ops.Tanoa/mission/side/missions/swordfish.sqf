@@ -228,7 +228,7 @@ for "_c" from 0 to 3 do {
 };
 
 // HQ: boats
-_boatPos1 = [_startPoint, [400, 1000], 5, 0.2] call QS_fnc_getPosShore;
+_boatPos1 = [_startPoint, [400, 1000], 5, 0.2] call QS_fnc_getShorePos;
 _dirBoat1 = random 360;
 _boat1 = createVehicle ["O_T_Boat_Transport_01_F", _boatPos1, [], 0, "CAN_COLLIDE"];
 _boat1 setDir _dirBoat1;
