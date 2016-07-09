@@ -32,7 +32,7 @@ _targets = [
 ];
 
 // select correct place for mission
-_position = _targets call BIS_fnc_selectRandom;
+_position = selectRandom _targets;
 _flatPos  = _position select 0;
 
 // set zone area
@@ -70,11 +70,11 @@ _nearestDevices = _flatPos nearObjects [INFANTRY_TERMINAL, 200];
 
 // spawn 3 devices
 while {count _nearestDevices < 3} do {
-    _groundPos = _goodPoses call BIS_fnc_selectRandom;
+    _groundPos = selectRandom _goodPoses;
     _dst = _devicePos distance (_groundPos select 1);
     _dst = _dst + (floor (random 70));
     while {_dst < 30} do {
-        _groundPos = _goodPoses call BIS_fnc_selectRandom;
+        _groundPos = selectRandom _goodPoses;
     };
     _house = _groundPos select 0;
     _devicePos = _groundPos select 1;
@@ -96,7 +96,7 @@ while {count _nearestDevices < 3} do {
     _nearestDevices = _flatPos nearObjects [INFANTRY_TERMINAL, 200];
 
     // protect device with guards
-    _guardsCount = [3,4,5,6] call BIS_fnc_selectRandom;
+    _guardsCount = selectRandom [3,4,5,6];
     _guardGroup = [(getPos _house), 8, _guardsCount, ENEMY_SIDE] call QS_fnc_FillBots;
     _enemiesArray = _enemiesArray + [_guardGroup];
     {

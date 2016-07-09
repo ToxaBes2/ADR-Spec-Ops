@@ -39,7 +39,7 @@ _targets = [
 ];
 
 // select correct place for mission
-_position = _targets call BIS_fnc_selectRandom;
+_position = selectRandom _targets;
 _flatPos  = _position select 1;
 
 // set zone area
@@ -195,7 +195,7 @@ for "_i" from 0 to ((count _vehicles) - 1) do {
             sleep 0.2;
             if (_cargoPos select 0 > 0)then {
                 for "_i" from 1 to _cargoPlaces do {
-                    ([INFANTRY_SOLDIERS] call BIS_fnc_selectRandom) createUnit [_cargoPos, _convoyGroup, "currentSoldier = this"];
+                    (selectRandom [INFANTRY_SOLDIERS]) createUnit [_cargoPos, _convoyGroup, "currentSoldier = this"];
                     sleep 0.1;
                     currentSoldier moveInCargo _spawned;
                 };

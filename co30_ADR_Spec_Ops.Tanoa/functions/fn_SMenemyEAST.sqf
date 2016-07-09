@@ -30,7 +30,7 @@ _smSniperTeam = createGroup ENEMY_SIDE;
 //---------- INFANTRY RANDOM
 for "_x" from 0 to (3 + (random 4)) do {
 	_randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call BIS_fnc_randomPos;
-	_infteamPatrol = [_randomPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "Infantry" >> [INF_TEAMS] call BIS_fnc_selectRandom)] call BIS_fnc_spawnGroup;
+	_infteamPatrol = [_randomPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "Infantry" >> selectRandom [INF_TEAMS])] call BIS_fnc_spawnGroup;
 	[_infteamPatrol, getPos sideObj, 100] call BIS_fnc_taskPatrol;
 
 	_enemiesArray = _enemiesArray + [_infteamPatrol];
@@ -48,7 +48,7 @@ for "_x" from 0 to 1 do {
 
 //---------- VEHICLE RANDOM
 _randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call BIS_fnc_randomPos;
-_data = [_randomPos, (random 360), ([VEH_TYPES] call BIS_fnc_selectRandom), ENEMY_SIDE] call BIS_fnc_spawnVehicle;
+_data = [_randomPos, (random 360), (selectRandom [VEH_TYPES]), ENEMY_SIDE] call BIS_fnc_spawnVehicle;
 _SMveh1 = _data select 0;
 _SMvehPatrol = _data select 2;
 
@@ -63,7 +63,7 @@ _enemiesArray = _enemiesArray + [_SMvehPatrol];
 
 //---------- VEHICLE RANDOM
 _randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call BIS_fnc_randomPos;
-_data = [_randomPos, (random 360), ([VEH_TYPES] call BIS_fnc_selectRandom), ENEMY_SIDE] call BIS_fnc_spawnVehicle;
+_data = [_randomPos, (random 360), (selectRandom [VEH_TYPES]), ENEMY_SIDE] call BIS_fnc_spawnVehicle;
 _SMveh2 = _data select 0;
 _SMvehPatrol = _data select 2;
 [_SMvehPatrol, getPos sideObj, 150] call BIS_fnc_taskPatrol;

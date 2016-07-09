@@ -67,7 +67,7 @@ if (_chance < 5) then {
 } else {
     _bunkerType = 2;
     _bunkerPositions = _target select 2;
-    _bunkerPosition = _bunkerPositions call BIS_fnc_selectRandom;
+    _bunkerPosition = selectRandom _bunkerPositions;
     _bunkerPos = [_bunkerPosition select 0, _bunkerPosition select 1, 0];
     _smallZ = _bunkerPosition select 2;
     _bigZ = _bunkerPosition select 3;
@@ -99,7 +99,7 @@ while {_res < 1} do {
         _res = 0;
     };
 };
-_tower = [RADIO_TOWERS] call BIS_fnc_selectRandom;
+_tower = selectRandom [RADIO_TOWERS];
 radioTower = _tower createVehicle _flatPos;
 waitUntil { sleep 0.5; alive radioTower };
 radioTower setVectorUp [0, 0, 1];
@@ -145,7 +145,7 @@ if (_chance < PARAMS_RadioTowerMineFieldChance) then {
         _campObjects = ["Land_Cargo_Patrol_V4_F"];
 	};
 } else {
-    _type = ["OutpostA", "OutpostE"] call BIS_fnc_selectRandom;
+    _type = selectRandom ["OutpostA", "OutpostE"];
 	if (_type == "OutpostE") then {
         _campPos = [(_flatPos select 0) - 2, (_flatPos select 1) + 10, _flatPos select 2];
         _campObjects = ["Land_HBarrier_5_F","Land_Cargo_House_V1_F","Land_Razorwire_F","Land_HBarrier_1_F","Land_HBarrier_3_F","Land_PortableLight_double_F","Land_PaperBox_closed_F","Land_WaterTank_F","Land_ToiletBox_F","Land_TTowerSmall_2_F","Land_GarbageBarrel_01_F","Land_Cargo_Patrol_V4_F"];

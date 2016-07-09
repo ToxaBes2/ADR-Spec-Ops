@@ -1,8 +1,8 @@
 /*
-Author: 
+Author:
 
 	Quiksilver
-	
+
 Last modified:
 
 	25/04/2014
@@ -11,7 +11,7 @@ Description:
 
 	Spawn BLUFOR enemy around side objectives.
 	Enemy should have backbone AA/AT + random composition.
-	
+
 ___________________________________________*/
 
 //---------- CONFIG
@@ -32,7 +32,7 @@ _smSniperTeam = createGroup ENEMY_SIDE;
 
 for "_x" from 0 to (3 + (random 4)) do {
 	_randomPos = [[[getPos priorityObj1, 300], []], ["water", "out"]] call BIS_fnc_randomPos;
-	_infteamPatrol = [_randomPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> [INF_TEAMS] call BIS_fnc_selectRandom)] call BIS_fnc_spawnGroup;
+	_infteamPatrol = [_randomPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> selectRandom [INF_TEAMS])] call BIS_fnc_spawnGroup;
 	[_infteamPatrol, getPos priorityObj1, 100] call BIS_fnc_taskPatrol;
 
 	_enemiesArray = _enemiesArray + [_infteamPatrol];
@@ -52,7 +52,7 @@ for "_x" from 0 to 1 do {
 //---------- VEHICLE RANDOM
 
 _randomPos = [[[getPos priorityObj1, 300], []], ["water", "out"]] call BIS_fnc_randomPos;
-_data = [_randomPos, (random 360), ([VEH_TYPES] call BIS_fnc_selectRandom), ENEMY_SIDE] call BIS_fnc_spawnVehicle;
+_data = [_randomPos, (random 360), (selectRandom [VEH_TYPES]), ENEMY_SIDE] call BIS_fnc_spawnVehicle;
 _SMveh1 = _data select 0;
 _SMvehPatrol = _data select 2;
 
@@ -63,10 +63,10 @@ sleep 0.1;
 _enemiesArray = _enemiesArray + [_SMveh1];
 sleep 0.1;
 _enemiesArray = _enemiesArray + [_SMvehPatrol];
-//---------- VEHICLE RANDOM	
+//---------- VEHICLE RANDOM
 
 _randomPos = [[[getPos priorityObj1, 300], []], ["water", "out"]] call BIS_fnc_randomPos;
-_data = [_randomPos, (random 360), ([VEH_TYPES] call BIS_fnc_selectRandom), ENEMY_SIDE] call BIS_fnc_spawnVehicle;
+_data = [_randomPos, (random 360), (selectRandom [VEH_TYPES]), ENEMY_SIDE] call BIS_fnc_spawnVehicle;
 _SMveh2 = _data select 0;
 _SMvehPatrol = _data select 2;
 _SMveh2 lock 0;
@@ -101,7 +101,7 @@ _enemiesArray = _enemiesArray + [_SMaa];
 
 {
 	_newGrp = [_x] call QS_fnc_garrisonFortEAST;
-	if (!isNull _newGrp) then { 
+	if (!isNull _newGrp) then {
 		_enemiesArray = _enemiesArray + [_newGrp];
 	};
 } forEach (getPos priorityObj1 nearObjects ["House", 150]);

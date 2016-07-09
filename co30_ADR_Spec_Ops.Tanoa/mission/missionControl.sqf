@@ -28,10 +28,10 @@ while { true } do {
 	    _chance = random 10;
         if (_chance < PARAMS_PriorityObjectivesChance) then {
         	sleep (_loopTimeout * 3);
-        	_prio = _prioList call BIS_fnc_selectRandom;
+        	_prio = selectRandom _prioList;
 	        if !(isNil "LAST_PRIO_MISSION") then {
                 while {_prio == LAST_PRIO_MISSION} do {
-                    _prio = _prioList call BIS_fnc_selectRandom;
+                    _prio = selectRandom _prioList;
                 };
 	        };
 	        LAST_PRIO_MISSION = _prio;
@@ -45,10 +45,10 @@ while { true } do {
     };
 	if (PARAMS_SideObjectives == 1) then {
         hqSideChat = "Вторичная цель выявлена, ждите указаний!"; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
-	    _mission = _missionList call BIS_fnc_selectRandom;
+	    _mission = selectRandom _missionList;
 	    if !(isNil "LAST_SIDE_MISSION") then {
             while {_mission == LAST_SIDE_MISSION} do {
-                _mission = _missionList call BIS_fnc_selectRandom;
+                _mission = selectRandom _missionList;
             };
 	    };
 	    LAST_SIDE_MISSION = _mission;

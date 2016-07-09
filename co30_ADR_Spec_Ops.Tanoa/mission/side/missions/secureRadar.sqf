@@ -7,11 +7,11 @@ Description: Get radar telemetry from enemy radar site, then destroy it.
 
 private ["_objPos", "_flatPos", "_accepted", "_position", "_randomDir", "_hangar", "_x", "_enemiesArray", "_briefing", "_fuzzyPos", "_unitsArray", "_dummy", "_object", "_tower1", "_tower2", "_tower3"];
 
-_c4Message = [
+_c4Message = selectRandom [
 	"Радиолокационные данные захвачены. C-4 активирован! 30 секунд до детонации.",
 	"Телеметрические данные радара получены. Взрывчатка установлена! 30 секунд до взрыва.",
 	"Данные радара считаны. Заряд установлен! 30 секунд до взрыва."
-] call BIS_fnc_selectRandom;
+];
 
 // FIND SAFE POSITION FOR OBJECTIVE
 _flatPos = [0, 0, 0];
@@ -47,9 +47,9 @@ house = "Land_Cargo_House_V4_F" createVehicle _objPos;
 house setDir random 360;
 house allowDamage false;
 
-_dummy = [explosivesDummy1,explosivesDummy2] call BIS_fnc_selectRandom;
+_dummy = selectRandom [explosivesDummy1,explosivesDummy2];
 sleep 0.3;
-_object = [research1,research2] call BIS_fnc_selectRandom;
+_object = selectRandom [research1,research2];
 sleep 0.3;
 { _x enableSimulation true; } forEach [researchTable, _object];
 sleep 0.3;

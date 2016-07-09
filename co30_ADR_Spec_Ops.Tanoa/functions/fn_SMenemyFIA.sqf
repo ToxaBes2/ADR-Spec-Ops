@@ -27,7 +27,7 @@ _x = 0;
 for "_x" from 0 to (2 + (random 4)) do {
 	_infteamPatrol = createGroup ENEMY_SIDE;
 	_randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call BIS_fnc_randomPos;
-	_infteamPatrol = [_randomPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "West" >> "Guerilla" >> "Infantry" >> [INF_TEAMS] call BIS_fnc_selectRandom)] call BIS_fnc_spawnGroup;
+	_infteamPatrol = [_randomPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "West" >> "Guerilla" >> "Infantry" >> selectRandom [INF_TEAMS])] call BIS_fnc_spawnGroup;
 	[_infteamPatrol, getPos sideObj, 100] call BIS_fnc_taskPatrol;
 
 	_enemiesArray = _enemiesArray + [_infteamPatrol];

@@ -8,11 +8,11 @@ Description: Destroy chopper
 #define CHOPPER_TYPE "O_Heli_Attack_02_black_F","O_Heli_Light_02_unarmed_F", "B_Heli_Attack_01_F"
 private ["_objPos", "_flatPos", "_accepted", "_position", "_randomDir", "_hangar", "_x", "_enemiesArray", "_briefing", "_fuzzyPos", "_unitsArray", "_dummy", "_object"];
 
-_c4Message = [
+_c4Message = selectRandom [
 	"Данные о вертолёте захвачены. Заряд установлен! 30 секунд до взрыва.",
 	"Чертежи вертолёта у нас. Взрывчатка установлена! 30 секунд до взрыва.",
 	"Данные прототипа захвачены. C-4 активирован! 30 секунд до детонации."
-] call BIS_fnc_selectRandom;
+];
 
 // FIND SAFE POSITION FOR OBJECTIVE
 _flatPos = [0,0,0];
@@ -38,7 +38,7 @@ _randomDir = (random 360);
 _hangar = "Land_TentHangar_V1_F" createVehicle _flatPos;
 waitUntil {!isNull _hangar};
 _hangar setPos [(getPos _hangar select 0), (getPos _hangar select 1), ((getPos _hangar select 2) - 1)];
-sideObj = [CHOPPER_TYPE] call BIS_fnc_selectRandom createVehicle _flatPos;
+sideObj = selectRandom [CHOPPER_TYPE] createVehicle _flatPos;
 waitUntil {!isNull sideObj};
 {_x setDir _randomDir} forEach [sideObj, _hangar];
 sideObj lock 3;
@@ -47,9 +47,9 @@ house = "Land_Cargo_House_V3_F" createVehicle _objPos;
 house setDir random 360;
 house allowDamage false;
 
-_object = [research1,research2] call BIS_fnc_selectRandom;
+_object = selectRandom [research1,research2];
 sleep 0.3;
-_dummy = [explosivesDummy1, explosivesDummy2] call BIS_fnc_selectRandom;
+_dummy = selectRandom [explosivesDummy1, explosivesDummy2];
 sleep 0.3;
 { _x enableSimulation true } forEach [researchTable, _object];
 sleep 0.3;

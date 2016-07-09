@@ -46,16 +46,16 @@ _nearestTargets = nearestObjects [_startPos, ["Land_Cargo_Patrol_V1_F","Land_Car
     _guardGroup = createGroup _side;
     _hqPos = getPosASL _x;
     {
-        _unitType = _units call BIS_fnc_selectRandom;
+        _unitType = selectRandom _units;
         _unitPos = [(_hqPos select 0) + (_x select 0), (_hqPos select 1) + (_x select 1), (_hqPos select 2) + (_x select 2)];
-        _unitType createUnit [[0,0,0], _guardGroup, "[this] call QS_fnc_moveToHC;currentGuard = this;", 0, (["CAPTAIN","MAJOR","COLONEL"] call BIS_fnc_selectRandom)];
+        _unitType createUnit [[0,0,0], _guardGroup, "[this] call QS_fnc_moveToHC;currentGuard = this;", 0, (selectRandom ["CAPTAIN","MAJOR","COLONEL"])];
         currentGuard setVariable ["BIS_enableRandomization", false];
         currentGuard allowDamage false;
         currentGuard setPosASL _unitPos;
         currentGuard setDir (random 360);
         doStop currentGuard;
         currentGuard setUnitPos "UP";
-        [currentGuard,(["WATCH1","WATCH2"] call BIS_fnc_selectRandom),"FULL", {lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
+        [currentGuard,(selectRandom ["WATCH1","WATCH2"]),"FULL", {lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
         currentGuard allowDamage true;
     } forEach _positions;
     _guardGroup setBehaviour "SAFE";

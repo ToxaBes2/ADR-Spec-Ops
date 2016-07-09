@@ -1,9 +1,9 @@
 /*
 @filename: QS_fnc_SMenemyEASTintel.sqf
-Author: 
+Author:
 
 	Quiksilver
-	
+
 Last modified:
 
 	25/04/2014
@@ -13,7 +13,7 @@ Description:
 	Spawn OPFOR enemy around intel objectives
 	Enemy should have backbone AA/AT + random composition.
 	Smaller number of enemy due to more complex objective.
-	
+
 ___________________________________________*/
 
 //---------- CONFIG
@@ -30,7 +30,7 @@ _x = 0;
 for "_x" from 0 to (1 + (random 3)) do {
 	_infteamPatrol = createGroup ENEMY_SIDE;
 	_randomPos = [[[getPos _intelObj, 300], []], ["water", "out"]] call BIS_fnc_randomPos;
-	_infteamPatrol = [_randomPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> [INF_TEAMS] call BIS_fnc_selectRandom)] call BIS_fnc_spawnGroup;
+	_infteamPatrol = [_randomPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> selectRandom [INF_TEAMS])] call BIS_fnc_spawnGroup;
 	[_infteamPatrol, getPos _intelObj, 100] call BIS_fnc_taskPatrol;
 	[(units _infteamPatrol)] call QS_fnc_setSkill2;
 
@@ -39,7 +39,7 @@ for "_x" from 0 to (1 + (random 3)) do {
 
 //---------- RANDOM VEHICLE
 _randomPos = [[[getPos _intelObj, 300], []], ["water", "out"]] call BIS_fnc_randomPos;
-_data = [_randomPos, (random 360), ([VEH_TYPES] call BIS_fnc_selectRandom), ENEMY_SIDE] call BIS_fnc_spawnVehicle;
+_data = [_randomPos, (random 360), (selectRandom [VEH_TYPES]), ENEMY_SIDE] call BIS_fnc_spawnVehicle;
 _SMveh = _data select 0;
 _SMvehPatrol = _data select 2;
 [_SMvehPatrol, getPos _intelObj, 150] call BIS_fnc_taskPatrol;

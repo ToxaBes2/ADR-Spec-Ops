@@ -1,8 +1,8 @@
 /*
-Author: 
+Author:
 
 	Quiksilver
-	
+
 Last modified:
 
 	25/04/2014
@@ -11,7 +11,7 @@ Description:
 
 	Spawn INDEPENDENT enemy around side objectives.
 	Enemy should have backbone AA/AT + random composition.
-	
+
 ___________________________________________*/
 
 //---------- CONFIG
@@ -32,7 +32,7 @@ _SMvehPatrol = createGroup ENEMY_SIDE;
 
 for "_x" from 0 to (2 + (random 4)) do {
 	_randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call BIS_fnc_randomPos;
-	_infteamPatrol = [_randomPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "Indep" >> "IND_F" >> "Infantry" >> [INF_TEAMS] call BIS_fnc_selectRandom)] call BIS_fnc_spawnGroup;
+	_infteamPatrol = [_randomPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "Indep" >> "IND_F" >> "Infantry" >> selectRandom [INF_TEAMS])] call BIS_fnc_spawnGroup;
 	[_infteamPatrol, getPos sideObj, 100] call BIS_fnc_taskPatrol;
 
 	_enemiesArray = _enemiesArray + [_infteamPatrol];
@@ -54,7 +54,7 @@ for "_x" from 0 to 1 do {
 //---------- RANDOM VEHICLE
 
 _randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call BIS_fnc_randomPos;
-_SMveh = [VEH_TYPES] call BIS_fnc_selectRandom createVehicle _randomPos;
+_SMveh = selectRandom [VEH_TYPES] createVehicle _randomPos;
 waitUntil {sleep 0.5; !isNull _SMveh};
 	"I_engineer_F" createUnit [_randomPos,_SMvehPatrol];
 	"I_engineer_F" createUnit [_randomPos,_SMvehPatrol];

@@ -134,7 +134,7 @@ while {(canMove priorityObj1 || canMove priorityObj2) && currentAOUp} do {
 	    	sleep 10;
 	    };
 	    if (PARAMS_ArtilleryTargetTickWarning == 1) then {
-	    	hqSideChat = _firingMessages call BIS_fnc_selectRandom; publicVariable "hqSideChat"; [WEST,"HQ"] sideChat hqSideChat;
+	    	hqSideChat = selectRandom _firingMessages; publicVariable "hqSideChat"; [WEST,"HQ"] sideChat hqSideChat;
 	    };
 	    _dir = [_flatPos, _targetPos] call BIS_fnc_dirTo;
 	    { _x setDir _dir; } forEach [priorityObj1, priorityObj2];

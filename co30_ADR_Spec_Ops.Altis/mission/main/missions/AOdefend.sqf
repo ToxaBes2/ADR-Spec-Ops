@@ -28,8 +28,8 @@ _playersOnlineHint = format [
 ];
 GlobalHint = _playersOnlineHint; publicVariable "GlobalHint"; hint parseText GlobalHint;
 sleep 10;
-hqSideChat = _defendMessages call BIS_fnc_selectRandom; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
-_selectedType = [1,2,3,4,5] call BIS_fnc_selectRandom;
+hqSideChat = selectRandom _defendMessages; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
+_selectedType = selectRandom [1,2,3,4,5];
 switch (_selectedType) do {
 	case 1 : {
         _group = [_positionAO,3,[3,4],0,[1,0],EAST] call QS_fnc_defendAO;

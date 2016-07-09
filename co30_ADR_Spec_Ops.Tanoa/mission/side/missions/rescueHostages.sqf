@@ -58,7 +58,7 @@ _targets = [
 ];
 
 // select correct place for mission
-_position = _targets call BIS_fnc_selectRandom;
+_position = selectRandom _targets;
 _flatPos  = _position select 1;
 
 // set zone area
@@ -228,14 +228,14 @@ _unitPos = ["UP", "MIDDLE"];
         _pos = [(_x select 0), (_x select 1), (_x select 2)];
         _holyRandom = floor random 10;
         if (_hostagesPlaced < 4) then {
-            ([INFANTRY_HOSTAGES] call BIS_fnc_selectRandom) createUnit [_pos, _hostagesGroup, "currentHostage = this"];
+            (selectRandom [INFANTRY_HOSTAGES]) createUnit [_pos, _hostagesGroup, "currentHostage = this"];
             currentHostage allowDamage false;
             doStop currentHostage;
             commandStop currentHostage;
             currentHostage setPosASL _pos;
             currentHostage setDir (_x select 3);
             currentHostage setCaptive true;
-            currentHostage setUnitPos (_unitPos call BIS_fnc_selectRandom);
+            currentHostage setUnitPos (selectRandom _unitPos);
             currentHostage disableAI "MOVE";
             currentHostage addEventHandler ["killed", {SM_FAIL_RESCUE = SM_FAIL_RESCUE + 1;publicVariable "SM_FAIL_RESCUE";[(_this select 0),"QS_fnc_removeAction0",nil,true] spawn BIS_fnc_MP;(_this select 0) removeWeapon "hgun_Rook40_F";}];
             [currentHostage, "QS_fnc_addActionRescue",nil,true] spawn BIS_fnc_MP;
@@ -244,13 +244,13 @@ _unitPos = ["UP", "MIDDLE"];
             currentHostage allowDamage true;
         } else {
             if (_holyRandom > 3 || _withHostages) then {
-                ([INFANTRY_SUPPORT] call BIS_fnc_selectRandom) createUnit [_pos, _houseGroup, "currentGuard = this"];
+                (selectRandom [INFANTRY_SUPPORT]) createUnit [_pos, _houseGroup, "currentGuard = this"];
                 currentGuard allowDamage false;
                 doStop currentGuard;
                 commandStop currentGuard;
                 currentGuard setPosASL _pos;
                 currentGuard setDir (_x select 3);
-                currentGuard setUnitPos (_unitPos call BIS_fnc_selectRandom);
+                currentGuard setUnitPos (selectRandom _unitPos);
                 currentGuard disableAI "MOVE";
                 currentGuard addEventHandler ["hit", {(_this select 0) enableAI "MOVE";}];
                 _withHostages = false;
@@ -263,9 +263,9 @@ _unitPos = ["UP", "MIDDLE"];
 // officer
 _commanderGroup = createGroup ENEMY_SIDE;
 
-_posATL = _cargoHQ buildingPos ([1,6] call BIS_fnc_selectRandom);
+_posATL = _cargoHQ buildingPos (selectRandom [1,6]);
 _posATL = [(_posATL select 0), (_posATL select 1), ((_posATL select 2) + 0.2)];
-([INFANTRY_OFFICER] call BIS_fnc_selectRandom) createUnit [[1,1,0], _commanderGroup, "officer = this"];
+(selectRandom [INFANTRY_OFFICER]) createUnit [[1,1,0], _commanderGroup, "officer = this"];
 waitUntil{!isNull officer};
 officer allowDamage false;
 officer setPos _posATL;
@@ -274,7 +274,7 @@ commandStop officer;
 officer disableAI "MOVE";
 officer addEventHandler ["hit", {(_this select 0) enableAI "MOVE";}];
 officer setDir (random 360);
-officer setUnitPos (_unitPos call BIS_fnc_selectRandom);
+officer setUnitPos (selectRandom _unitPos);
 removeHeadgear officer;
 officer addHeadgear "H_Cap_red";
 sleep 0.5;
@@ -290,12 +290,12 @@ _staticGroup = createGroup ENEMY_SIDE;
 {
     _posATL = _cargoHQ buildingPos _x;
     _posATL = [(_posATL select 0), (_posATL select 1), ((_posATL select 2) + 0.2)];
-    _static = ([INFANTRY_STATIC] call BIS_fnc_selectRandom) createVehicle [10,10,10];
+    _static = (selectRandom [INFANTRY_STATIC]) createVehicle [10,10,10];
     waitUntil{!isNull _static};
     _static allowDamage false;
     _static setPos _posATL;
     _static setDir (random 360);
-    ([INFANTRY_GUNNERS] call BIS_fnc_selectRandom) createUnit [[10,10,10], _staticGroup, "currentGuard = this"];
+    (selectRandom [INFANTRY_GUNNERS]) createUnit [[10,10,10], _staticGroup, "currentGuard = this"];
     currentGuard allowDamage false;
     sleep 0.2;
     currentGuard assignAsGunner _static;
@@ -313,7 +313,7 @@ _staticGroup = createGroup ENEMY_SIDE;
     _y = 0;
     _posATL = _cargoHQ buildingPos _x;
     _posATL = [(_posATL select 0), (_posATL select 1), (_posATL select 2) + 0.3];
-    ([INFANTRY_HOUSE] call BIS_fnc_selectRandom) createUnit [[10,10,10], _houseGroup, "currentGuard = this"];
+    (selectRandom [INFANTRY_HOUSE]) createUnit [[10,10,10], _houseGroup, "currentGuard = this"];
     currentGuard allowDamage false;
     sleep 0.1;
     currentGuard setPos _posATL;
@@ -328,7 +328,7 @@ _staticGroup = createGroup ENEMY_SIDE;
         _y = -20;
     };
     currentGuard setDir (([currentGuard, _cargoHQ] call BIS_fnc_dirTo) + _y);
-    currentGuard setUnitPos (_unitPos call BIS_fnc_selectRandom);
+    currentGuard setUnitPos (selectRandom _unitPos);
     currentGuard allowDamage true;
 } forEach [0,2,3,4,8,9,10,11];
 
@@ -336,12 +336,12 @@ _staticGroup = createGroup ENEMY_SIDE;
 {
     _posATL = getPos _x;
     _posATL = [(_posATL select 0), (_posATL select 1), (_posATL select 2) + 0.2];
-    _static = ([INFANTRY_STATIC] call BIS_fnc_selectRandom) createVehicle [10,10,10];
+    _static = (selectRandom [INFANTRY_STATIC]) createVehicle [10,10,10];
     waitUntil{!isNull _static};
     _static allowDamage false;
     _static setPos _posATL;
     _static setDir (([_static, _startPoint] call BIS_fnc_dirTo) + 180);
-    ([INFANTRY_GUNNERS] call BIS_fnc_selectRandom) createUnit [[10,10,10], _staticGroup, "currentGuard = this"];
+    (selectRandom [INFANTRY_GUNNERS]) createUnit [[10,10,10], _staticGroup, "currentGuard = this"];
     currentGuard allowDamage false;
     sleep 0.1;
     currentGuard assignAsGunner _static;
@@ -358,7 +358,7 @@ _staticGroup = createGroup ENEMY_SIDE;
 for "_x" from 1 to 2 do {
     _patrolGroup = createGroup ENEMY_SIDE;
     _randomPos = [[[_startPoint, 80],[]],["water","out"]] call BIS_fnc_randomPos;
-    _patrolGroup = [_randomPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "Infantry" >> [INFANTRY_PATROL] call BIS_fnc_selectRandom)] call BIS_fnc_spawnGroup;
+    _patrolGroup = [_randomPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "Infantry" >> selectRandom [INFANTRY_PATROL])] call BIS_fnc_spawnGroup;
     _patrolGroup setBehaviour "COMBAT";
     _patrolGroup setCombatMode "RED";
     [(units _patrolGroup)] call QS_fnc_setSkill3;
@@ -378,7 +378,7 @@ for "_x" from 1 to 2 do {
         _initDistance = _initDistance + 30;
     };
     _startPos = [_startPoint, _initDistance, _initAngle] call BIS_fnc_relPos;
-    _patrolGroup = [_startPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "Infantry" >> [INFANTRY_PATROL] call BIS_fnc_selectRandom)] call BIS_fnc_spawnGroup;
+    _patrolGroup = [_startPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "Infantry" >> selectRandom [INFANTRY_PATROL])] call BIS_fnc_spawnGroup;
     _patrolGroup setBehaviour "COMBAT";
     _patrolGroup setCombatMode "RED";
     [(units _patrolGroup)] call QS_fnc_setSkill3;

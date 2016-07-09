@@ -3,11 +3,11 @@
 Author:
 
 	Quiksilver (credit Rarek [ahoyworld] for initial build)
-	
+
 Description:
 
 	Spawn a minefield around radio tower sub-objective
-	
+
 ________________________________________________________________*/
 
 #define MINE_TYPES "APERSBoundingMine", "APERSMine", "ATMine"
@@ -15,7 +15,7 @@ _centralPos = _this select 0;
 _unitsArray = [];
 
 for "_x" from 0 to 59 do {
-	_mine = createMine [[MINE_TYPES] call BIS_fnc_selectrandom, _centralPos, [], 38];
+	_mine = createMine [selectRandom [MINE_TYPES], _centralPos, [], 38];
 	_unitsArray = _unitsArray + [_mine];
 };
 

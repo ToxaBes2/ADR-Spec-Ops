@@ -43,7 +43,7 @@ sideObj setDir _randomDir;
 sideObj setPos [(getPos sideObj select 0), (getPos sideObj select 1), ((getPos sideObj select 2))];
 sideObj setVectorUp [0, 0, 1];
 
-_object = [crate3,crate4] call BIS_fnc_selectRandom;
+_object = selectRandom [crate3,crate4];
 _object setPos [(getPos sideObj select 0), (getPos sideObj select 1), ((getPos sideObj select 2) + 5)];
 
 // BOAT POSITIONS
@@ -107,7 +107,7 @@ sideMarkerText = "Тайник"; publicVariable "sideMarkerText";
 publicVariable "sideMarker";
 publicVariable "sideObj";
 
-_c4Message = ["Заряд установлен! 30 секунд до взрыва.", "C-4 активирован! 30 секунд до детонации.", "Взрывчатка на месте! 30 секунд до взрыва."] call BIS_fnc_selectRandom;
+_c4Message = selectRandom ["Заряд установлен! 30 секунд до взрыва.", "C-4 активирован! 30 секунд до детонации.", "Взрывчатка на месте! 30 секунд до взрыва."];
 _briefing = "<t align='center'><t size='2.2'>Допзадание</t><br/><t size='1.5' color='#FFC107'>Тайник</t><br/>____________________<br/>Противник тайно переправляет и складирует значительное количество взрывчатых веществ близи своего прибрежного лагеря.<br/><br/>Ваша задача — выдвинуться в указанный район, найти и обезвредить текущую партию взрывчатки.</t>";
 GlobalHint = _briefing; publicVariable "GlobalHint"; hint parseText GlobalHint;
 showNotification = ["NewSideMission", "Тайник"]; publicVariable "showNotification";

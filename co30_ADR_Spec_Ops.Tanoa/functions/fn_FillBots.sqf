@@ -149,7 +149,7 @@ for "_i" from 1 to _bots do {
            _wallsDir = _wallsDir + [_watchDir];
         };
     };
-    (_units call BIS_fnc_selectRandom) createUnit [_pos, _grp, "[this] call QS_fnc_moveToHC;currentGuard = this;", 0, (["CAPTAIN","MAJOR","COLONEL"] call BIS_fnc_selectRandom)];
+    (selectRandom _units) createUnit [_pos, _grp, "[this] call QS_fnc_moveToHC;currentGuard = this;", 0, (selectRandom ["CAPTAIN","MAJOR","COLONEL"])];
     currentGuard allowDamage false;
     currentGuard setVariable ["BIS_enableRandomization", false];
     if (typeOf _house in _towers) then {
@@ -163,7 +163,7 @@ for "_i" from 1 to _bots do {
     if (_windowsCnt == 0) then {
 
         // internal house position without windows
-        _watchDir = _wallsDir call BIS_fnc_selectRandom;
+        _watchDir = selectRandom _wallsDir;
         currentGuard setDir (_watchDir + 180);
         currentGuard setUnitPos "UP";
         _null = [currentGuard, _house, 30] spawn {_this call compile preProcessFileLineNumbers "scripts\patrol.sqf"};
@@ -176,9 +176,9 @@ for "_i" from 1 to _bots do {
         } else {
 
             // balcony
-            _unitPos = ["UP","MIDDLE"] call BIS_fnc_selectRandom;
+            _unitPos = selectRandom ["UP","MIDDLE"];
             currentGuard setUnitPos _unitPos;
-            [currentGuard,(["WATCH1","WATCH2"] call BIS_fnc_selectRandom),"FULL", {lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
+            [currentGuard,(selectRandom ["WATCH1","WATCH2"]),"FULL", {lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
         };
     };
 

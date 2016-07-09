@@ -42,7 +42,7 @@ _targets = [
 ];
 
 // select correct place for mission
-_position = _targets call BIS_fnc_selectRandom;
+_position = selectRandom _targets;
 _flatPos  = _position select 0;
 
 // set zone area
@@ -163,13 +163,13 @@ for "_i" from 1 to 5 do {
         _pos1 = [_startPoint, 0, 120, 3, 0, 10, 0] call BIS_fnc_findSafePos;
     };
     _dir = random 360;
-    _cargo1 = createVehicle [([INFANTRY_CARGO] call BIS_fnc_selectRandom), _pos1, [], 0, "CAN_COLLIDE"];
+    _cargo1 = createVehicle [(selectRandom [INFANTRY_CARGO]), _pos1, [], 0, "CAN_COLLIDE"];
     _cargo1 setDir _dir;
     _pos2 = [(_pos1 select 0) + 5, (_pos1 select 1) + 5, 0];
-    _cargo2 = createVehicle [([INFANTRY_CARGO] call BIS_fnc_selectRandom), _pos2, [], 0, "CAN_COLLIDE"];
+    _cargo2 = createVehicle [(selectRandom [INFANTRY_CARGO]), _pos2, [], 0, "CAN_COLLIDE"];
     _cargo2 setDir _dir;
     _pos3 = [(_pos1 select 0) + 2.5, (_pos1 select 1) + 2.5, 4];
-    _cargo3 = createVehicle [([INFANTRY_CARGO] call BIS_fnc_selectRandom), _pos3, [], 0, "CAN_COLLIDE"];
+    _cargo3 = createVehicle [(selectRandom [INFANTRY_CARGO]), _pos3, [], 0, "CAN_COLLIDE"];
     _cargo3 setDir (_dir + 90);
     _unitsArray = _unitsArray + [_cargo1, _cargo2, _cargo3];
     sleep 0.1;
@@ -180,13 +180,13 @@ for "_i" from 1 to 5 do {
         _pos1 = [_startPoint, 0, 120, 3, 0, 10, 0] call BIS_fnc_findSafePos;
     };
     _dir = 0;
-    _cargo1 = createVehicle [([INFANTRY_CARGO] call BIS_fnc_selectRandom), _pos1, [], 0, "CAN_COLLIDE"];
+    _cargo1 = createVehicle [(selectRandom [INFANTRY_CARGO]), _pos1, [], 0, "CAN_COLLIDE"];
     _cargo1 setDir _dir;
     _pos2 = [_pos1 select 0, (_pos1 select 1) + 5, 0];
-    _cargo2 = createVehicle [([INFANTRY_CARGO] call BIS_fnc_selectRandom), _pos2, [], 0, "CAN_COLLIDE"];
+    _cargo2 = createVehicle [(selectRandom [INFANTRY_CARGO]), _pos2, [], 0, "CAN_COLLIDE"];
     _cargo2 setDir _dir;
     _pos3 = [(_pos1 select 0) - 1.5, (_pos1 select 1) + 2.5, 4];
-    _cargo3 = createVehicle [([INFANTRY_CARGO] call BIS_fnc_selectRandom), _pos3, [], 0, "CAN_COLLIDE"];
+    _cargo3 = createVehicle [(selectRandom [INFANTRY_CARGO]), _pos3, [], 0, "CAN_COLLIDE"];
     _cargo3 setDir (_dir + 90);
     _unitsArray = _unitsArray + [_cargo1, _cargo2, _cargo3];
     sleep 0.1;
@@ -197,16 +197,16 @@ for "_i" from 1 to 5 do {
         _pos1 = [_startPoint, 0, 120, 3, 0, 10, 0] call BIS_fnc_findSafePos;
     };
     _dir = 0;
-    _cargo1 = createVehicle [([INFANTRY_CARGO] call BIS_fnc_selectRandom), _pos1, [], 0, "CAN_COLLIDE"];
+    _cargo1 = createVehicle [(selectRandom [INFANTRY_CARGO]), _pos1, [], 0, "CAN_COLLIDE"];
     _cargo1 setDir _dir;
     _pos2 = [_pos1 select 0, (_pos1 select 1) + 5, 0];
-    _cargo2 = createVehicle [([INFANTRY_CARGO] call BIS_fnc_selectRandom), _pos2, [], 0, "CAN_COLLIDE"];
+    _cargo2 = createVehicle [(selectRandom [INFANTRY_CARGO]), _pos2, [], 0, "CAN_COLLIDE"];
     _cargo2 setDir _dir;
     _pos3 = [(_pos1 select 0) - 2, (_pos1 select 1) + 2.5, 4];
-    _cargo3 = createVehicle [([INFANTRY_CARGO] call BIS_fnc_selectRandom), _pos3, [], 0, "CAN_COLLIDE"];
+    _cargo3 = createVehicle [(selectRandom [INFANTRY_CARGO]), _pos3, [], 0, "CAN_COLLIDE"];
     _cargo3 setDir (_dir + 90);
     _pos4 = [(_pos1 select 0) + 2, (_pos1 select 1) + 2.5, 4];
-    _cargo3 = createVehicle [([INFANTRY_CARGO] call BIS_fnc_selectRandom), _pos4, [], 0, "CAN_COLLIDE"];
+    _cargo3 = createVehicle [(selectRandom [INFANTRY_CARGO]), _pos4, [], 0, "CAN_COLLIDE"];
     _cargo3 setDir (_dir + 90);
     _unitsArray = _unitsArray + [_cargo1, _cargo2, _cargo3];
     sleep 0.1;
@@ -217,7 +217,7 @@ for "_i" from 1 to 5 do {
         _pos1 = [_startPoint, 0, 120, 3, 0, 10, 0] call BIS_fnc_findSafePos;
     };
     _dir = random 360;
-    _cargo1 = createVehicle [([INFANTRY_CARGO] call BIS_fnc_selectRandom), _pos1, [], 0, "CAN_COLLIDE"];
+    _cargo1 = createVehicle [(selectRandom [INFANTRY_CARGO]), _pos1, [], 0, "CAN_COLLIDE"];
     _cargo1 setDir _dir;
     _unitsArray = _unitsArray + [_cargo1];
     sleep 0.1;
@@ -229,7 +229,7 @@ for "_i" from 1 to 20 do {
     while {surfaceIsWater _pos1 || _pos1 distance _gasPos < 8 || _startPoint distance _pos1 > 120} do {
         _pos1 = [_startPoint, 0, 110, 3, 0, 15, 0] call BIS_fnc_findSafePos;
     };
-   _barrel1 = createVehicle [([INFANTRY_BARRELS] call BIS_fnc_selectRandom), _pos1, [], 0, "NONE"];
+   _barrel1 = createVehicle [(selectRandom [INFANTRY_BARRELS]), _pos1, [], 0, "NONE"];
    _unitsArray = _unitsArray + [_barrel1];
    sleep 0.1;
 };
@@ -264,7 +264,7 @@ _barrel addEventHandler ["HandleDamage", {
                 };
             },"BIS_fnc_spawn", _nearbyPlayers, false] spawn BIS_fnc_MP;
             [_this select 3] spawn {
-                _swearWords = ["Черт побери", "Крейсер мне в бухту", "Японский городовой", "Екарный бабай", "Едрить-колотить", "Ешкин кот", "Калаш мне в зад"] call BIS_fnc_selectRandom;
+                _swearWords = selectRandom ["Черт побери", "Крейсер мне в бухту", "Японский городовой", "Екарный бабай", "Едрить-колотить", "Ешкин кот", "Калаш мне в зад"];
                 if (isNull (_this select 0)) then {
                     hqSideChat = format ["%1! Бочка с ипритом повреждена. Срочная эвакуация!", _swearWords];
                 } else {
@@ -294,7 +294,7 @@ _nearestHQ = nearestObjects [_startPoint, ["Land_Cargo_HQ_V1_F"], 130];
         _static allowDamage false;
         _static setPos _posATL;
         _static setDir (random 360);
-        ([INFANTRY_GUNNERS] call BIS_fnc_selectRandom) createUnit [[10,10,10], _hqGroup, "currentGuard = this", 0, ([INFANTRY_RANK] call BIS_fnc_selectRandom)];
+        (selectRandom [INFANTRY_GUNNERS]) createUnit [[10,10,10], _hqGroup, "currentGuard = this", 0, (selectRandom [INFANTRY_RANK])];
         currentGuard allowDamage false;
         sleep 0.2;
         currentGuard assignAsGunner _static;
@@ -312,14 +312,14 @@ _nearestHQ = nearestObjects [_startPoint, ["Land_Cargo_HQ_V1_F"], 130];
     // other guards
     {
         _posHQ = _cargoHQ buildingPos _x;
-        ([INFANTRY_SUPPORT] call BIS_fnc_selectRandom) createUnit [_posHQ, _hqGroup, "currentGuard = this", 0, ([INFANTRY_RANK] call BIS_fnc_selectRandom)];
+        (selectRandom [INFANTRY_SUPPORT]) createUnit [_posHQ, _hqGroup, "currentGuard = this", 0, (selectRandom [INFANTRY_RANK])];
         currentGuard allowDamage false;
         sleep 0.2;
         currentGuard setPosASL _posHQ;
         currentGuard setDir (random 360);
         currentGuard setUnitPos "UP";
         currentGuard allowDamage true;
-        [currentGuard,(["WATCH","WATCH1","WATCH2"] call BIS_fnc_selectRandom),"FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
+        [currentGuard,(selectRandom ["WATCH","WATCH1","WATCH2"]),"FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
         _enemiesArray = _enemiesArray + [currentGuard];
         sleep 0.1;
     } forEach [1,3,6,7,9];
@@ -332,15 +332,15 @@ _houseGroup = createGroup ENEMY_SIDE;
 _nearestCargo = nearestObjects [_startPoint, ["Land_Cargo_House_V1_F"], 130];
 {
     _house = _x;
-    _posHouse = _house buildingPos ([1,2,3] call BIS_fnc_selectRandom);
-    ([INFANTRY_SUPPORT] call BIS_fnc_selectRandom) createUnit [_posHouse, _houseGroup, "currentGuard = this", 0, ([INFANTRY_RANK] call BIS_fnc_selectRandom)];
+    _posHouse = _house buildingPos (selectRandom [1,2,3]);
+    (selectRandom [INFANTRY_SUPPORT]) createUnit [_posHouse, _houseGroup, "currentGuard = this", 0, (selectRandom [INFANTRY_RANK])];
     currentGuard allowDamage false;
     sleep 0.2;
     currentGuard setPosASL _posHouse;
     currentGuard setDir (random 360);
     currentGuard setUnitPos "UP";
     currentGuard allowDamage true;
-    [currentGuard,(["WATCH","WATCH1","WATCH2"] call BIS_fnc_selectRandom),"FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
+    [currentGuard,(selectRandom ["WATCH","WATCH1","WATCH2"]),"FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
     _enemiesArray = _enemiesArray + [currentGuard];
     sleep 0.1;
 } forEach _nearestCargo;
@@ -352,14 +352,14 @@ _nearestPatrolHouse = nearestObjects [_startPoint, ["Land_Cargo_Patrol_V1_F"], 1
     _patrolHouse = _x;
     {
         _posPatrolHouse = _patrolHouse buildingPos _x;
-        ([INFANTRY_RECONS] call BIS_fnc_selectRandom) createUnit [_posPatrolHouse, _sniperGroup, "currentGuard = this", 0, ([INFANTRY_RANK] call BIS_fnc_selectRandom)];
+        (selectRandom [INFANTRY_RECONS]) createUnit [_posPatrolHouse, _sniperGroup, "currentGuard = this", 0, (selectRandom [INFANTRY_RANK])];
         currentGuard allowDamage false;
         sleep 0.2;
         currentGuard setPosASL _posPatrolHouse;
         currentGuard setDir (random 360);
         currentGuard setUnitPos "UP";
         currentGuard allowDamage true;
-        [currentGuard,(["WATCH","WATCH1","WATCH2"] call BIS_fnc_selectRandom),"FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
+        [currentGuard,(selectRandom ["WATCH","WATCH1","WATCH2"]),"FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
         _enemiesArray = _enemiesArray + [currentGuard];
         sleep 0.1;
     } forEach [1,2,3];
@@ -370,13 +370,13 @@ _nearestPatrolHouse = nearestObjects [_startPoint, ["Land_Cargo_Patrol_V1_F"], 1
 _groundGroup  = createGroup ENEMY_SIDE;
 for "_c" from 1 to 10 do {
     _groundPos = [_startPoint, 0, 110, 2, 0, 10, 0] call BIS_fnc_findSafePos;
-    ([INFANTRY_RECONS] call BIS_fnc_selectRandom) createUnit [_groundPos, _groundGroup, "currentGuard = this", 0, ([INFANTRY_RANK] call BIS_fnc_selectRandom)];
+    (selectRandom [INFANTRY_RECONS]) createUnit [_groundPos, _groundGroup, "currentGuard = this", 0, (selectRandom [INFANTRY_RANK])];
     currentGuard allowDamage false;
     sleep 0.2;
     currentGuard setDir (random 360);
     currentGuard setUnitPos "UP";
     currentGuard allowDamage true;
-    [currentGuard,(["WATCH","WATCH1","WATCH2"] call BIS_fnc_selectRandom),"FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
+    [currentGuard,(selectRandom ["WATCH","WATCH1","WATCH2"]),"FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
     _enemiesArray = _enemiesArray + [currentGuard];
     sleep 0.1;
 };

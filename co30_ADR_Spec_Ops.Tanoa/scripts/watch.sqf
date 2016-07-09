@@ -18,17 +18,17 @@ TB_fnc_relativePos = {
 _unit = _this select 0;
 _directions = _this select 1;
 _time = _this select 2;
-_watchDir = _directions call BIS_fnc_selectRandom;
+_watchDir = selectRandom _directions;
 _unit setDir _watchDir;
-if (_time == 0) then {    
+if (_time == 0) then {
     _watchPos = [getPos _unit, _watchDir, ((round (random 50) + 30)), 1] call TB_fnc_relativePos;
     _unit doWatch _watchPos;
 } else {
 	while {alive _unit && isNull (_unit findNearestEnemy (getPos _unit))} do {
-        _watchDir = _directions call BIS_fnc_selectRandom;
+        _watchDir = selectRandom _directions;
         _unit setDir _watchDir;
         _watchPos = [getPos _unit, _watchDir, ((round (random 30) + 30)), 1] call TB_fnc_relativePos;
-        _unit doWatch _watchPos;       	
+        _unit doWatch _watchPos;
         sleep _time;
     };
 };

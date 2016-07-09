@@ -7,11 +7,11 @@ Description: Secure HQ supplies before destroying it.
 
 private ["_flatPos", "_accepted", "_position", "_enemiesArray", "_fuzzyPos", "_x", "_briefing", "_unitsArray", "_object", "_SMveh", "_SMaa", "_tower1", "_tower2", "_tower3", "_flatPos1", "_flatPos2"];
 
-_c4Message = [
+_c4Message = selectRandom [
 	"Перехват оружия завершён. Заряд установлен! 30 секунд до взрыва.",
 	"Пусковая установка захвачена. Взрывчатка установлена! 30 секунд до взрыва.",
 	"Оружие врага захвачено. C-4 активирован! 30 секунд до детонации."
-] call BIS_fnc_selectRandom;
+];
 
 // FIND POSITION FOR OBJECTIVE
 _flatPos = [0, 0, 0];
@@ -48,7 +48,7 @@ sideObj setPos [(getPos sideObj select 0), (getPos sideObj select 1), (getPos si
 sideObj setVectorUp [0, 0, 1];
 sideObj setDir _objDir;
 
-_object = [indCrate1,indCrate2] call BIS_fnc_selectRandom;
+_object = selectRandom [indCrate1,indCrate2];
 _object setPos [(getPos sideObj select 0), (getPos sideObj select 1), ((getPos sideObj select 2) + 2)];
 
 truck1 = "B_Truck_01_ammo_F" createVehicle _flatPos1;

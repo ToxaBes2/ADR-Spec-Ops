@@ -6,11 +6,11 @@ Author:	Quiksilver
 
 private ["_flatPos", "_accepted", "_position", "_enemiesArray", "_fuzzyPos", "_x", "_briefing", "_unitsArray", "_object", "_dummy", "_SMveh", "_SMaa", "_c4Message", "_vehPos"];
 
-_c4Message = [
+_c4Message = selectRandom [
 	"Жёсткий диск захвачен. C-4 активирован! 30 секунд до детонации.",
 	"Научные данные захвачены. Взрывчатка установлена! 30 секунд до взрыва.",
 	"Исследовательская работа перехвачена. Заряд установлен! 30 секунд до взрыва."
-] call BIS_fnc_selectRandom;
+];
 #define VEH_TYPE "O_MRAP_02_F", "O_Truck_03_covered_F", "O_Truck_03_transport_F", "O_Heli_Light_02_v2_F", "C_SUV_01_F", "C_Van_01_transport_F"
 
 // FIND POSITION FOR OBJECTIVE
@@ -45,15 +45,15 @@ waitUntil {alive sideObj};
 sideObj setPos [(getPos sideObj select 0), (getPos sideObj select 1), (getPos sideObj select 2)];
 sideObj setVectorUp [0, 0, 1];
 
-veh = [VEH_TYPE] call BIS_fnc_selectRandom createVehicle _vehPos;
+veh = selectRandom [VEH_TYPE] createVehicle _vehPos;
 veh lock 0;
 
 // SPAWN (okay, tp) TABLE, AND LAPTOP ON IT.
 sleep 0.3;
 researchTable setPos [(getPos sideObj select 0), (getPos sideObj select 1), ((getPos sideObj select 2) + 1)];
 sleep 0.3;
-_dummy = [explosivesDummy1, explosivesDummy2] call BIS_fnc_selectRandom;
-_object = [research1, research2] call BIS_fnc_selectRandom;
+_dummy = selectRandom [explosivesDummy1, explosivesDummy2];
+_object = selectRandom [research1, research2];
 sleep 2;
 { _x enableSimulation true } forEach [researchTable, _object];
 sleep 0.1;

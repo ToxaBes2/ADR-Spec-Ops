@@ -46,7 +46,7 @@ for "_counter" from 1 to _lightVehiclesGroups do {
 		_vehType = "O_T_Boat_Armed_01_hmg_F";
 		_isWater = true;
 	} else {
-	    _vehType = ["O_T_MRAP_02_gmg_ghex_F","O_T_MRAP_02_hmg_ghex_F","O_T_LSV_02_armed_F","O_T_Truck_03_covered_ghex_F"] call BIS_fnc_selectRandom;
+	    _vehType = selectRandom ["O_T_MRAP_02_gmg_ghex_F","O_T_MRAP_02_hmg_ghex_F","O_T_LSV_02_armed_F","O_T_Truck_03_covered_ghex_F"];
 	    _isWater = false;
 	};
     _vehicle = createVehicle [_vehType, _groundPos, [], 0, "CAN_COLLIDE"];
@@ -91,7 +91,7 @@ for "_counter" from 1 to _lightVehiclesGroups do {
 for "_counter" from 1 to _armoredVehicles do {
 	_cGroup = createGroup _side;
     _groundPos = [_startPoint, 700, 1000, 2, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
-    _vehType = ["O_T_APC_Tracked_02_AA_ghex_F","O_T_APC_Tracked_02_cannon_ghex_F","O_T_APC_Wheeled_02_rcws_ghex_F","O_T_MBT_02_cannon_ghex_F"] call BIS_fnc_selectRandom;
+    _vehType = selectRandom ["O_T_APC_Tracked_02_AA_ghex_F","O_T_APC_Tracked_02_cannon_ghex_F","O_T_APC_Wheeled_02_rcws_ghex_F","O_T_MBT_02_cannon_ghex_F"];
     _vehicle = createVehicle [_vehType, _groundPos, [], 0, "CAN_COLLIDE"];
     _vehicles = _vehicles + [_vehicle];
     createVehicleCrew _vehicle;
@@ -115,7 +115,7 @@ for "_counter" from 1 to _helicopterGroups do {
 	if (_helicopterSize > 0) then {
 		_vehType = "O_Heli_Transport_04_covered_F";
 	} else {
-	    _vehType = ["O_Heli_Attack_02_F", "I_Heli_light_03_F", "O_Heli_Light_02_F"] call BIS_fnc_selectRandom;
+	    _vehType = selectRandom ["O_Heli_Attack_02_F", "I_Heli_light_03_F", "O_Heli_Light_02_F"];
     };
 	_groundPos = [_startPoint, 2000, 3000, 1, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
     _vehicle = createVehicle [_vehType, _groundPos, [], 0, "FLY"];

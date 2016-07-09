@@ -6,11 +6,11 @@ Description: search and destroy EW and communications center.
 #define ENEMY_SIDE EAST
 private ["_objPos", "_flatPos", "_accepted", "_position", "_randomDir", "_hangar", "_x", "_enemiesArray", "_briefing", "_fuzzyPos", "_unitsArray", "_dummy", "_object", "_tower1", "_tower2", "_tower3", "_light", "_EWCar", "_AwardCar", "_barrels", "_award"];
 
-_c4Message = [
+_c4Message = selectRandom [
 	"Дельта браво, это штаб, прием. Противнику не понравилось как вы обошлись с их РЭБ! По вам дали залп из РСЗО. У вас полторы минуты. Найдите укрытие!",
 	"Дельта браво, это штаб, прием. Вы разворошили улей с их РЭБ! По вам дали залп из реактивной артиллерии. Полторы минуты до удара. Валите оттуда!",
 	"Дельта браво, это штаб, прием. Лучше вам поторопиться, противник понял, что их РЭБ накрылась и данные похищены! По вам дали залп из РСЗО. У вас полторы минуты чтобы уйти."
-] call BIS_fnc_selectRandom;
+];
 
 // FIND SAFE POSITION FOR OBJECTIVE
 _flatPos = [0, 0, 0];
@@ -40,9 +40,9 @@ house setDir 180;
 house allowDamage false;
 hqSideChat = "Дельта браво, это штаб. Доложить обстановку, что именно происходит с оборудованием? Прием."; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;//////////////////////////////
 sleep 10;
-_dummy = [explosivesDummy1,explosivesDummy2] call BIS_fnc_selectRandom;
+_dummy = selectRandom [explosivesDummy1,explosivesDummy2];
 sleep 0.3;
-_object = [power1,power2] call BIS_fnc_selectRandom;
+_object = selectRandom [power1,power2];
 sleep 0.3;
 { _x enableSimulation true; } forEach [researchTable, _object];
 sleep 0.3;

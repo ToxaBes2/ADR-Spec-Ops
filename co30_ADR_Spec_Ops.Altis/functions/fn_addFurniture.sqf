@@ -7,7 +7,7 @@ if (!isServer) exitWith {};
 _hq = _this select 0;
 _hqPos = getPosASL _hq;
 _hqDir = getDir _hq;
-_terminalPosition = [13,14,15,16] call BIS_fnc_selectRandom;
+_terminalPosition = selectRandom [13,14,15,16];
 _terminalPos = _hq buildingPos _terminalPosition;
 _terminalPos = [_terminalPos select 0, _terminalPos select 1, (_terminalPos select 2) - 0.5];
 _terminal = createVehicle ["Land_DataTerminal_01_F", [0,0,0], [], 0, "NONE"];

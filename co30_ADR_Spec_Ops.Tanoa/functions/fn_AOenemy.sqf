@@ -32,7 +32,7 @@ if (_bunkerType == 1) then {
         [_patrolGroup, true] call QS_fnc_moveToHC;
         {
             _currentGuard = _x;
-            [_currentGuard,(["WATCH1","WATCH2"] call BIS_fnc_selectRandom),"FULL", {_currentGuard findNearestEnemy (getPos _currentGuard) != objNull || lifestate _currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
+            [_currentGuard,(selectRandom ["WATCH1","WATCH2"]),"FULL", {_currentGuard findNearestEnemy (getPos _currentGuard) != objNull || lifestate _currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
         } forEach (units _patrolGroup);
         _patrolGroup setBehaviour "COMBAT";
         _patrolGroup setCombatMode "RED";
@@ -75,7 +75,7 @@ if (_bunkerType == 1) then {
         _deltaZ = _x select 4;
         _unitPos = [_bunkerPos, _len, _dir] call BIS_fnc_relPos;
         _unitPos set [2, _deltaZ];
-        _unitType createUnit [_unitPos, _guardGroup, "[this] call QS_fnc_moveToHC;currentGuard = this;", 0, (["CAPTAIN","MAJOR","COLONEL"] call BIS_fnc_selectRandom)];
+        _unitType createUnit [_unitPos, _guardGroup, "[this] call QS_fnc_moveToHC;currentGuard = this;", 0, (selectRandom ["CAPTAIN","MAJOR","COLONEL"])];
         currentGuard setVariable ["BIS_enableRandomization", false];
         currentGuard allowDamage false;
         currentGuard setPos _unitPos;
@@ -175,7 +175,7 @@ for "_x" from 1 to PARAMS_AAPatrol do {
 for "_x" from 1 to PARAMS_GroupPatrol do {
 	_patrolGroup = createGroup east;
 	_randomPos = [[[getMarkerPos currentAO, (PARAMS_AOSize / 1.5)], []], ["water", "out"]] call BIS_fnc_randomPos;
-	_patrolGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "Infantry" >> [INF_TYPE] call BIS_fnc_selectRandom)] call BIS_fnc_spawnGroup;
+	_patrolGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "Infantry" >> selectRandom [INF_TYPE])] call BIS_fnc_spawnGroup;
 	[_patrolGroup, true] call QS_fnc_moveToHC;
 	[_patrolGroup, getMarkerPos currentAO, 400] call BIS_fnc_taskPatrol;
 	[(units _patrolGroup)] call QS_fnc_setSkill3;
@@ -186,7 +186,7 @@ for "_x" from 1 to PARAMS_GroupPatrol do {
 for "_x" from 1 to PARAMS_StaticMG do {
 	_staticGroup = createGroup EAST;
 	_randomPos = [getMarkerPos currentAO, 200, 10, 10] call BIS_fnc_findOverwatch;
-	_static = [STATIC_TYPE] call BIS_fnc_selectRandom createVehicle _randomPos;
+	_static = selectRandom [STATIC_TYPE] createVehicle _randomPos;
 	waitUntil{!isNull _static};
 	_static setDir random 360;
 	"O_T_Support_MG_F" createUnit [_randomPos,_staticGroup];
@@ -206,7 +206,7 @@ for "_x" from 1 to PARAMS_StaticMG do {
 for "_x" from 1 to PARAMS_Overwatch do {
 	_overwatchGroup = createGroup east;
 	_randomPos = [getMarkerPos currentAO, 600, 50, 10] call BIS_fnc_findOverwatch;
-	_overwatchGroup = [_randomPos, East, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "UInfantry" >> [INF_URBANTYPE] call BIS_fnc_selectRandom)] call BIS_fnc_spawnGroup;
+	_overwatchGroup = [_randomPos, East, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "UInfantry" >> selectRandom [INF_URBANTYPE])] call BIS_fnc_spawnGroup;
 	[_patrolGroup, true] call QS_fnc_moveToHC;
 	[_overwatchGroup, _randomPos, 100] call BIS_fnc_taskPatrol;
 	[(units _overwatchGroup)] call QS_fnc_setSkill3;
@@ -224,7 +224,7 @@ for "_x" from 0 to 1 do {
         _randPos = _randomPos isFlatEmpty[3, 1, 0.5, 6, 0, false];
         _res = count _randPos;
     };
-	_AOmrap = [MRAP_TYPE] call BIS_fnc_selectRandom createVehicle _randomPos;
+	_AOmrap = selectRandom [MRAP_TYPE] createVehicle _randomPos;
 	waitUntil {!isNull _AOmrap};
 	"O_T_Engineer_F" createUnit [_randomPos,_AOmrapGroup];
 	"O_T_Engineer_F" createUnit [_randomPos,_AOmrapGroup];
@@ -256,7 +256,7 @@ for "_x" from 0 to (1 + (random 1)) do {
         _randPos = _randomPos isFlatEmpty[3, 1, 0.5, 10, 0, false];
         _res = count _randPos;
     };
-	_AOveh = [VEH_TYPE] call BIS_fnc_selectRandom createVehicle _randomPos;
+	_AOveh = selectRandom [VEH_TYPE] createVehicle _randomPos;
 	waitUntil{!isNull _AOveh};
 	"O_engineer_F" createUnit [_randomPos,_AOvehGroup];
 	"O_engineer_F" createUnit [_randomPos,_AOvehGroup];
@@ -282,7 +282,7 @@ for "_x" from 0 to (1 + (random 1)) do {
 if((random 10 <= PARAMS_AirPatrol)) then {
 	_airGroup = createGroup EAST;
 	_randomPos = [[[getMarkerPos currentAO, PARAMS_AOSize], _dt], ["water", "out"]] call BIS_fnc_randomPos;
-	_air = [AIR_TYPE] call BIS_fnc_selectRandom createVehicle [_randomPos select 0, _randomPos select 1, 1000];
+	_air = selectRandom [AIR_TYPE] createVehicle [_randomPos select 0, _randomPos select 1, 1000];
 	waitUntil{!isNull _air};
 	_air engineOn true;
 	_air setPos [_randomPos select 0, _randomPos select 1, 300];

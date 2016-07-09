@@ -16,20 +16,20 @@ Description:
 private ["_object", "_briefing", "_smPos", "_c4Message", "_sideGroup1", "_sideGroup2", "_sideGroup3"];
 
 // PREPARE MISSION. SELECT OBJECT, POSITION AND MESSAGES FROM ARRAYS
-_object = [crate1,crate2] call BIS_fnc_selectRandom;
+_object = selectRandom [crate1,crate2];
 
-currentSM = [
+currentSM = selectRandom [
 	"sm1", "sm2", "sm3", "sm4", "sm5", "sm6", "sm7", "sm8", "sm9", "sm10", "sm11",
 	"sm12", "sm13", "sm14", "sm15", "sm16", "sm17", "sm18", "sm19", "sm20",	"sm21",
 	"sm22", "sm23", "sm24", "sm25", "sm26", "sm27", "sm28", "sm29", "sm30",	"sm31",
 	"sm32", "sm33", "sm34", "sm35", "sm36", "sm37", "sm38", "sm39"
-] call BIS_fnc_selectRandom;
+];
 
-_c4Message = [
+_c4Message = selectRandom [
 	"Заряд установлен! 30 секунд до взрыва. В укрытие!",
 	"C-4 активирован! 30 секунд до детонации. Пригнитесь!",
 	"Взрывчатка на месте! 30 секунд до взрыва. Уходим!"
-] call BIS_fnc_selectRandom;
+];
 
 // SPAWN OBJECTIVE
 _smPos = getMarkerPos currentSM;

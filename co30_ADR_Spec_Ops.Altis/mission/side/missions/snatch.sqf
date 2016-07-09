@@ -35,7 +35,7 @@ KK_fnc_arrayShufflePlus = {
     _arr
 };
 
-// format: [[coords x,y], [drons],     [camp x,y,z],        [heli x,y,dir],      [fuel x,y,dir],      [AA x,y,dir],        [bunkers x,y,dir],                                                [guards x,y,z,dir],                                                                                                                                       [pilots x,y,z,dir]]
+// format: [[coords x,y], [drones],     [camp x,y,z],        [heli x,y,dir],      [fuel x,y,dir],      [AA x,y,dir],        [bunkers x,y,dir],                                                [guards x,y,z,dir],                                                                                                                                       [pilots x,y,z,dir]]
 _targets = [
     [[13581.3,12129.8],   [1,2],     [13562.7,12095.5,0], [13589.3,12169.8,0], [13614.3,12247.7,0], [13578.5,12132.1,0], [[13643.8,12239.3,45],[13503,12076.1,204],[13550.7,12131.2,300]], [[13476,12145.7,1.7,297],[13635.6,12127.4,0.1,283],[13492.9,12017.7,0.1,211],[13668.2,12287.2,0.1,54],[13575.2,12196.3,4,263],[13574.5,12188.1,0.1,146]], [[13597.8,12170.2,0.1,221],[13595.5,12167,0.1,37]]],
     [[3122.71,21960.9],   [1,2],     [3078.34,22008.9,0], [3139.74,21977.4,0], [3136,22026,148],    [3167,21920,180],    [[3173.8,21806,181],[2950.61,21992.4,285],[3273.55,22051.3,131]], [[3080.01,22059.8,0.1,154],[3153.43,21987.2,0.1,231],[3160.18,21982,0.1,229],[3126.3,21988.8,0.1,148],[3050.95,21916,0.1,205],[3253.05,21937.9,0.1,165]], [[3157.7,21975.9,0.1,318],[3155.91,21978.3,0.1,145]]],
@@ -64,7 +64,7 @@ _helicopters = [
 _helicopters = [_helicopters, 7] call KK_fnc_arrayShufflePlus;
 
 // select correct place for mission
-_position = _targets call BIS_fnc_selectRandom;
+_position = selectRandom _targets;
 _flatPos  = _position select 0;
 
 // set zone area
@@ -120,7 +120,7 @@ _heliDir = (_position select 3) select 2;
 _heliLand = createVehicle ["Land_HelipadSquare_F", _heliPos, [], 0, "CAN_COLLIDE"];
 _heliLand setDir (_heliDir + 180);
 _unitsArray = _unitsArray + [_heliLand];
-_heliData = _helicopters call BIS_fnc_selectRandom;
+_heliData = selectRandom _helicopters;
 _heliType = _heliData select 0;
 heliSnatch = createVehicle [_heliType, _heliPos, [], 0, "NONE"];
 heliSnatch setDir _heliDir;
@@ -171,8 +171,8 @@ for "_x" from 1 to 2 do {
     _unitsArray = _unitsArray + [_boxes];
 };
 
-// spawn patrolling drons
-_n = (_position select 1) call BIS_fnc_selectRandom;
+// spawn patrolling drones
+_n = selectRandom (_position select 1);
 for "_i" from 1 to _n do {
     _height = (random 20) + 15;
     _posInit = [_campPos, 1, 100, 2, 1, 1, 0] call BIS_fnc_findSafePos;
@@ -254,7 +254,7 @@ _bunkers = _position select 6;
     _static allowDamage false;
     _static setPos _posATL;
     _static setDir _bunkerDir;
-    ([INFANTRY_GUNNERS] call BIS_fnc_selectRandom) createUnit [[10,10,10], _staticGroup, "currentGuard = this"];
+    (selectRandom [INFANTRY_GUNNERS]) createUnit [[10,10,10], _staticGroup, "currentGuard = this"];
     currentGuard allowDamage false;
     sleep 0.1;
     currentGuard assignAsGunner _static;
@@ -270,7 +270,7 @@ _bunkers = _position select 6;
 // spawn single guards
 _singlePositions = _position select 7;
 {
-    ([INFANTRY_SOLDIERS] call BIS_fnc_selectRandom) createUnit [[10,10,10], _staticGroup, "currentGuard = this"];
+    (selectRandom [INFANTRY_SOLDIERS]) createUnit [[10,10,10], _staticGroup, "currentGuard = this"];
     currentGuard setPos [_x select 0, _x select 1, _x select 2];
     currentGuard setDir (_x select 3);
     [currentGuard,"STAND","FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;

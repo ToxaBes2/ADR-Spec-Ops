@@ -47,12 +47,12 @@ _targets = [
     ["Шахта Рэд Спринг",                 [11894.7,10383.8,0],     [[11886.3,10242.4,-0.1,-0.5],[12278,10375.9,-0.1,0]]]
 ];
 
-_target = _targets call BIS_fnc_selectRandom;
+_target = selectRandom _targets;
 
 _rareTargets = ["Авиабаза Туванака","Туванака","Бельфор","Радиовышка Виски","Полигон для техники","Ипота","Остров Сосову","Лека","Таву","Балаву","Лаикоро","Раутаке","Намувака","Каткоула","Савака","Лаилаи","Янукка","Взлетно-посадочная полоса Бала"];
 if ((_target select 0) in _rareTargets) then {
     if (random 10 > 5) then {
-        _target = _targets call BIS_fnc_selectRandom;
+        _target = selectRandom _targets;
     };
 };
 

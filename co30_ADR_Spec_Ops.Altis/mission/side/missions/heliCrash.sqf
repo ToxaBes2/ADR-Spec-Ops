@@ -67,7 +67,7 @@ _targets = [
 ];
 
 // select correct place for mission
-_position = _targets call BIS_fnc_selectRandom;
+_position = selectRandom _targets;
 _flatPos  = _position select 1;
 
 // set zone area
@@ -86,7 +86,7 @@ if ((random 10) < 6) then {
 } else {
 
     // choose one of 3 pre-selected interesting positions for landing
-	_heliCoords = [_position select 2, _position select 3, _position select 4] call BIS_fnc_selectRandom;
+	_heliCoords = selectRandom [_position select 2, _position select 3, _position select 4];
 	_fullyRandom = false;
 };
 _heliPos = [_heliCoords select 0, _heliCoords select 1, _heliCoords select 2];
@@ -161,7 +161,7 @@ if ((count _goodPos) == 0) then {
 
 if ((count _goodPos) > 0) then {
 	// put it inside some house or building if possible
-    _scoutPos = _goodPos call BIS_fnc_selectRandom;
+    _scoutPos = selectRandom _goodPos;
     _fullyRandom = false;
 } else {
     // no houses, no buildings - put it somewhere in 150m of area center
@@ -211,7 +211,7 @@ _chemlightBlue = createVehicle ["Chemlight_blue", _chemPosBlue, [], 0, "NONE"];
 for "_x" from 1 to 6 do {
     _patrolGroup = createGroup EAST;
     _randomPos = [[[_startPoint, 200],[]],["water","out"]] call BIS_fnc_randomPos;
-    _patrolGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Infantry" >> [INFANTRY_PATROL] call BIS_fnc_selectRandom)] call BIS_fnc_spawnGroup;
+    _patrolGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "Infantry" >> selectRandom [INFANTRY_PATROL])] call BIS_fnc_spawnGroup;
     _patrolGroup setBehaviour "COMBAT";
     _patrolGroup setCombatMode "RED";
     [_patrolGroup, (getMarkerPos "sideMarker"), 200] call BIS_fnc_taskPatrol;
@@ -223,15 +223,15 @@ _unitPos = ["UP", "MIDDLE"];
 _houseGroup = createGroup EAST;
 for "_x" from 1 to 10 do {
     if ((count _goodPos) > 0) then {
-        _randomPos = _goodPos call BIS_fnc_selectRandom;
+        _randomPos = selectRandom _goodPos;
     } else {
         _randomPos = [_startPoint, 0, 180, 2, 0, 0.5, 0] call BIS_fnc_findSafePos;
     };
-    ([INFANTRY_HOUSE] call BIS_fnc_selectRandom) createUnit [_randomPos, _houseGroup, "currentGuard = this"];
+    (selectRandom [INFANTRY_HOUSE]) createUnit [_randomPos, _houseGroup, "currentGuard = this"];
     doStop currentGuard;
     commandStop currentGuard;
     currentGuard setPosASL _randomPos;
-    currentGuard setUnitPos (_unitPos call BIS_fnc_selectRandom);
+    currentGuard setUnitPos (selectRandom _unitPos);
     currentGuard disableAI "MOVE";
 };
 _houseGroup setBehaviour "COMBAT";
@@ -254,12 +254,12 @@ _nearRoads = [_flatPos select 0,_flatPos select 1] nearRoads 150;
 for "_x" from 1 to 2 do {
     _staticGroup = createGroup EAST;
     if((count _nearRoads) > 0) then {
-        _roadSegment = _nearRoads call BIS_fnc_selectRandom;
+        _roadSegment = selectRandom _nearRoads;
         _randomPos = getPos _roadSegment;
     } else {
         _randomPos = [_startPoint, 200, 10, 10] call BIS_fnc_findOverwatch;
     };
-    _static = [INFANTRY_STATIC] call BIS_fnc_selectRandom createVehicle _randomPos;
+    _static = selectRandom [INFANTRY_STATIC] createVehicle _randomPos;
     waitUntil{!isNull _static};
     _static setDir random 360;
     "O_support_MG_F" createUnit [_randomPos,_staticGroup];
@@ -278,12 +278,12 @@ for "_x" from 1 to 2 do {
 for "_x" from 1 to 2 do {
     _technicalGroup = createGroup EAST;
     if((count _nearRoads) > 0) then {
-        _roadSegment = _nearRoads call BIS_fnc_selectRandom;
+        _roadSegment = selectRandom _nearRoads;
         _randomPos = getPos _roadSegment;
     } else {
         _randomPos = [[[_startPoint, 200],[]],["water","out"]] call BIS_fnc_randomPos;
     };
-    _technicalVehicle = [INFANTRY_MOTORIZED] call BIS_fnc_selectRandom createVehicle _randomPos;
+    _technicalVehicle = selectRandom [INFANTRY_MOTORIZED] createVehicle _randomPos;
     waitUntil{!isNull _technicalVehicle};
     "O_engineer_F" createUnit [_randomPos,_technicalGroup];
     "O_engineer_F" createUnit [_randomPos,_technicalGroup];

@@ -19,5 +19,5 @@ deletevehicle _bolt;
 deletevehicle _light;
 deletevehicle _lighting;
 _obj setDamage 1;
-playSound (["thunder_1", "thunder_2"] call BIS_fnc_selectRandom);
+playSound (selectRandom ["thunder_1", "thunder_2"]);
 [WEST, "HQ"] sideChat "Аид: нарушение правил, виновные наказаны.";

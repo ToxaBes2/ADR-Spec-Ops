@@ -49,7 +49,7 @@ _targets = [
 ];
 
 // select correct place for mission
-_position = _targets call BIS_fnc_selectRandom;
+_position = selectRandom _targets;
 _flatPos  = _position select 0;
 
 // set zone area
@@ -96,7 +96,7 @@ for "_c" from 0 to 50 do {
 
 //spawn wreck vehicles
 for "_c" from 0 to 6 do {
-    _wreck = [INFANTRY_WRECKED_VECHICLES] call BIS_fnc_selectRandom;
+    _wreck = selectRandom [INFANTRY_WRECKED_VECHICLES];
     _wreckPos = [_subPos, 40, 120, 5, 2, 20, 0] call BIS_fnc_findSafePos;
     _wreckVeh = createVehicle [_wreck, [0,0,0], [], 0, "CAN_COLLIDE"];
     _wreckVeh setPos [_wreckPos select 0, _wreckPos select 1, getTerrainHeightASL _wreckPos];
@@ -149,7 +149,7 @@ sleep 1;
 // spawn 5 SDVs
 for "_c" from 0 to 4 do {
     _safePos = [_subPos, 2, 50, 2, 2, 5, 0] call BIS_fnc_findSafePos;
-    _sdv = createVehicle [([INFANTRY_SDV] call BIS_fnc_selectRandom), [0,0,0], [], 0, "NONE"];
+    _sdv = createVehicle [(selectRandom [INFANTRY_SDV]), [0,0,0], [], 0, "NONE"];
     waitUntil {alive _sdv};
     _sdv setPos [_safePos select 0, _safePos select 1, getTerrainHeightASL _safePos];
     _sdv setDir (random 360);
@@ -160,7 +160,7 @@ for "_c" from 0 to 4 do {
 // spawn 5 lights
 for "_c" from 0 to 4 do {
 _safePos = [_subPos, 15, 40, 4, 2, 20, 0] call BIS_fnc_findSafePos;
-    _light = createVehicle [(["Land_PortableLight_double_F","Land_PortableLight_single_F"] call BIS_fnc_selectRandom), [0,0,0], [], 0, "NONE"];
+    _light = createVehicle [(selectRandom ["Land_PortableLight_double_F","Land_PortableLight_single_F"]), [0,0,0], [], 0, "NONE"];
     _light setPos [_safePos select 0, _safePos select 1, getTerrainHeightASL _safePos];
     _light setDir (([_light, _submarine] call BIS_fnc_dirTo) + 180);
     _light setMass 20;
@@ -173,16 +173,16 @@ _diversGroup1 = createGroup ENEMY_SIDE;
 for "_c" from 0 to 15 do {
     _safePos = [(_subPos select 0) + (random 40) - 20, (_subPos select 1) + (random 40) - 20, 0];
     _height = getTerrainHeightASL _safePos;
-    _r = [0.1,1.1,2.1,3.1,4.1,5.1,6.1,7.1,8.1,9.1,10.1,11.1,12.1,13.1,14.1,15.1] call BIS_fnc_selectRandom;
+    _r = selectRandom [0.1,1.1,2.1,3.1,4.1,5.1,6.1,7.1,8.1,9.1,10.1,11.1,12.1,13.1,14.1,15.1];
     _height = _height + _r;
     _diverPos = [(_safePos select 0), (_safePos select 1), _height];
-    ([INFANTRY_DIVERS] call BIS_fnc_selectRandom) createUnit [[0,0,0], _diversGroup1, "currentGuard = this", 0, ([INFANTRY_RANK] call BIS_fnc_selectRandom)];
+    (selectRandom [INFANTRY_DIVERS]) createUnit [[0,0,0], _diversGroup1, "currentGuard = this", 0, (selectRandom [INFANTRY_RANK])];
     waitUntil {alive currentGuard};
     currentGuard setPos _diverPos;
     currentGuard setDir (random 360);
     doStop currentGuard;
     commandStop currentGuard;
-    //[currentGuard,(["WATCH","WATCH1","WATCH2"] call BIS_fnc_selectRandom),"FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
+    //[currentGuard,(selectRandom ["WATCH","WATCH1","WATCH2"]),"FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
     removeAllWeapons currentGuard;
     currentGuard addWeapon "arifle_SDAR_F";
     currentGuard addmagazines["20Rnd_556x45_UW_mag", 10];
@@ -197,14 +197,14 @@ _diversGroup2 = createGroup ENEMY_SIDE;
 for "_c" from 0 to 25 do {
     _safePos = [(_subPos select 0) + (random 300) - 150, (_subPos select 1) + (random 300) - 150, 0];
     _height = getTerrainHeightASL _safePos;
-    _r = [0.1,1.1,2.1,3.1,4.1,5.1,6.1,7.1,8.1,9.1,10.1,11.1,12.1,13.1,14.1,15.1] call BIS_fnc_selectRandom;
+    _r = selectRandom [0.1,1.1,2.1,3.1,4.1,5.1,6.1,7.1,8.1,9.1,10.1,11.1,12.1,13.1,14.1,15.1];
     _height = _height + _r;
     _diverPos = [(_safePos select 0), (_safePos select 1), _height];
-    ([INFANTRY_DIVERS] call BIS_fnc_selectRandom) createUnit [[0,0,0], _diversGroup2, "currentGuard = this", 0, ([INFANTRY_RANK] call BIS_fnc_selectRandom)];
+    (selectRandom [INFANTRY_DIVERS]) createUnit [[0,0,0], _diversGroup2, "currentGuard = this", 0, (selectRandom [INFANTRY_RANK])];
     waitUntil {alive currentGuard};
     currentGuard setPos _diverPos;
     currentGuard setDir (random 360);
-    [currentGuard,(["WATCH","WATCH1","WATCH2"] call BIS_fnc_selectRandom),"FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
+    [currentGuard,(selectRandom ["WATCH","WATCH1","WATCH2"]),"FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
     removeAllWeapons currentGuard;
     currentGuard addWeapon "arifle_SDAR_F";
     currentGuard addmagazines["20Rnd_556x45_UW_mag", 10];
@@ -222,7 +222,7 @@ for "_c" from 0 to 3 do {
     _diverPos = [_safePos select 0, _safePos select 1, ((_height + 10) - (random 5))];
     _patrolGroup = createGroup ENEMY_SIDE;
     for "_c" from 0 to 1 do {
-        ([INFANTRY_DIVERS] call BIS_fnc_selectRandom) createUnit [[0,0,0], _patrolGroup, "currentGuard = this", 0, ([INFANTRY_RANK] call BIS_fnc_selectRandom)];
+        (selectRandom [INFANTRY_DIVERS]) createUnit [[0,0,0], _patrolGroup, "currentGuard = this", 0, (selectRandom [INFANTRY_RANK])];
         waitUntil {alive currentGuard};
         currentGuard setPos _diverPos;
         currentGuard setDir (random 360);
