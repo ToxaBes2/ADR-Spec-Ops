@@ -31,7 +31,7 @@ while {!_accepted} do {
 	};
 };
 
-_vehPos = [_flatPos, 15, 30, 10, 0, 0.5, 0] call BIS_fnc_findSafePos;
+_vehPos = [_flatPos, 15, 30, 10, 0, 0.5, 0, [], _flatPos] call BIS_fnc_findSafePos;
 
 // SPAWN OBJECTIVE BUILDING
 sideObj = "Land_Research_HQ_F" createVehicle _flatPos;

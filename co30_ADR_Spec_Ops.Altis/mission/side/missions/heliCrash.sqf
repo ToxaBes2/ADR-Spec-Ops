@@ -225,7 +225,7 @@ for "_x" from 1 to 10 do {
     if ((count _goodPos) > 0) then {
         _randomPos = selectRandom _goodPos;
     } else {
-        _randomPos = [_startPoint, 0, 180, 2, 0, 0.5, 0] call BIS_fnc_findSafePos;
+        _randomPos = [_startPoint, 0, 180, 2, 0, 0.5, 0, [], _startPoint] call BIS_fnc_findSafePos;
     };
     (selectRandom [INFANTRY_HOUSE]) createUnit [_randomPos, _houseGroup, "currentGuard = this"];
     doStop currentGuard;
