@@ -84,5 +84,5 @@ if !(_testPos isFlatEmpty  [_objDist, 0, _maxGradient, _objDist max 5, 0, true, 
     };
 };
 
-// Retrun the final shore position
+// Return the final shore position
 _returnPos;
