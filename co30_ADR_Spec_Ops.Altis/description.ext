@@ -54,6 +54,7 @@ corpseRemovalMaxTime = 120;								// Max time before removal
 #include "scripts\vehicle\crew\common.hpp"  			// vehicle crew hud
 #include "scripts\=BTC=_revive\=BTC=_respawn.h"			// BTC medic revive system
 #include "scripts\rules\dialog.hpp"		                // Server rules dialog
+#include "scripts\outlw_magRepack\MagRepack_config.hpp" // Mag Repack by Outlawled
 
 class CfgFunctions
 	{

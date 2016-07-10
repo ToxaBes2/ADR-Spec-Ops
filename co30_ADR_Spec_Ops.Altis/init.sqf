@@ -1,6 +1,7 @@
 if (!hasInterface && !isDedicated) exitWith {};
 [] spawn {_this call compile preProcessFileLineNumbers "scripts\radio\createChannels.sqf"};
 [] spawn {_this call compile preProcessFileLineNumbers "scripts\radio\speakEvent.sqf"};
+[] spawn {_this call compile preProcessFileLineNumbers "scripts\outlw_magRepack\MagRepack_init_sv.sqf"};
 call compile preprocessFile "scripts\=BTC=_revive\=BTC=_revive_init.sqf";
 call compile preprocessFile "scripts\=BTC=_TK_punishment\=BTC=_tk_init.sqf";
 
