@@ -8,7 +8,7 @@ class EditorData
 	toggles=33;
 	class ItemIDProvider
 	{
-		nextID=2279;
+		nextID=2280;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={6878.333,12.07535,7286.7349};
-		dir[]={-0.86636907,-0.44743726,0.22236772};
-		up[]={-0.43346915,0.89425242,0.11125465};
-		aside[]={0.24863926,1.6293488e-006,0.96871787};
+		pos[]={6942.394,31.18511,7279.6406};
+		dir[]={-0.80172813,-0.55802083,0.21468534};
+		up[]={-0.53908467,0.82976425,0.14435391};
+		aside[]={0.25869751,2.0535954e-006,0.96608299};
 	};
 };
 binarizationWanted=0;
@@ -368,6 +368,8 @@ class ScenarioData
 	class Header
 	{
 		gameType="Coop";
+		minPlayers=1;
+		maxPlayers=30;
 	};
 };
 class CustomAttributes
@@ -658,7 +660,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=555;
+		items=556;
 		class Item0
 		{
 			dataType="Object";
@@ -27833,6 +27835,19 @@ class Mission
 				};
 				nAttributes=1;
 			};
+		};
+		class Item555
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={6920.5552,3.2713768,7312.8804};
+				angles[]={6.2698536,0,6.2645216};
+			};
+			name="HC1";
+			isPlayable=1;
+			id=2279;
+			type="HeadlessClient_F";
 		};
 	};
 	class Connections
