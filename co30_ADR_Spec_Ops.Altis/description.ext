@@ -2,7 +2,7 @@
 
 author = "ToxaBes";
 onLoadName = "ADR: Spec Ops";
-OnLoadMission = "Version 0.0.5. Based on ADR:Blue Shark [www.tehgam.com]";
+OnLoadMission = "Altis v0.0.5 [www.tehgam.com]";
 loadScreen = "media\images\adr_specops_loading.jpg";
 overviewPicture = "media\images\adr_specops_loading.jpg";
 
