@@ -8,7 +8,7 @@ class EditorData
 	toggles=33;
 	class ItemIDProvider
 	{
-		nextID=2280;
+		nextID=2284;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={6942.394,31.18511,7279.6406};
-		dir[]={-0.80172813,-0.55802083,0.21468534};
-		up[]={-0.53908467,0.82976425,0.14435391};
-		aside[]={0.25869751,2.0535954e-006,0.96608299};
+		pos[]={6962.8848,61.028492,7264.7476};
+		dir[]={-0.7560752,-0.62955689,0.17926857};
+		up[]={-0.61264282,0.77689636,0.14525977};
+		aside[]={0.23072286,3.9480801e-007,0.97309178};
 	};
 };
 binarizationWanted=0;
@@ -93,7 +93,8 @@ addons[]=
 	"A3_Weapons_F_Exp_Rifles_SPAR_03",
 	"A3_Weapons_F",
 	"A3_Soft_F_Exp_Quadbike_01",
-	"A3_Supplies_F_Heli_Slingload"
+	"A3_Supplies_F_Heli_Slingload",
+	"A3_Boat_F_Exp_Scooter_Transport_01"
 };
 class AddonsMetaData
 {
@@ -635,7 +636,8 @@ class Mission
 {
 	class Intel
 	{
-		briefingName="ADR: Spec Ops";
+		briefingName="Co-30 ADR: Spec Ops [Tanoa]";
+		overviewText="version 0.0.1";
 		resistanceWest=0;
 		resistanceEast=1;
 		timeOfChanges=28800;
@@ -660,7 +662,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=556;
+		items=559;
 		class Item0
 		{
 			dataType="Object";
@@ -27048,8 +27050,8 @@ class Mission
 						};
 						class Attribute1
 						{
-							property="face";
-							expression="_this setface _value;";
+							property="enableStamina";
+							expression="_this enablestamina _value;";
 							class Value
 							{
 								class data
@@ -27058,10 +27060,10 @@ class Mission
 									{
 										type[]=
 										{
-											"STRING"
+											"BOOL"
 										};
 									};
-									value="WhiteHead_15";
+									value=0;
 								};
 							};
 						};
@@ -27124,8 +27126,8 @@ class Mission
 						};
 						class Attribute5
 						{
-							property="enableStamina";
-							expression="_this enablestamina _value;";
+							property="face";
+							expression="_this setface _value;";
 							class Value
 							{
 								class data
@@ -27134,10 +27136,10 @@ class Mission
 									{
 										type[]=
 										{
-											"BOOL"
+											"STRING"
 										};
 									};
-									value=0;
+									value="WhiteHead_15";
 								};
 							};
 						};
@@ -27848,6 +27850,57 @@ class Mission
 			isPlayable=1;
 			id=2279;
 			type="HeadlessClient_F";
+		};
+		class Item556
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={6625.7124,1.3896412,6902.6826};
+				angles[]={0,4.9567351,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="null = [this, 60, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+			};
+			id=2280;
+			type="C_Scooter_Transport_01_F";
+			atlOffset=2.4046597;
+		};
+		class Item557
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={6626.9414,1.3904587,6907.6406};
+				angles[]={0,4.9567351,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="null = [this, 60, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+			};
+			id=2281;
+			type="C_Scooter_Transport_01_F";
+			atlOffset=2.0936596;
+		};
+		class Item558
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={6626.2993,1.386407,6905.1313};
+				angles[]={0,4.9567351,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="null = [this, 60, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+			};
+			id=2282;
+			type="C_Scooter_Transport_01_F";
+			atlOffset=2.2476597;
 		};
 	};
 	class Connections
