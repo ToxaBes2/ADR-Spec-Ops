@@ -115,9 +115,9 @@ _unitsArray = _unitsArray + [_tower];
 sleep 0.1;
 
 // spawn cargo HQ
-_cargoPos = [_startPoint, 0, 90, 5, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
+_cargoPos = [_startPoint, 0, 90, 5, 0, 10, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
 while {surfaceIsWater _cargoPos} do {
-    _cargoPos = [_startPoint, 0, 90, 5, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
+    _cargoPos = [_startPoint, 0, 90, 5, 0, 10, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
 };
 _cargoHQ = createVehicle ["Land_Cargo_HQ_V1_F", _cargoPos, [], 0, "CAN_COLLIDE"];
 _unitsArray = _unitsArray + [_cargoHQ];
@@ -125,16 +125,16 @@ sleep 0.1;
 
 // spawn several metal barells
 for "_i" from 1 to 5 do {
-    _barrelPos = [_startPoint, 0, 90, 3, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
+    _barrelPos = [_startPoint, 0, 90, 3, 0, 10, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
     _barrel = createVehicle ["Land_MetalBarrel_F", _barrelPos, [], 0, "CAN_COLLIDE"];
     _unitsArray = _unitsArray + [_barrel];
     sleep 0.1;
 };
 
 // spawn one metal barell with gas
-_barrelPos = [_startPoint, 0, 70, 3, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
+_barrelPos = [_startPoint, 0, 70, 3, 0, 10, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
 while {surfaceIsWater _barrelPos} do {
-    _barrelPos = [_startPoint, 0, 70, 8, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
+    _barrelPos = [_startPoint, 0, 70, 8, 0, 10, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
 };
 _barrel = createVehicle ["Land_MetalBarrel_F", _barrelPos, [], 0, "NONE"];
 [_barrel, "QS_fnc_addActionNeutralize", nil, true] spawn BIS_fnc_MP;
@@ -147,9 +147,9 @@ sleep 0.1;
 
 // spawn cargo houses
 for "_i" from 1 to 8 do {
-    _cargoPos = [_startPoint, 0, 100, 10, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
+    _cargoPos = [_startPoint, 0, 100, 10, 0, 10, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
     while {surfaceIsWater _cargoPos || _cargoPos distance _gasPos < 2} do {
-        _cargoPos = [_startPoint, 0, 100, 8, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
+        _cargoPos = [_startPoint, 0, 100, 8, 0, 10, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
     };
     _cargoHouse = createVehicle ["Land_Cargo_House_V1_F", _cargoPos, [], 0, "NONE"];
     _unitsArray = _unitsArray + [_cargoHouse];
@@ -158,9 +158,9 @@ for "_i" from 1 to 8 do {
 
 // spawn some cargo boxes
 for "_i" from 1 to 5 do {
-    _pos1 = [_startPoint, 0, 120, 3, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
+    _pos1 = [_startPoint, 0, 120, 3, 0, 10, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
     while {_pos1 distance _startPoint > 120 || _pos1 distance _gasPos < 8} do {
-        _pos1 = [_startPoint, 0, 120, 3, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
+        _pos1 = [_startPoint, 0, 120, 3, 0, 10, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
     };
     _dir = random 360;
     _cargo1 = createVehicle [(selectRandom [INFANTRY_CARGO]), _pos1, [], 0, "CAN_COLLIDE"];
@@ -175,9 +175,9 @@ for "_i" from 1 to 5 do {
     sleep 0.1;
 };
 for "_i" from 1 to 5 do {
-    _pos1 = [_startPoint, 0, 120, 3, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
+    _pos1 = [_startPoint, 0, 120, 3, 0, 10, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
     while {_pos1 distance _startPoint > 120 || _pos1 distance _gasPos < 8} do {
-        _pos1 = [_startPoint, 0, 120, 3, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
+        _pos1 = [_startPoint, 0, 120, 3, 0, 10, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
     };
     _dir = 0;
     _cargo1 = createVehicle [(selectRandom [INFANTRY_CARGO]), _pos1, [], 0, "CAN_COLLIDE"];
@@ -192,9 +192,9 @@ for "_i" from 1 to 5 do {
     sleep 0.1;
 };
 for "_i" from 1 to 5 do {
-    _pos1 = [_startPoint, 0, 120, 3, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
+    _pos1 = [_startPoint, 0, 120, 3, 0, 10, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
     while {_pos1 distance _startPoint > 120 || _pos1 distance _gasPos < 8} do {
-        _pos1 = [_startPoint, 0, 120, 3, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
+        _pos1 = [_startPoint, 0, 120, 3, 0, 10, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
     };
     _dir = 0;
     _cargo1 = createVehicle [(selectRandom [INFANTRY_CARGO]), _pos1, [], 0, "CAN_COLLIDE"];
@@ -212,9 +212,9 @@ for "_i" from 1 to 5 do {
     sleep 0.1;
 };
 for "_i" from 1 to 5 do {
-    _pos1 = [_startPoint, 0, 120, 3, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
+    _pos1 = [_startPoint, 0, 120, 3, 0, 10, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
     while {_pos1 distance _startPoint > 120 || _pos1 distance _gasPos < 8} do {
-        _pos1 = [_startPoint, 0, 120, 3, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
+        _pos1 = [_startPoint, 0, 120, 3, 0, 10, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
     };
     _dir = random 360;
     _cargo1 = createVehicle [(selectRandom [INFANTRY_CARGO]), _pos1, [], 0, "CAN_COLLIDE"];
@@ -225,9 +225,9 @@ for "_i" from 1 to 5 do {
 
 // spawn misc barrels
 for "_i" from 1 to 20 do {
-    _pos1 = [_startPoint, 0, 120, 5, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
+    _pos1 = [_startPoint, 0, 120, 5, 0, 10, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
     while {surfaceIsWater _pos1 || _pos1 distance _gasPos < 8 || _startPoint distance _pos1 > 120} do {
-        _pos1 = [_startPoint, 0, 110, 3, 0, 15, 0, [], _startPoint] call BIS_fnc_findSafePos;
+        _pos1 = [_startPoint, 0, 110, 3, 0, 15, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
     };
    _barrel1 = createVehicle [(selectRandom [INFANTRY_BARRELS]), _pos1, [], 0, "NONE"];
    _unitsArray = _unitsArray + [_barrel1];
@@ -369,7 +369,7 @@ _nearestPatrolHouse = nearestObjects [_startPoint, ["Land_Cargo_Patrol_V1_F"], 1
 // ground guards
 _groundGroup  = createGroup ENEMY_SIDE;
 for "_c" from 1 to 10 do {
-    _groundPos = [_startPoint, 0, 110, 2, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
+    _groundPos = [_startPoint, 0, 110, 2, 0, 10, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
     (selectRandom [INFANTRY_RECONS]) createUnit [_groundPos, _groundGroup, "currentGuard = this", 0, (selectRandom [INFANTRY_RANK])];
     currentGuard allowDamage false;
     sleep 0.2;
@@ -382,21 +382,21 @@ for "_c" from 1 to 10 do {
 };
 
 // patrols (2 bots)
-_groundPos1 = [_startPoint, 0, 110, 2, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
+_groundPos1 = [_startPoint, 0, 110, 2, 0, 10, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
 _patrolGroup1 = [_groundPos1, ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "UInfantry" >> "OIA_GuardSentry")] call BIS_fnc_spawnGroup;
 [_patrolGroup1, _startPoint, 90] call BIS_fnc_taskPatrol;
 _enemiesArray = _enemiesArray + (units _patrolGroup1);
 sleep 0.1;
 
 //patrol (4 bots)
-_groundPos2 = [_startPoint, 0, 90, 2, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
+_groundPos2 = [_startPoint, 0, 90, 2, 0, 10, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
 _patrolGroup2 = [_groundPos2, ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "UInfantry" >> "OIA_GuardTeam")] call BIS_fnc_spawnGroup;
 [_patrolGroup2, _startPoint, 60] call BIS_fnc_taskPatrol;
 _enemiesArray = _enemiesArray + (units _patrolGroup2);
 sleep 0.1;
 
 // patrol (8 bots)
-_groundPos3 = [_startPoint, 0, 30, 2, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
+_groundPos3 = [_startPoint, 0, 30, 2, 0, 10, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
 _patrolGroup3 = [_groundPos3 , ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "UInfantry" >> "OIA_GuardSquad")] call BIS_fnc_spawnGroup;
 [_patrolGroup3, _startPoint, 20] call BIS_fnc_taskPatrol;
 _enemiesArray = _enemiesArray + (units _patrolGroup3);
@@ -426,9 +426,9 @@ while { sideMissionUp } do {
             // spawn stomper
             if (random 10 > 5) then {
                 hqSideChat = "Разведка сообщила о пустом БПА Стомпер недалеко от зоны спецоперации!"; publicVariable "hqSideChat"; [OUR_SIDE, "HQ"] sideChat hqSideChat;
-                _stomperPos = [_startPoint, 135, 200, 3, 0, 10, 0, [], _startPoint] call BIS_fnc_findSafePos;
+                _stomperPos = [_startPoint, 135, 200, 3, 0, 10, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
                 _uavGroup = createGroup OUR_SIDE;
-                _spawn = [_stomperPos, (random 360), "B_UGV_01_rcws_F", _uavGroup] call BIS_fnc_spawnVehicle;
+                _spawn = [_stomperPos, (random 360), "B_UGV_01_rcws_F", [_uavGroup]] call BIS_fnc_spawnVehicle;
                 _uav = (_spawn select 0);
                 _uav addWeapon "missiles_titan";
                 _uav addMagazine "2Rnd_GAT_missiles";

@@ -68,6 +68,7 @@ class QS
 		class SMenemyIND {};
 		class SMhintFAIL {};
 		class SMhintSUCCESS {};
+		class spawnViper {};
 		class TBshuffle {};
 		class TBdeleteObjects {};
 		class uh80Turret {};

@@ -31,7 +31,7 @@ while {!_accepted} do {
 	};
 };
 
-_objPos = [_flatPos, 25, 35, 10, 0, 0.5, 0, [], _flatPos] call BIS_fnc_findSafePos;
+_objPos = [_flatPos, 25, 35, 10, 0, 0.5, 0, [], [_flatPos]] call BIS_fnc_findSafePos;
 
 // SPAWN OBJECTIVE
 _randomDir = (random 360);

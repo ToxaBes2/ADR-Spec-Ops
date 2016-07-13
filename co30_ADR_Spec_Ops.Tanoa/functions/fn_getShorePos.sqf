@@ -55,7 +55,7 @@ if (surfaceIsWater _testPos) then {
 };
 
 // Check if selected land position is on a shore
-if !(_testPos isFlatEmpty  [_objDist, 0, _maxGradient, _objDist max 5, 0, true, objNull] isEqualTo []) then {
+if !(_testPos isFlatEmpty  [_objDist, -1, _maxGradient, _objDist max 5, 0, true, objNull] isEqualTo []) then {
     _returnPos = _testPos;
 } else {
     // Search for a shore position starting from the selected land position and
