@@ -222,9 +222,9 @@ while {alive radioTower || !MAIN_AO_SUCCESS || !_showTowerMessage || !_showBunke
     sleep 3;
     if ((MAIN_AO_SUCCESS and !_viperSquadSpawned) or (!alive radioTower and !_viperSquadSpawned)) then {
         _viperSquadSpawned = true;
-        //if (random 1 > 0.5) then {
+        if (random 1 > 0.5) then {
             _enemiesArray pushBack ([(_bunkerPos getPos [(_bunkerPos distance2D _flatPos) / 2, _bunkerPos getDir _flatPos]), 500, 800, true, ENEMY_SIDE] call QS_fnc_spawnViper);
-        //};
+        };
     };
 };
 currentAOUp = false; publicVariable "currentAOUp";
