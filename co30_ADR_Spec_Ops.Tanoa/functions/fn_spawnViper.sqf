@@ -63,8 +63,8 @@ while {_search && _dist < _maxDistanceFromStart} do {
             } forEach _players;
             if (_minDist > _minDistanceFromPlayers) then {
                 // Find nearby forest
-                _forestPos = (selectBestPlaces [_testPos, 200, "forest + trees", 25, 1]) select 0;
-                if ((_forestPos select 1) >= 1) then {
+                _forestPos = (selectBestPlaces [_testPos, 200, "forest", 25, 1]) select 0;
+                if ((_forestPos select 1) == 1) then {
                     _search = false;
                     _testPos = _forestPos select 0;
                     breakOut "whileLoop";
