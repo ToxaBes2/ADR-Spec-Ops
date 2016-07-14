@@ -1077,6 +1077,7 @@ BTC_drag =
 	if (count _men > 1) then {_injured = _men select 1;};
 	if (format ["%1",_injured getVariable "BTC_need_revive"] != "1") exitWith {};
 	BTC_dragging = true;
+	outlw_MR_canCreateDialog = false;
 	_injured setVariable ["BTC_dragged",1,true];
 	_injured attachTo [player, [0, 1.1, 0.092]];
 	player playMoveNow "AcinPknlMstpSrasWrflDnon";
@@ -1109,6 +1110,7 @@ BTC_drag =
 	if (format ["%1",_injured getVariable "BTC_need_revive"] == "1") then {detach _injured;_injured playMoveNow "AinjPpneMstpSnonWrflDb_release";};
 	player removeAction _id;
 	BTC_dragging = false;
+	outlw_MR_canCreateDialog = true;
 };
 
 BTC_carry =
@@ -1118,6 +1120,7 @@ BTC_carry =
 	if (count _men > 1) then {_injured = _men select 1;};
 	if (format ["%1",_injured getVariable "BTC_need_revive"] != "1") exitWith {};
 	BTC_dragging = true;
+	outlw_MR_canCreateDialog = false;
 	_healer = player;
 	_injured setVariable ["BTC_dragged",1,true];
 	detach _injured;
@@ -1153,10 +1156,12 @@ BTC_carry =
 	_injured setVariable ["BTC_dragged",0,true];
 	player removeAction _id;
 	BTC_dragging = false;
+	outlw_MR_canCreateDialog = true;
 };
 BTC_release =
 {
 	BTC_dragging = false;
+	outlw_MR_canCreateDialog = true;
 };
 
 BTC_load_in =
@@ -1164,6 +1169,7 @@ BTC_load_in =
 	_injured = _this select 0;
 	_veh     = _this select 1;
 	BTC_dragging = false;
+	outlw_MR_canCreateDialog = true;
 	BTC_load_pveh = [3,_injured,_veh];publicVariable "BTC_load_pveh";
 };
 
