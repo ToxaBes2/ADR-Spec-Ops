@@ -3,13 +3,13 @@
 Author:
 
 	Quiksilver
-	
+
 Description:
 
 	Clear items from the base area.
 	Activated via addAction on PC terminal at base.
 	Linked to file clearItemsBASE_switch.sqf.
-	
+
 ____________________________________________________________________*/
 
 
@@ -20,41 +20,36 @@ _delay = 120;													// default 600, or should be done after each AO?
 _loopTimeout = 10 + (random 10);								// default 300 or 600? greater time = less costly loop?
 
 CLEARITEMSBASE_SWITCH = false; publicVariable "CLEARITEMSBASE_SWITCH";
- 
-//---------- LOOP
- 
-while { true } do { 
- 
+
+while { true } do {
 	if (CLEARITEMSBASE_SWITCH) then {
-	
-		//---------- BRIEF
-
 		hqSideChat = "Очистка мусора на базе..."; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
-
 		sleep 1;
 
-		//---------- CORE
-		
-		_itemsToClear = nearestObjects [_obj,["weaponholder"],_rad];
+        // Add droped items to the deletion array
+		_itemsToClear = _obj nearObjects ["GroundWeaponHolder", _rad];
+
+        // Add craters to the deletion array
+        _itemsToClear append (_obj nearObjects ["CraterLong", _rad]);
+
+        // Add dead bodies and destroyed vehicles to the deletion array
+        {
+            if (_x distance2D _obj < _rad) then {
+                _itemsToClear pushBack _x;
+            };
+        } forEach allDead;
+
+        // Delete items in the deletion array
 		{
 			deleteVehicle _x;
 		} forEach _itemsToClear;
-	
+
 		sleep 1;
-	
-		//---------- DE-BRIEF
-	
+
 		hqSideChat = "Следующая очистка будет доступна через несколько минут."; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
-	
 		sleep _delay;
-	
-		//---------- RESET
-	
 		CLEARITEMSBASE_SWITCH = false; publicVariable "CLEARITEMSBASE_SWITCH";
 		hqSideChat = "Очистка базы доступна"; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
-
 	};
-	
 	sleep _loopTimeout;
-	
 };
