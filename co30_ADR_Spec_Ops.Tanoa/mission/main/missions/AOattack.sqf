@@ -12,6 +12,13 @@ private ["_target","_nameAO","_positionAO","_serviceMarkers","_dt","_chance","_b
 
 eastSide = createCenter ENEMY_SIDE;
 _target = [] call QS_fnc_getMainAO;
+if !(isNil "LAST_MAIN_MISSION") then {
+    while {_target == LAST_MAIN_MISSION} do {
+        _target = [] call QS_fnc_getMainAO;
+    };
+};
+LAST_MAIN_MISSION = _target;
+publicVariable "LAST_MAIN_MISSION";
 _nameAO = _target select 0;
 _positionAO = _target select 1;
 
