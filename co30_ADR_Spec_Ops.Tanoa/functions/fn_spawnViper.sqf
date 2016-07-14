@@ -11,7 +11,7 @@ _this select 4: Use CSAT Pacific faction, instead of CSAT. Default: true (Bool)
 _this select 5: Side of the group. Default: EAST (String)
 */
 
-private ["_minDistanceFromStart", "_attackPosition", "_minDistanceFromPlayers", "_pacificFaction", "_groupSide", "_min", "_minDist", "_max", "_dist", "_search", "_players", "_testPos", "_i", "_distance", "_forestPos", "_viperGroup"];
+private ["_minDistanceFromStart", "_attackPosition", "_minDistanceFromPlayers", "_pacificFaction", "_groupSide", "_maxDistanceFromStart", "_min", "_minDist", "_max", "_startPos", "_dist", "_search", "_players", "_d", "_testPos", "_i", "_distance", "_forestPos", "_viperGroup"];
 
 _attackPosition = _this select 0;
 _minDistanceFromStart = if (count _this > 1) then {_this select 1} else {0};
