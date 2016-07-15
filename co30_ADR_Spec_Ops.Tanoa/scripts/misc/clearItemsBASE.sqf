@@ -28,6 +28,7 @@ while { true } do {
 
         // Add droped items to the deletion array
 		_itemsToClear = _obj nearObjects ["GroundWeaponHolder", _rad];
+		_itemsToClear append (_obj nearObjects ["WeaponHolderSimulated", _rad]);
 
         // Add craters to the deletion array
         _itemsToClear append (_obj nearObjects ["CraterLong", _rad]);
