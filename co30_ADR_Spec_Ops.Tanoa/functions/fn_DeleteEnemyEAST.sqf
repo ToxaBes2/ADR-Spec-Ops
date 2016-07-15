@@ -25,7 +25,8 @@ _unitTypes = ["O_Soldier_F","O_Soldier_GL_F","O_Soldier_AR_F","O_Soldier_SL_F","
 "O_T_Soldier_Exp_F","O_T_Soldier_F","O_T_Soldier_GL_F","O_T_Soldier_LAT_F","O_T_Soldier_M_F","O_T_Soldier_PG_F","O_T_Soldier_Repair_F",
 "O_T_Soldier_SL_F","O_T_Soldier_TL_F","O_T_Soldier_UAV_F","O_T_Spotter_F","O_T_Support_AMG_F","O_T_Support_AMort_F","O_T_Support_GMG_F",
 "O_T_Support_MG_F","O_T_Support_Mort_F","O_T_ghillie_tna_F","O_V_Soldier_Exp_ghex_F","O_V_Soldier_JTAC_ghex_F","O_V_Soldier_LAT_ghex_F",
-"O_V_Soldier_M_ghex_F","O_V_Soldier_Medic_ghex_F","O_V_Soldier_TL_ghex_F","O_V_Soldier_ghex_F"];
+"O_V_Soldier_M_ghex_F","O_V_Soldier_Medic_ghex_F","O_V_Soldier_TL_ghex_F","O_V_Soldier_ghex_F","O_V_Soldier_Exp_hex_F","O_V_Soldier_JTAC_hex_F",
+"O_V_Soldier_M_hex_F","O_V_Soldier_hex_F","O_V_Soldier_Medic_hex_F","O_V_Soldier_LAT_hex_F","O_V_Soldier_TL_hex_F"];
 _units = nearestObjects [_pos, _unitTypes, _radius];
 {
 	_isReward = _x getVariable ["IS_REWARD", false];

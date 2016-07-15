@@ -227,10 +227,11 @@ while {alive radioTower || !MAIN_AO_SUCCESS || !_showTowerMessage || !_showBunke
         showNotification = ["CompletedSub", ["Командный пункт захвачен!", "\a3\ui_f\data\gui\cfg\hints\commanding_ca.paa"]]; publicVariable "showNotification";
     };
     sleep 3;
+    // Spawn Viper group
     if ((MAIN_AO_SUCCESS and !_viperSquadSpawned) or (!alive radioTower and !_viperSquadSpawned)) then {
         _viperSquadSpawned = true;
         if (random 1 > 0.5) then {
-            _enemiesArray pushBack ([(_bunkerPos getPos [(_bunkerPos distance2D _flatPos) / 2, _bunkerPos getDir _flatPos]), 500, 600, 3000, true, ENEMY_SIDE] call QS_fnc_spawnViper);
+            _enemiesArray pushBack ([(_bunkerPos getPos [(_bunkerPos distance2D _flatPos) / 2, _bunkerPos getDir _flatPos]), 500, 500, 3000, true, ENEMY_SIDE] call QS_fnc_spawnViper);
         };
     };
 };
