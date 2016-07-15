@@ -1776,7 +1776,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\cargoput_ca.paa' size='1.0'/> Заложить взрывчатку</t>"",""mission\side\actions\sabotage.sqf"",[],21,true,true,"""",'((vehicle player) == player) && ((player distance _target) < 5)']; this allowDamage false;";
+				init="this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\cargoput_ca.paa' size='1.0'/> Заложить взрывчатку</t>"",""mission\side\actions\sabotage.sqf"",[],21,true,true,"""",'((vehicle player) == player)', 5]; this allowDamage false;";
 				name="crate1";
 			};
 			id=619;
@@ -1794,7 +1794,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\cargoput_ca.paa' size='1.0'/> Заложить взрывчатку</t>"",""mission\side\actions\sabotage.sqf"",[],21,true,true,"""",'((vehicle player) == player) && ((player distance _target) < 5)']; this allowDamage false;";
+				init="this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\cargoput_ca.paa' size='1.0'/> Заложить взрывчатку</t>"",""mission\side\actions\sabotage.sqf"",[],21,true,true,"""",'((vehicle player) == player)', 5]; this allowDamage false;";
 				name="crate2";
 			};
 			id=620;
@@ -1889,7 +1889,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this allowDamage false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\cargoput_ca.paa' size='1.0'/> Заложить взрывчатку</t>"",""mission\side\actions\sabotage.sqf"",[],21,true,true,"""",'((vehicle player) == player) && ((player distance _target) < 5)'];";
+				init="this allowDamage false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\cargoput_ca.paa' size='1.0'/> Заложить взрывчатку</t>"",""mission\side\actions\sabotage.sqf"",[],21,true,true,"""",'((vehicle player) == player)', 5];";
 				name="crate4";
 			};
 			id=625;
@@ -1907,7 +1907,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this allowDamage false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\cargoput_ca.paa' size='1.0'/> Заложить взрывчатку</t>"",""mission\side\actions\sabotage.sqf"",[],21,true,true,"""",'((vehicle player) == player) && ((player distance _target) < 5)'];";
+				init="this allowDamage false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\cargoput_ca.paa' size='1.0'/> Заложить взрывчатку</t>"",""mission\side\actions\sabotage.sqf"",[],21,true,true,"""",'((vehicle player) == player)', 5];";
 				name="crate3";
 			};
 			id=626;
@@ -1925,7 +1925,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this allowDamage false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\gps_ca.paa' size='1.0'/> Взять ноутбук и заложить взрывчатку</t>"",""mission\side\actions\sabotage.sqf"",[],21,true,true,"""",'((vehicle player) == player) && ((player distance _target) < 5)'];";
+				init="this allowDamage false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\gps_ca.paa' size='1.0'/> Взять ноутбук и заложить взрывчатку</t>"",""mission\side\actions\sabotage.sqf"",[],21,true,true,"""",'((vehicle player) == player)', 5];";
 				name="research1";
 			};
 			id=627;
@@ -1943,7 +1943,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this allowDamage false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\gps_ca.paa' size='1.0'/> Взять ноутбук и заложить взрывчатку</t>"",""mission\side\actions\sabotage.sqf"",[],21,true,true,"""",'((vehicle player) == player) && ((player distance _target) < 5)'];";
+				init="this allowDamage false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\gps_ca.paa' size='1.0'/> Взять ноутбук и заложить взрывчатку</t>"",""mission\side\actions\sabotage.sqf"",[],21,true,true,"""",'((vehicle player) == player)', 5];";
 				name="research2";
 			};
 			id=628;
@@ -1998,7 +1998,7 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="this allowDamage false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\cargoput_ca.paa' size='1.0'/> Заложить взрывчатку</t>"",""mission\side\actions\sabotage.sqf"",[],21,true,true,"""",'((vehicle player) == player) && ((player distance _target) < 5)'];";
+				init="this allowDamage false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\cargoput_ca.paa' size='1.0'/> Заложить взрывчатку</t>"",""mission\side\actions\sabotage.sqf"",[],21,true,true,"""",'((vehicle player) == player)', 5];";
 				name="indCrate1";
 			};
 			id=631;
@@ -2017,7 +2017,7 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="this allowDamage false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\cargoput_ca.paa' size='1.0'/> Заложить взрывчатку</t>"",""mission\side\actions\sabotage.sqf"",[],21,true,true,"""",'((vehicle player) == player) && ((player distance _target) < 5)'];";
+				init="this allowDamage false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\cargoput_ca.paa' size='1.0'/> Заложить взрывчатку</t>"",""mission\side\actions\sabotage.sqf"",[],21,true,true,"""",'((vehicle player) == player)', 5];";
 				name="indCrate2";
 			};
 			id=632;
@@ -2563,7 +2563,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this allowDamage false; this enableSimulationGlobal false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\map\VehicleIcons\iconplane_ca.paa' size='1.0'/> Активировать ПВО</t>"",""scripts\misc\actions\airbaseDefense_switch.sqf"",[],21,true,true,"""",'((vehicle player) == player) && ((player distance _target) < 5)'];";
+				init="this allowDamage false; this enableSimulationGlobal false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\map\VehicleIcons\iconplane_ca.paa' size='1.0'/> Активировать ПВО</t>"",""scripts\misc\actions\airbaseDefense_switch.sqf"",[],21,true,true,"""",'((vehicle player) == player)', 5];";
 				name="airdefenseTerminal_1";
 			};
 			id=661;
@@ -2600,7 +2600,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this allowDamage false; this enableSimulationGlobal false; this addAction [""<t color='#00BCD4'><img image='\a3\ui_f\data\map\VehicleIcons\iconlogic_ca.paa' size='1.0'/> Очистка базы</t>"",""scripts\misc\actions\clearItemsBASE_switch.sqf"",[],21,true,true,"""",'((vehicle player) == player) && ((player distance _target) < 5)'];";
+				init="this allowDamage false; this enableSimulationGlobal false; this addAction [""<t color='#00BCD4'><img image='\a3\ui_f\data\map\VehicleIcons\iconlogic_ca.paa' size='1.0'/> Очистка базы</t>"",""scripts\misc\actions\clearItemsBASE_switch.sqf"",[],21,true,true,"""",'((vehicle player) == player)', 5];";
 				name="maintenanceTerminal";
 			};
 			id=663;
@@ -4014,7 +4014,7 @@ class Mission
 			{
 				skill=0.60000002;
 				ammo=0;
-				init="removeAllWeapons this; this allowDamage false; this enableSimulationGlobal false; _K = [this] spawn {_this call compile preProcessFileLineNumbers ""scripts\VA-west.sqf"";}; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacearsenal_ca.paa' size='1.0'/> Арсенал</t>"",{['Open',[false, ammo1, player]] call BIS_fnc_arsenal},[],15,true,true,'','((player distance _target) < 8) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])']; this addAction [""<t color='#FF9800'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa' size='1.0'/> Снаряжение</t>"",""scripts\VAS\open.sqf"",[],14,true,true,'','((player distance _target) < 8) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])']; this addAction [""<t color='#C6FF00'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_toolbox_modules_ca.paa' size='1.0'/> "" + localize 'STR_VAS_Menu_Title' + ""</t>"",""createDialog 'VAS_Info_Diag';"",[],12,true,true,'','((player distance _target) < 8) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])'];";
+				init="removeAllWeapons this; this allowDamage false; this enableSimulationGlobal false; _K = [this] spawn {_this call compile preProcessFileLineNumbers ""scripts\VA-west.sqf"";}; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacearsenal_ca.paa' size='1.0'/> Арсенал</t>"",{['Open',[false, ammo1, player]] call BIS_fnc_arsenal},[],15,true,true,'','!((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8]; this addAction [""<t color='#FF9800'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa' size='1.0'/> Снаряжение</t>"",""scripts\VAS\open.sqf"",[],14,true,true,'','!((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8]; this addAction [""<t color='#C6FF00'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_toolbox_modules_ca.paa' size='1.0'/> "" + localize 'STR_VAS_Menu_Title' + ""</t>"",""createDialog 'VAS_Info_Diag';"",[],12,true,true,'','!((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8];";
 				name="ammo1";
 			};
 			id=738;
@@ -5533,7 +5533,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this allowDamage false; this addAction [""<t color='#4FC3F7'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> [Huron] Запросить модуль с топливом</t>"",""scripts\supplyCrate.sqf"",1,21,true,true,'((vehicle player) == player) && ((player distance _target) < 2) && (player isKindOf ""B_Helipilot_F"")']; this addAction [""<t color='#4FC3F7'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> [Huron] Запросить медицинский модуль</t>"",""scripts\supplyCrate.sqf"",2,21,true,true,'((vehicle player) == player) && ((player distance _target) < 2) && (player isKindOf ""B_Helipilot_F"")']; this addAction [""<t color='#4FC3F7'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> [Huron] Запросить ремонтный модуль</t>"",""scripts\supplyCrate.sqf"",3,21,true,true,'((vehicle player) == player) && ((player distance _target) < 2) && (player isKindOf ""B_Helipilot_F"")']; this addAction [""<t color='#4FC3F7'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> [Huron] Запросить модуль боеприпасов</t>"",""scripts\supplyCrate.sqf"",4,21,true,true,'((vehicle player) == player) && ((player distance _target) < 2) && (player isKindOf ""B_Helipilot_F"")']; this addAction [""<t color='#CDDC39'><img image='\a3\ui_f\data\map\VehicleIcons\iconcrateammo_ca.paa' size='1.0'/> Запросить ящик с боеприпасами</t>"",""scripts\supplyCrate.sqf"",11,21,true,true,'((vehicle player) == player) && ((player distance _target) < 2) && (player isKindOf ""B_Helipilot_F"")']; this addAction [""<t color='#CDDC39'><img image='\a3\ui_f\data\map\VehicleIcons\iconcrateammo_ca.paa' size='1.0'/> Запросить контейнер с боеприпасами</t>"",""scripts\supplyCrate.sqf"",12,21,true,true,'((vehicle player) == player) && ((player distance _target) < 2) && (player isKindOf ""B_Helipilot_F"")']; this addAction [""<t color='#CDDC39'><img image='\a3\ui_f\data\map\VehicleIcons\iconcrateammo_ca.paa' size='1.0'/> Запросить пустой ящик</t>"",""scripts\supplyCrate.sqf"",13,21,true,true,'((vehicle player) == player) && ((player distance _target) < 2) && (player isKindOf ""B_Helipilot_F"")']; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> [Taru] Запросить модуль с топливом</t>"",""scripts\supplyCrate.sqf"",5,21,true,true,'((vehicle player) == player) && ((player distance _target) < 2) && (player isKindOf ""B_Helipilot_F"")']; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> [Taru] Запросить медицинский модуль</t>"",""scripts\supplyCrate.sqf"",6,21,true,true,'((vehicle player) == player) && ((player distance _target) < 2) && (player isKindOf ""B_Helipilot_F"")']; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> [Taru] Запросить ремонтный модуль</t>"",""scripts\supplyCrate.sqf"",7,21,true,true,'((vehicle player) == player) && ((player distance _target) < 2) && (player isKindOf ""B_Helipilot_F"")']; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> [Taru] Запросить модуль боеприпасов</t>"",""scripts\supplyCrate.sqf"",8,21,true,true,'((vehicle player) == player) && ((player distance _target) < 2) && (player isKindOf ""B_Helipilot_F"")']; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> [Taru] Запросить модуль сидений</t>"",""scripts\supplyCrate.sqf"",9,21,true,true,'((vehicle player) == player) && ((player distance _target) < 2) && (player isKindOf ""B_Helipilot_F"")']; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> [Taru] Запросить транспортный модуль</t>"",""scripts\supplyCrate.sqf"",10,21,true,true,'((vehicle player) == player) && ((player distance _target) < 2) && (player isKindOf ""B_Helipilot_F"")'];";
+				init="this addAction [""<t color='#4FC3F7'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> [Huron] Запросить модуль с топливом</t>"",""scripts\supplyCrate.sqf"",1,21,true,true,'','(typeOf player) in [""B_Helipilot_F"",""B_T_Helipilot_F""]']; this addAction [""<t color='#4FC3F7'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> [Huron] Запросить медицинский модуль</t>"",""scripts\supplyCrate.sqf"",2,21,true,true,'','player isKindOf ""B_Helipilot_F""']; this addAction [""<t color='#4FC3F7'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> [Huron] Запросить ремонтный модуль</t>"",""scripts\supplyCrate.sqf"",3,21,true,true,'','player isKindOf ""B_Helipilot_F""']; this addAction [""<t color='#4FC3F7'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> [Huron] Запросить модуль боеприпасов</t>"",""scripts\supplyCrate.sqf"",4,21,true,true,'','player isKindOf ""B_Helipilot_F""']; this addAction [""<t color='#CDDC39'><img image='\a3\ui_f\data\map\VehicleIcons\iconcrateammo_ca.paa' size='1.0'/> Запросить ящик с боеприпасами</t>"",""scripts\supplyCrate.sqf"",11,21,true,true,'','player isKindOf ""B_Helipilot_F""']; this addAction [""<t color='#CDDC39'><img image='\a3\ui_f\data\map\VehicleIcons\iconcrateammo_ca.paa' size='1.0'/> Запросить контейнер с боеприпасами</t>"",""scripts\supplyCrate.sqf"",12,21,true,true,'','player isKindOf ""B_Helipilot_F""']; this addAction [""<t color='#CDDC39'><img image='\a3\ui_f\data\map\VehicleIcons\iconcrateammo_ca.paa' size='1.0'/> Запросить пустой ящик</t>"",""scripts\supplyCrate.sqf"",13,21,true,true,'','player isKindOf ""B_Helipilot_F""']; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> [Taru] Запросить модуль с топливом</t>"",""scripts\supplyCrate.sqf"",5,21,true,true,'','player isKindOf ""B_Helipilot_F""']; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> [Taru] Запросить медицинский модуль</t>"",""scripts\supplyCrate.sqf"",6,21,true,true,'','player isKindOf ""B_Helipilot_F""']; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> [Taru] Запросить ремонтный модуль</t>"",""scripts\supplyCrate.sqf"",7,21,true,true,'','player isKindOf ""B_Helipilot_F""']; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> [Taru] Запросить модуль боеприпасов</t>"",""scripts\supplyCrate.sqf"",8,21,true,true,'','player isKindOf ""B_Helipilot_F""']; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> [Taru] Запросить модуль сидений</t>"",""scripts\supplyCrate.sqf"",9,21,true,true,'','player isKindOf ""B_Helipilot_F""']; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> [Taru] Запросить транспортный модуль</t>"",""scripts\supplyCrate.sqf"",10,21,true,true,'','player isKindOf ""B_Helipilot_F""'];";
 			};
 			id=820;
 			type="Land_Atm_02_F";
@@ -5834,7 +5834,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this allowDamage false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\gps_ca.paa' size='1.0'/> Скачать данные...</t>"",""mission\priority\actions\getpower.sqf"",[],21,true,true,"""",'((vehicle player) == player) && ((player distance _target) < 5)'];";
+				init="this allowDamage false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\gps_ca.paa' size='1.0'/> Скачать данные...</t>"",""mission\priority\actions\getpower.sqf"",[],21,true,true,"""",'((vehicle player) == player)', 5];";
 				name="power2";
 			};
 			id=837;
@@ -5852,7 +5852,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this allowDamage false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\gps_ca.paa' size='1.0'/> Скачать данные...</t>"",""mission\priority\actions\getpower.sqf"",[],21,true,true,"""",'((vehicle player) == player) && ((player distance _target) < 5)'];";
+				init="this allowDamage false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\gps_ca.paa' size='1.0'/> Скачать данные...</t>"",""mission\priority\actions\getpower.sqf"",[],21,true,true,"""",'((vehicle player) == player)', 5];";
 				name="power1";
 			};
 			id=838;
@@ -5870,7 +5870,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this allowDamage false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\gps_ca.paa' size='1.0'/>Починить и запустить генератор</t>"",""mission\priority\actions\powerfix.sqf"",[],21,true,true,"""",'((vehicle player) == player) && ((player distance _target) < 5)'];";
+				init="this allowDamage false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\gps_ca.paa' size='1.0'/>Починить и запустить генератор</t>"",""mission\priority\actions\powerfix.sqf"",[],21,true,true,"""",'((vehicle player) == player)', 5];";
 				name="GetPowerUnit";
 			};
 			id=839;
@@ -6215,7 +6215,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this allowDamage false; this enableSimulationGlobal false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\map\VehicleIcons\iconplane_ca.paa' size='1.0'/> Активировать ПВО</t>"",""scripts\misc\actions\airbaseDefense_switch.sqf"",[],21,true,true,"""",'((vehicle player) == player) && ((player distance _target) < 5)'];";
+				init="this allowDamage false; this enableSimulationGlobal false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\map\VehicleIcons\iconplane_ca.paa' size='1.0'/> Активировать ПВО</t>"",""scripts\misc\actions\airbaseDefense_switch.sqf"",[],21,true,true,"""",'((vehicle player) == player)', 5];";
 				name="airdefenseTerminal_2";
 			};
 			id=858;
@@ -6234,7 +6234,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this allowDamage false; this enableSimulationGlobal false; this addAction [""<t color='#00BCD4'><img image='\a3\ui_f\data\map\VehicleIcons\iconlogic_ca.paa' size='1.0'/> Очистка базы</t>"",""scripts\misc\actions\clearItemsBASE_switch.sqf"",[],21,true,true,"""",'((vehicle player) == player) && ((player distance _target) < 5)'];";
+				init="this allowDamage false; this enableSimulationGlobal false; this addAction [""<t color='#00BCD4'><img image='\a3\ui_f\data\map\VehicleIcons\iconlogic_ca.paa' size='1.0'/> Очистка базы</t>"",""scripts\misc\actions\clearItemsBASE_switch.sqf"",[],21,true,true,"""",'((vehicle player) == player)', 5];";
 				name="maintenanceTerminal2";
 			};
 			id=859;
@@ -9323,7 +9323,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="removeAllWeapons this; this allowDamage false; this enableSimulationGlobal false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacearsenal_ca.paa' size='1.0'/> Арсенал</t>"",{['Open',[false, ammo1, player]] call BIS_fnc_arsenal},[],15,true,true,'','((player distance _target) < 8) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])']; this addAction [""<t color='#FF9800'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa' size='1.0'/> Снаряжение</t>"",""scripts\VAS\open.sqf"",[],14,true,true,'','((player distance _target) < 8) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])']; this addAction [""<t color='#C6FF00'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_toolbox_modules_ca.paa' size='1.0'/> "" + localize 'STR_VAS_Menu_Title' + ""</t>"",""createDialog 'VAS_Info_Diag';"",[],12,true,true,'','((player distance _target) < 8) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])'];";
+						init="removeAllWeapons this; this allowDamage false; this enableSimulationGlobal false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacearsenal_ca.paa' size='1.0'/> Арсенал</t>"",{['Open',[false, ammo1, player]] call BIS_fnc_arsenal},[],15,true,true,'','!((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8]; this addAction [""<t color='#FF9800'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa' size='1.0'/> Снаряжение</t>"",""scripts\VAS\open.sqf"",[],14,true,true,'','!((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8]; this addAction [""<t color='#C6FF00'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_toolbox_modules_ca.paa' size='1.0'/> "" + localize 'STR_VAS_Menu_Title' + ""</t>"",""createDialog 'VAS_Info_Diag';"",[],12,true,true,'','!((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8];";
 					};
 					id=972;
 					type="B_Soldier_unarmed_F";
