@@ -296,6 +296,15 @@ _hqGroup setCombatMode "RED";
 [_hqGroup, _campPos] call bis_fnc_taskDefend;
 _enemiesArray = _enemiesArray + (units _hqGroup);
 
+// HQ: Viper group
+if (random 1 > 0.5) then {
+    _viperGroup = [_campPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "EAST" >> "OPF_T_F" >> "SpecOps" >> "O_T_ViperTeam")] call BIS_fnc_spawnGroup;
+    [_viperGroup, _campPos, 300] call BIS_fnc_taskPatrol;
+    _viperGroup setCombatMode "RED";
+    _viperGroup setBehaviour "COMBAT";
+    [(units _viperGroup)] call QS_fnc_setSkill4;
+};
+
 [_startPoint, 200, ["vehicles", "fire"]] call QS_fnc_addHades;
 while { sideMissionUp } do {
     sleep 2;
