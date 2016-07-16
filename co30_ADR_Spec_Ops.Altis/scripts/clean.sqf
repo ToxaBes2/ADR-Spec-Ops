@@ -60,9 +60,9 @@ _isHidden = {
 
 deleteManagerPublic = TRUE;						// To terminate script via debug console
 _checkPlayerCount = TRUE;						// dynamic sleep. Set TRUE to have sleep automatically adjust based on # of players.
-_checkFrequencyDefault = 480;					// sleep default
-_checkFrequencyAccelerated = 240;				// sleep accelerated
-_playerThreshold = 24;							// How many players before accelerated cycle kicks in?
+_checkFrequencyDefault = 600;					// sleep default
+_checkFrequencyAccelerated = 300;				// sleep accelerated
+_playerThreshold = 16;							// How many players before accelerated cycle kicks in?
 
 _deadMenLimit = 50;								// Bodies. Set -1 to disable.
 _deadMenDistCheck = TRUE;						// TRUE to delete any bodies that are far from players.
@@ -157,10 +157,15 @@ for '_x' from 0 to 1 step 0 do {
 	sleep 1;
 	//================================= WEAPON HOLDERS
 	if (!(_weaponHolderLimit isEqualTo -1)) then {
-		if ((count (allMissionObjects "WeaponHolder")) > _weaponHolderLimit) then {
-			while {(((count (allMissionObjects "WeaponHolder")) - _weaponHolderLimit) > 0)} do {
-				deleteVehicle ((allMissionObjects "WeaponHolder") select 0);
-				sleep 0.5;
+		if ((count (allMissionObjects "WeaponHolder")) + (count (allMissionObjects "WeaponHolderSimulated")) > _weaponHolderLimit) then {
+			while {(((count (allMissionObjects "WeaponHolder")) + (count (allMissionObjects "WeaponHolderSimulated")) - _weaponHolderLimit) > 0)} do {
+				if (count (allMissionObjects "WeaponHolderSimulated") > 0) then {
+					deleteVehicle ((allMissionObjects "WeaponHolderSimulated") select 0);
+					sleep 0.5;
+				} else {
+					deleteVehicle ((allMissionObjects "WeaponHolder") select 0);
+					sleep 0.5;
+				};
 			};
 		} else {
 			if (_weaponHolderDistCheck) then {
@@ -169,6 +174,11 @@ for '_x' from 0 to 1 step 0 do {
 						deleteVehicle _x;
 					};
 				} count (allMissionObjects "WeaponHolder");
+				{
+					if ([_x,_weaponHolderDist,allPlayers] call _isHidden) then {
+						deleteVehicle _x;
+					};
+				} count (allMissionObjects "WeaponHolderSimulated");
 			};
 		};
 	};
