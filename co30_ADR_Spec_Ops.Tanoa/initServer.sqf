@@ -25,9 +25,7 @@ for [ {_i = 0}, {_i < count(paramsArray)}, {_i = _i + 1} ] do {
 
 // Server scripts
 _null = [] spawn {_this call compile preProcessFileLineNumbers "mission\missionControl.sqf";};          // Main AO and side objectives
-_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\misc\airbaseDefense.sqf";};		// Airbase air defense
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\clean.sqf";};					// cleanup
-_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\misc\clearItemsBASE.sqf";};		// clear items around base
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\time.sqf"};                     // time and weather
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\zbe_cache\cache.sqf"};          // ZBE Cache
 

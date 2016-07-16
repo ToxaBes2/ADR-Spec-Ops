@@ -1,17 +1,8 @@
-if (CLEARITEMSBASE_SWITCH) exitWith {
-	hint "Очистка базы не доступна."
+if (!isNil 'CLEARITEMSBASE_SWITCH') exitWith {
+	["<t color='#F44336' size = '.48'>Очистка базы не доступна</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
 };
 
-//-------------------- Wait for player to action
-
+["<t color='#C6FF00' size = '.48'>Очистка базы от мусора</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
 sleep 1;
 
-//-------------------- Send hint to player that he's planted the bomb
-
-hint "Очистка базы от мусора.";
-
-sleep 1;
-
-//---------- Send notice to all players that charge has been set.
-
-CLEARITEMSBASE_SWITCH = true; publicVariable "CLEARITEMSBASE_SWITCH";
+[[], {_this call compile preProcessFileLineNumbers "scripts\misc\clearItemsBASE.sqf"}] remoteExec ["spawn", 2];
