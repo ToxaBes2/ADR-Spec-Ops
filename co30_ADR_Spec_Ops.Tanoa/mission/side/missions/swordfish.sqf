@@ -14,7 +14,7 @@ Description: Defend submarine.
 #define INFANTRY_WRECKED_VECHICLES "Land_Boat_06_wreck_F","Land_UWreck_FishingBoat_F","Land_Wreck_Traw2_F","Land_Wreck_Traw_F","Land_UWreck_Heli_Attack_02_F","Land_Wreck_Plane_Transport_01_F","Land_HistoricalPlaneWreck_01_F","Land_HistoricalPlaneWreck_03_F","Land_HistoricalPlaneWreck_02_front_F","Land_HistoricalPlaneWreck_02_wing_right_F","Land_UWreck_MV22_F","Land_Cargo20_grey_F","Land_Cargo20_light_green_F","Land_Cargo20_military_green_F"
 
 // define private variables
-private ["_targets","_accepted","_distance","_briefing","_position","_flatPos","_x","_enemiesArray","_startPoint"];
+private ["_enemiesArray", "_unitsArray", "_targets", "_position", "_flatPos", "_startPoint", "_briefing", "_sub", "_subPos", "_subDir", "_submarine", "_mod", "_chemPos", "_chemlight", "_minePos", "_height", "_mine", "_wreck", "_wreckPos", "_wreckVeh", "_devices", "_safePos", "_devicePos", "_device", "_sdv", "_light", "_diversGroup1", "_r", "_diverPos", "_diversGroup2", "_patrolGroup", "_boatPos1", "_dirBoat1", "_boat1", "_dirBoat2", "_botPos2", "_boat2", "_dirBoat3", "_botPos3", "_boat3", "_places", "_campPos", "_camo", "_hqGroup", "_guardPos", "_sniperPlaces", "_sniperPos", "_viperGroup", "_nearestMines"];
 
 _enemiesArray = [grpNull];
 _unitsArray = [];
