@@ -69,6 +69,7 @@ class QS
 		class SMhintFAIL {};
 		class SMhintSUCCESS {};
 		class spawnViper {};
+		class taskMaxDistPatrol {};
 		class TBshuffle {};
 		class TBdeleteObjects {};
 		class uh80Turret {};

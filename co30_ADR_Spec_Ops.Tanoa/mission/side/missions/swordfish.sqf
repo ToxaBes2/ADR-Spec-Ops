@@ -301,7 +301,7 @@ if (random 1 > 0.5) then {
     _viperGroup = [_campPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "EAST" >> "OPF_T_F" >> "SpecOps" >> "O_T_ViperTeam")] call BIS_fnc_spawnGroup;
     [_viperGroup, _campPos, 300] call BIS_fnc_taskPatrol;
     _viperGroup setCombatMode "RED";
-    _viperGroup setBehaviour "COMBAT";
+    _viperGroup setBehaviour "STEALTH";
     [(units _viperGroup)] call QS_fnc_setSkill4;
 };
 

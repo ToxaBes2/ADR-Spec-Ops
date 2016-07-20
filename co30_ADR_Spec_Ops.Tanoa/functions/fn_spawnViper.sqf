@@ -89,13 +89,13 @@ if (!_search) then {
     _viperGroup setCombatMode "RED";
     [(units _viperGroup)] call QS_fnc_setSkill4;
 
-    // Set groups behaviour to COMBAT in 500m proximity from _attackPosition
+    // Set groups behaviour to STEALTH in 500m proximity from _attackPosition
     [leader _viperGroup, _attackPosition] spawn {
         waitUntil {
             sleep 10;
             if ((_this select 0) distance2D (_this select 1) < 500) exitWith {true};
         };
-        (_this select 0) setBehaviour "COMBAT";
+        (_this select 0) setBehaviour "STEALTH";
     };
 
     // Return _viperGroup
