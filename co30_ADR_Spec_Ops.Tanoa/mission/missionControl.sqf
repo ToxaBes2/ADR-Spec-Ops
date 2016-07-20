@@ -17,7 +17,7 @@ _missionList = [
 	"rescueHostages",
     "heliCrash",
 	//"convoy",     // NOT DONE
-	//"snatch",     // NOT DONE
+	"snatch",
 	"swordfish",
 	"yellowfog",
 	"grapeswrath"
