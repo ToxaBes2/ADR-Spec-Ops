@@ -22,7 +22,7 @@ _smRewards =
 	["M4 «Скорчер»", "B_MBT_01_arty_F"]
 ];
 
-smMarkerList =
+_smMarkerList =
 ["smReward1", "smReward2", "smReward3", "smReward4", "smReward5", "smReward6", "smReward7", "smReward8", "smReward9", "smReward10", "smReward11", "smReward12", "smReward13", "smReward14", "smReward15", "smReward16", "smReward17", "smReward18", "smReward19", "smReward20", "smReward21", "smReward22", "smReward23", "smReward24", "smReward25", "smReward26", "smReward27"];
 
 _veh = selectRandom _smRewards;

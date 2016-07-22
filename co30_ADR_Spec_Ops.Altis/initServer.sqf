@@ -23,6 +23,34 @@ for [ {_i = 0}, {_i < count(paramsArray)}, {_i = _i + 1} ] do {
 	];
 };
 
+// extDB2 load
+_database = "Arma3";
+_protocol = "SQL_CUSTOM_V2";
+_protocol_options = "specops";
+_continue = true;
+if (isNil {uiNamespace getVariable "life_sql_id"}) then {
+    life_sql_id = round(random(999999));
+    uiNamespace setVariable ["life_sql_id",life_sql_id];
+    _version = "extDB2" callExtension "9:VERSION";
+    if(_version == "") then {
+        _continue = false;
+    };
+    if (_continue) then {
+        _result = call compile ("extDB2" callExtension format["9:ADD_DATABASE:%1", _database]);
+	    if (_result select 0 isEqualTo 0) then {
+            _continue = false;
+	    };
+        if (_continue) then {
+            _result = call compile ("extDB2" callExtension format["9:ADD_DATABASE_PROTOCOL:%1:%2:%3:%4", _database, _protocol, life_sql_id, _protocol_options]);
+            if ((_result select 0) isEqualTo 0) then {
+                _continue = false;
+            } else {
+                "extDB2" callExtension "9:LOCK";
+            };
+        };	    	    
+    };    
+};
+
 // Server scripts
 _null = [] spawn {_this call compile preProcessFileLineNumbers "mission\missionControl.sqf";};                              // Main AO and side objectives
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\misc\airbaseDefense.sqf";};		                    // Airbase air defense
@@ -30,7 +58,6 @@ _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\clean.sq
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\misc\clearItemsBASE.sqf";};		                    // clear items around base
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\time.sqf"};                                         // time and weather
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\zbe_cache\cache.sqf"};                              // ZBE Cache
-_null = ["Arma3","SQL_CUSTOM_V2","specops"] spawn {_this call compile preProcessFileLineNumbers "scripts\extDB2\init.sqf"}; // extDB2 lib
 
 crossroad disableAI "ANIM";
 enemyCasArray = [];

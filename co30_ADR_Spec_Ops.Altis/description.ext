@@ -1,5 +1,11 @@
+/*
+Authors: Quiksilver & Rarek [AW]
+	Invade & Annex 2.00 was developed by Rarek [ahoyworld.co.uk] with hundreds of hours of work,
+	The current iterations have been developed by Quiksilver with hundreds of hours of work.
+Contributors: Razgriz33 [AW], Jester [AW], Kamaradski [AW], David [AW], chucky [allFPS].
+	www.ahoyworld.co.uk 	www.allfps.com.au
+*/
 //------------------------- On Load
-
 author = "ToxaBes";
 onLoadName = "ADR: Spec Ops";
 OnLoadMission = "Altis v0.0.5 [www.tehgam.com]";
@@ -31,7 +37,7 @@ aiKills = 0; 											// disable scorelist for AI players
 enableItemsDropping = 0; 								// disabled with 0
 joinUnassigned = 1;										// 0 = players forced into role on join
 showUAVFeed = 1;										// Enables/Disables the UAV Feed. Zeus-related.
-
+briefing = 0;                                           // Enables/Disables briefing screen
 //------------------------- Respawn
 
 Respawn = 3;											// 0 = none. 1 = bird. 2 = instant where died. 3 = base or respawn_west marker. 4 = respawn with team, or bird. 5 = into AI or bird.
@@ -67,6 +73,14 @@ class CfgFunctions
 	            class objPlaced {};
 	            class grpPlaced {};
 	        };
+	    };
+	    class Briefing {
+	    	class ServerSideFunctions {
+	    		class skip {
+	    			preInit = 1;
+	    			file = "scripts\skipBriefing.sqf";
+	    		};
+	    	};
 	    };
 	};
 
@@ -461,23 +475,3 @@ class CfgNotifications
 		priority = 4;
 	};
 };
-
-/*
-Authors:
-
-	Quiksilver & Rarek [AW]
-
-	Invade & Annex 2.00 was developed by Rarek [ahoyworld.co.uk] with hundreds of hours of work,
-	The current iterations have been developed by Quiksilver with hundreds of hours of work.
-
-	Contributors: Razgriz33 [AW], Jester [AW], Kamaradski [AW], David [AW], chucky [allFPS].
-
-	www.ahoyworld.co.uk
-	www.allfps.com.au
-
-	Please be respectful and do not remove/alter credits.
-
-File Reference:
-
-	https://community.bistudio.com/wiki/Description.ext
-*/

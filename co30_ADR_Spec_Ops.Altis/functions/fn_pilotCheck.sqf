@@ -1,6 +1,6 @@
 private ["_pilots", "_aircraft_nopilot", "_aircraft_nocopilot", "_mh9", "_veh", "_players", "_playersCount", "_pilotsOnServer"];
 
-_pilots = ["B_Helipilot_F", "B_T_Helipilot_F"];	// Специализация пилота
+_pilots = ["B_Helipilot_F", "B_T_Helipilot_F","I_G_Soldier_M_F","I_G_Soldier_AR_F","I_G_Soldier_M_F","I_G_engineer_F"];	// Специализация пилота
 
 //---------- Место пилота заблокировано
 _aircraft_nopilot = [

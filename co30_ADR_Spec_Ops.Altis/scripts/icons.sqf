@@ -195,15 +195,12 @@ QS_fnc_iconDrawGPS = compileFinal "
 //=============================================================== INITIALIZATION
 
 [] spawn {
-	sleep 0.1;
-	
-	//===== INIT MAP
-	
+	sleep 0.1;	
+	//===== INIT MAP	
 	waitUntil {sleep 0.1; !(isNull (findDisplay 12))};
 	clientEhDrawMap = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw",QS_fnc_iconDrawMap];
 	
-	//===== INIT GPS (waits for GPS to open)
-	
+	//===== INIT GPS (waits for GPS to open)	
 	disableSerialization;
 	_gps = controlNull;
 	while {isNull _gps} do {

@@ -7,6 +7,28 @@ if (!hasInterface) exitWith {};
 enableSentences false;
 enableEngineArtillery false;
 
+// check for guerrila slots
+waitUntil {!isNull player};
+_guers = ["I_G_Soldier_LAT_F","I_G_Soldier_AR_F","I_G_Soldier_M_F","I_G_medic_F"];
+_iamguer = ({typeOf player == _x} count _guers) > 0;
+if (_iamguer) then {
+	0 cutText["Проверка игрового времени...", "BLACK FADED"];
+    0 cutFadeOut 9999999;
+    waitUntil {(getPlayerUID player) != ""};
+    _uid = getPlayerUID player;                
+    _clientId = owner player;      
+    removeAllweapons player;
+	//removeuniform player;
+	removevest player;
+	removeheadgear player;
+	removegoggles player;
+	removeBackPack player;
+	{player removeItem _x} foreach (items player);
+	{player unassignItem _x;player removeItem _x} foreach (assignedItems player);
+	["getPlayerHours",[_uid], _clientId] remoteExec ["sqlServerCall", 2]; 
+    sleep 10;    
+};	
+
 // Pilots only
 _pilots = ["B_Helipilot_F", "O_helipilot_F"];
 _iampilot = ({typeOf player == _x} count _pilots) > 0;
@@ -75,7 +97,7 @@ player addEventHandler [ "Take", {
 	_player = _this select 0;
 	_helmet = _this select 2;
 	_csatHelmets = ["H_HelmetO_ocamo", "H_Beret_ocamo", "H_MilCap_ocamo", "H_HelmetLeaderO_ocamo", "H_PilotHelmetHeli_O", "H_HelmetCrew_O", "H_PilotHelmetFighter_O", "H_CrewHelmetHeli_O", "H_HelmetSpecO_ocamo", "H_HelmetSpecO_blk", "H_HelmetO_oucamo", "H_HelmetLeaderO_oucamo"];
-	if(_helmet in _csatHelmets) then {
+	if(_helmet in _csatHelmets && side _player == west) then {
 		_player unassignItem _helmet;
 		_player removeItem _helmet;
 		systemChat "Головные уборы противника запрещены";
@@ -105,6 +127,7 @@ player addEventHandler [ "Take", {
 {
 	_message = _this select 1;
 	[WEST, "HQ"] sideChat _message;
+	[resistance, "HQ"] sideChat _message;
 };
 
 "addToScore" addPublicVariableEventHandler
@@ -130,7 +153,35 @@ player addEventHandler [ "Take", {
 	"priorityMarker" setMarkerTextLocal format["Вторичная цель: %1",priorityTargetText];
 };
 
+// disable arsenal load/save/random features for all
+[missionNamespace, "arsenalOpened", {
+    disableSerialization;
+    _display = _this select 0;
+    {
+        ( _display displayCtrl _x ) ctrlSetText "Disabled";
+        ( _display displayCtrl _x ) ctrlSetTextColor [ 1, 0, 0, 0.5 ];
+        ( _display displayCtrl _x ) ctrlRemoveAllEventHandlers "buttonclick";
+    } forEach [ 44146, 44147, 44150 ];
+} ] call BIS_fnc_addScriptedEventHandler;
+
 // disable channels
 0 enableChannel [true, false];
 1 enableChannel [true, false];
 2 enableChannel [false, false];
+
+// log playable hours
+_uid = getPlayerUID player;
+_clientId = owner player;
+_profileName = profileName;
+_null = [_uid, _clientId, _profileName] spawn {	
+	_uid = _this select 0;	
+	_clientId = _this select 1; 
+	_profileName = _this select 2;
+	sleep 300;
+	while {true} do {	    
+        ["insertPlayer",[_uid, _profileName], _clientId] remoteExec ["sqlServerCall", 2];
+        sleep 5;
+        ["logTime",[_uid], _clientId] remoteExec ["sqlServerCall", 2];
+        sleep 295;
+    };
+};

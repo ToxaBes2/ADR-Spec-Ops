@@ -68,7 +68,6 @@ class QS
 		class SMenemyIND {};
 		class SMhintFAIL {};
 		class SMhintSUCCESS {};
-		class sqlQuery {};
 		class TBshuffle {};
 		class TBdeleteObjects {};
 		class uh80Turret {};
