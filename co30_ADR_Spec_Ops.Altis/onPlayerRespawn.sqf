@@ -88,6 +88,23 @@ _null = player addEventHandler ["Fired", {
     };
 }];
 
+if (side player == west) then {
+    "partizan_base" setMarkerAlphaLocal 0;
+};
+
+_guers = ["I_G_Soldier_AR_F","I_G_engineer_F"];
+_iamguer = ({typeOf player == _x} count _guers) > 0;
+if (_iamguer) then {
+    removeAllweapons player;
+    removevest player;
+    removeBackpack player;
+    removeheadgear player;
+    removegoggles player;
+    removeBackPack player;
+    {player removeItem _x} foreach (items player);
+    {player unassignItem _x;player removeItem _x} foreach (assignedItems player);
+};
+
 // Hide objects near heli landing
 ((getMarkerPos "respawn_west") nearestObject 492374) hideObject true;
 ((getMarkerPos "respawn_west") nearestObject 492375) hideObject true;

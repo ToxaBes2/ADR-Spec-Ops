@@ -9,25 +9,30 @@ enableEngineArtillery false;
 
 // check for guerrila slots
 waitUntil {!isNull player};
-_guers = ["I_G_Soldier_LAT_F","I_G_Soldier_AR_F","I_G_Soldier_M_F","I_G_medic_F"];
+_guers = ["I_G_Soldier_AR_F","I_G_engineer_F"];
 _iamguer = ({typeOf player == _x} count _guers) > 0;
 if (_iamguer) then {
 	0 cutText["Проверка игрового времени...", "BLACK FADED"];
     0 cutFadeOut 9999999;
     waitUntil {(getPlayerUID player) != ""};
     _uid = getPlayerUID player;                
-    _clientId = owner player;      
+    _clientId = player;      
     removeAllweapons player;
 	//removeuniform player;
 	removevest player;
+	removeBackpack player;
 	removeheadgear player;
 	removegoggles player;
 	removeBackPack player;
 	{player removeItem _x} foreach (items player);
 	{player unassignItem _x;player removeItem _x} foreach (assignedItems player);
 	["getPlayerHours",[_uid], _clientId] remoteExec ["sqlServerCall", 2]; 
-    sleep 10;    
+    sleep 10;       
 };	
+
+if (side player == west) then {
+    "partizan_base" setMarkerAlphaLocal 0;
+};
 
 // Pilots only
 _pilots = ["B_Helipilot_F", "O_helipilot_F"];
@@ -104,6 +109,11 @@ player addEventHandler [ "Take", {
 	};
 }];
 
+// add Zeus curator
+{
+	_x addCuratorEditableObjects [[player],FALSE];
+} count allCurators;
+
 // PVEHs
 "showNotification" addPublicVariableEventHandler
 {
@@ -153,17 +163,6 @@ player addEventHandler [ "Take", {
 	"priorityMarker" setMarkerTextLocal format["Вторичная цель: %1",priorityTargetText];
 };
 
-// disable arsenal load/save/random features for all
-[missionNamespace, "arsenalOpened", {
-    disableSerialization;
-    _display = _this select 0;
-    {
-        ( _display displayCtrl _x ) ctrlSetText "Disabled";
-        ( _display displayCtrl _x ) ctrlSetTextColor [ 1, 0, 0, 0.5 ];
-        ( _display displayCtrl _x ) ctrlRemoveAllEventHandlers "buttonclick";
-    } forEach [ 44146, 44147, 44150 ];
-} ] call BIS_fnc_addScriptedEventHandler;
-
 // disable channels
 0 enableChannel [true, false];
 1 enableChannel [true, false];
@@ -171,17 +170,15 @@ player addEventHandler [ "Take", {
 
 // log playable hours
 _uid = getPlayerUID player;
-_clientId = owner player;
 _profileName = profileName;
-_null = [_uid, _clientId, _profileName] spawn {	
-	_uid = _this select 0;	
-	_clientId = _this select 1; 
-	_profileName = _this select 2;
+_null = [_uid, _profileName] spawn {	
+	_uid = _this select 0;	 
+	_profileName = _this select 1;
 	sleep 300;
 	while {true} do {	    
-        ["insertPlayer",[_uid, _profileName], _clientId] remoteExec ["sqlServerCall", 2];
+        ["insertPlayer",[_uid, _profileName], player] remoteExec ["sqlServerCall", 2];
         sleep 5;
-        ["logTime",[_uid], _clientId] remoteExec ["sqlServerCall", 2];
+        ["logTime",[_uid], player] remoteExec ["sqlServerCall", 2];
         sleep 295;
     };
 };

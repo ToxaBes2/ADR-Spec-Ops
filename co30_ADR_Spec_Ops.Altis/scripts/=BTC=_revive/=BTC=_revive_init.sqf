@@ -23,7 +23,9 @@ BTC_r_cpr_time      = 20;
 BTC_r_trans_ratio   = 100;
 BTC_revive_time_min = 3;
 BTC_revive_time_max = 600;
-BTC_who_can_revive  = ["B_medic_F","I_G_Soldier_M_F","I_G_Soldier_AR_F","I_G_Soldier_M_F","I_G_engineer_F"];
+BTC_revive_time_max_west = 300;
+BTC_revive_time_max_partizan = 120;
+BTC_who_can_revive  = ["B_medic_F","I_G_Soldier_AR_F","I_G_engineer_F"];
 BTC_loop_check      = 1;
 BTC_disable_respawn = 0;
 BTC_respawn_gear    = 1;
@@ -41,9 +43,9 @@ BTC_active_mobile   = 0;											//Active mobile respawn (You have to put in m
 BTC_mobile_respawn  = 0;											//Active the mobile respawn fnc (1 = yes, 0 = no)
 BTC_mobile_respawn_time = 30;										//Secs delay for mobile vehicle to respawn
 BTC_need_first_aid = 1;												//You need a first aid kit to revive (1 = yes, 0 = no)
-BTC_pvp = 1; 														//(disable the revive option for the enemy)
+BTC_pvp = 0; 														//(disable the revive option for the enemy)
 BTC_injured_marker = 0;
-BTC_3d_can_see     = ["B_medic_F","I_G_Soldier_M_F","I_G_Soldier_AR_F","I_G_Soldier_M_F","I_G_engineer_F"];
+BTC_3d_can_see     = ["B_medic_F","I_G_Soldier_AR_F","I_G_engineer_F"];
 BTC_3d_distance    = 800;
 BTC_3d_icon_size   = 0.2;
 BTC_3d_icon_color  = [1,0,0,1];

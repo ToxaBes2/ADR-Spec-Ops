@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={16005.923,15.304128,17041.234};
-		dir[]={0.6318261,-0.28115222,-0.72233826};
-		up[]={0.18510468,0.95966089,-0.21162295};
-		aside[]={-0.75270092,-3.9115548e-008,-0.65838194};
+		pos[]={15116.503,20.328468,17242.939};
+		dir[]={-0.69484538,-0.28115222,-0.66194135};
+		up[]={-0.20356843,0.95966089,-0.19392753};
+		aside[]={-0.68976265,-3.9115548e-008,0.72405267};
 	};
 };
 binarizationWanted=0;
@@ -1425,7 +1425,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={9024.2236,111.7303,15724.93};
-			angle=1.396263;
+			angle=1.3962629;
 			class Attributes
 			{
 				condition="this and ((getPos (thisList select 0)) select 2 < 1)";
@@ -1464,7 +1464,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={19957.947,60.297817,11448.483};
-			angle=5.7595849;
+			angle=5.7595844;
 			class Attributes
 			{
 				condition="this and ((getPos (thisList select 0)) select 2 < 1)";
@@ -10194,7 +10194,7 @@ class Mission
 						isPlayable=1;
 					};
 					id=984;
-					type="I_G_Soldier_LAT_F";
+					type="I_G_Soldier_AR_F";
 					atlOffset=0.018813133;
 					class CustomAttributes
 					{
@@ -10237,7 +10237,7 @@ class Mission
 						isPlayable=1;
 					};
 					id=985;
-					type="I_G_Soldier_M_F";
+					type="I_G_engineer_F";
 					atlOffset=0.016264915;
 					class CustomAttributes
 					{
@@ -10461,26 +10461,7 @@ class Mission
 						};
 					};
 				};
-				class Attribute1
-				{
-					property="allowDamage";
-					expression="_this allowdamage _value;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"BOOL"
-								};
-							};
-							value=0;
-						};
-					};
-				};
-				nAttributes=2;
+				nAttributes=1;
 			};
 		};
 		class Item455

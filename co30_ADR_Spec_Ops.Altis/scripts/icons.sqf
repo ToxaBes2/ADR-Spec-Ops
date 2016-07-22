@@ -126,7 +126,7 @@ QS_fnc_iconDrawMap = compileFinal "
 	_textOffset = 'right';
 	{
 		_v = vehicle _x;
-		if ((side _v == playerSide) || {(captive _x)}) then {
+		if ((side _v == playerSide)) then {
 			_iconType = [_v] call QS_fnc_iconType;
 			_color = [_x] call QS_fnc_iconColor;	
 			_pos = getPosASL _v;		
@@ -164,7 +164,7 @@ QS_fnc_iconDrawGPS = compileFinal "
 	_textOffset = 'right';
 	{
 		_v = vehicle _x;
-		if ((side _v == playerSide) || {(captive _x)}) then {
+		if ((side _v == playerSide)) then {
 			if ((_x distance player) < 300) then {
 				_iconType = [_v] call QS_fnc_iconType;
 				_color = [_x] call QS_fnc_iconColor;	

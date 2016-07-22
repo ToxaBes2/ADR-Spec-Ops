@@ -1,5 +1,10 @@
 _myBox = _this select 0;
 
+//--- Рюкзаки
+[_myBox,[
+"B_Parachute"
+],true, false] call BIS_fnc_addVirtualBackpackCargo;
+
 [_myBox,[
 //--- Партизаны
 "U_BG_Guerilla6_1",
@@ -120,6 +125,7 @@ _myBox = _this select 0;
 
 //--- Дополнения
 "acc_flashlight",
+"FirstAidKit",
 
 //--- Вещи
 "ItemMap",
@@ -138,6 +144,10 @@ _myBox = _this select 0;
 "30Rnd_556x45_Stanag_Tracer_Green",
 "30Rnd_556x45_Stanag_Tracer_Yellow",
 "20Rnd_556x45_UW_mag",
+"30Rnd_545x39_Mag_F",
+"30Rnd_545x39_Mag_Green_F",
+"30Rnd_545x39_Mag_Tracer_F",
+"30Rnd_545x39_Mag_Tracer_Green_F",
 
 //--- Химсвет
 "Chemlight_yellow"

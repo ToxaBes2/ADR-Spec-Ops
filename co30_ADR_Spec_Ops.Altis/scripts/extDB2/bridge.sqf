@@ -13,7 +13,8 @@
 sqlServerCall = {
     _queryName = param [0, ""];
     _params = param [1, []];
-    _clientId = param [2, 0];
+    _player = param [2, false];
+    _clientId = owner _player;
     _par = "";
     _peace = "";
     _sql = "";
@@ -32,7 +33,7 @@ sqlServerCall = {
     _queryResult = "extDB2" callExtension _sql;
     _queryResult = _queryResult splitString ","; 
     if (count _queryResult < 2) then {
-    	_queryResult = format ["%1", _queryResult]
+    	_queryResult = format ["%1", _queryResult];
     } else {
         _queryResult = _queryResult select 1;
         _queryResult = [_queryResult,"[",""] call KRON_Replace;
@@ -41,7 +42,7 @@ sqlServerCall = {
     [_clientId, _queryName, _queryResult] remoteExec ["sqlResponse", _clientId];
 };
 sqlResponse = {
-    _clientId = param [0, 0];
+    _clientId = param [0, false];
     _queryName = param [1, ""];    
     _queryResult = param [2, false];
     switch _queryName do {
@@ -57,8 +58,9 @@ sqlResponse = {
             	_text = format["Слоты партизан доступны только после 100 часов игры на сервере!\nВаше время: %1 ч.", _hrs];
             	0 cutText[_text, "BLACK FADED"];
                 0 cutFadeOut 99999;
-                sleep 5;
-                ["end1", false, 2, false] call BIS_fnc_endMission;
+                sleep 6;
+                //serverCommand Format["#kick %1", profileName];
+                //["end1", false, 2, false] call BIS_fnc_endMission;
             } else {
                 0 cutText["", "BLACK IN"];
             };

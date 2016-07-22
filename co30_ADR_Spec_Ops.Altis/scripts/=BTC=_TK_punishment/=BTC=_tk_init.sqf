@@ -31,7 +31,7 @@ BTC_EH_killed = {
 	_veh_body = vehicle _body;
 	_veh_killer = vehicle _killer;
 	_name = name _killer;
-	if (_name != name _body && BTC_vip find (name _killer) == -1) then {
+	if (_name != name _body && BTC_vip find (name _killer) == -1 && side _body == side _killer) then {
 		if (side _killer == west && _veh_body != _veh_killer) then {
 			//saving TEAMKILL info in server logs
 			["//========================================", "diag_log", false] call BIS_fnc_MP;
