@@ -13,10 +13,7 @@ Description: Secure helicopter crash area and find scout equipment.
 #define INFANTRY_MOTORIZED "O_G_Offroad_01_armed_F","O_T_LSV_02_armed_F"
 
 // define all priviate variables
-private ["_targets","_accepted","_distance","_briefing","_position","_city","_flatPos","_heliCoords","_mkrScout","_z","_fullyRandom","_heliObj",
-         "_heliPos","_azimut","_x","_c","_ps","_chemPosRed","_chemlightRed","_houseList","_randNum","_scoutPos","_scoutBox","_chemPosBlue","_goodPos",
-         "_dummy","_showGetdataMessage","_showSabotageMessage","_inHouse","_enemiesArray","_randomPos","_patrolGroup","_nearRoads","_roadSegment",
-         "_direction","_x","_staticGroup","_static","_houseGroup","_technicalGroup","_technicalVehicle","_sniperGroup","_startPoint"];
+private ["_enemiesArray", "_targets", "_position", "_flatPos", "_startPoint", "_heliCoords", "_fullyRandom", "_heliPos", "_azimut", "_heliObj", "_distance", "_z", "_chemPosRed", "_chemlightRed", "_inHouse", "_goodPos", "_houseList", "_c", "_scoutPos", "_scoutBox", "_mkrScout", "_chemPosBlue", "_chemlightBlue", "_patrolGroup", "_randomPos", "_unitPos", "_houseGroup", "_sniperGroup", "_nearRoads", "_staticGroup", "_roadSegment", "_static", "_technicalGroup", "_technicalVehicle", "_guardsGroup", "_city", "_briefing", "_showSabotageMessage", "_showGetdataMessage", "_viperSquadSpawned"];
 
 _enemiesArray = [grpNull];
 
@@ -232,7 +229,7 @@ for "_x" from 1 to 10 do {
     if ((count _goodPos) > 0) then {
         _randomPos = selectRandom _goodPos;
     } else {
-        _randomPos = [_startPoint, 0, 180, 2, 0, 0.5, 0, [], _startPoint] call BIS_fnc_findSafePos;
+        _randomPos = [_startPoint, 0, 180, 2, 0, 0.5, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
     };
     (selectRandom [INFANTRY_HOUSE]) createUnit [_randomPos, _houseGroup, "currentGuard = this"];
     doStop currentGuard;
@@ -328,10 +325,9 @@ SM_SUCCESS_SABOTAGE = false; publicVariable "SM_SUCCESS_SABOTAGE";
 SM_SUCCESS_GETDATA = false; publicVariable "SM_SUCCESS_GETDATA";
 _showSabotageMessage = true;
 _showGetdataMessage = true;
+_viperSquadSpawned = false;
 [_startPoint, 200, ["vehicles", "fire"]] call QS_fnc_addHades;
 while { sideMissionUp } do {
-    sleep 2;
-
 	// Heli part done
     if ((SM_SUCCESS_SABOTAGE || !alive _heliObj) && _showSabotageMessage) then {
     	hint "";
@@ -344,6 +340,7 @@ while { sideMissionUp } do {
         deleteVehicle _chemlightRed;
     	publicVariable "hqSideChat"; [WEST,"HQ"] sideChat hqSideChat;
     };
+    sleep 1;
 
     // Scout box part done
     if (SM_SUCCESS_GETDATA && _showGetdataMessage) then {
@@ -358,6 +355,24 @@ while { sideMissionUp } do {
         { deleteVehicle _x; } forEach [_scoutBox,_chemlightBlue];
         deleteMarker "scoutMarker";
     };
+    sleep 1;
+
+    // Spawn Viper group
+    if (!_viperSquadSpawned) then {
+        if (SM_SUCCESS_GETDATA) exitWith {
+            _viperSquadSpawned = true;
+            if (random 1 > 0.5) then {
+                _enemiesArray pushBack ([_heliPos, 500, 500, 3000, true, ENEMY_SIDE] call QS_fnc_spawnViper);
+            };
+        };
+        if (SM_SUCCESS_SABOTAGE or !alive _heliObj) exitWith {
+            _viperSquadSpawned = true;
+            if (random 1 > 0.5) then {
+                _enemiesArray pushBack ([_scoutPos, 500, 500, 3000, true, ENEMY_SIDE] call QS_fnc_spawnViper);
+            };
+        };
+    };
+    sleep 1;
 
     // All done, de-briefing
 	if (SM_SUCCESS_SABOTAGE && SM_SUCCESS_GETDATA) exitWith {
@@ -371,5 +386,5 @@ while { sideMissionUp } do {
         deleteVehicle _heliObj;
         [_startPoint, 500] call QS_fnc_DeleteEnemyEAST;
 	};
-	sleep 3;
+	sleep 1;
 };

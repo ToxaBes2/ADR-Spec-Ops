@@ -13,16 +13,16 @@ Edited by Quiksilver
 BTC_assign_actions =
 {
 	if ([player] call BTC_is_class_can_revive) then {
-		player addAction [("<t color=""#F44336""><img image='\a3\ui_f\data\map\VehicleIcons\pictureheal_ca.paa' size='1.0'/> ") + ("Первая помощь") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_first_aid], 8, true, true, "", "[] call BTC_check_action_first_aid"];
+		player addAction [("<t color=""#F44336""><img image='\a3\ui_f\data\map\VehicleIcons\pictureheal_ca.paa' size='1.0'/> ") + ("Первая помощь") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_first_aid], 8, true, true, "", "[] call BTC_check_action_first_aid", 10];
 	};
 	if (BTC_Medical_TruckToggle != 0) then {
 		if (!([player] call BTC_is_class_can_revive)) then {
-			player addAction [("<t color=""#F44336""><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_debug_ca.paa' size='1.0'/> ") + (BTC_Medical_Trucks_addActionText) + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_first_aid], 8, true, true, "", "[] call BTC_check_action_HEMTT"];
+			player addAction [("<t color=""#F44336""><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_debug_ca.paa' size='1.0'/> ") + (BTC_Medical_Trucks_addActionText) + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_first_aid], 8, true, true, "", "[] call BTC_check_action_HEMTT", 10];
 		};
 	};
-	player addAction [("<t color=""#EF5350""><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_debug_ca.paa' size='1.0'/> ") + ("Тащить") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_drag], 8, true, true, "", "[] call BTC_check_action_drag"];
-	player addAction [("<t color=""#EF5350""><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_debug_ca.paa' size='1.0'/> ") + ("Выгрузить раненого") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_pull_out], 8, true, true, "", "[] call BTC_pull_out_check"];
-	player addAction [("<t color=""#EF5350""><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_debug_ca.paa' size='1.0'/> ") + ("Нести") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_carry], 8, true, true, "", "[] call BTC_check_action_drag"];
+	player addAction [("<t color=""#EF5350""><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_debug_ca.paa' size='1.0'/> ") + ("Тащить") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_drag], 8, true, true, "", "[] call BTC_check_action_drag", 10];
+	player addAction [("<t color=""#EF5350""><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_debug_ca.paa' size='1.0'/> ") + ("Выгрузить раненого") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_pull_out], 8, true, true, "", "[] call BTC_pull_out_check", 10];
+	player addAction [("<t color=""#EF5350""><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_debug_ca.paa' size='1.0'/> ") + ("Нести") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_carry], 8, true, true, "", "[] call BTC_check_action_drag", 10];
 };
 BTC_get_gear =
 {
@@ -1077,6 +1077,7 @@ BTC_drag =
 	if (count _men > 1) then {_injured = _men select 1;};
 	if (format ["%1",_injured getVariable "BTC_need_revive"] != "1") exitWith {};
 	BTC_dragging = true;
+	outlw_MR_canCreateDialog = false;
 	_injured setVariable ["BTC_dragged",1,true];
 	_injured attachTo [player, [0, 1.1, 0.092]];
 	player playMoveNow "AcinPknlMstpSrasWrflDnon";
@@ -1109,6 +1110,7 @@ BTC_drag =
 	if (format ["%1",_injured getVariable "BTC_need_revive"] == "1") then {detach _injured;_injured playMoveNow "AinjPpneMstpSnonWrflDb_release";};
 	player removeAction _id;
 	BTC_dragging = false;
+	outlw_MR_canCreateDialog = true;
 };
 
 BTC_carry =
@@ -1118,6 +1120,7 @@ BTC_carry =
 	if (count _men > 1) then {_injured = _men select 1;};
 	if (format ["%1",_injured getVariable "BTC_need_revive"] != "1") exitWith {};
 	BTC_dragging = true;
+	outlw_MR_canCreateDialog = false;
 	_healer = player;
 	_injured setVariable ["BTC_dragged",1,true];
 	detach _injured;
@@ -1153,10 +1156,12 @@ BTC_carry =
 	_injured setVariable ["BTC_dragged",0,true];
 	player removeAction _id;
 	BTC_dragging = false;
+	outlw_MR_canCreateDialog = true;
 };
 BTC_release =
 {
 	BTC_dragging = false;
+	outlw_MR_canCreateDialog = true;
 };
 
 BTC_load_in =
@@ -1164,6 +1169,7 @@ BTC_load_in =
 	_injured = _this select 0;
 	_veh     = _this select 1;
 	BTC_dragging = false;
+	outlw_MR_canCreateDialog = true;
 	BTC_load_pveh = [3,_injured,_veh];publicVariable "BTC_load_pveh";
 };
 

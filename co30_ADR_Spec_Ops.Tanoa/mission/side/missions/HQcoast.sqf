@@ -47,9 +47,9 @@ _object = selectRandom [crate3,crate4];
 _object setPos [(getPos sideObj select 0), (getPos sideObj select 1), ((getPos sideObj select 2) + 5)];
 
 // BOAT POSITIONS
-_boatPos = [_flatPos, 50, 150, 10, 2, 1, 0, [], _flatPos] call BIS_fnc_findSafePos;
-_trawlerPos = [_flatPos, 200, 300, 10, 2, 1, 0, [], _flatPos] call BIS_fnc_findSafePos;
-_assaultBoatPos = [_flatPos, 15, 25, 10, 0, 1, 0, [], _flatPos] call BIS_fnc_findSafePos;
+_boatPos = [_flatPos, 50, 150, 10, 2, 1, 0, [], [_flatPos]] call BIS_fnc_findSafePos;
+_trawlerPos = [_flatPos, 200, 300, 10, 2, 1, 0, [], [_flatPos]] call BIS_fnc_findSafePos;
+_assaultBoatPos = [_flatPos, 15, 25, 10, 0, 1, 0, [], [_flatPos]] call BIS_fnc_findSafePos;
 
 // ENEMY HMG BOAT (SEEMS RIGHT SINCE ITS BY THE COAST)
 boat = "O_T_Boat_Armed_01_hmg_F" createVehicle _boatPos;

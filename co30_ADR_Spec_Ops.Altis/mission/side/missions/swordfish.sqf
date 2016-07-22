@@ -87,7 +87,7 @@ for "_c" from 0 to 4 do {
 
 // spawn mines
 for "_c" from 0 to 50 do {
-    _minePos = [_subPos, 1, 180, 3, 2, 20, 0, [], _subPos] call BIS_fnc_findSafePos;
+    _minePos = [_subPos, 1, 180, 3, 2, 20, 0, [], [_subPos]] call BIS_fnc_findSafePos;
     _height = random (floor ((getTerrainHeightASL _minePos) * -1));
     _pos = [_minePos select 0, _minePos select 1, (0 - _height)];
     _mine = createMine ["UnderwaterMine", _pos, [], 0];
@@ -97,7 +97,7 @@ for "_c" from 0 to 50 do {
 //spawn wreck vehicles
 for "_c" from 0 to 6 do {
     _wreck = selectRandom [INFANTRY_WRECKED_VECHICLES];
-    _wreckPos = [_subPos, 40, 120, 5, 2, 20, 0, [], _subPos] call BIS_fnc_findSafePos;
+    _wreckPos = [_subPos, 40, 120, 5, 2, 20, 0, [], [_subPos]] call BIS_fnc_findSafePos;
     _wreckVeh = createVehicle [_wreck, [0,0,0], [], 0, "CAN_COLLIDE"];
     _wreckVeh setPos [_wreckPos select 0, _wreckPos select 1, getTerrainHeightASL _wreckPos];
     _wreckVeh setDir (random 360);
@@ -111,7 +111,7 @@ for "_c" from 0 to 6 do {
 BLOCKED_DEVICES = 0; publicVariable "BLOCKED_DEVICES";
 _devices = nearestObjects [[_startPoint select 0, _startPoint select 1], ["Land_Device_disassembled_F"], 200];
 while {count _devices < 2} do {
-    _safePos = [_subPos, 5, 50, 1, 2, 15, 0, [], _subPos] call BIS_fnc_findSafePos;
+    _safePos = [_subPos, 5, 50, 1, 2, 15, 0, [], [_subPos]] call BIS_fnc_findSafePos;
     _devicePos = [_safePos select 0, _safePos select 1, getTerrainHeightASL _safePos];
     _device = createVehicle ["Land_Device_disassembled_F", [0,0,0], [], 0, "NONE"];
     waitUntil {alive _device};
@@ -132,7 +132,7 @@ while {count _devices < 2} do {
 _devices = nearestObjects [[_startPoint select 0, _startPoint select 1], ["Land_Device_disassembled_F"], 200];
 if (count _devices < 2) then {
     for "_c" from 0 to 1 do {
-        _safePos = [_subPos, 5, 150, 1, 2, 15, 0, [], _subPos] call BIS_fnc_findSafePos;
+        _safePos = [_subPos, 5, 150, 1, 2, 15, 0, [], [_subPos]] call BIS_fnc_findSafePos;
         _devicePos = [_safePos select 0, _safePos select 1, getTerrainHeightASL _safePos];
         _device = createVehicle ["Land_Device_disassembled_F", _devicePos, [], 0, "NONE"];
         _device allowDamage false;
@@ -148,7 +148,7 @@ sleep 1;
 
 // spawn 5 SDVs
 for "_c" from 0 to 4 do {
-    _safePos = [_subPos, 2, 50, 2, 2, 5, 0, [], _subPos] call BIS_fnc_findSafePos;
+    _safePos = [_subPos, 2, 50, 2, 2, 5, 0, [], [_subPos]] call BIS_fnc_findSafePos;
     _sdv = createVehicle [(selectRandom [INFANTRY_SDV]), [0,0,0], [], 0, "NONE"];
     waitUntil {alive _sdv};
     _sdv setPos [_safePos select 0, _safePos select 1, getTerrainHeightASL _safePos];
@@ -159,7 +159,7 @@ for "_c" from 0 to 4 do {
 
 // spawn 5 lights
 for "_c" from 0 to 4 do {
-_safePos = [_subPos, 15, 40, 4, 2, 20, 0, [], _subPos] call BIS_fnc_findSafePos;
+_safePos = [_subPos, 15, 40, 4, 2, 20, 0, [], [_subPos]] call BIS_fnc_findSafePos;
     _light = createVehicle [(selectRandom ["Land_PortableLight_double_F","Land_PortableLight_single_F"]), [0,0,0], [], 0, "NONE"];
     _light setPos [_safePos select 0, _safePos select 1, getTerrainHeightASL _safePos];
     _light setDir (([_light, _submarine] call BIS_fnc_dirTo) + 180);
@@ -262,7 +262,7 @@ sleep 0.1;
 _places = selectBestPlaces [_boatPos1, 300, "forest + trees", 1, 1];
 _campPos = (_places select 0) select 0;
 if (_campPos distance _boatPos1 > 301) then {
-    _campPos = [_boatPos1, 50, 300, 6, 0, 0.4, 0, [], _boatPos1] call BIS_fnc_findSafePos;
+    _campPos = [_boatPos1, 50, 300, 6, 0, 0.4, 0, [], [_boatPos1]] call BIS_fnc_findSafePos;
 };
 _camo = createVehicle ["CamoNet_OPFOR_F", _campPos, [], 0, "CAN_COLLIDE"];
 _camo setDir (random 360);
@@ -283,7 +283,7 @@ sleep 0.1;
 
 // HQ: guards
 {
-   _guardPos = [_campPos, 2, 100, 2, 0, 0.4, 0, [], _campPos] call BIS_fnc_findSafePos;
+   _guardPos = [_campPos, 2, 100, 2, 0, 0.4, 0, [], [_campPos]] call BIS_fnc_findSafePos;
    _x createUnit [_guardPos, _hqGroup, "currentGuard = this"];
    currentGuard setDir (([currentOfficier, currentGuard] call BIS_fnc_dirTo) + 180);
    currentGuard setUnitPos "AUTO";
@@ -295,7 +295,7 @@ sleep 0.1;
 _sniperPlaces = selectBestPlaces [_campPos, 600, "hills", 1, 1];
 _sniperPos = (_sniperPlaces select 0) select 0;
 if (_sniperPos distance _campPos > 600) then {
-    _sniperPos = [_campPos, 80, 600, 2, 0, 0.4, 0, [], _campPos] call BIS_fnc_findSafePos;
+    _sniperPos = [_campPos, 80, 600, 2, 0, 0.4, 0, [], [_campPos]] call BIS_fnc_findSafePos;
 };
 "O_ghillie_ard_F" createUnit [_sniperPos, _hqGroup, "currentSniper = this"];
 currentSniper setDir ([currentOfficier, currentSniper] call BIS_fnc_dirTo);

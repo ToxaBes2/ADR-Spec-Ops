@@ -19,7 +19,7 @@ Description: Snatch helicopter and return it to the base.
 #define INFANTRY_SOLDIERS "O_Soldier_F","O_Soldier_GL_F","O_Soldier_AR_F","O_Soldier_SL_F","O_Soldier_TL_F","O_soldier_M_F","O_Soldier_LAT_F","O_medic_F","O_soldier_repair_F","O_soldier_exp_F","O_Soldier_AT_F","O_Soldier_AA_F","O_engineer_F","O_recon_F","O_recon_M_F","O_recon_LAT_F","O_recon_medic_F","O_recon_TL_F","O_Soldier_AAT_F","O_soldierU_M_F","O_SoldierU_GL_F"
 
 // define private variables
-private ["_targets","_accepted","_distance","_briefing","_position","_flatPos","_x","_enemiesArray","_startPoint"];
+private ["_enemiesArray", "_unitsArray", "_arr", "_cnt", "_targets", "_helicopters", "_position", "_flatPos", "_startPoint", "_briefing", "_campPos", "_camp", "_campFires", "_tentDome", "_campGroup", "_sleepingBags", "_sleepingPositions", "_sleepingPos", "_i", "_bagPos", "_heliPos", "_heliDir", "_heliLand", "_heliData", "_heliType", "_trig", "_boxes", "_n", "_height", "_posInit", "_posSpawn", "_uavData", "_uav", "_uavGroup", "_fuelPos", "_fuelDir", "_fuelNet", "_fuelVeh", "_aaGroup", "_aaPos", "_aaDir", "_aaVeh", "_aa", "_staticGroup", "_bunkers", "_bunkerPos", "_bunkerDir", "_bunkerBag", "_posBlock", "_block", "_bunkerCamonet", "_posATL", "_static", "_singlePositions", "_heliGroup", "_pilotPositions", "_pilotPos", "_crewPos", "_patrolGroup", "_dirSign", "_vehMineDir", "_apMineDir", "_c", "_posSign", "_sign", "_mine", "_minePos", "_nearestMines"];
 
 _enemiesArray = [grpNull];
 _unitsArray = [];
@@ -89,10 +89,10 @@ _campFires = nearestObjects [_campPos, ["Land_Campfire_F", "Campfire_burning_F"]
 {
     _x inflame true;
 } forEach _campFires;
-_unitsArray = _unitsArray + [_camp];
+_unitsArray pushBack _camp;
 for "_x" from 1 to 6 do {
     _tentDome = createVehicle ["Land_TentDome_F", _campPos, [], 10, "NONE"];
-    _unitsArray = _unitsArray + [_tentDome];
+    _unitsArray pushBack _tentDome;
     _tentDome = nil;
 };
 
@@ -112,14 +112,14 @@ for "_i" from 0 to 2 do {
 };
 _campGroup setBehaviour "SAFE";
 _campGroup setCombatMode "RED";
-_enemiesArray = _enemiesArray + [_campGroup];
+_enemiesArray pushBack _campGroup;
 
 // spawn heli
 _heliPos =  [(_position select 3) select 0, (_position select 3) select 1, 0];
 _heliDir = (_position select 3) select 2;
 _heliLand = createVehicle ["Land_HelipadSquare_F", _heliPos, [], 0, "CAN_COLLIDE"];
 _heliLand setDir (_heliDir + 180);
-_unitsArray = _unitsArray + [_heliLand];
+_unitsArray pushBack _heliLand;
 _heliData = selectRandom _helicopters;
 _heliType = _heliData select 0;
 heliSnatch = createVehicle [_heliType, _heliPos, [], 0, "NONE"];
@@ -168,14 +168,14 @@ _trig setTriggerStatements ["this && ((alive heliSnatch) && !(heliSnatch in this
 for "_x" from 1 to 2 do {
     _boxes = createVehicle ["Land_Pallet_MilBoxes_F", _heliPos, [], 4, "NONE"];
     _boxes allowDamage false;
-    _unitsArray = _unitsArray + [_boxes];
+    _unitsArray pushBack _boxes;
 };
 
 // spawn patrolling drones
 _n = selectRandom (_position select 1);
 for "_i" from 1 to _n do {
     _height = (random 20) + 15;
-    _posInit = [_campPos, 1, 100, 2, 1, 1, 0, [], _campPos] call BIS_fnc_findSafePos;
+    _posInit = [_campPos, 1, 100, 2, 1, 1, 0, [], [_campPos]] call BIS_fnc_findSafePos;
     _posSpawn = [_posInit select 0, _posInit select 1, _height];
     _uavData = [_posSpawn, 90, "B_UAV_01_F", ENEMY_SIDE] call BIS_fnc_spawnVehicle;
     _uav = _uavData select 0;
@@ -186,8 +186,8 @@ for "_i" from 1 to _n do {
     _uavGroup setCombatMode "RED";
     [(units _uavGroup)] call QS_fnc_setSkill2;
     [_uavGroup, _posSpawn, (40 + (random 80))] call BIS_fnc_taskPatrol;
-    _unitsArray = _unitsArray + [_uav];
-    _enemiesArray = _enemiesArray + [_uavGroup];
+    _unitsArray pushBack _uav;
+    _enemiesArray pushBack _uavGroup;
 };
 
 // spawn fuel vehicle
@@ -195,11 +195,11 @@ _fuelPos =  [(_position select 4) select 0, (_position select 4) select 1, 0];
 _fuelDir = (_position select 4) select 2;
 _fuelNet = createVehicle [INFANTRY_CAMONET_BIG, _fuelPos, [], 0, "CAN_COLLIDE"];
 _fuelNet setDir _fuelDir;
-_unitsArray = _unitsArray + [_fuelNet];
+_unitsArray pushBack _fuelNet;
 _fuelVeh = createVehicle [INFANTRY_FUEL_VEHICLE, _fuelPos, [], 0, "CAN_COLLIDE"];
 _fuelVeh setDir _fuelDir;
 
-unitsArray = _unitsArray + [_fuelVeh];
+_unitsArray pushBack _fuelVeh;
 
 // spawn AA vehicle
 _aaGroup =  createGroup ENEMY_SIDE;
@@ -210,10 +210,10 @@ _aa = _aaVeh select 0;
 _aa setFuel 0;
 _aa setVehicleLock "LOCKED";
 _aa lock true;
-_unitsArray = _unitsArray + [_aa];
+_unitsArray pushBack _aa;
 _aaGroup setBehaviour "SAFE";
 _aaGroup setCombatMode "RED";
-_enemiesArray = _enemiesArray + [_aaGroup];
+_enemiesArray pushBack _aaGroup;
 
 // spawn bunkers
 _staticGroup = createGroup ENEMY_SIDE;
@@ -225,26 +225,26 @@ _bunkers = _position select 6;
     _bunkerDir = (_x select 2) + 180;
     _bunkerBag = createVehicle ["Land_BagBunker_Small_F", _bunkerPos, [], 0, "CAN_COLLIDE"];
     _bunkerBag setDir _bunkerDir;
-    _unitsArray = _unitsArray + [_bunkerBag];
+    _unitsArray pushBack _bunkerBag;
 
     // put cargo at back
     _posBlock = [_bunkerBag, 5, _bunkerDir] call BIS_fnc_relPos;
     _block = createVehicle ["Land_Cargo20_military_green_F",[1,1,1],[],0,"CAN_COLLIDE"];
     _block setPos _posBlock;
     _block setDir _bunkerDir;
-    _unitsArray = _unitsArray + [_block];
+    _unitsArray pushBack _block;
 
     // camonet for bunker
     _bunkerCamonet = createVehicle [INFANTRY_CAMONET_SMALL, _bunkerPos, [], 0, "CAN_COLLIDE"];
     _bunkerCamonet setDir _bunkerDir;
     _bunkerCamonet allowDamage false;
-    _unitsArray = _unitsArray + [_bunkerCamonet];
+    _unitsArray pushBack _bunkerCamonet;
 
     // camonet for cargo
     _bunkerCamonet = createVehicle [INFANTRY_CAMONET_OPEN, [_posBlock select 0, _posBlock select 1, (_posBlock select 2) + 0.5], [], 0, "CAN_COLLIDE"];
     _bunkerCamonet setDir _bunkerDir;
     _bunkerCamonet allowDamage false;
-    _unitsArray = _unitsArray + [_bunkerCamonet];
+    _unitsArray pushBack _bunkerCamonet;
 
     // static weapon
     _posATL = getPos _bunkerBag;
@@ -263,7 +263,7 @@ _bunkers = _position select 6;
     _static lock 3;
     currentGuard allowDamage true;
     _static allowDamage true;
-    _unitsArray = _unitsArray + [_static];
+    _unitsArray pushBack _static;
     _static = nil;
 } forEach _bunkers;
 
@@ -278,7 +278,7 @@ _singlePositions = _position select 7;
 
 _staticGroup setBehaviour "SAFE";
 _staticGroup setCombatMode "RED";
-_enemiesArray = _enemiesArray + [_staticGroup];
+_enemiesArray pushBack _staticGroup;
 
 // spawn heli pilot and crew
 _heliGroup = createGroup ENEMY_SIDE;
@@ -295,7 +295,13 @@ currentGuard setDir (_crewPos select 3);
 [currentGuard,"STAND","FULL", {!isNull (currentGuard findNearestEnemy (getPos currentGuard)) || lifestate currentGuard == "INJURED"}, "COMBAT"] call BIS_fnc_ambientAnimCombat;
 _heliGroup setBehaviour "SAFE";
 _heliGroup setCombatMode "RED";
-_enemiesArray = _enemiesArray + [_heliGroup];
+_enemiesArray pushBack _heliGroup;
+
+// spawn patrol group
+_patrolGroup = [_startPoint, ENEMY_SIDE, (configfile >> "CfgGroups" >> "EAST" >> "OPF_T_F" >> "Infantry" >> "O_T_reconPatrol")] call BIS_fnc_spawnGroup;
+[_patrolGroup, _startPoint, 100] call QS_fnc_taskMaxDistPatrol;
+_patrolGroup setBehaviour "SAFE";
+_patrolGroup setCombatMode "RED";
 
 // spawn mines, mines everythere
 _dirSign = 180;
@@ -317,7 +323,7 @@ for "_c" from 0 to 150 do {
                 _pos = [_pos select 0, _pos select 1, 0];
                 _sign setPosATL _pos;
             };
-            _unitsArray = _unitsArray + [_sign];
+            _unitsArray pushBack _sign;
             _mine = createMine ["APERSBoundingMine", [(_posSign select 0) + random 3, (_posSign select 1) + random 3, 0.1], [], 0];
             waitUntil {alive _mine};
             _pos = getPosATL _mine;

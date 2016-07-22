@@ -1,17 +1,8 @@
-if (AIRBASEDEFENSE_SWITCH) exitWith {
-	hint "Противовоздушная оборона будет доступна в течение 5 минут."
+if (!isNil 'AIRBASEDEFENSE_SWITCH') exitWith {
+	["<t color='#F44336' size = '.48'>Противовоздушная оборона не доступна</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
 };
 
-//-------------------- Wait for player to action
-
+["<t color='#C6FF00' size = '.48'>Противовоздушная оборона активирована</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
 sleep 1;
 
-//-------------------- Send hint to player that he's planted the bomb
-
-hint "Активирована противо-воздушная оборона базы...";
-
-sleep 1;
-
-//---------- Send notice to all players that charge has been set.
-
-AIRBASEDEFENSE_SWITCH = true; publicVariable "AIRBASEDEFENSE_SWITCH";
+[[], {_this call compile preProcessFileLineNumbers "scripts\misc\airbaseDefense.sqf"}] remoteExec ["spawn", 2];

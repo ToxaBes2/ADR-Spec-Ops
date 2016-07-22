@@ -17,10 +17,7 @@ Description: Secure area and rescue the hostages.
 #define INFANTRY_OFFICER "O_T_Officer_F"
 
 // define all priviate variables
-private ["_targets","_accepted","_distance","_briefing","_position","_city","_flatPos","_heliCoords","_mkrScout","_z","_fullyRandom","_heliObj",
-         "_heliPos","_azimut","_x","_c","_ps","_chemPosRed","_chemlightRed","_houseList","_randNum","_scoutPos","_scoutBox","_chemPosBlue","_goodPos",
-         "_dummy","_showGetdataMessage","_showSabotageMessage","_inHouse","_enemiesArray","_randomPos","_patrolGroup","_nearRoads","_roadSegment",
-         "_direction","_x","_staticGroup","_static","_houseGroup","_houseUnit","_technicalGroup","_technicalVehicle","_sniperGroup","_startPoint"];
+private ["_enemiesArray", "_arr", "_cnt", "_targets", "_position", "_flatPos", "_startPoint", "_pos1", "_pos2", "_pos3", "_sign1", "_sign2", "_sign3", "_meters", "_unitsArray", "_minesArray", "_dir1", "_dir2", "_dir3", "_dir4", "_minePos", "_mine", "_height", "_c", "_cargoPos", "_cargoHQ", "_cargoHouses", "_cargoHouse", "_bunkerTowers", "_hostagesArray", "_houseGroup", "_hostagesGroup", "_hostagesPlaced", "_withHostages", "_unitPos", "_positions", "_holyRandom", "_commanderGroup", "_posATL", "_distance", "_staticGroup", "_static", "_y", "_patrolGroup", "_randomPos", "_initAngle", "_initDistance", "_startPos", "_i", "_newPos", "_wp", "_guardsGroup", "_bots", "_city", "_briefing", "_showHostagesMessage", "_showOfficerMessage", "_viperSquadSpawned", "_nearestMines"];
 
 _enemiesArray = [grpNull];
 
@@ -184,14 +181,14 @@ for "_c" from 0 to 109 do {
 _unitsArray = _unitsArray + _minesArray;
 
 // set Cargo HQ
-_cargoPos = [_startPoint, 0, 85, 2, 0, 5, 0, [], _startPoint] call BIS_fnc_findSafePos;
+_cargoPos = [_startPoint, 0, 85, 2, 0, 5, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
 _cargoHQ = createVehicle ["Land_Cargo_HQ_V4_F", _cargoPos, [], 0, "CAN_COLLIDE"];
 _unitsArray = _unitsArray + [_cargoHQ];
 
 // set 3 Cargo Houses
 _cargoHouses = [];
 for "_i" from 1 to 3 do {
-    _cargoPos = [_startPoint, 0, 85, 2, 0, 5, 0, [], _startPoint] call BIS_fnc_findSafePos;
+    _cargoPos = [_startPoint, 0, 85, 2, 0, 5, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
     _cargoHouse = createVehicle ["Land_Cargo_House_V4_F", _cargoPos, [], 0, "CAN_COLLIDE"];
     _cargoHouses = _cargoHouses + [_cargoHouse];
 };
@@ -205,7 +202,7 @@ _unitsArray = _unitsArray + _cargoHouses;
 // set 6 Bag Bunkers for static guards
 _bunkerTowers = [];
 for "_i" from 1 to 6 do {
-    _cargoPos = [_startPoint, 100, 170, 3, 0, 2, 0, [], _startPoint] call BIS_fnc_findSafePos;
+    _cargoPos = [_startPoint, 100, 170, 3, 0, 2, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
     _cargoHouse = createVehicle ["Land_BagBunker_01_small_green_F", _cargoPos, [], 0, "CAN_COLLIDE"];
     _cargoHouse setDir ([_cargoHouse, _startPoint] call BIS_fnc_dirTo);
     _bunkerTowers = _bunkerTowers + [_cargoHouse];
@@ -280,7 +277,7 @@ officer addHeadgear "H_Cap_red";
 sleep 0.5;
 _distance = [_posATL, getPos officer] call BIS_fnc_distance2D;
 if (_distance > 100) then {
-    _posATL = [(getPos _cargoHQ), 0, 20, 3, 0, 15, 0, [], (getPos _cargoHQ)] call BIS_fnc_findSafePos;
+    _posATL = [(getPos _cargoHQ), 0, 20, 3, 0, 15, 0, [], [(getPos _cargoHQ)]] call BIS_fnc_findSafePos;
     officer setPos _posATL;
 };
 officer allowDamage true;
@@ -462,10 +459,9 @@ SM_SUCCESS_HOSTAGES = false; publicVariable "SM_SUCCESS_HOSTAGES";
 SM_SUCCESS_OFFICER = false; publicVariable "SM_SUCCESS_OFFICER";
 _showHostagesMessage = true;
 _showOfficerMessage = true;
+_viperSquadSpawned = false;
 [_startPoint, 200, ["vehicles", "fire"]] call QS_fnc_addHades;
 while { sideMissionUp } do {
-    sleep 2;
-
     // hostages done
     if (_showHostagesMessage && {(SM_FAIL_RESCUE + SM_SUCCESS_RESCUE) == 4}) then {
         if (SM_SUCCESS_RESCUE >= 2) then {
@@ -484,6 +480,7 @@ while { sideMissionUp } do {
         };
         _showHostagesMessage = false;
     };
+    sleep 1;
 
     // officer killed
     if ((!alive officer || (lifeState officer == "DEAD")) && _showOfficerMessage) then {
@@ -510,6 +507,18 @@ while { sideMissionUp } do {
             _x enableAI "MOVE";
         } foreach (units _houseGroup);
     };
+    sleep 1;
+
+    // Spawn Viper group
+    if (!_viperSquadSpawned) then {
+        if ((!alive officer) or (SM_FAIL_RESCUE > 0) or (SM_SUCCESS_RESCUE > 0)) then {
+            _viperSquadSpawned = true;
+            if (random 1 > 0.5) then {
+                _enemiesArray pushBack ([(getPos _cargoHQ), 500, 500, 3000, true, ENEMY_SIDE] call QS_fnc_spawnViper);
+            };
+        };
+    };
+    sleep 1;
 
     // de-briefing
     if ((SM_SUCCESS_HOSTAGES && SM_SUCCESS_OFFICER) || SM_FAIL) exitWith {
@@ -538,6 +547,5 @@ while { sideMissionUp } do {
         { [_x] call QS_fnc_TBdeleteObjects; } forEach [_enemiesArray, _unitsArray, _guardsGroup];
         [_startPoint, 500] call QS_fnc_DeleteEnemyEAST;
     };
-
-    sleep 3;
+    sleep 1;
 };

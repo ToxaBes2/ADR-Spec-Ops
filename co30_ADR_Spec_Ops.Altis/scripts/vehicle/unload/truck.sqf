@@ -9,9 +9,9 @@ _bGroup = _this select 2;
 _cargoGrp = _this select 3;
 _isWater = _this select 4;
 if (_isWater) then {
-	_pos = [_startPoint, 250, 600, 5, 1, 5, 1, [], _startPoint] call BIS_fnc_findSafePos;
+	_pos = [_startPoint, 250, 600, 5, 1, 5, 1, [], [_startPoint]] call BIS_fnc_findSafePos;
 } else {
-	_pos = [_startPoint, 400, 600, 5, 0, 5, 0, [], _startPoint] call BIS_fnc_findSafePos;
+	_pos = [_startPoint, 400, 600, 5, 0, 5, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
 };
 if (count _pos == 2) then {
 	_pos set [2,0];

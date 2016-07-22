@@ -11,7 +11,7 @@ _this select 3: Maximum terrain steepness allowed. -1 to ignore. Default: -1 (Nu
 Based on SHK_pos by shuko.
 */
 
-private ["_startPos", "_minDist", "_objDist", "_maxGradient", "_dst", "_min", "_max", "_testPos", "_d", "_l", "_p", "_i", "_returnPos"];
+private ["_startPos", "_minDist", "_objDist", "_maxGradient", "_min", "_max", "_testPos", "_d", "_l", "_a", "_p", "_i", "_returnPos"];
 scopeName "main";
 
 _startPos = _this select 0;
@@ -37,12 +37,14 @@ if (surfaceIsWater _testPos) then {
     // Search for a land position starting from the randomly picked position and
     // then going outwards from it in full circles in 50m, 20 degree steps.
     _d = 50; _l = true;
+    _a = selectRandom [0, 20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, 240, 260, 280, 300, 320];
 
     while {_l && _d < 10000} do {
-        for "_i" from 0 to 340 step 20 do {
+        for "_i" from _a to 340 step 20 do {
             _p = _testPos getPos [_d, _i];
             if (!surfaceIsWater _p) exitWith {_l = false};
         };
+        _a = 0;
         _d = _d + 50;
     };
 
@@ -55,16 +57,17 @@ if (surfaceIsWater _testPos) then {
 };
 
 // Check if selected land position is on a shore
-if !(_testPos isFlatEmpty  [_objDist, 0, _maxGradient, _objDist max 5, 0, true, objNull] isEqualTo []) then {
+if !(_testPos isFlatEmpty  [_objDist, -1, _maxGradient, _objDist max 5, 0, true, objNull] isEqualTo []) then {
     _returnPos = _testPos;
 } else {
     // Search for a shore position starting from the selected land position and
     // then going outwards from it in full circles in 10m, 10 degree steps.
     _d = 10; _l = true;
+    _a = selectRandom [0, 20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, 240, 260, 280, 300, 320];
 
     while {_l && _d < 2000} do {
         scopeName "whileLoop";
-        for "_i" from 0 to 350 step 10 do {
+        for "_i" from _a to 350 step 10 do {
             _p = _testPos getPos [_d, _i];
             if (!surfaceIsWater _p) then {
                 if !(_p isFlatEmpty  [_objDist, 0, _maxGradient, _objDist max 5, 0, true, objNull] isEqualTo []) then {
@@ -73,6 +76,7 @@ if !(_testPos isFlatEmpty  [_objDist, 0, _maxGradient, _objDist max 5, 0, true, 
                 };
             };
         };
+        _a = 0;
         _d = _d + 10;
     };
 

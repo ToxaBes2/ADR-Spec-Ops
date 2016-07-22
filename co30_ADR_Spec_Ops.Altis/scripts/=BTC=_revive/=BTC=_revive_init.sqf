@@ -56,9 +56,9 @@ BTC_objects_actions_civ  = [];
 //======================================== QS new config options
 
 if (!isDedicated) then {
-	
+
 	//===== MISC
-	
+
 	west_BTC_mobileRespawn_addActionText = "Move to mobile respawn";		// (west/nato) 		add Action text for mobile respawn
 	east_BTC_mobileRespawn_addActionText = "Move to mobile respawn";		// (east/opfor)		add Action text for mobile respawn
 	resistance_BTC_mobileRespawn_addActionText = "Move to mobile respawn"; 	// (resistance/aaf) add Action text for mobile respawn
@@ -66,37 +66,37 @@ if (!isDedicated) then {
 	BTC_mobileRespawn_DeployMaxSpeed = 5;							// max speed that mobile respawn can be when deployed
 	BTC_mobileRespawn_MoveToText = "Moving to mobile respawn";		// displayed on black screen when teleporting to mobile respawn
 	BTC_mobileRespawn_MarkerUpdateFrequency = 1; 					// how often in seconds does the mobile respawn marker update its position?
-	
+
 	//===== Marker config text
-	
+
 	enable_newText_config = 1; 										// Set to 0 to use default text configs (the below 2 options)
 	if (enable_newText_config == 1) then {
 		BTC_mobileRespawn_MarkerText = "Mobile Respawn (deployed)";				// marker text when deployed
 		BTC_mobileRespawn_MarkerTextMoving = "Mobile Respawn (moving)";			// marker text when moving
 		BTC_mobileRespawn_MarkerTextDestroyed = "Mobile Respawn (destroyed)";	// marker text when destroyed
 	};
-	
+
 	//===== Marker config when DEPLOYED
-	
+
 	BTC_mobileRespawn_MarkerType = "mil_dot";						// See this page for more marker types    https://community.bistudio.com/wiki/cfgMarkers
 	BTC_mobileRespawn_MarkerSize = 0.5;
 	BTC_mobileRespawn_MarkerAlpha = 0.75;							// Alpha of 1 = bold, Alpha of 0 = invisible, 0.5 = half visible
 	BTC_mobileRespawn_MarkerColor = "ColorGreen";					// [0,1,0,1];  RGBA format
 
 	//===== Marker config when MOVING
-	
+
 	BTC_mobileRespawn_MarkerTypeMoving = "mil_dot";
 	BTC_mobileRespawn_MarkerSizeMoving = 0.5;
 	BTC_mobileRespawn_MarkerAlphaMoving = 0.75;
 	BTC_mobileRespawn_MarkerColorMoving = "ColorBlack";				// [0,0,0,1];
-	
+
 	//===== Marker config when DESTROYED
 
 	BTC_mobileRespawn_MarkerTypeDestroyed = "mil_dot";
 	BTC_mobileRespawn_MarkerSizeDestroyed = 0.5;
 	BTC_mobileRespawn_MarkerAlphaDestroyed = 0.75;					// marker visibility when destroyed, between 0-1.
 	BTC_mobileRespawn_MarkerColorDestroyed = "ColorRed";			// [1,0,0,1];
-	
+
 	//===== HINTS DISPLAYED WHEN MOBILE RESPAWN CHANGES STATE (moving/destroyed/deployed)
 	//===== Deployed hint
 	BTC_mobileRespawn_AvailableHint = 0;
@@ -119,7 +119,7 @@ if (!isDedicated) then {
 	BTC_Medical_TruckToggle = 1;				// Set to 0 to disable medical truck heal stations
 	BTC_Medical_Trucks = ["B_Truck_01_medical_F","O_Truck_03_medical_F","I_Truck_02_medical_F","O_Truck_02_medical_F","Land_Pod_Heli_Transport_04_medevac_F","B_Slingload_01_Medevac_F"];
 	BTC_Medical_Trucks_addActionText = "Первая помощь (Медицинский грузовик)";		// addAction text displayed when reviving someone near medical truck
-};	
+};
 
 //=========== END NEW CONFIG OPTIONS
 //=========== END NEW CONFIG OPTIONS
@@ -153,7 +153,7 @@ if (isServer) then {
 	BTC_load_pveh = [];publicVariable "BTC_load_pveh";
 	BTC_pullout_pveh = [];publicVariable "BTC_pullout_pveh";
 	if (BTC_r_new_system == 1) then {
-	
+
 		BTC_anim_pveh = [];publicVariable "BTC_anim_pveh";
 		BTC_cpr_pveh = [];publicVariable "BTC_cpr_pveh";
 		BTC_ban_pveh = [];publicVariable "BTC_ban_pveh";
@@ -172,7 +172,7 @@ BTC_respawn_cond = false;
 
 	waitUntil {!isNull player};
 	waitUntil {player == player};
-	
+
 	"BTC_drag_pveh" addPublicVariableEventHandler BTC_fnc_PVEH;
 	"BTC_carry_pveh" addPublicVariableEventHandler BTC_fnc_PVEH;
 	"BTC_marker_pveh" addPublicVariableEventHandler BTC_fnc_PVEH;
@@ -191,11 +191,11 @@ BTC_respawn_cond = false;
 	if (BTC_respawn_marker == "respawn_civ") then {BTC_respawn_marker = "respawn_civilian";};
 	BTC_r_base_spawn = "Land_HelipadEmpty_F" createVehicleLocal getMarkerPos BTC_respawn_marker;
 	if (BTC_r_new_system == 0) then {
-	
+
 		player addEventHandler ["Killed",BTC_player_killed];
-	
+
 	} else {
-	
+
 		"BTC_cpr_pveh" addPublicVariableEventHandler BTC_fnc_PVEH;
 		"BTC_ban_pveh" addPublicVariableEventHandler BTC_fnc_PVEH;
 		"BTC_med_pveh" addPublicVariableEventHandler BTC_fnc_PVEH;
@@ -217,41 +217,41 @@ BTC_respawn_cond = false;
 		BTC_r_damage_hands = 0;
 		BTC_r_hit = 0;
 	};
-	
+
 	player setVariable ["BTC_need_revive",0,true];
-	
+
 	if (BTC_pvp == 1) then {player setVariable ["BTC_revive_side",str (BTC_side),true];};
 	player setVariable ["BTC_dragged",0,true];
-	
+
 	if ([player] call BTC_is_class_can_revive) then {
-		player addAction [("<t color=""#F44336""><img image='\a3\ui_f\data\map\VehicleIcons\pictureheal_ca.paa' size='1.0'/> ") + ("Первая помощь") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_first_aid], 8, true, true, "", "[] call BTC_check_action_first_aid"];
-	};	
+		player addAction [("<t color=""#F44336""><img image='\a3\ui_f\data\map\VehicleIcons\pictureheal_ca.paa' size='1.0'/> ") + ("Первая помощь") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_first_aid], 8, true, true, "", "[] call BTC_check_action_first_aid", 10];
+	};
 	if (BTC_Medical_TruckToggle != 0) then {
 		if (!([player] call BTC_is_class_can_revive)) then {
-			player addAction [("<t color=""#F44336""><img image='\a3\ui_f\data\map\VehicleIcons\pictureheal_ca.paa' size='1.0'/> ") + (BTC_Medical_Trucks_addActionText) + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_first_aid], 8, true, true, "", "[] call BTC_check_action_HEMTT"];
+			player addAction [("<t color=""#F44336""><img image='\a3\ui_f\data\map\VehicleIcons\pictureheal_ca.paa' size='1.0'/> ") + (BTC_Medical_Trucks_addActionText) + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_first_aid], 8, true, true, "", "[] call BTC_check_action_HEMTT", 10];
 		};
 	};
-	player addAction [("<t color=""#EF5350""><img image='\a3\ui_f\data\map\VehicleIcons\pictureheal_ca.paa' size='1.0'/> ") + ("Тащить") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_drag], 8, true, true, "", "[] call BTC_check_action_drag"];
-	player addAction [("<t color=""#EF5350""><img image='\a3\ui_f\data\map\VehicleIcons\pictureheal_ca.paa' size='1.0'/> ") + ("Нести") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_carry], 8, true, true, "", "[] call BTC_check_action_drag"];
-	player addAction [("<t color=""#EF5350""><img image='\a3\ui_f\data\map\VehicleIcons\pictureheal_ca.paa' size='1.0'/> ") + ("Выгрузить раненого") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_pull_out], 8, true, true, "", "[] call BTC_pull_out_check"];
-	
+	player addAction [("<t color=""#EF5350""><img image='\a3\ui_f\data\map\VehicleIcons\pictureheal_ca.paa' size='1.0'/> ") + ("Тащить") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_drag], 8, true, true, "", "[] call BTC_check_action_drag", 10];
+	player addAction [("<t color=""#EF5350""><img image='\a3\ui_f\data\map\VehicleIcons\pictureheal_ca.paa' size='1.0'/> ") + ("Нести") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_carry], 8, true, true, "", "[] call BTC_check_action_drag", 10];
+	player addAction [("<t color=""#EF5350""><img image='\a3\ui_f\data\map\VehicleIcons\pictureheal_ca.paa' size='1.0'/> ") + ("Выгрузить раненого") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_pull_out], 8, true, true, "", "[] call BTC_pull_out_check", 10];
+
 	if (BTC_active_mobile == 1) then {
-	
+
 		switch (true) do {
 			case (BTC_side == west) : {{private ["_veh"];_veh = _x;_spawn = [_x] spawn BTC_mobile_marker;{_x addAction [("<t color=""#EF5350""><img image='\a3\ui_f\data\map\VehicleIcons\pictureheal_ca.paa' size='1.0'/> ") + (west_BTC_mobileRespawn_addActionText) + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[_veh],BTC_move_to_mobile], 8, true, true, "", format ["[""%1""] call BTC_mobile_check",_veh]];} foreach BTC_objects_actions_west;} foreach BTC_vehs_mobile_west_str;};
 			case (BTC_side == east) : {{private ["_veh"];_veh = _x;_spawn = [_x] spawn BTC_mobile_marker;{_x addAction [("<t color=""#EF5350""><img image='\a3\ui_f\data\map\VehicleIcons\pictureheal_ca.paa' size='1.0'/> ") + (east_BTC_mobileRespawn_addActionText) + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[_veh],BTC_move_to_mobile], 8, true, true, "", format ["[""%1""] call BTC_mobile_check",_veh]];} foreach BTC_objects_actions_east;} foreach BTC_vehs_mobile_east_str;};
 			case (str (BTC_side) == "guer") : {{private ["_veh"];_veh = _x;_spawn = [_x] spawn BTC_mobile_marker;{_x addAction [("<t color=""#EF5350""><img image='\a3\ui_f\data\map\VehicleIcons\pictureheal_ca.paa' size='1.0'/> ") + (resistance_BTC_mobileRespawn_addActionText) + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[_veh],BTC_move_to_mobile], 8, true, true, "", format ["[""%1""] call BTC_mobile_check",_veh]];} foreach BTC_objects_actions_guer;} foreach BTC_vehs_mobile_guer_str;};
 			case (BTC_side == civilian) : {{private ["_veh"];_veh = _x;_spawn = [_x] spawn BTC_mobile_marker;{_x addAction [("<t color=""#EF5350""><img image='\a3\ui_f\data\map\VehicleIcons\pictureheal_ca.paa' size='1.0'/> ") + (civilian_BTC_mobileRespawn_addActionText) + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[_veh],BTC_move_to_mobile], 8, true, true, "", format ["[""%1""] call BTC_mobile_check",_veh]];} foreach BTC_objects_actions_civ;} foreach BTC_vehs_mobile_civ_str;};
 		};
-	
+
 	} else {
-	
+
 		BTC_vehs_mobile_west_str = [];BTC_vehs_mobile_east_str = [];BTC_vehs_mobile_guer_str = [];BTC_vehs_mobile_civ_str = [];
 	};
-	
+
 
 	if (({player isKindOf _x} count BTC_3d_can_see) > 0) then {if (BTC_pvp == 1) then {_3d = [] spawn BTC_3d_markers_pvp;} else {_3d = [] spawn BTC_3d_markers;};};
-	
+
 	BTC_revive_started = true;
 	//hint "REVIVE STARTED";
 };
