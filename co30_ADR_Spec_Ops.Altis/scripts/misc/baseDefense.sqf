@@ -9,7 +9,7 @@ _null = [] spawn {
     _z = (_pos select 2) + 5;
     _pos set [2, _z];
 	for "_i" from 0 to 6 do {	
-        playSound3D ["A3\Sounds_F\sfx\alarm_BLUFOR.wss", loudspeaker, false, getPosASL loudspeaker, 10, 1, 300];
+        playSound3D ["A3\Sounds_F\sfx\alarm_BLUFOR.wss", loudspeaker, false, _pos, 10, 1, 300];
         sleep 4;
 	};
 };
