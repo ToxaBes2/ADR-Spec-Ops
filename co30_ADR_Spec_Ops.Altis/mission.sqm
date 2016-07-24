@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={14976.831,37.528194,16969.168};
-		dir[]={-0.35142407,-0.17624941,-0.91955471};
-		up[]={-0.06292583,0.98434347,-0.1646529};
-		aside[]={-0.93417645,-9.7975135e-007,0.35700795};
+		pos[]={16004.28,15.837148,17040.396};
+		dir[]={0.79142946,-0.28569007,-0.54041934};
+		up[]={0.23594245,0.95831573,-0.16111122};
+		aside[]={-0.56392306,-1.7601997e-007,-0.82584983};
 	};
 };
 binarizationWanted=0;
@@ -10415,49 +10415,6 @@ class Mission
 		};
 		class Item451
 		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={16008.321,15.333457,17039.027};
-				angles[]={0,5.0451708,6.2818065};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-				ammo=0;
-				init="removeAllWeapons this; this allowDamage false; this enableSimulationGlobal false;  " \n "_K = [this] spawn {_this call compile preProcessFileLineNumbers ""scripts\VA-guer.sqf"";};  " \n "this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacearsenal_ca.paa' size='1.0'/> Арсенал</t>"",{['Open',[false, partizan_ammo, player]] call BIS_fnc_arsenal},[],15,true,true,'','((player distance _target) < 8) && ((side player) == resistance) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])'];  " \n "this addAction [""<t color='#C6FF00'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_toolbox_modules_ca.paa' size='1.0'/> "" + localize 'STR_VAS_Menu_Title' + ""</t>"",""createDialog 'VAS_Info_Diag';"",[],12,true,true,'','((player distance _target) < 8) && ((side player) == resistance) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])'];";
-				name="partizan_ammo";
-			};
-			id=997;
-			type="Box_FIA_Wps_F";
-			atlOffset=0.0003824234;
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ammoBox";
-					expression="[_this,_value] call bis_fnc_initAmmoBox;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
-						};
-					};
-				};
-				nAttributes=1;
-			};
-		};
-		class Item452
-		{
 			dataType="Marker";
 			position[]={16008.013,7698550,17038.625};
 			name="partizan_base";
@@ -11272,6 +11229,7 @@ class Mission
 					class Attributes
 					{
 						isPlayer=1;
+						name="baseScan1G";
 					};
 					id=1132;
 					type="B_UAV_AI";
@@ -11303,8 +11261,89 @@ class Mission
 					};
 				};
 			};
-			id=1131;
-			atlOffset=4.9771175;
+			id=1114;
+			atlOffset=2.1234455;
+		};
+		class Item474
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={15284.665,23.330931,17366.551};
+				angles[]={0,2.3316028,0};
+			};
+			side="West";
+			flags=2;
+			class Attributes
+			{
+				init="0 = [this,1800,65,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				name="baseScan1";
+			};
+			id=1115;
+			type="B_Static_Designator_01_F";
+			atlOffset=2.1234455;
+		};
+		class Item475
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16008.32,14.983098,17039.027};
+				angles[]={0,5.0451708,6.2818065};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				ammo=0;
+				init="this enableRopeAttach false; this setMass 500000; null = [this] spawn {_this call compile preProcessFileLineNumbers ""scripts\VA-guer.sqf"";}; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacearsenal_ca.paa' size='1.0'/> Арсенал</t>"",{['Open',[false, partizan_ammo, player]] call BIS_fnc_arsenal},[],15,true,true,'','((side player) == resistance) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8]; this addAction [""<t color='#C6FF00'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_toolbox_modules_ca.paa' size='1.0'/> "" + localize 'STR_VAS_Menu_Title' + ""</t>"",""createDialog 'VAS_Info_Diag';"",[],12,true,true,'','((side player) == resistance) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8];";
+				name="partizan_ammo";
+			};
+			id=1128;
+			type="I_CargoNet_01_ammo_F";
+			atlOffset=0.0003824234;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
 		};
 	};
 	class Connections

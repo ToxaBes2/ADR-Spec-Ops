@@ -1,7 +1,8 @@
+private ["_myBox"];
 _myBox = _this select 0;
 
 //--- Рюкзаки
-[_myBox,[
+[_myBox, [
 "B_Carryall_cbr",
 "B_Carryall_oli",
 "B_Carryall_khk",
@@ -52,7 +53,7 @@ _myBox = _this select 0;
 "B_HMG_01_weapon_F"
 ],true, false] call BIS_fnc_addVirtualBackpackCargo;
 
-[_myBox,[
+[_myBox, [
 //--- НАТО
 "U_B_CombatUniform_mcam",
 "U_B_CombatUniform_mcam_tshirt",
@@ -375,7 +376,7 @@ _myBox = _this select 0;
 ], true, false] call BIS_fnc_addVirtualItemCargo;
 
 //--- Патроны
-[_myBox,[
+[_myBox, [
 //--- Магазины
 "30Rnd_556x45_Stanag",
 "30Rnd_556x45_Stanag_Tracer_Red",
@@ -478,7 +479,7 @@ _myBox = _this select 0;
 ], true, false] call BIS_fnc_addVirtualMagazineCargo;
 
 //--- Оружие
-[_myBox,[
+[_myBox, [
 "srifle_GM6_camo_F",
 "srifle_LRR_camo_F",
 "hgun_Pistol_Signal_F",
@@ -557,3 +558,8 @@ _myBox = _this select 0;
 "MMG_02_sand_F",
 "MMG_02_black_RCO_BI_F"
 ], true, false] call BIS_fnc_addVirtualWeaponCargo;
+
+sleep 1;
+
+_myBox removeAction (_myBox getvariable ['bis_fnc_arsenal_action', -1]);
+_myBox setvariable ['bis_fnc_arsenal_action', nil];
