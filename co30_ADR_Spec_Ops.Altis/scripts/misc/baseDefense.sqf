@@ -30,8 +30,8 @@ baseTurret6 hideObject false;
 baseTurret7 hideObject false;
 baseTurret8 hideObject false;
 baseTurret9 hideObject false;
-baseTurret10 hideObject false;
-baseTurret11 hideObject false;
+//baseTurret10 hideObject false;
+//baseTurret11 hideObject false;
 
 // reload ammo
 baseTurret1 setvehicleammo 1;
@@ -43,8 +43,8 @@ baseTurret6 setvehicleammo 1;
 baseTurret7 setvehicleammo 1;
 baseTurret8 setvehicleammo 1;
 baseTurret9 setvehicleammo 1;
-baseTurret10 setvehicleammo 1;
-baseTurret11 setvehicleammo 1;
+//baseTurret10 setvehicleammo 1;
+//baseTurret11 setvehicleammo 1;
 
 // put turrets on correct places
 baseTurret1 setPos [15283.8,17367.1,2.778];
@@ -56,8 +56,8 @@ baseTurret6 setPos [15167.1,17370.6,4.127];
 baseTurret7 setPos [15187.7,17361.9,3.132];
 baseTurret8 setPos [15052.7,17329.3,10.1012];
 baseTurret9 setPos [14923.6,17196.6,10.123];
-baseTurret10 setPos [14974.7,16963.2,16.386];
-baseTurret11 setPos [14968.1,16964.5,12.325];
+//baseTurret10 setPos [14974.7,16963.2,16.386];
+//baseTurret11 setPos [14968.1,16964.5,12.325];
 
 // add turret operators
 _grpTurret = createGroup west;
@@ -70,8 +70,8 @@ _grpTurret = createGroup west;
 "B_support_MG_F" createUnit [getposATL baseTurret7, _grpTurret, "this moveInGunner baseTurret7"];
 "B_support_MG_F" createUnit [getposATL baseTurret8, _grpTurret, "this moveInGunner baseTurret8"];
 "B_support_MG_F" createUnit [getposATL baseTurret9, _grpTurret, "this moveInGunner baseTurret9"];
-"B_support_MG_F" createUnit [getposATL baseTurret10, _grpTurret, "this moveInGunner baseTurret10"];
-"B_support_MG_F" createUnit [getposATL baseTurret11, _grpTurret, "this moveInGunner baseTurret11"];
+//"B_support_MG_F" createUnit [getposATL baseTurret10, _grpTurret, "this moveInGunner baseTurret10"];
+//"B_support_MG_F" createUnit [getposATL baseTurret11, _grpTurret, "this moveInGunner baseTurret11"];
 _grpTurret setBehaviour "COMBAT";
 
 //---------- Active time
@@ -92,8 +92,8 @@ baseTurret6 hideObject true;
 baseTurret7 hideObject true;
 baseTurret8 hideObject true;
 baseTurret9 hideObject true;
-baseTurret10 hideObject true;
-baseTurret11 hideObject true;
+//baseTurret10 hideObject true;
+//baseTurret11 hideObject true;
 
 //---------- Cool-off period before next use
 sleep _inactiveTimer;

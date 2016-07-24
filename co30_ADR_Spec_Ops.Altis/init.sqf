@@ -30,8 +30,8 @@ baseTurret6 hideObject true;
 baseTurret7 hideObject true;
 baseTurret8 hideObject true;
 baseTurret9 hideObject true;
-baseTurret10 hideObject true;
-baseTurret11 hideObject true;
+//baseTurret10 hideObject true;
+//baseTurret11 hideObject true;
 
 if (isDedicated) exitWith {
 	"addToScore" addPublicVariableEventHandler { 

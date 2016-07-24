@@ -95,6 +95,8 @@ if (side player == west) then {
 _guers = ["I_G_Soldier_AR_F","I_G_engineer_F"];
 _iamguer = ({typeOf player == _x} count _guers) > 0;
 if (_iamguer) then {
+    player setUnitTrait ["Medic",true];
+    player setUnitTrait ["UAVHacker",true];
     removeAllweapons player;
     removevest player;
     removeBackpack player;

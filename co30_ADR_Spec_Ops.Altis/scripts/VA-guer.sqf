@@ -3,6 +3,11 @@ _myBox = _this select 0;
 
 //--- Рюкзаки
 [_myBox, [
+"B_AssaultPack_blk",
+"B_AssaultPack_cbr",
+"B_AssaultPack_khk",
+"B_AssaultPack_rgr",
+"B_AssaultPack_sgg",
 "B_Parachute"
 ], true, false] call BIS_fnc_addVirtualBackpackCargo;
 
@@ -167,7 +172,7 @@ _myBox = _this select 0;
 "Binocular"
 ], true, false] call BIS_fnc_addVirtualWeaponCargo;
 
-sleep 1;
+sleep 5;
 
 _myBox removeAction (_myBox getvariable ['bis_fnc_arsenal_action', -1]);
 _myBox setvariable ['bis_fnc_arsenal_action', nil];

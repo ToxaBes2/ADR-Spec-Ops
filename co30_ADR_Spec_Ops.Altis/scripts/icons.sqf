@@ -126,7 +126,7 @@ QS_fnc_iconDrawMap = compileFinal "
 	_textOffset = 'right';
 	{
 		_v = vehicle _x;
-		if ((side _v == playerSide) || (playerSide == west && typeOf _v == 'B_Soldier_base_F') || (playerSide == resistance && typeOf _v == 'I_G_Soldier_base_F')) then {
+		if ((side _v == playerSide) || (playerSide == west && _v isKindOf 'B_Soldier_base_F') || (playerSide == resistance && _v isKindOf 'I_G_Soldier_base_F')) then {
 			_iconType = [_v] call QS_fnc_iconType;
 			_color = [_x] call QS_fnc_iconColor;	
 			_pos = getPosASL _v;		
@@ -164,7 +164,7 @@ QS_fnc_iconDrawGPS = compileFinal "
 	_textOffset = 'right';
 	{
 		_v = vehicle _x;
-		if ((side _v == playerSide) || (playerSide == west && typeOf _v == 'B_Soldier_base_F') || (playerSide == resistance && typeOf _v == 'I_G_Soldier_base_F')) then {
+		if ((side _v == playerSide) || (playerSide == west && _v isKindOf 'B_Soldier_base_F') || (playerSide == resistance && _v isKindOf 'I_G_Soldier_base_F')) then {
 			if ((_x distance player) < 300) then {
 				_iconType = [_v] call QS_fnc_iconType;
 				_color = [_x] call QS_fnc_iconColor;	

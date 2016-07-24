@@ -12,6 +12,8 @@ waitUntil {!isNull player};
 _guers = ["I_G_Soldier_AR_F","I_G_engineer_F"];
 _iamguer = ({typeOf player == _x} count _guers) > 0;
 if (_iamguer) then {
+	player setUnitTrait ["Medic",true];
+    player setUnitTrait ["UAVHacker",true]; 
 	0 cutText["Проверка игрового времени...", "BLACK FADED"];
     0 cutFadeOut 9999999;
     waitUntil {(getPlayerUID player) != ""};
@@ -27,7 +29,7 @@ if (_iamguer) then {
 	{player removeItem _x} foreach (items player);
 	{player unassignItem _x;player removeItem _x} foreach (assignedItems player);
 	["getPlayerHours",[_uid], _clientId] remoteExec ["sqlServerCall", 2]; 
-    sleep 10;       
+    sleep 10;
 };	
 
 if (side player == west) then {

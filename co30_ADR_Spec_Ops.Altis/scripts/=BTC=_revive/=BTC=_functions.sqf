@@ -1223,7 +1223,7 @@ BTC_pull_out_check =
 		} foreach crew (_array select 0);
 	};
 	_cond
-};wwss
+};
 
 BTC_player_killed = {
 	private ["_type_backpack","_weapons","_magazines","_weapon_backpack","_ammo_backpack","_score","_score_array","_name","_body_marker","_ui"];
@@ -1813,7 +1813,7 @@ BTC_3d_markers =
 	_3d = addMissionEventHandler ["Draw3D",
 	{
 		{
-			if (((_x distance player) < BTC_3d_distance)  && ((playerSide == west && typeOf _x == 'B_Soldier_base_F') || (playerSide == resistance && typeOf _x == 'I_G_Soldier_base_F')) && (format ["%1", _x getVariable "BTC_need_revive"] == "1")) then
+			if (((_x distance player) < BTC_3d_distance)  && ((playerSide == west && _x isKindOf 'B_Soldier_base_F') || (playerSide == resistance && _x isKindOf 'I_G_Soldier_base_F')) && (format ["%1", _x getVariable "BTC_need_revive"] == "1")) then
 			{
 				drawIcon3D["a3\ui_f\data\map\MapControl\hospital_ca.paa",BTC_3d_icon_color,_x,BTC_3d_icon_size,BTC_3d_icon_size,0,format["%1 (%2m)", name _x, ceil (player distance _x)],0,0.02];
 			};
