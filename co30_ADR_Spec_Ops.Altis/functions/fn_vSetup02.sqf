@@ -107,14 +107,8 @@ if ((_t in _ammoTrucks) or (_t in _ammoTrucksTempest)) then {
 };
 
 if (_t in _staticDesignator) then {
-	_uavOperators = ["B_engineer_F","I_G_engineer_F"];
     _u disableTIEquipment true;
-    {
-        _player = _x;
-        if (({_player isKindOf _x} count _uavOperators) > 0) then {
-            _x enableUAVConnectability [_u, true];
-        };
-    } forEach allPlayers;
+    _u setvehicleammo 0;
 };
 
 //===== Vehicle Killer monitor system
