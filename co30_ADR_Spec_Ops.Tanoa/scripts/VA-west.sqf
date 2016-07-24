@@ -53,7 +53,7 @@ _myBox = _this select 0;
 "B_ViperLightHarness_blk_F",
 "B_ViperLightHarness_khk_F",
 "B_ViperLightHarness_oli_F"
-],true, false] call BIS_fnc_addVirtualBackpackCargo;
+], true, false] call BIS_fnc_addVirtualBackpackCargo;
 
 
 [_myBox,[
@@ -637,3 +637,8 @@ _myBox = _this select 0;
 "srifle_GM6_ghex_F",
 "srifle_LRR_tna_F"
 ], true, false] call BIS_fnc_addVirtualWeaponCargo;
+
+sleep 1;
+
+_myBox removeAction (_myBox getvariable ['bis_fnc_arsenal_action', -1]);
+_myBox setvariable ['bis_fnc_arsenal_action', nil];

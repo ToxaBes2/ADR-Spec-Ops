@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1117;
+		nextID=1129;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={15288.221,24.413679,17363.561};
-		dir[]={-0.66061652,-0.22295032,0.71694285};
-		up[]={-0.15108542,0.97483021,0.16396861};
-		aside[]={0.73544973,-9.8720193e-007,0.67767364};
+		pos[]={16004.28,15.837148,17040.396};
+		dir[]={0.79142946,-0.28569007,-0.54041934};
+		up[]={0.23594245,0.95831573,-0.16111122};
+		aside[]={-0.56392306,-1.7601997e-007,-0.82584983};
 	};
 };
 binarizationWanted=0;
@@ -10433,49 +10433,6 @@ class Mission
 		};
 		class Item452
 		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={16008.321,15.333457,17039.027};
-				angles[]={0,5.0451708,6.2818065};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-				ammo=0;
-				init="removeAllWeapons this; this allowDamage false; this enableSimulationGlobal false;  " \n "_K = [this] spawn {_this call compile preProcessFileLineNumbers ""scripts\VA-guer.sqf"";};  " \n "this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacearsenal_ca.paa' size='1.0'/> Арсенал</t>"",{['Open',[false, partizan_ammo, player]] call BIS_fnc_arsenal},[],15,true,true,'','((player distance _target) < 8) && ((side player) == resistance) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])'];  " \n "this addAction [""<t color='#C6FF00'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_toolbox_modules_ca.paa' size='1.0'/> "" + localize 'STR_VAS_Menu_Title' + ""</t>"",""createDialog 'VAS_Info_Diag';"",[],12,true,true,'','((player distance _target) < 8) && ((side player) == resistance) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])'];";
-				name="partizan_ammo";
-			};
-			id=997;
-			type="Box_FIA_Wps_F";
-			atlOffset=0.0003824234;
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ammoBox";
-					expression="[_this,_value] call bis_fnc_initAmmoBox;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
-						};
-					};
-				};
-				nAttributes=1;
-			};
-		};
-		class Item453
-		{
 			dataType="Marker";
 			position[]={16008.013,7698550,17038.625};
 			name="partizan_base";
@@ -10487,7 +10444,7 @@ class Mission
 			id=999;
 			atlOffset=7698516;
 		};
-		class Item454
+		class Item453
 		{
 			dataType="Object";
 			class PositionInfo
@@ -10530,7 +10487,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item455
+		class Item454
 		{
 			dataType="Object";
 			class PositionInfo
@@ -10573,7 +10530,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item456
+		class Item455
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -10780,7 +10737,7 @@ class Mission
 				nAttributes=10;
 			};
 		};
-		class Item457
+		class Item456
 		{
 			dataType="Object";
 			class PositionInfo
@@ -10798,7 +10755,7 @@ class Mission
 			id=1006;
 			type="I_G_Offroad_01_F";
 		};
-		class Item458
+		class Item457
 		{
 			dataType="Marker";
 			position[]={17796.695,-4.6381228e-006,18167.264};
@@ -10811,7 +10768,7 @@ class Mission
 			id=1011;
 			atlOffset=5.2638111;
 		};
-		class Item459
+		class Item458
 		{
 			dataType="Object";
 			class PositionInfo
@@ -10852,7 +10809,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item460
+		class Item459
 		{
 			dataType="Object";
 			class PositionInfo
@@ -10893,7 +10850,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item461
+		class Item460
 		{
 			dataType="Object";
 			class PositionInfo
@@ -10934,7 +10891,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item462
+		class Item461
 		{
 			dataType="Object";
 			class PositionInfo
@@ -10976,7 +10933,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item463
+		class Item462
 		{
 			dataType="Object";
 			class PositionInfo
@@ -11017,7 +10974,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item464
+		class Item463
 		{
 			dataType="Object";
 			class PositionInfo
@@ -11036,7 +10993,7 @@ class Mission
 			id=1049;
 			type="B_GMG_01_high_F";
 		};
-		class Item465
+		class Item464
 		{
 			dataType="Object";
 			class PositionInfo
@@ -11055,7 +11012,7 @@ class Mission
 			type="B_HMG_01_high_F";
 			atlOffset=2.777998;
 		};
-		class Item466
+		class Item465
 		{
 			dataType="Object";
 			class PositionInfo
@@ -11074,7 +11031,7 @@ class Mission
 			type="B_GMG_01_high_F";
 			atlOffset=1.8883057;
 		};
-		class Item467
+		class Item466
 		{
 			dataType="Object";
 			class PositionInfo
@@ -11093,7 +11050,7 @@ class Mission
 			type="Land_BagBunker_Large_F";
 			atlOffset=0.00038719177;
 		};
-		class Item468
+		class Item467
 		{
 			dataType="Object";
 			class PositionInfo
@@ -11113,7 +11070,7 @@ class Mission
 			type="B_HMG_01_high_F";
 			atlOffset=0.00018692017;
 		};
-		class Item469
+		class Item468
 		{
 			dataType="Object";
 			class PositionInfo
@@ -11132,7 +11089,7 @@ class Mission
 			type="B_HMG_01_high_F";
 			atlOffset=9.9562187;
 		};
-		class Item470
+		class Item469
 		{
 			dataType="Object";
 			class PositionInfo
@@ -11151,7 +11108,7 @@ class Mission
 			type="B_GMG_01_high_F";
 			atlOffset=9.9565125;
 		};
-		class Item471
+		class Item470
 		{
 			dataType="Object";
 			class PositionInfo
@@ -11172,7 +11129,7 @@ class Mission
 			type="B_HMG_01_high_F";
 			atlOffset=0.00035095215;
 		};
-		class Item472
+		class Item471
 		{
 			dataType="Object";
 			class PositionInfo
@@ -11191,7 +11148,7 @@ class Mission
 			id=1093;
 			type="B_GMG_01_high_F";
 		};
-		class Item473
+		class Item472
 		{
 			dataType="Object";
 			class PositionInfo
@@ -11211,7 +11168,7 @@ class Mission
 			type="B_HMG_01_high_F";
 			atlOffset=0.20371628;
 		};
-		class Item474
+		class Item473
 		{
 			dataType="Group";
 			side="West";
@@ -11231,7 +11188,6 @@ class Mission
 					class Attributes
 					{
 						name="baseScan1G";
-						isPlayer=1;
 					};
 					id=1116;
 					type="B_UAV_AI";
@@ -11266,7 +11222,7 @@ class Mission
 			id=1114;
 			atlOffset=2.1234455;
 		};
-		class Item475
+		class Item474
 		{
 			dataType="Object";
 			class PositionInfo
@@ -11284,6 +11240,68 @@ class Mission
 			id=1115;
 			type="B_Static_Designator_01_F";
 			atlOffset=2.1234455;
+		};
+		class Item475
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={16008.32,14.983098,17039.027};
+				angles[]={0,5.0451708,6.2818065};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				ammo=0;
+				init="this enableRopeAttach false; this setMass 500000; null = [this] spawn {_this call compile preProcessFileLineNumbers ""scripts\VA-guer.sqf"";}; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacearsenal_ca.paa' size='1.0'/> Арсенал</t>"",{['Open',[false, partizan_ammo, player]] call BIS_fnc_arsenal},[],15,true,true,'','((side player) == resistance) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8]; this addAction [""<t color='#C6FF00'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_toolbox_modules_ca.paa' size='1.0'/> "" + localize 'STR_VAS_Menu_Title' + ""</t>"",""createDialog 'VAS_Info_Diag';"",[],12,true,true,'','((side player) == resistance) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8];";
+				name="partizan_ammo";
+			};
+			id=1128;
+			type="I_CargoNet_01_ammo_F";
+			atlOffset=0.0003824234;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
 		};
 	};
 	class Connections
