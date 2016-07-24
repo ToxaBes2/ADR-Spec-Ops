@@ -11,6 +11,7 @@ _obj addMPEventHandler ["MPkilled", {
     _vehicle = _this select 0;
     _vehiclePos = getPos _vehicle;
     _killer = _this select 1;
+    if !(side _killer == west) exitWith {};
     _respPos = getMarkerPos "respawn_west";
     _radius = 800;
     _period = 10;

@@ -8,18 +8,22 @@ class EditorData
 	toggles=33;
 	class ItemIDProvider
 	{
-		nextID=2286;
+		nextID=2396;
 	};
 	class MarkerIDProvider
 	{
 		nextID=32;
 	};
+	class LayerIndexProvider
+	{
+		nextID=3;
+	};
 	class Camera
 	{
-		pos[]={6966.1509,48.974388,7260.9961};
-		dir[]={-0.77584904,-0.53540409,0.33378386};
-		up[]={-0.49188024,0.84455562,0.21161556};
-		aside[]={0.39519849,-1.7651473e-007,0.91860211};
+		pos[]={6924.3589,38.09959,7290.564};
+		dir[]={-0.83326882,-0.5399906,0.11873601};
+		up[]={-0.53466517,0.84162205,0.076187409};
+		aside[]={0.14107089,-4.0875602e-007,0.99001402};
 	};
 };
 binarizationWanted=0;
@@ -94,7 +98,8 @@ addons[]=
 	"A3_Weapons_F",
 	"A3_Soft_F_Exp_Quadbike_01",
 	"A3_Supplies_F_Heli_Slingload",
-	"A3_Boat_F_Exp_Scooter_Transport_01"
+	"A3_Boat_F_Exp_Scooter_Transport_01",
+	"A3_Structures_F_Civ_Accessories"
 };
 class AddonsMetaData
 {
@@ -662,7 +667,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=559;
+		items=561;
 		class Item0
 		{
 			dataType="Object";
@@ -27901,6 +27906,53 @@ class Mission
 			id=2285;
 			type="I_C_Boat_Transport_02_F";
 			atlOffset=2.3927195;
+		};
+		class Item559
+		{
+			dataType="Layer";
+			name="Camp Ant";
+			id=2376;
+			atlOffset=60.779999;
+		};
+		class Item560
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={6902.2515,6.1631851,7269.8179};
+				angles[]={0,4.5350289,0};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				name="loudspeaker";
+			};
+			id=2395;
+			type="Land_Loudspeakers_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 	};
 	class Connections
