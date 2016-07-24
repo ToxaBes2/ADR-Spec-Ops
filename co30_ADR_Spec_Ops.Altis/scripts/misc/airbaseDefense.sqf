@@ -6,6 +6,16 @@ _inactiveTimer = 300;									// Shortest time between activations, in seconds. 
 _defensePos = getMarkerPos "airbaseDefense";
 _airdefenseGroup = createGroup WEST;
 
+_null = [] spawn {
+    _pos = getPosASL loudspeaker;
+    _z = (_pos select 2) + 5;
+    _pos set [2, _z];
+	for "_i" from 0 to 6 do {	
+        playSound3D ["A3\data_f_curator\sound\cfgsounds\air_raid.wss", loudspeaker, false, getPosASL loudspeaker, 24, 1, 300];
+        sleep 8.5;
+	};
+};
+
 // Restrict use of this action while procedure is in progress
 AIRBASEDEFENSE_SWITCH = true; publicVariable "AIRBASEDEFENSE_SWITCH";
 

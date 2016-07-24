@@ -20,6 +20,17 @@ call compile preprocessFile "scripts\=BTC=_TK_punishment\=BTC=_tk_init.sqf";    
 ((getMarkerPos "respawn_west") nearestObject 491010) allowDamage false;
 ((getMarkerPos "respawn_west") nearestObject 493386) allowDamage false;
 
+// Hide turrets
+baseTurret1 hideObject true;
+baseTurret2 hideObject true;
+baseTurret3 hideObject true;
+baseTurret4 hideObject true;
+baseTurret5 hideObject true;
+baseTurret6 hideObject true;
+baseTurret7 hideObject true;
+baseTurret8 hideObject true;
+baseTurret9 hideObject true;
+
 if (isDedicated) exitWith {
 	"addToScore" addPublicVariableEventHandler { 
 	    ((_this select 1) select 0) addScore ((_this select 1) select 1); 
