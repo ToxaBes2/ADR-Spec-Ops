@@ -111,6 +111,49 @@ player addEventHandler [ "Take", {
 	};
 }];
 
+// Deal with static map markers
+if (playerSide == west) then {
+    "partizan_base" setMarkerAlphaLocal 0;
+    "Helipad" setMarkerAlphaLocal 1;
+    "Arsenal" setMarkerAlphaLocal 1;
+    "Laptops" setMarkerAlphaLocal 1;
+    "Vehicle_depot_1" setMarkerAlphaLocal 1;
+    "Armor" setMarkerAlphaLocal 1;
+    "UAVspawn" setMarkerAlphaLocal 1;
+    "Arsenal_1" setMarkerAlphaLocal 1;
+    "Helo_spawn" setMarkerAlphaLocal 1;
+    "Side" setMarkerAlphaLocal 1;
+    "m_mod" setMarkerAlphaLocal 1;
+    "Repair_1" setMarkerAlphaLocal 1;
+    "changeLoadout" setMarkerAlphaLocal 1;
+    "Repair_2" setMarkerAlphaLocal 1;
+    "Repair_2_1" setMarkerAlphaLocal 1;
+    "B2" setMarkerAlphaLocal 1;
+    "B2_1" setMarkerAlphaLocal 1;
+    "med" setMarkerAlphaLocal 1;
+    "vehService" setMarkerAlphaLocal 1;
+} else {
+    "partizan_base" setMarkerAlphaLocal 1;
+    "Helipad" setMarkerAlphaLocal 0;
+    "Arsenal" setMarkerAlphaLocal 0;
+    "Laptops" setMarkerAlphaLocal 0;
+    "Vehicle_depot_1" setMarkerAlphaLocal 0;
+    "Armor" setMarkerAlphaLocal 0;
+    "UAVspawn" setMarkerAlphaLocal 0;
+    "Arsenal_1" setMarkerAlphaLocal 0;
+    "Helo_spawn" setMarkerAlphaLocal 0;
+    "Side" setMarkerAlphaLocal 0;
+    "m_mod" setMarkerAlphaLocal 0;
+    "Repair_1" setMarkerAlphaLocal 0;
+    "changeLoadout" setMarkerAlphaLocal 0;
+    "Repair_2" setMarkerAlphaLocal 0;
+    "Repair_2_1" setMarkerAlphaLocal 0;
+    "B2" setMarkerAlphaLocal 0;
+    "B2_1" setMarkerAlphaLocal 0;
+    "med" setMarkerAlphaLocal 0; 
+    "vehService" setMarkerAlphaLocal 0;
+};
+
 // add Zeus curator
 {
 	_x addCuratorEditableObjects [[player],FALSE];

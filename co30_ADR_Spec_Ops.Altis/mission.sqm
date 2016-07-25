@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1117;
+		nextID=1141;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={16003.322,15.543872,17042.174};
-		dir[]={0.72490358,0.0030508456,-0.68894339};
-		up[]={-0.0021947664,0.99999774,0.0020848089};
-		aside[]={-0.68894345,-1.762528e-007,-0.72490853};
+		pos[]={14983.855,43.121143,16969.695};
+		dir[]={-0.75644374,-0.40060592,-0.51715982};
+		up[]={-0.33070478,0.91625458,-0.2260918};
+		aside[]={-0.56442356,-1.8419232e-006,0.82557136};
 	};
 };
 binarizationWanted=0;
@@ -84,13 +84,13 @@ addons[]=
 	"A3_Structures_F_Civ_Accessories",
 	"A3_Props_F_Exp_Military_Camps",
 	"A3_Static_F",
-	"A3_Static_F_Mark_Designator_01"
+	"A3_Static_F_AT_01"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=32;
+		items=31;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -305,13 +305,6 @@ class AddonsMetaData
 		{
 			className="A3_Static_F";
 			name="Arma 3 Alpha - Turrets";
-			author="Bohemia Interactive";
-			url="http://www.arma3.com";
-		};
-		class Item31
-		{
-			className="A3_Static_F_Mark";
-			name="Arma 3 Marksmen - Turrets";
 			author="Bohemia Interactive";
 			url="http://www.arma3.com";
 		};
@@ -9251,8 +9244,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={15077.739,17.997688,17227.357};
-						angles[]={0,1.5707964,6.2822089};
+						position[]={15077.737,17.997438,17227.357};
+						angles[]={0,1.5707964,6.282208};
 					};
 					side="West";
 					flags=6;
@@ -9261,14 +9254,15 @@ class Mission
 					};
 					id=969;
 					type="B_UAV_AI";
+					atlOffset=0.086000443;
 				};
 				class Item1
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={15077.739,17.997688,17227.357};
-						angles[]={0,1.5707964,6.2822089};
+						position[]={15077.737,17.997438,17227.357};
+						angles[]={0,1.5707964,6.282208};
 					};
 					side="West";
 					flags=4;
@@ -9277,6 +9271,7 @@ class Mission
 					};
 					id=970;
 					type="B_UAV_AI";
+					atlOffset=0.086000443;
 				};
 			};
 			class Attributes
@@ -9315,15 +9310,15 @@ class Mission
 				};
 			};
 			id=967;
-			atlOffset=0.086250305;
+			atlOffset=0.086000443;
 		};
 		class Item441
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={15077.739,19.574303,17227.307};
-				angles[]={0,1.5707964,6.2822089};
+				position[]={15077.739,19.574053,17227.307};
+				angles[]={0,1.5707964,6.282208};
 			};
 			side="West";
 			flags=6;
@@ -9334,7 +9329,7 @@ class Mission
 			};
 			id=968;
 			type="B_UAV_02_F";
-			atlOffset=0.086250305;
+			atlOffset=0.086000443;
 		};
 		class Item442
 		{
@@ -11232,77 +11227,40 @@ class Mission
 		};
 		class Item474
 		{
-			dataType="Group";
-			side="West";
-			class Entities
+			dataType="Object";
+			class PositionInfo
 			{
-				items=1;
-				class Item0
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={15284.665,22.824883,17366.602};
-						angles[]={0,2.3316028,0};
-					};
-					side="West";
-					flags=2;
-					class Attributes
-					{
-						name="baseScan1G";
-						isPlayer=1;
-					};
-					id=1116;
-					type="B_UAV_AI";
-					atlOffset=2.1234455;
-				};
+				position[]={14968.191,32.688957,16964.621};
+				angles[]={0,4.1491361,6.281981};
 			};
+			side="Empty";
+			flags=4;
 			class Attributes
 			{
+				init="this allowDamage false;";
+				name="BaseTurret10";
 			};
-			class CrewLinks
-			{
-				class LinkIDProvider
-				{
-					nextID=1;
-				};
-				class Links
-				{
-					items=1;
-					class Item0
-					{
-						linkID=0;
-						item0=1116;
-						item1=1115;
-						class CustomData
-						{
-							role=2;
-							turretPath[]={0};
-						};
-					};
-				};
-			};
-			id=1114;
-			atlOffset=2.1234455;
+			id=1118;
+			type="B_static_AT_F";
+			atlOffset=0.00036239624;
 		};
 		class Item475
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={15284.665,23.330931,17366.551};
-				angles[]={0,2.3316028,0};
+				position[]={14974.421,37.561436,16962.602};
+				angles[]={0,4.8539701,0};
 			};
-			side="West";
-			flags=2;
+			side="Empty";
 			class Attributes
 			{
-				init="0 = [this,1800,65,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
-				name="baseScan1";
+				init="this allowDamage false;";
+				name="BaseTurret11";
 			};
-			id=1115;
-			type="B_Static_Designator_01_F";
-			atlOffset=2.1234455;
+			id=1124;
+			type="B_HMG_01_high_F";
+			atlOffset=3.499897;
 		};
 	};
 	class Connections

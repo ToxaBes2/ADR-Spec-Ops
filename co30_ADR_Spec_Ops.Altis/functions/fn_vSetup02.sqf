@@ -32,7 +32,6 @@ _hellcat = ["I_Heli_light_03_unarmed_F", "I_Heli_light_03_F"];									// Hellca
 _mohawk = ["I_Heli_Transport_02_F"];															// CH-49 Mohawk
 _ammoTrucks = ["B_Truck_01_ammo_F", "O_Truck_02_Ammo_F", "I_Truck_02_ammo_F"];					// Ammo trucks with 10^12 ammo
 _ammoTrucksTempest = ["O_Truck_03_ammo_F"];														// Ammo trucks with 30 000 ammo
-_staticDesignator = ["B_Static_Designator_01_F"];
 
 if (_t in _strider) then {
 	_u setObjectTextureGlobal [0, '\A3\soft_f_beta\mrap_03\data\mrap_03_ext_co.paa'];
@@ -104,11 +103,6 @@ if ((_t in _ammoTrucks) or (_t in _ammoTrucksTempest)) then {
 		};
 		if (getAmmoCargo _u != 0) exitWith {}; // Due to very low values setAmmoCargo rounds to 0 on first try
 	};
-};
-
-if (_t in _staticDesignator) then {
-    _u disableTIEquipment true;
-    _u setvehicleammo 0;
 };
 
 //===== Vehicle Killer monitor system

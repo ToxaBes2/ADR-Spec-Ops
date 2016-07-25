@@ -21,63 +21,28 @@ call compile preprocessFile "scripts\=BTC=_TK_punishment\=BTC=_tk_init.sqf";    
 ((getMarkerPos "respawn_west") nearestObject 493386) allowDamage false;
 
 // Hide turrets
-baseTurret1 hideObject true;
 baseTurret2 hideObject true;
-baseTurret3 hideObject true;
 baseTurret4 hideObject true;
-baseTurret5 hideObject true;
 baseTurret6 hideObject true;
-baseTurret7 hideObject true;
 baseTurret8 hideObject true;
-baseTurret9 hideObject true;
-//baseTurret10 hideObject true;
-//baseTurret11 hideObject true;
+baseTurret10 hideObject true;
+_grpTurret1 = createGroup west;
+deleteVehicle (gunner baseTurret1);
+deleteVehicle (gunner baseTurret3);
+deleteVehicle (gunner baseTurret5);
+deleteVehicle (gunner baseTurret7);
+deleteVehicle (gunner baseTurret9);
+deleteVehicle (gunner baseTurret11);
+"B_support_MG_F" createUnit [getposATL baseTurret1, _grpTurret1, "this moveInGunner baseTurret1"];
+"B_support_MG_F" createUnit [getposATL baseTurret3, _grpTurret1, "this moveInGunner baseTurret3"];
+"B_support_MG_F" createUnit [getposATL baseTurret5, _grpTurret1, "this moveInGunner baseTurret5"];
+"B_support_MG_F" createUnit [getposATL baseTurret7, _grpTurret1, "this moveInGunner baseTurret7"];
+"B_support_MG_F" createUnit [getposATL baseTurret9, _grpTurret1, "this moveInGunner baseTurret9"];
+"B_support_MG_F" createUnit [getposATL baseTurret11, _grpTurret1, "this moveInGunner baseTurret11"];
+_grpTurret1 setBehaviour "COMBAT";
 
 if (isDedicated) exitWith {
 	"addToScore" addPublicVariableEventHandler { 
 	    ((_this select 1) select 0) addScore ((_this select 1) select 1); 
     };
-};
-
-// Deal with static map markers
-if (side player == west) then {
-    "partizan_base" setMarkerAlphaLocal 0;
-    "Helipad" setMarkerAlphaLocal 1;
-    "Arsenal" setMarkerAlphaLocal 1;
-    "Laptops" setMarkerAlphaLocal 1;
-    "Vehicle_depot_1" setMarkerAlphaLocal 1;
-    "Armor" setMarkerAlphaLocal 1;
-    "UAVspawn" setMarkerAlphaLocal 1;
-    "Arsenal_1" setMarkerAlphaLocal 1;
-    "Helo_spawn" setMarkerAlphaLocal 1;
-    "Side" setMarkerAlphaLocal 1;
-    "m_mod" setMarkerAlphaLocal 1;
-    "Repair_1" setMarkerAlphaLocal 1;
-    "changeLoadout" setMarkerAlphaLocal 1;
-    "Repair_2" setMarkerAlphaLocal 1;
-    "Repair_2_1" setMarkerAlphaLocal 1;
-    "B2" setMarkerAlphaLocal 1;
-    "B2_1" setMarkerAlphaLocal 1;
-    "med" setMarkerAlphaLocal 1;
-    "vehService" setMarkerAlphaLocal 1;
-} else {
-    "partizan_base" setMarkerAlphaLocal 1;
-    "Helipad" setMarkerAlphaLocal 0;
-    "Arsenal" setMarkerAlphaLocal 0;
-    "Laptops" setMarkerAlphaLocal 0;
-    "Vehicle_depot_1" setMarkerAlphaLocal 0;
-    "Armor" setMarkerAlphaLocal 0;
-    "UAVspawn" setMarkerAlphaLocal 0;
-    "Arsenal_1" setMarkerAlphaLocal 0;
-    "Helo_spawn" setMarkerAlphaLocal 0;
-    "Side" setMarkerAlphaLocal 0;
-    "m_mod" setMarkerAlphaLocal 0;
-    "Repair_1" setMarkerAlphaLocal 0;
-    "changeLoadout" setMarkerAlphaLocal 0;
-    "Repair_2" setMarkerAlphaLocal 0;
-    "Repair_2_1" setMarkerAlphaLocal 0;
-    "B2" setMarkerAlphaLocal 0;
-    "B2_1" setMarkerAlphaLocal 0;
-    "med" setMarkerAlphaLocal 0; 
-    "vehService" setMarkerAlphaLocal 0;
 };
