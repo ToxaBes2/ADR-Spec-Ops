@@ -51,6 +51,9 @@ if (isNil {uiNamespace getVariable "life_sql_id"}) then {
     };    
 };
 
+// create partizan base
+_null = [] call QS_fnc_createPartizanBase;
+
 // Server scripts
 _null = [] spawn {_this call compile preProcessFileLineNumbers "mission\missionControl.sqf";};                              // Main AO and side objectives
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\clean.sqf";};					                    // cleanup

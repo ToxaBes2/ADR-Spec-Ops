@@ -31,6 +31,7 @@ class QS
 		class conditionUH80TurretActionLock {};
 		class conditionUH80TurretActionUnlock {};
 		class createBunker {};
+		class createPartizanBase {};
 		class defendAO {};
 		class DeleteEnemyEAST {};
 		class deleteOldSMUnits {};
@@ -74,6 +75,7 @@ class QS
 		class uh80Turret {};
 		class uh80TurretActions {};
 		class vMonitor {};
+		class vMonitorPartizan {};
 		class vSetup02 {};
 	};
 };

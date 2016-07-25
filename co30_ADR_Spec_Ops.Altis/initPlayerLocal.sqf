@@ -20,7 +20,6 @@ if (_iamguer) then {
     _uid = getPlayerUID player;                
     _clientId = player;      
     removeAllweapons player;
-	//removeuniform player;
 	removevest player;
 	removeBackpack player;
 	removeheadgear player;

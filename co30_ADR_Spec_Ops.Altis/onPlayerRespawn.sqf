@@ -96,15 +96,7 @@ _guers = ["I_G_Soldier_AR_F","I_G_engineer_F"];
 _iamguer = ({typeOf player == _x} count _guers) > 0;
 if (_iamguer) then {
     player setUnitTrait ["Medic",true];
-    player setUnitTrait ["UAVHacker",true];
-    removeAllweapons player;
-    removevest player;
-    removeBackpack player;
-    removeheadgear player;
-    removegoggles player;
-    removeBackPack player;
-    {player removeItem _x} foreach (items player);
-    {player unassignItem _x;player removeItem _x} foreach (assignedItems player);
+    player setUnitTrait ["UAVHacker",true];    
 };
 
 // Hide objects near heli landing
