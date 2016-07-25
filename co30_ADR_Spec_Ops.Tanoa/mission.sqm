@@ -16,7 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=3;
+		nextID=5;
 	};
 	class Camera
 	{
@@ -667,7 +667,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=561;
+		items=560;
 		class Item0
 		{
 			dataType="Object";
@@ -27909,13 +27909,6 @@ class Mission
 		};
 		class Item559
 		{
-			dataType="Layer";
-			name="Camp Ant";
-			id=2376;
-			atlOffset=60.779999;
-		};
-		class Item560
-		{
 			dataType="Object";
 			class PositionInfo
 			{
@@ -27930,6 +27923,7 @@ class Mission
 			};
 			id=2395;
 			type="Land_Loudspeakers_F";
+			atlOffset=-2.3841858e-007;
 			class CustomAttributes
 			{
 				class Attribute0
