@@ -59,8 +59,7 @@ sqlResponse = {
             	0 cutText[_text, "BLACK FADED"];
                 0 cutFadeOut 99999;
                 sleep 6;
-                //serverCommand Format["#kick %1", profileName];
-                //["end1", false, 2, false] call BIS_fnc_endMission;
+                ["end1", false, 2, false] call BIS_fnc_endMission;
             } else {
                 0 cutText["", "BLACK IN"];
             };

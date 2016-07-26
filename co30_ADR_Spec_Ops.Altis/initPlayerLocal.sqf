@@ -27,6 +27,21 @@ if (typeOf player in ["I_G_Soldier_AR_F","I_G_engineer_F"]) then {
 	removeBackPack player;
 	{player removeItem _x} foreach (items player);
 	{player unassignItem _x;player removeItem _x} foreach (assignedItems player);
+    _partizanPos = getMarkerPos "partizan_base";
+    if (player distance _partizanPos > 50) then {
+        _accepted = false;
+        _newPlayerPos = [_partizanPos, 1, 8, 0, 0, -1, 0] call BIS_fnc_findSafePos;
+        if (_newPlayerPos distance (getPos partizan_ammo) < 50) then {
+            _accepted = true;
+        };
+        while {!_accepted} do {
+            _newPlayerPos = [_position, 1, 20, 0, 0, -1, 0] call BIS_fnc_findSafePos;
+            if (_newPlayerPos distance (getPos partizan_ammo) < 50) then {
+                _accepted = true;
+            };
+        };
+        player setPos _newPlayerPos;
+    };
 	["getPlayerHours",[getPlayerUID player], player] remoteExec ["sqlServerCall", 2];
     sleep 10;
 };

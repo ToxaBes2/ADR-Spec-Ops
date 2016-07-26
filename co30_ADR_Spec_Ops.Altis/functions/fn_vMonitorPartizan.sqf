@@ -24,8 +24,10 @@ while {true} do {
         _sd = random 360;		// new spawn direction
         _accepted = false;
         while {!_accepted} do {
-            _sp = [_newBase, 2, _distance, 2, 0, 10, 0] call BIS_fnc_findSafePos; // new spawn position
-            _accepted = !(_sp isFlatEmpty [-1, -1, 0.6, _size, -1] isEqualTo []);
+            _sp = [_newBase, 2, _distance, 2, 0,-1, 0] call BIS_fnc_findSafePos; // new spawn position
+            if (_sp distance _newBase <= _distance) then {
+                _accepted = true;
+            };
         };
     };
     sleep 5;
@@ -37,8 +39,10 @@ while {true} do {
 			_sd = random 360;		// new spawn direction
             _accepted = false;
             while {!_accepted} do {
-                _sp = [_newBase, 2, _distance, 2, 0, 10, 0] call BIS_fnc_findSafePos; // new spawn position
-                _accepted = !(_sp isFlatEmpty [-1, -1, 0.6, _size, -1] isEqualTo []);
+                _sp = [_newBase, 2, _distance, 2, 0,-1, 0] call BIS_fnc_findSafePos; // new spawn position
+                if (_sp distance _newBase <= _distance) then {
+                    _accepted = true;
+                };
             };
 			_v = createVehicle [_t,[(random 1000), (random 1000), (10000 + (random 20000))], [], 0, "NONE"]; sleep 0.1;
 			waitUntil {!isNull _v}; sleep 0.1;
