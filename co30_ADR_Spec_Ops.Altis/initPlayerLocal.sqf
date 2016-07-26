@@ -6,7 +6,7 @@ Description: Client scripts and event handlers.
 
 if (!hasInterface) exitWith {};
 
-private ["_null", "_player", "_vehicle", "_helmet", "_csatHelmets", "_array", "_type", "_message", "_GHint", "_profileName"];
+private ["_partizanPos", "_dist", "_accepted", "_newPlayerPos", "_position", "_null", "_player", "_vehicle", "_helmet", "_csatHelmets", "_array", "_type", "_message", "_GHint", "_profileName"];
 
 enableSentences false;
 enableEngineArtillery false;
@@ -26,17 +26,19 @@ if (typeOf player in ["I_G_Soldier_AR_F","I_G_engineer_F"]) then {
 	removegoggles player;
 	removeBackPack player;
 	{player removeItem _x} foreach (items player);
-	{player unassignItem _x;player removeItem _x} foreach (assignedItems player);
+	{player unassignItem _x; player removeItem _x} foreach (assignedItems player);
     _partizanPos = getMarkerPos "partizan_base";
-    if (player distance _partizanPos > 50) then {
+    if (player distance2D _partizanPos > 50) then {
+		_dist = 4;
         _accepted = false;
-        _newPlayerPos = [_partizanPos, 1, 8, 0, 0, -1, 0] call BIS_fnc_findSafePos;
-        if (_newPlayerPos distance (getPos partizan_ammo) < 50) then {
+        _newPlayerPos = [_partizanPos, 0.1, _dist, 1, 0, -1, 0] call BIS_fnc_findSafePos;
+        if (_newPlayerPos distance2D (getPos partizan_ammo) < 50) then {
             _accepted = true;
         };
         while {!_accepted} do {
-            _newPlayerPos = [_position, 1, 20, 0, 0, -1, 0] call BIS_fnc_findSafePos;
-            if (_newPlayerPos distance (getPos partizan_ammo) < 50) then {
+			_dist = _dist + 2;
+            _newPlayerPos = [_partizanPos, 0.1, _dist, 1, 0, -1, 0] call BIS_fnc_findSafePos;
+            if (_newPlayerPos distance2D (getPos partizan_ammo) < _dist) then {
                 _accepted = true;
             };
         };

@@ -1,18 +1,23 @@
-private ["_deadBody", "_player", "_items", "_magazines"];
-_deadBody = cursorObject;
+private ["_player", "_body", "_playerUniform", "_playerItems", "_playerMagazines", "_bodyUniform", "_bodyItems", "_bodyMagazines"];
 _player = player;
-_items = itemCargo uniformContainer _player;
-_magazines = magazineCargo uniformContainer _player;
-_uniform = format ["%1", uniform _deadBody];
-_player forceAddUniform _uniform;
-removeUniform _deadBody;
-if (count _items > 0) then {
-    {
-        _player addItemToUniform _x;
-    } forEach _items;
-};
-if (count _magazines > 0) then {
-    {
-        _player addMagazine _x;
-    } forEach _magazines;
-};
+_body = cursorTarget;
+_playerUniform = uniform _player;
+_playerItems = itemCargo uniformContainer _player;
+_playerMagazines = magazineCargo uniformContainer _player;
+_bodyUniform = uniform _body;
+_bodyItems = itemCargo uniformContainer _body;
+_bodyMagazines = magazineCargo uniformContainer _body;
+_player forceAddUniform _bodyUniform;
+_body forceAddUniform _playerUniform;
+{
+    _player addItem _x;
+} forEach _playerItems;
+{
+    _player addMagazine _x;
+} forEach _playerMagazines;
+{
+    _body addItem _x;
+} forEach _bodyItems;
+{
+    _body addMagazine _x;
+} forEach _bodyMagazines;
