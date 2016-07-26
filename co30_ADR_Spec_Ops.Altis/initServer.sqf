@@ -51,8 +51,9 @@ if (isNil {uiNamespace getVariable "life_sql_id"}) then {
     };    
 };
 
-// create partizan base
+// create partizan base and prepare units uniform for grab action
 _null = [] call QS_fnc_createPartizanBase;
+_null = [] spawn QS_fnc_prepareUniform;
 
 // Server scripts
 _null = [] spawn {_this call compile preProcessFileLineNumbers "mission\missionControl.sqf";};                              // Main AO and side objectives

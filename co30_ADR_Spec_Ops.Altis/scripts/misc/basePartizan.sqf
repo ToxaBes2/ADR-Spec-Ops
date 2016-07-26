@@ -1,4 +1,4 @@
-private ["_activeTimer", "_inactiveTimer"];
+private ["_activeTimer"];
 
 // Variables
 _activeTimer = 900;	// How long will it remain active for, in seconds. 300 = 5 minutes

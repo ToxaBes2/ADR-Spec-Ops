@@ -40,11 +40,15 @@ _respawnPos = [((_position select 0) + random 3),((_position select 1) + random 
 partizan_ammo setPos _position;
 "respawn_guerrila" setMarkerPos _respawnPos;
 "partizan_base" setMarkerPos _position;
-_flagPos = [_position, 0, 10, 1, 0, 20, 0] call BIS_fnc_findSafePos;
+_flagPos = [_position, 0, 25, 1, 0, 20, 0] call BIS_fnc_findSafePos;
+if (_flagPos distance _position > 50) then {
+    _flagPos = [partizan_ammo, 20, (random 360)] call BIS_fnc_relPos;
+};
 partizan_flag setPos _flagPos;
 partizan_flag removeAllEventHandlers "HandleDamage";
 partizan_flag removeAllEventHandlers "killed";
 partizan_flag allowDamage false;
 removeAllActions partizan_flag;
 partizan_flag addAction ["<img image='\a3\ui_f\data\map\markers\flags\fia_ca.paa' size='1.0'/><t color='#C0392B'> Эвакуация базы</t>","scripts\misc\actions\basePartizan_switch.sqf",[],21,true,true,"",'((vehicle player) == player && side player == resistance)', 5];
-partizan_flag addAction ["<img image='\a3\ui_f\data\map\markers\flags\fia_ca.paa' size='1.0'/><t color='#C0392B'> Уничтожить базу партизан</t>","scripts\misc\actions\basePartizan_destroy.sqf",[],21,true,true,"",'((vehicle player) == player && side player == west)', 5];			
+partizan_flag addAction ["<img image='\a3\ui_f\data\map\markers\flags\fia_ca.paa' size='1.0'/><t color='#C0392B'> Уничтожить базу партизан</t>","scripts\misc\actions\basePartizan_destroy.sqf",[],21,true,true,"",'((vehicle player) == player && side player == west)', 5];
+partizan_flag addAction ["<t color='#448CE9'><img image='\a3\ui_f\data\map\VehicleIcons\iconShip_ca.paa' size='1.0'/> Вызвать лодку</>", "scripts\misc\actions\baseShip_switch.sqf",[],21,true,true,"",'((vehicle player) == player && side player == resistance)', 5];
