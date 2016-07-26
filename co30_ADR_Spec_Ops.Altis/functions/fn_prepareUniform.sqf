@@ -5,11 +5,6 @@ Format: [] spawn QS_fnc_prepareUniform;
 */
 while {true} do {
     sleep 60;
-    if (isMultiplayer) then {
-        _units = playableUnits;
-    } else {
-        _units = switchableUnits;
-    };
     {
         if (side _x == east) then {
             _applied = _x getVariable ["grab_action", false];
@@ -20,6 +15,6 @@ while {true} do {
                 _x setVariable ["grab_action", true];
             };        
         };
-    } forEach _units;
+    } forEach AllUnits;
     sleep 120;
 };

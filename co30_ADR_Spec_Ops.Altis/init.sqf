@@ -20,33 +20,6 @@ call compile preprocessFile "scripts\=BTC=_TK_punishment\=BTC=_tk_init.sqf";    
 ((getMarkerPos "respawn_west") nearestObject 491010) allowDamage false;
 ((getMarkerPos "respawn_west") nearestObject 493386) allowDamage false;
 
-// Hide turrets
-baseTurret2 hideObject true;
-baseTurret4 hideObject true;
-baseTurret6 hideObject true;
-baseTurret8 hideObject true;
-baseTurret10 hideObject true;
-baseTurret12 hideObject true;
-baseTurret14 hideObject true;
-_grpTurret1 = createGroup west;
-deleteVehicle (gunner baseTurret1);
-deleteVehicle (gunner baseTurret3);
-deleteVehicle (gunner baseTurret5);
-deleteVehicle (gunner baseTurret7);
-deleteVehicle (gunner baseTurret9);
-deleteVehicle (gunner baseTurret11);
-deleteVehicle (gunner baseTurret13);
-deleteVehicle (gunner baseTurret15);
-"B_support_MG_F" createUnit [getposATL baseTurret1, _grpTurret1, "this moveInGunner baseTurret1"];
-"B_support_MG_F" createUnit [getposATL baseTurret3, _grpTurret1, "this moveInGunner baseTurret3"];
-"B_support_MG_F" createUnit [getposATL baseTurret5, _grpTurret1, "this moveInGunner baseTurret5"];
-"B_support_MG_F" createUnit [getposATL baseTurret7, _grpTurret1, "this moveInGunner baseTurret7"];
-"B_support_MG_F" createUnit [getposATL baseTurret9, _grpTurret1, "this moveInGunner baseTurret9"];
-"B_support_MG_F" createUnit [getposATL baseTurret11, _grpTurret1, "this moveInGunner baseTurret11"];
-"B_support_MG_F" createUnit [getposATL baseTurret13, _grpTurret1, "this moveInGunner baseTurret13"];
-"B_support_MG_F" createUnit [getposATL baseTurret15, _grpTurret1, "this moveInGunner baseTurret15"];
-_grpTurret1 setBehaviour "COMBAT";
-
 if (isDedicated) exitWith {
 	"addToScore" addPublicVariableEventHandler { 
 	    ((_this select 1) select 0) addScore ((_this select 1) select 1); 

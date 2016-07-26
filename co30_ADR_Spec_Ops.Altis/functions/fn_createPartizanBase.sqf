@@ -55,10 +55,6 @@ partizan_flag setPos _flagPos;
 partizan_flag removeAllEventHandlers "HandleDamage";
 partizan_flag removeAllEventHandlers "killed";
 partizan_flag allowDamage false;
-removeAllActions partizan_flag;
-partizan_flag addAction ["<img image='\a3\ui_f\data\map\markers\flags\fia_ca.paa' size='1.0'/><t color='#C0392B'> Эвакуация базы</t>","scripts\misc\actions\basePartizan_switch.sqf",[],21,true,true,"",'((vehicle player) == player && side player == resistance)', 5];
-partizan_flag addAction ["<img image='\a3\ui_f\data\map\markers\flags\fia_ca.paa' size='1.0'/><t color='#C0392B'> Уничтожить базу партизан</t>","scripts\misc\actions\basePartizan_destroy.sqf",[],21,true,true,"",'((vehicle player) == player && side player == west)', 5];
-partizan_flag addAction ["<t color='#448CE9'><img image='\a3\ui_f\data\map\VehicleIcons\iconShip_ca.paa' size='1.0'/> Вызвать лодку</>", "scripts\misc\actions\baseShip_switch.sqf",[],21,true,true,"",'((vehicle player) == player && side player == resistance)', 5];
 {
     _sd = random 360;
     _accepted = false;
