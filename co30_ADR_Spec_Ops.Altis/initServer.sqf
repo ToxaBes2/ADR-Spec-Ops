@@ -81,7 +81,6 @@ deleteVehicle (gunner baseTurret15);
 "B_support_MG_F" createUnit [getposATL baseTurret15, _grpTurret1, "this moveInGunner baseTurret15"];
 _grpTurret1 setBehaviour "COMBAT";
 
-
 // Server scripts
 _null = [] spawn {_this call compile preProcessFileLineNumbers "mission\missionControl.sqf";};                              // Main AO and side objectives
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\clean.sqf";};					                    // cleanup

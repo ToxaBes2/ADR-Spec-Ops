@@ -79,6 +79,7 @@ if (_t in _uav) then {
 		_u = _this select 0;
 		sleep 2;
 		createVehicleCrew _u;
+		_u setVariable ["uavHacker", 1];
 	};
 };
 
