@@ -51,7 +51,6 @@ class QS
 		class loadInventory {};
 		class moveToHC {};
 		class pilotCheck {};
-		class prepareUniform {};
 		class PTenemyEAST {};
 		class punishObject {};
 		class RadioSound {};

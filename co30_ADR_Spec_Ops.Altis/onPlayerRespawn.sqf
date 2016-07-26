@@ -108,6 +108,10 @@ if (typeOf player in ["I_G_Soldier_AR_F","I_G_engineer_F"]) then {
 ((getMarkerPos "respawn_west") nearestObject 491010) allowDamage false;
 ((getMarkerPos "respawn_west") nearestObject 493386) allowDamage false;
 
+if (side player == resistance) then {
+    player addAction ["<t color='#E944CB'><img image='\a3\ui_f\data\map\VehicleIcons\iconBackpack_ca.paa' size='1.0'/> Одеть форму противника</t>","scripts\misc\getEnemyUniform.sqf",[],21,true,true,"",'((vehicle player) == player && side player == resistance && cursorObject isKindOf "O_Soldier_base_F" && !alive cursorObject)', 5];
+};
+
 if (playerSide == west) then {
     "partizan_base" setMarkerAlphaLocal 0;
     "Helipad" setMarkerAlphaLocal 1;

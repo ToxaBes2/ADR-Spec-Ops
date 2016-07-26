@@ -53,7 +53,6 @@ if (isNil {uiNamespace getVariable "life_sql_id"}) then {
 
 // create partizan base and prepare units uniform for grab action
 _null = [] call QS_fnc_createPartizanBase;
-_null = [] spawn QS_fnc_prepareUniform;
 
 // Hide turrets
 baseTurret2 hideObject true;
