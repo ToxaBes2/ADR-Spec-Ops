@@ -3,16 +3,22 @@
 Author:	Quiksilver
 Description: Client scripts and event handlers.
 */
+
 if (!hasInterface) exitWith {};
+
+private ["_null", "_player", "_vehicle", "_helmet", "_csatHelmets", "_array", "_type", "_message", "_GHint"];
+
 enableSentences false;
 enableEngineArtillery false;
+
+waitUntil {!isNull player};
 
 // Pilots only
 if (typeOf player in ["B_Helipilot_F", "B_T_Helipilot_F"]) then {
 	player addBackpack "B_AssaultPack_sgg";
 	player addItemToBackpack "ToolKit";
 
-	//==== LASER TARGETS ON PILOTS HELMETS
+	// Laser targets on pilots HMDs
 	player addEventHandler [ "GetInMan", {
 		[_this select 0, _this select 2] spawn QS_fnc_HMDLaserTarget;
 	}];
@@ -68,17 +74,24 @@ player addEventHandler [ "GetOutMan", {
 	};
 }];
 
-// Remove CSAT helmets from iventory
-player addEventHandler [ "Take", {
-	_player = _this select 0;
-	_helmet = _this select 2;
-	_csatHelmets = ["H_HelmetO_ocamo", "H_Beret_ocamo", "H_MilCap_ocamo", "H_HelmetLeaderO_ocamo", "H_PilotHelmetHeli_O", "H_HelmetCrew_O", "H_PilotHelmetFighter_O", "H_CrewHelmetHeli_O", "H_HelmetSpecO_ocamo", "H_HelmetSpecO_blk", "H_HelmetO_oucamo", "H_HelmetLeaderO_oucamo"];
-	if(_helmet in _csatHelmets) then {
-		_player unassignItem _helmet;
-		_player removeItem _helmet;
-		systemChat "Головные уборы противника запрещены";
-	};
-}];
+// Remove CSAT helmets from BLUFOR players iventory
+if (side player == west) then {
+	player addEventHandler [ "Take", {
+		_player = _this select 0;
+		_helmet = _this select 2;
+		_csatHelmets = ["H_Cap_brn_SPECOPS", "H_CrewHelmetHeli_O", "H_HelmetCrew_O", "H_HelmetCrew_O_ghex_F", "H_HelmetLeaderO_ghex_F", "H_HelmetLeaderO_ocamo", "H_HelmetLeaderO_oucamo", "H_HelmetO_ViperSP_ghex_F", "H_HelmetO_ViperSP_hex_F", "H_HelmetO_ghex_F", "H_HelmetO_ocamo", "H_HelmetO_oucamo", "H_HelmetSpecO_blk", "H_HelmetSpecO_ghex_F", "H_HelmetSpecO_ocamo", "H_MilCap_ghex_F", "H_MilCap_ocamo", "H_PilotHelmetFighter_O", "H_PilotHelmetHeli_O"];
+		if(_helmet in _csatHelmets) then {
+			_player unassignItem _helmet;
+			_player removeItem _helmet;
+			systemChat "Головные уборы противника запрещены";
+		};
+	}];
+};
+
+// Add all players to Zeus curators as editable objects
+{
+	_x addCuratorEditableObjects [[player], false];
+} count allCurators;
 
 // PVEHs
 "showNotification" addPublicVariableEventHandler

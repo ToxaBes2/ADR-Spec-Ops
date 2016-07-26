@@ -1,9 +1,7 @@
-private ["_pilots", "_btc_tk_prison"];
+private ["_btc_tk_prison", "_tk", "_rules", "_playerType", "_null"];
 
 //=========================== PILOTS ONLY
-_pilots = ["B_Helipilot_F", "B_T_Helipilot_F"];
-
-if ((typeOf player) in _pilots) then {
+if (typeOf player in ["B_Helipilot_F", "B_T_Helipilot_F"]) then {
 	//===== HELI TURRETS LOCK
 	player addAction ["<t color='#FFC107'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> Разрешить стрельбу</t>", QS_fnc_uh80TurretActions, 0, -95, false, true, "", "[] call QS_fnc_conditionUH80TurretActionUnlock"];
 	player addAction ["<t color='#FFC107'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> Запретить стрельбу</t>", QS_fnc_uh80TurretActions, 1, -95, false, true, "", "[] call QS_fnc_conditionUH80TurretActionLock"];

@@ -3,22 +3,22 @@
 Author:	Quiksilver
 Description: Client scripts and event handlers.
 */
+
 if (!hasInterface) exitWith {};
+
+private ["_null", "_player", "_vehicle", "_helmet", "_csatHelmets", "_array", "_type", "_message", "_GHint", "_profileName"];
+
 enableSentences false;
 enableEngineArtillery false;
 
-// check for guerrila slots
 waitUntil {!isNull player};
-_guers = ["I_G_Soldier_AR_F","I_G_engineer_F"];
-_iamguer = ({typeOf player == _x} count _guers) > 0;
-if (_iamguer) then {
+
+// Resistance only
+if (typeOf player in ["I_G_Soldier_AR_F","I_G_engineer_F"]) then {
 	player setUnitTrait ["Medic",true];
-    player setUnitTrait ["UAVHacker",true]; 
 	0 cutText["Проверка игрового времени...", "BLACK FADED"];
     0 cutFadeOut 9999999;
     waitUntil {(getPlayerUID player) != ""};
-    _uid = getPlayerUID player;                
-    _clientId = player;      
     removeAllweapons player;
 	removevest player;
 	removeBackpack player;
@@ -27,22 +27,20 @@ if (_iamguer) then {
 	removeBackPack player;
 	{player removeItem _x} foreach (items player);
 	{player unassignItem _x;player removeItem _x} foreach (assignedItems player);
-	["getPlayerHours",[_uid], _clientId] remoteExec ["sqlServerCall", 2]; 
+	["getPlayerHours",[getPlayerUID player], player] remoteExec ["sqlServerCall", 2];
     sleep 10;
-};	
+};
 
 if (side player == west) then {
     "partizan_base" setMarkerAlphaLocal 0;
 };
 
 // Pilots only
-_pilots = ["B_Helipilot_F", "O_helipilot_F"];
-_iampilot = ({typeOf player == _x} count _pilots) > 0;
-if (_iampilot) then {
+if (typeOf player in ["B_Helipilot_F", "B_T_Helipilot_F"]) then {
 	player addBackpack "B_AssaultPack_sgg";
 	player addItemToBackpack "ToolKit";
 
-	//==== LASER TARGETS ON PILOTS HELMETS
+	// Laser targets on pilots HMDs
 	player addEventHandler [ "GetInMan", {
 		[_this select 0, _this select 2] spawn QS_fnc_HMDLaserTarget;
 	}];
@@ -98,17 +96,19 @@ player addEventHandler [ "GetOutMan", {
 	};
 }];
 
-// Remove CSAT helmets from iventory
-player addEventHandler [ "Take", {
-	_player = _this select 0;
-	_helmet = _this select 2;
-	_csatHelmets = ["H_HelmetO_ocamo", "H_Beret_ocamo", "H_MilCap_ocamo", "H_HelmetLeaderO_ocamo", "H_PilotHelmetHeli_O", "H_HelmetCrew_O", "H_PilotHelmetFighter_O", "H_CrewHelmetHeli_O", "H_HelmetSpecO_ocamo", "H_HelmetSpecO_blk", "H_HelmetO_oucamo", "H_HelmetLeaderO_oucamo"];
-	if(_helmet in _csatHelmets && side _player == west) then {
-		_player unassignItem _helmet;
-		_player removeItem _helmet;
-		systemChat "Головные уборы противника запрещены";
-	};
-}];
+// Remove CSAT helmets from BLUFOR players iventory
+if (side player == west) then {
+	player addEventHandler [ "Take", {
+		_player = _this select 0;
+		_helmet = _this select 2;
+		_csatHelmets = ["H_Cap_brn_SPECOPS", "H_CrewHelmetHeli_O", "H_HelmetCrew_O", "H_HelmetCrew_O_ghex_F", "H_HelmetLeaderO_ghex_F", "H_HelmetLeaderO_ocamo", "H_HelmetLeaderO_oucamo", "H_HelmetO_ViperSP_ghex_F", "H_HelmetO_ViperSP_hex_F", "H_HelmetO_ghex_F", "H_HelmetO_ocamo", "H_HelmetO_oucamo", "H_HelmetSpecO_blk", "H_HelmetSpecO_ghex_F", "H_HelmetSpecO_ocamo", "H_MilCap_ghex_F", "H_MilCap_ocamo", "H_PilotHelmetFighter_O", "H_PilotHelmetHeli_O"];
+		if(_helmet in _csatHelmets) then {
+			_player unassignItem _helmet;
+			_player removeItem _helmet;
+			systemChat "Головные уборы противника запрещены";
+		};
+	}];
+};
 
 // Deal with static map markers
 if (playerSide == west) then {
@@ -149,13 +149,13 @@ if (playerSide == west) then {
     "Repair_2_1" setMarkerAlphaLocal 0;
     "B2" setMarkerAlphaLocal 0;
     "B2_1" setMarkerAlphaLocal 0;
-    "med" setMarkerAlphaLocal 0; 
+    "med" setMarkerAlphaLocal 0;
     "vehService" setMarkerAlphaLocal 0;
 };
 
-// add Zeus curator
+// Add all players to Zeus curators as editable objects
 {
-	_x addCuratorEditableObjects [[player],FALSE];
+	_x addCuratorEditableObjects [[player], false];
 } count allCurators;
 
 // PVEHs
@@ -215,11 +215,11 @@ if (playerSide == west) then {
 // log playable hours
 _uid = getPlayerUID player;
 _profileName = profileName;
-_null = [_uid, _profileName] spawn {	
-	_uid = _this select 0;	 
+_null = [_uid, _profileName] spawn {
+	_uid = _this select 0;
 	_profileName = _this select 1;
 	sleep 300;
-	while {true} do {	    
+	while {true} do {
         ["insertPlayer",[_uid, _profileName], player] remoteExec ["sqlServerCall", 2];
         sleep 5;
         ["logTime",[_uid], player] remoteExec ["sqlServerCall", 2];
