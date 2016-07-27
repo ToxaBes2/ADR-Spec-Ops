@@ -144,12 +144,22 @@ BTC_set_gear =
 	{_unit removeItem _x} foreach (items _unit);
 	{_unit unassignItem _x;_unit removeItem _x} foreach (assignedItems _unit);
 	////////////////////////
-	if ((_gear select 0) != "") then {_unit addUniform (_gear select 0);};
+	if ((_gear select 0) != "") then {_unit forceAddUniform (_gear select 0);};
 	if ((_gear select 1) != "") then {_unit addVest (_gear select 1);};
 	_unit addBackpack "B_AssaultPack_blk";
 
-	//(_x != "" && _x != "Binocular" && _x != "Rangefinder"
-	if (count (_gear select 11) > 0) then {{if (_x != "" && _x != "Rangefinder") then {_unit addItem _x;_unit assignItem _x;sleep 0.1;};} foreach (_gear select 11);};
+	if (count (_gear select 11) > 0) then {
+		{
+			if (_x != "") then {
+				if (_x != "Rangefinder" && _x != "Binocular" && _x != "Rangefinder") then {
+					_unit addItem _x;
+					_unit assignItem _x;
+				} else {
+					_unit addWeapon _x;
+				};
+			};
+		} foreach (_gear select 11);
+	};
 
 	_ammo = _gear select 16;
 	if (count (_ammo select 0) > 0) then {_unit addMagazine (_ammo select 0)};
@@ -166,18 +176,18 @@ BTC_set_gear =
 	_v_cont = (vestContainer _unit);
 
 	{_unit addMagazine _x;} foreach (_ammo select 3);
-	{if (!(isClass (configFile >> "cfgMagazines" >> _x))) then {_unit addItem _x;} else {if (getNumber(configFile >> "cfgMagazines" >> _x >> "count") < 2) then {_unit addMagazine _x;};};sleep 0.1;} foreach (_gear select 12);
+	{if (!(isClass (configFile >> "cfgMagazines" >> _x))) then {_unit addItem _x;} else {if (getNumber(configFile >> "cfgMagazines" >> _x >> "count") < 2) then {_unit addMagazine _x;};};} foreach (_gear select 12);
 
 	if (!isnull _u_cont) then {_u_cont addItemCargo ["itemWatch",50];};
 
 	{_unit addMagazine _x;} foreach (_ammo select 4);
-	{if (!(isClass (configFile >> "cfgMagazines" >> _x))) then {_unit addItem _x;} else {if (getNumber(configFile >> "cfgMagazines" >> _x >> "count") < 2) then {_unit addMagazine _x;};};sleep 0.1;} foreach (_gear select 13);
+	{if (!(isClass (configFile >> "cfgMagazines" >> _x))) then {_unit addItem _x;} else {if (getNumber(configFile >> "cfgMagazines" >> _x >> "count") < 2) then {_unit addMagazine _x;};};} foreach (_gear select 13);
 
 	if (!isnull _v_cont) then {_v_cont addItemCargo ["itemWatch",300];};
 
 	{_unit addMagazine _x;} foreach (_ammo select 5);
 
-	{if (!(isClass (configFile >> "cfgMagazines" >> _x))) then {_unit addItem _x;} else {if (getNumber(configFile >> "cfgMagazines" >> _x >> "count") < 2) then {_unit addMagazine _x;};};sleep 0.1;} foreach (_gear select 5);
+	{if (!(isClass (configFile >> "cfgMagazines" >> _x))) then {_unit addItem _x;} else {if (getNumber(configFile >> "cfgMagazines" >> _x >> "count") < 2) then {_unit addMagazine _x;};};} foreach (_gear select 5);
 
 	if (!isnull _u_cont) then {for "_i" from 1 to 50 do {_unit removeItemFromUniform "itemWatch";};};
 	if (!isnull _v_cont) then {for "_i" from 1 to 300 do {_unit removeItemFromVest "itemWatch";};};
@@ -199,7 +209,6 @@ BTC_set_gear =
 	if ((_gear select 15) != -1) then {player action ["SWITCHWEAPON", player, player, (_gear select 15)];};
 
     if (_unit == player) then {
-        sleep 0.2;
         _prim_weapon = _gear select 17;
     	_prim_magazine = _gear select 18;
     	_prim_items = _gear select 19;
@@ -210,7 +219,6 @@ BTC_set_gear =
                         player addMagazine _x;
                     } forEach _prim_magazine;
                     player addWeapon _prim_weapon;
-                    sleep 0.1;
                     if (count _prim_items > 0) then {
                         player addPrimaryWeaponItem _x;
                     };
@@ -1080,7 +1088,7 @@ BTC_first_aid =
         _playerType = typeOf _injured;
 
         // commanders have access to command and operative channels
-        if (_playerType == "B_Soldier_SL_F") then {        
+        if (_playerType == "B_Soldier_SL_F") then {
             8 radioChannelAdd [_injured];
             9 radioChannelAdd [_injured];
         };
@@ -1089,7 +1097,7 @@ BTC_first_aid =
         if (_playerType == "B_Helipilot_F") then {
             8 radioChannelAdd [_injured];
         };
-    
+
 		// load missing items
         //[_injured] spawn BTC_addMissingItems;
         [[_injured],"BTC_addMissingItems",nil,true] spawn BIS_fnc_MP;
@@ -1465,6 +1473,22 @@ BTC_player_respawn = {
 	if (BTC_active_lifes == 1 && BTC_lifes == 0) exitWith BTC_out_of_lifes;
 	if (BTC_active_lifes != 1 || BTC_lifes != 0) then
 	{
+		// Create dead body with duplicate equipment if player is BLUFOR
+		if (player isKindOf "B_Soldier_base_F") then {
+			private ["_group"];
+			_group = createGroup (side player);
+			(typeOf player) createUnit [[0, 0, 0], _group, "BTC_deadBody = this;"];
+			[BTC_deadBody, BTC_gear] call BTC_set_gear;
+			BTC_deadBody disableCollisionWith player;
+			BTC_deadBody setDir (direction player);
+			BTC_deadBody setFace (face player);
+			BTC_deadBody switchMove animationState player;
+			BTC_deadBody setPos (getPos player);
+			BTC_deadBody setDamage 1;
+			deleteGroup _group;
+		};
+
+		// Continue the respawn procedure
 		deTach player;
 		player setVariable ["BTC_need_revive",0,true];
 		closeDialog 0;

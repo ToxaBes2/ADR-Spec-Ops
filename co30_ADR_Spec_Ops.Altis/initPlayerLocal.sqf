@@ -15,7 +15,7 @@ waitUntil {!isNull player};
 
 // Resistance only
 if (typeOf player in ["I_G_Soldier_AR_F","I_G_engineer_F"]) then {
-	player setUnitTrait ["Medic",true];
+	player setUnitTrait ["Medic", true];
 	0 cutText["Проверка игрового времени...", "BLACK FADED"];
     0 cutFadeOut 9999999;
     waitUntil {(getPlayerUID player) != ""};
@@ -46,6 +46,10 @@ if (typeOf player in ["I_G_Soldier_AR_F","I_G_engineer_F"]) then {
     };
 	["getPlayerHours",[getPlayerUID player], player] remoteExec ["sqlServerCall", 2];
     sleep 10;
+};
+
+if (typeOf player in ["I_G_engineer_F"]) then {
+	player setUnitTrait ["UAVHacker", true];
 };
 
 if (side player == west) then {
