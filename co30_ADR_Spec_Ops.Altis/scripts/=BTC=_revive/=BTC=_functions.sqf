@@ -1478,7 +1478,6 @@ BTC_player_respawn = {
 			private ["_group"];
 			_group = createGroup (side player);
 			(typeOf player) createUnit [[0, 0, 0], _group, "BTC_deadBody = this;"];
-			deleteGroup _group;
 			[BTC_deadBody, BTC_gear] call BTC_set_gear;
 			BTC_deadBody disableCollisionWith player;
 			BTC_deadBody setDir (direction player);
@@ -1486,6 +1485,7 @@ BTC_player_respawn = {
 			BTC_deadBody switchMove animationState player;
 			BTC_deadBody setPos (getPos player);
 			BTC_deadBody setDamage 1;
+			deleteGroup _group;
 		};
 
 		// Continue the respawn procedure
