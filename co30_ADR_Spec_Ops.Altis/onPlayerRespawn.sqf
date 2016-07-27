@@ -86,12 +86,11 @@ _null = player addEventHandler ["Fired", {
     };
 }];
 
-if (side player == west) then {
-    "partizan_base" setMarkerAlphaLocal 0;
-};
-
 if (typeOf player in ["I_G_Soldier_AR_F","I_G_engineer_F"]) then {
     player setUnitTrait ["Medic",true];
+    "partizan_base" setMarkerAlphaLocal 1;
+} else {
+    "partizan_base" setMarkerAlphaLocal 0;
 };
 
 // Hide objects near heli landing

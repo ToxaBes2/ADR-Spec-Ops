@@ -43,6 +43,7 @@ _respawnPos = [((_position select 0) + random 3),((_position select 1) + random 
 partizan_ammo setPos _position;
 "respawn_guerrila" setMarkerPos _respawnPos;
 "partizan_base" setMarkerPos _position;
+["partizan_base", 0] remoteExec ["setMarkerAlphaLocal", west]; 
 
 _dist = 5;
 _accepted = false;

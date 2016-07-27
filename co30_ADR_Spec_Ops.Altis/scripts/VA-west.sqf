@@ -50,7 +50,25 @@ _myBox = _this select 0;
 "B_GMG_01_high_weapon_F",
 "B_HMG_01_high_weapon_F",
 "B_GMG_01_weapon_F",
-"B_HMG_01_weapon_F"
+"B_HMG_01_weapon_F",
+//Tanoa
+"B_ViperLightHarness_oli_F",
+"B_ViperLightHarness_blk_F",
+"B_ViperLightHarness_hex_F",
+"B_ViperHarness_oli_F",
+"B_ViperHarness_khk_F",
+"B_ViperHarness_blk_F",
+"B_ViperHarness_hex_F",
+"B_Bergen_dgtl_F",
+"B_Bergen_hex_F",
+"B_Bergen_mcamo_F"
+//"B_ViperLightHarness_ghex_F",
+//"B_ViperLightHarness_khk_F",
+//"B_ViperHarness_ghex_F",
+//"B_Bergen_tna_F",
+//"B_Carryall_ghex_F",
+//"B_AssaultPack_tna_F",
+//"B_FieldPack_ghex_F"
 ],true, false] call BIS_fnc_addVirtualBackpackCargo;
 
 [_myBox, [
@@ -61,7 +79,6 @@ _myBox = _this select 0;
 "U_B_GhillieSuit",
 "U_B_HeliPilotCoveralls",
 "U_B_Wetsuit",
-"U_OrestesBody",
 "U_B_CombatUniform_mcam_worn",
 "U_B_SpecopsUniform_sgg",
 "U_B_PilotCoveralls",
@@ -145,6 +162,14 @@ _myBox = _this select 0;
 "V_PlateCarrierSpec_mtp",
 //"V_PlateCarrierIAGL_oli",
 //"V_I_G_resistanceLeader_F",
+// Tanoa
+"V_TacVest_gen_F",
+"V_PlateCarrier1_rgr_noflag_F",
+"V_PlateCarrier2_rgr_noflag_F",
+"V_TacChestrig_grn_F",
+"V_TacChestrig_cbr_F",
+"V_TacChestrig_oli_F",
+
 
 //--- Жилеты зеленых
 //"V_PlateCarrierIA1_dgtl",
@@ -200,6 +225,22 @@ _myBox = _this select 0;
 "H_RacingHelmet_1_yellow_F",
 "H_RacingHelmet_1_orange_F",
 "H_Cap_marshal",
+//Tanoa
+"H_Beret_gen_F",
+"H_MilCap_gen_F",
+//"H_Helmet_Skate",
+//"H_Booniehat_tna_F",
+//"H_HelmetB_tna_F",
+//"H_HelmetCrew_O_ghex_F",
+//"H_HelmetB_Enh_tna_F",
+//"H_HelmetB_Light_tna_F",
+//"H_MilCap_tna_F",
+//"H_HelmetB_TI_tna_F",
+//"H_HelmetO_ghex_F",
+//"H_HelmetLeaderO_ghex_F",
+//"H_HelmetO_ViperSP_hex_F",
+//"H_HelmetO_ViperSP_ghex_F",
+//"H_HelmetSpecO_ghex_F",
 
 //--- Шлемы зеленых
 //"H_HelmetIA",
@@ -297,6 +338,9 @@ _myBox = _this select 0;
 "G_Squares_Tinted",
 "G_Tactical_Black",
 "G_Tactical_Clear",
+//Tanoa
+"G_Balaclava_TI_blk_F",
+"G_Balaclava_TI_G_blk_F",
 
 //--- Глушаки
 "muzzle_snds_H",
@@ -310,6 +354,19 @@ _myBox = _this select 0;
 "muzzle_snds_338_sand",
 "muzzle_snds_93mmg",
 "muzzle_snds_93mmg_tan",
+//Tanoa
+"muzzle_snds_H_MG_blk_F",
+"muzzle_snds_m_snd_F",
+"muzzle_snds_58_blk_F",
+"muzzle_snds_B_snd_F",
+"muzzle_snds_65_TI_blk_F",
+"muzzle_snds_65_TI_hex_F",
+//"muzzle_snds_H_MG_khk_F",
+//"muzzle_snds_m_khk_F",
+//"muzzle_snds_58_wdm_F",
+//"muzzle_snds_H_khk_F",
+//"muzzle_snds_B_khk_F",
+//"muzzle_snds_65_TI_ghex_F",
 
 //Сошки
 "bipod_01_F_snd",
@@ -320,6 +377,8 @@ _myBox = _this select 0;
 "bipod_02_F_hex",
 "bipod_03_F_blk",
 "bipod_03_F_oli",
+//Tanoa
+//"bipod_01_F_khk",
 
 //--- Оптика
 "optic_Arco",
@@ -344,6 +403,20 @@ _myBox = _this select 0;
 "optic_KHS_hex",
 "optic_KHS_old",
 "optic_KHS_tan",
+//Tanoa
+"optic_Arco_blk_F",
+"optic_ERCO_snd_F",
+"optic_ERCO_blk_F",
+"optic_Holosight_blk_F",
+"optic_Holosight_smg_blk_F",
+//"optic_Holosight_khk_F",
+//"optic_Arco_ghex_F",
+//"optic_DMS_ghex_F",
+//"optic_ERCO_khk_F",
+//"optic_LRPS_ghex_F",
+//"optic_LRPS_tna_F",
+//"optic_SOS_khk_F",
+//"optic_Hamr_khk_F",
 
 //--- Дополнения
 "acc_flashlight",
@@ -363,6 +436,9 @@ _myBox = _this select 0;
 "FirstAidKit",
 "Medikit",
 "ToolKit",
+//Tanoa
+"O_NVGoggles_hex_F",
+"O_NVGoggles_urb_F",
 
 //--- Пресса
 "V_Press_F",
@@ -404,6 +480,33 @@ _myBox = _this select 0;
 "10Rnd_127x54_Mag",
 "150Rnd_93x64_Mag",
 "10Rnd_93x64_DMR_05_Mag",
+//Tanoa
+"100Rnd_580x42_Mag_F",
+"100Rnd_580x42_Mag_Tracer_F",
+"150Rnd_556x45_Drum_Mag_F",
+"150Rnd_556x45_Drum_Mag_Tracer_F",
+"200Rnd_556x45_Box_F",
+"200Rnd_556x45_Box_Red_F",
+"200Rnd_556x45_Box_Tracer_F",
+"200Rnd_556x45_Box_Tracer_Red_F",
+"20Rnd_650x39_Cased_Mag_F",
+"30Rnd_545x39_Mag_F",
+"30Rnd_545x39_Mag_Green_F",
+"30Rnd_545x39_Mag_Tracer_F",
+"30Rnd_545x39_Mag_Tracer_Green_F",
+"30Rnd_556x45_Stanag_green",
+"30Rnd_556x45_Stanag_red",
+"30Rnd_580x42_Mag_F",
+"30Rnd_580x42_Mag_Tracer_F",
+"30Rnd_762x39_Mag_F",
+"30Rnd_762x39_Mag_Green_F",
+"30Rnd_762x39_Mag_Tracer_F",
+"30Rnd_762x39_Mag_Tracer_Green_F",
+"30Rnd_9x21_Mag_SMG_02",
+"30Rnd_9x21_Mag_SMG_02_Tracer_Green",
+"30Rnd_9x21_Mag_SMG_02_Tracer_Red",
+"30Rnd_9x21_Mag_SMG_02_Tracer_Yellow",
+"10Rnd_50BW_Mag_F",
 
 //--- Подстволы
 "UGL_FlareWhite_F",
@@ -556,7 +659,55 @@ _myBox = _this select 0;
 "MMG_02_camo_F",
 "MMG_02_black_F",
 "MMG_02_sand_F",
-"MMG_02_black_RCO_BI_F"
+"MMG_02_black_RCO_BI_F",
+//Tanoa
+"srifle_DMR_07_blk_F",
+"srifle_DMR_07_hex_F",
+"arifle_SPAR_03_snd_F",
+"arifle_SPAR_03_blk_F",
+"arifle_ARX_blk_F",
+"arifle_ARX_hex_F",
+"arifle_ARX_blk_F",
+"LMG_03_F",
+"arifle_CTARS_blk_F",
+"arifle_CTARS_hex_F",
+"arifle_SPAR_02_snd_F",
+"arifle_SPAR_02_blk_F",
+"launch_RPG7_F",
+"arifle_AK12_F",
+"arifle_AKM_F",
+"arifle_AKS_F",
+"arifle_CTAR_blk_F",
+"arifle_CTAR_hex_F",
+"arifle_SPAR_01_snd_F",
+"arifle_SPAR_01_blk_F",
+"arifle_AK12_GL_F",
+"arifle_CTAR_GL_blk_F",
+"arifle_CTAR_GL_hex_F",
+"arifle_SPAR_01_GL_snd_F",
+"arifle_SPAR_01_GL_blk_F",
+"hgun_Pistol_01_F",
+"SMG_05_F"
+//"srifle_DMR_07_ghex_F",
+//"srifle_GM6_ghex_F",
+//"srifle_LRR_tna_F",
+//"arifle_MX_SW_khk_F",
+//"launch_RPG32_ghex_F",
+//"launch_O_Titan_ghex_F",
+//"launch_B_Titan_tna_F",
+//"launch_O_Titan_short_ghex_F",
+//"launch_B_Titan_short_tna_F",
+//"arifle_CTAR_ghex_F",
+//"arifle_CTAR_GL_ghex_F",
+//"arifle_CTARS_ghex_F",
+//"arifle_MX_khk_F",
+//"arifle_MXC_khk_F",
+//"arifle_MXM_khk_F",
+//"arifle_SPAR_01_khk_F",
+//"arifle_SPAR_01_GL_khk_F",
+//"arifle_SPAR_02_khk_F",
+//"arifle_SPAR_03_khk_F",
+//"arifle_ARX_ghex_F"
 ], true, false] call BIS_fnc_addVirtualWeaponCargo;
 
 sleep 5;

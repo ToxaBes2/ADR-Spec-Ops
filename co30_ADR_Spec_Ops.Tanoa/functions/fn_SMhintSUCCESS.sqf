@@ -54,10 +54,10 @@ if (count sideMarkerText == 2) then {
 };
 
 if (_this select 0) then {
-	_completeText = format["<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#C6FF00'>Выполнена</t><br/>____________________<br/>За успешное проведение, непосредственные участники задания получают в награду:<br/><br/><t size='1.1' color='#FFC107'>%1</t><br/><br/>Выдвигайтесь обратно на базу или прямиком на точку захвата.</t>", _vehName];
+	_completeText = format["<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#C6FF00'>Выполнена</t><br/>____________________<br/>За успешное проведение, непосредственные участники задания получают в награду:<br/><br/><t size='1.1' color='#FFC107'>%1</t><br/><br/>Ожидайте дальнейших указаний.</t>", _vehName];
 	showNotification = ["CompletedSpecMission", sideMarkerText];
 } else {
-	_completeText = format["<t align='center'><t size='2.2'>Допзадание</t><br/><t size='1.5' color='#C6FF00'>Выполнено</t><br/>____________________<br/>За успешное проведение, непосредственные участники задания получают в награду:<br/><br/><t size='1.1' color='#FFC107'>%1</t><br/><br/>Выдвигайтесь обратно на базу или прямиком на точку захвата.</t>", _vehName];
+	_completeText = format["<t align='center'><t size='2.2'>Допзадание</t><br/><t size='1.5' color='#C6FF00'>Выполнено</t><br/>____________________<br/>За успешное проведение, непосредственные участники задания получают в награду:<br/><br/><t size='1.1' color='#FFC107'>%1</t><br/><br/>Ожидайте дальнейших указаний.</t>", _vehName];
 	showNotification = ["CompletedSideMission", sideMarkerText];
 };
 
