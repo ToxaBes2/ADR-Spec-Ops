@@ -1,6 +1,11 @@
 private ["_player", "_body", "_playerUniform", "_playerItems", "_playerMagazines", "_bodyUniform", "_bodyItems", "_bodyMagazines"];
+
 _player = player;
 _body = cursorTarget;
+
+player playMove "AinvPknlMstpSnonWnonDnon";
+sleep 2;
+
 _playerUniform = uniform _player;
 _playerItems = itemCargo uniformContainer _player;
 _playerMagazines = magazineCargo uniformContainer _player;
