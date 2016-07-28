@@ -21,6 +21,10 @@ playSound3D ["A3\sounds_f\sfx\fire2_loop.wss", partizan_flag, false, getPosASL p
 sleep 12;
 playSound3D ["A3\sounds_f\sfx\fire2_loop.wss", partizan_flag, false, getPosASL partizan_flag, 5, 1, 300];
 
+clearWeaponCargoGlobal partizan_ammo;
+clearMagazineCargoGlobal partizan_ammo;
+clearItemCargoGlobal partizan_ammo;
+
 _null = [] call QS_fnc_createPartizanBase;
 
 sleep 30;
