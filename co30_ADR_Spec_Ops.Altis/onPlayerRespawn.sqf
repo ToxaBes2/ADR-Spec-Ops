@@ -157,3 +157,9 @@ if (playerSide == west) then {
     "med" setMarkerAlphaLocal 0;
     "vehService" setMarkerAlphaLocal 0;
 };
+
+// Remove color corrections effects
+// In case they were not removed correctly during respawn
+if (!isNil {BTC_blur}) then {ppEffectDestroy BTC_blur;};
+if (!isNil {BTC_cc}) then {ppEffectDestroy BTC_cc;};
+if (!isNil {BTC_grain}) then {ppEffectDestroy BTC_grain;};

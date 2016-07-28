@@ -36,9 +36,9 @@ BTC_spectating_view = [0,0];										//To force a view set the first number of 
 BTC_s_mode_view     = ["First person", "Behind the back", "High", "Free"];
 BTC_black_screen    = 0;											//Black screen + button while unconscious or action wheel and clear view
 BTC_action_respawn  = 0;											//if black screen is set to 0 you can choose if you want to use the action wheel or the button. Keep in mind that if you don't use the button, the injured player can use all the action, frag too....
-BTC_camera_unc      = 1;
+BTC_camera_unc      = 0;
 BTC_camera_unc_type = ["Вид со спины", "Вид свысока"];
-BTC_respawn_time    = 3;
+BTC_respawn_time    = 10;
 BTC_active_mobile   = 0;											//Active mobile respawn (You have to put in map the vehicle and give it a name. Then you have to add one object per side to move to the mobile (BTC_base_flag_west,BTC_base_flag_east) - (1 = yes, 0 = no))
 BTC_mobile_respawn  = 0;											//Active the mobile respawn fnc (1 = yes, 0 = no)
 BTC_mobile_respawn_time = 30;										//Secs delay for mobile vehicle to respawn

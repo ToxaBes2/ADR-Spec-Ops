@@ -1127,8 +1127,7 @@ BTC_first_aid =
 				};
 
 				_injured setVariable ["BTC_need_revive", 0, true];
-				if (group player == group _injured) then
-				{
+				if (group player == group _injured) then {
 					addToScore = [player, 2]; publicVariable "addToScore";
 					["ScoreBonus", ["Поднял товарища.", "2"]] call bis_fnc_showNotification;
 				} else {
@@ -1365,6 +1364,36 @@ BTC_player_killed = {
 				if (BTC_black_screen == 0 && BTC_disable_respawn == 0) then {if (BTC_action_respawn == 0) then {disableSerialization;_dlg = createDialog "BTC_respawn_button_dialog";};};
 				if (BTC_black_screen == 1 && BTC_disable_respawn == 0 && !Dialog) then {_dlg = createDialog "BTC_respawn_button_dialog";};
 				BTC_display_EH = (findDisplay 46) displayAddEventHandler ["KeyDown", "_anim = [] spawn {sleep 1;player switchMove ""AinjPpneMstpSnonWrflDnon"";};"];
+
+				// Color corrections
+				BTC_blur = ppEffectCreate ["RadialBlur", 100];
+			    BTC_blur ppEffectEnable true;
+			    BTC_blur ppEffectAdjust [0.002, 0.002, 0.15, 0.15];
+			    BTC_blur ppEffectCommit 0;
+
+				BTC_cc = ppEffectCreate ["ColorCorrections", 1500];
+				BTC_cc ppEffectEnable true;
+				BTC_cc ppEffectAdjust [
+					1,
+					1,
+					0,
+					0, 0, 0, 0,
+					1, 1, 1, 0,
+					0.299, 0.587, 0.114, 0
+				];
+				BTC_cc ppEffectCommit 0;
+
+				BTC_grain = ppEffectCreate ["FilmGrain", 2000];
+			    BTC_grain ppEffectEnable true;
+			    BTC_grain ppEffectAdjust [
+				    0.3,
+				    1.5,
+				    0.1,
+				    0.5,
+				    0.5,
+				    0
+			    ];
+			    BTC_grain ppEffectCommit 0;
 			} else {
 				BTC_r_u_camera = "camera" camCreate (position player);
 				BTC_r_u_camera camSetTarget player;
@@ -1388,7 +1417,8 @@ BTC_player_killed = {
 				if (BTC_black_screen == 1 && BTC_camera_unc == 0) then {
 					titleText [format ["%1\n%2\n%3", round (_timeout - time),_healer,_lifes], "BLACK FADED"]
 				} else {
-				    hintSilent format ["%1\n%2\n%3", round (_timeout - time),_healer,_lifes];
+				    //hintSilent format ["%1\n%2\n%3", round (_timeout - time),_healer,_lifes];
+					[format ["<t color='#F44336' size = '0.61'>%1</t><br /><t size = '.46'>%2<br />%3</t>", round (_timeout - time), _healer, _lifes], 0, 0.75, 2, 0, 0] spawn BIS_fnc_dynamicText;
 				};
 				if (BTC_camera_unc == 1) then {
 					//titleText [format ["%1\n%2\n%3", round (_timeout - time),_healer,_lifes], "PLAIN"]; titleFadeOut 1;
@@ -1463,8 +1493,10 @@ BTC_player_killed = {
                     };
                 };
             };
-
-
+			// Remove color corrections effects
+			if (!isNil {BTC_blur}) then {ppEffectDestroy BTC_blur;};
+			if (!isNil {BTC_cc}) then {ppEffectDestroy BTC_cc;};
+			if (!isNil {BTC_grain}) then {ppEffectDestroy BTC_grain;};
 		};
 	};
 };
@@ -1623,6 +1655,10 @@ BTC_player_respawn = {
 				titleText ["", "PLAIN"]; titleFadeOut 1;
 			};
 		};
+		// Remove color corrections effects
+		if (!isNil {BTC_blur}) then {ppEffectDestroy BTC_blur;};
+		if (!isNil {BTC_cc}) then {ppEffectDestroy BTC_cc;};
+		if (!isNil {BTC_grain}) then {ppEffectDestroy BTC_grain;};
 	};
 };
 
