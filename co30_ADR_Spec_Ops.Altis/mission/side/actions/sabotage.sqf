@@ -22,13 +22,42 @@ To do:
 
 _______________________________________________________*/
 
+private ["_stance", "_raised", "_weapon"];
+
 //-------------------- Wait for player to action
-[[player, "AinvPercMstpSrasWrflDnon_Putdown_AmovPercMstpSrasWrflDnon"], "QS_fnc_switchMoveMP", nil, false] spawn BIS_fnc_MP;
+
+// Determine what animation to play
+// If player is prone play kneeling animation
+_stance = "Pknl";
+_raised = "Sras";
+_weapon = "Wrfl";
+
+if (stance player == "STAND") then {
+    _stance = "Perc";
+};
+if (weaponLowered player) then {
+    _raised = "Slow";
+};
+call {
+    if ((currentWeapon player == handgunWeapon player) and (handgunWeapon player != "")) exitWith {
+        _weapon = "Wpst";
+    };
+    if ((currentWeapon player == secondaryWeapon player) and (secondaryWeapon player != "")) exitWith {
+        _weapon = "Wlnr";
+    };
+    if (currentWeapon player == "") exitWith {
+        _raised = "Snon";
+        _weapon = "Wnon";
+    };
+};
+
+// Play animation
+player playMove ("Ainv" + _stance + "Mstp" + _raised + _weapon + "Dnon_Putdown_Amov" + _stance + "Mstp" + _raised + _weapon + "Dnon");
 
 sleep 1;
 
 //-------------------- Send hint to player that he's planted the bomb
-hint "Заряд установлен. Ожидайте...";
+hint "Заряд установлен.";
 
 sleep 1;
 
