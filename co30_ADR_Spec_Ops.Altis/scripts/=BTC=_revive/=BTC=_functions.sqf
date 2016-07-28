@@ -1039,7 +1039,7 @@ BTC_fnc_PVEH =
 
 BTC_first_aid =
 {
-	private ["_injured","_array_item_injured","_array_item","_cond","_fak"];
+	private ["_men", "_injured", "_array_item", "_array_item_injured", "_cond", "_fak", "_reviveInProgress", "_reviveTime", "_t", "_progress", "_start", "_end", "_playerType"];
 	_men = nearestObjects [player, ["Man"], 2];
 	if (count _men > 1) then {_injured = _men select 1;};
 	if (format ["%1",_injured getVariable "BTC_need_revive"] != "1") exitWith {};
@@ -1050,51 +1050,122 @@ BTC_first_aid =
 	if ((_array_item_injured find "FirstAidKit" == -1) && (BTC_need_first_aid == 1)) then {_cond = false;} else {_cond = true;};
 	if (!_cond && BTC_need_first_aid == 1) then {if ((_array_item find "FirstAidKit" == -1)) then {_cond = false;} else {_cond = true;};};
 	if (!_cond) exitWith {hint "Can't revive him";};
-	_fak = ["FirstAidKit"];
-	if (({(_x in _array_item)} count _fak) > 0) then {
-		player removeItem "FirstAidKit";
-	} else {
-		_injured removeItem "FirstAidKit";
-	};
-	player playMove "AinvPknlMstpSlayWrflDnon_medic";
-	sleep 5;
-	waitUntil {!Alive player || (animationState player != "AinvPknlMstpSlayWrflDnon_medic" && animationState player != "amovpercmstpsraswrfldnon_amovpknlmstpsraswrfldnon" && animationState player != "amovpknlmstpsraswrfldnon_ainvpknlmstpslaywrfldnon" && animationState player != "ainvpknlmstpslaywrfldnon_amovpknlmstpsraswrfldnon")};
-	if (Alive player && Alive _injured && format ["%1",player getVariable "BTC_need_revive"] == "0") then
-	{
-		_injured setVariable ["BTC_need_revive",0,true];
-		if (group player == group _injured) then
-		{
-			addToScore = [player, 2]; publicVariable "addToScore";
-			["ScoreBonus", ["Поднял товарища.", "2"]] call bis_fnc_showNotification;
+
+	call {
+		scopeName "BTC_revive";
+		// Warn player that movement will break the process
+		["<t size = '.46'>Первая помощь</t><br /><t color='#F44336' size = '.48'>Не двигайтесь!</t>", 0, 0.8, 5, 0.5, 0] spawn BIS_fnc_dynamicText;
+
+		// Play animation
+		player playMove "AinvPknlMstpSnonWrflDnon_medic";
+
+		// Start the revive process
+		_reviveInProgress = true;
+
+		// Set revive time
+		if (playerSide != resistance) then {
+		    _reviveTime = 10;
 		} else {
-			addToScore = [player, 2]; publicVariable "addToScore";
-			["ScoreBonus", ["Поднял товарища.", "2"]] call bis_fnc_showNotification;
+			_reviveTime = 20;
 		};
-		_injured playMoveNow "AinjPpneMstpSnonWrflDnon_rolltoback";
 
-        // disable channels
-        0 enableChannel [true, false];
-        1 enableChannel [true, false];
-        2 enableChannel [false, false];
+		// Wait until player is fully transitioned to the specified animation
+		waitUntil {animationState player == "ainvpknlmstpsnonwrfldnon_medic0s"};
 
-        // add all players to emergency channel
-        7 radioChannelAdd [_injured];
-        _playerType = typeOf _injured;
+		// Get the start time
+		_t = time;
 
-        // commanders have access to command and operative channels
-        if (_playerType == "B_Soldier_SL_F") then {
-            8 radioChannelAdd [_injured];
-            9 radioChannelAdd [_injured];
-        };
+		// Create progress bar
+		with uiNamespace do {
+		    BTC_revive_progressBar = findDisplay 46 ctrlCreate ["RscProgress", -1];
+		    BTC_revive_progressBar ctrlSetPosition [0.34, 0.9];
+		    BTC_revive_progressBar progressSetPosition 0;
+		    BTC_revive_progressBar ctrlCommit 0;
 
-        // pilots have access to operative channels
-        if (_playerType == "B_Helipilot_F") then {
-            8 radioChannelAdd [_injured];
-        };
+		    BTC_revive_text = findDisplay 46 ctrlCreate ["RscStructuredText", -1];
+		    BTC_revive_text ctrlSetPosition [ 0.48, 0.89 ];
+		    BTC_revive_text ctrlCommit 0;
 
-		// load missing items
-        //[_injured] spawn BTC_addMissingItems;
-        [[_injured],"BTC_addMissingItems",nil,true] spawn BIS_fnc_MP;
+		    ["TIMER", "onEachFrame", {
+		        params["_start", "_end"];
+		        _progress = linearConversion[ _start, _end, time, 0, 1 ];
+		        (uiNamespace getVariable "BTC_revive_progressBar") progressSetPosition _progress;
+		        (uiNamespace getVariable "BTC_revive_text") ctrlSetStructuredText parseText format["%1%2", round(100*_progress), "%"];
+		        if ( _progress > 1 ) then {
+		            ["TIMER", "onEachFrame"] call BIS_fnc_removeStackedEventHandler;
+		        };
+		    }, [_t, _t + _reviveTime]] call BIS_fnc_addStackedEventHandler;
+		};
+
+		// Break the process if animation is interupted
+		while {time < (_t + _reviveTime)} do {
+		    uiSleep 0.25;
+		    if (animationState player != "ainvpknlmstpsnonwrfldnon_medic0s") then {
+		        ["<t color='#F44336' size = '.48'>Операция прервана</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
+		        ctrlDelete (uiNamespace getVariable "BTC_revive_progressBar");
+		        ctrlDelete (uiNamespace getVariable "BTC_revive_text");
+		        _reviveInProgress = false;
+		        breakTo "BTC_revive";
+		    };
+		};
+
+		// Delete progress bar once process is finished
+		ctrlDelete (uiNamespace getVariable "BTC_revive_progressBar");
+		ctrlDelete (uiNamespace getVariable "BTC_revive_text");
+
+		// Tell the player that the process is finished
+		if (_reviveInProgress) then {
+			if (alive player && alive _injured && format ["%1", player getVariable "BTC_need_revive"] == "0") then {
+				["<t color='#C6FF00' size = '.48'>Операция завершена</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
+				player playMove "AinvPknlMstpSnonWrflDnon_medicEnd";
+
+				_fak = ["FirstAidKit"];
+				if (({(_x in _array_item)} count _fak) > 0) then {
+					player removeItem "FirstAidKit";
+				} else {
+					_injured removeItem "FirstAidKit";
+				};
+
+				_injured setVariable ["BTC_need_revive", 0, true];
+				if (group player == group _injured) then
+				{
+					addToScore = [player, 2]; publicVariable "addToScore";
+					["ScoreBonus", ["Поднял товарища.", "2"]] call bis_fnc_showNotification;
+				} else {
+					addToScore = [player, 2]; publicVariable "addToScore";
+					["ScoreBonus", ["Поднял товарища.", "2"]] call bis_fnc_showNotification;
+				};
+				_injured playMoveNow "AinjPpneMstpSnonWrflDnon_rolltoback";
+
+		        // disable channels
+		        0 enableChannel [true, false];
+		        1 enableChannel [true, false];
+		        2 enableChannel [false, false];
+
+		        // add all players to emergency channel
+		        7 radioChannelAdd [_injured];
+		        _playerType = typeOf _injured;
+
+		        // commanders have access to command and operative channels
+		        if (_playerType == "B_Soldier_SL_F") then {
+		            8 radioChannelAdd [_injured];
+		            9 radioChannelAdd [_injured];
+		        };
+
+		        // pilots have access to operative channels
+		        if (_playerType == "B_Helipilot_F") then {
+		            8 radioChannelAdd [_injured];
+		        };
+
+				// load missing items
+		        //[_injured] spawn BTC_addMissingItems;
+		        [[_injured],"BTC_addMissingItems",nil,true] spawn BIS_fnc_MP;
+			};
+		};
+
+		// Delete progress bar once more in case it gets stuck
+		ctrlDelete (uiNamespace getVariable "BTC_revive_progressBar");
+		ctrlDelete (uiNamespace getVariable "BTC_revive_text");
 	};
 };
 
@@ -1562,7 +1633,7 @@ BTC_check_action_first_aid = {
 	_men = nearestObjects [vehicle player, ["Man"], 2];
 	if (count _men > 1 && format ["%1", player getVariable "BTC_need_revive"] == "0") then
 	{
-		if (format ["%1", (_men select 1) getVariable "BTC_need_revive"] == "1" && !BTC_dragging && format ["%1", (_men select 1) getVariable "BTC_dragged"] != "1") then {_cond = true;};
+		if (format ["%1", (_men select 1) getVariable "BTC_need_revive"] == "1" && !BTC_dragging && format ["%1", (_men select 1) getVariable "BTC_dragged"] != "1" && animationState player != "ainvpknlmstpsnonwrfldnon_medic0s") then {_cond = true;};
 		_injured = _men select 1;
 	};
 	if (_cond && BTC_pvp == 1) then
@@ -1611,7 +1682,7 @@ BTC_check_action_drag = {
 		}
 		else
 		{
-			if (format ["%1", (_men select 1) getVariable "BTC_need_revive"] == "1" && !BTC_dragging && format ["%1", (_men select 1) getVariable "BTC_dragged"] != "1") then {_cond = true;};
+			if (format ["%1", (_men select 1) getVariable "BTC_need_revive"] == "1" && !BTC_dragging && format ["%1", (_men select 1) getVariable "BTC_dragged"] != "1" && animationState player != "ainvpknlmstpsnonwrfldnon_medic0s") then {_cond = true;};
 		};
 	};
 	_cond
