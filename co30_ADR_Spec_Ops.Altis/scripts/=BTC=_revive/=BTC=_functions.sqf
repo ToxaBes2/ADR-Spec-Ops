@@ -839,12 +839,6 @@ BTC_r_apply_med =
 BTC_fnc_wait_for_revive =
 {
 	_unit = player;
-	if (side _unit == west || playerSide == west) then {
-        BTC_revive_time_max = BTC_revive_time_max_west;
-	};
-	if (side _unit == resistance || playerSide == resistance) then {
-        BTC_revive_time_max = BTC_revive_time_max_partizan;
-    };
 	BTC_r_bleeding_loop = false;
 	_unit setVariable ["BTC_r_status",[1,100,1,1,1],true];
 	BTC_r_damage = 0.5;
@@ -1281,12 +1275,6 @@ BTC_player_killed = {
             } forEach _lostWeapons;
 			_side = playerSide;
 			_injured = player;
-			if (_side == west) then {
-                BTC_revive_time_max = BTC_revive_time_max_west;
-	        };
-	        if (_side == resistance) then {
-                BTC_revive_time_max = BTC_revive_time_max_partizan;
-            };
 			if (BTC_injured_marker == 1) then {BTC_marker_pveh = [0,BTC_side,_pos,_body_marker];publicVariable "BTC_marker_pveh";};
 			disableUserInput true;
 			for [{_n = BTC_revive_time_min}, {_n > 0 && player getVariable "BTC_need_revive" == 1}, {_n = _n - 0.5}] do
