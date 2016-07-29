@@ -41,6 +41,7 @@ class QS
 		class FindPosBuilding {};
 		class FillBots {};
 		class FillCargoPatrol {};
+		class findSafePos {};
 		class garrisonFortEAST {};
 		class garrisonFortFIA {};
 		class garrisonFortIND {};
