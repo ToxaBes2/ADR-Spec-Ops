@@ -239,10 +239,10 @@ class TAWVD_activeText
   color[] = {1, 1, 1, 1};
   colorActive[] = {1, 0.2, 0.2, 1};
   colorDisabled[] = {1, 1, 1, 0.500000};
-  soundEnter[] = {"\A3\ui_f\data\sound\onover", 0.09, 1};
-  soundPush[] = {"\A3\ui_f\data\sound\new1", 0.0, 0};
-  soundClick[] = {"\A3\ui_f\data\sound\onclick", 0.07, 1};
-  soundEscape[] = {"\A3\ui_f\data\sound\onescape", 0.09, 1};
+  soundEnter[] = {"\A3\ui_f\data\sound\RscCombo\soundExpand",0.09,1};
+  soundPush[] = {"\A3\ui_f\data\sound\CfgNotifications\taskCreated",0.0,0};
+  soundClick[] = {"\A3\ui_f\data\sound\RscButton\soundClick",0.07,1};
+  soundEscape[] = {"\A3\ui_f\data\sound\ReadOut\ReadoutHideClick1",0.09,1};
   action = "";
   text = "";
 };

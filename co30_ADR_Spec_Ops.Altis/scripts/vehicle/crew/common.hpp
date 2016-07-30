@@ -673,25 +673,25 @@ class RscShortcutButton
 	text = "";
 	soundEnter[] = 
 	{
-		"\A3\ui_f\data\sound\onover",
+		"\A3\ui_f\data\sound\RscCombo\soundExpand",
 		0.09,
 		1
 	};
 	soundPush[] = 
 	{
-		"\A3\ui_f\data\sound\new1",
+		"\A3\ui_f\data\sound\CfgNotifications\taskCreated",
 		0,
 		0
 	};
 	soundClick[] = 
 	{
-		"\A3\ui_f\data\sound\onclick",
+		"\A3\ui_f\data\sound\RscButton\soundClick",
 		0.07,
 		1
 	};
 	soundEscape[] = 
 	{
-		"\A3\ui_f\data\sound\onescape",
+		"\A3\ui_f\data\sound\ReadOut\ReadoutHideClick1",
 		0.09,
 		1
 	};
