@@ -31,7 +31,7 @@ _SMvehPatrol = createGroup ENEMY_SIDE;
 //---------- INFANTRY
 
 for "_x" from 0 to (2 + (random 4)) do {
-	_randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call BIS_fnc_randomPos;
+	_randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call QS_fnc_randomPos;
 	_infteamPatrol = [_randomPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "Indep" >> "IND_F" >> "Infantry" >> selectRandom [INF_TEAMS])] call BIS_fnc_spawnGroup;
 	[_infteamPatrol, getPos sideObj, 100] call BIS_fnc_taskPatrol;
 
@@ -42,7 +42,7 @@ for "_x" from 0 to (2 + (random 4)) do {
 //---------- SNIPER
 
 for "_x" from 0 to 1 do {
-	_randomPos = [getPos sideObj, 500, 100, 20] call BIS_fnc_findOverwatch;
+	_randomPos = [getPos sideObj, 500, 100, 20] call QS_fnc_findOverwatch;
 	_indSniperTeam = [_randomPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "Indep" >> "IND_F" >> "Infantry" >> "HAF_SniperTeam")] call BIS_fnc_spawnGroup;
 	_indSniperTeam setBehaviour "COMBAT";
 	_indSniperTeam setCombatMode "RED";
@@ -53,7 +53,7 @@ for "_x" from 0 to 1 do {
 
 //---------- RANDOM VEHICLE
 
-_randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call BIS_fnc_randomPos;
+_randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call QS_fnc_randomPos;
 _SMveh = selectRandom [VEH_TYPES] createVehicle _randomPos;
 waitUntil {sleep 0.5; !isNull _SMveh};
 	"I_engineer_F" createUnit [_randomPos,_SMvehPatrol];
@@ -76,7 +76,7 @@ _enemiesarray = _enemiesArray + [_SMveh];
 //---------- AA VEHICLE
 
 for "_x" from 0 to 1 do {
-	_randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call BIS_fnc_randomPos;
+	_randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call QS_fnc_randomPos;
 	_data = [_randomPos, (random 360), "O_APC_Tracked_02_AA_F", ENEMY_SIDE] call BIS_fnc_spawnVehicle;
     _SMaa = _data select 0;
     _SMaaPatrol = _data select 2;

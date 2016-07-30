@@ -94,11 +94,11 @@ if (_anotherChance < 4) then {
 };
 
 // Spawn radiotower
-_position = [[[_positionAO, (PARAMS_AOSize/3)], _dt], ["water", "out"]] call BIS_fnc_randomPos;
+_position = [[[_positionAO, (PARAMS_AOSize/3)], _dt], ["water", "out"]] call QS_fnc_randomPos;
 _flatPos = _position isFlatEmpty[3, 1, 0.3, 30, 0, false];
 _res = count _flatPos;
 while {_res < 1} do {
-	_position = [[[_positionAO, (PARAMS_AOSize/3)], _dt], ["water", "out"]] call BIS_fnc_randomPos;
+	_position = [[[_positionAO, (PARAMS_AOSize/3)], _dt], ["water", "out"]] call QS_fnc_randomPos;
 	_flatPos = _position isFlatEmpty[3, 1, 0.3, 30, 0, false];
     _distance = _bunkerPos distance _position;
     _res = count _flatPos;

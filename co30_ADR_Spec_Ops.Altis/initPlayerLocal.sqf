@@ -31,13 +31,13 @@ if (typeOf player in ["I_G_Soldier_AR_F","I_G_engineer_F"]) then {
     if (player distance2D _partizanPos > 50) then {
 		_dist = 4;
         _accepted = false;
-        _newPlayerPos = [_partizanPos, 0.1, _dist, 1, 0, -1, 0] call BIS_fnc_findSafePos;
+        _newPlayerPos = [_partizanPos, 0.1, _dist, 1, 0, -1, 0] call QS_fnc_findSafePos;
         if (_newPlayerPos distance2D (getPos partizan_ammo) < 50) then {
             _accepted = true;
         };
         while {!_accepted} do {
 			_dist = _dist + 2;
-            _newPlayerPos = [_partizanPos, 0.1, _dist, 1, 0, -1, 0] call BIS_fnc_findSafePos;
+            _newPlayerPos = [_partizanPos, 0.1, _dist, 1, 0, -1, 0] call QS_fnc_findSafePos;
             if (_newPlayerPos distance2D (getPos partizan_ammo) < _dist) then {
                 _accepted = true;
             };

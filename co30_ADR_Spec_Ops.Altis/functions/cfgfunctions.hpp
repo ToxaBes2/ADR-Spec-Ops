@@ -42,6 +42,7 @@ class QS
 		class FillBots {};
 		class FillCargoPatrol {};
 		class findSafePos {};
+		class findOverwatch {};
 		class garrisonFortEAST {};
 		class garrisonFortFIA {};
 		class garrisonFortIND {};
@@ -55,6 +56,8 @@ class QS
 		class PTenemyEAST {};
 		class punishObject {};
 		class RadioSound {};
+		class randomPos {};
+		class randomPosTrigger {};
 		class removeAction {};
 		class removeAction0 {};
 		class removeAction1 {};

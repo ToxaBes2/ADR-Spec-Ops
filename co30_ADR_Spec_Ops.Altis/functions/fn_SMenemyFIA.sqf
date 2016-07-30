@@ -27,7 +27,7 @@ _x = 0;
 
 for "_x" from 0 to (2 + (random 4)) do {
 	_infteamPatrol = createGroup ENEMY_SIDE;
-	_randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call BIS_fnc_randomPos;
+	_randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call QS_fnc_randomPos;
 	_infteamPatrol = [_randomPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "West" >> "Guerilla" >> "Infantry" >> selectRandom [INF_TEAMS])] call BIS_fnc_spawnGroup;
 	[_infteamPatrol, getPos sideObj, 100] call BIS_fnc_taskPatrol;
 
@@ -38,7 +38,7 @@ for "_x" from 0 to (2 + (random 4)) do {
 
 for "_x" from 0 to 2 do {
 	_IRGsniperGroup = createGroup ENEMY_SIDE;
-	_randomPos = [getPos sideObj, 600, 100, 20] call BIS_fnc_findOverwatch;
+	_randomPos = [getPos sideObj, 600, 100, 20] call QS_fnc_findOverwatch;
 	_IRGsniperGroup = [_randomPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "West" >> "Guerilla" >> "Infantry" >> "IRG_SniperTeam_M")] call BIS_fnc_spawnGroup;
 	_IRGsniperGroup setBehaviour "COMBAT";
 	_IRGsniperGroup setCombatMode "RED";
@@ -50,7 +50,7 @@ for "_x" from 0 to 2 do {
 
 for "_x" from 0 to 3 do {
 	_SMvehPatrol = createGroup ENEMY_SIDE;
-	_randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call BIS_fnc_randomPos;
+	_randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call QS_fnc_randomPos;
 	_SMveh = "B_G_Offroad_01_armed_F" createVehicle _randomPos;
 	waitUntil{!isNull _SMveh};
 
@@ -75,7 +75,7 @@ for "_x" from 0 to 3 do {
 
 //---------- VEHICLE AA
 for "_x" from 0 to 1 do {
-	_randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call BIS_fnc_randomPos;
+	_randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call QS_fnc_randomPos;
 	_data = [_randomPos, (random 360), "O_APC_Tracked_02_AA_F", ENEMY_SIDE] call BIS_fnc_spawnVehicle;
     _SMaa = _data select 0;
     _SMaaPatrol = _data select 2;

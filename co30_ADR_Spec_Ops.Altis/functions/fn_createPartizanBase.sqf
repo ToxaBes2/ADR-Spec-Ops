@@ -74,7 +74,7 @@ partizan_flag allowDamage false;
     _sd = random 360;
     _dist = 10;
     _accepted = false;
-    _sp = [_position, 0.25, _dist, 1, 0, 0.5, 0] call BIS_fnc_findSafePos;
+    _sp = [_position, 0.25, _dist, 1, 0, 0.5, 0] call QS_fnc_findSafePos;
     _sp = _sp findEmptyPosition [0, 5, typeOf _x];
     if (count _sp > 0) then {
         if (_sp distance2D _position < 50) then {
@@ -85,7 +85,7 @@ partizan_flag allowDamage false;
     };
     while {!_accepted} do {
         _dist = _dist + 10;
-        _sp = [_position, 0.25, _dist, 1, 0, 0.5, 0] call BIS_fnc_findSafePos;
+        _sp = [_position, 0.25, _dist, 1, 0, 0.5, 0] call QS_fnc_findSafePos;
         _sp = _sp findEmptyPosition [0, 5, typeOf _x];
         if (count _sp > 0) then {
             if (_sp distance2D _position < _dist) then {

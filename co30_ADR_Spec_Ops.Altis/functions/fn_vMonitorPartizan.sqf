@@ -24,7 +24,7 @@ while {true} do {
         _sd = random 360;		// new spawn direction
         _accepted = false;
         while {!_accepted} do {
-            _sp = [_newBase, 2, _distance, 2, 0,-1, 0] call BIS_fnc_findSafePos; // new spawn position
+            _sp = [_newBase, 2, _distance, 2, 0,-1, 0] call QS_fnc_findSafePos; // new spawn position
             if (_sp distance _newBase <= _distance) then {
                 _accepted = true;
             };
@@ -39,7 +39,7 @@ while {true} do {
 			_sd = random 360;		// new spawn direction
             _accepted = false;
             while {!_accepted} do {
-                _sp = [_newBase, 2, _distance, 2, 0,-1, 0] call BIS_fnc_findSafePos; // new spawn position
+                _sp = [_newBase, 2, _distance, 2, 0,-1, 0] call QS_fnc_findSafePos; // new spawn position
                 if (_sp distance _newBase <= _distance) then {
                     _accepted = true;
                 };

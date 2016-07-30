@@ -17,11 +17,11 @@ _c4Message = selectRandom [
 _flatPos = [0, 0, 0];
 _accepted = false;
 while {!_accepted} do {
-	_position = [] call BIS_fnc_randomPos;
+	_position = [] call QS_fnc_randomPos;
 	_flatPos = _position isFlatEmpty [5, 0, 0.1, sizeOf "Land_Radar_Small_F", 0, false];
 
 	while {(count _flatPos) < 2} do {
-		_position = [] call BIS_fnc_randomPos;
+		_position = [] call QS_fnc_randomPos;
 		_flatPos = _position isFlatEmpty [5, 0, 0.1, sizeOf "Land_Radar_Small_F", 0, false];
 	};
 
@@ -30,7 +30,7 @@ while {!_accepted} do {
 	};
 };
 
-_objPos = [_flatPos, 15, 30, 10, 0, 0.5, 0, [], [_flatPos]] call BIS_fnc_findSafePos;
+_objPos = [_flatPos, 15, 30, 10, 0, 0.5, 0, [], [_flatPos]] call QS_fnc_findSafePos;
 
 // SPAWN OBJECTIVE
 sideObj = "Land_Radar_Small_F" createVehicle _flatPos;

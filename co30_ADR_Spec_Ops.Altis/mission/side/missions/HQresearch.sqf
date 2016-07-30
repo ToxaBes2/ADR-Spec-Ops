@@ -18,11 +18,11 @@ _flatPos = [0, 0, 0];
 _accepted = false;
 
 while {!_accepted} do {
-	_position = [] call BIS_fnc_randomPos;
+	_position = [] call QS_fnc_randomPos;
 	_flatPos = _position isFlatEmpty [5, 1, 0.2, sizeOf "Land_Research_HQ_F", 0, false];
 
 	while {(count _flatPos) < 2} do {
-		_position = [] call BIS_fnc_randomPos;
+		_position = [] call QS_fnc_randomPos;
 		_flatPos = _position isFlatEmpty [10, 1, 0.2, sizeOf "Land_Research_HQ_F", 0, false];
 	};
 
@@ -31,7 +31,7 @@ while {!_accepted} do {
 	};
 };
 
-_vehPos = [_flatPos, 15, 30, 10, 0, 0.5, 0, [], [_flatPos]] call BIS_fnc_findSafePos;
+_vehPos = [_flatPos, 15, 30, 10, 0, 0.5, 0, [], [_flatPos]] call QS_fnc_findSafePos;
 
 // SPAWN OBJECTIVE BUILDING
 sideObj = "Land_Research_HQ_F" createVehicle _flatPos;
