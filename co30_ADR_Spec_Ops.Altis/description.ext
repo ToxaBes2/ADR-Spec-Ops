@@ -37,6 +37,17 @@ aiKills = 0; 											// disable scorelist for AI players
 enableItemsDropping = 0; 								// disabled with 0
 joinUnassigned = 1;										// 0 = players forced into role on join
 showUAVFeed = 1;										// Enables/Disables the UAV Feed. Zeus-related.
+showHUD[] = {
+	false,	// Scripted HUD (same as showHUD command)
+	true,	// Vehicle + soldier info
+	false,	// Vehicle radar 
+	true,	// Vehicle compass
+	true,	// Tank direction indicator
+	false,	// Commanding menu
+	false,	// Group Bar
+	false,	// HUD Weapon Cursors
+	false	// HUD Squad Radar
+};
 briefing = 0;                                           // Enables/Disables briefing screen
 //------------------------- Respawn
 
@@ -49,9 +60,9 @@ RespawnDialog = 0;										// default = 1. show respawn timer and scoreboard wh
 wreckLimit = 3;											// Limit before removal is triggered
 wreckRemovalMinTime = 120;								// Min time before removal
 wreckRemovalMaxTime = 360;								// Max time before removal
-corpseLimit = 5;										// Limit before removal is triggered
+corpseLimit = 10;										// Limit before removal is triggered
 corpseRemovalMinTime = 60;								// Min time before removal
-corpseRemovalMaxTime = 120;								// Max time before removal
+corpseRemovalMaxTime = 180;								// Max time before removal
 
 //------------------------- Includes / Functions
 

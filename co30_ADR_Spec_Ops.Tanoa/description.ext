@@ -31,7 +31,18 @@ aiKills = 0; 											// disable scorelist for AI players
 enableItemsDropping = 0; 								// disabled with 0
 joinUnassigned = 1;										// 0 = players forced into role on join
 showUAVFeed = 1;										// Enables/Disables the UAV Feed. Zeus-related.
-
+showHUD[] = {
+	false,	// Scripted HUD (same as showHUD command)
+	true,	// Vehicle + soldier info
+	false,	// Vehicle radar 
+	true,	// Vehicle compass
+	true,	// Tank direction indicator
+	false,	// Commanding menu
+	false,	// Group Bar
+	false,	// HUD Weapon Cursors
+	false	// HUD Squad Radar
+};
+briefing = 0;
 //------------------------- Respawn
 
 Respawn = 3;											// 0 = none. 1 = bird. 2 = instant where died. 3 = base or respawn_west marker. 4 = respawn with team, or bird. 5 = into AI or bird.

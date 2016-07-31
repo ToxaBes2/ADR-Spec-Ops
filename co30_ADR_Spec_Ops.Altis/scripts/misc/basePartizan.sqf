@@ -24,5 +24,5 @@ _null = [] call QS_fnc_createPartizanBase;
 
 
 //---------- Active time
-sleep _activeTimer;
-BASEPARTIZAN_SWITCH = nil; publicVariable "BASEPARTIZAN_SWITCH";
+uiSleep _activeTimer;
+BASEPARTIZAN_SWITCH = false; publicVariable "BASEPARTIZAN_SWITCH";

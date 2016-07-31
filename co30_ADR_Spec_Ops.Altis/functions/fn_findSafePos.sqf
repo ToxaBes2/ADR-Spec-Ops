@@ -43,6 +43,7 @@ _objDist = _this select 3;
 _waterMode = _this select 4;
 _maxGradient = _this select 5;
 _shoreMode = _this select 6;
+_result = [];
 if (_shoreMode == 0) then {_shoreMode = false} else {_shoreMode = true};
 _blacklist = [];
 if ((count _this) > 7) then {
@@ -94,10 +95,14 @@ if ((count _newPos) == 0) then {
 	};
 };
 if (_newPos distance2D _pos > (_maxDist*1.2)) then {
-    _result = (selectBestPlaces [_pos, _maxDist, "meadow", 3, 1]) select 0;
-    if ((_result select 1) >= 0.87) then {
-        _newPos = _result select 0;
-    } else {
+    _result = selectBestPlaces [_pos, _maxDist, "meadow", 1, 1];
+    if (count _result > 0) then {
+        _result = _result select 0;
+        if ((_result select 1) >= 0.87) then {
+            _newPos = _result select 0;
+        };
+    };
+    if ((count _newPos) == 0) then {
         _newPos = [0,0,0];
         _log = format ["error: safe position not found, start pos: %1, max distance: %2, gradient: %3", _pos, _maxDist, _maxGradient];
         _log call BIS_fnc_log;
