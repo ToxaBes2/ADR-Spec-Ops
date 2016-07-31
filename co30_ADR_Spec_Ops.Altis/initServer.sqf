@@ -47,11 +47,11 @@ if (isNil {uiNamespace getVariable "life_sql_id"}) then {
             } else {
                 "extDB2" callExtension "9:LOCK";
             };
-        };	    	    
-    };    
+        };
+    };
 };
 
-// create partizan base and prepare units uniform for grab action
+// Create partizan base
 _null = [] call QS_fnc_createPartizanBase;
 
 // Hide turrets

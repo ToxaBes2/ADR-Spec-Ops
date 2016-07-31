@@ -1,4 +1,4 @@
-﻿class BTC_r_shortcutButton
+﻿class BTC_r_shortcutButton 
 {
 	idc = -1;
 	style = 0;
@@ -22,21 +22,21 @@
 	textureNoShortcut = "#(argb,8,8,3)color(0,0,0,0)";
 	periodFocus = 1.2;
 	periodOver = 0.8;
-
+	
 	class HitZone {
 		left = 0.0;
 		top = 0.0;
 		right = 0.0;
 		bottom = 0.0;
 	};
-
+	
 	class ShortcutPos {
 		left = 0;
 		top = "(			(		(		((safezoneW / safezoneH) min 1.2) / 1.2) / 20) - 		(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)) / 2";
 		w = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1) * (3/4)";
 		h = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 	};
-
+	
 	class TextPos {
 		left = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1) * (3/4)";
 		top = "(			(		(		((safezoneW / safezoneH) min 1.2) / 1.2) / 20) - 		(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)) / 2";
@@ -49,25 +49,25 @@
 	sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 	text = "";
 	soundEnter[] = {"\A3\ui_f\data\sound\RscCombo\soundExpand",0.09,1};
-	soundPush[] = {"\A3\ui_f\data\sound\CfgNotifications\taskCreated",0.0,0};
-	soundClick[] = {"\A3\ui_f\data\sound\RscButton\soundClick",0.07,1};
-	soundEscape[] = {"\A3\ui_f\data\sound\ReadOut\ReadoutHideClick1",0.09,1};
+    soundPush[] = {"\A3\ui_f\data\sound\CfgNotifications\taskCreated",0.0,0};
+    soundClick[] = {"\A3\ui_f\data\sound\RscButton\soundClick",0.07,1};
+    soundEscape[] = {"\A3\ui_f\data\sound\ReadOut\ReadoutHideClick1",0.09,1};
 	action = "";
-
+	
 	class Attributes {
 		font = "PuristaMedium";
 		color = "#E5E5E5";
 		align = "left";
 		shadow = "true";
 	};
-
+	
 	class AttributesImage {
 		font = "PuristaMedium";
 		color = "#E5E5E5";
 		align = "left";
 	};
 };
-class BTC_r_button_menu : BTC_r_shortcutButton
+class BTC_r_button_menu : BTC_r_shortcutButton 
 {
 	idc = -1;
 	type = 16;
@@ -95,21 +95,21 @@ class BTC_r_button_menu : BTC_r_shortcutButton
 	periodOver = 1.2;
 	size = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 	sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
-
+	
 	class TextPos {
 		left = "0.25 * 			(			((safezoneW / safezoneH) min 1.2) / 40)";
 		top = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) - 		(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)) / 2";
 		right = 0.005;
 		bottom = 0.0;
 	};
-
+	
 	class Attributes {
 		font = "PuristaLight";
 		color = "#E5E5E5";
 		align = "left";
 		shadow = "false";
 	};
-
+	
 	class ShortcutPos {
 		left = "(6.25 * 			(			((safezoneW / safezoneH) min 1.2) / 40)) - 0.0225 - 0.005";
 		top = 0.005;
@@ -117,7 +117,7 @@ class BTC_r_button_menu : BTC_r_shortcutButton
 		h = 0.03;
 	};
 };
-class BTC_r_combo
+class BTC_r_combo 
 {
 	style = 16;
 	type = 4;
@@ -160,15 +160,15 @@ class BTC_respawn_button_dialog
 	movingEnable = 1;
 	onLoad = "";//"uiNamespace setVariable [""BTC_respawn_dialog"", _this select 0];[] spawn BTC_check_kit;if (getNumber (configFile >> ""cfgVehicles"" >> typeof player >> ""attendant"") == 1) then {[] spawn BTC_ctrlShow;};_spawn = [] spawn BTC_check_sniper;";
 	objects[] = {};
-	class controlsBackground
+	class controlsBackground 
 	{
 	};
-	class controls
+	class controls 
 	{
-		class respawn_button : BTC_r_button_menu
+		class respawn_button : BTC_r_button_menu 
 		{
 			idc = 9;
-			text = "Respawn";
+			text = "Respawn"; 
 			action = "BTC_respawn_cond = true;closeDialog 0;if (BTC_r_new_system == 0) then {_respawn = [] spawn BTC_player_respawn;} else {player setDamage 1;};";
 			x = 0.7;
 			y = 0.6 * safezoneH + safezoneY;
@@ -182,37 +182,37 @@ class BTC_move_to_mobile_dialog
 	movingEnable = 1;
 	onLoad = "";
 	objects[] = {};
-	class controlsBackground
+	class controlsBackground 
 	{
 
 	};
-	class controls
+	class controls 
 	{
-		class BTC_r_Apply : BTC_r_button_menu
+		class BTC_r_Apply : BTC_r_button_menu 
 		{
 			idc = -1;
-			text = "Apply";
+			text = "Apply"; 
 			action = "_spawn = [] spawn BTC_r_apply";
 			x = 0.54;
 			y = 0.25 * safezoneH + safezoneY;
 			default = true;
 		};
-		class BTC_r_Close : BTC_r_button_menu
+		class BTC_r_Close : BTC_r_button_menu 
 		{
 			idc = -1;
-			text = "Close";
+			text = "Close"; 
 			action = "_spawn = [] spawn BTC_r_close";
 			x = 0.34;
 			y = 0.25 * safezoneH + safezoneY;
 			default = true;
 		};
-		class BTC_r_spawn_points : BTC_r_combo
+		class BTC_r_spawn_points : BTC_r_combo 
 		{
 			idc = 119;
 			onLBSelChanged = "_spawn = [] spawn BTC_r_change_target";
-			x = 0.34;
+			x = 0.34; 
 			y = 0.1 * safezoneH + safezoneY;
-			w = 0.4;
+			w = 0.4; 
 			h = 0.055;
 		};
 	};
@@ -223,34 +223,34 @@ class BTC_spectating_dialog
 	movingEnable = 1;
 	onLoad = "uiNamespace setVariable [""BTC_r_spectating"", _this select 0];";
 	objects[] = {};
-	class controlsBackground
+	class controlsBackground 
 	{
 
 	};
-	class controls
+	class controls 
 	{
-		//class BTC_r_name_units : BTC_r_combo
+		//class BTC_r_name_units : BTC_r_combo 
 		//{
 		//	idc = 120;
 		//	onLBSelChanged = "_spawn = [] spawn BTC_r_s_change_target";
-		//	x = 0;
+		//	x = 0; 
 		//	y = 0.2 * safezoneH + safezoneY;
-		//	w = 0.4;
+		//	w = 0.4; 
 		//	h = 0.035;
 		//};
-		//class BTC_r_spect_view : BTC_r_combo
+		//class BTC_r_spect_view : BTC_r_combo 
 		//{
 		//	idc = 121;
 		//	onLBSelChanged = "_spawn = [] spawn BTC_r_s_change_view";
-		//	x = 0.5;
+		//	x = 0.5; 
 		//	y = 0.2 * safezoneH + safezoneY;
-		//	w = 0.2;
+		//	w = 0.2; 
 		//	h = 0.035;
 		//};
-		class respawn_button : BTC_r_button_menu
+		class respawn_button : BTC_r_button_menu 
 		{
 			idc = 122;
-			text = "Возрождение";
+			text = "Возрождение"; 
 			action = "BTC_respawn_cond = true;closeDialog 0;if (BTC_r_new_system == 0) then {_respawn = [] spawn BTC_player_respawn;} else {player setDamage 1;};";
 			x = 0.4;
 			y = 0.2 * safezoneH + safezoneY;
@@ -265,61 +265,61 @@ class BTC_state_dialog
 	movingEnable = 1;
 	onLoad = "uiNamespace setVariable [""BTC_r_dialog"", _this select 0];";
 	objects[] = {};
-	class controlsBackground
+	class controlsBackground 
 	{
 
 	};
-	class controls
+	class controls 
 	{
-		class BTC_r_bleed : BTC_r_button_menu
+		class BTC_r_bleed : BTC_r_button_menu 
 		{
 			idc = 91;
-			text = "Bandage";
+			text = "Bandage"; 
 			action = "_spawn = [] spawn BTC_r_apply_bandage";
 			x = 0.7;
 			y = 0.2;
 			default = true;
 		};
-		class BTC_r_mor : BTC_r_button_menu
+		class BTC_r_mor : BTC_r_button_menu 
 		{
 			idc = 92;
-			text = "Morphine";
+			text = "Morphine"; 
 			action = "_spawn = [] spawn BTC_r_apply_mor";
 			x = 0.7;
 			y = 0.3;
 			default = true;
 		};
-		class BTC_r_epi : BTC_r_button_menu
+		class BTC_r_epi : BTC_r_button_menu 
 		{
 			idc = 93;
-			text = "Epi";
+			text = "Epi"; 
 			action = "_spawn = [] spawn BTC_r_apply_epi";
 			x = 0.7;
 			y = 0.35;
 			default = true;
 		};
-		class BTC_r_cpr : BTC_r_button_menu
+		class BTC_r_cpr : BTC_r_button_menu 
 		{
 			idc = 94;
-			text = "CPR";
+			text = "CPR"; 
 			action = "_spawn = [] spawn BTC_r_apply_cpr";
 			x = 0.7;
 			y = 0.4;
 			default = true;
 		};
-		class BTC_r_med : BTC_r_button_menu
+		class BTC_r_med : BTC_r_button_menu 
 		{
 			idc = 95;
-			text = "Medikit";
+			text = "Medikit"; 
 			action = "_spawn = [] spawn BTC_r_apply_med";
 			x = 0.7;
 			y = 0.45;
 			default = true;
 		};
-		class BTC_r_tra : BTC_r_button_menu
+		class BTC_r_tra : BTC_r_button_menu 
 		{
 			idc = 96;
-			text = "Transf.";
+			text = "Transf."; 
 			action = "_spawn = [] spawn BTC_r_apply_tra";
 			x = 0.7;
 			y = 0.25;

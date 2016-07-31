@@ -47,21 +47,21 @@ baseTurret14 setvehicleammo 1;
 baseTurret15 setvehicleammo 1;
 
 // put turrets on correct places
-baseTurret1 setPos [15283.8,17367.1,2.778];
-baseTurret2 setPos [15286.4,17369.3,2.78095];
-baseTurret3 setPos [15322,17399.6,2.22285];
-baseTurret4 setPos [15189.2,17523.5,4.349];
-baseTurret5 setPos [15186.6,17526.1,4.338];
-baseTurret6 setPos [15167.1,17370.6,4.127];
-baseTurret7 setPos [15187.7,17361.9,3.132];
-baseTurret8 setPos [15052.7,17329.3,10.1012];
-baseTurret9 setPos [14923.6,17196.6,10.123];
-baseTurret10 setPos [14968.4,16964.1,12.3166];
-baseTurret11 setPos [14968,16966.1,12.3267];
-baseTurret12 setPos [15455.5,15754.1,15.613];
-baseTurret13 setPos [15363,15883.6,3.157];
-baseTurret14 setPos [17776.3,18214.9,5.921];
-baseTurret15 setPos [17715.3,18117.9,0];
+baseTurret1 setPos [6901.91,7427.83,13.069];
+baseTurret2 setPos [6903.23,7420.66,13.068];
+baseTurret3 setPos [6759.78,7360.07,10.12];
+baseTurret4 setPos [6768.26,7352.23,10.12];
+baseTurret5 setPos [6867.95,7231.05,22.53];
+baseTurret6 setPos [6865.11,7225.58,22.512];
+baseTurret7 setPos [7003.57,7196.28,4.34404];
+baseTurret8 setPos [6925.94,7334.56,4.225];
+baseTurret9 setPos [6888.33,7415.92,4.225];
+baseTurret10 setPos [6904.97,7331.78,4.22479];
+baseTurret11 setPos [6909.53,7420.09,4.225];
+baseTurret12 setPos [6726.38,6940.75,4.46229];
+baseTurret13 setPos [6724.38,6943.2,4.511];
+baseTurret14 setPos [6620.34,7306.56,4.26537];
+baseTurret15 setPos [6623.38,7307.07,4.39042];
 
 // replace tuuret operators
 _grpTurret1 = createGroup west;

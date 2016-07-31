@@ -144,12 +144,22 @@ BTC_set_gear =
 	{_unit removeItem _x} foreach (items _unit);
 	{_unit unassignItem _x;_unit removeItem _x} foreach (assignedItems _unit);
 	////////////////////////
-	if ((_gear select 0) != "") then {_unit addUniform (_gear select 0);};
+	if ((_gear select 0) != "") then {_unit forceAddUniform (_gear select 0);};
 	if ((_gear select 1) != "") then {_unit addVest (_gear select 1);};
 	_unit addBackpack "B_AssaultPack_blk";
 
-	//(_x != "" && _x != "Binocular" && _x != "Rangefinder"
-	if (count (_gear select 11) > 0) then {{if (_x != "" && _x != "Rangefinder") then {_unit addItem _x;_unit assignItem _x;sleep 0.1;};} foreach (_gear select 11);};
+	if (count (_gear select 11) > 0) then {
+		{
+			if (_x != "") then {
+				if (_x != "Rangefinder" && _x != "Binocular" && _x != "Rangefinder") then {
+					_unit addItem _x;
+					_unit assignItem _x;
+				} else {
+					_unit addWeapon _x;
+				};
+			};
+		} foreach (_gear select 11);
+	};
 
 	_ammo = _gear select 16;
 	if (count (_ammo select 0) > 0) then {_unit addMagazine (_ammo select 0)};
@@ -166,18 +176,18 @@ BTC_set_gear =
 	_v_cont = (vestContainer _unit);
 
 	{_unit addMagazine _x;} foreach (_ammo select 3);
-	{if (!(isClass (configFile >> "cfgMagazines" >> _x))) then {_unit addItem _x;} else {if (getNumber(configFile >> "cfgMagazines" >> _x >> "count") < 2) then {_unit addMagazine _x;};};sleep 0.1;} foreach (_gear select 12);
+	{if (!(isClass (configFile >> "cfgMagazines" >> _x))) then {_unit addItem _x;} else {if (getNumber(configFile >> "cfgMagazines" >> _x >> "count") < 2) then {_unit addMagazine _x;};};} foreach (_gear select 12);
 
 	if (!isnull _u_cont) then {_u_cont addItemCargo ["itemWatch",50];};
 
 	{_unit addMagazine _x;} foreach (_ammo select 4);
-	{if (!(isClass (configFile >> "cfgMagazines" >> _x))) then {_unit addItem _x;} else {if (getNumber(configFile >> "cfgMagazines" >> _x >> "count") < 2) then {_unit addMagazine _x;};};sleep 0.1;} foreach (_gear select 13);
+	{if (!(isClass (configFile >> "cfgMagazines" >> _x))) then {_unit addItem _x;} else {if (getNumber(configFile >> "cfgMagazines" >> _x >> "count") < 2) then {_unit addMagazine _x;};};} foreach (_gear select 13);
 
 	if (!isnull _v_cont) then {_v_cont addItemCargo ["itemWatch",300];};
 
 	{_unit addMagazine _x;} foreach (_ammo select 5);
 
-	{if (!(isClass (configFile >> "cfgMagazines" >> _x))) then {_unit addItem _x;} else {if (getNumber(configFile >> "cfgMagazines" >> _x >> "count") < 2) then {_unit addMagazine _x;};};sleep 0.1;} foreach (_gear select 5);
+	{if (!(isClass (configFile >> "cfgMagazines" >> _x))) then {_unit addItem _x;} else {if (getNumber(configFile >> "cfgMagazines" >> _x >> "count") < 2) then {_unit addMagazine _x;};};} foreach (_gear select 5);
 
 	if (!isnull _u_cont) then {for "_i" from 1 to 50 do {_unit removeItemFromUniform "itemWatch";};};
 	if (!isnull _v_cont) then {for "_i" from 1 to 300 do {_unit removeItemFromVest "itemWatch";};};
@@ -199,7 +209,6 @@ BTC_set_gear =
 	if ((_gear select 15) != -1) then {player action ["SWITCHWEAPON", player, player, (_gear select 15)];};
 
     if (_unit == player) then {
-        sleep 0.2;
         _prim_weapon = _gear select 17;
     	_prim_magazine = _gear select 18;
     	_prim_items = _gear select 19;
@@ -210,7 +219,6 @@ BTC_set_gear =
                         player addMagazine _x;
                     } forEach _prim_magazine;
                     player addWeapon _prim_weapon;
-                    sleep 0.1;
                     if (count _prim_items > 0) then {
                         player addPrimaryWeaponItem _x;
                     };
@@ -1031,7 +1039,7 @@ BTC_fnc_PVEH =
 
 BTC_first_aid =
 {
-	private ["_injured","_array_item_injured","_array_item","_cond","_fak"];
+	private ["_men", "_injured", "_array_item", "_array_item_injured", "_cond", "_fak", "_reviveInProgress", "_reviveTime", "_t", "_progress", "_start", "_end", "_playerType"];
 	_men = nearestObjects [player, ["Man"], 2];
 	if (count _men > 1) then {_injured = _men select 1;};
 	if (format ["%1",_injured getVariable "BTC_need_revive"] != "1") exitWith {};
@@ -1042,31 +1050,121 @@ BTC_first_aid =
 	if ((_array_item_injured find "FirstAidKit" == -1) && (BTC_need_first_aid == 1)) then {_cond = false;} else {_cond = true;};
 	if (!_cond && BTC_need_first_aid == 1) then {if ((_array_item find "FirstAidKit" == -1)) then {_cond = false;} else {_cond = true;};};
 	if (!_cond) exitWith {hint "Can't revive him";};
-	_fak = ["FirstAidKit"];
-	if (({(_x in _array_item)} count _fak) > 0) then {
-		player removeItem "FirstAidKit";
-	} else {
-		_injured removeItem "FirstAidKit";
-	};
-	player playMove "AinvPknlMstpSlayWrflDnon_medic";
-	sleep 5;
-	waitUntil {!Alive player || (animationState player != "AinvPknlMstpSlayWrflDnon_medic" && animationState player != "amovpercmstpsraswrfldnon_amovpknlmstpsraswrfldnon" && animationState player != "amovpknlmstpsraswrfldnon_ainvpknlmstpslaywrfldnon" && animationState player != "ainvpknlmstpslaywrfldnon_amovpknlmstpsraswrfldnon")};
-	if (Alive player && Alive _injured && format ["%1",player getVariable "BTC_need_revive"] == "0") then
-	{
-		_injured setVariable ["BTC_need_revive",0,true];
-		if (group player == group _injured) then
-		{
-			addToScore = [player, 2]; publicVariable "addToScore";
-			["ScoreBonus", ["Поднял сокомандника.", "2"]] call bis_fnc_showNotification;
-		} else {
-			addToScore = [player, 2]; publicVariable "addToScore";
-			["ScoreBonus", ["Поднял соотрядника.", "2"]] call bis_fnc_showNotification;
-		};
-		_injured playMoveNow "AinjPpneMstpSnonWrflDnon_rolltoback";
 
-		// load missing items
-        //[_injured] spawn BTC_addMissingItems;
-        [[_injured],"BTC_addMissingItems",nil,true] spawn BIS_fnc_MP;
+	call {
+		scopeName "BTC_revive";
+		// Warn player that movement will break the process
+		["<t size = '.46'>Первая помощь</t><br /><t color='#F44336' size = '.48'>Не двигайтесь!</t>", 0, 0.8, 5, 0.5, 0] spawn BIS_fnc_dynamicText;
+
+		// Play animation
+		player playMove "AinvPknlMstpSnonWrflDnon_medic";
+
+		// Start the revive process
+		_reviveInProgress = true;
+
+		// Set revive time
+		if (playerSide != resistance) then {
+		    _reviveTime = 10;
+		} else {
+			_reviveTime = 20;
+		};
+
+		// Wait until player is fully transitioned to the specified animation
+		waitUntil {animationState player == "ainvpknlmstpsnonwrfldnon_medic0s"};
+
+		// Get the start time
+		_t = time;
+
+		// Create progress bar
+		with uiNamespace do {
+		    BTC_revive_progressBar = findDisplay 46 ctrlCreate ["RscProgress", -1];
+		    BTC_revive_progressBar ctrlSetPosition [0.34, 0.9];
+		    BTC_revive_progressBar progressSetPosition 0;
+		    BTC_revive_progressBar ctrlCommit 0;
+
+		    BTC_revive_text = findDisplay 46 ctrlCreate ["RscStructuredText", -1];
+		    BTC_revive_text ctrlSetPosition [ 0.48, 0.89 ];
+		    BTC_revive_text ctrlCommit 0;
+
+		    ["TIMER", "onEachFrame", {
+		        params["_start", "_end"];
+		        _progress = linearConversion[ _start, _end, time, 0, 1 ];
+		        (uiNamespace getVariable "BTC_revive_progressBar") progressSetPosition _progress;
+		        (uiNamespace getVariable "BTC_revive_text") ctrlSetStructuredText parseText format["%1%2", round(100*_progress), "%"];
+		        if ( _progress > 1 ) then {
+		            ["TIMER", "onEachFrame"] call BIS_fnc_removeStackedEventHandler;
+		        };
+		    }, [_t, _t + _reviveTime]] call BIS_fnc_addStackedEventHandler;
+		};
+
+		// Break the process if animation is interupted
+		while {time < (_t + _reviveTime)} do {
+		    uiSleep 0.25;
+		    if (animationState player != "ainvpknlmstpsnonwrfldnon_medic0s") then {
+		        ["<t color='#F44336' size = '.48'>Операция прервана</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
+		        ctrlDelete (uiNamespace getVariable "BTC_revive_progressBar");
+		        ctrlDelete (uiNamespace getVariable "BTC_revive_text");
+		        _reviveInProgress = false;
+		        breakTo "BTC_revive";
+		    };
+		};
+
+		// Delete progress bar once process is finished
+		ctrlDelete (uiNamespace getVariable "BTC_revive_progressBar");
+		ctrlDelete (uiNamespace getVariable "BTC_revive_text");
+
+		// Tell the player that the process is finished
+		if (_reviveInProgress) then {
+			if (alive player && alive _injured && format ["%1", player getVariable "BTC_need_revive"] == "0") then {
+				["<t color='#C6FF00' size = '.48'>Операция завершена</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
+				player playMove "AinvPknlMstpSnonWrflDnon_medicEnd";
+
+				_fak = ["FirstAidKit"];
+				if (({(_x in _array_item)} count _fak) > 0) then {
+					player removeItem "FirstAidKit";
+				} else {
+					_injured removeItem "FirstAidKit";
+				};
+
+				_injured setVariable ["BTC_need_revive", 0, true];
+				if (group player == group _injured) then {
+					addToScore = [player, 2]; publicVariable "addToScore";
+					["ScoreBonus", ["Поднял товарища.", "2"]] call bis_fnc_showNotification;
+				} else {
+					addToScore = [player, 2]; publicVariable "addToScore";
+					["ScoreBonus", ["Поднял товарища.", "2"]] call bis_fnc_showNotification;
+				};
+				_injured playMoveNow "AinjPpneMstpSnonWrflDnon_rolltoback";
+
+		        // disable channels
+		        0 enableChannel [true, false];
+		        1 enableChannel [true, false];
+		        2 enableChannel [false, false];
+
+		        // add all players to emergency channel
+		        7 radioChannelAdd [_injured];
+		        _playerType = typeOf _injured;
+
+		        // commanders have access to command and operative channels
+		        if (_playerType == "B_Soldier_SL_F") then {
+		            8 radioChannelAdd [_injured];
+		            9 radioChannelAdd [_injured];
+		        };
+
+		        // pilots have access to operative channels
+		        if (_playerType == "B_Helipilot_F") then {
+		            8 radioChannelAdd [_injured];
+		        };
+
+				// load missing items
+		        //[_injured] spawn BTC_addMissingItems;
+		        [[_injured],"BTC_addMissingItems",nil,true] spawn BIS_fnc_MP;
+			};
+		};
+
+		// Delete progress bar once more in case it gets stuck
+		ctrlDelete (uiNamespace getVariable "BTC_revive_progressBar");
+		ctrlDelete (uiNamespace getVariable "BTC_revive_text");
 	};
 };
 
@@ -1266,6 +1364,36 @@ BTC_player_killed = {
 				if (BTC_black_screen == 0 && BTC_disable_respawn == 0) then {if (BTC_action_respawn == 0) then {disableSerialization;_dlg = createDialog "BTC_respawn_button_dialog";};};
 				if (BTC_black_screen == 1 && BTC_disable_respawn == 0 && !Dialog) then {_dlg = createDialog "BTC_respawn_button_dialog";};
 				BTC_display_EH = (findDisplay 46) displayAddEventHandler ["KeyDown", "_anim = [] spawn {sleep 1;player switchMove ""AinjPpneMstpSnonWrflDnon"";};"];
+
+				// Color corrections
+				BTC_blur = ppEffectCreate ["RadialBlur", 100];
+			    BTC_blur ppEffectEnable true;
+			    BTC_blur ppEffectAdjust [0.002, 0.002, 0.15, 0.15];
+			    BTC_blur ppEffectCommit 0;
+
+				BTC_cc = ppEffectCreate ["ColorCorrections", 1500];
+				BTC_cc ppEffectEnable true;
+				BTC_cc ppEffectAdjust [
+					1,
+					1,
+					0,
+					0, 0, 0, 0,
+					1, 1, 1, 0,
+					0.299, 0.587, 0.114, 0
+				];
+				BTC_cc ppEffectCommit 0;
+
+				BTC_grain = ppEffectCreate ["FilmGrain", 2000];
+			    BTC_grain ppEffectEnable true;
+			    BTC_grain ppEffectAdjust [
+				    0.3,
+				    1.5,
+				    0.1,
+				    0.5,
+				    0.5,
+				    0
+			    ];
+			    BTC_grain ppEffectCommit 0;
 			} else {
 				BTC_r_u_camera = "camera" camCreate (position player);
 				BTC_r_u_camera camSetTarget player;
@@ -1289,7 +1417,8 @@ BTC_player_killed = {
 				if (BTC_black_screen == 1 && BTC_camera_unc == 0) then {
 					titleText [format ["%1\n%2\n%3", round (_timeout - time),_healer,_lifes], "BLACK FADED"]
 				} else {
-				    hintSilent format ["%1\n%2\n%3", round (_timeout - time),_healer,_lifes];
+				    //hintSilent format ["%1\n%2\n%3", round (_timeout - time),_healer,_lifes];
+					[format ["<t color='#F44336' size = '0.61'>%1</t><br /><t size = '.46'>%2<br />%3</t>", round (_timeout - time), _healer, _lifes], 0, 0.75, 2, 0, 0] spawn BIS_fnc_dynamicText;
 				};
 				if (BTC_camera_unc == 1) then {
 					//titleText [format ["%1\n%2\n%3", round (_timeout - time),_healer,_lifes], "PLAIN"]; titleFadeOut 1;
@@ -1364,8 +1493,10 @@ BTC_player_killed = {
                     };
                 };
             };
-
-
+			// Remove color corrections effects
+			if (!isNil {BTC_blur}) then {ppEffectDestroy BTC_blur;};
+			if (!isNil {BTC_cc}) then {ppEffectDestroy BTC_cc;};
+			if (!isNil {BTC_grain}) then {ppEffectDestroy BTC_grain;};
 		};
 	};
 };
@@ -1433,6 +1564,23 @@ BTC_player_respawn = {
 	if (BTC_active_lifes == 1 && BTC_lifes == 0) exitWith BTC_out_of_lifes;
 	if (BTC_active_lifes != 1 || BTC_lifes != 0) then
 	{
+		// Create dead body with duplicate equipment if player is BLUFOR
+		if (player isKindOf "B_Soldier_base_F") then {
+			private ["_group", "_deadBody"];
+			_group = createGroup (side player);
+			(typeOf player) createUnit [[0, 0, 0], _group, "BTC_deadBody = this;"];
+			_deadBody = BTC_deadBody;
+			[_deadBody, BTC_gear] call BTC_set_gear;
+			_deadBody disableCollisionWith player;
+			_deadBody setDir (direction player);
+			_deadBody setFace (face player);
+			_deadBody switchMove animationState player;
+			_deadBody setPos (getPos player);
+			_deadBody setDamage 1;
+			deleteGroup _group;
+		};
+
+		// Continue the respawn procedure
 		deTach player;
 		player setVariable ["BTC_need_revive",0,true];
 		closeDialog 0;
@@ -1507,6 +1655,10 @@ BTC_player_respawn = {
 				titleText ["", "PLAIN"]; titleFadeOut 1;
 			};
 		};
+		// Remove color corrections effects
+		if (!isNil {BTC_blur}) then {ppEffectDestroy BTC_blur;};
+		if (!isNil {BTC_cc}) then {ppEffectDestroy BTC_cc;};
+		if (!isNil {BTC_grain}) then {ppEffectDestroy BTC_grain;};
 	};
 };
 
@@ -1517,7 +1669,7 @@ BTC_check_action_first_aid = {
 	_men = nearestObjects [vehicle player, ["Man"], 2];
 	if (count _men > 1 && format ["%1", player getVariable "BTC_need_revive"] == "0") then
 	{
-		if (format ["%1", (_men select 1) getVariable "BTC_need_revive"] == "1" && !BTC_dragging && format ["%1", (_men select 1) getVariable "BTC_dragged"] != "1") then {_cond = true;};
+		if (format ["%1", (_men select 1) getVariable "BTC_need_revive"] == "1" && !BTC_dragging && format ["%1", (_men select 1) getVariable "BTC_dragged"] != "1" && animationState player != "ainvpknlmstpsnonwrfldnon_medic0s") then {_cond = true;};
 		_injured = _men select 1;
 	};
 	if (_cond && BTC_pvp == 1) then
@@ -1566,7 +1718,7 @@ BTC_check_action_drag = {
 		}
 		else
 		{
-			if (format ["%1", (_men select 1) getVariable "BTC_need_revive"] == "1" && !BTC_dragging && format ["%1", (_men select 1) getVariable "BTC_dragged"] != "1") then {_cond = true;};
+			if (format ["%1", (_men select 1) getVariable "BTC_need_revive"] == "1" && !BTC_dragging && format ["%1", (_men select 1) getVariable "BTC_dragged"] != "1" && animationState player != "ainvpknlmstpsnonwrfldnon_medic0s") then {_cond = true;};
 		};
 	};
 	_cond
@@ -1781,7 +1933,7 @@ BTC_3d_markers =
 	_3d = addMissionEventHandler ["Draw3D",
 	{
 		{
-			if (((_x distance player) < BTC_3d_distance) && (format ["%1", _x getVariable "BTC_need_revive"] == "1")) then
+			if (((_x distance player) < BTC_3d_distance)  && ((playerSide == west && _x isKindOf 'B_Soldier_base_F') || (playerSide == resistance && _x isKindOf 'I_G_Soldier_base_F')) && (format ["%1", _x getVariable "BTC_need_revive"] == "1")) then
 			{
 				drawIcon3D["a3\ui_f\data\map\MapControl\hospital_ca.paa",BTC_3d_icon_color,_x,BTC_3d_icon_size,BTC_3d_icon_size,0,format["%1 (%2m)", name _x, ceil (player distance _x)],0,0.02];
 			};

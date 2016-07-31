@@ -23,7 +23,9 @@ BTC_r_cpr_time      = 20;
 BTC_r_trans_ratio   = 100;
 BTC_revive_time_min = 3;
 BTC_revive_time_max = 600;
-BTC_who_can_revive  = ["B_medic_F", "B_T_Medic_F"];
+BTC_revive_time_max_west = 300;
+BTC_revive_time_max_partizan = 120;
+BTC_who_can_revive  = ["B_medic_F","I_G_Soldier_AR_F","I_G_engineer_F","I_C_Soldier_Para_4_F","I_C_Soldier_Para_8_F"];
 BTC_loop_check      = 1;
 BTC_disable_respawn = 0;
 BTC_respawn_gear    = 1;
@@ -34,16 +36,16 @@ BTC_spectating_view = [0,0];										//To force a view set the first number of 
 BTC_s_mode_view     = ["First person", "Behind the back", "High", "Free"];
 BTC_black_screen    = 0;											//Black screen + button while unconscious or action wheel and clear view
 BTC_action_respawn  = 0;											//if black screen is set to 0 you can choose if you want to use the action wheel or the button. Keep in mind that if you don't use the button, the injured player can use all the action, frag too....
-BTC_camera_unc      = 1;
+BTC_camera_unc      = 0;
 BTC_camera_unc_type = ["Вид со спины", "Вид свысока"];
-BTC_respawn_time    = 3;
+BTC_respawn_time    = 10;
 BTC_active_mobile   = 0;											//Active mobile respawn (You have to put in map the vehicle and give it a name. Then you have to add one object per side to move to the mobile (BTC_base_flag_west,BTC_base_flag_east) - (1 = yes, 0 = no))
 BTC_mobile_respawn  = 0;											//Active the mobile respawn fnc (1 = yes, 0 = no)
 BTC_mobile_respawn_time = 30;										//Secs delay for mobile vehicle to respawn
 BTC_need_first_aid = 1;												//You need a first aid kit to revive (1 = yes, 0 = no)
 BTC_pvp = 0; 														//(disable the revive option for the enemy)
 BTC_injured_marker = 0;
-BTC_3d_can_see     = ["B_medic_F"];
+BTC_3d_can_see     = ["B_medic_F","I_G_Soldier_AR_F","I_G_engineer_F","I_C_Soldier_Para_4_F","I_C_Soldier_Para_8_F"];
 BTC_3d_distance    = 800;
 BTC_3d_icon_size   = 0.2;
 BTC_3d_icon_color  = [1,0,0,1];
@@ -56,6 +58,14 @@ BTC_objects_actions_civ  = [];
 //======================================== QS new config options
 
 if (!isDedicated) then {
+
+	// Change bleedout timer for different factions
+	if (playerSide == west) then {
+        BTC_revive_time_max = BTC_revive_time_max_west;
+	};
+	if (playerSide == resistance) then {
+        BTC_revive_time_max = BTC_revive_time_max_partizan;
+    };
 
 	//===== MISC
 

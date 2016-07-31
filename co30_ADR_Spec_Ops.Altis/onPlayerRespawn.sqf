@@ -116,6 +116,7 @@ if (side player == resistance) then {
     player addAction ["<t color='#FFC107'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\uniform_ca.paa' size='1.0'/> Обыскать</t>",{player action ["Gear", cursorTarget]},[],7,true,true,"",'((vehicle player) == player && (cursorObject getVariable "BTC_need_revive") == 1 && (player distance cursorObject) < 2 && animationState player != "ainvpknlmstpsnonwrfldnon_medic0s")'];
 };
 
+// Deal with static map markers
 if (playerSide == west) then {
     "partizan_base" setMarkerAlphaLocal 0;
     "Helipad" setMarkerAlphaLocal 1;

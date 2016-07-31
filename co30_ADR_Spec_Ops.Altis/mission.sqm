@@ -10763,7 +10763,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="this allowDamage false; this enableSimulationGlobal false;terminalN1 setObjectTextureGlobal [0, ""a3\structures_f\items\electronics\data\electronics_screens_laptop_co.paa""]; " \n "terminalN1 setObjectTextureGlobal [1, ""a3\structures_f\items\electronics\data\electronics_screens_laptop_co.paa""];this addAction [""<t color='#7FDA0B'><img image='\a3\ui_f\data\map\VehicleIcons\iconStaticMGNest_ca.paa' size='1.0'/> Защита Базы</t>"",""scripts\misc\actions\baseDefense_switch.sqf"",[],21,true,true,"""",'((vehicle player) == player && side player == west)', 5];";
+				init="this allowDamage false; this enableSimulationGlobal false; this setObjectTextureGlobal [0, ""a3\structures_f\items\electronics\data\electronics_screens_laptop_co.paa""]; this setObjectTextureGlobal [1, ""a3\structures_f\items\electronics\data\electronics_screens_laptop_co.paa""]; this addAction [""<t color='#C6FF00'><img image='\a3\ui_f\data\map\VehicleIcons\iconStaticMGNest_ca.paa' size='1.0'/> Защита Базы</t>","scripts\misc\actions\baseDefense_switch.sqf"",[],21,true,true,"",'((vehicle player) == player && playerSide == west)', 5];";
 				name="terminalN1";
 			};
 			id=1017;
@@ -10805,7 +10805,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="this allowDamage false; this enableSimulationGlobal false;terminalN2 setObjectTextureGlobal [0, ""a3\structures_f\items\electronics\data\electronics_screens_laptop_co.paa""]; " \n "terminalN2 setObjectTextureGlobal [1, ""a3\structures_f\items\electronics\data\electronics_screens_laptop_co.paa""];this addAction [""<t color='#7FDA0B'><img image='\a3\ui_f\data\map\VehicleIcons\iconStaticMGNest_ca.paa' size='1.0'/> Защита Базы</t>"",""scripts\misc\actions\baseDefense_switch.sqf"",[],21,true,true,"""",'((vehicle player) == player && side player == west)', 5];";
+				init="this allowDamage false; this enableSimulationGlobal false; this setObjectTextureGlobal [0, ""a3\structures_f\items\electronics\data\electronics_screens_laptop_co.paa""]; this setObjectTextureGlobal [1, ""a3\structures_f\items\electronics\data\electronics_screens_laptop_co.paa""]; this addAction [""<t color='#C6FF00'><img image='\a3\ui_f\data\map\VehicleIcons\iconStaticMGNest_ca.paa' size='1.0'/> Защита Базы</t>","scripts\misc\actions\baseDefense_switch.sqf"",[],21,true,true,"",'((vehicle player) == player && playerSide == west)', 5];";
 				name="terminalN2";
 			};
 			id=1018;
