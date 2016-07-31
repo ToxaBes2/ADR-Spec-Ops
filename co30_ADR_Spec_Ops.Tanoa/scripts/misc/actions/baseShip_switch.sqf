@@ -1,5 +1,6 @@
 _flagPos = getPos partizan_flag;
-_shipPos = [_flagPos, 10, 150, 2, 2,-1, 0] call QS_fnc_findSafePos;
+_shipPos = [_flagPos, 10, 200, 2, 2, -1, 0] call QS_fnc_findSafePos;
+systemChat str(_shirPos);
 
 if (!isNil 'BASESHIP_SWITCH' || (_shipPos distance _flagPos) > 200) exitWith {
 	["<t color='#F44336' size = '.48'>Вызов лодки недоступен</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;

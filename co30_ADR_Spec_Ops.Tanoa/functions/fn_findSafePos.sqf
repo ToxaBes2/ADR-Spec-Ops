@@ -25,12 +25,12 @@
 	_this select 8: (optional) default positions (Array of Arrays):
 						(_this select 8) select 0: default position on land (Array)
 						(_this select 8) select 1: default position on water (Array)
-	
+
 	Returns:
 	Coordinate array with a position solution.
-	
+
 	TODO:
-	* Maybe allow passing several combinations of position, min and max dist ... so that you can 
+	* Maybe allow passing several combinations of position, min and max dist ... so that you can
 	avoid several things?
 	* Interpretation of minDist / maxDist is wrong. It's not true distance that is used. Too bad?
 */
@@ -85,7 +85,7 @@ if ((count _newPos) == 0) then {
 	_newPos = [0,0,0];
 	if (_waterMode == 0) then {
 		if ((count _defaultPos) > 0) then {
-			_newPos = _defaultPos select 0;		
+			_newPos = _defaultPos select 0;
 	    };
 	} else {
 		if ((count _defaultPos) > 1) then {
@@ -94,7 +94,11 @@ if ((count _newPos) == 0) then {
 	};
 };
 if (_newPos distance2D _pos > (_maxDist*1.2)) then {
-    _result = (selectBestPlaces [_pos, _maxDist, "meadow", 3, 1]) select 0;
+	if (_waterMode == 0) then {
+    	_result = (selectBestPlaces [_pos, _maxDist, "meadow", 10, 1]) select 0;
+	} else {
+		_result = (selectBestPlaces [_pos, _maxDist, "sea", 10, 1]) select 0;
+	};
     if ((_result select 1) >= 0.87) then {
         _newPos = _result select 0;
     } else {
