@@ -35,7 +35,7 @@
 	* Interpretation of minDist / maxDist is wrong. It's not true distance that is used. Too bad?
 */
 scopeName "main";
-private ["_pos", "_minDist", "_maxDist", "_objDist", "_waterMode", "_maxGradient", "_shoreMode", "_defaultPos", "_blacklist"];
+private ["_minDist", "_maxDist", "_objDist", "_waterMode", "_maxGradient", "_shoreMode", "_blacklist", "_defaultPos", "_newPos", "_posX", "_posY", "_attempts", "_newX", "_newY", "_testPos", "_result", "_log"];
 _pos = _this select 0;
 _minDist = _this select 1;
 _maxDist = _this select 2;
@@ -94,10 +94,10 @@ if ((count _newPos) == 0) then {
 	};
 };
 if (_newPos distance2D _pos > (_maxDist*1.2)) then {
-	if (_waterMode == 0) then {
-    	_result = (selectBestPlaces [_pos, _maxDist, "meadow", 10, 1]) select 0;
-	} else {
+	if (_waterMode == 2) then {
 		_result = (selectBestPlaces [_pos, _maxDist, "sea", 10, 1]) select 0;
+	} else {
+		_result = (selectBestPlaces [_pos, _maxDist, "meadow", 10, 1]) select 0;
 	};
     if ((_result select 1) >= 0.87) then {
         _newPos = _result select 0;
