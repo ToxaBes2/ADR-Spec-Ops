@@ -6,12 +6,53 @@ Description: Client scripts and event handlers.
 
 if (!hasInterface) exitWith {};
 
-private ["_null", "_player", "_vehicle", "_helmet", "_csatHelmets", "_array", "_type", "_message", "_GHint"];
+private ["_partizanPos", "_dist", "_accepted", "_newPlayerPos", "_null", "_player", "_vehicle", "_helmet", "_csatHelmets", "_array", "_type", "_message", "_GHint", "_profileName"];
 
 enableSentences false;
 enableEngineArtillery false;
 
 waitUntil {!isNull player};
+
+// Resistance only
+if (playerSide == resistance) then {
+	player setUnitTrait ["Medic", true];
+	0 cutText["Проверка игрового времени...", "BLACK FADED"];
+    0 cutFadeOut 9999999;
+    waitUntil {(getPlayerUID player) != ""};
+    removeAllweapons player;
+	removevest player;
+	removeBackpack player;
+	removeheadgear player;
+	removegoggles player;
+	removeBackPack player;
+	{player removeItem _x} foreach (items player);
+	{player unassignItem _x; player removeItem _x} foreach (assignedItems player);
+    _partizanPos = getMarkerPos "partizan_base";
+    if (player distance2D _partizanPos > 50) then {
+		_dist = 4;
+        _accepted = false;
+        _newPlayerPos = [_partizanPos, 0.1, _dist, 1, 0, -1, 0] call QS_fnc_findSafePos;
+        if (_newPlayerPos distance2D (getPos partizan_ammo) < 50) then {
+            _accepted = true;
+        };
+        while {!_accepted} do {
+			_dist = _dist + 2;
+            _newPlayerPos = [_partizanPos, 0.1, _dist, 1, 0, -1, 0] call QS_fnc_findSafePos;
+            if (_newPlayerPos distance2D (getPos partizan_ammo) < _dist) then {
+                _accepted = true;
+            };
+        };
+        player setPos _newPlayerPos;
+    };
+	["getPlayerHours",[getPlayerUID player], player] remoteExec ["sqlServerCall", 2];
+    sleep 10;
+
+	// Resistance engineers only
+	if (typeOf player in ["I_G_engineer_F","I_C_Soldier_Para_8_F"]) then {
+		player setUnitTrait ["UAVHacker", true];
+		player setUnitTrait ["engineer", true];
+	};
+};
 
 // Pilots only
 if (typeOf player in ["B_Helipilot_F", "B_T_Helipilot_F"]) then {
@@ -75,7 +116,7 @@ player addEventHandler [ "GetOutMan", {
 }];
 
 // Remove CSAT helmets from BLUFOR players iventory
-if (side player == west) then {
+if (playerSide == west) then {
 	player addEventHandler [ "Take", {
 		_player = _this select 0;
 		_helmet = _this select 2;
@@ -145,3 +186,18 @@ if (side player == west) then {
 0 enableChannel [true, false];
 1 enableChannel [true, false];
 2 enableChannel [false, false];
+
+// log playable hours
+_uid = getPlayerUID player;
+_profileName = profileName;
+_null = [_uid, _profileName] spawn {
+	_uid = _this select 0;
+	_profileName = _this select 1;
+	sleep 300;
+	while {true} do {
+        ["insertPlayer",[_uid, _profileName], player] remoteExec ["sqlServerCall", 2];
+        sleep 5;
+        ["logTime",[_uid], player] remoteExec ["sqlServerCall", 2];
+        sleep 295;
+    };
+};

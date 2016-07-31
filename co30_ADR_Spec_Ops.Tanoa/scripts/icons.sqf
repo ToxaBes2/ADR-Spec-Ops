@@ -1,7 +1,7 @@
 /*
 Author: Quiksilver
 Script Name: Soldier Tracker
-Contact: camball@gmail.com || 
+Contact: camball@gmail.com ||
 Created: 8/08/2014
 Version: v1.0.1
 Last modified: 13/10/2014 ArmA 1.30 by Quiksilver
@@ -12,12 +12,12 @@ DESCRIPTION:
 	This version contains the basics.
 	Designed for realism. No fancy frills, bright colors or gimmicky features.
 	Enjoy!
-	
-	Note: 
-	
+
+	Note:
+
 		Common medical variables for icon color.
 		Replace the relevant line in QS_fnc_iconColor (~line 37) with the correct line below:
-		
+
 			BTC Revive: 			if (format [""%1"", _u getVariable ""BTC_need_revive""] == ""1"") exitWith {_c = [1,1,1,1];_c;};
 			Farooq's Revive: 		if (format [""%1"", _u getVariable ""FAR_isUnconscious""] == ""1"") exitWith {_c = [1,1,1,1];_c;};
 			AIS Wounding System: 	if (_u getVariable ""unit_is_unconscious"") exitWith {_c = [1,1,1,1];_c;};
@@ -35,7 +35,7 @@ QS_fnc_iconColor = compileFinal "
 	if ((group _u) == (group player)) then {_a = 0.9;};
 
 	if (format [""%1"", _u getVariable ""BTC_need_revive""] == ""1"") exitWith {_c = [1,0.41,0,1];_c;};
-	
+
 	if (side _u == east) exitWith {_c = [0.5,0,0,_a];_c;};
 	if (side _u == west) exitWith {_c = [0,0.3,0.6,_a];_c;};
 	if (side _u == independent) exitWith {_c = [0,0.5,0,_a];_c;};
@@ -86,7 +86,7 @@ QS_fnc_iconText = compileFinal "
 	if (_v isKindOf ""LandVehicle"" || _v isKindOf ""Air"" || _v isKindOf ""Ship"") then {
 		_n = 0;
 		_n = ((count crew _v) - 1);
-		
+
 		if (_n > 0) then {
 			if (!isNull driver _v) then {
 				_t = format [""%1 [%2] +%3"",_vn,_vt,_n];
@@ -104,8 +104,8 @@ QS_fnc_iconText = compileFinal "
 			_au = [""I_UAV_01_F"",""B_UAV_01_F"",""O_UAV_01_F"",""I_UAV_02_F"",""O_UAV_02_F"",""I_UAV_02_CAS_F"",""O_UAV_02_CAS_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""O_UAV_01_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""I_UGV_01_F"",""B_UGV_01_F"",""I_UGV_01_rcws_F"",""B_UGV_01_rcws_F"",""B_GMG_01_A_F"",""B_HMG_01_A_F"",""O_GMG_01_A_F"",""O_HMG_01_A_F"",""I_GMG_01_A_F"",""I_HMG_01_A_F""];
 			_iau = ({typeOf _v == _x} count _au) > 0;
 			if (_iau) exitWith {
-				if (isUavConnected _v) then {	
-					_y = (UAVControl _v) select 0;	
+				if (isUavConnected _v) then {
+					_y = (UAVControl _v) select 0;
 					_t = format [""%1 [%2]"",name _y,_vt]; _t;
 				} else {
 					_t = format [""[AI] [%1]"",_vt]; _t;
@@ -126,15 +126,15 @@ QS_fnc_iconDrawMap = compileFinal "
 	_textOffset = 'right';
 	{
 		_v = vehicle _x;
-		if ((side _v == playerSide) || {(captive _x)}) then {
+		if ((side _v == playerSide) || (playerSide == west && _v isKindOf 'B_Soldier_base_F') || (playerSide == resistance && _v isKindOf 'I_G_Soldier_base_F')) then {
 			_iconType = [_v] call QS_fnc_iconType;
-			_color = [_x] call QS_fnc_iconColor;	
-			_pos = getPosASL _v;		
-			_iconSize = [_v] call QS_fnc_iconSize;	
-			_dir = getDir _v;		
+			_color = [_x] call QS_fnc_iconColor;
+			_pos = getPosASL _v;
+			_iconSize = [_v] call QS_fnc_iconSize;
+			_dir = getDir _v;
 			_text = [_v] call QS_fnc_iconText;
-					
-			if (_x == crew _v select 0 || {_x in allUnitsUav}) then {	
+
+			if (_x == crew _v select 0 || {_x in allUnitsUav}) then {
 				_this select 0 drawIcon [
 					_iconType,
 					_color,
@@ -150,13 +150,13 @@ QS_fnc_iconDrawMap = compileFinal "
 				]
 			};
 		};
-	} count (playableUnits + switchableUnits + allUnitsUav);	
+	} count (playableUnits + switchableUnits + allUnitsUav);
 ";
 
 //======================== DRAW GPS
 
 QS_fnc_iconDrawGPS = compileFinal "
-	private [""_v"",""_iconType"",""_color"",""_pos"",""_iconSize"",""_dir"",""_text"",""_shadow"",""_textSize"",""_textFont"",""_textOffset""];	
+	private [""_v"",""_iconType"",""_color"",""_pos"",""_iconSize"",""_dir"",""_text"",""_shadow"",""_textSize"",""_textFont"",""_textOffset""];
 	_text = """";
 	_shadow = 1;
 	_textSize = 0.05;
@@ -164,15 +164,15 @@ QS_fnc_iconDrawGPS = compileFinal "
 	_textOffset = 'right';
 	{
 		_v = vehicle _x;
-		if ((side _v == playerSide) || {(captive _x)}) then {
+		if ((side _v == playerSide) || (playerSide == west && _v isKindOf 'B_Soldier_base_F') || (playerSide == resistance && _v isKindOf 'I_G_Soldier_base_F')) then {
 			if ((_x distance player) < 300) then {
 				_iconType = [_v] call QS_fnc_iconType;
-				_color = [_x] call QS_fnc_iconColor;	
-				_pos = getPosASL _v;		
-				_iconSize = [_v] call QS_fnc_iconSize;	
-				_dir = getDir _x;		
-					
-				if (_x == crew _v select 0 || {_x in allUnitsUav}) then {	
+				_color = [_x] call QS_fnc_iconColor;
+				_pos = getPosASL _v;
+				_iconSize = [_v] call QS_fnc_iconSize;
+				_dir = getDir _x;
+
+				if (_x == crew _v select 0 || {_x in allUnitsUav}) then {
 					_this select 0 drawIcon [
 						_iconType,
 						_color,
@@ -189,21 +189,18 @@ QS_fnc_iconDrawGPS = compileFinal "
 				};
 			};
 		};
-	} count (playableUnits + switchableUnits + allUnitsUav);	
+	} count (playableUnits + switchableUnits + allUnitsUav);
 ";
 
 //=============================================================== INITIALIZATION
 
 [] spawn {
 	sleep 0.1;
-	
 	//===== INIT MAP
-	
 	waitUntil {sleep 0.1; !(isNull (findDisplay 12))};
 	clientEhDrawMap = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw",QS_fnc_iconDrawMap];
-	
+
 	//===== INIT GPS (waits for GPS to open)
-	
 	disableSerialization;
 	_gps = controlNull;
 	while {isNull _gps} do {
@@ -215,7 +212,7 @@ QS_fnc_iconDrawGPS = compileFinal "
 		sleep 1;
 	};
 	clientEhDrawGps = _gps ctrlAddEventHandler ["Draw",QS_fnc_iconDrawGPS];
-	
+
 	//===== INIT RESPAWN MENU MAP - UNSUPPORTED v1.0.0
 	//===== INIT ZEUS MAP - UNSUPPORTED v1.0.0
 	//===== INIT ARTILLERY COMPUTER - UNSUPPORTED v1.0.0

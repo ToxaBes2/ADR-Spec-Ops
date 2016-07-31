@@ -6,7 +6,7 @@ Description: Client scripts and event handlers.
 
 if (!hasInterface) exitWith {};
 
-private ["_partizanPos", "_dist", "_accepted", "_newPlayerPos", "_position", "_null", "_player", "_vehicle", "_helmet", "_csatHelmets", "_array", "_type", "_message", "_GHint", "_profileName"];
+private ["_partizanPos", "_dist", "_accepted", "_newPlayerPos", "_null", "_player", "_vehicle", "_helmet", "_csatHelmets", "_array", "_type", "_message", "_GHint", "_profileName"];
 
 enableSentences false;
 enableEngineArtillery false;
@@ -14,7 +14,7 @@ enableEngineArtillery false;
 waitUntil {!isNull player};
 
 // Resistance only
-if (typeOf player in ["I_G_Soldier_AR_F","I_G_engineer_F"]) then {
+if (playerSide == resistance) then {
 	player setUnitTrait ["Medic", true];
 	0 cutText["Проверка игрового времени...", "BLACK FADED"];
     0 cutFadeOut 9999999;
@@ -46,14 +46,12 @@ if (typeOf player in ["I_G_Soldier_AR_F","I_G_engineer_F"]) then {
     };
 	["getPlayerHours",[getPlayerUID player], player] remoteExec ["sqlServerCall", 2];
     sleep 10;
-};
 
-if (typeOf player in ["I_G_engineer_F"]) then {
-	player setUnitTrait ["UAVHacker", true];
-};
-
-if (side player == west) then {
-    "partizan_base" setMarkerAlphaLocal 0;
+	// Resistance engineers only
+	if (typeOf player in ["I_G_engineer_F","I_C_Soldier_Para_8_F"]) then {
+		player setUnitTrait ["UAVHacker", true];
+		player setUnitTrait ["engineer", true];
+	};
 };
 
 // Pilots only
@@ -118,7 +116,7 @@ player addEventHandler [ "GetOutMan", {
 }];
 
 // Remove CSAT helmets from BLUFOR players iventory
-if (side player == west) then {
+if (playerSide == west) then {
 	player addEventHandler [ "Take", {
 		_player = _this select 0;
 		_helmet = _this select 2;
@@ -129,49 +127,6 @@ if (side player == west) then {
 			systemChat "Головные уборы противника запрещены";
 		};
 	}];
-};
-
-// Deal with static map markers
-if (playerSide == west) then {
-    "partizan_base" setMarkerAlphaLocal 0;
-    "Helipad" setMarkerAlphaLocal 1;
-    "Arsenal" setMarkerAlphaLocal 1;
-    "Laptops" setMarkerAlphaLocal 1;
-    "Vehicle_depot_1" setMarkerAlphaLocal 1;
-    "Armor" setMarkerAlphaLocal 1;
-    "UAVspawn" setMarkerAlphaLocal 1;
-    "Arsenal_1" setMarkerAlphaLocal 1;
-    "Helo_spawn" setMarkerAlphaLocal 1;
-    "Side" setMarkerAlphaLocal 1;
-    "m_mod" setMarkerAlphaLocal 1;
-    "Repair_1" setMarkerAlphaLocal 1;
-    "changeLoadout" setMarkerAlphaLocal 1;
-    "Repair_2" setMarkerAlphaLocal 1;
-    "Repair_2_1" setMarkerAlphaLocal 1;
-    "B2" setMarkerAlphaLocal 1;
-    "B2_1" setMarkerAlphaLocal 1;
-    "med" setMarkerAlphaLocal 1;
-    "vehService" setMarkerAlphaLocal 1;
-} else {
-    "partizan_base" setMarkerAlphaLocal 1;
-    "Helipad" setMarkerAlphaLocal 0;
-    "Arsenal" setMarkerAlphaLocal 0;
-    "Laptops" setMarkerAlphaLocal 0;
-    "Vehicle_depot_1" setMarkerAlphaLocal 0;
-    "Armor" setMarkerAlphaLocal 0;
-    "UAVspawn" setMarkerAlphaLocal 0;
-    "Arsenal_1" setMarkerAlphaLocal 0;
-    "Helo_spawn" setMarkerAlphaLocal 0;
-    "Side" setMarkerAlphaLocal 0;
-    "m_mod" setMarkerAlphaLocal 0;
-    "Repair_1" setMarkerAlphaLocal 0;
-    "changeLoadout" setMarkerAlphaLocal 0;
-    "Repair_2" setMarkerAlphaLocal 0;
-    "Repair_2_1" setMarkerAlphaLocal 0;
-    "B2" setMarkerAlphaLocal 0;
-    "B2_1" setMarkerAlphaLocal 0;
-    "med" setMarkerAlphaLocal 0;
-    "vehService" setMarkerAlphaLocal 0;
 };
 
 // Add all players to Zeus curators as editable objects

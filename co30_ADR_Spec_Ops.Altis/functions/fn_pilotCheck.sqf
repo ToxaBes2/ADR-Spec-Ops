@@ -1,7 +1,7 @@
-private ["_pilots", "_aircraft_nopilot", "_aircraft_nocopilot", "_mh9", "_veh", "_players", "_playersCount", "_pilotsOnServer"];
+private ["_pilots", "_partizan_pilots", "_aircraft_nopilot", "_aircraft_nocopilot", "_mh9", "_aircraft_nopilot_partizan", "_aircraft_nocopilot_partizan", "_veh", "_players", "_playersCount", "_pilotsOnServer"];
 
 _pilots = ["B_Helipilot_F", "B_T_Helipilot_F"];	// Специализация пилота
-_partizan_pilots = ["I_G_Soldier_AR_F","I_G_engineer_F"];
+_partizan_pilots = ["I_G_Soldier_AR_F","I_G_engineer_F","I_C_Soldier_Para_4_F","I_C_Soldier_Para_8_F"];
 
 //---------- Место пилота заблокировано
 _aircraft_nopilot = [
@@ -72,7 +72,6 @@ _mh9 = [
 "B_Heli_Light_01_stripped_F"
 ];
 
-
 _aircraft_nopilot_partizan = [
 // Вертолеты
 "O_Heli_Transport_04_covered_F",                // Тару транспортный
@@ -120,7 +119,6 @@ _pilotsOnServer = false;
 if !((typeOf player) in _pilots) then {
     // allow Humminbird for all players if there are less than 7 players on the server and no pilots
     if ((_playersCount < 7) and ((typeOf _veh) in _mh9) and !_pilotsOnServer) exitWith {};
-    _kick = true;
     if ((typeOf player) in _partizan_pilots) then {
         call {
             if (!((typeOf _veh) in _aircraft_nopilot_partizan) and (player == driver _veh)) exitWith {
@@ -131,8 +129,8 @@ if !((typeOf player) in _pilots) then {
                 systemChat "У Вас нет знаний чтобы занять место 2-го пилота.";
                 player action ["getOut", _veh];
             };
-        };  
-    } else {   
+        };
+    } else {
         call {
             if (((typeOf _veh) in _aircraft_nopilot) and (player == driver _veh)) exitWith {
                 systemChat "Вы должны быть пилотом чтобы пилотировать данную технику.";

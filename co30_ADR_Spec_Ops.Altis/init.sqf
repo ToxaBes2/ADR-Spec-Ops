@@ -6,7 +6,7 @@ if (!hasInterface && !isDedicated) exitWith {};
 call compile preprocessFile "scripts\=BTC=_revive\=BTC=_revive_init.sqf";                                           // Revive system
 call compile preprocessFile "scripts\=BTC=_TK_punishment\=BTC=_tk_init.sqf";                                        // Teamkill punish action
 
-// Hide objects near heli landing
+// Hide objects inside player base
 ((getMarkerPos "respawn_west") nearestObject 492374) hideObject true;
 ((getMarkerPos "respawn_west") nearestObject 492375) hideObject true;
 ((getMarkerPos "respawn_west") nearestObject 492438) hideObject true;
@@ -21,7 +21,7 @@ call compile preprocessFile "scripts\=BTC=_TK_punishment\=BTC=_tk_init.sqf";    
 ((getMarkerPos "respawn_west") nearestObject 493386) allowDamage false;
 
 if (isDedicated) exitWith {
-	"addToScore" addPublicVariableEventHandler { 
-	    ((_this select 1) select 0) addScore ((_this select 1) select 1); 
+	"addToScore" addPublicVariableEventHandler {
+	    ((_this select 1) select 0) addScore ((_this select 1) select 1);
     };
 };

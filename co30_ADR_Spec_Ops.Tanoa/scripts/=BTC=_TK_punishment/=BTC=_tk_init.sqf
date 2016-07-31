@@ -1,4 +1,4 @@
-﻿/*
+/*
 	Created by =BTC= Giallustio
 	version 0.3
 	Visit us at:
@@ -11,8 +11,8 @@ Changelog:
 //Def
 BTC_tk_blackscreen_punishment = 0;
 BTC_tk_last_warning = 10;
-BTC_tk_prison_coords = [6907,7243,0];
-BTC_tk_light_pos = [6832,7114,0];
+BTC_tk_prison_coords = [15259,17355,0];
+BTC_tk_light_pos = [15244,17345,0];
 
 BTC_fnc_tk_PVEH = {
 	//0 - first aid - create // [0,east,pos]
@@ -32,7 +32,7 @@ BTC_EH_killed = {
 	_veh_killer = vehicle _killer;
 	_name = name _killer;
 	if (_name != name _body && BTC_vip find (name _killer) == -1) then {
-		if (side _killer == BTC_side && _veh_body != _veh_killer) then {
+		if (side _killer == playerSide && _veh_body != _veh_killer) then {
 			//saving TEAMKILL info in server logs
 			["//========================================", "diag_log", false] call BIS_fnc_MP;
 			[format ["TEAMKILL: '%1[%3]' killed '%2[%4]'", _name, name _body, getPlayerUID _killer, getPlayerUID _body], "diag_log", false] call BIS_fnc_MP;

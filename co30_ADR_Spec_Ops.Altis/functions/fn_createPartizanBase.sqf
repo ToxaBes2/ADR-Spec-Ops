@@ -3,8 +3,7 @@ Author: ToxaBes
 Description: create partizane base.
 Format: [] call QS_fnc_createPartizanBase;
 */
-
-private ["_basePositions", "_dist", "_position", "_accepted", "_curPos", "_respawnPos", "_flagPos", "_sd", "_sp"];
+private ["_basePositions", "_dist", "_position", "_accepted", "_curPos", "_respawnPos", "_sd", "_sp"];
 
 _basePositions = [
     [13221.9,7448.17,0.59], [12654,7192.5,0], [11530.5,7057.72,0.69], [11877.8,8213.58,0], [9559.33,9230.85,3.7345], [9901.68,9830.57,0], [10454.8,11620.7,0],
@@ -43,32 +42,6 @@ partizan_ammo setPos _position;
 "respawn_guerrila" setMarkerPos _respawnPos;
 "partizan_base" setMarkerPos _position;
 ["partizan_base", 0] remoteExec ["setMarkerAlphaLocal", west]; 
-
-_dist = 5;
-_accepted = false;
-_flagPos = _position findEmptyPosition [1, _dist, typeOf partizan_flag];
-if (count _flagPos > 0) then {
-    if (_flagPos distance2D _position < 50) then {
-        if (!isOnRoad _flagPos) then {
-            _accepted = true;
-        };
-    };
-};
-while {!_accepted} do {
-    _dist = _dist + 5;
-    _flagPos = _position findEmptyPosition [1, _dist, typeOf partizan_flag];
-    if (count _flagPos > 0) then {
-        if (_flagPos distance2D _position < _dist) then {
-            if (!isOnRoad _flagPos) then {
-                _accepted = true;
-            };
-        };
-    };
-};
-partizan_flag setPos _flagPos;
-partizan_flag removeAllEventHandlers "HandleDamage";
-partizan_flag removeAllEventHandlers "killed";
-partizan_flag allowDamage false;
 
 {
     _sd = random 360;

@@ -13,11 +13,11 @@ private ["_target","_nameAO","_positionAO","_serviceMarkers","_dt","_chance","_b
 eastSide = createCenter ENEMY_SIDE;
 _target = [] call QS_fnc_getMainAO;
 if !(isNil "LAST_MAIN_MISSION") then {
-    while {_target == LAST_MAIN_MISSION} do {
+    while {(_target select 0) == LAST_MAIN_MISSION} do {
         _target = [] call QS_fnc_getMainAO;
     };
 };
-LAST_MAIN_MISSION = _target;
+LAST_MAIN_MISSION = _target select 0;
 publicVariable "LAST_MAIN_MISSION";
 _nameAO = _target select 0;
 _positionAO = _target select 1;
@@ -51,12 +51,12 @@ _dt setTriggerStatements ["this", "", ""];
 _chance = random 10;
 if (_chance < 5) then {
     _bunkerType = 1;
-    _bunkerPos = [_positionAO, 1, (PARAMS_AOSize/2), 30, 0, 4, 0, [], [_positionAO]] call BIS_fnc_findSafePos;
+    _bunkerPos = [_positionAO, 1, (PARAMS_AOSize/2), 30, 0, 4, 0, [], [_positionAO]] call QS_fnc_findSafePos;
     _distance = _positionAO distance2D _bunkerPos;
     _flatPos = _bunkerPos isFlatEmpty [5, 1, 0.3, 30, 0, false];
     _res = count _flatPos;
     while {_distance > (PARAMS_AOSize/1.5) || _res == 0} do {
-        _bunkerPos = [_positionAO, 1, (PARAMS_AOSize/2), 20, 0, 3, 0, [], [_positionAO]] call BIS_fnc_findSafePos;
+        _bunkerPos = [_positionAO, 1, (PARAMS_AOSize/2), 20, 0, 3, 0, [], [_positionAO]] call QS_fnc_findSafePos;
         _distance = _positionAO distance2D _bunkerPos;
         _flatPos = _bunkerPos isFlatEmpty [5, 1, 0.3, 15, 0, false];
         _res = count _flatPos;
@@ -86,7 +86,7 @@ _anotherChance = random 10;
 _uav = objNull;
 _uavPos = [0,0,0];
 if (_anotherChance < 4) then {
-    _uavPos = [_bunkerPos, 40, 200, 3, 0, 20, 0, [], [_bunkerPos]] call BIS_fnc_findSafePos;
+    _uavPos = [_bunkerPos, 40, 200, 3, 0, 20, 0, [], [_bunkerPos]] call QS_fnc_findSafePos;
     _uav = createVehicle ["B_UAV_01_F", _uavPos, [], 0, "NONE"];
     _uav addWeapon ("LMG_Mk200_F");
     _uav addMagazine ("200Rnd_65x39_cased_Box_Tracer");
@@ -94,11 +94,11 @@ if (_anotherChance < 4) then {
 };
 
 // Spawn radiotower
-_position = [[[_positionAO, (PARAMS_AOSize/3)], _dt], ["water", "out"]] call BIS_fnc_randomPos;
+_position = [[[_positionAO, (PARAMS_AOSize/3)], _dt], ["water", "out"]] call QS_fnc_randomPos;
 _flatPos = _position isFlatEmpty[3, 1, 0.3, 30, 0, false];
 _res = count _flatPos;
 while {_res < 1} do {
-	_position = [[[_positionAO, (PARAMS_AOSize/3)], _dt], ["water", "out"]] call BIS_fnc_randomPos;
+	_position = [[[_positionAO, (PARAMS_AOSize/3)], _dt], ["water", "out"]] call QS_fnc_randomPos;
 	_flatPos = _position isFlatEmpty[3, 1, 0.3, 30, 0, false];
     _distance = _bunkerPos distance _position;
     _res = count _flatPos;
@@ -142,9 +142,9 @@ if (_chance < PARAMS_RadioTowerMineFieldChance) then {
     _hasMines = true;
 	_minesArray = [_flatPos] call QS_fnc_AOminefield;
 	for "_i" from 1 to 3 do {
-        _newPos = [_campPos, 35, 65, 3, 0, 15, 0, [], [_campPos]] call BIS_fnc_findSafePos;
+        _newPos = [_campPos, 35, 65, 3, 0, 15, 0, [], [_campPos]] call QS_fnc_findSafePos;
         while {_groundPos distance _newPos < 30} do {
-            _newPos = [_campPos, 40, 60, 3, 0, 15, 0, [], [_campPos]] call BIS_fnc_findSafePos;
+            _newPos = [_campPos, 40, 60, 3, 0, 15, 0, [], [_campPos]] call QS_fnc_findSafePos;
         };
         _cargo = createVehicle ["Land_Cargo_Patrol_V4_F", [0,0,0], [], 0, "NONE"];
         _groundPos = _newPos;

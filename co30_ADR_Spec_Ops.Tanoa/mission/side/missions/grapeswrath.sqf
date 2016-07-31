@@ -109,7 +109,7 @@ _enemiesArray = _enemiesArray + [_commonGroup];
 
 // patrols (2 bots)
 for "_c" from 1 to 4 do {
-    _groundPos = [_startPoint, 0, 10, 1, 0, 20, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
+    _groundPos = [_startPoint, 0, 10, 1, 0, 20, 0, [], [_startPoint]] call QS_fnc_findSafePos;
     _patrolGroup = [_groundPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "UInfantry" >> "OIA_GuardSentry")] call BIS_fnc_spawnGroup;
     [_patrolGroup, _startPoint, 90] call BIS_fnc_taskPatrol;
     _patrolGroup setBehaviour "SAFE";
@@ -120,7 +120,7 @@ for "_c" from 1 to 4 do {
 
 // patrols (4 bots)
 for "_c" from 1 to 2 do {
-    _groundPos = [_startPoint, 10, 110, 1, 0, 20, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
+    _groundPos = [_startPoint, 10, 110, 1, 0, 20, 0, [], [_startPoint]] call QS_fnc_findSafePos;
     _patrolGroup = [_groundPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "UInfantry" >> "OIA_GuardTeam")] call BIS_fnc_spawnGroup;
     [_patrolGroup, _startPoint, 50] call BIS_fnc_taskPatrol;
     _patrolGroup setBehaviour "SAFE";
@@ -132,7 +132,7 @@ for "_c" from 1 to 2 do {
 // spawn vehicles
 {
     _vehGroup = createGroup ENEMY_SIDE;
-    _randomPos = [[[_startPoint, 100], []], ["water", "out"]] call BIS_fnc_randomPos;
+    _randomPos = [[[_startPoint, 100], []], ["water", "out"]] call QS_fnc_randomPos;
     _veh = _x createVehicle _randomPos;
     waitUntil{ !isNull _veh };
     INFANTRY_VEHICLE_CREW createUnit [_randomPos, _vehGroup];

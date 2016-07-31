@@ -23,6 +23,65 @@ for [ {_i = 0}, {_i < count(paramsArray)}, {_i = _i + 1} ] do {
 	];
 };
 
+
+// extDB2 load
+_database = "Arma3";
+_protocol = "SQL_CUSTOM_V2";
+_protocol_options = "specops";
+_continue = true;
+if (isNil {uiNamespace getVariable "life_sql_id"}) then {
+    life_sql_id = round(random(999999));
+    uiNamespace setVariable ["life_sql_id",life_sql_id];
+    _version = "extDB2" callExtension "9:VERSION";
+    if(_version == "") then {
+        _continue = false;
+    };
+    if (_continue) then {
+        _result = call compile ("extDB2" callExtension format["9:ADD_DATABASE:%1", _database]);
+	    if (_result select 0 isEqualTo 0) then {
+            _continue = false;
+	    };
+        if (_continue) then {
+            _result = call compile ("extDB2" callExtension format["9:ADD_DATABASE_PROTOCOL:%1:%2:%3:%4", _database, _protocol, life_sql_id, _protocol_options]);
+            if ((_result select 0) isEqualTo 0) then {
+                _continue = false;
+            } else {
+                "extDB2" callExtension "9:LOCK";
+            };
+        };
+    };
+};
+
+// Create partizan base
+_null = [] call QS_fnc_createPartizanBase;
+
+// Hide turrets
+baseTurret2 hideObject true;
+baseTurret4 hideObject true;
+baseTurret6 hideObject true;
+baseTurret8 hideObject true;
+baseTurret10 hideObject true;
+baseTurret12 hideObject true;
+baseTurret14 hideObject true;
+_grpTurret1 = createGroup west;
+deleteVehicle (gunner baseTurret1);
+deleteVehicle (gunner baseTurret3);
+deleteVehicle (gunner baseTurret5);
+deleteVehicle (gunner baseTurret7);
+deleteVehicle (gunner baseTurret9);
+deleteVehicle (gunner baseTurret11);
+deleteVehicle (gunner baseTurret13);
+deleteVehicle (gunner baseTurret15);
+"B_T_Support_MG_F" createUnit [getposATL baseTurret1, _grpTurret1, "this moveInGunner baseTurret1"];
+"B_T_Support_MG_F" createUnit [getposATL baseTurret3, _grpTurret1, "this moveInGunner baseTurret3"];
+"B_T_Support_MG_F" createUnit [getposATL baseTurret5, _grpTurret1, "this moveInGunner baseTurret5"];
+"B_T_Support_MG_F" createUnit [getposATL baseTurret7, _grpTurret1, "this moveInGunner baseTurret7"];
+"B_T_Support_MG_F" createUnit [getposATL baseTurret9, _grpTurret1, "this moveInGunner baseTurret9"];
+"B_T_Support_MG_F" createUnit [getposATL baseTurret11, _grpTurret1, "this moveInGunner baseTurret11"];
+"B_T_Support_MG_F" createUnit [getposATL baseTurret13, _grpTurret1, "this moveInGunner baseTurret13"];
+"B_T_Support_MG_F" createUnit [getposATL baseTurret15, _grpTurret1, "this moveInGunner baseTurret15"];
+_grpTurret1 setBehaviour "COMBAT";
+
 // Server scripts
 _null = [] spawn {_this call compile preProcessFileLineNumbers "mission\missionControl.sqf";};          // Main AO and side objectives
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\clean.sqf";};					// cleanup

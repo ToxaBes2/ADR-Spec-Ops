@@ -29,7 +29,7 @@ _x = 0;
 
 for "_x" from 0 to (1 + (random 3)) do {
 	_infteamPatrol = createGroup ENEMY_SIDE;
-	_randomPos = [[[getPos _intelObj, 300], []], ["water", "out"]] call BIS_fnc_randomPos;
+	_randomPos = [[[getPos _intelObj, 300], []], ["water", "out"]] call QS_fnc_randomPos;
 	_infteamPatrol = [_randomPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> selectRandom [INF_TEAMS])] call BIS_fnc_spawnGroup;
 	[_infteamPatrol, getPos _intelObj, 100] call BIS_fnc_taskPatrol;
 	[(units _infteamPatrol)] call QS_fnc_setSkill2;
@@ -38,7 +38,7 @@ for "_x" from 0 to (1 + (random 3)) do {
 };
 
 //---------- RANDOM VEHICLE
-_randomPos = [[[getPos _intelObj, 300], []], ["water", "out"]] call BIS_fnc_randomPos;
+_randomPos = [[[getPos _intelObj, 300], []], ["water", "out"]] call QS_fnc_randomPos;
 _data = [_randomPos, (random 360), (selectRandom [VEH_TYPES]), ENEMY_SIDE] call BIS_fnc_spawnVehicle;
 _SMveh = _data select 0;
 _SMvehPatrol = _data select 2;

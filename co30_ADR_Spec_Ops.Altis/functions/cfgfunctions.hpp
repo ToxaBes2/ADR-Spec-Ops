@@ -38,11 +38,11 @@ class QS
 		class deleteUnits {};
 		class enemyCAS {};
 		class EWattack {};
-		class FindPosBuilding {};
 		class FillBots {};
 		class FillCargoPatrol {};
-		class findSafePos {};
 		class findOverwatch {};
+		class FindPosBuilding {};
+		class findSafePos {};
 		class garrisonFortEAST {};
 		class garrisonFortFIA {};
 		class garrisonFortIND {};
@@ -73,6 +73,7 @@ class QS
 		class SMenemyIND {};
 		class SMhintFAIL {};
 		class SMhintSUCCESS {};
+		class spawnViper {};
 		class taskMaxDistPatrol {};
 		class TBshuffle {};
 		class TBdeleteObjects {};

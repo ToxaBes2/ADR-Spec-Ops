@@ -301,9 +301,6 @@ _myBox = _this select 0;
 "H_Helmet_Skate",
 "H_MilCap_gen_F",
 "H_MilCap_tna_F",
-"NVGogglesB_blk_F",
-"NVGogglesB_grn_F",
-"NVGogglesB_gry_F",
 "NVGoggles_tna_F",
 "U_B_CTRG_Soldier_2_F",
 "U_B_CTRG_Soldier_3_F",
@@ -638,7 +635,7 @@ _myBox = _this select 0;
 "srifle_LRR_tna_F"
 ], true, false] call BIS_fnc_addVirtualWeaponCargo;
 
-sleep 1;
+sleep 5;
 
 _myBox removeAction (_myBox getvariable ['bis_fnc_arsenal_action', -1]);
 _myBox setvariable ['bis_fnc_arsenal_action', nil];
