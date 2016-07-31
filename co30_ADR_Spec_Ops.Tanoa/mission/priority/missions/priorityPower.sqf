@@ -19,17 +19,17 @@ hqSideChat = "Эй, штаб, это Дельта-Браво у нас что-т
 sleep 5;
 
 while {!_accepted} do {
-	_position = [[[getMarkerPos currentAO, 2500]], ["water", "out"]] call BIS_fnc_randomPos;
+	_position = [[[getMarkerPos currentAO, 2500]], ["water", "out"]] call QS_fnc_randomPos;
 	_flatPos = _position isFlatEmpty [5, 0, 0.2, sizeOf "Land_Communication_F", 0, false];
 	while {(count _flatPos) < 2} do {
-		_position = [[[getMarkerPos currentAO, 2500]], ["water", "out"]] call BIS_fnc_randomPos;
+		_position = [[[getMarkerPos currentAO, 2500]], ["water", "out"]] call QS_fnc_randomPos;
 		_flatPos = _position isFlatEmpty [5, 0, 0.2, sizeOf "Land_Communication_F", 0, false];
 	};
 	if ((_flatPos distance (getMarkerPos "respawn_west")) > 1800 && (_flatPos distance (getMarkerPos currentAO)) > 800) then {
 		_accepted = true;
 	};
 };
-_objPos = [_flatPos, 25, 35, 10, 0, 0.5, 0, [], [_flatPos]] call BIS_fnc_findSafePos;
+_objPos = [_flatPos, 25, 35, 10, 0, 0.5, 0, [], [_flatPos]] call QS_fnc_findSafePos;
 
 // SPAWN OBJECTIVE
 sideObj = "Land_Communication_F" createVehicle _flatPos;

@@ -19,11 +19,11 @@ _c4Message = selectRandom [
 _flatPos = [0, 0, 0];
 _accepted = false;
 while {!_accepted} do {
-	_position = [] call BIS_fnc_randomPos;
+	_position = [] call QS_fnc_randomPos;
 	_flatPos = _position isFlatEmpty [10, 1, 0.2, sizeOf "Land_Dome_Small_F", 0, false];
 
 	while {(count _flatPos) < 2} do {
-		_position = [] call BIS_fnc_randomPos;
+		_position = [] call QS_fnc_randomPos;
 		_flatPos = _position isFlatEmpty [10, 1, 0.2, sizeOf "Land_Dome_Small_F", 0, false];
 	};
 

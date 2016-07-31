@@ -10,10 +10,10 @@ private ["_flatPos", "_accepted", "_position", "_flatPos1", "_flatPos2", "_flatP
 _flatPos = [0, 0, 0];
 _accepted = false;
 while {!_accepted} do {
-	_position = [[[getMarkerPos currentAO, 2500]], ["water", "out"]] call BIS_fnc_randomPos;
+	_position = [[[getMarkerPos currentAO, 2500]], ["water", "out"]] call QS_fnc_randomPos;
 	_flatPos = _position isFlatEmpty [5, 0, 0.2, 5, 0, false];
 	while {(count _flatPos) < 2} do {
-		_position = [[[getMarkerPos currentAO, 2500]], ["water", "out"]] call BIS_fnc_randomPos;
+		_position = [[[getMarkerPos currentAO, 2500]], ["water", "out"]] call QS_fnc_randomPos;
 		_flatPos = _position isFlatEmpty [5, 0, 0.2, 5, 0, false];
 	};
 	if ((_flatPos distance (getMarkerPos "respawn_west")) > 1800 && (_flatPos distance (getMarkerPos currentAO)) > 800) then {

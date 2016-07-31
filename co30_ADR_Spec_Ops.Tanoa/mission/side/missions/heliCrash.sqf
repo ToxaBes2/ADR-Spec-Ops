@@ -214,7 +214,7 @@ _chemlightBlue = createVehicle ["Chemlight_blue", _chemPosBlue, [], 0, "NONE"];
 // spawn infantry patrols
 for "_x" from 1 to 6 do {
     _patrolGroup = createGroup EAST;
-    _randomPos = [[[_startPoint, 200],[]],["water","out"]] call BIS_fnc_randomPos;
+    _randomPos = [[[_startPoint, 200],[]],["water","out"]] call QS_fnc_randomPos;
     _patrolGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "EAST" >> "OPF_T_F" >> "Infantry" >> selectRandom [INFANTRY_PATROL])] call BIS_fnc_spawnGroup;
     _patrolGroup setBehaviour "COMBAT";
     _patrolGroup setCombatMode "RED";
@@ -229,7 +229,7 @@ for "_x" from 1 to 10 do {
     if ((count _goodPos) > 0) then {
         _randomPos = selectRandom _goodPos;
     } else {
-        _randomPos = [_startPoint, 0, 180, 2, 0, 0.5, 0, [], [_startPoint]] call BIS_fnc_findSafePos;
+        _randomPos = [_startPoint, 0, 180, 2, 0, 0.5, 0, [], [_startPoint]] call QS_fnc_findSafePos;
     };
     (selectRandom [INFANTRY_HOUSE]) createUnit [_randomPos, _houseGroup, "currentGuard = this"];
     doStop currentGuard;
@@ -245,7 +245,7 @@ _enemiesArray = _enemiesArray + [_houseGroup];
 // spawn snipers
 for "_x" from 1 to 2 do {
     _sniperGroup = createGroup EAST;
-    _randomPos = [_startPoint, 800, 10, 50] call BIS_fnc_findOverwatch;
+    _randomPos = [_startPoint, 800, 10, 50] call QS_fnc_findOverwatch;
     _sniperGroup = [_randomPos, EAST,(configfile >> "CfgGroups" >> "EAST" >> "OPF_T_F" >> "Infantry" >> "O_T_SniperTeam")] call BIS_fnc_spawnGroup;
     _sniperGroup setBehaviour "COMBAT";
     _sniperGroup setCombatMode "RED";
@@ -261,7 +261,7 @@ for "_x" from 1 to 2 do {
         _roadSegment = selectRandom _nearRoads;
         _randomPos = getPos _roadSegment;
     } else {
-        _randomPos = [_startPoint, 200, 10, 10] call BIS_fnc_findOverwatch;
+        _randomPos = [_startPoint, 200, 10, 10] call QS_fnc_findOverwatch;
     };
     _static = selectRandom [INFANTRY_STATIC] createVehicle _randomPos;
     waitUntil{!isNull _static};
@@ -285,7 +285,7 @@ for "_x" from 1 to 2 do {
         _roadSegment = selectRandom _nearRoads;
         _randomPos = getPos _roadSegment;
     } else {
-        _randomPos = [[[_startPoint, 200],[]],["water","out"]] call BIS_fnc_randomPos;
+        _randomPos = [[[_startPoint, 200],[]],["water","out"]] call QS_fnc_randomPos;
     };
     _technicalVehicle = selectRandom [INFANTRY_MOTORIZED] createVehicle _randomPos;
     waitUntil{!isNull _technicalVehicle};

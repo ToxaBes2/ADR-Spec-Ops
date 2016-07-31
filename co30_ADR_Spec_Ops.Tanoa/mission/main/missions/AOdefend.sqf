@@ -125,6 +125,7 @@ if (!_inside) then {
     DEFEND_AO_VICTORY = true;
 };
 publicVariable "DEFEND_AO_VICTORY";
+currentAOUp = false; publicVariable "currentAOUp";
 publicVariable "hqSideChat"; [WEST,"HQ"] sideChat hqSideChat;
 [DEFEND_AO_VEHICLES] call QS_fnc_TBdeleteObjects;
 [_enemiesArray] call QS_fnc_TBdeleteObjects;

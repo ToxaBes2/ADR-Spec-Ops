@@ -14,11 +14,11 @@ private ["_flatPos", "_accepted", "_position", "_randomDir", "_x", "_briefing", 
 _flatPos = [0,0,0];
 _accepted = false;
 while {!_accepted} do {
-	_position = [[[] call BIS_fnc_worldArea], ["water", "out"]] call BIS_fnc_randomPos;
+	_position = [[[] call BIS_fnc_worldArea], ["water", "out"]] call QS_fnc_randomPos;
 	_flatPos = _position isFlatEmpty [2, 0, 0.3, 1, 1, true];
 
 	while {(count _flatPos) < 2} do {
-		_position = [[[] call BIS_fnc_worldArea], ["water", "out"]] call BIS_fnc_randomPos;
+		_position = [[[] call BIS_fnc_worldArea], ["water", "out"]] call QS_fnc_randomPos;
 		_flatPos = _position isFlatEmpty [2, 0, 0.3, 1, 1, true];
 	};
 
@@ -47,9 +47,9 @@ _object = selectRandom [crate3,crate4];
 _object setPos [(getPos sideObj select 0), (getPos sideObj select 1), ((getPos sideObj select 2) + 5)];
 
 // BOAT POSITIONS
-_boatPos = [_flatPos, 50, 150, 10, 2, 1, 0, [], [_flatPos]] call BIS_fnc_findSafePos;
-_trawlerPos = [_flatPos, 200, 300, 10, 2, 1, 0, [], [_flatPos]] call BIS_fnc_findSafePos;
-_assaultBoatPos = [_flatPos, 15, 25, 10, 0, 1, 0, [], [_flatPos]] call BIS_fnc_findSafePos;
+_boatPos = [_flatPos, 50, 150, 10, 2, 1, 0, [], [_flatPos]] call QS_fnc_findSafePos;
+_trawlerPos = [_flatPos, 200, 300, 10, 2, 1, 0, [], [_flatPos]] call QS_fnc_findSafePos;
+_assaultBoatPos = [_flatPos, 15, 25, 10, 0, 1, 0, [], [_flatPos]] call QS_fnc_findSafePos;
 
 // ENEMY HMG BOAT (SEEMS RIGHT SINCE ITS BY THE COAST)
 boat = "O_T_Boat_Armed_01_hmg_F" createVehicle _boatPos;

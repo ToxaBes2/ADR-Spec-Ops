@@ -27,7 +27,7 @@ if (_bunkerType == 1) then {
     _enemiesArray = _enemiesArray + [_bunkerGroup];
 
     for "_i" from 1 to 2 do {
-        _groundPos = [_bunkerPos, 10, 50, 2, 0, 10, 0, [], [_bunkerPos]] call BIS_fnc_findSafePos;
+        _groundPos = [_bunkerPos, 10, 50, 2, 0, 10, 0, [], [_bunkerPos]] call QS_fnc_findSafePos;
         _patrolGroup = [_groundPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> ENEMY_SIDE_STR >> "OPF_T_F" >> "Infantry" >> "O_T_InfSentry")] call BIS_fnc_spawnGroup;
         [_patrolGroup, true] call QS_fnc_moveToHC;
         {
@@ -95,7 +95,7 @@ if (_bunkerType == 1) then {
 
 // patrols (2x2 bots)
 for "_i" from 1 to 2 do {
-    _groundPos = [_bunkerPos, 40, 80, 2, 0, 10, 0, [], [_bunkerPos]] call BIS_fnc_findSafePos;
+    _groundPos = [_bunkerPos, 40, 80, 2, 0, 10, 0, [], [_bunkerPos]] call QS_fnc_findSafePos;
     _patrolGroup = [_groundPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> ENEMY_SIDE_STR >> "OPF_T_F" >> "Infantry" >> "O_T_InfSentry")] call BIS_fnc_spawnGroup;
     [_patrolGroup, true] call QS_fnc_moveToHC;
     [_patrolGroup, _bunkerPos, 25] call BIS_fnc_taskPatrol;
@@ -117,7 +117,7 @@ if (_hasMines) then {
 
     // patrols (2x2 bots)
     for "_i" from 1 to 2 do {
-        _groundPos = [_flatPos, 0, 40, 2, 0, 10, 0, [], [_flatPos]] call BIS_fnc_findSafePos;
+        _groundPos = [_flatPos, 0, 40, 2, 0, 10, 0, [], [_flatPos]] call QS_fnc_findSafePos;
         _patrolGroup = [_groundPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> ENEMY_SIDE_STR >> "OPF_T_F" >> "Infantry" >> "O_T_InfSentry")] call BIS_fnc_spawnGroup;
         [_patrolGroup, true] call QS_fnc_moveToHC;
         [_patrolGroup, _flatPos, 25] call BIS_fnc_taskPatrol;
@@ -140,11 +140,11 @@ _enemiesArray = _enemiesArray + [_buildingGroup];
 // AA vehicles
 for "_x" from 1 to PARAMS_AAPatrol do {
 	_aaGroup = createGroup east;
-	_randomPos = [[[getMarkerPos currentAO, (PARAMS_AOSize / 2)], []], ["water", "out"]] call BIS_fnc_randomPos;
+	_randomPos = [[[getMarkerPos currentAO, (PARAMS_AOSize / 2)], []], ["water", "out"]] call QS_fnc_randomPos;
     _randPos = _randomPos isFlatEmpty[3, 1, 0.3, 15, 0, false];
     _res = count _randPos;
     while {_res < 1} do {
-        _randomPos = [[[getMarkerPos currentAO, (PARAMS_AOSize / 2)], []], ["water", "out"]] call BIS_fnc_randomPos;
+        _randomPos = [[[getMarkerPos currentAO, (PARAMS_AOSize / 2)], []], ["water", "out"]] call QS_fnc_randomPos;
         _randPos = _randomPos isFlatEmpty[3, 1, 0.3, 15, 0, false];
         _res = count _randPos;
     };
@@ -174,7 +174,7 @@ for "_x" from 1 to PARAMS_AAPatrol do {
 // Infantry patrols
 for "_x" from 1 to PARAMS_GroupPatrol do {
 	_patrolGroup = createGroup east;
-	_randomPos = [[[getMarkerPos currentAO, (PARAMS_AOSize / 1.5)], []], ["water", "out"]] call BIS_fnc_randomPos;
+	_randomPos = [[[getMarkerPos currentAO, (PARAMS_AOSize / 1.5)], []], ["water", "out"]] call QS_fnc_randomPos;
 	_patrolGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "Infantry" >> selectRandom [INF_TYPE])] call BIS_fnc_spawnGroup;
 	[_patrolGroup, true] call QS_fnc_moveToHC;
 	[_patrolGroup, getMarkerPos currentAO, 400] call BIS_fnc_taskPatrol;
@@ -185,7 +185,7 @@ for "_x" from 1 to PARAMS_GroupPatrol do {
 // Static weapons
 for "_x" from 1 to PARAMS_StaticMG do {
 	_staticGroup = createGroup EAST;
-	_randomPos = [getMarkerPos currentAO, 200, 10, 10] call BIS_fnc_findOverwatch;
+	_randomPos = [getMarkerPos currentAO, 200, 10, 10] call QS_fnc_findOverwatch;
 	_static = selectRandom [STATIC_TYPE] createVehicle _randomPos;
 	waitUntil{!isNull _static};
 	_static setDir random 360;
@@ -205,7 +205,7 @@ for "_x" from 1 to PARAMS_StaticMG do {
 // Infantry overwatch
 for "_x" from 1 to PARAMS_Overwatch do {
 	_overwatchGroup = createGroup east;
-	_randomPos = [getMarkerPos currentAO, 600, 50, 10] call BIS_fnc_findOverwatch;
+	_randomPos = [getMarkerPos currentAO, 600, 50, 10] call QS_fnc_findOverwatch;
 	_overwatchGroup = [_randomPos, East, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "UInfantry" >> selectRandom [INF_URBANTYPE])] call BIS_fnc_spawnGroup;
 	[_patrolGroup, true] call QS_fnc_moveToHC;
 	[_overwatchGroup, _randomPos, 100] call BIS_fnc_taskPatrol;
@@ -216,11 +216,11 @@ for "_x" from 1 to PARAMS_Overwatch do {
 // MRAPs
 for "_x" from 0 to 1 do {
 	_AOmrapGroup = createGroup EAST;
-	_randomPos = [[[getMarkerPos currentAO, (PARAMS_AOSize / 1.6)], []], ["water", "out"]] call BIS_fnc_randomPos;
+	_randomPos = [[[getMarkerPos currentAO, (PARAMS_AOSize / 1.6)], []], ["water", "out"]] call QS_fnc_randomPos;
 	_randPos = _randomPos isFlatEmpty[3, 1, 0.5, 6, 0, false];
     _res = count _randPos;
     while {_res < 1} do {
-        _randomPos = [[[getMarkerPos currentAO, (PARAMS_AOSize / 1.6)], []], ["water", "out"]] call BIS_fnc_randomPos;
+        _randomPos = [[[getMarkerPos currentAO, (PARAMS_AOSize / 1.6)], []], ["water", "out"]] call QS_fnc_randomPos;
         _randPos = _randomPos isFlatEmpty[3, 1, 0.5, 6, 0, false];
         _res = count _randPos;
     };
@@ -248,11 +248,11 @@ for "_x" from 0 to 1 do {
 // Ground vehicles
 for "_x" from 0 to (1 + (random 1)) do {
 	_AOvehGroup = createGroup EAST;
-	_randomPos = [[[getMarkerPos currentAO, (PARAMS_AOSize / 1.6)], []], ["water", "out"]] call BIS_fnc_randomPos;
+	_randomPos = [[[getMarkerPos currentAO, (PARAMS_AOSize / 1.6)], []], ["water", "out"]] call QS_fnc_randomPos;
 	_randPos = _randomPos isFlatEmpty[3, 1, 0.5, 10, 0, false];
     _res = count _randPos;
     while {_res < 1} do {
-        _randomPos = [[[getMarkerPos currentAO, (PARAMS_AOSize / 1.6)], []], ["water", "out"]] call BIS_fnc_randomPos;
+        _randomPos = [[[getMarkerPos currentAO, (PARAMS_AOSize / 1.6)], []], ["water", "out"]] call QS_fnc_randomPos;
         _randPos = _randomPos isFlatEmpty[3, 1, 0.5, 10, 0, false];
         _res = count _randPos;
     };
@@ -281,7 +281,7 @@ for "_x" from 0 to (1 + (random 1)) do {
 // Helicopters
 if((random 10 <= PARAMS_AirPatrol)) then {
 	_airGroup = createGroup EAST;
-	_randomPos = [[[getMarkerPos currentAO, PARAMS_AOSize], _dt], ["water", "out"]] call BIS_fnc_randomPos;
+	_randomPos = [[[getMarkerPos currentAO, PARAMS_AOSize], _dt], ["water", "out"]] call QS_fnc_randomPos;
 	_air = selectRandom [AIR_TYPE] createVehicle [_randomPos select 0, _randomPos select 1, 1000];
 	waitUntil{!isNull _air};
 	_air engineOn true;
@@ -312,7 +312,7 @@ if((random 10 <= PARAMS_AirPatrol)) then {
 // Snipers
 for "_x" from 1 to PARAMS_SniperTeamsPatrol do {
 	_sniperGroup = createGroup EAST;
-	_randomPos = [getMarkerPos currentAO, 1200, 100, 10] call BIS_fnc_findOverwatch;
+	_randomPos = [getMarkerPos currentAO, 1200, 100, 10] call QS_fnc_findOverwatch;
 	_sniperGroup = [_randomPos, EAST,(configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "Infantry" >> "O_T_SniperTeam")] call BIS_fnc_spawnGroup;
 	[_sniperGroup, true] call QS_fnc_moveToHC;
 	_sniperGroup setBehaviour "COMBAT";
@@ -335,7 +335,7 @@ if (random 10 > 6) then {
     };
     _direction = [(getMarkerPos "respawn_west"), (getMarkerPos currentAO)] call BIS_fnc_dirTo;
     _targetPos = [(getMarkerPos "respawn_west"), _medianaRes, _direction] call BIS_fnc_relPos;
-    _atPos = [_targetPos, 1, 500, 2, 0, 2, 0, [], [_targetPos]] call BIS_fnc_findSafePos;
+    _atPos = [_targetPos, 1, 500, 2, 0, 2, 0, [], [_targetPos]] call QS_fnc_findSafePos;
     if (random 10 > 5) then {
         _null = [_atPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "Infantry" >> "O_T_InfTeam_AT")] call BIS_fnc_spawnGroup;
     } else {

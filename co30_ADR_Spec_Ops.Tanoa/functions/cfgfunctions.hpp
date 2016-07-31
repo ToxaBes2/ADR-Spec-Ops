@@ -37,9 +37,11 @@ class QS
 		class deleteUnits {};
 		class enemyCAS {};
 		class EWattack {};
-		class FindPosBuilding {};
 		class FillBots {};
 		class FillCargoPatrol {};
+		class findOverwatch {};
+		class FindPosBuilding {};
+		class findSafePos {};
 		class garrisonFortEAST {};
 		class garrisonFortFIA {};
 		class garrisonFortIND {};
@@ -53,6 +55,8 @@ class QS
 		class PTenemyEAST {};
 		class punishObject {};
 		class RadioSound {};
+		class randomPos {};
+		class randomPosTrigger {};
 		class removeAction {};
 		class removeAction0 {};
 		class removeAction1 {};

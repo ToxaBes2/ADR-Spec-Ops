@@ -39,7 +39,7 @@ for "_i" from 0 to (2 + (floor (random 3))) do
 {
 	private ["_wp", "_newPos"];
     for "_i" from 0 to 1000 do {
-        _newPos = [_prevPos, 50, _maxDist, 1, 0, 60 * (pi / 180), 0, _blacklist, [_pos]] call BIS_fnc_findSafePos;
+        _newPos = [_prevPos, 50, _maxDist, 1, 0, 60 * (pi / 180), 0, _blacklist, [_pos]] call QS_fnc_findSafePos;
         if ((_newPos distance2D _pos) <= _maxDist) exitWith {};
     };
 	_prevPos = _newPos;

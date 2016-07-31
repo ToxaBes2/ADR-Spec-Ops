@@ -11,10 +11,10 @@ _basepos = getMarkerPos "respawn_west";
 _flatPos = [0, 0, 0];
 _accepted = false;
 while {!_accepted} do {
-	_position = [[[_basepos, 2000]], ["water", "out"]] call BIS_fnc_randomPos;
+	_position = [[[_basepos, 2000]], ["water", "out"]] call QS_fnc_randomPos;
 	_flatPos = _position isFlatEmpty [5, 0, 0.2, 5, 0, false];
 	while {(count _flatPos) < 2} do {
-		_position = [[[_basepos, 6000]], ["water", "out"]] call BIS_fnc_randomPos;
+		_position = [[[_basepos, 6000]], ["water", "out"]] call QS_fnc_randomPos;
 		_flatPos = _position isFlatEmpty [5, 0, 0.2, 5, 0, false];
 	};
 	if ((_flatPos distance _basepos) > 2000) then {

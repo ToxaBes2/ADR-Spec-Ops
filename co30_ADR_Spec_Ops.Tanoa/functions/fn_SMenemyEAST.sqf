@@ -29,7 +29,7 @@ _smSniperTeam = createGroup ENEMY_SIDE;
 
 //---------- INFANTRY RANDOM
 for "_x" from 0 to (3 + (random 4)) do {
-	_randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call BIS_fnc_randomPos;
+	_randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call QS_fnc_randomPos;
 	_infteamPatrol = [_randomPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "Infantry" >> selectRandom [INF_TEAMS])] call BIS_fnc_spawnGroup;
 	[_infteamPatrol, getPos sideObj, 100] call BIS_fnc_taskPatrol;
 
@@ -38,7 +38,7 @@ for "_x" from 0 to (3 + (random 4)) do {
 
 //---------- SNIPER
 for "_x" from 0 to 1 do {
-	_randomPos = [getPos sideObj, 500, 100, 20] call BIS_fnc_findOverwatch;
+	_randomPos = [getPos sideObj, 500, 100, 20] call QS_fnc_findOverwatch;
 	_smSniperTeam = [_randomPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "Infantry" >> "O_T_SniperTeam")] call BIS_fnc_spawnGroup;
 	_smSniperTeam setBehaviour "COMBAT";
 	_smSniperTeam setCombatMode "RED";
@@ -47,7 +47,7 @@ for "_x" from 0 to 1 do {
 };
 
 //---------- VEHICLE RANDOM
-_randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call BIS_fnc_randomPos;
+_randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call QS_fnc_randomPos;
 _data = [_randomPos, (random 360), (selectRandom [VEH_TYPES]), ENEMY_SIDE] call BIS_fnc_spawnVehicle;
 _SMveh1 = _data select 0;
 _SMvehPatrol = _data select 2;
@@ -62,7 +62,7 @@ sleep 0.1;
 _enemiesArray = _enemiesArray + [_SMvehPatrol];
 
 //---------- VEHICLE RANDOM
-_randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call BIS_fnc_randomPos;
+_randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call QS_fnc_randomPos;
 _data = [_randomPos, (random 360), (selectRandom [VEH_TYPES]), ENEMY_SIDE] call BIS_fnc_spawnVehicle;
 _SMveh2 = _data select 0;
 _SMvehPatrol = _data select 2;
@@ -76,7 +76,7 @@ sleep 0.1;
 _enemiesArray = _enemiesArray + [_SMvehPatrol];
 
 //---------- VEHICLE AA
-_randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call BIS_fnc_randomPos;
+_randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call QS_fnc_randomPos;
 _data = [_randomPos, (random 360), "O_T_APC_Tracked_02_AA_ghex_F", ENEMY_SIDE] call BIS_fnc_spawnVehicle;
 _SMaa = _data select 0;
 _SMaaPatrol = _data select 2;
