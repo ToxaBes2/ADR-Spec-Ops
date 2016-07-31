@@ -34,33 +34,3 @@ partizan_ammo setPos _position;
 "respawn_guerrila" setMarkerPos _respawnPos;
 "partizan_base" setMarkerPos _position;
 ["partizan_base", 0] remoteExec ["setMarkerAlphaLocal", west];
-
-{
-    _sd = random 360;
-    _dist = 10;
-    _accepted = false;
-    _sp = [_position, 0.25, _dist, 1, 0, 0.5, 0] call QS_fnc_findSafePos;
-    _sp = _sp findEmptyPosition [0, 5, typeOf _x];
-    if (count _sp > 0) then {
-        if (_sp distance2D _position < 50) then {
-            if (!isOnRoad _sp) then {
-                _accepted = true;
-            };
-        };
-    };
-    while {!_accepted} do {
-        _dist = _dist + 10;
-        _sp = [_position, 0.25, _dist, 1, 0, 0.5, 0] call QS_fnc_findSafePos;
-        _sp = _sp findEmptyPosition [0, 5, typeOf _x];
-        if (count _sp > 0) then {
-            if (_sp distance2D _position < _dist) then {
-                if (!isOnRoad _sp) then {
-                    _accepted = true;
-                };
-            };
-        };
-    };
-    _x setPos _sp;
-    _x setDir _sd;
-    sleep 1;
-} forEach [suv1, kvadr2_1, kvadr1_1, pickup1, jeep1];

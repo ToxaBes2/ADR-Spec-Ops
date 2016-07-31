@@ -1,11 +1,9 @@
 _vehiclePos = _this select 0;
 _class = _this select 1;
-_veh = createVehicle [_class, [0,0,0], [], 0, "CAN_COLLIDE"]; 
-_veh setVariable ["irTarget", false, true];
-_veh setPos _vehiclePos;
+_veh = createVehicle [_class, _vehiclePos, [], 0, "NONE"];
 _veh setDir (random 360);
-_veh addAction ["Включить маскировку",{vehicle player setVariable ["irTarget", false, true];}]; 
-_veh addAction ["Выключить маскировку",{vehicle player setVariable ["irTarget", true, true];}]; 
+_veh lock 0;
+_veh setVariable ["irTarget", false, true];
 0 = [_veh, _vehiclePos] spawn {
     _veh = _this select 1;
     _vehiclePos = _this select 1;
@@ -34,3 +32,4 @@ _veh addAction ["Выключить маскировку",{vehicle player setVar
         };
     };
 };
+true

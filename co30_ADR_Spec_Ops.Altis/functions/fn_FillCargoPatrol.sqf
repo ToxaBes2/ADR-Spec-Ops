@@ -28,6 +28,7 @@ _positions = [
     [-1.5,1.5,4],
     [1.5,1.5,4]
 ];
+_units = [];
 switch (_side) do {
     case WEST : {
         _units = ["B_Sharpshooter_F","B_Recon_Sharpshooter_F","B_CTRG_Sharphooter_F","B_HeavyGunner_F","B_G_Sharpshooter_F","B_sniper_F"];
