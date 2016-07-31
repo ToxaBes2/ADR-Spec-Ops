@@ -19,7 +19,7 @@ Description: Snatch helicopter and return it to the base.
 #define INFANTRY_SOLDIERS "O_Soldier_F","O_Soldier_GL_F","O_Soldier_AR_F","O_Soldier_SL_F","O_Soldier_TL_F","O_soldier_M_F","O_Soldier_LAT_F","O_medic_F","O_soldier_repair_F","O_soldier_exp_F","O_Soldier_AT_F","O_Soldier_AA_F","O_engineer_F","O_recon_F","O_recon_M_F","O_recon_LAT_F","O_recon_medic_F","O_recon_TL_F","O_Soldier_AAT_F","O_soldierU_M_F","O_SoldierU_GL_F"
 
 // define private variables
-private ["_enemiesArray", "_unitsArray", "_arr", "_cnt", "_targets", "_helicopters", "_position", "_flatPos", "_startPoint", "_briefing", "_campPos", "_camp", "_campFires", "_tentDome", "_campGroup", "_sleepingBags", "_sleepingPositions", "_sleepingPos", "_i", "_bagPos", "_heliPos", "_heliDir", "_heliLand", "_heliData", "_heliType", "_trig", "_boxes", "_n", "_height", "_posInit", "_posSpawn", "_uavData", "_uav", "_uavGroup", "_fuelPos", "_fuelDir", "_fuelNet", "_fuelVeh", "_aaGroup", "_aaPos", "_aaDir", "_aaVeh", "_aa", "_staticGroup", "_bunkers", "_bunkerPos", "_bunkerDir", "_bunkerBag", "_posBlock", "_block", "_bunkerCamonet", "_posATL", "_static", "_singlePositions", "_heliGroup", "_pilotPositions", "_pilotPos", "_crewPos", "_patrolGroup", "_dirSign", "_vehMineDir", "_apMineDir", "_c", "_posSign", "_sign", "_mine", "_minePos", "_nearestMines"];
+private ["_enemiesArray", "_unitsArray", "_arr", "_cnt", "_targets", "_helicopters", "_position", "_flatPos", "_startPoint", "_briefing", "_campPos", "_camp", "_campFires", "_tentDome", "_campGroup", "_sleepingBags", "_sleepingPositions", "_sleepingPos", "_i", "_bagPos", "_heliPos", "_heliDir", "_heliLand", "_heliData", "_heliType", "_trig", "_boxes", "_n", "_height", "_posInit", "_posSpawn", "_uavData", "_uav", "_uavGroup", "_fuelPos", "_fuelDir", "_fuelNet", "_fuelVeh", "_aaGroup", "_aaPos", "_aaDir", "_aaVeh", "_aa", "_staticGroup", "_bunkers", "_bunkerPos", "_bunkerDir", "_bunkerBag", "_posBlock", "_block", "_bunkerCamonet", "_posATL", "_static", "_singlePositions", "_heliGroup", "_pilotPositions", "_pilotPos", "_crewPos", "_patrolGroup", "_viperGroup", "_dirSign", "_vehMineDir", "_apMineDir", "_c", "_posSign", "_sign", "_mine", "_minePos", "_nearestMines"];
 
 _enemiesArray = [grpNull];
 _unitsArray = [];
@@ -302,6 +302,16 @@ _patrolGroup = [_startPoint, ENEMY_SIDE, (configfile >> "CfgGroups" >> "EAST" >>
 [_patrolGroup, _startPoint, 100] call QS_fnc_taskMaxDistPatrol;
 _patrolGroup setBehaviour "SAFE";
 _patrolGroup setCombatMode "RED";
+
+// spawn Viper group
+if (random 1 > 0.5) then {
+    _viperGroup = [_startPoint, ENEMY_SIDE, (configfile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "SpecOps" >> "OI_ViperTeam")] call BIS_fnc_spawnGroup;
+    [_viperGroup, _startPoint, 175] call QS_fnc_taskMaxDistPatrol;
+    _viperGroup setCombatMode "RED";
+    _viperGroup setBehaviour "STEALTH";
+    [(units _viperGroup)] call QS_fnc_setSkill4;
+    _enemiesArray pushBack _viperGroup;
+};
 
 // spawn mines, mines everythere
 _dirSign = 180;

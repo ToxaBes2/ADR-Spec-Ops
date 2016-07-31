@@ -14,7 +14,7 @@ Description: Defend submarine.
 #define INFANTRY_WRECKED_VECHICLES "Land_UWreck_FishingBoat_F","Land_UWreck_Heli_Attack_02_F","Land_UWreck_MV22_F","Land_Wreck_Heli_Attack_02_F","Land_Wreck_Plane_Transport_01_F","Land_Wreck_Traw_F","Land_Wreck_Traw2_F","Land_Cargo20_grey_F","Land_Cargo20_light_green_F","Land_Cargo20_military_green_F"
 
 // define private variables
-private ["_targets","_accepted","_distance","_briefing","_position","_flatPos","_x","_enemiesArray","_startPoint"];
+private ["_enemiesArray", "_unitsArray", "_targets", "_position", "_flatPos", "_startPoint", "_briefing", "_sub", "_subPos", "_subDir", "_submarine", "_mod", "_chemPos", "_chemlight", "_minePos", "_height", "_mine", "_wreck", "_wreckPos", "_wreckVeh", "_devices", "_safePos", "_devicePos", "_device", "_sdv", "_light", "_diversGroup1", "_r", "_diverPos", "_diversGroup2", "_patrolGroup", "_boatPos1", "_dirBoat1", "_boat1", "_dirBoat2", "_botPos2", "_boat2", "_dirBoat3", "_botPos3", "_boat3", "_places", "_campPos", "_camo", "_hqGroup", "_guardPos", "_sniperPlaces", "_sniperPos", "_viperGroup", "_nearestMines"];
 
 _enemiesArray = [grpNull];
 _unitsArray = [];
@@ -308,6 +308,15 @@ _hqGroup setCombatMode "RED";
 [(units _hqGroup)] call QS_fnc_setSkill4;
 [_hqGroup, _campPos] call bis_fnc_taskDefend;
 _enemiesArray = _enemiesArray + (units _hqGroup);
+
+// HQ: Viper group
+if (random 1 > 0.5) then {
+    _viperGroup = [_campPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "EAST" >> "OPF_F" >> "SpecOps" >> "OI_ViperTeam")] call BIS_fnc_spawnGroup;
+    [_viperGroup, _campPos, 300] call BIS_fnc_taskPatrol;
+    _viperGroup setCombatMode "RED";
+    _viperGroup setBehaviour "STEALTH";
+    [(units _viperGroup)] call QS_fnc_setSkill4;
+};
 
 [_startPoint, 200, ["vehicles", "fire"]] call QS_fnc_addHades;
 while { sideMissionUp } do {

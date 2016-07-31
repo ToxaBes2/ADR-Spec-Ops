@@ -13,7 +13,7 @@ Description: download data from 3 data terminals in enemy town
 #define INFANTRY_VEHICLE_CREW "O_engineer_F"
 
 // define private variables
-private ["_targets","_accepted","_distance","_briefing","_position","_flatPos","_x","_enemiesArray","_startPoint"];
+private ["_enemiesArray", "_unitsArray", "_targets", "_position", "_flatPos", "_startPoint", "_briefing", "_goodPos", "_houseList", "_c", "_goodPoses", "_usedPoses", "_blackList", "_devicePos", "_nearestDevices", "_groundPos", "_dst", "_house", "_device", "_deviceDir", "_guardsCount", "_guardGroup", "_commonGroup", "_patrolGroup", "_vehGroup", "_randomPos", "_veh", "_viperSquadSpawned", "_showMarkers", "_markers", "_s", "_f", "_status", "_res", "_aliveBots", "_a", "_terPos", "_markerPos", "_markerName", "_marker", "_devicesLeft"];
 
 _enemiesArray = [grpNull];
 _unitsArray = [];
@@ -160,6 +160,7 @@ for "_c" from 1 to 2 do {
 _nearestDevices = _flatPos nearObjects [INFANTRY_TERMINAL, 200];
 [_startPoint, 200, ["vehicles", "fire"]] call QS_fnc_addHades;
 
+_viperSquadSpawned = false;
 _showMarkers = false;
 _markers = [];
 while { sideMissionUp } do {
@@ -217,6 +218,30 @@ while { sideMissionUp } do {
         };
         sleep 5;
     };
+    sleep 1;
+
+    // Spawn Viper group
+    if (!_viperSquadSpawned) then {
+        if (!SM_GRAPESWRATH_SUCCESS and !SM_GRAPESWRATH_FAIL) then {
+            {
+                if (_x getVariable "GRAPESWRATH_HACKED" != "") exitWith {
+                    _viperSquadSpawned = true;
+                    if (random 1 > 0.5) then {
+                        _devicesLeft = [];
+                        {
+
+                            _status = _x getVariable "GRAPESWRATH_HACKED";
+                            if (_status == "") then {
+                                _devicesLeft pushBack _x;
+                            };
+                        } forEach _nearestDevices;
+                        _enemiesArray pushBack ([(getPos (selectRandom _devicesLeft)), 500, 500, 3000, false, ENEMY_SIDE] call QS_fnc_spawnViper);
+                    };
+                };
+            } forEach _nearestDevices;
+        };
+    };
+    sleep 1;
 
     // de-briefing
     if (SM_GRAPESWRATH_SUCCESS || SM_GRAPESWRATH_FAIL) exitWith {
@@ -244,5 +269,5 @@ while { sideMissionUp } do {
         } forEach [_enemiesArray];
         [_startPoint, 500] call QS_fnc_DeleteEnemyEAST;
     };
-    sleep 3;
+    sleep 1;
 };

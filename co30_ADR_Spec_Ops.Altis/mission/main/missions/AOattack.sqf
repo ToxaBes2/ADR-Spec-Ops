@@ -8,7 +8,7 @@ Description: All main AO's in one file
 #define RADIO_TOWERS "Land_TTowerBig_1_F","Land_TTowerBig_2_F"
 #define ALLOWED_EXPLOSIVES "IEDUrbanBig_Remote_Ammo","IEDUrbanBig_Remote_Ammo","IEDLandBig_Remote_Ammo","IEDUrbanSmall_Remote_Ammo","IEDLandSmall_Remote_Ammo","SatchelCharge_Remote_Ammo","DemoCharge_Remote_Ammo",""
 
-private ["_target","_nameAO","_positionAO","_serviceMarkers","_dt","_chance","_bunkerType","_bunkerPos","_bunkerObjects","_obj","_bunkerPositions ","_smallZ","_bigZ","_position","_flatPos","_res","_distance","_tower","_campPos","_hasMines","_groundPos","_hasMines","_minesArray","_newPos","_cargo","_nearestObject","_campObjects","_enemiesArray","_targetStartText","_showTowerMessage","_showBunkerMessage","_radioTowerDownText","_bunkerText","_null","_targetCompleteText","_tower","_tower_dmg","_units","_unitTypes","_vehicles","_isReward","_curVeh","_defend","_aliveBots","_anotherChance","_uavPos","_uav"];
+private ["_nameAO", "_positionAO", "_serviceMarkers", "_dt", "_chance", "_bunkerType", "_bunkerPos", "_distance", "_flatPos", "_res", "_null", "_obj", "_bunkerObjects", "_bunkerPositions", "_bunkerPosition", "_smallZ", "_bigZ", "_anotherChance", "_uav", "_uavPos", "_position", "_tower", "_allowedExplosives", "_tower_dmg", "_points", "_unit", "_campPos", "_hasMines", "_groundPos", "_minesArray", "_newPos", "_cargo", "_campObjects", "_type", "_nearestObject", "_enemiesArray", "_targetStartText", "_showTowerMessage", "_showBunkerMessage", "_viperSquadSpawned", "_radioTowerDownText", "_bunkerText", "_targetCompleteText", "_aliveBots", "_chanceDefend", "_vehicles", "_curVeh", "_isReward", "_unitTypes"];
 
 eastSide = createCenter ENEMY_SIDE;
 _target = [] call QS_fnc_getMainAO;
@@ -204,6 +204,7 @@ if (PARAMS_AOReinforcementCas == 1) then {
 };
 _showTowerMessage = false;
 _showBunkerMessage = false;
+_viperSquadSpawned = false;
 while {alive radioTower || !MAIN_AO_SUCCESS || !_showTowerMessage || !_showBunkerMessage} do {
     sleep 3;
     if (!alive radioTower && !_showTowerMessage) then {
@@ -223,6 +224,14 @@ while {alive radioTower || !MAIN_AO_SUCCESS || !_showTowerMessage || !_showBunke
         _bunkerText = "<t align='center' size='2.2'>Командный пункт</t><br/><t size='1.5' color='#C6FF00' align='center'>Захвачен</t><br/>____________________<br/>Противник дезорганизован.";
         GlobalHint = _bunkerText; hint parseText GlobalHint; publicVariable "GlobalHint";
         showNotification = ["CompletedSub", ["Командный пункт захвачен!", "\a3\ui_f\data\gui\cfg\hints\commanding_ca.paa"]]; publicVariable "showNotification";
+    };
+    sleep 3;
+    // Spawn Viper group
+    if ((MAIN_AO_SUCCESS and !_viperSquadSpawned) or (!alive radioTower and !_viperSquadSpawned)) then {
+        _viperSquadSpawned = true;
+        if (random 1 > 0.5) then {
+            _enemiesArray pushBack ([(_bunkerPos getPos [(_bunkerPos distance2D _flatPos) / 2, _bunkerPos getDir _flatPos]), 500, 500, 3000, false, ENEMY_SIDE] call QS_fnc_spawnViper);
+        };
     };
 };
 currentAOUp = false; publicVariable "currentAOUp";
