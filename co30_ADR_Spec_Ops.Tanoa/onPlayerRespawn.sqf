@@ -141,3 +141,6 @@ if (playerSide == west) then {
 if (!isNil {BTC_blur}) then {ppEffectDestroy BTC_blur;};
 if (!isNil {BTC_cc}) then {ppEffectDestroy BTC_cc;};
 if (!isNil {BTC_grain}) then {ppEffectDestroy BTC_grain;};
+
+// Remove earplugs on respawn
+1 fadeSound 1;
