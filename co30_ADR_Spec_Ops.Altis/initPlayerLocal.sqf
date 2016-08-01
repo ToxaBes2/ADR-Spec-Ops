@@ -115,6 +115,28 @@ player addEventHandler [ "GetOutMan", {
 	};
 }];
 
+// Put earplugs in automaticly when controling UAV (Engineers only)
+if (typeOf player in ["B_Engineer_F", "B_T_Engineer_F", "I_G_engineer_F", "I_C_Soldier_Para_8_F"]) then {
+	_null = [] spawn {
+		private ["_uav", "_uav_action_id1", "_uav_action_id2"];
+		while {true} do {
+			if ((typeOf cameraOn) in ["B_UAV_01_F","B_UAV_02_F","B_UAV_02_CAS_F","B_UGV_01_F","B_UGV_01_rcws_F","I_UAV_01_F","I_UAV_02_F","I_UAV_02_CAS_F","I_UGV_01_F","I_UGV_01_rcws_F","O_UAV_01_F","O_UAV_02_F","O_UAV_02_CAS_F","O_UGV_01_F","O_UGV_01_rcws_F","B_T_UAV_03_F","O_T_UAV_04_CAS_F"]) then {
+				_uav = cameraOn;
+				1 fadeSound 0.33;
+				_uav_action_id1 = _uav addAction ["<t color='#FFEB3B'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\radio_ca.paa' size='1.0'/> Вставить беруши</t>", {1 fadeSound 0.33}, "", -95, false, true, "", "soundVolume == 1"];
+				_uav_action_id2 = _uav addAction ["<t color='#FFEB3B'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\radio_ca.paa' size='1.0'/> Вытащить беруши</t>", {1 fadeSound 1}, "", -95, false, true, "", "soundVolume != 1"];
+				while {cameraOn == _uav} do {
+					sleep 5;
+				};
+				1 fadeSound 1;
+				_uav removeAction _uav_action_id1;
+				_uav removeAction _uav_action_id2;
+			};
+		    sleep 5;
+		};
+	};
+};
+
 // Remove CSAT helmets from BLUFOR players iventory
 if (playerSide == west) then {
 	player addEventHandler [ "Take", {
