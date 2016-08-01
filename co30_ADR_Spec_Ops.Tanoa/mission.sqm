@@ -637,7 +637,6 @@ class Mission
 		briefingName="Co-30 ADR: Spec Ops [Tanoa]";
 		overviewText="version 0.0.1";
 		resistanceWest=0;
-		resistanceEast=1;
 		timeOfChanges=28800;
 		startWeather=0.49452594;
 		startWind=1;
@@ -4620,7 +4619,7 @@ class Mission
 			};
 			id=362;
 			type="Land_PortableGenerator_01_F";
-			atlOffset=1.2874603e-005;
+			atlOffset=1.3113022e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -8645,7 +8644,6 @@ class Mission
 			};
 			id=571;
 			type="Land_runway_edgelight_blue_F";
-			atlOffset=0.0061097145;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -8704,7 +8702,6 @@ class Mission
 			};
 			id=572;
 			type="Land_runway_edgelight_blue_F";
-			atlOffset=0.09542942;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -8815,12 +8812,12 @@ class Mission
 				angles[]={6.2825875,0.52359891,0.04142493};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 			};
 			id=574;
 			type="Land_runway_edgelight_blue_F";
-			atlOffset=0.22572064;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -8873,12 +8870,13 @@ class Mission
 				angles[]={0.00034906584,0.52359879,6.271317};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 			};
 			id=575;
 			type="Land_runway_edgelight_blue_F";
-			atlOffset=0.23600006;
+			atlOffset=0.00026750565;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -26655,8 +26653,8 @@ class Mission
 						};
 						class Attribute1
 						{
-							property="face";
-							expression="_this setface _value;";
+							property="enableStamina";
+							expression="_this enablestamina _value;";
 							class Value
 							{
 								class data
@@ -26665,10 +26663,10 @@ class Mission
 									{
 										type[]=
 										{
-											"STRING"
+											"BOOL"
 										};
 									};
-									value="WhiteHead_15";
+									value=0;
 								};
 							};
 						};
@@ -26731,8 +26729,8 @@ class Mission
 						};
 						class Attribute5
 						{
-							property="enableStamina";
-							expression="_this enablestamina _value;";
+							property="face";
+							expression="_this setface _value;";
 							class Value
 							{
 								class data
@@ -26741,10 +26739,10 @@ class Mission
 									{
 										type[]=
 										{
-											"BOOL"
+											"STRING"
 										};
 									};
-									value=0;
+									value="WhiteHead_15";
 								};
 							};
 						};
@@ -27900,7 +27898,7 @@ class Mission
 			};
 			id=2404;
 			type="I_CargoNet_01_ammo_F";
-			atlOffset=0.21700001;
+			atlOffset=0.21700048;
 			class CustomAttributes
 			{
 				class Attribute0
