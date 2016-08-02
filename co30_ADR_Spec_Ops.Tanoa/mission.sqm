@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=2451;
+		nextID=2482;
 	};
 	class MarkerIDProvider
 	{
@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={7021.52,68.902229,7237.2803};
-		dir[]={-0.72393161,-0.59606308,0.34735471};
-		up[]={-0.53740954,0.80293345,0.25785819};
-		aside[]={0.43260381,-1.0721851e-007,0.90159857};
+		pos[]={5799.4883,13.638891,4047.7217};
+		dir[]={-0.86592656,-0.46520942,-0.18371657};
+		up[]={-0.45508021,0.88520056,-0.096550681};
+		aside[]={-0.2075423,0,0.97822601};
 	};
 };
 binarizationWanted=0;
@@ -659,7 +659,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=579;
+		items=605;
 		class Item0
 		{
 			dataType="Object";
@@ -5673,7 +5673,7 @@ class Mission
 			};
 			id=419;
 			type="Land_Ammobox_rounds_F";
-			atlOffset=1.1941037;
+			atlOffset=1.1939499;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -8062,7 +8062,7 @@ class Mission
 			};
 			id=530;
 			type="Land_Ammobox_rounds_F";
-			atlOffset=1.21679;
+			atlOffset=1.2166362;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25956,7 +25956,7 @@ class Mission
 			};
 			id=1342;
 			type="Land_CampingTable_small_F";
-			atlOffset=59.133537;
+			atlOffset=59.133324;
 		};
 		class Item481
 		{
@@ -25973,7 +25973,7 @@ class Mission
 			};
 			id=1343;
 			type="Land_SatellitePhone_F";
-			atlOffset=59.350266;
+			atlOffset=59.350281;
 		};
 		class Item482
 		{
@@ -26018,7 +26018,7 @@ class Mission
 			};
 			id=1346;
 			type="Land_Laptop_device_F";
-			atlOffset=59.38369;
+			atlOffset=59.383755;
 		};
 		class Item485
 		{
@@ -26035,7 +26035,7 @@ class Mission
 			};
 			id=1347;
 			type="Land_Laptop_unfolded_F";
-			atlOffset=59.38369;
+			atlOffset=59.383755;
 		};
 		class Item486
 		{
@@ -26052,7 +26052,7 @@ class Mission
 			};
 			id=1348;
 			type="Box_NATO_AmmoOrd_F";
-			atlOffset=59.255833;
+			atlOffset=59.255772;
 		};
 		class Item487
 		{
@@ -26069,7 +26069,7 @@ class Mission
 			};
 			id=1349;
 			type="Box_NATO_AmmoOrd_F";
-			atlOffset=59.255833;
+			atlOffset=59.255772;
 		};
 		class Item488
 		{
@@ -28385,6 +28385,383 @@ class Mission
 			id=2450;
 			type="I_MRAP_03_F";
 			atlOffset=2.3841858e-007;
+		};
+		class Item579
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={5583.7178,1.3164587,10451.518};
+				angles[]={0,0.98694879,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitorPartizan;";
+				textures="Black";
+			};
+			id=2455;
+			type="C_Boat_Transport_02_F";
+			atlOffset=6.3920002;
+		};
+		class Item580
+		{
+			dataType="Marker";
+			position[]={5587.6929,-8.5816964e-020,10448.608};
+			name="partizan_dock1";
+			text="Морская техника";
+			type="b_naval";
+			colorName="ColorGUER";
+			id=2457;
+			atlOffset=6.0996976;
+		};
+		class Item581
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={9027.0029,2.1867266,13859.254};
+				angles[]={0,6.2628522,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitorPartizan;";
+				textures="Black";
+			};
+			id=2458;
+			type="C_Boat_Transport_02_F";
+			atlOffset=4.3930001;
+		};
+		class Item582
+		{
+			dataType="Marker";
+			position[]={9036.0869,0,13865.868};
+			name="partizan_dock2";
+			text="Морская техника";
+			type="b_naval";
+			colorName="ColorGUER";
+			id=2459;
+			atlOffset=4.0719438;
+		};
+		class Item583
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={13831.842,1.6782904,11978.478};
+				angles[]={0,5.0954189,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitorPartizan;";
+				textures="Black";
+			};
+			id=2460;
+			type="C_Boat_Transport_02_F";
+			atlOffset=8.3920002;
+		};
+		class Item584
+		{
+			dataType="Marker";
+			position[]={13841.53,-3.5633372e-038,11977.14};
+			name="partizan_dock3";
+			text="Морская техника";
+			type="b_naval";
+			colorName="ColorGUER";
+			id=2461;
+			atlOffset=8.0299997;
+		};
+		class Item585
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={12297.054,1.6327602,6568.9951};
+				angles[]={0,2.7109501,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitorPartizan;";
+				textures="Black";
+			};
+			id=2462;
+			type="C_Boat_Transport_02_F";
+			atlOffset=1.452;
+		};
+		class Item586
+		{
+			dataType="Marker";
+			position[]={12299.488,-1.8415656e-016,6570.6328};
+			name="partizan_dock4";
+			text="Морская техника";
+			type="b_naval";
+			colorName="ColorGUER";
+			id=2463;
+			atlOffset=1.0976099;
+		};
+		class Item587
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={13248.774,1.3161974,13664.744};
+				angles[]={0,3.3952065,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitorPartizan;";
+				textures="Black";
+			};
+			id=2464;
+			type="C_Boat_Transport_02_F";
+			atlOffset=3.855;
+		};
+		class Item588
+		{
+			dataType="Marker";
+			position[]={13239.371,-3.2764852e-023,13661.508};
+			name="partizan_dock5";
+			text="Морская техника";
+			type="b_naval";
+			colorName="ColorGUER";
+			id=2465;
+			atlOffset=4.4794436;
+		};
+		class Item589
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={11145.46,1.3162792,14308.613};
+				angles[]={0,0.42781508,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitorPartizan;";
+				textures="Black";
+			};
+			id=2466;
+			type="C_Boat_Transport_02_F";
+			atlOffset=1.321;
+		};
+		class Item590
+		{
+			dataType="Marker";
+			position[]={11143.357,5.1482574e+036,14309.698};
+			name="partizan_dock6";
+			text="Морская техника";
+			type="b_naval";
+			colorName="ColorGUER";
+			id=2467;
+			atlOffset=5.1482574e+036;
+		};
+		class Item591
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={3998.552,1.3165958,14024.661};
+				angles[]={0,2.066365,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitorPartizan;";
+				textures="Black";
+			};
+			id=2468;
+			type="C_Boat_Transport_02_F";
+			atlOffset=0.85269237;
+		};
+		class Item592
+		{
+			dataType="Marker";
+			position[]={3998.3049,4.8211427e+036,14025.58};
+			name="partizan_dock7";
+			text="Морская техника";
+			type="b_naval";
+			colorName="ColorGUER";
+			id=2469;
+			atlOffset=4.8211427e+036;
+		};
+		class Item593
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={3164.3921,1.3161883,11007.294};
+				angles[]={0,5.9575243,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitorPartizan;";
+				textures="Black";
+			};
+			id=2470;
+			type="C_Boat_Transport_02_F";
+			atlOffset=0.96699905;
+		};
+		class Item594
+		{
+			dataType="Marker";
+			position[]={3164.356,2.0993534e+027,11006.684};
+			name="partizan_dock8";
+			text="Морская техника";
+			type="b_naval";
+			colorName="ColorGUER";
+			id=2471;
+			atlOffset=2.0993534e+027;
+		};
+		class Item595
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2659.084,1.3165727,9402.6924};
+				angles[]={0,2.2197795,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitorPartizan;";
+				textures="Black";
+			};
+			id=2472;
+			type="C_Boat_Transport_02_F";
+			atlOffset=1.273;
+		};
+		class Item596
+		{
+			dataType="Marker";
+			position[]={2659.9771,2.1848933e+035,9405.2402};
+			name="partizan_dock9";
+			text="Морская техника";
+			type="b_naval";
+			colorName="ColorGUER";
+			id=2473;
+			atlOffset=2.1848933e+035;
+		};
+		class Item597
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2915.0869,1.3165936,7370.6709};
+				angles[]={0,1.6651313,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitorPartizan;";
+				textures="Black";
+			};
+			id=2474;
+			type="C_Boat_Transport_02_F";
+			atlOffset=1.2819581;
+		};
+		class Item598
+		{
+			dataType="Marker";
+			position[]={2915.5281,3.379019e+010,7373.644};
+			name="partizan_dock10";
+			text="Морская техника";
+			type="b_naval";
+			colorName="ColorGUER";
+			id=2475;
+			atlOffset=3.379019e+010;
+		};
+		class Item599
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={3404.8611,1.3158993,3402.053};
+				angles[]={0,4.2388988,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitorPartizan;";
+				textures="Black";
+			};
+			id=2476;
+			type="C_Boat_Transport_02_F";
+			atlOffset=1.425;
+		};
+		class Item600
+		{
+			dataType="Marker";
+			position[]={3416.5708,0,3403.6401};
+			name="partizan_dock11";
+			text="Морская техника";
+			type="b_naval";
+			colorName="ColorGUER";
+			id=2477;
+			atlOffset=1.9322711;
+		};
+		class Item601
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={11591.124,0.71728981,2514.1641};
+				angles[]={0,5.5647035,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitorPartizan;";
+				textures="Black";
+			};
+			id=2478;
+			type="C_Boat_Transport_02_F";
+			atlOffset=1.791;
+		};
+		class Item602
+		{
+			dataType="Marker";
+			position[]={11592.332,6.4921379e+035,2518.7332};
+			name="partizan_dock12";
+			text="Морская техника";
+			type="b_naval";
+			colorName="ColorGUER";
+			id=2479;
+			atlOffset=6.4921379e+035;
+		};
+		class Item603
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={5783.2559,0.93540239,4037.1851};
+				angles[]={0,4.4050193,0};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitorPartizan;";
+				textures="Black";
+			};
+			id=2480;
+			type="C_Boat_Transport_02_F";
+			atlOffset=0.9187417;
+		};
+		class Item604
+		{
+			dataType="Marker";
+			position[]={5780.9551,0.0033541573,4040.3579};
+			name="partizan_dock13";
+			text="Морская техника";
+			type="b_naval";
+			colorName="ColorGUER";
+			id=2481;
+			atlOffset=2.4355586;
 		};
 	};
 	class Connections
