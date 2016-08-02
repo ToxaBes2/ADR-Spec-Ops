@@ -119,6 +119,19 @@ if (playerSide == west) then {
 	"base_vehicle_service" setMarkerAlphaLocal 1;
 	"base_helipad" setMarkerAlphaLocal 1;
 	"base_dock" setMarkerAlphaLocal 1;
+	"partizan_dock1" setMarkerAlphaLocal 0;
+	"partizan_dock2" setMarkerAlphaLocal 0;
+	"partizan_dock3" setMarkerAlphaLocal 0;
+	"partizan_dock4" setMarkerAlphaLocal 0;
+	"partizan_dock5" setMarkerAlphaLocal 0;
+	"partizan_dock6" setMarkerAlphaLocal 0;
+	"partizan_dock7" setMarkerAlphaLocal 0;
+	"partizan_dock8" setMarkerAlphaLocal 0;
+	"partizan_dock9" setMarkerAlphaLocal 0;
+	"partizan_dock10" setMarkerAlphaLocal 0;
+	"partizan_dock11" setMarkerAlphaLocal 0;
+	"partizan_dock12" setMarkerAlphaLocal 0;
+	"partizan_dock13" setMarkerAlphaLocal 0;
 } else {
     "partizan_base" setMarkerAlphaLocal 1;
 	"base_drone_service" setMarkerAlphaLocal 0;
@@ -134,6 +147,19 @@ if (playerSide == west) then {
 	"base_vehicle_service" setMarkerAlphaLocal 0;
 	"base_helipad" setMarkerAlphaLocal 0;
 	"base_dock" setMarkerAlphaLocal 0;
+	"partizan_dock1" setMarkerAlphaLocal 1;
+	"partizan_dock2" setMarkerAlphaLocal 1;
+	"partizan_dock3" setMarkerAlphaLocal 1;
+	"partizan_dock4" setMarkerAlphaLocal 1;
+	"partizan_dock5" setMarkerAlphaLocal 1;
+	"partizan_dock6" setMarkerAlphaLocal 1;
+	"partizan_dock7" setMarkerAlphaLocal 1;
+	"partizan_dock8" setMarkerAlphaLocal 1;
+	"partizan_dock9" setMarkerAlphaLocal 1;
+	"partizan_dock10" setMarkerAlphaLocal 1;
+	"partizan_dock11" setMarkerAlphaLocal 1;
+	"partizan_dock12" setMarkerAlphaLocal 1;
+	"partizan_dock13" setMarkerAlphaLocal 1;
 };
 
 // Remove color corrections effects

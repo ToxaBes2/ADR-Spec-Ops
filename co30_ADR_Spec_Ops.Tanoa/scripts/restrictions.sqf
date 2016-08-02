@@ -19,6 +19,7 @@ private ["_uavOperator", "_uavRestricted", "_missileSoldiers", "_missileSpeciali
 #define GRENADIER_MSG "Использовать подствольные гранатометы могут только командиры отделений, медики и инженеры."
 #define COMMANDER_MSG "Использовать бинокли с лазерным целеуказателем могут только командиры отделений."
 #define MARKSMANOPT_MSG "Использовать оптические прицелы LRPS, SOS, AMS, KAHLIA могут только снайперы и пехотные снайперы."
+#define GHILLIIE_MSG "Использовать гилли и маскхалаты могут только снайперы и пехотные снайперы."
 
 //===== UAV TERMINAL
 _uavOperator = ["B_engineer_F", "B_T_Engineer_F","I_G_engineer_F","I_C_Soldier_Para_8_F"];
@@ -65,6 +66,9 @@ _ThermalOpt = ["optic_Nightstalker","optic_tws","optic_tws_mg"];
 //===== MARKSMAN OPTICS
 _marksmanOpticsGrp = ["B_sniper_F","B_T_Sniper_F","B_soldier_M_F","B_T_soldier_M_F","I_G_Soldier_AR_F","I_G_engineer_F","I_C_Soldier_Para_4_F","I_C_Soldier_Para_8_F"];
 _marksmanOpticsItems = ["optic_KHS_blk","optic_KHS_hex","optic_KHS_old","optic_KHS_tan","optic_AMS","optic_AMS_khk","optic_AMS_snd","optic_SOS","optic_LRPS"];
+
+_ghillieGroups = ["B_soldier_M_F","B_sniper_F","I_G_Soldier_AR_F","I_G_engineer_F","B_T_soldier_M_F","B_T_Sniper_F","I_C_Soldier_Para_4_F","I_C_Soldier_Para_8_F"];
+_ghillieItems = ["U_B_GhillieSuit","U_O_GhillieSuit","U_I_GhillieSuit","U_B_FullGhillie_lsh","U_B_FullGhillie_sard","U_B_FullGhillie_ard","U_O_FullGhillie_lsh","U_O_FullGhillie_sard","U_O_FullGhillie_ard","U_I_FullGhillie_lsh","U_I_FullGhillie_sard","U_I_FullGhillie_ard","U_B_T_FullGhillie_tna_F","U_B_T_Sniper_F","U_O_T_FullGhillie_tna_F","U_O_T_Sniper_F"];
 
 _basePos = getMarkerPos "respawn_west";
 
@@ -192,6 +196,16 @@ while {true} do {
 		if (({player isKindOf _x} count _marksmanOpticsGrp) < 1) then {
 			{player removePrimaryWeaponItem  _x;} count _marksmanOpticsItems;
 			titleText [MARKSMANOPT_MSG,"PLAIN",2];
+		};
+	};
+	sleep 0.1;
+
+    //------------------------------------- Ghillie
+	_uniform = uniform player;
+	if ((uniform player) in _ghillieItems) then {
+		if (({player isKindOf _x} count _ghillieGroups) < 1) then {
+			removeUniform player;
+			titleText [GHILLIIE_MSG,"PLAIN",2];
 		};
 	};
 	sleep 0.1;
