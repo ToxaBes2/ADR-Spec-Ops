@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={5799.4883,13.638891,4047.7217};
-		dir[]={-0.86592656,-0.46520942,-0.18371657};
-		up[]={-0.45508021,0.88520056,-0.096550681};
-		aside[]={-0.2075423,0,0.97822601};
+		pos[]={7465.4414,25.056538,8502.9697};
+		dir[]={0,-0.70710683,0.70710683};
+		up[]={0,0.70710677,0.70710677};
+		aside[]={0.99999994,0,-0};
 	};
 };
 binarizationWanted=0;
@@ -4619,7 +4619,7 @@ class Mission
 			};
 			id=362;
 			type="Land_PortableGenerator_01_F";
-			atlOffset=1.3113022e-005;
+			atlOffset=1.2874603e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -8276,7 +8276,7 @@ class Mission
 					class Attributes
 					{
 						skill=1;
-						init="enableSentences false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacearsenal_ca.paa' size='1.0'/> Арсенал</t>"",{['Open',[false, base_arsenal_infantry, player]] call BIS_fnc_arsenal},[],15,true,true,'','!((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8]; this addAction [""<t color='#FF9800'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa' size='1.0'/> Снаряжение</t>"",""scripts\VAS\open.sqf"",[],14,true,true,'','!((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8]; this addAction [""<t color='#C6FF00'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_toolbox_modules_ca.paa' size='1.0'/> "" + localize 'STR_VAS_Menu_Title' + ""</t>"",""createDialog 'VAS_Info_Diag';"",[],12,true,true,'','!((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8];";
+						init="enableSentences false;  " \n "this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacearsenal_ca.paa' size='1.0'/> Арсенал</t>"",{['Open',[false, base_arsenal_infantry, player]] call BIS_fnc_arsenal},[],15,true,true,'','((player distance _target) < 8) && ((side player) == west) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8];  " \n "this addAction [""<t color='#FF9800'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa' size='1.0'/> Снаряжение</t>"",""scripts\VAS\open.sqf"",[],14,true,true,'','((player distance _target) < 8) && ((side player) == west) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8];  " \n "this addAction [""<t color='#C6FF00'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_toolbox_modules_ca.paa' size='1.0'/> "" + localize 'STR_VAS_Menu_Title' + ""</t>"",""createDialog 'VAS_Info_Diag';"",[],12,true,true,'','((player distance _target) < 8) && ((side player) == west) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8];";
 						name="base_arsenal_pilots";
 						class Inventory
 						{
@@ -26596,7 +26596,7 @@ class Mission
 					class Attributes
 					{
 						skill=1;
-						init="enableSentences false; null = [this] spawn {_this call compile preProcessFileLineNumbers ""scripts\VA-west.sqf"";}; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacearsenal_ca.paa' size='1.0'/> Арсенал</t>"",{['Open',[false, base_arsenal_infantry, player]] call BIS_fnc_arsenal},[],15,true,true,'','!((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8]; this addAction [""<t color='#FF9800'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa' size='1.0'/> Снаряжение</t>"",""scripts\VAS\open.sqf"",[],14,true,true,'','!((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8]; this addAction [""<t color='#C6FF00'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_toolbox_modules_ca.paa' size='1.0'/> "" + localize 'STR_VAS_Menu_Title' + ""</t>"",""createDialog 'VAS_Info_Diag';"",[],12,true,true,'','!((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8];";
+						init="enableSentences false; null = [this] spawn {_this call compile preProcessFileLineNumbers ""scripts\VA-west.sqf"";};  " \n "this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacearsenal_ca.paa' size='1.0'/> Арсенал</t>"",{['Open',[false, base_arsenal_infantry, player]] call BIS_fnc_arsenal},[],15,true,true,'','((player distance _target) < 8) && ((side player) == west) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8];  " \n "this addAction [""<t color='#FF9800'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\backpack_ca.paa' size='1.0'/> Снаряжение</t>"",""scripts\VAS\open.sqf"",[],14,true,true,'','((player distance _target) < 8) && ((side player) == west) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8]; " \n "this addAction [""<t color='#C6FF00'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_toolbox_modules_ca.paa' size='1.0'/> "" + localize 'STR_VAS_Menu_Title' + ""</t>"",""createDialog 'VAS_Info_Diag';"",[],12,true,true,'','((player distance _target) < 8) && ((side player) == west) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8];";
 						name="base_arsenal_infantry";
 						class Inventory
 						{
@@ -26653,8 +26653,8 @@ class Mission
 						};
 						class Attribute1
 						{
-							property="face";
-							expression="_this setface _value;";
+							property="enableStamina";
+							expression="_this enablestamina _value;";
 							class Value
 							{
 								class data
@@ -26663,10 +26663,10 @@ class Mission
 									{
 										type[]=
 										{
-											"STRING"
+											"BOOL"
 										};
 									};
-									value="WhiteHead_15";
+									value=0;
 								};
 							};
 						};
@@ -26729,8 +26729,8 @@ class Mission
 						};
 						class Attribute5
 						{
-							property="enableStamina";
-							expression="_this enablestamina _value;";
+							property="face";
+							expression="_this setface _value;";
 							class Value
 							{
 								class data
@@ -26739,10 +26739,10 @@ class Mission
 									{
 										type[]=
 										{
-											"BOOL"
+											"STRING"
 										};
 									};
-									value=0;
+									value="WhiteHead_15";
 								};
 							};
 						};
@@ -27893,12 +27893,12 @@ class Mission
 			class Attributes
 			{
 				ammo=0;
-				init="this enableRopeAttach false; this setMass 500000; null = [this] spawn {_this call compile preProcessFileLineNumbers ""scripts\VA-guer.sqf"";};  " \n "this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacearsenal_ca.paa' size='1.0'/> Арсенал</t>"",{['Open',[false, partizan_ammo, player]] call BIS_fnc_arsenal},[],21,true,true,'','((side player) == resistance) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8];  " \n "this addAction [""<t color='#C6FF00'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_toolbox_modules_ca.paa' size='1.0'/> "" + localize 'STR_VAS_Menu_Title' + ""</t>"",""createDialog 'VAS_Info_Diag';"",[],20,true,true,'','((side player) == resistance) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8]; " \n "this addAction [""<t color='#FFEB3B'><img image='\a3\ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa' size='1.0'/> Эвакуация базы</t>"",""scripts\misc\actions\basePartizan_switch.sqf"",[],19,true,true,"""",'((vehicle player) == player && side player == resistance)', 5];   " \n "this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\GUI\Cfg\Notifications\tridentEnemy_ca.paa' size='1.0'/> Уничтожить базу партизан</t>"",""scripts\misc\actions\basePartizan_destroy.sqf"",[],18,true,true,"""",'((vehicle player) == player && side player == west)', 5];  " \n "this addAction [""<t color='#FF8000'><img image='\A3\Soft_F\Quadbike_01\Data\UI\map_Quad_CA.paa' size='1.0'/> Вызвать квадрацикл</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""quadbike""],17,true,true,"""",'((vehicle player) == player && side player == resistance)', 5];   " \n "this addAction [""<t color='#FFBF00'><img image='\A3\soft_f_gamma\SUV_01\Data\UI\map_suv_01_CA.paa' size='1.0'/> Вызвать внедорожник (SUV)</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""suv""],16,true,true,"""",'((vehicle player) == player && side player == resistance)', 5];   " \n "this addAction [""<t color='#BFFF00'><img image='\A3\soft_f\Offroad_01\Data\UI\map_offroad_01_CA.paa' size='1.0'/> Вызвать пикап</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""offroad""],15,true,true,"""",'((vehicle player) == player && side player == resistance)', 5];   " \n "this addAction [""<t color='#01DFA5'><img image='\A3\Soft_F_Exp\Offroad_02\Data\UI\map_Offroad_02_base_CA.paa' size='1.0'/> Вызвать полноприводный джип</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""jeep""],14,true,true,"""",'((vehicle player) == player && side player == resistance)', 5];   " \n "this addAction [""<t color='#2196F3'><img image='\a3\ui_f\data\map\VehicleIcons\iconShip_ca.paa' size='1.0'/> Вызвать лодку</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""ship""],13,true,true,"""",'((vehicle player) == player && side player == resistance)', 5];";
+				init="this enableRopeAttach false; this setMass 500000; null = [this] spawn {_this call compile preProcessFileLineNumbers ""scripts\VA-guer.sqf"";};   " \n "this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacearsenal_ca.paa' size='1.0'/> Арсенал</t>"",{['Open',[false, partizan_ammo, player]] call BIS_fnc_arsenal},[],21,true,true,'','((side player) == resistance) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8];   " \n "this addAction [""<t color='#C6FF00'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_toolbox_modules_ca.paa' size='1.0'/> "" + localize 'STR_VAS_Menu_Title' + ""</t>"",""createDialog 'VAS_Info_Diag';"",[],20,true,true,'','((side player) == resistance) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8];  " \n "this addAction [""<t color='#FFEB3B'><img image='\a3\ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa' size='1.0'/> Эвакуация базы</t>"",""scripts\misc\actions\basePartizan_switch.sqf"",[],19,true,true,"""",'((vehicle player) == player && (side player) == resistance)', 5];    " \n "this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\GUI\Cfg\Notifications\tridentEnemy_ca.paa' size='1.0'/> Уничтожить базу партизан</t>"",""scripts\misc\actions\basePartizan_destroy.sqf"",[],18,true,true,"""",'((vehicle player) == player && (side player) == west)', 5];   " \n "this addAction [""<t color='#FF8000'><img image='\A3\Soft_F\Quadbike_01\Data\UI\map_Quad_CA.paa' size='1.0'/> Вызвать квадрацикл</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""quadbike""],17,true,true,"""",'((vehicle player) == player && (side player) == resistance)', 5];    " \n "this addAction [""<t color='#FFBF00'><img image='\A3\soft_f_gamma\SUV_01\Data\UI\map_suv_01_CA.paa' size='1.0'/> Вызвать внедорожник (SUV)</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""suv""],16,true,true,"""",'((vehicle player) == player && (side player) == resistance)', 5];    " \n "this addAction [""<t color='#BFFF00'><img image='\A3\soft_f\Offroad_01\Data\UI\map_offroad_01_CA.paa' size='1.0'/> Вызвать пикап</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""offroad""],15,true,true,"""",'((vehicle player) == player && (side player) == resistance)', 5];    " \n "this addAction [""<t color='#01DFA5'><img image='\A3\Soft_F_Exp\Offroad_02\Data\UI\map_Offroad_02_base_CA.paa' size='1.0'/> Вызвать полноприводный джип</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""jeep""],14,true,true,"""",'((vehicle player) == player && (side player) == resistance)', 5];    " \n "this addAction [""<t color='#2196F3'><img image='\a3\ui_f\data\map\VehicleIcons\iconShip_ca.paa' size='1.0'/> Вызвать лодку</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""ship""],13,true,true,"""",'((vehicle player) == player && (side player) == resistance)', 5];";
 				name="partizan_ammo";
 			};
 			id=2404;
 			type="I_CargoNet_01_ammo_F";
-			atlOffset=0.21700048;
+			atlOffset=0.21700001;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -28605,7 +28605,7 @@ class Mission
 			};
 			id=2470;
 			type="C_Boat_Transport_02_F";
-			atlOffset=0.96699905;
+			atlOffset=3.4630003;
 		};
 		class Item594
 		{

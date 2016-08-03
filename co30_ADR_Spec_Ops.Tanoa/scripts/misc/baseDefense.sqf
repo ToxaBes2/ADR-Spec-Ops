@@ -82,6 +82,8 @@ deleteVehicle (gunner baseTurret15);
 "B_support_MG_F" createUnit [getposATL baseTurret13, _grpTurret1, "this moveInGunner baseTurret13"];
 "B_support_MG_F" createUnit [getposATL baseTurret15, _grpTurret1, "this moveInGunner baseTurret15"];
 _grpTurret1 setBehaviour "COMBAT";
+_grpTurret1 setCombatMode "RED";
+[(units _grpTurret1)] call QS_fnc_setSkill4;
 
 // add turret operators
 _grpTurret2 = createGroup west;
@@ -93,6 +95,8 @@ _grpTurret2 = createGroup west;
 "B_support_MG_F" createUnit [getposATL baseTurret12, _grpTurret2, "this moveInGunner baseTurret12"];
 "B_support_MG_F" createUnit [getposATL baseTurret14, _grpTurret2, "this moveInGunner baseTurret14"];
 _grpTurret2 setBehaviour "COMBAT";
+_grpTurret2 setCombatMode "RED";
+[(units _grpTurret2)] call QS_fnc_setSkill4;
 
 //---------- Active time
 sleep _activeTimer;

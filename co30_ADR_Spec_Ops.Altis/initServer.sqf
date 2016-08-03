@@ -80,6 +80,8 @@ deleteVehicle (gunner baseTurret15);
 "B_support_MG_F" createUnit [getposATL baseTurret13, _grpTurret1, "this moveInGunner baseTurret13"];
 "B_support_MG_F" createUnit [getposATL baseTurret15, _grpTurret1, "this moveInGunner baseTurret15"];
 _grpTurret1 setBehaviour "COMBAT";
+_grpTurret1 setCombatMode "RED";
+[(units _grpTurret1)] call QS_fnc_setSkill4;
 
 // Server scripts
 _null = [] spawn {_this call compile preProcessFileLineNumbers "mission\missionControl.sqf";};                              // Main AO and side objectives
