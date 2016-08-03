@@ -668,9 +668,11 @@ class Mission
 				position[]={6945.9639,4.9983983,7163.9512};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
+			    skill=0.60000002;
+				lock="UNLOCKED";
+				init="0 = [this,1800,1805,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=3;
 			type="I_Plane_Fighter_03_AA_F";
