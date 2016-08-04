@@ -170,3 +170,6 @@ if (!isNil {BTC_grain}) then {ppEffectDestroy BTC_grain;};
 
 // Remove earplugs on respawn
 1 fadeSound 1;
+
+// Don't show submenu actions on partizan arsenal box
+adr_partizan_submenu = false;
