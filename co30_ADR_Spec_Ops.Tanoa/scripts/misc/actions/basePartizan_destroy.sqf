@@ -7,11 +7,11 @@ _unit addScore _points;
 
 sleep 1;
 _smoke = createVehicle ["SmokeShell", [0, 0, 0], [], 0, 'NONE'];
-_smoke attachTo [partizan_ammo, [-0.1, -0.4, -3.9]];
+_smoke attachTo [partizan_ammo, [0, 0, -0.8]];
 _light = createVehicle ["Chemlight_red", [0, 0, 0], [], 0, 'NONE'];
-_light attachTo [partizan_ammo, [-0.1, -0.4, -3.9]];
+_light attachTo [partizan_ammo, [0, 0, -0.8]];
 _fire = createVehicle ["FirePlace_burning_F", [0, 0, 0], [], 0, 'NONE'];
-_fire attachTo [partizan_ammo, [-0.1, -0.4, -3.9]];
+_fire attachTo [partizan_ammo, [0, 0, -0.8]];
 detach _smoke;
 detach _light;
 detach _fire;
