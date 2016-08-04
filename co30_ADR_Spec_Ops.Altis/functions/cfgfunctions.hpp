@@ -25,6 +25,7 @@ class QS
 		class attachMP {};
 		class AOenemy {};
 		class AOminefield {};
+		class baseVehiclePartizan {};
 		class cacheDebug {};
 		class conditionClearInventory {};
 		class conditionPilotRepair {};

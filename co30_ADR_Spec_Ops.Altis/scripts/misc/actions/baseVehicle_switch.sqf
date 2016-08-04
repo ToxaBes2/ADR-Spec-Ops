@@ -104,4 +104,4 @@ PARTIZAN_VEHICLE_TIME = time + 120; publicVariable "PARTIZAN_VEHICLE_TIME";
 // Spawn the vehicle
 ["<t color='#7FDA0B' size = '.48'>Вызываем технику...</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
 sleep 1;
-[[_vehiclePos, _class], {_this call compile preProcessFileLineNumbers "scripts\misc\baseVehiclePartizan.sqf"}] remoteExec ["spawn", 2];
+[_vehiclePos, _class] remoteExec ["QS_fnc_baseVehiclePartizan", 2];
