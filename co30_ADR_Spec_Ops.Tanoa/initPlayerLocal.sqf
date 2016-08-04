@@ -6,7 +6,7 @@ Description: Client scripts and event handlers.
 
 if (!hasInterface) exitWith {};
 
-private ["_partizanPos", "_dist", "_accepted", "_newPlayerPos", "_null", "_player", "_vehicle", "_helmet", "_csatHelmets", "_array", "_type", "_message", "_GHint", "_profileName"];
+private ["_partizanPos", "_dist", "_accepted", "_newPlayerPos", "_dir", "_null", "_player", "_vehicle", "_helmet", "_csatHelmets", "_array", "_type", "_message", "_GHint", "_profileName"];
 
 enableSentences false;
 enableEngineArtillery false;
@@ -27,23 +27,24 @@ if (playerSide == resistance) then {
 	removeBackPack player;
 	{player removeItem _x} foreach (items player);
 	{player unassignItem _x; player removeItem _x} foreach (assignedItems player);
+	sleep 1;
     _partizanPos = getMarkerPos "partizan_base";
-    if (player distance2D _partizanPos > 50) then {
-		_dist = 4;
-        _accepted = false;
-        _newPlayerPos = [_partizanPos, 0.1, _dist, 1, 0, -1, 0] call QS_fnc_findSafePos;
-        if (_newPlayerPos distance2D (getPos partizan_ammo) < 50) then {
+	_dist = 6;
+    _accepted = false;
+	_newPlayerPos = _partizanPos findEmptyPosition [1, _dist, "I_G_engineer_F"];
+	if (count _newPlayerPos > 0) then {
+        _accepted = true;
+    };
+	while {!_accepted} do {
+		_dist = _dist + 2;
+        _newPlayerPos = _partizanPos findEmptyPosition [1, _dist, "I_G_engineer_F"];
+        if (count _newPlayerPos > 0) then {
             _accepted = true;
         };
-        while {!_accepted} do {
-			_dist = _dist + 2;
-            _newPlayerPos = [_partizanPos, 0.1, _dist, 1, 0, -1, 0] call QS_fnc_findSafePos;
-            if (_newPlayerPos distance2D (getPos partizan_ammo) < _dist) then {
-                _accepted = true;
-            };
-        };
-        player setPos _newPlayerPos;
     };
+    player setPos _newPlayerPos;
+	_dir = player getDir partizan_ammo;
+	player setDir _dir;
 	["getPlayerHours",[getPlayerUID player], player] remoteExec ["sqlServerCall", 2];
     sleep 10;
 
