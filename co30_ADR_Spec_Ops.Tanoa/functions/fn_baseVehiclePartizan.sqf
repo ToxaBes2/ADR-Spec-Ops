@@ -9,6 +9,8 @@ _veh setVariable ["irTarget", false, true];
 
 // Put market on the spawned vehicle for 60 seconds
 0 = [_vehiclePos] spawn {
+    ["partizan_vehicle", 0] remoteExec ["setMarkerAlphaLocal", west, true];
+    ["partizan_vehicle", 1] remoteExec ["setMarkerAlphaLocal", resistance, true];
     "partizan_vehicle" setMarkerPos (_this select 0);
     sleep 60;
     "partizan_vehicle" setMarkerPos [-10000, -10000];

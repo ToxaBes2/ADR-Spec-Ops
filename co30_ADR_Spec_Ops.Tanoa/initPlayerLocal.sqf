@@ -53,6 +53,12 @@ if (playerSide == resistance) then {
 		player setUnitTrait ["UAVHacker", true];
 		player setUnitTrait ["engineer", true];
 	};
+	
+	hqSideChat = "Разведка сообщила об увеличении активности партизан на острове."; 
+	publicVariable "hqSideChat"; 
+	[west, "HQ"] sideChat hqSideChat;
+} else {
+	"partizan_vehicle" setMarkerAlphaLocal 0;
 };
 
 // Pilots only
