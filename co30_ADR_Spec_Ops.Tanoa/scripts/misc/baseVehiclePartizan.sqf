@@ -11,7 +11,7 @@ _veh setVariable ["irTarget", false, true];
 0 = [_vehiclePos] spawn {
     "partizan_vehicle" setMarkerPos (_this select 0);
     sleep 60;
-    "partizan_vehicle" setMarkerPos [-500, -500];
+    "partizan_vehicle" setMarkerPos [-10000, -10000];
 };
 
 // Delete vehicle if there are no partizan palyers nearby
