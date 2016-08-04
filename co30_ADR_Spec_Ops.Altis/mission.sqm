@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1201;
+		nextID=1202;
 	};
 	class MarkerIDProvider
 	{
@@ -392,7 +392,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=473;
+		items=474;
 		class Item0
 		{
 			dataType="Marker";
@@ -10274,7 +10274,7 @@ class Mission
 			};
 			id=997;
 			type="I_CargoNet_01_ammo_F";
-			atlOffset=0.00047874451;
+			atlOffset=0.00043869019;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -10655,7 +10655,6 @@ class Mission
 				angles[]={0,5.5229897,0};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
 				lock="UNLOCKED";
@@ -10664,7 +10663,7 @@ class Mission
 			};
 			id=1075;
 			type="B_HMG_01_high_F";
-			atlOffset=0.0014419556;
+			atlOffset=9.9562187;
 		};
 		class Item459
 		{
@@ -10724,7 +10723,6 @@ class Mission
 			};
 			id=1093;
 			type="B_GMG_01_high_F";
-			atlOffset=1.9073486e-006;
 		};
 		class Item462
 		{
@@ -10815,7 +10813,7 @@ class Mission
 			};
 			id=1156;
 			type="B_HMG_01_high_F";
-			atlOffset=0.00010824203;
+			atlOffset=0.00010585785;
 		};
 		class Item467
 		{
@@ -10835,7 +10833,7 @@ class Mission
 			};
 			id=1157;
 			type="B_GMG_01_high_F";
-			atlOffset=0.00056886673;
+			atlOffset=0.00041723251;
 		};
 		class Item468
 		{
@@ -10853,7 +10851,7 @@ class Mission
 			};
 			id=1158;
 			type="B_HMG_01_high_F";
-			atlOffset=5.9025779;
+			atlOffset=5.9054441;
 		};
 		class Item469
 		{
@@ -10981,6 +10979,7 @@ class Mission
 			};
 			id=1196;
 			type="B_T_VTOL_01_vehicle_F";
+			atlOffset=-0.0010223389;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -11004,6 +11003,19 @@ class Mission
 				};
 				nAttributes=1;
 			};
+		};
+		class Item473
+		{
+			dataType="Marker";
+			position[]={-10000,7.411334e+023,-10000};
+			name="partizan_vehicle";
+			text="Вызванная техника";
+			type="mil_box";
+			colorName="ColorGreen";
+			a=0.5;
+			b=0.5;
+			id=1201;
+			atlOffset=7.411334e+023;
 		};
 	};
 	class Connections

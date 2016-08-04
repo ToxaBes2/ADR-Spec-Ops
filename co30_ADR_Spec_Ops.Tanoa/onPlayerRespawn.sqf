@@ -106,6 +106,7 @@ if (side player == resistance) then {
 // Deal with static map markers
 if (playerSide == west) then {
     "partizan_base" setMarkerAlphaLocal 0;
+	"partizan_vehicle" setMarkerAlphaLocal 0;
 	"base_drone_service" setMarkerAlphaLocal 1;
 	"base_aircraft_service" setMarkerAlphaLocal 1;
 	"base_reward" setMarkerAlphaLocal 1;
@@ -134,6 +135,7 @@ if (playerSide == west) then {
 	"partizan_dock13" setMarkerAlphaLocal 0;
 } else {
     "partizan_base" setMarkerAlphaLocal 1;
+	"partizan_vehicle" setMarkerAlphaLocal 1;
 	"base_drone_service" setMarkerAlphaLocal 0;
 	"base_aircraft_service" setMarkerAlphaLocal 0;
 	"base_reward" setMarkerAlphaLocal 0;

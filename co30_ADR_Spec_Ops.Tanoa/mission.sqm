@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=2482;
+		nextID=2483;
 	};
 	class MarkerIDProvider
 	{
@@ -23,7 +23,7 @@ class EditorData
 		pos[]={7465.4414,25.056538,8502.9697};
 		dir[]={0,-0.70710683,0.70710683};
 		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,-0};
+		aside[]={0.99999994,0,0};
 	};
 };
 binarizationWanted=0;
@@ -659,7 +659,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=605;
+		items=606;
 		class Item0
 		{
 			dataType="Object";
@@ -668,9 +668,10 @@ class Mission
 				position[]={6945.9639,4.9983983,7163.9512};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
-			    skill=0.60000002;
+				skill=0.60000002;
 				lock="UNLOCKED";
 				init="0 = [this,1800,1805,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
@@ -4621,7 +4622,7 @@ class Mission
 			};
 			id=362;
 			type="Land_PortableGenerator_01_F";
-			atlOffset=1.2874603e-005;
+			atlOffset=1.3113022e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -26655,8 +26656,8 @@ class Mission
 						};
 						class Attribute1
 						{
-							property="enableStamina";
-							expression="_this enablestamina _value;";
+							property="face";
+							expression="_this setface _value;";
 							class Value
 							{
 								class data
@@ -26665,10 +26666,10 @@ class Mission
 									{
 										type[]=
 										{
-											"BOOL"
+											"STRING"
 										};
 									};
-									value=0;
+									value="WhiteHead_15";
 								};
 							};
 						};
@@ -26731,8 +26732,8 @@ class Mission
 						};
 						class Attribute5
 						{
-							property="face";
-							expression="_this setface _value;";
+							property="enableStamina";
+							expression="_this enablestamina _value;";
 							class Value
 							{
 								class data
@@ -26741,10 +26742,10 @@ class Mission
 									{
 										type[]=
 										{
-											"STRING"
+											"BOOL"
 										};
 									};
-									value="WhiteHead_15";
+									value=0;
 								};
 							};
 						};
@@ -27900,7 +27901,7 @@ class Mission
 			};
 			id=2404;
 			type="I_CargoNet_01_ammo_F";
-			atlOffset=0.21700001;
+			atlOffset=0.21700048;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -28607,7 +28608,7 @@ class Mission
 			};
 			id=2470;
 			type="C_Boat_Transport_02_F";
-			atlOffset=3.4630003;
+			atlOffset=0.96699905;
 		};
 		class Item594
 		{
@@ -28764,6 +28765,19 @@ class Mission
 			colorName="ColorGUER";
 			id=2481;
 			atlOffset=2.4355586;
+		};
+		class Item605
+		{
+			dataType="Marker";
+			position[]={-10000,-8.8530463e-013,-10000};
+			name="partizan_vehicle";
+			text="Вызванная техника";
+			type="mil_box";
+			colorName="ColorGreen";
+			a=0.5;
+			b=0.5;
+			id=2482;
+			atlOffset=59.539825;
 		};
 	};
 	class Connections
