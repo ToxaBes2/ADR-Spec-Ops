@@ -1064,9 +1064,9 @@ BTC_first_aid =
 
 		// Set revive time
 		if (playerSide != resistance) then {
-		    _reviveTime = 10;
+		    _reviveTime = 20;
 		} else {
-			_reviveTime = 20;
+			_reviveTime = 30;
 		};
 
 		// Wait until player is fully transitioned to the specified animation
@@ -1127,13 +1127,8 @@ BTC_first_aid =
 				};
 
 				_injured setVariable ["BTC_need_revive", 0, true];
-				if (group player == group _injured) then {
-					addToScore = [player, 2]; publicVariable "addToScore";
-					["ScoreBonus", ["Поднял товарища.", "2"]] call bis_fnc_showNotification;
-				} else {
-					addToScore = [player, 2]; publicVariable "addToScore";
-					["ScoreBonus", ["Поднял товарища.", "2"]] call bis_fnc_showNotification;
-				};
+				addToScore = [player, 2]; publicVariable "addToScore";
+				["ScoreBonus", ["Поднял товарища", "2"]] call bis_fnc_showNotification;
 				_injured playMoveNow "AinjPpneMstpSnonWrflDnon_rolltoback";
 
 		        // disable channels
@@ -1368,7 +1363,7 @@ BTC_player_killed = {
 				// Color corrections
 				BTC_blur = ppEffectCreate ["RadialBlur", 100];
 			    BTC_blur ppEffectEnable true;
-			    BTC_blur ppEffectAdjust [0.002, 0.002, 0.15, 0.15];
+			    BTC_blur ppEffectAdjust [0.003, 0.003, 0, 0];
 			    BTC_blur ppEffectCommit 0;
 
 				BTC_cc = ppEffectCreate ["ColorCorrections", 1500];
@@ -1382,6 +1377,19 @@ BTC_player_killed = {
 					0.299, 0.587, 0.114, 0
 				];
 				BTC_cc ppEffectCommit 0;
+
+				BTC_cc_vig = ppEffectCreate ["ColorCorrections", 1600];
+			    BTC_cc_vig ppEffectEnable true;
+			    BTC_cc_vig ppEffectAdjust [
+			     0.1,
+			     1,
+			     0,
+			     0, 0, 0, 0,
+			     1, 1, 1, 0,
+			     0.299, 0.587, 0.114, 0,
+			     0.8, 0.8, 0, 0, 0, 0.5, 1
+			    ];
+			    BTC_cc_vig ppEffectCommit 0;
 
 				BTC_grain = ppEffectCreate ["FilmGrain", 2000];
 			    BTC_grain ppEffectEnable true;
@@ -1496,6 +1504,7 @@ BTC_player_killed = {
 			// Remove color corrections effects
 			if (!isNil {BTC_blur}) then {ppEffectDestroy BTC_blur;};
 			if (!isNil {BTC_cc}) then {ppEffectDestroy BTC_cc;};
+			if (!isNil {BTC_cc_vig}) then {ppEffectDestroy BTC_cc_vig;};
 			if (!isNil {BTC_grain}) then {ppEffectDestroy BTC_grain;};
 		};
 	};
@@ -1658,6 +1667,7 @@ BTC_player_respawn = {
 		// Remove color corrections effects
 		if (!isNil {BTC_blur}) then {ppEffectDestroy BTC_blur;};
 		if (!isNil {BTC_cc}) then {ppEffectDestroy BTC_cc;};
+		if (!isNil {BTC_cc_vig}) then {ppEffectDestroy BTC_cc_vig;};
 		if (!isNil {BTC_grain}) then {ppEffectDestroy BTC_grain;};
 	};
 };
