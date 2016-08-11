@@ -1,4 +1,4 @@
-private ["_smRewards", "_smMarkerList", "_veh", "_vehName", "_vehVarname", "_marker", "_spawn", "_reward", "_completeText", "_lockTime"];
+private ["_smRewards", "_smMarkerList", "_veh", "_vehName", "_vehVarname", "_reward", "_crew", "_grp", "_completeText", "_lockTime"];
 
 _smRewards =
 [
@@ -40,9 +40,13 @@ waitUntil {!isNull _reward};
 
 if (_vehVarname in ["B_T_UAV_03_F", "O_T_UAV_04_CAS_F"]) then {
 	createVehicleCrew _reward;
-	if (_vehVarname == "O_T_UAV_04_CAS_F") then {
-		(crew _reward) joinSilent (createGroup WEST);
-	};
+	_crew = crew _reward;
+	_grp = createGroup WEST;
+	_crew joinSilent _grp;
+	_grp addVehicle _reward;
+	{
+	    _x setName "[AI]";
+	} forEach units _grp;
 };
 
 [_reward] call QS_fnc_killerCatcher;
