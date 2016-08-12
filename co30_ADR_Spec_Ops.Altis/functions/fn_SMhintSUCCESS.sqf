@@ -1,4 +1,4 @@
-private ["_smRewards", "_smMarkerList", "_veh", "_vehName", "_vehVarname", "_marker", "_spawn", "_reward", "_completeText", "_lockTime"];
+private ["_smRewards", "_smMarkerList", "_veh", "_vehName", "_vehVarname", "_reward", "_crew", "_grp", "_completeText", "_lockTime"];
 
 _smRewards =
 [
@@ -19,7 +19,12 @@ _smRewards =
 	["MSE-3 «Марид» с НУРС", "O_APC_Wheeled_02_rcws_F"],
 	["M2A1 «Сламмер»", "B_MBT_01_cannon_F"],
 	["M5 РСЗО «Сэндсторм»", "B_MBT_01_mlrs_F"],
-	["M4 «Скорчер»", "B_MBT_01_arty_F"]
+	["M4 «Скорчер»", "B_MBT_01_arty_F"],
+	["MQ-12 Falcon", "B_T_UAV_03_F"],
+	["KH-3A Fenghuang", "O_T_UAV_04_CAS_F"],
+	["V-44 X Blackfish", "B_T_VTOL_01_armed_F"],
+	["Qilin", "O_T_LSV_02_armed_F"],
+	["Y-32 Xi'an", "O_T_VTOL_02_vehicle_F"]
 ];
 
 _smMarkerList =
@@ -36,9 +41,13 @@ waitUntil {!isNull _reward};
 
 if (_vehVarname in ["B_T_UAV_03_F", "O_T_UAV_04_CAS_F"]) then {
 	createVehicleCrew _reward;
-	if (_vehVarname == "O_T_UAV_04_CAS_F") then {
-		(crew _reward) joinSilent (createGroup WEST);
-	};
+	_crew = crew _reward;
+	_grp = createGroup WEST;
+	_crew joinSilent _grp;
+	_grp addVehicle _reward;
+	{
+	    _x setName "[AI]";
+	} forEach units _grp;
 };
 
 [_reward] call QS_fnc_killerCatcher;

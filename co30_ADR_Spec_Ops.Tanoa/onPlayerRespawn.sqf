@@ -168,6 +168,7 @@ if (playerSide == west) then {
 // In case they were not removed correctly during respawn
 if (!isNil {BTC_blur}) then {ppEffectDestroy BTC_blur;};
 if (!isNil {BTC_cc}) then {ppEffectDestroy BTC_cc;};
+if (!isNil {BTC_cc_vig}) then {ppEffectDestroy BTC_cc_vig;};
 if (!isNil {BTC_grain}) then {ppEffectDestroy BTC_grain;};
 
 // Remove earplugs on respawn
