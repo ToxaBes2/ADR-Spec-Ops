@@ -1063,11 +1063,7 @@ BTC_first_aid =
 		_reviveInProgress = true;
 
 		// Set revive time
-		if (playerSide != resistance) then {
-		    _reviveTime = 20;
-		} else {
-			_reviveTime = 30;
-		};
+		_reviveTime = 20;
 
 		// Wait until player is fully transitioned to the specified animation
 		waitUntil {animationState player == "ainvpknlmstpsnonwrfldnon_medic0s"};
