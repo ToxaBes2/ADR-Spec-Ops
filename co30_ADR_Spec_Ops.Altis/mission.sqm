@@ -383,10 +383,8 @@ class Mission
 		wavesForced=1;
 		windForced=1;
 		year=2035;
-		month=7;
-		day=15;
-		hour=9;
-		minute=10;
+		month=6;
+		day=9;
 		startFogDecay=0.013;
 		forecastFogDecay=0.013;
 	};
