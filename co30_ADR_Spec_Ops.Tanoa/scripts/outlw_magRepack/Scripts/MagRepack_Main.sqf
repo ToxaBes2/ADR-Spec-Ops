@@ -28,7 +28,7 @@ outlw_MR_createDialog =
 
 	createDialog "MagRepack_Dialog_Main";
 
-	((uiNamespace getVariable "outlw_MR_Dialog_Main") displayCtrl 1001) ctrlSetText ("Mag Repack [" + outlw_MR_version + "]");
+	((uiNamespace getVariable "outlw_MR_Dialog_Main") displayCtrl 1001) ctrlSetText ("Перепаковка магазинов [" + outlw_MR_version + "]");
 
 	outlw_MR_blur = ppEffectCreate ["DynamicBlur", 401];
 	outlw_MR_blur ppEffectEnable true;
@@ -56,7 +56,7 @@ outlw_MR_createDialog =
 		player playMove ("Ainv" + _stance + "Mstp" + _raised + _weapon + "Dnon");
 	};
 
-	((uiNamespace getVariable "outlw_MR_Dialog_Main") displayCtrl 22170) lbAdd "All Ammo Types";
+	((uiNamespace getVariable "outlw_MR_Dialog_Main") displayCtrl 22170) lbAdd "Все виды магазинов";
 	((uiNamespace getVariable "outlw_MR_Dialog_Main") displayCtrl 22170) lbSetData [0, ""];
 	((uiNamespace getVariable "outlw_MR_Dialog_Main") displayCtrl 22170) lbSetCurSel 0;
 
@@ -141,12 +141,12 @@ outlw_MR_populateMagListBox =
 	private ["_this", "_args", "_magListTitle", "_magTypes", "_magAmmoCounts", "_magAmmoCaps", "_magCounts", "_bgrndPos", "_n", "_a"];
 
 	_args = call outlw_MR_magInfo;
-	_magListTitle = "All Magazines";
+	_magListTitle = "Все магазины";
 
 	if (outlw_MR_sourceType != "" || {outlw_MR_targetType != ""} || {outlw_MR_currentFilter != ""}) then
 	{
 		_args = (_args) call outlw_MR_filter;
-		_magListTitle = "Compatible Mags";
+		_magListTitle = "Совместимые магазины";
 	};
 
 	lnbClear ((uiNamespace getVariable "outlw_MR_Dialog_Main") displayCtrl 1500);
@@ -156,11 +156,11 @@ outlw_MR_populateMagListBox =
 	if (outlw_MR_doHideFull) then
 	{
 		_args = (_args) call outlw_MR_hideFull;
-		_magListTitle = "Non-Full Magazines";
+		_magListTitle = "Неполные магазины";
 
 		if (outlw_MR_sourceType != "" || {outlw_MR_targetType != ""} || {outlw_MR_currentFilter != ""}) then
 		{
-			_magListTitle = "Compatible, Non-Full";
+			_magListTitle = "Совместимые, неполные";
 		};
 	};
 

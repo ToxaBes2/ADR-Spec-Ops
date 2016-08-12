@@ -3,7 +3,7 @@ Author: ToxaBes
 Description: hack terminal
 */
 #define ENEMY_SIDE EAST
-private ["_stance", "_raised", "_weapon", "_player", "_failed", "_time", "_step", "_object"];
+private ["_stance", "_raised", "_weapon", "_failed", "_time", "_step", "_object"];
 
 // Determine what animation to play
 // If player is prone play kneeling animation
@@ -11,27 +11,27 @@ _stance = "Pknl";
 _raised = "Sras";
 _weapon = "Wrfl";
 
-if (stance _player == "STAND") then {
+if (stance player == "STAND") then {
     _stance = "Perc";
 };
-if (weaponLowered _player) then {
+if (weaponLowered player) then {
     _raised = "Slow";
 };
 call {
-    if ((currentWeapon _player == handgunWeapon _player) and (handgunWeapon _player != "")) exitWith {
+    if ((currentWeapon player == handgunWeapon player) and (handgunWeapon player != "")) exitWith {
         _weapon = "Wpst";
     };
-    if ((currentWeapon _player == secondaryWeapon _player) and (secondaryWeapon _player != "")) exitWith {
+    if ((currentWeapon player == secondaryWeapon player) and (secondaryWeapon player != "")) exitWith {
         _weapon = "Wlnr";
     };
-    if (currentWeapon _player == "") exitWith {
+    if (currentWeapon player == "") exitWith {
         _raised = "Snon";
         _weapon = "Wnon";
     };
 };
 
 // Play animation
-_player playMove ("Ainv" + _stance + "Mstp" + _raised + _weapon + "Dnon_Putdown_Amov" + _stance + "Mstp" + _raised + _weapon + "Dnon");
+player playMove ("Ainv" + _stance + "Mstp" + _raised + _weapon + "Dnon_Putdown_Amov" + _stance + "Mstp" + _raised + _weapon + "Dnon");
 
 sleep 1;
 _failed = false;
@@ -65,10 +65,20 @@ if (_failed) then {
     _object setVariable ["GRAPESWRATH_HACKED", "failed", true];
     [_object,"red","red","red"] call BIS_fnc_DataTerminalColor;
     hqSideChat = "Взлом прерван! Терминал заблокирован!";
+    if (side player == west) then {
+        WIN_WEST = WIN_WEST - 1; publicVariable "WIN_WEST";
+    } else {
+        WIN_GUER = WIN_GUER - 1; publicVariable "WIN_GUER";
+    };
 } else {
 	_object setVariable ["GRAPESWRATH_HACKED", "hacked", true];
 	[_object,"green","blue","orange"] call BIS_fnc_DataTerminalColor;
 	hqSideChat = "Терминал взломан!";
+    if (side player == west) then {
+        WIN_WEST = WIN_WEST + 1; publicVariable "WIN_WEST";
+    } else {
+        WIN_GUER = WIN_GUER + 1; publicVariable "WIN_GUER";
+    };
 };
 publicVariable "hqSideChat";
 [WEST, "HQ"] sideChat hqSideChat;

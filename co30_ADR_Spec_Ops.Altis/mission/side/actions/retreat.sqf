@@ -39,6 +39,10 @@ hqSideChat = "Силы противника отступают. Хорошая �
 publicVariable "hqSideChat";
 [WEST, "HQ"] sideChat hqSideChat;
 sleep 3;
-BLOCKED_DEVICES = 2; publicVariable "BLOCKED_DEVICES";
-sleep 2;
 deleteVehicle _object;
+if (side player == west) then {
+    WIN_WEST = WIN_WEST + 1; publicVariable "WIN_WEST";
+} else {
+    WIN_GUER = WIN_GUER + 1; publicVariable "WIN_GUER";
+};
+BLOCKED_DEVICES = 2; publicVariable "BLOCKED_DEVICES";

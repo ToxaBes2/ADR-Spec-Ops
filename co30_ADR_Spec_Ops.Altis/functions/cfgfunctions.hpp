@@ -55,6 +55,7 @@ class QS
 		class moveToHC {};
 		class pilotCheck {};
 		class PTenemyEAST {};
+		class partizanSUCCESS {};
 		class punishObject {};
 		class RadioSound {};
 		class randomPos {};

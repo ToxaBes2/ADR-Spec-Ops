@@ -123,6 +123,7 @@ _myBox = _this select 0;
 "ItemMap",
 "ItemRadio",
 "ItemWatch",
+"I_UavTerminal",
 "Medikit",
 "ToolKit"
 ], true, false] call BIS_fnc_addVirtualItemCargo;

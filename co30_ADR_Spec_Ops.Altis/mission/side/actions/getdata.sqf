@@ -40,3 +40,8 @@ sleep 1;
 hint "Проверка...";
 sleep 2;
 SM_SUCCESS_GETDATA = true; publicVariable "SM_SUCCESS_GETDATA";
+if (side player == west) then {
+    WIN_WEST = WIN_WEST + 1; publicVariable "WIN_WEST";
+} else {
+    WIN_GUER = WIN_GUER + 1; publicVariable "WIN_GUER";
+};

@@ -75,7 +75,7 @@ class MagRepack_Dialog_Main
 		{
 			idc = 1001;
 
-			text = "Mag Repack";
+			text = "Перепаковка магазинов";
 			x = 19 * GUI_GRID_W + GUI_GRID_X;
 			y = 0.75 * GUI_GRID_H + GUI_GRID_Y;
 			w = 12.5 * GUI_GRID_W;
@@ -86,7 +86,7 @@ class MagRepack_Dialog_Main
 		{
 			idc = 1000;
 
-			text = "All Magazines";
+			text = "Все магазины";
 			x = 7.75 * GUI_GRID_W + GUI_GRID_X;
 			y = 1.25 * GUI_GRID_H + GUI_GRID_Y;
 			w = 10 * GUI_GRID_W;
@@ -156,7 +156,7 @@ class MagRepack_Dialog_Main
 			idc = 1002;
 			style = 0;
 
-			text = " Source";
+			text = " Источник";
 			x = 19 * GUI_GRID_W + GUI_GRID_X;
 			y = 2.8125 * GUI_GRID_H + GUI_GRID_Y;
 			w = 17 * GUI_GRID_W;
@@ -182,7 +182,7 @@ class MagRepack_Dialog_Main
 			idc = 1004;
 			style = 1;
 
-			text = "Target ";
+			text = "Приемник ";
 			x = 19 * GUI_GRID_W + GUI_GRID_X;
 			y = 11.8125 * GUI_GRID_H + GUI_GRID_Y;
 			w = 17 * GUI_GRID_W;
@@ -511,7 +511,7 @@ class MagRepack_Dialog_Main
 
 			default = false;
 		};
-		class MR_ButtonOptions: outlw_MR_RscButtonMenu
+		/*class MR_ButtonOptions: outlw_MR_RscButtonMenu
 		{
 			idc = 2400;
 
@@ -522,6 +522,7 @@ class MagRepack_Dialog_Main
 			w = 6.5 * GUI_GRID_W;
 			h = 1 * GUI_GRID_H;
 		};
+		*/
 		class MR_Options_Border_Top: outlw_MR_IGUIBack
 		{
 			idc = 8997;
@@ -572,7 +573,7 @@ class MagRepack_Dialog_Main
 					w = 8 * GUI_GRID_W;
 					h = 3.875 * GUI_GRID_H;
 					colorBackground[] = {0,0,0,0.675};
-				};
+				};				
 				class MR_OptionsTitle: outlw_MR_RscStructuredText
 				{
 					idc = 9001;

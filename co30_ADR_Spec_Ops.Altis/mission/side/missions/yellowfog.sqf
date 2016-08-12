@@ -54,7 +54,6 @@ sideMarkerText = [INFANTRY_MISSION, true]; publicVariable "sideMarkerText";
 SM_YELLOWFOG_SUCCESS = false; publicVariable "SM_YELLOWFOG_SUCCESS";
 SM_YELLOWFOG_FAIL = false; publicVariable "SM_YELLOWFOG_FAIL";
 SM_YELLOWFOG_STARTPOINT = _startPoint; publicVariable "SM_YELLOWFOG_STARTPOINT";
-
 // show brief information
 _briefing = "<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#FFC107'>Желтый туман</t><br/>____________________<br/>Нам поступила информация о странном складе ГСМ противника. Охрана склада часто ходит в противогазах и комплектах химзащиты. Есть подозрние что часть емкостей сожержит иприт. Командование назначило десантную спецоперацию.<br/><br/>Ваша задача: выдвинуться в указанный район, проникнуть на базу и обезвредить бочки с химоружием.</t>";
 GlobalHint = _briefing; hint parseText GlobalHint; publicVariable "GlobalHint";
@@ -421,14 +420,23 @@ while { sideMissionUp } do {
         if (SM_YELLOWFOG_FAIL) then {
             [true] call QS_fnc_SMhintFAIL;
         } else {
-            [true] call QS_fnc_SMhintSUCCESS;
+            _stomper = false;
+            if (WIN_WEST > WIN_GUER) then {
+                _successSide = west;
+                [true] call QS_fnc_SMhintSUCCESS;
+                _stomper = "B_UGV_01_rcws_F";
+            } else {
+                _successSide = resistance;
+                [4] call QS_fnc_partizanSUCCESS;
+                _stomper = "I_UGV_01_rcws_F";
+            };
 
             // spawn stomper
             if (random 10 > 5) then {
-                hqSideChat = "Разведка сообщила о пустом БПА Стомпер недалеко от зоны спецоперации!"; publicVariable "hqSideChat"; [OUR_SIDE, "HQ"] sideChat hqSideChat;
+                [_successSide, "HQ"] sideChat "Разведка сообщила о пустом БПА Стомпер недалеко от зоны спецоперации!";
                 _stomperPos = [_startPoint, 135, 200, 3, 0, 10, 0, [], [_startPoint]] call QS_fnc_findSafePos;
-                _uavGroup = createGroup OUR_SIDE;
-                _spawn = [_stomperPos, (random 360), "B_UGV_01_rcws_F", [_uavGroup]] call BIS_fnc_spawnVehicle;
+                _uavGroup = createGroup _successSide;
+                _spawn = [_stomperPos, (random 360), _stomper, [_uavGroup]] call BIS_fnc_spawnVehicle;
                 _uav = (_spawn select 0);
                 _uav addWeapon "missiles_titan";
                 _uav addMagazine "2Rnd_GAT_missiles";

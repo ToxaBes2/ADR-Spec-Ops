@@ -169,10 +169,14 @@ if (playerSide == west) then {
 	private ["_array", "_type", "_message"];
 	_array = _this select 1;
 	_type = _array select 0;
+	_side = 0;
+	if (count _array > 2) then {
+        _side = _array select 2;
+    };
 	_message = "";
 	if (count _array > 1) then { _message = _array select 1;};
 	if ((typeName _message) != "ARRAY") then {_message = [_message];};
-	[_type, _message] call BIS_fnc_showNotification;
+	[_type, _message] remoteExec ["BIS_fnc_showNotification", _side];
 };
 
 "GlobalHint" addPublicVariableEventHandler
@@ -180,6 +184,15 @@ if (playerSide == west) then {
 	private ["_GHint"];
 	_GHint = _this select 1;
 	hint parseText format["%1", _GHint];
+};
+
+"GlobalSideHint" addPublicVariableEventHandler
+{
+	private ["_data", "_side", "_GHint"];
+	_data = _this select 1;
+	_side = _data select 0;
+	_GHint = parseText format["%1", (_data select 1)];
+	_GHint remoteExec ["hint", _side]; 
 };
 
 "hqSideChat" addPublicVariableEventHandler

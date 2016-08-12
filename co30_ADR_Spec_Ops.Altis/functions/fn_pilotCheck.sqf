@@ -81,7 +81,8 @@ _aircraft_nopilot_partizan = [
 "I_Heli_light_03_F",                            // Хелкат боевой
 "B_Heli_Light_01_armed_F",                      // Пауни
 "B_Heli_Light_01_F",                            // Хамингберд желтый
-"B_Heli_Light_01_stripped_F"                    // Хамингберд зеленый
+"B_Heli_Light_01_stripped_F",                   // Хамингберд зеленый
+"C_Plane_Civil_01_F"                            // Самолет Caesar BTT
 ];
 
 _aircraft_nocopilot_partizan = [
@@ -93,7 +94,8 @@ _aircraft_nocopilot_partizan = [
 "I_Heli_light_03_F",                            // Хелкат боевой
 "B_Heli_Light_01_armed_F",                      // Пауни
 "B_Heli_Light_01_F",                            // Хамингберд желтый
-"B_Heli_Light_01_stripped_F"                    // Хамингберд зеленый
+"B_Heli_Light_01_stripped_F",                   // Хамингберд зеленый
+"C_Plane_Civil_01_F"                            // Самолет Caesar BTT
 ];
 
 _veh = _this;

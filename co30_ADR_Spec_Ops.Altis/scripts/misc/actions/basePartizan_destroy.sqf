@@ -24,7 +24,7 @@ playSound3D ["A3\sounds_f\sfx\fire2_loop.wss", partizan_ammo, false, getPosASL p
 clearWeaponCargoGlobal partizan_ammo;
 clearMagazineCargoGlobal partizan_ammo;
 clearItemCargoGlobal partizan_ammo;
-
+PARTIZAN_REWARDS_LIST = []; publicVariable "PARTIZAN_REWARDS_LIST";
 _null = [] call QS_fnc_createPartizanBase;
 
 sleep 30;

@@ -40,6 +40,11 @@ if (BLOCKED_DEVICES == 0) then {
 	hqSideChat = "Отключено устройств: 2 из 2х";
 };
 BLOCKED_DEVICES = BLOCKED_DEVICES + 1; publicVariable "BLOCKED_DEVICES";
+if (side player == west) then {
+    WIN_WEST = WIN_WEST + 1; publicVariable "WIN_WEST";
+} else {
+    WIN_GUER = WIN_GUER + 1; publicVariable "WIN_GUER";
+};
 sleep 2;
 publicVariable "hqSideChat";
 [WEST, "HQ"] sideChat hqSideChat;
