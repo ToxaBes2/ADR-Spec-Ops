@@ -64,6 +64,13 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
     _veh setVariable ["irTarget", false, true];
     if(getNumber(configFile >> "CfgVehicles" >> typeof _veh >> "isUav") == 1) then {
         createVehicleCrew _veh; 	
+        _crew = crew _veh;
+        _grp = createGroup resistance;
+        _crew joinSilent _grp;
+        _grp addVehicle _veh;
+        {
+            _x setName "[AI]";
+        } forEach units _grp;
     };
 
     // Put market on the spawned vehicle for 60 seconds

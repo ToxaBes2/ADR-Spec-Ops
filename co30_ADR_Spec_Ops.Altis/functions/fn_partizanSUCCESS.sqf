@@ -10,7 +10,7 @@ _rewards =
     ["Ящик с гранатометами Синдиката", "Box_Syndicate_WpsLaunch_F", false],
     ["Ящик с гранатами OPFOR", "Box_East_Grenades_F", false],
     ["Ящик с основным оружием BLUFOR", "Box_NATO_Wps_F", false],
-    ["Ящик с основным оружием OPFOR", "Box_IND_Wps_F", false],
+    ["Ящик с основным оружием партизан", "Box_IND_Wps_F", false],
     ["Ящик с основными боеприпасами BLUFOR", "Box_NATO_Ammo_F", false],
     ["Ящик с основными боеприпасами OPFOR", "Box_East_Ammo_F", false],
     ["Ящик со специальным оружием BLUFOR", "Box_T_NATO_WpsSpecial_F", false],
