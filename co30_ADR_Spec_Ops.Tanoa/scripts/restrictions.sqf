@@ -62,6 +62,7 @@ _commanderItems = ["Laserdesignator","Laserdesignator_02","Laserdesignator_03","
 
 //===== THERMAL
 _ThermalOpt = ["optic_Nightstalker","optic_tws","optic_tws_mg"];
+_ThermalTeam = [];
 
 //===== MARKSMAN OPTICS
 _marksmanOpticsGrp = ["B_sniper_F","B_T_Sniper_F","B_soldier_M_F","B_T_soldier_M_F","I_G_Soldier_AR_F","I_G_engineer_F","I_C_Soldier_Para_4_F","I_C_Soldier_Para_8_F"];
