@@ -53,6 +53,8 @@ while { true } do {
 	    };
 	    LAST_SIDE_MISSION = _mission;
 	    publicVariable "LAST_SIDE_MISSION";
+		WIN_WEST = 0; publicVariable "WIN_WEST";
+        WIN_GUER = 0; publicVariable "WIN_GUER";
 	    currentMission = [_mission] spawn {_this call compile preProcessFileLineNumbers format ["mission\side\missions\%1.sqf", _this select 0]};
 	    waitUntil {
 	    	sleep _loopTimeout;

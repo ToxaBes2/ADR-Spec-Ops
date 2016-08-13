@@ -11,7 +11,6 @@ if (!TIMER_IN_USE) then {
     _stance = "Pknl";
     _raised = "Sras";
     _weapon = "Wrfl";
-
     if (stance player == "STAND") then {
         _stance = "Perc";
     };
@@ -43,7 +42,7 @@ if (!TIMER_IN_USE) then {
         if (!alive _object) exitWith {};
         hqSideChat = format ["%1 секунд до подрыва", _time];
         publicVariable "hqSideChat";
-        [WEST, "HQ"] sideChat hqSideChat;
+        [playerSide, "HQ"] sideChat hqSideChat;
         _time = _time - _step;
         sleep _step;
     };
@@ -53,7 +52,7 @@ if (!TIMER_IN_USE) then {
         hqSideChat = "Заряд находится менее чем в 2км от базы. Командование отключило таймер!";
     };
     publicVariable "hqSideChat";
-    [WEST, "HQ"] sideChat hqSideChat;
+    [playerSide, "HQ"] sideChat hqSideChat;
     _epicenter = getPos _object;
     if ((_object distance _basePos) > 2200) then {
        _object setDamage 0.95;

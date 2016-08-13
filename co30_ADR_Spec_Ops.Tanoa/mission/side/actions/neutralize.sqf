@@ -9,7 +9,6 @@ private ["_stance", "_raised", "_weapon", "_object"];
 _stance = "Pknl";
 _raised = "Sras";
 _weapon = "Wrfl";
-
 if (stance player == "STAND") then {
     _stance = "Perc";
 };
@@ -36,7 +35,12 @@ _object = _this select 0;
 [_object,"QS_fnc_removeAction0",nil,true] spawn BIS_fnc_MP;
 hqSideChat = "Отравляющее вещество обнаружено и нейтрализовано!";
 SM_YELLOWFOG_SUCCESS = true; publicVariable "SM_YELLOWFOG_SUCCESS";
+if (side player == west) then {
+    WIN_WEST = WIN_WEST + 1; publicVariable "WIN_WEST";
+} else {
+    WIN_GUER = WIN_GUER + 1; publicVariable "WIN_GUER";
+};
 sleep 2;
 publicVariable "hqSideChat";
-[WEST, "HQ"] sideChat hqSideChat;
+[playerSide, "HQ"] sideChat hqSideChat;
 deleteVehicle _object;

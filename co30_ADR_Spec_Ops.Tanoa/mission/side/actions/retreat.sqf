@@ -9,7 +9,6 @@ private ["_stance", "_raised", "_weapon", "_object"];
 _stance = "Pknl";
 _raised = "Sras";
 _weapon = "Wrfl";
-
 if (stance player == "STAND") then {
     _stance = "Perc";
 };
@@ -37,8 +36,12 @@ _object = _this select 0;
 sleep 10;
 hqSideChat = "Силы противника отступают. Хорошая работа!";
 publicVariable "hqSideChat";
-[WEST, "HQ"] sideChat hqSideChat;
+[playerSide, "HQ"] sideChat hqSideChat;
 sleep 3;
-BLOCKED_DEVICES = 2; publicVariable "BLOCKED_DEVICES";
-sleep 2;
 deleteVehicle _object;
+if (side player == west) then {
+    WIN_WEST = WIN_WEST + 1; publicVariable "WIN_WEST";
+} else {
+    WIN_GUER = WIN_GUER + 1; publicVariable "WIN_GUER";
+};
+BLOCKED_DEVICES = 2; publicVariable "BLOCKED_DEVICES";

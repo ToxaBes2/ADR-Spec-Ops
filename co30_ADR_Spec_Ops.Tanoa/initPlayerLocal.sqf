@@ -53,9 +53,9 @@ if (playerSide == resistance) then {
 		player setUnitTrait ["UAVHacker", true];
 		player setUnitTrait ["engineer", true];
 	};
-	
-	hqSideChat = "Разведка сообщила об увеличении активности партизан на острове."; 
-	publicVariable "hqSideChat"; 
+
+	hqSideChat = "Разведка сообщила об увеличении активности партизан на острове.";
+	publicVariable "hqSideChat";
 	[west, "HQ"] sideChat hqSideChat;
 } else {
 	"partizan_vehicle" setMarkerAlphaLocal 0;
@@ -164,37 +164,58 @@ if (playerSide == west) then {
 } count allCurators;
 
 // PVEHs
-"showNotification" addPublicVariableEventHandler
-{
-	private ["_array", "_type", "_message"];
+"showNotification" addPublicVariableEventHandler {
+	private ["_array", "_type", "_message", "_side"];
 	_array = _this select 1;
 	_type = _array select 0;
 	_message = "";
-	if (count _array > 1) then { _message = _array select 1;};
+	if (count _array > 1) then {_message = _array select 1;};
 	if ((typeName _message) != "ARRAY") then {_message = [_message];};
-	[_type, _message] call BIS_fnc_showNotification;
+	if (count _array > 2) then {
+		_side = _array select 2;
+		if (playerSide == _side) then {
+			[_type, _message] call BIS_fnc_showNotification;
+		};
+	} else {
+		[_type, _message] call BIS_fnc_showNotification;
+	};
 };
 
-"GlobalHint" addPublicVariableEventHandler
-{
+"GlobalHint" addPublicVariableEventHandler {
 	private ["_GHint"];
 	_GHint = _this select 1;
 	hint parseText format["%1", _GHint];
 };
 
-"hqSideChat" addPublicVariableEventHandler
-{
-	_message = _this select 1;
-	[WEST, "HQ"] sideChat _message;
+"GlobalSideHint" addPublicVariableEventHandler {
+	private ["_data", "_side", "_GHint"];
+	_data = _this select 1;
+	_side = _data select 0;
+	_GHint = parseText format["%1", (_data select 1)];
+	_GHint remoteExec ["hint", _side];
 };
 
-"addToScore" addPublicVariableEventHandler
-{
+"hqSideChat" addPublicVariableEventHandler {
+	private ["_message", "_array", "_side"];
+	if (typeName (_this select 1) == "STRING") then {
+		_message = _this select 1;
+		[playerSide, "HQ"] sideChat _message;
+	};
+	if (typeName (_this select 1) == "ARRAY") then {
+		_array = _this select 1;
+		_message = _array select 0;
+		_side = _array select 1;
+		if (playerSide == _side) then {
+			[_side, "HQ"] sideChat _message;
+		};
+	};
+};
+
+"addToScore" addPublicVariableEventHandler {
 	((_this select 1) select 0) addScore ((_this select 1) select 1);
 };
 
-"sideMarker" addPublicVariableEventHandler
-{
+"sideMarker" addPublicVariableEventHandler {
 	"sideMarker" setMarkerPosLocal (markerPos "sideMarker");
 	"sideCircle" setMarkerPosLocal (markerPos "sideCircle");
 	if (count sideMarkerText == 2) then {
@@ -204,11 +225,10 @@ if (playerSide == west) then {
     };
 };
 
-"priorityMarker" addPublicVariableEventHandler
-{
+"priorityMarker" addPublicVariableEventHandler {
 	"priorityMarker" setMarkerPosLocal (markerPos "priorityMarker");
 	"priorityCircle" setMarkerPosLocal (markerPos "priorityCircle");
-	"priorityMarker" setMarkerTextLocal format["Вторичная цель: %1",priorityTargetText];
+	"priorityMarker" setMarkerTextLocal format["Вторичная цель: %1", priorityTargetText];
 };
 
 // disable channels

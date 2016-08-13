@@ -25,8 +25,14 @@ while {!_accepted} do {
 		_flatPos = _position isFlatEmpty [10, 1, 0.2, sizeOf "Land_Cargo_House_V2_F", 0, false];
 	};
 
-	if ((_flatPos distance (getMarkerPos "respawn_west")) > 1700 && (_flatPos distance (getMarkerPos currentAO)) > 500) then {
-		_accepted = true;
+	if ((_flatPos distance (getMarkerPos "respawn_west")) > 1700) then {
+		if !(getMarkerColor "currentAO" == "") then {
+			if ((_flatPos distance (getMarkerPos currentAO)) > 500) then {
+				_accepted = true;
+			};
+		} else {
+			_accepted = true;
+		};
 	};
 };
 
@@ -103,9 +109,9 @@ while { sideMissionUp } do {
 		// DE-BRIEFING
 		sideMissionUp = false; publicVariable "sideMissionUp";
 		if (WIN_WEST > WIN_GUER) then {
-            [false] call QS_fnc_SMhintSUCCESS;
+            [false] spawn QS_fnc_SMhintSUCCESS;
         } else {
-            [3] call QS_fnc_partizanSUCCESS;
+            [3] spawn QS_fnc_partizanSUCCESS;
         };
 		{ _x setMarkerPos [-10000, -10000, -10000]; } forEach ["sideMarker", "sideCircle"]; publicVariable "sideMarker";
 

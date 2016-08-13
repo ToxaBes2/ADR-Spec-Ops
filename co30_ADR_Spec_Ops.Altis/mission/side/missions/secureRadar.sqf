@@ -25,8 +25,14 @@ while {!_accepted} do {
 		_flatPos = _position isFlatEmpty [5, 0, 0.1, sizeOf "Land_Radar_Small_F", 0, false];
 	};
 
-	if ((_flatPos distance (getMarkerPos "respawn_west")) > 1000 && (_flatPos distance (getMarkerPos currentAO)) > 500) then {
-		_accepted = true;
+	if ((_flatPos distance (getMarkerPos "respawn_west")) > 1000) then {
+		if !(getMarkerColor "currentAO" == "") then {
+			if ((_flatPos distance (getMarkerPos currentAO)) > 500) then {
+				_accepted = true;
+			};
+		} else {
+			_accepted = true;
+		};
 	};
 };
 
@@ -116,9 +122,9 @@ while { sideMissionUp } do {
 
 		// DE-BRIEFING
 		if (WIN_WEST > WIN_GUER) then {
-            [false] call QS_fnc_SMhintSUCCESS;
+            [false] spawn QS_fnc_SMhintSUCCESS;
         } else {
-            [3] call QS_fnc_partizanSUCCESS;
+            [3] spawn QS_fnc_partizanSUCCESS;
         };
 		{ _x setMarkerPos [-10000, -10000, -10000]; } forEach ["sideMarker", "sideCircle"]; publicVariable "sideMarker";
 		sideMissionUp = false; publicVariable "sideMissionUp";

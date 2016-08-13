@@ -536,9 +536,9 @@ while { sideMissionUp } do {
         } else {
             _delConvoy = _convoyVehs;
             if (WIN_WEST > WIN_GUER) then {
-                [true] call QS_fnc_SMhintSUCCESS;
+                [true] spawn QS_fnc_SMhintSUCCESS;
             } else {
-                [4] call QS_fnc_partizanSUCCESS;
+                [4] spawn QS_fnc_partizanSUCCESS;
             };
 
             // change event to prevent next convoy fail on destroy device from previous mission

@@ -9,7 +9,6 @@ private ["_stance", "_raised", "_weapon", "_object"];
 _stance = "Pknl";
 _raised = "Sras";
 _weapon = "Wrfl";
-
 if (stance player == "STAND") then {
     _stance = "Perc";
 };
@@ -47,5 +46,5 @@ if (side player == west) then {
 };
 sleep 2;
 publicVariable "hqSideChat";
-[WEST, "HQ"] sideChat hqSideChat;
+[playerSide, "HQ"] sideChat hqSideChat;
 deleteVehicle _object;

@@ -980,7 +980,7 @@ class VAS_Reward_Diag {
             y = 0;
             w = 1;
             h = 1;
-			colorBackground[] = {0.467,0.502,0.49,1};
+			colorBackground[] = {0.05,0.05,0.05,0.9};
 		};
 	};
 
@@ -1038,7 +1038,7 @@ class VAS_Reward_Diag {
 			font = "PuristaLight";
 	        sizeEx = 0.03921;
 		    soundSelect[] = {"", 0.1, 1};
-		    colorBackground[] = {0.467,0.502,0.49,1};
+		    colorBackground[] = {0.05,0.05,0.05,0.9};
 		    colorPicture[] = {1,1,1,1};
             colorPictureSelected[] = {1,1,1,1};
             colorPictureDisabled[] = {1,1,1,1};

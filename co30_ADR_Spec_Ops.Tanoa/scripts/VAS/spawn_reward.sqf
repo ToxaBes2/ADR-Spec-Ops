@@ -16,8 +16,8 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
     _ammoPos = getPos partizan_ammo;
     _rewardPos = [0,0,0];
     _rewardDir = random 360;
-    _airfieldPositions = [[[9264.86,21576.4,0], 225], [[11688.3,11937.4,0], 217], [[26832.7,24541.6,0], 40],
-                          [[23147,18404.4,0], 0], [[21076.3,7096.31,0], 10], [[9629.85,12461.7,0], 137]];
+    _airfieldPositions = [[[12181.8,12942.2,0.0794663], 16], [[2210.11,13444.2,0.0440073], 142],
+						  [[2152.83,3431.47,0], 317], [[11786.3,3135.41,0.21855], 215]];
     if (_useAirfield) then {
     	_row = _airfieldPositions select 0;
         _rewardPos = _row select 0;
