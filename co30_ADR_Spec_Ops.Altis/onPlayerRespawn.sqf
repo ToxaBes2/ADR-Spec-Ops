@@ -112,6 +112,9 @@ if (side player == resistance) then {
 	// Take uniform from CSAT dead bodies
     player addAction ["<t color='#F44336'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\uniform_ca.paa' size='1.0'/> Одеть форму противника</t>","scripts\misc\getEnemyUniform.sqf",[],6,true,true,"",'((vehicle player) == player && cursorObject isKindOf "O_Soldier_base_F" && !alive cursorObject && !((uniform cursorObject) == "") && (player distance cursorObject) < 2 && animationState player != "ainvpknlmstpsnonwrfldnon_medic0s")'];
 
+	// Take CSAT or Civilian uniform from GroundWeaponHolders
+	player addAction ["<t color='#E91E63'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\uniform_ca.paa' size='1.0'/> Одеть форму противника</t>",QS_fnc_actionGetCargoUniform,[],6,true,true,"",'[] call QS_fnc_conditionGetCargoUniform'];
+
 	// Open unconscious players inventory
     player addAction ["<t color='#FFC107'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\uniform_ca.paa' size='1.0'/> Обыскать</t>",{player action ["Gear", cursorTarget]},[],7,true,true,"",'((vehicle player) == player && (cursorObject getVariable "BTC_need_revive") == 1 && (player distance cursorObject) < 2 && animationState player != "ainvpknlmstpsnonwrfldnon_medic0s")'];
 };

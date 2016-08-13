@@ -24,6 +24,7 @@ class QS
 		class TBshuffle {};
 		class actionChangeLoadout {};
 		class actionClearInventory {};
+		class actionGetCargoUniform {};
 		class actionPilotRepair {};
 		class addAction {};
 		class addActionBlock {};
@@ -44,6 +45,7 @@ class QS
 		class baseVehiclePartizan {};
 		class cacheDebug {};
 		class conditionClearInventory {};
+		class conditionGetCargoUniform {};
 		class conditionPilotRepair {};
 		class conditionUH80TurretActionLock {};
 		class conditionUH80TurretActionUnlock {};
