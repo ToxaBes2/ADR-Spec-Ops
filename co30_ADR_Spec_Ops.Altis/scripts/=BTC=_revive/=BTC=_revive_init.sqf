@@ -59,14 +59,6 @@ BTC_objects_actions_civ  = [];
 
 if (!isDedicated) then {
 
-	// Change bleedout timer for different factions
-	if (playerSide == west) then {
-        BTC_revive_time_max = BTC_revive_time_max_west;
-	};
-	if (playerSide == resistance) then {
-        BTC_revive_time_max = BTC_revive_time_max_partizan;
-    };
-
 	//===== MISC
 
 	west_BTC_mobileRespawn_addActionText = "Move to mobile respawn";		// (west/nato) 		add Action text for mobile respawn
@@ -182,6 +174,14 @@ BTC_respawn_cond = false;
 
 	waitUntil {!isNull player};
 	waitUntil {player == player};
+
+	// Change bleedout timer for different factions
+	if (playerSide == west) then {
+        BTC_revive_time_max = BTC_revive_time_max_west;
+	};
+	if (playerSide == resistance) then {
+        BTC_revive_time_max = BTC_revive_time_max_partizan;
+    };
 
 	"BTC_drag_pveh" addPublicVariableEventHandler BTC_fnc_PVEH;
 	"BTC_carry_pveh" addPublicVariableEventHandler BTC_fnc_PVEH;

@@ -402,9 +402,9 @@ while { sideMissionUp } do {
             [true] call QS_fnc_SMhintFAIL;
         } else {
             if (WIN_WEST > WIN_GUER) then {
-                [true] call QS_fnc_SMhintSUCCESS;
+                [true] spawn QS_fnc_SMhintSUCCESS;
             } else {
-                [4] call QS_fnc_partizanSUCCESS;
+                [4] spawn QS_fnc_partizanSUCCESS;
             };
         };
 

@@ -24,7 +24,6 @@ allowFunctionsLog = 0; 									// Log functions to .rpt. disabled with 0
 
 //------------------------- Misc
 
-//disableChannels[]={0,1,2}; 						    // 0 = Global, 1 = Side, 2 = Command, 3 = Group, 4 = Vehicle, 5 = Direct, 6 = System. Admin/server/BattlEye can still use Global.
 disableChannels[]={{0, true, true},{1, false, true},{2, true, true},{3, false, false},{4, false, false},{5, false, false},{6, false, false}};
 disabledAI = 1;											// No AI in playable units
 aiKills = 0; 											// disable scorelist for AI players
@@ -34,7 +33,7 @@ showUAVFeed = 1;										// Enables/Disables the UAV Feed. Zeus-related.
 showHUD[] = {
 	false,	// Scripted HUD (same as showHUD command)
 	true,	// Vehicle + soldier info
-	false,	// Vehicle radar 
+	false,	// Vehicle radar
 	true,	// Vehicle compass
 	true,	// Tank direction indicator
 	false,	// Commanding menu
@@ -471,5 +470,14 @@ class CfgNotifications
 		color[] = {0.78, 1, 0, 1};
 		difficulty[] = {"scoreTable"};
 		priority = 4;
+	};
+
+	class TotalFailed
+	{
+		title = "ЗАДАНИЕ ПРОВАЛЕНО";
+		iconPicture = "\a3\ui_f\data\GUI\Cfg\Debriefing\endDefault_ca.paa";
+		description = "%1";
+		color[] = {0.97, 0.26, 0.21, 1};
+		priority = 7;
 	};
 };

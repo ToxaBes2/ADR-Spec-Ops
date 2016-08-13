@@ -29,7 +29,6 @@ private ["_stance", "_raised", "_weapon"];
 _stance = "Pknl";
 _raised = "Sras";
 _weapon = "Wrfl";
-
 if (stance player == "STAND") then {
     _stance = "Perc";
 };
@@ -63,3 +62,8 @@ sleep 2;
 
 //---------- Send notice to all players that something has been done.
 SM_SUCCESS = true; publicVariable "SM_SUCCESS";
+if (side player == west) then {
+    WIN_WEST = WIN_WEST + 1; publicVariable "WIN_WEST";
+} else {
+    WIN_GUER = WIN_GUER + 1; publicVariable "WIN_GUER";
+};

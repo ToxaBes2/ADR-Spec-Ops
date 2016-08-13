@@ -15,7 +15,7 @@ _targetStartText = format [
 	_nameAO
 ];
 _enemiesArray = [];
-GlobalSideHint = [west, _targetStartText]; publicVariable "GlobalSideHint"; (parseText _targetStartText) remoteExec ["hint", west]; 
+GlobalSideHint = [west, _targetStartText]; publicVariable "GlobalSideHint"; (parseText _targetStartText) remoteExec ["hint", west];
 showNotification = ["NewMainDefend", _nameAO, west]; publicVariable "showNotification";
 {_x setMarkerPos _positionAO;} forEach ["aoCircle_2", "aoMarker_2"];
 "aoMarker_2" setMarkerText format["Оборона: %1", _nameAO];
@@ -51,9 +51,9 @@ switch (_selectedType) do {
     };
 };
 _enemiesArray = _enemiesArray + [_group];
-"Вблизи захваченной территории, обнаружены вражеские силы." remoteExec ["hint", west]; 
+"Вблизи захваченной территории, обнаружены вражеские силы." remoteExec ["hint", west];
 sleep 5;
-[WEST,"HQ"] sideChat "Обороняйтесь, противник начинает штурм!";
+[WEST, "HQ"] sideChat "Обороняйтесь, противник начинает штурм!";
 sleep 120;
 _inside = false;
 _allPlayers = [] call BIS_fnc_listPlayers;
@@ -99,7 +99,7 @@ while {_inside && _aliveBots > PARAMS_EnemyLeftThreshhold} do {
     } forEach allGroups;
     sleep 10;
     if (!_inside) then {
-        [WEST,"HQ"] sideChat "В зоне БД не осталось наших бойцов! Мы теряем позиции, поторопитесь!";
+        [WEST, "HQ"] sideChat "В зоне БД не осталось наших бойцов! Мы теряем позиции, поторопитесь!";
         sleep 120;
         _allPlayers = [] call BIS_fnc_listPlayers;
         {

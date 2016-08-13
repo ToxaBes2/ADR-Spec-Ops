@@ -9,6 +9,7 @@ Description: All main AO's in one file
 #define ALLOWED_EXPLOSIVES "IEDUrbanBig_Remote_Ammo","IEDUrbanBig_Remote_Ammo","IEDLandBig_Remote_Ammo","IEDUrbanSmall_Remote_Ammo","IEDLandSmall_Remote_Ammo","SatchelCharge_Remote_Ammo","DemoCharge_Remote_Ammo",""
 
 private ["_nameAO", "_positionAO", "_serviceMarkers", "_dt", "_chance", "_bunkerType", "_bunkerPos", "_distance", "_flatPos", "_res", "_null", "_obj", "_bunkerObjects", "_bunkerPositions", "_bunkerPosition", "_smallZ", "_bigZ", "_anotherChance", "_uav", "_uavPos", "_position", "_tower", "_allowedExplosives", "_tower_dmg", "_points", "_unit", "_campPos", "_hasMines", "_groundPos", "_minesArray", "_newPos", "_cargo", "_campObjects", "_type", "_nearestObject", "_enemiesArray", "_targetStartText", "_showTowerMessage", "_showBunkerMessage", "_viperSquadSpawned", "_radioTowerDownText", "_bunkerText", "_targetCompleteText", "_aliveBots", "_chanceDefend", "_vehicles", "_curVeh", "_isReward", "_unitTypes"];
+
 WinRadiotower = false; publicVariable "WinRadiotower";
 WinBunker = false; publicVariable "WinBunker";
 eastSide = createCenter ENEMY_SIDE;
@@ -219,7 +220,7 @@ while {alive radioTower || !MAIN_AO_SUCCESS || !_showTowerMessage || !_showBunke
         if (WinRadiotower == west) then {
             radioTowerAlive = false; publicVariable "radioTowerAlive";
             _radioTowerDownText = "<t align='center' size='2.2'>Радиовышка</t><br/><t size='1.5' color='#C6FF00' align='center'>Уничтожена</t><br/>____________________<br/>Теперь противник не сможет вызвать авиаподдержку.";
-            GlobalSideHint = [west, _radioTowerDownText]; publicVariable "GlobalSideHint"; 
+            GlobalSideHint = [west, _radioTowerDownText]; publicVariable "GlobalSideHint";
             showNotification = ["CompletedSub", ["Радиовышка уничтожена!", "\a3\ui_f\data\gui\cfg\hints\mines_ca.paa"], west]; publicVariable "showNotification";
         };
     };
@@ -300,7 +301,7 @@ if (DEFEND_AO_VICTORY) then {
     } forEach _vehicles;
 };
 DEFEND_AO_VICTORY = nil; publicVariable "DEFEND_AO_VICTORY";
-GlobalSideHint = [west, _targetCompleteText]; publicVariable "GlobalSideHint"; 
+GlobalSideHint = [west, _targetCompleteText]; publicVariable "GlobalSideHint";
 
 // Restore yellow color of nearby vehicle service markers
 CURRENT_AO_POSITION = nil; publicVariable "CURRENT_AO_POSITION";

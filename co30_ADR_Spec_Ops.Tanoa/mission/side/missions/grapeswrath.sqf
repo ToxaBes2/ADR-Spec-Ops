@@ -248,7 +248,11 @@ while { sideMissionUp } do {
         if (SM_GRAPESWRATH_FAIL) then {
             [true] call QS_fnc_SMhintFAIL;
         } else {
-            [true] call QS_fnc_SMhintSUCCESS;
+            if (WIN_WEST > WIN_GUER) then {
+                [true] spawn QS_fnc_SMhintSUCCESS;
+            } else {
+                [4] spawn QS_fnc_partizanSUCCESS;
+            };
         };
         if (_showMarkers) then {
             {

@@ -8,8 +8,10 @@ Description: All main AO's in one file
 #define RADIO_TOWERS "Land_TTowerBig_1_F","Land_TTowerBig_2_F"
 #define ALLOWED_EXPLOSIVES "IEDUrbanBig_Remote_Ammo","IEDUrbanBig_Remote_Ammo","IEDLandBig_Remote_Ammo","IEDUrbanSmall_Remote_Ammo","IEDLandSmall_Remote_Ammo","SatchelCharge_Remote_Ammo","DemoCharge_Remote_Ammo",""
 
-private ["_target","_nameAO","_positionAO","_serviceMarkers","_dt","_chance","_bunkerType","_bunkerPos","_bunkerObjects","_obj","_bunkerPositions ","_smallZ","_bigZ","_position","_flatPos","_res","_distance","_tower","_campPos","_hasMines","_groundPos","_hasMines","_minesArray","_newPos","_cargo","_nearestObject","_campObjects","_enemiesArray","_targetStartText","_showTowerMessage","_showBunkerMessage","_radioTowerDownText","_bunkerText","_null","_targetCompleteText","_tower","_tower_dmg","_units","_unitTypes","_vehicles","_isReward","_curVeh","_defend","_aliveBots","_anotherChance","_uavPos","_uav"];
+private ["_nameAO", "_positionAO", "_serviceMarkers", "_dt", "_chance", "_bunkerType", "_bunkerPos", "_distance", "_flatPos", "_res", "_null", "_obj", "_bunkerObjects", "_bunkerPositions", "_bunkerPosition", "_smallZ", "_bigZ", "_anotherChance", "_uav", "_uavPos", "_position", "_tower", "_allowedExplosives", "_tower_dmg", "_points", "_unit", "_campPos", "_hasMines", "_groundPos", "_minesArray", "_newPos", "_cargo", "_campObjects", "_type", "_nearestObject", "_enemiesArray", "_targetStartText", "_showTowerMessage", "_showBunkerMessage", "_viperSquadSpawned", "_radioTowerDownText", "_bunkerText", "_targetCompleteText", "_aliveBots", "_chanceDefend", "_vehicles", "_curVeh", "_isReward", "_unitTypes"];
 
+WinRadiotower = false; publicVariable "WinRadiotower";
+WinBunker = false; publicVariable "WinBunker";
 eastSide = createCenter ENEMY_SIDE;
 _target = [] call QS_fnc_getMainAO;
 if !(isNil "LAST_MAIN_MISSION") then {
@@ -131,6 +133,10 @@ radioTower addEventHandler
         _unit = _this select 1;
         _unit addScore _points;
 		["ScoreBonus", ["Радиовышка уничтожена!", _points]] remoteExec ["BIS_fnc_showNotification", _unit];
+        WinRadiotower = side _unit; publicVariable "WinRadiotower";
+        if (side _unit == resistance) then {
+            [2] call QS_fnc_partizanSUCCESS;
+        };
 	}
 ];
 
@@ -212,19 +218,23 @@ while {alive radioTower || !MAIN_AO_SUCCESS || !_showTowerMessage || !_showBunke
         _showTowerMessage = true;
 
         // RADIO TOWER DESTROYED
-        radioTowerAlive = false; publicVariable "radioTowerAlive";
-        _radioTowerDownText = "<t align='center' size='2.2'>Радиовышка</t><br/><t size='1.5' color='#C6FF00' align='center'>Уничтожена</t><br/>____________________<br/>Теперь противник не сможет вызвать авиаподдержку.";
-        GlobalHint = _radioTowerDownText; hint parseText GlobalHint; publicVariable "GlobalHint";
-        showNotification = ["CompletedSub", ["Радиовышка уничтожена!", "\a3\ui_f\data\gui\cfg\hints\mines_ca.paa"]]; publicVariable "showNotification";
+        if (WinRadiotower == west) then {
+            radioTowerAlive = false; publicVariable "radioTowerAlive";
+            _radioTowerDownText = "<t align='center' size='2.2'>Радиовышка</t><br/><t size='1.5' color='#C6FF00' align='center'>Уничтожена</t><br/>____________________<br/>Теперь противник не сможет вызвать авиаподдержку.";
+            GlobalSideHint = [west, _radioTowerDownText]; publicVariable "GlobalSideHint";
+            showNotification = ["CompletedSub", ["Радиовышка уничтожена!", "\a3\ui_f\data\gui\cfg\hints\mines_ca.paa"], west]; publicVariable "showNotification";
+        };
     };
     sleep 3;
     if (MAIN_AO_SUCCESS && !_showBunkerMessage) then {
         _showBunkerMessage = true;
 
         // BUNKER UNDER OUR CONTROL
-        _bunkerText = "<t align='center' size='2.2'>Командный пункт</t><br/><t size='1.5' color='#C6FF00' align='center'>Захвачен</t><br/>____________________<br/>Противник дезорганизован.";
-        GlobalHint = _bunkerText; hint parseText GlobalHint; publicVariable "GlobalHint";
-        showNotification = ["CompletedSub", ["Командный пункт захвачен!", "\a3\ui_f\data\gui\cfg\hints\commanding_ca.paa"]]; publicVariable "showNotification";
+        if (WinBunker == west) then {
+            _bunkerText = "<t align='center' size='2.2'>Командный пункт</t><br/><t size='1.5' color='#C6FF00' align='center'>Захвачен</t><br/>____________________<br/>Противник дезорганизован.";
+            GlobalSideHint = [west, _bunkerText]; publicVariable "GlobalSideHint";
+            showNotification = ["CompletedSub", ["Командный пункт захвачен!", "\a3\ui_f\data\gui\cfg\hints\commanding_ca.paa"], west]; publicVariable "showNotification";
+        };
     };
     sleep 3;
     // Spawn Viper group
@@ -292,7 +302,7 @@ if (DEFEND_AO_VICTORY) then {
     } forEach _vehicles;
 };
 DEFEND_AO_VICTORY = nil; publicVariable "DEFEND_AO_VICTORY";
-GlobalHint = _targetCompleteText; publicVariable "GlobalHint"; hint parseText GlobalHint;
+GlobalSideHint = [west, _targetCompleteText]; publicVariable "GlobalSideHint";
 
 // Restore yellow color of nearby vehicle service markers
 CURRENT_AO_POSITION = nil; publicVariable "CURRENT_AO_POSITION";

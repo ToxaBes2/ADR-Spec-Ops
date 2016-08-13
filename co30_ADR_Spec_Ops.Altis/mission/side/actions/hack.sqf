@@ -10,7 +10,6 @@ private ["_stance", "_raised", "_weapon", "_failed", "_time", "_step", "_object"
 _stance = "Pknl";
 _raised = "Sras";
 _weapon = "Wrfl";
-
 if (stance player == "STAND") then {
     _stance = "Perc";
 };
@@ -42,18 +41,18 @@ _object = _this select 0;
 sleep 2;
 hqSideChat = "Оставайтесь у теминала. Подключение...";
 publicVariable "hqSideChat";
-[WEST, "HQ"] sideChat hqSideChat;
+[playerSide, "HQ"] sideChat hqSideChat;
 [_object, 1] call BIS_fnc_dataTerminalAnimate;
 sleep 5;
 hqSideChat = "Оставайтесь у теминала. Загрузка...";
 publicVariable "hqSideChat";
-[WEST, "HQ"] sideChat hqSideChat;
+[playerSide, "HQ"] sideChat hqSideChat;
 [_object, 2] call BIS_fnc_dataTerminalAnimate;
 sleep 5;
 [_object, 3] call BIS_fnc_dataTerminalAnimate;
 hqSideChat = "Оставайтесь у теминала. 100 сек до завершения...";
 publicVariable "hqSideChat";
-[WEST, "HQ"] sideChat hqSideChat;
+[playerSide, "HQ"] sideChat hqSideChat;
 while {_time > 0} do {
     if (!alive player || player distance _object > 10) exitWith {
     	_failed = true;
@@ -81,5 +80,5 @@ if (_failed) then {
     };
 };
 publicVariable "hqSideChat";
-[WEST, "HQ"] sideChat hqSideChat;
+[playerSide, "HQ"] sideChat hqSideChat;
 [_object, 0] call BIS_fnc_dataTerminalAnimate;

@@ -433,7 +433,8 @@ while { sideMissionUp } do {
 
             // spawn stomper
             if (random 10 > 5) then {
-                [_successSide, "HQ"] sideChat "Разведка сообщила о пустом БПА Стомпер недалеко от зоны спецоперации!";
+                hqSideChat = ["Разведка сообщила о пустом БПА Стомпер недалеко от зоны спецоперации!", _successSide]; publicVariable "hqSideChat";
+                [_successSide, "HQ"] sideChat (hqSideChat select 0);
                 _stomperPos = [_startPoint, 135, 200, 3, 0, 10, 0, [], [_startPoint]] call QS_fnc_findSafePos;
                 _uavGroup = createGroup _successSide;
                 _spawn = [_stomperPos, (random 360), _stomper, [_uavGroup]] call BIS_fnc_spawnVehicle;

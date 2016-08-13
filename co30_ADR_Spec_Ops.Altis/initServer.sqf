@@ -95,3 +95,6 @@ enemyCasArray = [];
 enemyCasGroup = createGroup east;
 sleep 0.1;
 deleteGroup enemyCasGroup;
+
+// Animate arsenal models. Does not always work in their inits, units become invisible in multiplayer.
+[base_arsenal_infantry, "SIT1", "ASIS"] call BIS_fnc_ambientAnim;

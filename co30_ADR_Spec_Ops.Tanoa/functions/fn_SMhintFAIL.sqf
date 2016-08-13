@@ -9,4 +9,5 @@ if (_this select 0) then {
 };
 
 publicVariable "showNotification";
-GlobalHint = _failedText; publicVariable "GlobalHint"; hint parseText _failedText;
+//hint parseText _failedText;
+GlobalSideHint = [west, _failedText]; publicVariable "GlobalSideHint"; (parseText _failedText) remoteExec ["hint", west];

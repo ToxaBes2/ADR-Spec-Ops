@@ -26,7 +26,7 @@ _uavOperator = ["B_engineer_F", "B_T_Engineer_F","I_G_engineer_F","I_C_Soldier_P
 _uavRestricted = ["B_UavTerminal","O_UavTerminal","I_UavTerminal"];
 
 //===== AT / MISSILE LAUNCHERS
-_missileSoldiers = ["B_soldier_AT_F","B_T_Soldier_AT_F","I_G_Soldier_AR_F"];
+_missileSoldiers = ["B_soldier_AT_F","B_T_Soldier_AT_F","I_G_Soldier_AR_F","I_C_Soldier_Para_4_F"];
 _missileSpecialised = ["launch_B_Titan_F","launch_O_Titan_F","launch_I_Titan_F","launch_B_Titan_short_F","launch_O_Titan_short_F","launch_I_Titan_short_F","launch_B_Titan_tna_F","launch_B_Titan_short_tna_F","launch_O_Titan_ghex_F","launch_O_Titan_short_ghex_F"];
 
 //===== SMALL MISSILE LAUNCHERS
@@ -57,7 +57,7 @@ _grenadier = ["B_Soldier_SL_F","B_T_Soldier_SL_F","B_medic_F","B_T_Medic_F","B_e
 _grenadierWeapons = ["arifle_Katiba_GL_F","arifle_TRG21_GL_F","arifle_TRG21_GL_MRCO_F","arifle_TRG21_GL_ACO_pointer_F","arifle_Katiba_GL_ACO_F","arifle_Katiba_GL_ARCO_pointer_F	","arifle_Katiba_GL_ACO_pointer_F","arifle_Katiba_GL_ACO_pointer_snds_F","arifle_Mk20_GL_F","arifle_Mk20_GL_plain_F","arifle_Mk20_GL_MRCO_pointer_F","arifle_Mk20_GL_ACO_F","arifle_MX_GL_F","arifle_MX_GL_ACO_F","arifle_MX_GL_ACO_pointer_F","arifle_MX_GL_Hamr_pointer_F","arifle_MX_GL_Holo_pointer_snds_F","arifle_MX_GL_Black_F","arifle_MX_GL_Black_Hamr_pointer_F","arifle_AK12_GL_F","arifle_CTAR_GL_blk_F","arifle_CTAR_GL_ghex_F","arifle_CTAR_GL_hex_F","arifle_CTAR_GL_blk_ACO_F","arifle_CTAR_GL_blk_ACO_Pointer_Snds_F","arifle_MX_GL_khk_F","arifle_SPAR_01_GL_blk_F","arifle_SPAR_01_GL_khk_F","arifle_SPAR_01_GL_snd_F","arifle_SPAR_01_GL_blk_ACO_Pointer_F","arifle_MX_GL_khk_F","arifle_MX_GL_khk_ACO_F","arifle_MX_GL_khk_Hamr_Pointer_F","arifle_MX_GL_khk_Holo_Pointer_Snds_F"];
 
 //=== COMMANDERS
-_commanders = ["B_Soldier_SL_F","I_G_Soldier_AR_F","I_G_engineer_F","I_C_Soldier_Para_4_F","I_C_Soldier_Para_8_F"];
+_commanders = ["B_Soldier_SL_F","B_T_Soldier_SL_F","I_G_Soldier_AR_F","I_G_engineer_F","I_C_Soldier_Para_4_F","I_C_Soldier_Para_8_F"];
 _commanderItems = ["Laserdesignator","Laserdesignator_02","Laserdesignator_03","Laserdesignator_01_khk_F","Laserdesignator_02_ghex_F"];
 
 //===== THERMAL
@@ -170,10 +170,8 @@ while {true} do {
 	//------------------------------------- Thermal optics
 	_optics = primaryWeaponItems player;
 	if (({_x in _optics} count _ThermalOpt) > 0) then {
-		if (({player isKindOf _x} count _ThermalTeam) < 1) then {
-			{player removePrimaryWeaponItem  _x;} count _ThermalOpt;
-			titleText [AUTOTUR_MSG,"PLAIN",2];
-		};
+		{player removePrimaryWeaponItem  _x;} count _ThermalOpt;
+		titleText [AUTOTUR_MSG,"PLAIN",2];
 	};
 	sleep 0.1;
 

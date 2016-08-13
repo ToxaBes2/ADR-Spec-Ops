@@ -38,7 +38,7 @@ sleep 2;
 _object setDamage 0;
 hqSideChat = "Заряд обезврежен!";
 publicVariable "hqSideChat";
-[WEST, "HQ"] sideChat hqSideChat;
+[playerSide, "HQ"] sideChat hqSideChat;
 TIMER_IN_USE = false; publicVariable "TIMER_IN_USE";
 [_object,"QS_fnc_addActionTimer",nil,true] spawn BIS_fnc_MP;
 SM_CONVOY_SUCCESS = true; publicVariable "SM_CONVOY_SUCCESS";

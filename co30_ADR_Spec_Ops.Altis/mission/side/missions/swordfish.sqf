@@ -335,9 +335,9 @@ while { sideMissionUp } do {
         "sideCircle" setMarkerSize [300, 300]; publicVariable "sideCircle";
         "sideMarker" setMarkerText ""; publicVariable "sideMarker";
         if (WIN_WEST > WIN_GUER) then {
-            [true] call QS_fnc_SMhintSUCCESS;
+            [true] spawn QS_fnc_SMhintSUCCESS;
         } else {
-            [4] call QS_fnc_partizanSUCCESS;
+            [4] spawn QS_fnc_partizanSUCCESS;
         };
 
         // delete mines

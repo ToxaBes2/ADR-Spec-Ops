@@ -67,9 +67,9 @@ sleep 1;
 // DE-BRIEFING
 sideMissionUp = false; publicVariable "sideMissionUp";
 if (WIN_WEST > WIN_GUER) then {
-    [false] call QS_fnc_SMhintSUCCESS;
+    [false] spawn QS_fnc_SMhintSUCCESS;
 } else {
-    [3] call QS_fnc_partizanSUCCESS;
+    [3] spawn QS_fnc_partizanSUCCESS;
 };
 "sideMarker" setMarkerPos [-10000, -10000, -10000]; publicVariable "sideMarker";
 

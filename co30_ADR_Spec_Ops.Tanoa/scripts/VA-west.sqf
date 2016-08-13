@@ -486,7 +486,6 @@ _myBox = _this select 0;
 "30Rnd_762x39_Mag_Green_F",
 "30Rnd_762x39_Mag_Tracer_F",
 "30Rnd_762x39_Mag_Tracer_Green_F",
-"30Rnd_9x21_Mag",
 "30Rnd_9x21_Mag_SMG_02",
 "30Rnd_9x21_Mag_SMG_02_Tracer_Green",
 "30Rnd_9x21_Mag_SMG_02_Tracer_Red",

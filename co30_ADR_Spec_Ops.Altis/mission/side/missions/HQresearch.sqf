@@ -109,10 +109,10 @@ while { sideMissionUp } do {
 
 		// DE-BRIEFING
 		if (WIN_WEST > WIN_GUER) then {
-            [false] call QS_fnc_SMhintSUCCESS;
+            [false] spawn QS_fnc_SMhintSUCCESS;
         } else {
-            [3] call QS_fnc_partizanSUCCESS;
-        }; 
+            [3] spawn QS_fnc_partizanSUCCESS;
+        };
 		{ _x setMarkerPos [-10000, -10000, -10000]; } forEach ["sideMarker", "sideCircle"]; publicVariable "sideMarker";
 		sideMissionUp = false; publicVariable "sideMissionUp";
 

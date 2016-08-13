@@ -29,7 +29,6 @@ private ["_stance", "_raised", "_weapon"];
 _stance = "Pknl";
 _raised = "Sras";
 _weapon = "Wrfl";
-
 if (stance player == "STAND") then {
     _stance = "Perc";
 };

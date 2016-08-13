@@ -133,11 +133,11 @@ _myBox = _this select 0;
 
 //--- Вещи
 "FirstAidKit",
+"I_UavTerminal",
 "ItemCompass",
 "ItemMap",
 "ItemRadio",
 "ItemWatch",
-"I_UavTerminal",
 "Medikit",
 "ToolKit"
 ], true, false] call BIS_fnc_addVirtualItemCargo;
