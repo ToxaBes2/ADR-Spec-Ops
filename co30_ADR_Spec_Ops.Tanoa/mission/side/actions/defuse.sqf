@@ -42,7 +42,7 @@ publicVariable "hqSideChat";
 TIMER_IN_USE = false; publicVariable "TIMER_IN_USE";
 [_object,"QS_fnc_addActionTimer",nil,true] spawn BIS_fnc_MP;
 SM_CONVOY_SUCCESS = true; publicVariable "SM_CONVOY_SUCCESS";
-if (side player == west) then {
+if (playerSide == west) then {
     WIN_WEST = WIN_WEST + 1; publicVariable "WIN_WEST";
 } else {
     WIN_GUER = WIN_GUER + 1; publicVariable "WIN_GUER";

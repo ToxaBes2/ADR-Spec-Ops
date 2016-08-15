@@ -95,7 +95,7 @@ if (typeOf player in ["I_G_Soldier_AR_F","I_G_engineer_F"]) then {
 
 
 // Add actions specific to resistance players
-if (side player == resistance) then {
+if (playerSide == resistance) then {
 	// Take uniform from CSAT dead bodies
     player addAction ["<t color='#F44336'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\uniform_ca.paa' size='1.0'/> Одеть форму противника</t>","scripts\misc\getEnemyUniform.sqf",[],6,true,true,"",'((vehicle player) == player && cursorObject isKindOf "O_Soldier_base_F" && !alive cursorObject && !((uniform cursorObject) == "") && (player distance cursorObject) < 2 && animationState player != "ainvpknlmstpsnonwrfldnon_medic0s")'];
 
