@@ -232,7 +232,7 @@ if (playerSide == west) then {
 };
 
 // disable channels
-0 enableChannel [true, false];
+0 enableChannel [false, false];
 1 enableChannel [true, false];
 2 enableChannel [false, false];
 

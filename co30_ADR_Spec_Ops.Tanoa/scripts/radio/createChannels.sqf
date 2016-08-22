@@ -38,18 +38,18 @@ if (!isDedicated) then {
     (RADIO_CHANNELS select 0) radioChannelAdd [player];
 
     // commanders have access to command and operative channels
-    if (_playerType == "B_Soldier_SL_F") then {        
+    if (_playerType == "B_T_Soldier_SL_F") then {        
         (RADIO_CHANNELS select 1) radioChannelAdd [player];
         (RADIO_CHANNELS select 2) radioChannelAdd [player];
     };
 
     // pilots have access to operative channels
-    if (_playerType == "B_Helipilot_F") then {
+    if (_playerType == "B_T_Helipilot_F") then {
         (RADIO_CHANNELS select 1) radioChannelAdd [player];
     };
 };
 
 // disable voice for side channel
-0 enableChannel false;
+0 enableChannel [false, false];
 1 enableChannel [true, false];
-2 enableChannel false;
+2 enableChannel [false, false];
