@@ -35,7 +35,7 @@ _object = _this select 0;
 [_object,"QS_fnc_removeAction0",nil,true] spawn BIS_fnc_MP;
 hqSideChat = "Отравляющее вещество обнаружено и нейтрализовано!";
 SM_YELLOWFOG_SUCCESS = true; publicVariable "SM_YELLOWFOG_SUCCESS";
-if (side player == west) then {
+if (playerSide == west) then {
     WIN_WEST = WIN_WEST + 1; publicVariable "WIN_WEST";
 } else {
     WIN_GUER = WIN_GUER + 1; publicVariable "WIN_GUER";

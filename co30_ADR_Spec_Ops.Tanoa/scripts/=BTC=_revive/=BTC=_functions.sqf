@@ -1572,7 +1572,7 @@ BTC_player_respawn = {
 		// Create dead body with duplicate equipment if player is BLUFOR
 		if (player isKindOf "B_Soldier_base_F") then {
 			private ["_group", "_deadBody"];
-			_group = createGroup (side player);
+			_group = createGroup playerSide;
 			(typeOf player) createUnit [[0, 0, 0], _group, "BTC_deadBody = this;"];
 			_deadBody = BTC_deadBody;
 			[_deadBody, BTC_gear] call BTC_set_gear;

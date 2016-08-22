@@ -64,7 +64,7 @@ if (_failed) then {
     _object setVariable ["GRAPESWRATH_HACKED", "failed", true];
     [_object,"red","red","red"] call BIS_fnc_DataTerminalColor;
     hqSideChat = "Взлом прерван! Терминал заблокирован!";
-    if (side player == west) then {
+    if (playerSide == west) then {
         WIN_WEST = WIN_WEST - 1; publicVariable "WIN_WEST";
     } else {
         WIN_GUER = WIN_GUER - 1; publicVariable "WIN_GUER";
@@ -73,7 +73,7 @@ if (_failed) then {
 	_object setVariable ["GRAPESWRATH_HACKED", "hacked", true];
 	[_object,"green","blue","orange"] call BIS_fnc_DataTerminalColor;
 	hqSideChat = "Терминал взломан!";
-    if (side player == west) then {
+    if (playerSide == west) then {
         WIN_WEST = WIN_WEST + 1; publicVariable "WIN_WEST";
     } else {
         WIN_GUER = WIN_GUER + 1; publicVariable "WIN_GUER";

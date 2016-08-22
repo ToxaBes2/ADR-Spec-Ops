@@ -41,7 +41,7 @@ sleep 1;
 _object setDamage 1;
 _bomb = createVehicle ["Bo_GBU12_LGB", getPos _object, [], 0, "NONE"];
 SM_SUCCESS_SABOTAGE = true; publicVariable "SM_SUCCESS_SABOTAGE";
-if (side player == west) then {
+if (playerSide == west) then {
     WIN_WEST = WIN_WEST + 1; publicVariable "WIN_WEST";
 } else {
     WIN_GUER = WIN_GUER + 1; publicVariable "WIN_GUER";

@@ -182,7 +182,7 @@ if (!isDedicated) then {
 		player addEventHandler ["Killed", BTC_EH_killed];
 		"BTC_tk_PVEH" addPublicVariableEventHandler BTC_fnc_tk_PVEH;
 		player addrating 9999;
-		BTC_side = side player;
+		BTC_side = playerSide;
 		BTC_vip = [];
 		_uid = getPlayerUID player;
 		if (!isNil "BTC_logic") then {
