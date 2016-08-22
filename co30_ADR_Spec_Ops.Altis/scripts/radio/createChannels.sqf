@@ -50,6 +50,6 @@ if (!isDedicated) then {
 };
 
 // disable voice for side channel
-0 enableChannel false;
+0 enableChannel [false, false];
 1 enableChannel [true, false];
-2 enableChannel false;
+2 enableChannel [false, false];
