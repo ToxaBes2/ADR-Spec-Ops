@@ -524,6 +524,10 @@
 			<Original>YOU PUNISHED FOR DESTROING VEHICLES! Time: %1 sec</Original>
 			<Russian>ВАС НАКАЗАЛИ ЗА УНИЧТОЖЕНИЕ ТЕХНИКИ! Наказание: %1 сек</Russian>
 		</Key>
+		<Key ID="STR_PRISON_CIVILIAN">
+			<Original>YOU PUNISHED FOR KILLING CIVILIANS! Time: %1 sec</Original>
+			<Russian>ВАС НАКАЗАЛИ ЗА УБИЙСТВО ГРАЖДАНСКИХ! Наказание: %1 сек</Russian>
+		</Key>
     </Package>
 </Project>
 <Project name="Custom_Channels">

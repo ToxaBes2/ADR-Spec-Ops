@@ -105,5 +105,13 @@ if ((_t in _ammoTrucks) or (_t in _ammoTrucksTempest)) then {
 	};
 };
 
+// decrease radar scan range
+if (_u isKindOf "Air") then {
+    _currentScanRange = _u getVariable ["irScanRangeMax", 1500];
+    if (_currentScanRange > 1000) then {
+    	_u setVariable ["irScanRangeMax", 1500, true];
+    };
+};
+
 //===== Vehicle Killer monitor system
 [_u] call QS_fnc_killerCatcher;
