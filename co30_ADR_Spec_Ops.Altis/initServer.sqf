@@ -105,7 +105,7 @@ _null = [] spawn {
         sleep 15;
         {
             if (markerShape _x == "POLYLINE") then {
-                _allowedChannels = ["3", "4"];
+                _allowedChannels = ["1", "3", "4"];
                 _channelId = 0;
                 _arr = (format ["%1", _x]) splitString "/"; 
                 if (count _arr == 3) then {
