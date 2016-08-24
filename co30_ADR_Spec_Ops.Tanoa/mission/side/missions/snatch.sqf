@@ -457,6 +457,11 @@ while { sideMissionUp } do {
         if (SM_SNATCH_FAIL) then {
             [true] call QS_fnc_SMhintFAIL;
         } else {
+            if (side (driver heliSnatch) == west) then {
+                WIN_WEST = WIN_WEST + 1; publicVariable "WIN_WEST";
+            } else {
+                WIN_GUER = WIN_GUER + 1; publicVariable "WIN_GUER";
+            };
             if (WIN_WEST > WIN_GUER) then {
                 [true] spawn QS_fnc_SMhintSUCCESS;
             } else {
