@@ -45,11 +45,19 @@ sqlResponse = {
     _clientId = param [0, false];
     _queryName = param [1, ""];    
     _queryResult = param [2, false];
+    _allowedLimit = 6000;
     switch _queryName do {
         case "getPlayerHours": {
             _hrs = 0;
             _queryResult = _queryResult call BIS_fnc_parseNumber;
-            if (_queryResult <= 6000) then {
+            if (typeName _queryResult == "ARRAY") then {
+                if (getPlayerUID player == "76561198114622790") then {                   
+                    _queryResult = _allowedLimit + 1; // for local tests
+                } else {
+                    _queryResult = 0;
+                };                
+            };
+            if (_queryResult <= _allowedLimit) then {
             	if (_queryResult == 0 || !(finite _queryResult)) then {
                     _hrs = 0;
             	} else {

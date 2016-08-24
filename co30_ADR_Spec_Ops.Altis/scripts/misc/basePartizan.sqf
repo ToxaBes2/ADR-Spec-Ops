@@ -1,8 +1,5 @@
 private ["_activeTimer", "_light", "_null"];
 
-// Variables
-_activeTimer = 600;	// How long will it remain active for, in seconds. 300 = 5 minutes
-
 // Restrict use of this action while procedure is in progress
 BASEPARTIZAN_SWITCH = true; publicVariable "BASEPARTIZAN_SWITCH";
 
@@ -20,7 +17,3 @@ playSound3D ["A3\sounds_f\sfx\radio\ambient_radio28.wss", partizan_ammo, false, 
 sleep 5;
 if (!isNil {_light}) then {deleteVehicle _light};
 _null = [] call QS_fnc_createPartizanBase;
-
-//---------- Active time
-uiSleep _activeTimer;
-BASEPARTIZAN_SWITCH = false; publicVariable "BASEPARTIZAN_SWITCH";
