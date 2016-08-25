@@ -84,7 +84,6 @@ class QS
 		class uh80Turret {};
 		class uh80TurretActions {};
 		class vMonitor {};
-		class vMonitorPartizan {};
 		class vSetup02 {};
 	};
 };

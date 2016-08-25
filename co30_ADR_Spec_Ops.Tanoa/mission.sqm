@@ -28399,7 +28399,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitorPartizan;";
+				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				textures="Black";
 			};
 			id=2455;
@@ -28428,7 +28428,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitorPartizan;";
+				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				textures="Black";
 			};
 			id=2458;
@@ -28457,7 +28457,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitorPartizan;";
+				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				textures="Black";
 			};
 			id=2460;
@@ -28486,7 +28486,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitorPartizan;";
+				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				textures="Black";
 			};
 			id=2462;
@@ -28515,7 +28515,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitorPartizan;";
+				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				textures="Black";
 			};
 			id=2464;
@@ -28544,7 +28544,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitorPartizan;";
+				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				textures="Black";
 			};
 			id=2466;
@@ -28573,7 +28573,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitorPartizan;";
+				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				textures="Black";
 			};
 			id=2468;
@@ -28602,7 +28602,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitorPartizan;";
+				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				textures="Black";
 			};
 			id=2470;
@@ -28631,7 +28631,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitorPartizan;";
+				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				textures="Black";
 			};
 			id=2472;
@@ -28660,7 +28660,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitorPartizan;";
+				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				textures="Black";
 			};
 			id=2474;
@@ -28689,7 +28689,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitorPartizan;";
+				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				textures="Black";
 			};
 			id=2476;
@@ -28718,7 +28718,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitorPartizan;";
+				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				textures="Black";
 			};
 			id=2478;
@@ -28747,7 +28747,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitorPartizan;";
+				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				textures="Black";
 			};
 			id=2480;

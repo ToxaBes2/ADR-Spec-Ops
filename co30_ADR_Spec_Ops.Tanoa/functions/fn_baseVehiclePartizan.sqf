@@ -22,8 +22,8 @@ _veh setVariable ["irTarget", false, true];
     _veh = _this select 0;
     _vehiclePos = _this select 1;
     while {true} do {
-        sleep 30;
-        if (_vehiclePos distance _veh > 100) then {
+        sleep 60;
+        if (_vehiclePos distance2D _veh > 100) then {
             _u = [];
 		    if (isMultiplayer) then {
 		    	{
@@ -38,11 +38,15 @@ _veh setVariable ["irTarget", false, true];
                     };
 		        } forEach switchableUnits;
 	        };
-            if (({(_veh distance _x) < 300} count _u) < 1) then {
-			    if ((count (crew _veh)) == 0) then {
-                    deleteVehicle _veh;
-	            };
-		    };
+            _remove = true;
+            {            
+                if (_remove && {(_veh distance2D _x) < 300}) then {
+                    _remove = false;                    
+                };
+            } forEach _u;
+            if (_remove && {count (crew _veh) == 0}) then {
+                deleteVehicle _veh;
+            };
         };
     };
 };
