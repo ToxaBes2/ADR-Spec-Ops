@@ -86,7 +86,7 @@ while {!canStart} do {
 };
 hqSideChat = "Конвой будет в зоне операции через несколько минут, приготовьтесь!"; publicVariable "hqSideChat"; [OUR_SIDE, "HQ"] sideChat hqSideChat;
 
-sleep 30 + (random 60);
+sleep 90 + (random 60);
 
 _convoyCenter = createCenter ENEMY_SIDE;
 _convoyGroup = createGroup ENEMY_SIDE;

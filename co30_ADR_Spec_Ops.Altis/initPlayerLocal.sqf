@@ -87,6 +87,10 @@ _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\heliRear
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\stickyC4\stickycharge.sqf";};                       // Sticky C4 logic
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\vehicle\tow\tow.sqf";};                             // TOW script
 
+if (typeOf player in ["B_Soldier_SL_F", "B_T_Soldier_SL_F"]) then {
+    _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\commander\menu.sqf";};                          // Commander tools
+};
+
 if !(isNil "EW_ATTACK") then {
     if (EW_ATTACK) then {
         _null = [] spawn {_this call QS_fnc_EWattack;};                                                                      // priority EW

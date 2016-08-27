@@ -21703,7 +21703,7 @@ class Mission
 					class Attributes
 					{
 						rank="CAPTAIN";
-						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
+						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\commander\menu.sqf"";};}];";
 						description="Командир отделения";
 						isPlayable=1;
 					};
@@ -22221,7 +22221,7 @@ class Mission
 					class Attributes
 					{
 						rank="CAPTAIN";
-						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
+						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\commander\menu.sqf"";};}];";
 						description="Командир отделения";
 						isPlayable=1;
 					};

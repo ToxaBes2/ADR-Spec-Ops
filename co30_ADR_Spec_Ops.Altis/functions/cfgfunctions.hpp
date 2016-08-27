@@ -6,6 +6,9 @@ class QS
 		file = "functions";
 		class AOenemy {};
 		class AOminefield {};
+		class AirbaseDefense {};
+		class baseDefense {};
+		class clearItemsBase {};
 		class DeleteEnemyEAST {};
 		class EWattack {};
 		class FillBots {};
@@ -43,6 +46,7 @@ class QS
 		class addHades {};
 		class attachMP {};
 		class baseVehiclePartizan {};
+		class basePartizanSwitch {};
 		class cacheDebug {};
 		class conditionClearInventory {};
 		class conditionGetCargoUniform {};

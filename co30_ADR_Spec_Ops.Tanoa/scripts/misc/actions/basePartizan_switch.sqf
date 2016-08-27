@@ -1,13 +1,12 @@
-if (!isNil "BASEPARTIZAN_SWITCH") then {
-    if (BASEPARTIZAN_SWITCH) exitWith {
-	    ["<t color='#F44336' size = '.48'>Эвакуация базы недоступна</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
-    };
+if (isNil "BASEPARTIZAN_SWITCH") then {
+    BASEPARTIZAN_SWITCH = time - 1; publicVariable "BASEPARTIZAN_SWITCH";
+};
+_diff = BASEPARTIZAN_SWITCH - time;
+if (_diff > 0) exitWith {
+	_diff = ceil (_diff/60);
+    [format ["<t color='#F44336' size = '.48'>Эвакуация базы будет доступна через %1 мин</t>", _diff], 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
 };
 ["<t color='#7FDA0B' size = '.48'>Эвакуация базы партизан...</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
+BASEPARTIZAN_SWITCH = time + 120; publicVariable "BASEPARTIZAN_SWITCH";
 sleep 1;
-[[], {_this call compile preProcessFileLineNumbers "scripts\misc\basePartizan.sqf"}] remoteExec ["spawn", 2];
-
-[] spawn {
-	sleep 600;	// How long will it remain active for, in seconds. 300 = 5 minutes
-    BASEPARTIZAN_SWITCH = false; publicVariable "BASEPARTIZAN_SWITCH";
-};
+[] remoteExec ["QS_fnc_basePartizanSwitch", 2];

@@ -17,3 +17,8 @@ playSound3D ["A3\sounds_f\sfx\radio\ambient_radio28.wss", partizan_ammo, false, 
 sleep 5;
 if (!isNil {_light}) then {deleteVehicle _light};
 _null = [] call QS_fnc_createPartizanBase;
+
+[] spawn {
+	sleep 600;	// How long will it remain active for, in seconds. 300 = 5 minutes
+    BASEPARTIZAN_SWITCH = false; publicVariable "BASEPARTIZAN_SWITCH";
+};

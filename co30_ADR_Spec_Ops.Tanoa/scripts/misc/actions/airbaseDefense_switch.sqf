@@ -4,5 +4,4 @@ if (!isNil 'AIRBASEDEFENSE_SWITCH') exitWith {
 
 ["<t color='#C6FF00' size = '.48'>Противовоздушная оборона активирована</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
 sleep 1;
-
-[[], {_this call compile preProcessFileLineNumbers "scripts\misc\airbaseDefense.sqf"}] remoteExec ["spawn", 2];
+[] remoteExec ["QS_fnc_AirbaseDefense", 2];

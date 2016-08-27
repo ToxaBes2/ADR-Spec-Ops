@@ -46,7 +46,7 @@ switch (_mode) do {
 if (_class == "I_C_Boat_Transport_02_F") then {
 	_dist = 100;
 	_accepted = false;
-	_vehiclePos = [_ammoPos, 3, _dist, 0.5, 2, -1, 0] call QS_fnc_findSafePos;
+	_vehiclePos = [_ammoPos, 3, _dist, 0.1, 2, -1, 0] call QS_fnc_findSafePos;
 	if !(_vehiclePos isEqualTo [0,0,0]) then {
 		_vehiclePos = _vehiclePos findEmptyPosition [0, 5, _class];
 		if (count _vehiclePos > 0) then {

@@ -1,9 +1,4 @@
 private ["_activeTimer", "_light", "_null"];
-
-// Restrict use of this action while procedure is in progress
-BASEPARTIZAN_SWITCH = true; publicVariable "BASEPARTIZAN_SWITCH";
-
-sleep 1;
 playSound3D ["A3\sounds_f\sfx\objects\upload_terminal\Terminal_antena_open.wss", partizan_ammo, false, getPosASL partizan_ammo, 2, 1, 100];
 sleep 6;
 _light = createVehicle ["Chemlight_green", [0, 0, 0], [], 0, 'NONE'];

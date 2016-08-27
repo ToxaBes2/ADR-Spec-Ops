@@ -10,7 +10,7 @@ _null = [] spawn {
     _pos = getPosASL loudspeaker;
     _z = (_pos select 2) + 5;
     _pos set [2, _z];
-	for "_i" from 0 to 6 do {
+	for "_i" from 0 to 6 do {	
         playSound3D ["A3\data_f_curator\sound\cfgsounds\air_raid.wss", loudspeaker, false, _pos, 24, 1, 300];
         sleep 8.5;
 	};
@@ -26,7 +26,7 @@ sleep 1;
 defender = createVehicle ["B_T_APC_Tracked_01_AA_F", _defensePos,[] ,0, "NONE"];
 waitUntil {!isNull defender};
 defender allowDamage false;
-defender setDir 79;
+defender setDir 135;
 defender lock 3;
 
 //---------- Spawn crew
