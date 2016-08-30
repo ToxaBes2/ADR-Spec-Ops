@@ -16,7 +16,7 @@ _missionList = [
 	"secureSide",
 	"rescueHostages",
     "heliCrash",
-	//"convoy",     // NOT DONE
+	"convoy",
 	"snatch",
 	"swordfish",
 	"yellowfog",
