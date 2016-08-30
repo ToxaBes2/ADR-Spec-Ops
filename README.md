@@ -18,7 +18,7 @@ We welcome for any contributions to the ongoing development of this mission. You
     <img src="https://img.shields.io/badge/Download-Altis%20v0.0.5-green.svg?style=flat" alt="Download" />
   </a>
   <a href="https://github.com/ToxaBes/ADR-Spec-Ops/raw/master/co30_ADR_Spec_Ops.Tanoa.pbo">
-    <img src="https://img.shields.io/badge/Download-Tanoa%20v0.0.1-green.svg?style=flat" alt="Download" />
+    <img src="https://img.shields.io/badge/Download-Tanoa%20v0.0.2-green.svg?style=flat" alt="Download" />
   </a>
   <a href="http://www.tehgam.com/forum.php">
     <img src="https://img.shields.io/badge/TEHGAM-Forum-blue.svg?style=flat"
