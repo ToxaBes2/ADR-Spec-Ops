@@ -6,20 +6,20 @@ Description:
 	Restricts certain weapon systems to different roles
 _________________________________________________*/
 
-private ["_uavOperator", "_uavRestricted", "_missileSoldiers", "_missileSpecialised", "_missileSmallSoldiers", "_missileSmallSpecialised", "_snipers", "_sniperSpecialised", "_backpackRestricted", "_autoRiflemen", "_autoSpecialised", "_marksman", "_marksmanGun", "_pilot", "_pilotWeapons", "_grenadier", "_grenadierWeapons", "_commanders", "_commanderItems", "_ThermalOpt", "_marksmanOpticsGrp", "_marksmanOpticsItems", "_basePos", "_szmkr", "_EHFIRED", "_firstRun", "_insideSafezone", "_outsideSafezone", "_optics", "_items", "_assignedItems"];
+private ["_uavOperator", "_uavRestricted", "_missileSoldiers", "_missileSpecialised", "_missileSmallSoldiers", "_missileSmallSpecialised", "_snipers", "_sniperSpecialised", "_backpackRestricted", "_autoRiflemen", "_autoSpecialised", "_marksman", "_marksmanGun", "_pilot", "_pilotWeapons", "_grenadier", "_grenadierWeapons", "_commanders", "_commanderItems", "_ThermalOpt", "_ThermalTeam", "_marksmanOpticsGrp", "_marksmanOpticsItems", "_ghillieGroups", "_ghillieItems", "_basePos", "_szmkr", "_EHFIRED", "_firstRun", "_insideSafezone", "_outsideSafezone", "_optics", "_items", "_uniform", "_assignedItems"];
 
-#define AT_MSG "Только ракетчики ПТ могут использовать это оружие."
-#define AT_SMALL_MSG "Только ракетчики ПТ и командиры отделений могут использовать это оружие."
-#define SNIPER_MSG "Только снайперы могут использовать это оружие."
-#define AUTOTUR_MSG "Данное вооружение запрещено."
-#define UAV_MSG "Только инженеры могут использовать терминал управления."
-#define MG_MSG "Только пулеметчики могут использовать пулеметы."
-#define MRK_MSG "Только пехотные снайперы могут использовать это оружие."
-#define PILOT_MSG "Пилоты могут использовать только пистолеты и пистолеты-пулемёты."
-#define GRENADIER_MSG "Использовать подствольные гранатометы могут только командиры отделений, медики и инженеры."
-#define COMMANDER_MSG "Использовать бинокли с лазерным целеуказателем могут только командиры отделений."
-#define MARKSMANOPT_MSG "Использовать оптические прицелы LRPS, SOS, AMS, KAHLIA могут только снайперы и пехотные снайперы."
-#define GHILLIIE_MSG "Использовать гилли и маскхалаты могут только снайперы и пехотные снайперы."
+#define AT_MSG "Только ракетчики ПТ могут использовать это оружие"
+#define AT_SMALL_MSG "Только ракетчики ПТ и командиры отделений могут использовать это оружие"
+#define SNIPER_MSG "Только снайперы могут использовать это оружие"
+#define AUTOTUR_MSG "Данное вооружение запрещено"
+#define UAV_MSG "Только инженеры могут использовать терминал управления"
+#define MG_MSG "Только пулеметчики могут использовать пулеметы"
+#define MRK_MSG "Только пехотные снайперы могут использовать это оружие"
+#define PILOT_MSG "Пилоты могут использовать только пистолеты и пистолеты-пулемёты"
+#define GRENADIER_MSG "Использовать подствольные гранатометы могут только командиры отделений, медики и инженеры"
+#define COMMANDER_MSG "Использовать бинокли с лазерным целеуказателем могут только командиры отделений"
+#define MARKSMANOPT_MSG "Использовать оптические прицелы LRPS, SOS, AMS, KAHLIA могут только снайперы и пехотные снайперы"
+#define GHILLIIE_MSG "Использовать гилли и маскхалаты могут только снайперы и пехотные снайперы"
 
 //===== UAV TERMINAL
 _uavOperator = ["B_engineer_F", "B_T_Engineer_F","I_G_engineer_F","I_C_Soldier_Para_8_F"];
@@ -108,7 +108,7 @@ while {true} do {
 	if (({player isKindOf _x} count _pilot) > 0) then {
 		if (!(primaryWeapon player in _pilotWeapons) and (primaryWeapon player != "")) then {
 			player removeWeapon (primaryWeapon player);
-			titleText [PILOT_MSG,"PLAIN",2];
+			[format ["<t color='#F44336' size = '.55'>%1</t>", PILOT_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 		};
 		sleep 0.1;
 
@@ -118,7 +118,7 @@ while {true} do {
 		if (({player hasWeapon _x} count _grenadierWeapons) > 0) then {
 			if (({player isKindOf _x} count _grenadier) < 1) then {
 				player removeWeapon (primaryWeapon player);
-				titleText [GRENADIER_MSG,"PLAIN",2];
+				[format ["<t color='#F44336' size = '.55'>%1</t>", GRENADIER_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 			};
 		};
 		sleep 0.1;
@@ -127,7 +127,7 @@ while {true} do {
 		if (({player hasWeapon _x} count _sniperSpecialised) > 0) then {
 			if (({player isKindOf _x} count _snipers) < 1) then {
 				player removeWeapon (primaryWeapon player);
-				titleText [SNIPER_MSG,"PLAIN",2];
+				[format ["<t color='#F44336' size = '.55'>%1</t>", SNIPER_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 			};
 		};
 		sleep 0.1;
@@ -136,7 +136,7 @@ while {true} do {
 		if (({player hasWeapon _x} count _autoSpecialised) > 0) then {
 			if (({player isKindOf _x} count _autoRiflemen) < 1) then {
 				player removeWeapon (primaryWeapon player);
-				titleText [MG_MSG,"PLAIN",2];
+				[format ["<t color='#F44336' size = '.55'>%1</t>", MG_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 			};
 		};
 		sleep 0.1;
@@ -145,7 +145,7 @@ while {true} do {
 		if (({player hasWeapon _x} count _marksmanGun) > 0) then {
 			if (({player isKindOf _x} count _marksman) < 1) then {
 				player removeWeapon (primaryWeapon player);
-				titleText [MRK_MSG,"PLAIN",2];
+				[format ["<t color='#F44336' size = '.55'>%1</t>", MRK_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 			};
 		};
 		sleep 0.1;
@@ -155,7 +155,7 @@ while {true} do {
 	if (({player hasWeapon _x} count _missileSpecialised) > 0) then {
 		if (({player isKindOf _x} count _missileSoldiers) < 1) then {
 			player removeWeapon (secondaryWeapon player);
-			titleText [AT_MSG,"PLAIN",2];
+			[format ["<t color='#F44336' size = '.55'>%1</t>", AT_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 		};
 	};
 	sleep 0.1;
@@ -164,7 +164,7 @@ while {true} do {
 	if (({player hasWeapon _x} count _missileSmallSpecialised) > 0) then {
 		if (({player isKindOf _x} count _missileSmallSoldiers) < 1) then {
 			player removeWeapon (secondaryWeapon player);
-			titleText [AT_SMALL_MSG,"PLAIN",2];
+			[format ["<t color='#F44336' size = '.55'>%1</t>", AT_SMALL_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 		};
 	};
 	sleep 0.1;
@@ -173,7 +173,7 @@ while {true} do {
 	_optics = primaryWeaponItems player;
 	if (({_x in _optics} count _ThermalOpt) > 0) then {
 		{player removePrimaryWeaponItem  _x;} count _ThermalOpt;
-		titleText [AUTOTUR_MSG,"PLAIN",2];
+		[format ["<t color='#F44336' size = '.55'>%1</t>", AUTOTUR_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 	};
 	sleep 0.1;
 
@@ -186,7 +186,7 @@ while {true} do {
 			{
 			    player removeWeapon _x;
 		    } forEach _commanderItems;
-			titleText [COMMANDER_MSG,"PLAIN",2];
+			[format ["<t color='#F44336' size = '.55'>%1</t>", COMMANDER_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 		};
 	};
 	sleep 0.1;
@@ -196,7 +196,7 @@ while {true} do {
 	if (({_x in _optics} count _marksmanOpticsItems) > 0) then {
 		if (({player isKindOf _x} count _marksmanOpticsGrp) < 1) then {
 			{player removePrimaryWeaponItem  _x;} count _marksmanOpticsItems;
-			titleText [MARKSMANOPT_MSG,"PLAIN",2];
+			[format ["<t color='#F44336' size = '.55'>%1</t>", MARKSMANOPT_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 		};
 	};
 	sleep 0.1;
@@ -206,7 +206,7 @@ while {true} do {
 	if ((uniform player) in _ghillieItems) then {
 		if (({player isKindOf _x} count _ghillieGroups) < 1) then {
 			removeUniform player;
-			titleText [GHILLIIE_MSG,"PLAIN",2];
+			[format ["<t color='#F44336' size = '.55'>%1</t>", GHILLIIE_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 		};
 	};
 	sleep 0.1;
@@ -214,7 +214,7 @@ while {true} do {
 	//------------------------------------- Enemy turret backpacks
 	if ((backpack player) in _backpackRestricted) then {
 		removeBackpack player;
-		titleText [AUTOTUR_MSG, "PLAIN", 2];
+		[format ["<t color='#F44336' size = '.55'>%1</t>", AUTOTUR_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 	};
 	sleep 0.1;
 
@@ -224,7 +224,7 @@ while {true} do {
 		if (({player isKindOf _x} count _uavOperator) < 1) then {
 			player unassignItem "B_UavTerminal";
 			player removeItem "B_UavTerminal";
-			titleText [UAV_MSG,"PLAIN",2];
+			[format ["<t color='#F44336' size = '.55'>%1</t>", UAV_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 		};
 	};
 	sleep 0.1;
@@ -252,8 +252,8 @@ while {true} do {
 	//----- Sleep
 	_basePos = getMarkerPos "respawn_west";
 	if ((player distance2D _basePos) <= 500) then {
-		sleep 2;
+		sleep 1.5;
 	} else {
-		sleep 10;
+		sleep 5;
 	};
 };
