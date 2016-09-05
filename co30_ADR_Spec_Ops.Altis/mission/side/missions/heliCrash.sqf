@@ -347,6 +347,7 @@ while { sideMissionUp } do {
         publicVariable "hqSideChat"; [WEST,"HQ"] sideChat hqSideChat;
         { deleteVehicle _x; } forEach [_scoutBox,_chemlightBlue];
         deleteMarker "scoutMarker";
+        deleteMarker _mkrScout;
     };
     sleep 1;
 
