@@ -52,8 +52,10 @@ _completeText = "";
 _showFailBLUFOR = false;
 
 PARTIZAN_REWARDS_LIST pushBack [_vehName, _vehVarname, _useAirfield]; publicVariable "PARTIZAN_REWARDS_LIST";
-if (typename sideMarkerText == "ARRAY") then {
-    sideMarkerText = sideMarkerText select 0;
+if !(isNil "sideMarkerText") then {
+    if (typename sideMarkerText == "ARRAY") then {
+        sideMarkerText = sideMarkerText select 0;
+    };
 };
 switch (_mode) do { 
 	case 1 : {

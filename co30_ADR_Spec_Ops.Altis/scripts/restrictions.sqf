@@ -66,7 +66,7 @@ _ThermalTeam = [];
 
 //===== MARKSMAN OPTICS
 _marksmanOpticsGrp = ["B_sniper_F","B_T_Sniper_F","B_soldier_M_F","B_T_soldier_M_F","I_G_Soldier_AR_F","I_G_engineer_F","I_C_Soldier_Para_4_F","I_C_Soldier_Para_8_F"];
-_marksmanOpticsItems = ["optic_KHS_blk","optic_KHS_hex","optic_KHS_old","optic_KHS_tan","optic_AMS","optic_AMS_khk","optic_AMS_snd","optic_SOS","optic_LRPS"];
+_marksmanOpticsItems = ["optic_KHS_blk","optic_KHS_hex","optic_KHS_old","optic_KHS_tan","optic_AMS","optic_AMS_khk","optic_AMS_snd","optic_SOS","optic_LRPS","optic_LRPS_ghex_F","optic_LRPS_tna_F","optic_SOS_khk_F"];
 
 _ghillieGroups = ["B_soldier_M_F","B_sniper_F","I_G_Soldier_AR_F","I_G_engineer_F","B_T_soldier_M_F","B_T_Sniper_F","I_C_Soldier_Para_4_F","I_C_Soldier_Para_8_F"];
 _ghillieItems = ["U_B_GhillieSuit","U_O_GhillieSuit","U_I_GhillieSuit","U_B_FullGhillie_lsh","U_B_FullGhillie_sard","U_B_FullGhillie_ard","U_O_FullGhillie_lsh","U_O_FullGhillie_sard","U_O_FullGhillie_ard","U_I_FullGhillie_lsh","U_I_FullGhillie_sard","U_I_FullGhillie_ard","U_B_T_FullGhillie_tna_F","U_B_T_Sniper_F","U_O_T_FullGhillie_tna_F","U_O_T_Sniper_F"];
