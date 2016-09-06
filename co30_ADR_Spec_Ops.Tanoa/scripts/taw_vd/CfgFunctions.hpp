@@ -1,14 +1,21 @@
-class TAWVD
-{
-  tag = "TAWVD";
-  class TAW_VD
-  {
-    file = "scripts\taw_vd";
-    class onSliderChange {};
-    class onTerrainChange {};
-    class updateViewDistance {};
-    class openTAWVD {};
-    class trackViewDistance {};
-    class tawvdInit {postInit = 1;};
-  };
+class TAW_VD {
+	tag = "TAWVD";
+
+	class Initialize {
+		file = "scripts\taw_vd";
+		class stateTracker {
+			ext = ".fsm";
+			postInit = 1;
+			headerType = -1;
+		};
+			
+		class onSliderChanged {};
+		class onTerrainChanged {};
+		class updateViewDistance {};
+		class openMenu {};
+		class onChar {};
+		class openSaveManager {};
+		class onSavePressed {};
+		class onSaveSelectionChanged {};
+	};
 };
