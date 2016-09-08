@@ -8,10 +8,15 @@
   Description:
   Updates the view distance dependant on whether the player is on foot, a car or an aircraft.
 */
-
+#define EQUAL(condition1,condition2) condition1 isEqualTo condition2
+#define SEL(ARRAY,INDEX) (ARRAY select INDEX)
 private["_dist"];
 switch (true) do
 {
+  case (!(EQUAL(SEL(UAVControl getConnectedUAV player,1),""))): {
+    setViewDistance tawvd_drone;
+    _dist = tawvd_drone;
+  };
   case ((vehicle player) isKindOf "Man"):
   {
     setViewDistance tawvd_foot;

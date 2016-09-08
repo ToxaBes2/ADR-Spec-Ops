@@ -17,7 +17,9 @@ _flatPos = [0, 0, 0];
 _accepted = false;
 hqSideChat = "Эй, штаб, это Дельта-Браво у нас что-то странное происходит с оборудованием... Прием. "; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
 sleep 5;
-
+if (isNil "currentAO") then {
+   currentAO = "aoMarker";
+};
 while {!_accepted} do {
 	_position = [[[getMarkerPos currentAO, 2500]], ["water", "out"]] call QS_fnc_randomPos;
 	_flatPos = _position isFlatEmpty [5, 0, 0.2, sizeOf "Land_Communication_F", 0, false];

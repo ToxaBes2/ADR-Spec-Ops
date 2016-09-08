@@ -296,10 +296,18 @@ class TAW_VD
       w = 0.275; h = 0.04;
     };
 
+    class VDinDrone : TAWVD_RscText
+    {
+      idc = -1;
+      text = "БПА";
+      x = 0.32; y = 0.405;
+      w = 0.275; h = 0.04;
+    }
+
     class VDObject : VDinAir
     {
       text = "Объекты";
-      y = 0.655;
+      y = 0.67;
     };
 
     class VDTerrSet : TAWVD_RscText
@@ -308,14 +316,14 @@ class TAW_VD
       text = "Настройка травы";
       shadow = 0;
       colorBackground[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.3843])", "(profilenamespace getvariable ['GUI_BCG_RGB_G',0.7019])", "(profilenamespace getvariable ['GUI_BCG_RGB_B',0.8862])", "(profilenamespace getvariable ['GUI_BCG_RGB_A',0.7])"};
-      x = 0.30; y = 0.45;
+      x = 0.30; y = 0.47;
       w = 0.5; h = (1 / 25);
     };
 
     class VDObjectSet : VDTerrSet
     {
       text = "Настройка объектов";
-      y = 0.55;
+      y = 0.57;
     };
 
     class VDColorSet : TAWVD_RscText
@@ -346,7 +354,7 @@ class TAW_VD
       text = "";
       onSliderPosChanged = "[0,_this select 1] call TAWVD_fnc_onSliderChange;";
       tooltip = "Дальность видимости пешеходом";
-      x = 0.42; y = 0.30 - (1 / 25);
+      x = 0.44; y = 0.30 - (1 / 25);
       w = "9 * (((safezoneW / safezoneH) min 1.2) / 40)";
       h = "1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
     };
@@ -355,7 +363,7 @@ class TAW_VD
     {
       idc = 2902;
       text = "";
-      x = 0.70; y = 0.258;
+      x = 0.72; y = 0.258;
       w = 0.275; h = 0.04;
     };
 
@@ -365,7 +373,7 @@ class TAW_VD
       text = "";
       onSliderPosChanged = "[1,_this select 1] call TAWVD_fnc_onSliderChange;";
       tooltip = "Дальность видимости находясь в наземной технике";
-      x = 0.42; y = 0.35 - (1 / 25);
+      x = 0.44; y = 0.35 - (1 / 25);
       w = "9 * (((safezoneW / safezoneH) min 1.2) / 40)";
       h = "1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
     };
@@ -374,17 +382,17 @@ class TAW_VD
     {
       idc = 2912;
       text = "";
-      x = 0.70; y = 0.31;
+      x = 0.72; y = 0.31;
       w = 0.275; h = 0.04;
     };
 
-    class VD_air_slider : TAWVD_RscXSliderH
+    class VD_air_slider : TAWVD_RscXSliderH 
     {
       idc = 2921;
       text = "";
       onSliderPosChanged = "[2,_this select 1] call TAWVD_fnc_onSliderChange;";
       tooltip = "Дальность видимости находясь в воздушной технике";
-      x = 0.42; y = 0.40 - (1 / 25);
+      x = 0.44; y = 0.40 - (1 / 25);
       w = "9 * (((safezoneW / safezoneH) min 1.2) / 40)";
       h = "1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
     };
@@ -393,14 +401,31 @@ class TAW_VD
     {
       idc = 2922;
       text = "";
-      x = 0.70; y = 0.36;
+      x = 0.72; y = 0.36;
+      w = 0.275; h = 0.04;
+    };
+
+    class VD_drone_slider : TAWVD_RscXSliderH {
+      idc = 2951;
+      toolTip = "Дальность видимости находясь в БПА/БПЛА";
+      onSliderPosChanged = "[4, _this select 1] call TAWVD_fnc_onSliderChange;";
+      x = 0.44; y = 0.45 - (1 / 25);
+      w = "9 * (((safezoneW / safezoneH) min 1.2) / 40)";
+      h = "1 * ((((safezoneW / safezoneH) min 1.2) / 1.2) / 25)";
+    }
+
+    class VD_drone_value : TAWVD_RscText
+    {
+      idc = 2952;
+      text = "";
+      x = 0.72; y = 0.41;
       w = 0.275; h = 0.04;
     };
 
     class ObjectSyncCheckbox : TAWVD_Checkbox
     {
       idc = 2931;
-      x = 0.32; y = 0.6;
+      x = 0.32; y = 0.62;
       tooltip = "Синхронизировать прорисовку объектов с дальностью прорисовки вида";
       onCheckedChanged = "if((_this select 1) == 1) then {tawvd_syncObject = true;ctrlEnable [2941,false];} else {tawvd_syncObject = false; ctrlEnable [2941,true];};";
     };
@@ -409,7 +434,7 @@ class TAW_VD
     {
       idc = -1;
       text = "Синхронно с Пешком";
-      x = 0.345; y = 0.596;
+      x = 0.345; y = 0.619;
       w = 0.35; h = 0.04;
     };
 
@@ -418,13 +443,13 @@ class TAW_VD
       idc = 2941;
       onSliderPosChanged = "[3,_this select 1] call TAWVD_fnc_onSliderChange;";
       tooltip = "Дальность прорисовки объектов";
-      y = 0.70 - (1 / 25);
+      y = 0.71 - (1 / 25);
     };
 
     class VD_Object_Value : VD_air_value
     {
       idc = 2942;
-      y = 0.656;
+      y = 0.67;
     };
 
     //class VD_terr_none : TAWVD_activeText
@@ -443,7 +468,7 @@ class TAW_VD
       text = "Мало";
       action = "['low'] call TAWVD_fnc_onTerrainChange;";
       sizeEx = 0.04;
-      x = 0.42; y = 0.50;
+      x = 0.42; y = 0.52;
       w = 0.275; h = 0.04;
     };
 
@@ -453,7 +478,7 @@ class TAW_VD
       text = "Средне";
       action = "['norm'] call TAWVD_fnc_onTerrainChange;";
       sizeEx = 0.04;
-      x = 0.51; y = 0.50;
+      x = 0.51; y = 0.52;
       w = 0.275; h = 0.04;
     };
 
@@ -463,7 +488,7 @@ class TAW_VD
       text = "Много";
       action = "['high'] call TAWVD_fnc_onTerrainChange;";
       sizeEx = 0.04;
-      x = 0.62; y = 0.50;
+      x = 0.62; y = 0.52;
       w = 0.275; h = 0.04;
     };
 
@@ -506,7 +531,7 @@ class TAW_VD
       idc = -1;
       text = "Закрыть";
       onButtonClick = "closeDialog 0;";
-      x = 0.48; y = 0.89 - (1 / 25);
+      x = 0.48; y = 0.87 - (1 / 25);
       w = (6.25 / 40); h = (1 / 25);
     };
   };

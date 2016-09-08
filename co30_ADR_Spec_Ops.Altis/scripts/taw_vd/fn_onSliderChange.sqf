@@ -44,6 +44,13 @@ switch (_mode) do
     ctrlSetText[2942,format["%1",tawvd_object]];
     setObjectViewDistance [tawvd_object,100];
   };
+
+  case 4:
+  {
+    tawvd_drone = round(_value);
+    ctrlSetText[2952,format["%1",tawvd_drone]];
+    [] call TAWVD_fnc_updateViewDistance;
+  };
 };
 
 if(tawvd_syncObject) then

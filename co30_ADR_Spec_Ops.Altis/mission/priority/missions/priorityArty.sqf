@@ -8,6 +8,9 @@ private ["_flatPos", "_accepted", "_position", "_flatPos1", "_flatPos2", "_flatP
 
 // 1. FIND POSITION
 _flatPos = [0, 0, 0];
+if (isNil "currentAO") then {
+   currentAO = "aoMarker";
+};
 _accepted = false;
 while {!_accepted} do {
 	_position = [[[getMarkerPos currentAO, 2500]], ["water", "out"]] call QS_fnc_randomPos;
