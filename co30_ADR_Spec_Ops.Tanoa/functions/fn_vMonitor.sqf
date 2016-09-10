@@ -41,6 +41,8 @@ sleep (5 + (random 5));
 while {true} do {
 
 	//======================================== IF DESTROYED
+	_destroyed = _v getVariable ["AVANPOST_DESTROYED", false];
+	if (_destroyed) exitWith {};
 
 	if (!alive _v) then {
 		if (({((_sp distance _x) < 1.5)} count (entities "AllVehicles")) < 1) then {

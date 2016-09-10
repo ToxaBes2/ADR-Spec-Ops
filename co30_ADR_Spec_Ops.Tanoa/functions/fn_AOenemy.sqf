@@ -19,6 +19,7 @@ _bunkerPos = _this select 1;
 _flatPos = _this select 2;
 _hasMines = _this select 3;
 _bunkerType = _this select 4;
+_avanpostPos = _this select 5;
 _enemiesArray = [grpNull];
 
 // enemies in bunker
@@ -136,6 +137,49 @@ _objects = _bunkerPos nearObjects ["building", 65];
 _blackList = _blackList + _objects;
 _buildingGroup = [_pos, (PARAMS_AOSize / 2), 40, ENEMY_SIDE, false, _blackList] call QS_fnc_FillBots;
 _enemiesArray = _enemiesArray + [_buildingGroup];
+
+// add units to avanpost
+if (count _avanpostPos > 0) then {
+    _staticGroup = createGroup ENEMY_SIDE;
+    _avanpostTurrets = _avanpostPos nearObjects ["StaticWeapon", 50];
+    {
+        _static = _x;
+        "O_T_Support_AMG_F" createUnit [[1,1,1], _staticGroup, "currentGuard = this;", 0, (selectRandom ["CAPTAIN","MAJOR","COLONEL"])];
+        currentGuard setPos (getPos _static);
+        currentGuard assignAsGunner _static;
+        currentGuard moveInGunner _static;
+        currentGuard doWatch ([_static, 200, direction _static] call BIS_fnc_relPos);
+    } forEach _avanpostTurrets;
+    _staticGroup setBehaviour "COMBAT";
+    _staticGroup setCombatMode "RED";
+    [(units _staticGroup)] call QS_fnc_setSkill4;   
+    _enemiesArray = _enemiesArray + [_staticGroup];
+    _guardGroup = [_avanpostPos, 50, ENEMY_SIDE] call QS_fnc_FillCargoPatrol;
+    _enemiesArray = _enemiesArray + [_guardGroup];
+    _smallBunkers = nearestObjects [_bunkerPos, ["Land_BagBunker_01_small_green_F","Land_Cargo_Patrol_V4_F"], 50];
+    _bunkerGroup = [_avanpostPos, 40, 5, ENEMY_SIDE, false, _smallBunkers] call QS_fnc_FillBots;
+    _enemiesArray = _enemiesArray + [_bunkerGroup];
+    _groundGroup = createGroup ENEMY_SIDE;
+    for "_i" from 0 to 2 do {
+        _groundPos = [_avanpostPos, 0, 20, 1, 0, 0, 0] call QS_fnc_findSafePos;
+        _patrolGroup = [_groundPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> ENEMY_SIDE_STR >> "OPF_T_F" >> "Infantry" >> "O_T_InfSentry")] call BIS_fnc_spawnGroup;
+        if (random 10 > 7) then {
+            [_patrolGroup, _avanpostPos, 10] call BIS_fnc_taskPatrol;
+        } else {
+            [_patrolGroup, _avanpostPos] call BIS_fnc_taskDefend;
+        };        
+        _patrolGroup setBehaviour "COMBAT";
+        _patrolGroup setCombatMode "RED";
+        [(units _patrolGroup)] call QS_fnc_setSkill4;
+        _enemiesArray = _enemiesArray + [_patrolGroup];
+    };
+    _groundPos = [_avanpostPos, 0, 5, 1, 0, 0, 0] call QS_fnc_findSafePos;
+    _patrolGroup = [_groundPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> ENEMY_SIDE_STR >> "OPF_T_F" >> "Infantry" >> "O_T_InfSentry")] call BIS_fnc_spawnGroup;
+    _patrolGroup setBehaviour "COMBAT";
+    _patrolGroup setCombatMode "RED";
+    [(units _patrolGroup)] call QS_fnc_setSkill4;
+    _enemiesArray = _enemiesArray + [_patrolGroup];
+};
 
 // AA vehicles
 for "_x" from 1 to PARAMS_AAPatrol do {

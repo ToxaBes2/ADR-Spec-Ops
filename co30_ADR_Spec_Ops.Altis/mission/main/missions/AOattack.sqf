@@ -175,10 +175,19 @@ publicVariable "radioTower";
 	_x addCuratorEditableObjects [[radioTower], false];
 } foreach allCurators;
 
+// Spawn avanpost
+_avanpostObjects = [];
+_avanpostPos = [];
+if (_positionAO distance2D (getMarkerPos "respawn_west") > 2500) then {
+    _avanpostData = [_positionAO] call QS_fnc_createAvanpost;
+    _avanpostPos = _avanpostData select 0;
+    _avanpostObjects = _avanpostData select 1;
+};
+
 // Spawn enemies
 sleep 1;
 currentAO = "aoMarker";
-_enemiesArray = [currentAO, _bunkerPos, _flatPos, _hasMines, _bunkerType] call QS_fnc_AOenemy;
+_enemiesArray = [currentAO, _bunkerPos, _flatPos, _hasMines, _bunkerType, _avanpostPos] call QS_fnc_AOenemy;
 
 // Set target start text
 _targetStartText = format
@@ -303,6 +312,10 @@ if (DEFEND_AO_VICTORY) then {
 DEFEND_AO_VICTORY = nil; publicVariable "DEFEND_AO_VICTORY";
 GlobalSideHint = [west, _targetCompleteText]; publicVariable "GlobalSideHint";
 
+// hide avanpost respawn
+missionNamespace setVariable ["AVANPOST_COORDS", false];
+missionNamespace setVariable ["AVANPOST_RESPAWN", false];
+
 // Restore yellow color of nearby vehicle service markers
 CURRENT_AO_POSITION = nil; publicVariable "CURRENT_AO_POSITION";
 {_x setMarkerColor "ColorUNKNOWN";} forEach _serviceMarkers;
@@ -325,6 +338,19 @@ _units = nearestObjects [_bunkerPos, _bunkerObjects, 50];
 {
     deleteVehicle _x;
 } foreach _units;
+if (count _avanpostPos > 0) then {
+    _classes = ["B_support_MG_F"];
+    {
+        _type = typeOf _x;
+        if !(_type in _classes) then {
+            _classes pushBack _type;
+        };
+    } foreach _avanpostObjects;
+    _units = nearestObjects [_avanpostPos, _classes, 50];
+    {
+        deleteVehicle _x;
+    } foreach _units;
+};
 [_enemiesArray] call QS_fnc_TBdeleteObjects;
 sleep 10;
 _unitTypes = ["O_Soldier_F","O_Soldier_GL_F","O_Soldier_AR_F","O_Soldier_SL_F","O_Soldier_TL_F","O_soldier_M_F","O_Soldier_LAT_F",

@@ -154,6 +154,25 @@ class BTC_r_combo
 	soundCollapse[] = { "", 0, 1 };
 	maxHistoryDelay = 0;
 };
+class BTC_RscText
+{
+  x = 0; y = 0;
+  w = 0.3; h = 0.037;
+  type = 0;
+  style = 0;
+  shadow = 0;
+  font = "PuristaMedium";
+  SizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+  text = "";
+  colorText[] = {0.95,0.95,0.95,1};
+  colorShadow[] = {0, 0, 0, 0.5};
+  colorBackground[] = {0, 0, 0, 0};
+  linespacing = 1;
+  class Attributes {
+    align = "center";
+    valign = "middle";
+  };
+};
 class BTC_respawn_button_dialog
 {
 	idd = -1;
@@ -165,14 +184,41 @@ class BTC_respawn_button_dialog
 	};
 	class controls 
 	{
+		class respawn_text : BTC_RscText
+		{
+			idc = 8;
+			text = "ВОЗРОЖДЕНИЕ"; 
+			shadow = 1;
+			x = 0.41;
+			y = 0.3 * safezoneH + safezoneY;
+			w = 0.25;
+		};
 		class respawn_button : BTC_r_button_menu 
 		{
 			idc = 9;
-			text = "Respawn"; 
+			text = "На базу"; 
 			action = "BTC_respawn_cond = true;closeDialog 0;if (BTC_r_new_system == 0) then {_respawn = [] spawn BTC_player_respawn;} else {player setDamage 1;};";
-			x = 0.7;
-			y = 0.6 * safezoneH + safezoneY;
+			x = 0.38;
+			y = 0.5 * safezoneH + safezoneY;
+			w = 0.25;
 			default = true;
+			class Attributes {
+                align = "center";
+                valign = "middle";
+            };
+		};
+		class respawn_av_button : BTC_r_button_menu 
+		{
+			idc = 10;
+			text = "На аванпост"; 
+			action = "BTC_respawn_cond = true;closeDialog 0;if (BTC_r_new_system == 0) then {_respawn = [true] spawn BTC_player_respawn;} else {player setDamage 1;};";
+			x = 0.38;
+			y = 0.4 * safezoneH + safezoneY;
+			w = 0.25;
+			class Attributes {
+                align = "center";
+                valign = "middle";
+            };
 		};
 	};
 };
@@ -250,12 +296,21 @@ class BTC_spectating_dialog
 		class respawn_button : BTC_r_button_menu 
 		{
 			idc = 122;
-			text = "Возрождение"; 
+			text = "На базу"; 
 			action = "BTC_respawn_cond = true;closeDialog 0;if (BTC_r_new_system == 0) then {_respawn = [] spawn BTC_player_respawn;} else {player setDamage 1;};";
-			x = 0.4;
+			x = 0.2;
 			y = 0.2 * safezoneH + safezoneY;
-			w = 0.2;
+			w = 0.4;
 			default = true;
+		};
+		class respawn_av_button : BTC_r_button_menu 
+		{
+			idc = 123;
+			text = "На аванпост"; 
+			action = "BTC_respawn_cond = true;closeDialog 0;if (BTC_r_new_system == 0) then {_respawn = [true] spawn BTC_player_respawn;} else {player setDamage 1;};";
+			x = 0.6;
+			y = 0.2 * safezoneH + safezoneY;
+			w = 0.4;
 		};
 	};
 };

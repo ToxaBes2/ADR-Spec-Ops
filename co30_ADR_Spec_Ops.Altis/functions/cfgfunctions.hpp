@@ -53,6 +53,7 @@ class QS
 		class conditionPilotRepair {};
 		class conditionUH80TurretActionLock {};
 		class conditionUH80TurretActionUnlock {};
+		class createAvanpost {};
 		class createBunker {};
 		class createPartizanBase {};
 		class defendAO {};
@@ -78,6 +79,7 @@ class QS
 		class removeAction0 {};
 		class removeAction1 {};
 		class respawnPilot {};
+		class respawnAvanpost {};
 		class serverMapTP {};
 		class setSkill1 {};
 		class setSkill2 {};

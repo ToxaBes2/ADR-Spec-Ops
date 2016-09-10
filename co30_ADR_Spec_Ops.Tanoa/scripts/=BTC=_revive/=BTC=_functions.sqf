@@ -885,6 +885,12 @@ BTC_fnc_wait_for_revive =
 		} else {
 		    hintSilent format ["%1\n%2\n%3", round (BTC_r_timeout - time),_healer,_lifes];
 		};
+        _allowAvanpost = missionNamespace getVariable ["AVANPOST_RESPAWN", false];
+        if (_allowAvanpost && playerSide == west) then {
+            ctrlShow [10, true];
+        } else {
+            ctrlShow [10, false];
+        };		
 		if (format ["%1", player getVariable "BTC_need_revive"] == "0" || BTC_respawn_cond) then {
 			closeDialog 0;
 		};
@@ -1413,6 +1419,12 @@ BTC_player_killed = {
 			};
 			while {(format ["%1", player getVariable "BTC_need_revive"] == "1") && {(time < _timeout)} && {(!BTC_respawn_cond)}} do {
 				if (BTC_disable_respawn == 0) then {if (BTC_black_screen == 1 || (BTC_black_screen == 0 && BTC_action_respawn == 0)) then {if (!Dialog && !BTC_respawn_cond) then {_dlg = createDialog "BTC_respawn_button_dialog";};};};
+				_allowAvanpost = missionNamespace getVariable ["AVANPOST_RESPAWN", false];
+                if (_allowAvanpost && playerSide == west) then {
+                    ctrlShow [10, true];
+                } else {
+                    ctrlShow [10, false];
+                };
 				_healer = call BTC_check_healer;
 				_lifes = "";
 				if (BTC_active_lifes == 1) then {
@@ -1564,6 +1576,7 @@ BTC_check_healer =
 };
 
 BTC_player_respawn = {
+    _avanpost = param [0, false];
 	BTC_respawn_cond = true;
 	if (BTC_active_lifes == 1) then {BTC_lifes = BTC_lifes - 1;};
 	if (BTC_active_lifes == 1 && BTC_lifes == 0) exitWith BTC_out_of_lifes;
@@ -1593,7 +1606,7 @@ BTC_player_respawn = {
 		sleep 0.2;
 		titleText ["", "BLACK FADED"];
 		if (vehicle player != player) then {unAssignVehicle player;player action ["eject", vehicle player];};
-		player setPos getMarkerPos BTC_respawn_marker;
+	    player setPos getMarkerPos BTC_respawn_marker;	
 		sleep 1;
 		closeDialog 0;
 		player setDamage 0;
@@ -1636,10 +1649,13 @@ BTC_player_respawn = {
 			player setPos getMarkerPos BTC_respawn_marker;
 			player enableSimulation true;
 			player switchMove "amovpercmstpsraswrfldnon";
-			player switchMove "";//amovpercmstpsraswrfldnon
-
-			[] call QS_fnc_respawnPilot;
-
+			player switchMove "";//amovpercmstpsraswrfldnon	
+			
+			[] call QS_fnc_respawnPilot;		
+			if (_avanpost && playerSide == west) then {
+			    [] call QS_fnc_respawnAvanpost;
+		    };
+            
 			// load missing items
             [player] spawn BTC_addMissingItems;
 
