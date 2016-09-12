@@ -61,14 +61,14 @@ switch (_mode) do {
 	case 1 : {
         _completeText = format["<t align='center'><t size='2.2'>Командный пункт</t><br/><t size='1.5' color='#C6FF00'>захвачен силами партизан</t><br/>____________________<br/>За успешное проведение, непосредственные участники задания получают в награду:<br/><br/><t size='1.1' color='#FFC107'>%1</t</t>", _vehName];
         showNotification = ["Reward", _vehName, resistance];
-        if (WinRadiotower == resistance && WinBunker == resistance) then {
+        if (WinRadiotower isEqualTo resistance && WinBunker isEqualTo resistance) then {
             _showFailBLUFOR = true;
         };
     }; 
 	case 2 : { 
         _completeText = format["<t align='center'><t size='2.2'>Радиовышка</t><br/><t size='1.5' color='#C6FF00'>уничтожена силами партизан</t><br/>____________________<br/>За успешное проведение, непосредственные участники задания получают в награду:<br/><br/><t size='1.1' color='#FFC107'>%1</t</t>", _vehName];    
         showNotification = ["Reward", _vehName, resistance];
-        if (WinRadiotower == resistance && WinBunker == resistance) then {
+        if (WinRadiotower isEqualTo resistance && WinBunker isEqualTo resistance) then {
             _showFailBLUFOR = true;
         };
 	}; 

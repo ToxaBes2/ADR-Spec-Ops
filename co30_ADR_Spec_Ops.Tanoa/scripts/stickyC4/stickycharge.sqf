@@ -4,7 +4,7 @@ Description: attach explosive charges to objects
 */
 C4_Attach = {
     _unit = _this select 0;    
-    if (alive _unit && {(_unit distance (getMarkerPos "safezone_marker")) > 400}) then {
+    if (alive _unit) then {
         _ins = lineIntersectsSurfaces [
             AGLToASL positionCameraToWorld [0,0,0], 
             AGLToASL positionCameraToWorld [0,0,3], 

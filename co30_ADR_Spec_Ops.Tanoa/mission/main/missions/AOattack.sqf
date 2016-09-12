@@ -226,7 +226,7 @@ while {alive radioTower || !MAIN_AO_SUCCESS || !_showTowerMessage || !_showBunke
         _showTowerMessage = true;
 
         // RADIO TOWER DESTROYED
-        if (WinRadiotower == west) then {
+        if (WinRadiotower isEqualTo west) then {
             radioTowerAlive = false; publicVariable "radioTowerAlive";
             _radioTowerDownText = "<t align='center' size='2.2'>Радиовышка</t><br/><t size='1.5' color='#C6FF00' align='center'>Уничтожена</t><br/>____________________<br/>Теперь противник не сможет вызвать авиаподдержку.";
             GlobalSideHint = [west, _radioTowerDownText]; publicVariable "GlobalSideHint";
@@ -238,7 +238,7 @@ while {alive radioTower || !MAIN_AO_SUCCESS || !_showTowerMessage || !_showBunke
         _showBunkerMessage = true;
 
         // BUNKER UNDER OUR CONTROL
-        if (WinBunker == west) then {
+        if (WinBunker isEqualTo west) then {
             _bunkerText = "<t align='center' size='2.2'>Командный пункт</t><br/><t size='1.5' color='#C6FF00' align='center'>Захвачен</t><br/>____________________<br/>Противник дезорганизован.";
             GlobalSideHint = [west, _bunkerText]; publicVariable "GlobalSideHint";
             showNotification = ["CompletedSub", ["Командный пункт захвачен!", "\a3\ui_f\data\gui\cfg\hints\commanding_ca.paa"], west]; publicVariable "showNotification";

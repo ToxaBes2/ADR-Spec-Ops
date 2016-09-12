@@ -43,6 +43,6 @@ MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";
 ["ScoreBonus", ["Командный пункт захвачен!", _points]] remoteExec ["BIS_fnc_showNotification", _player];
 [_player, _points] remoteExec ["addScore", 2];
 WinBunker = side _player; publicVariable "WinBunker";
-if (WinBunker == resistance) then {
+if (WinBunker isEqualTo resistance) then {
     [1] call QS_fnc_partizanSUCCESS;
 }; 
