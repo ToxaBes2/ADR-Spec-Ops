@@ -22,9 +22,26 @@ _missionList = [
 	"yellowfog",
 	"grapeswrath"
 ];
+//_endlessGameList = [
+//    "kavala"
+//];
 missionNamespace setVariable ["AVANPOST_COORDS", false];
 missionNamespace setVariable ["AVANPOST_RESPAWN", false];
-while { true } do {
+//missionNamespace setVariable ["WINS", 4];
+while { true } do {	
+    //if (PARAMS_EndlessGame == 1) then {
+    //    _wins = missionNamespace getVariable ["WINS", 0];	
+    //	if (_wins > 3) then {
+    //		hqSideChat = "Обнаружена повышенная активность противника, ждите указаний!"; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
+    //	    missionNamespace setVariable ["WINS", 0];                
+    //	    _location = selectRandom _endlessGameList;
+    //        currentMission = [_location] spawn {_this call compile preProcessFileLineNumbers format ["mission\endless_game\%1\mission.sqf", _this select 0]};
+    //        waitUntil {
+    //	    	sleep _loopTimeout;
+    //	    	scriptDone currentMission;
+    //	    };
+    //	};
+    //};
 	if (PARAMS_AO == 1) then {
 	    currentMission = [] spawn {_this call compile preProcessFileLineNumbers "mission\main\missions\AOattack.sqf"};
 	    _chance = random 10;

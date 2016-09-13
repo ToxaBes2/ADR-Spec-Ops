@@ -847,6 +847,7 @@ BTC_fnc_wait_for_revive =
 	{
 		waitUntil {BTC_respawn_cond || ((player getVariable "BTC_r_status") select 0 == 0 && (player getVariable "BTC_r_status") select 1 == 0 && (player getVariable "BTC_r_status") select 2 == 0 && (player getVariable "BTC_r_status") select 3 == 0)};
 		player setVariable ["BTC_need_revive",0,true];
+		player setVariable ["BTC_revivie_in_progress", false, true];
 		closedialog 0;
 		titleText ["", "PLAIN"];
 	};
@@ -867,7 +868,7 @@ BTC_fnc_wait_for_revive =
 	if (BTC_black_screen == 1 && BTC_disable_respawn == 0 && !Dialog) then {_dlg = createDialog "BTC_respawn_button_dialog";};
 	player switchMove "AinjPpneMstpSnonWrflDnon";
 	while {format ["%1", player getVariable "BTC_need_revive"] == "1" && time < BTC_r_timeout && !BTC_respawn_cond} do
-	{
+	{	    
 		if (BTC_disable_respawn == 0) then {
 			if (BTC_black_screen == 1 || (BTC_black_screen == 0 && BTC_action_respawn == 0)) then {
 				if (!Dialog && !BTC_respawn_cond) then {
@@ -1070,6 +1071,18 @@ BTC_first_aid =
 
 		// Set revive time
 		_reviveTime = 20;
+        
+        // stop counter while healing
+        _injured setVariable ["BTC_revivie_in_progress", true, true];
+
+        // add extra 5 sec to revive process for each minute after death except first minute
+        _current_time = time;
+        _dead_time = _injured getVariable ["BTC_dead_time", _current_time];
+        _diff = _current_time - (_dead_time + 60);
+        if (_diff > 0) then {
+            _k = floor (_diff/60);
+            _reviveTime = _reviveTime + (5 *_k); // yes I know about arithmetic operations priority but sometimes Arma forget about it
+        };
 
 		// Wait until player is fully transitioned to the specified animation
 		waitUntil {animationState player == "ainvpknlmstpsnonwrfldnon_medic0s"};
@@ -1098,7 +1111,7 @@ BTC_first_aid =
 		        };
 		    }, [_t, _t + _reviveTime]] call BIS_fnc_addStackedEventHandler;
 		};
-
+		
 		// Break the process if animation is interupted
 		while {time < (_t + _reviveTime)} do {
 		    uiSleep 0.25;
@@ -1107,6 +1120,7 @@ BTC_first_aid =
 		        ctrlDelete (uiNamespace getVariable "BTC_revive_progressBar");
 		        ctrlDelete (uiNamespace getVariable "BTC_revive_text");
 		        _reviveInProgress = false;
+		        _injured setVariable ["BTC_revivie_in_progress", false, true];
 		        breakTo "BTC_revive";
 		    };
 		};
@@ -1129,6 +1143,7 @@ BTC_first_aid =
 				};
 
 				_injured setVariable ["BTC_need_revive", 0, true];
+				_injured setVariable ["BTC_revivie_in_progress", false, true];
 				addToScore = [player, 2]; publicVariable "addToScore";
 				["ScoreBonus", ["Поднял товарища", "2"]] call bis_fnc_showNotification;
 				_injured playMoveNow "AinjPpneMstpSnonWrflDnon_rolltoback";
@@ -1353,6 +1368,8 @@ BTC_player_killed = {
 			disableUserInput false;
 			_time = time;
 			_timeout = _time + BTC_revive_time_max;
+            player setVariable ["BTC_revivie_in_progress", false, true];
+            player setVariable ["BTC_dead_time", _time, true];
 			private ["_id","_lifes"];
 			BTC_respawn_cond = false;
 			if (BTC_disable_respawn == 1) then {player enableSimulation false;};
@@ -1426,6 +1443,12 @@ BTC_player_killed = {
                     ctrlShow [10, false];
                 };
 				_healer = call BTC_check_healer;
+
+                _inProgress = player getVariable ["BTC_revivie_in_progress", false];
+                if (_inProgress) then {
+                    _timeout = _timeout + 1;
+                };
+
 				_lifes = "";
 				if (BTC_active_lifes == 1) then {
 					_lifes = format ["Lifes remaining: %1",BTC_lifes];
@@ -1466,6 +1489,7 @@ BTC_player_killed = {
 				};
 				uiSleep 1;
 			};
+			player setVariable ["BTC_revivie_in_progress", false, true];
 			if (BTC_camera_unc == 0) then {
 				(findDisplay 46) displayRemoveEventHandler ["KeyDown",BTC_display_EH];
 			} else {
@@ -1578,6 +1602,7 @@ BTC_check_healer =
 BTC_player_respawn = {
     _avanpost = param [0, false];
 	BTC_respawn_cond = true;
+	player setVariable ["BTC_revivie_in_progress", false, true];
 	if (BTC_active_lifes == 1) then {BTC_lifes = BTC_lifes - 1;};
 	if (BTC_active_lifes == 1 && BTC_lifes == 0) exitWith BTC_out_of_lifes;
 	if (BTC_active_lifes != 1 || BTC_lifes != 0) then

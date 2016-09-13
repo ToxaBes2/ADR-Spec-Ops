@@ -153,6 +153,13 @@ class Params {
 		default = 1;
 	};
 
+	class EndlessGame {
+		title = "Endless Game миссии";
+		values[] = {1,0};
+		texts[] = {"Включено","Выключено"};
+		default = 1;
+	};
+
 	class PriorityObjectivesChance {
 		title = "Шанс появления приоритетной цели";
 		values[] = {0,1,2,3,4,5,6,7,8,9,10};

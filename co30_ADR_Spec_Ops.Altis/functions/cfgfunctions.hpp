@@ -10,6 +10,8 @@ class QS
 		class baseDefense {};
 		class clearItemsBase {};
 		class DeleteEnemyEAST {};
+		class EGcreateTarget {};
+		class EGcreateAvanpost {};
 		class EWattack {};
 		class FillBots {};
 		class FillCargoPatrol {};
