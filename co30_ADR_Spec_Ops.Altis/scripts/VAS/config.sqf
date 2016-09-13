@@ -204,7 +204,8 @@ vas_r_backpacks = [
     "B_Bergen_tna_F",
     "B_Carryall_ghex_F",
     "B_AssaultPack_tna_F",
-    "B_FieldPack_ghex_F"
+    "B_FieldPack_ghex_F",
+    "B_FieldPack_ghex_OTAT_F"
 ];
 
 //Magazines to remove from VAS

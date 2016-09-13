@@ -145,7 +145,8 @@ vas_r_backpacks = [
 	"O_HMG_01_weapon_F",
 	"O_Mortar_01_support_F",
 	"O_Mortar_01_weapon_F",
-	"O_UAV_01_backpack_F"
+	"O_UAV_01_backpack_F",
+	"B_FieldPack_ghex_OTAT_F"
 ];
 
 //Magazines to remove from VAS
