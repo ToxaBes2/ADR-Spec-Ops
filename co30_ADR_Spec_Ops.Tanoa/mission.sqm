@@ -20,7 +20,7 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={6890.686,51.318531,7337.7119};
+		pos[]={6814.6294,51.318531,7319.6836};
 		dir[]={-0.46584463,-0.65209848,-0.59813136};
 		up[]={-0.40068853,0.7581349,-0.51447284};
 		aside[]={-0.7889502,8.3819032e-008,0.61446118};
@@ -2402,7 +2402,7 @@ class Mission
 			};
 			id=362;
 			type="Land_PortableGenerator_01_F";
-			atlOffset=1.2874603e-005;
+			atlOffset=1.3113022e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -4309,6 +4309,7 @@ class Mission
 			};
 			id=469;
 			type="Flag_NATO_F";
+			atlOffset=-2.3841858e-007;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -16276,13 +16277,12 @@ class Mission
 		class Item280
 		{
 			dataType="Marker";
-			position[]={6756,-7.9800112e-017,7267};
+			position[]={6867.4741,2.6600001,7293.1802};
 			name="base_helipad";
 			text="Посадочная площадка";
 			type="c_air";
 			colorName="ColorWEST";
 			id=882;
-			atlOffset=-4.5573258;
 		};
 		class Item281
 		{
@@ -23228,8 +23228,8 @@ class Mission
 						};
 						class Attribute1
 						{
-							property="enableStamina";
-							expression="_this enablestamina _value;";
+							property="face";
+							expression="_this setface _value;";
 							class Value
 							{
 								class data
@@ -23238,10 +23238,10 @@ class Mission
 									{
 										type[]=
 										{
-											"BOOL"
+											"STRING"
 										};
 									};
-									value=0;
+									value="WhiteHead_15";
 								};
 							};
 						};
@@ -23304,8 +23304,8 @@ class Mission
 						};
 						class Attribute5
 						{
-							property="face";
-							expression="_this setface _value;";
+							property="enableStamina";
+							expression="_this enablestamina _value;";
 							class Value
 							{
 								class data
@@ -23314,10 +23314,10 @@ class Mission
 									{
 										type[]=
 										{
-											"STRING"
+											"BOOL"
 										};
 									};
-									value="WhiteHead_15";
+									value=0;
 								};
 							};
 						};
@@ -25180,7 +25180,7 @@ class Mission
 			};
 			id=2470;
 			type="C_Boat_Transport_02_F";
-			atlOffset=3.4630003;
+			atlOffset=0.96699905;
 		};
 		class Item537
 		{
