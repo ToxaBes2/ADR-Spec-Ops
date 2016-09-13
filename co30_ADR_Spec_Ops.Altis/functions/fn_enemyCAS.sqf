@@ -110,7 +110,7 @@ if ((count enemyCasArray) < _casLimit) then {
                     _empty = [_casVehicle, ["250Rnd_30mm_HE_shells_Tracer_Green","8Rnd_LG_scalpel"]] call checkAmmo;                
                 }; 
                 case "O_Heli_Light_02_F" : { // PO-30 Orca
-                    _empty = [_casVehicle, "12Rnd_PG_missiles"] call checkAmmo;
+                    _empty = [_casVehicle, ["12Rnd_PG_missiles"]] call checkAmmo;
                 }; 
             };
             if (_empty) then {
