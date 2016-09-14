@@ -66,7 +66,7 @@ _cargo addItemCargoGlobal ["bipod_01_F_khk", 4];
 _cargo addItemCargoGlobal ["optic_ERCO_khk_F", 2];
 _cargo addItemCargoGlobal ["optic_Hamr_khk_F", 2];
 _cargo addItemCargoGlobal ["optic_Hamr", 2];
-_cargo addAction ["<t color='#7F0000'>Уничтожить ящик</t>","mission\main\actions\destroyCargo.sqf",[],21,true,true,"","", 5];  
+[_cargo, "QS_fnc_addActionDestroy", nil, true] spawn BIS_fnc_MP; 
 [_cargo, _light, _smoke1] spawn {
     _cargo = _this select 0;
     _light = _this select 1;

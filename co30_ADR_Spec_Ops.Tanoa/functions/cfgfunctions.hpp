@@ -30,8 +30,10 @@ class QS
 		class actionGetCargoUniform {};
 		class actionPilotRepair {};
 		class addAction {};
+		class addActionAvanpost {};
 		class addActionBlock {};
 		class addActionDefuse {};
+		class addActionDestroy {};
 		class addActionGetData {};
 		class addActionGetIntel {};
 		class addActionHack {};

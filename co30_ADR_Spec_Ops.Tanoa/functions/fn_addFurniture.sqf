@@ -63,7 +63,7 @@ _positions = [
     _obj allowDamage false;
     if (_name == "Box_East_WpsSpecial_F" || _name == "O_CargoNet_01_ammo_F") then {
         clearItemCargoGlobal _obj;
-        _obj addAction ["<t color='#7F0000'>Уничтожить ящик</t>","mission\main\actions\destroyCargo.sqf",[],21,true,true,"","", 5];
+        [_obj, "QS_fnc_addActionDestroy", nil, true] spawn BIS_fnc_MP;
     };
 } forEach _positions;
 

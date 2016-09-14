@@ -85,7 +85,7 @@ for "_i" from 0 to ((count _objs) - 1) do {
 	private ["_z"];
 	if ((count _relPos) > 2) then {_z = _relPos select 2} else {_z = 0};
 	_newPos = [_posX + (_newRelPos select 0), _posY + (_newRelPos select 1), _z];
-	_newObj = _type createVehiclelocal _newPos;
+	_newObj = _type createVehicle _newPos;
 	_newObj setDir (_azi + _azimuth);
 	_newObj setPos _newPos;
 	switch (true) do { 
@@ -109,8 +109,7 @@ for "_i" from 0 to ((count _objs) - 1) do {
             //add actions
             [_newObj,"red","red","red"] call BIS_fnc_DataTerminalColor;
             [_newObj, 1] call BIS_fnc_dataTerminalAnimate;
-            _newObj addAction ["<t color='#FFFF00'>Захватить Аванпост</t>","mission\main\actions\deploy.sqf",[],21,true,true,"","(playerSide == west)", 5];
-            _newObj addAction ["<t color='#7F0000'>Уничтожить Аванпост</t>","mission\main\actions\destroy.sqf",[],21,true,true,"","(playerSide == resistance)", 5];
+            [_newObj, "QS_fnc_addActionAvanpost", nil, true] spawn BIS_fnc_MP;
             {
                 _x addCuratorEditableObjects [[_newObj], true];
             } forEach allCurators;

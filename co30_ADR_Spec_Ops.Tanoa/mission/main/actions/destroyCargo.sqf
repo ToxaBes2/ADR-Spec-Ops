@@ -43,7 +43,6 @@ _light = createVehicle ["Chemlight_red", [0, 0, 0], [], 0, 'NONE'];
 _light attachTo [_object, [0, 0, -0.2]];
 detach _smoke;
 detach _light;
-detach _fire;
 playSound3D ["A3\sounds_f\sfx\special_sfx\sparkles_wreck_3.wss", _object, false, getPosASL _object, 2, 1, 100];
 sleep 4;
 playSound3D ["A3\sounds_f\sfx\fire2_loop.wss", _object, false, getPosASL _object, 5, 1, 300];
