@@ -71,7 +71,7 @@ _multiplyMatrixFunc = {
 	];
 	_result
 };
-_lamps = ["Land_LampHalogen_F","Land_PortableLight_single_F","Land_PortableLight_double_F"];
+_lamps = ["Land_PortableLight_single_F","Land_PortableLight_double_F"];
 _exclude = ["Land_Cargo_Patrol_V1_F", "Land_Cargo_House_V1_F", "Land_Cargo20_military_green_F"];
 for "_i" from 0 to ((count _objs) - 1) do {
 	private ["_obj", "_type", "_relPos", "_azimuth", "_fuel", "_damage", "_newObj", "_vehicleinit"];
@@ -101,9 +101,9 @@ for "_i" from 0 to ((count _objs) - 1) do {
             //do nothing
 	    };
 	    case ((typeOf _newObj) == "Land_DataTerminal_01_F"): {
-            _pos = getPosATL _newObj;
-            _pos set [2, (_pos select 2) + 0.8];
-            _newObj setPosATL _pos;
+            _newPos = getPosATL _newObj;
+            _newPos set [2, (_newPos select 2) + 0.8];
+            _newObj setPosATL _newPos;
             _newObj allowDamage false;                
             
             //add actions

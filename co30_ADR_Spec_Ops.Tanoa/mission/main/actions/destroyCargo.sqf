@@ -35,8 +35,7 @@ call {
 _player playMove ("Ainv" + _stance + "Mstp" + _raised + _weapon + "Dnon_Putdown_Amov" + _stance + "Mstp" + _raised + _weapon + "Dnon");
 sleep 1;
 _object = _this select 0;
-_object removeAction 0;
-_object removeAction 1;
+[_object,"QS_fnc_removeAction",nil,true] spawn BIS_fnc_MP;
 _smoke = createVehicle ["SmokeShell", [0, 0, 0], [], 0, 'NONE'];
 _smoke attachTo [_object, [0, 0, -0.2]];
 _light = createVehicle ["Chemlight_red", [0, 0, 0], [], 0, 'NONE'];

@@ -1,6 +1,6 @@
 /*
 Author: ToxaBes
-Description: deploy avanposr as additional respawn point for bluefor
+Description: deploy avanpost as additional respawn point for bluefor
 */
 #define ENEMY_SIDE EAST
 private ["_player", "_stance", "_raised", "_weapon", "_object", "_points"];
@@ -38,7 +38,7 @@ sleep 1;
 _object = _this select 0;
 _object removeAction 0;
 _points = 10;
-
+[_object,"QS_fnc_removeAction0",nil,true] spawn BIS_fnc_MP;
 [_object,"blue","blue","blue"] call BIS_fnc_DataTerminalColor;
 [_object, 3] call BIS_fnc_dataTerminalAnimate;
 ["ScoreBonus", ["Аванпост противника захвачен!", _points]] remoteExec ["BIS_fnc_showNotification", _player];

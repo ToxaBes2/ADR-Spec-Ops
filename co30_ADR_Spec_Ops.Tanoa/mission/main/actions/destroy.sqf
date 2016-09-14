@@ -36,8 +36,7 @@ _player playMove ("Ainv" + _stance + "Mstp" + _raised + _weapon + "Dnon_Putdown_
 
 sleep 1;
 _object = _this select 0;
-_object removeAction 0;
-_object removeAction 1;
+[_object,"QS_fnc_removeAction",nil,true] spawn BIS_fnc_MP;
 _points = 10;
 MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";
 [_object,"green","green","green"] call BIS_fnc_DataTerminalColor;
