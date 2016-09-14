@@ -111,6 +111,9 @@ for "_i" from 0 to ((count _objs) - 1) do {
             [_newObj, 1] call BIS_fnc_dataTerminalAnimate;
             _newObj addAction ["<t color='#FFFF00'>Захватить Аванпост</t>","mission\main\actions\deploy.sqf",[],21,true,true,"","(playerSide == west)", 5];
             _newObj addAction ["<t color='#7F0000'>Уничтожить Аванпост</t>","mission\main\actions\destroy.sqf",[],21,true,true,"","(playerSide == resistance)", 5];
+            {
+                _x addCuratorEditableObjects [[_newObj], true];
+            } forEach allCurators;
 	    };
 		default {
             _newObj allowDamage false;            
