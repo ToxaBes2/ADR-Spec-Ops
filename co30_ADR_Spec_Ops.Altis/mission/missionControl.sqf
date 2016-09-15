@@ -25,8 +25,8 @@ _missionList = [
 //_endlessGameList = [
 //    "kavala"
 //];
-missionNamespace setVariable ["AVANPOST_COORDS", false];
-missionNamespace setVariable ["AVANPOST_RESPAWN", false];
+AVANPOST_COORDS = false; publicVariable "AVANPOST_COORDS";
+AVANPOST_RESPAWN = false; publicVariable "AVANPOST_RESPAWN";
 //missionNamespace setVariable ["WINS", 4];
 while { true } do {	
     //if (PARAMS_EndlessGame == 1) then {

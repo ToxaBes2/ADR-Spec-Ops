@@ -886,7 +886,7 @@ BTC_fnc_wait_for_revive =
 		} else {
 		    hintSilent format ["%1\n%2\n%3", round (BTC_r_timeout - time),_healer,_lifes];
 		};
-        _allowAvanpost = missionNamespace getVariable ["AVANPOST_RESPAWN", false];
+        _allowAvanpost = AVANPOST_RESPAWN;
         if (_allowAvanpost && playerSide == west) then {
             ctrlShow [10, true];
         } else {
@@ -1436,7 +1436,7 @@ BTC_player_killed = {
 			};
 			while {(format ["%1", player getVariable "BTC_need_revive"] == "1") && {(time < _timeout)} && {(!BTC_respawn_cond)}} do {
 				if (BTC_disable_respawn == 0) then {if (BTC_black_screen == 1 || (BTC_black_screen == 0 && BTC_action_respawn == 0)) then {if (!Dialog && !BTC_respawn_cond) then {_dlg = createDialog "BTC_respawn_button_dialog";};};};
-				_allowAvanpost = missionNamespace getVariable ["AVANPOST_RESPAWN", false];
+				_allowAvanpost = AVANPOST_RESPAWN;
                 if (_allowAvanpost && playerSide == west) then {
                     ctrlShow [10, true];
                 } else {

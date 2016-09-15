@@ -313,8 +313,8 @@ DEFEND_AO_VICTORY = nil; publicVariable "DEFEND_AO_VICTORY";
 GlobalSideHint = [west, _targetCompleteText]; publicVariable "GlobalSideHint";
 
 // hide avanpost respawn
-missionNamespace setVariable ["AVANPOST_COORDS", false];
-missionNamespace setVariable ["AVANPOST_RESPAWN", false];
+AVANPOST_COORDS = false; publicVariable "AVANPOST_COORDS";
+AVANPOST_RESPAWN = false; publicVariable "AVANPOST_RESPAWN";
 
 // Restore yellow color of nearby vehicle service markers
 CURRENT_AO_POSITION = nil; publicVariable "CURRENT_AO_POSITION";

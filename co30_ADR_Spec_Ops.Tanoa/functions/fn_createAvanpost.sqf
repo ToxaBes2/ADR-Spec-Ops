@@ -128,6 +128,6 @@ hqSideChat ="Рядом с основной зоной замечен аванп
 publicVariable "hqSideChat"; [west, "HQ"] sideChat hqSideChat;
 hqSideChat ="Захват аванпоста даст вам дополнительную точку возрождения.";
 publicVariable "hqSideChat"; [west, "HQ"] sideChat hqSideChat;
-missionNamespace setVariable ["AVANPOST_COORDS", _pos];
+AVANPOST_COORDS = _pos; publicVariable "AVANPOST_COORDS";
 _result = [_pos, _newObjs];
 _result

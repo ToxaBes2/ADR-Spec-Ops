@@ -75,5 +75,5 @@ hqSideChat = _c4Message; publicVariable "hqSideChat"; [resistance, "HQ"] sideCha
 };
 
 //hide respawn place
-missionNamespace setVariable ["AVANPOST_COORDS", false];
-missionNamespace setVariable ["AVANPOST_RESPAWN", false];
+AVANPOST_COORDS = false; publicVariable "AVANPOST_COORDS";
+AVANPOST_RESPAWN = false; publicVariable "AVANPOST_RESPAWN";

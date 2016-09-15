@@ -2,7 +2,7 @@
 Author: ToxaBes
 Description: respawn on avanpost
 */
-_pos = missionNamespace getVariable ["AVANPOST_COORDS", false];
+_pos = AVANPOST_COORDS;
 if (isNil "_pos" || {_pos isEqualTo false}) exitWith {};
 if (count _pos == 2) then {
     _pos set [2, 0];

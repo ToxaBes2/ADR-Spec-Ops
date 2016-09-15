@@ -45,7 +45,7 @@ _points = 10;
 [_player, _points] remoteExec ["addScore", 2];
 
 // add respawn point
-missionNamespace setVariable ["AVANPOST_RESPAWN", true];
+AVANPOST_RESPAWN = true; publicVariable "AVANPOST_RESPAWN";
 
 // add guards
 _staticGroup = createGroup west;
