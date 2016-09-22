@@ -8,7 +8,7 @@ _pos = _this select 0;
 _pos set [2, 0];
 _objs = _this select 1;
 _newObjs = [];
-_lamps = ["Land_LampHalogen_F","Land_PortableLight_single_F","Land_PortableLight_double_F"];
+_lamps = ["Land_PortableLight_single_F","Land_PortableLight_double_F"];
 _exclude = ["Land_Cargo_Patrol_V1_F", "Land_Cargo_House_V1_F", "Land_Cargo20_military_green_F"];
 for "_i" from 0 to ((count _objs) - 1) do {
 	private ["_obj", "_type", "_relPos", "_azimuth", "_fuel", "_damage", "_newObj", "_vehicleinit"];
@@ -18,7 +18,7 @@ for "_i" from 0 to ((count _objs) - 1) do {
 	_azimuth = _obj select 2;							
 	_newObj = _type createVehicle _objPos;
 	_newObj setDir _azimuth;
-	_newObj setPos _objPos;
+	_newObj setPosATL _objPos;
 	switch (true) do { 
 		case (_newObj isKindOf "LandVehicle"): {
             //quadbike monitoring
@@ -27,6 +27,12 @@ for "_i" from 0 to ((count _objs) - 1) do {
 	    }; 
 		case (_newObj isKindOf "StaticWeapon"): {
             //add gunner later in another place
+            _newObj allowDamage false;
+            [_newObj] spawn {
+                sleep 10;
+                _newObj = _this select 0;
+                _newObj allowDamage true;
+            };
 	    }; 
 	    case ((typeOf _newObj) in _lamps): {
             //do nothing
@@ -37,7 +43,7 @@ for "_i" from 0 to ((count _objs) - 1) do {
             if !(_class in _exclude) then {
                 _newObj enableSimulation false;
             };                
-	    }; 
+	    }; 	    
 	};
 	_newObjs = _newObjs + [_newObj];	
 };
