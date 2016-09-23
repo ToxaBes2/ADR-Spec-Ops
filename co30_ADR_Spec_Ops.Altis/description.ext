@@ -42,7 +42,7 @@ showHUD[] = {
 	true,	// Vehicle radar 
 	true,	// Vehicle compass
 	true,	// Tank direction indicator
-	false,	// Commanding menu
+	true,	// Commanding menu
 	false,	// Group Bar
 	true,	// HUD Weapon Cursors                       // should be true because of issue in 1.64
 	true	// HUD Squad Radar
