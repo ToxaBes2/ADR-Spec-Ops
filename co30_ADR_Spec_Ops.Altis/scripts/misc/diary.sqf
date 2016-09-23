@@ -587,7 +587,7 @@ player createDiaryRecord ["credits",
 <br />
     • aeroson – Squad Manager
 <br />
-    • Tonic – VAS, TAW View Distance
+    • Tonic – TAW View Distance
 <br />
     • Alex Wise – aw_fnc
 <br />

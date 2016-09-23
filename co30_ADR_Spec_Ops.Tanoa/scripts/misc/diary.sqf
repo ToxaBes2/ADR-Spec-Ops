@@ -433,7 +433,7 @@ player createDiaryRecord ["credits",
 <font size='14'>
     • Giallustio – =BTC= Revive
 <br />
-    • Tonic – VAS, TAW View Distance
+    • Tonic – TAW View Distance
 <br />
     • Tophe – Vehicle Respawn
 <br />

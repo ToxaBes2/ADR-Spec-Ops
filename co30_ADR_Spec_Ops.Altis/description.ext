@@ -75,7 +75,6 @@ corpseRemovalMaxTime = 180;								// Max time before removal
 class CfgFunctions
 	{
 		#include "functions\cfgfunctions.hpp"			// Integrated I&A functions
-		#include "scripts\VAS\cfgfunctions.hpp"			// VAS
 		#include "scripts\taw_vd\CfgFunctions.hpp"		// View distance
 		class FETT {
 	        class curator {
