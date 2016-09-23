@@ -39,13 +39,13 @@ showUAVFeed = 1;										// Enables/Disables the UAV Feed. Zeus-related.
 showHUD[] = {
 	true,	// Scripted HUD (same as showHUD command)   // should be true because of issue in 1.64
 	true,	// Vehicle + soldier info
-	false,	// Vehicle radar 
+	true,	// Vehicle radar 
 	true,	// Vehicle compass
 	true,	// Tank direction indicator
 	false,	// Commanding menu
 	false,	// Group Bar
 	true,	// HUD Weapon Cursors                       // should be true because of issue in 1.64
-	false	// HUD Squad Radar
+	true	// HUD Squad Radar
 };
 briefing = 0;                                           // Enables/Disables briefing screen
 //------------------------- Respawn
