@@ -26,7 +26,7 @@ while {!_accepted} do {
 		_flatPos = _position isFlatEmpty [10, 1, 0.2, sizeOf "Land_Research_HQ_F", 0, false];
 	};
 
-	if ((_flatPos distance (getMarkerPos "respawn_west")) > 1700 && (_flatPos distance (getMarkerPos currentAO)) > 500) then {
+	if ((_flatPos distance (getMarkerPos "respawn_west")) > 1700) then {
 		_accepted = true;
 	};
 };
