@@ -45,10 +45,11 @@ MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";
 [_player, _points] remoteExec ["addScore", 2];
 _c4Message = selectRandom [
     "Аванпост заминирован. У вас полторы минуты чтобы найти укрытие!",
-    "Аванпост будет уничтожен через 90 секунд. Валите оттуда!",
-    "Лучше поторопиться, скоро тут все взлетит на воздух. У вас полторы минуты чтобы уйти."
+    "Аванпост будет уничтожен через 90 секунд. Валите оттуда!"
 ];
-hqSideChat = _c4Message; publicVariable "hqSideChat"; [resistance, "HQ"] sideChat hqSideChat;
+hqSideChat = _c4Message; publicVariable "hqSideChat"; 
+[west, "HQ"] sideChat _c4Message;
+[resistance, "HQ"] sideChat _c4Message;
 
 // destroy avanpost
 [_object] spawn {
@@ -72,6 +73,13 @@ hqSideChat = _c4Message; publicVariable "hqSideChat"; [resistance, "HQ"] sideCha
     } forEach _allObjects;
     "Bo_GBU12_LGB" createVehicle _pos;
     deleteVehicle _object;
+};
+[AVANPOST_COORDS] spawn {
+    sleep 120;
+    _allObjects = nearestObjects [AVANPOST_COORDS, ["B_Quadbike_01_F"], 40];
+    {
+        hideObjectGlobal _x;
+    } forEach _allObjects;
 };
 
 //hide respawn place
