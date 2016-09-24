@@ -89,6 +89,11 @@ if (typeOf player in ["B_Soldier_SL_F", "B_T_Soldier_SL_F"]) then {
     _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\commander\menu.sqf";};                          // Commander tools
 };
 
+// UAV operator tools
+if (typeOf player in ["B_engineer_F", "B_T_Engineer_F"]) then {
+    player addAction ["<t color='#D8D80E'><img image='\A3\Drones_F\Air_F_Gamma\UAV_01\Data\UI\icon_B_C_UAV_rgr_ca.paa' size='1.0'/> Вызвать AR-2 дартер</t>", "scripts\darter.sqf", "", -99, false, true, "", ""];	
+};
+
 if !(isNil "EW_ATTACK") then {
     if (EW_ATTACK) then {
         _null = [] spawn {_this call QS_fnc_EWattack;};                                                                      // priority EW
@@ -125,7 +130,7 @@ player addEventHandler [ "GetOutMan", {
 }];
 
 // Put earplugs in automaticly when controling UAV (Engineers only)
-if (typeOf player in ["B_Engineer_F", "B_T_Engineer_F", "I_G_engineer_F", "I_C_Soldier_Para_8_F"]) then {
+if (typeOf player in ["B_engineer_F", "B_T_Engineer_F", "I_G_engineer_F", "I_C_Soldier_Para_8_F"]) then {
 	_null = [] spawn {
 		private ["_uav", "_uav_action_id1", "_uav_action_id2"];
 		while {true} do {

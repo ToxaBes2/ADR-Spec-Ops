@@ -41,7 +41,7 @@ _myBox = _this select 0;
 "B_HMG_01_weapon_F",
 "B_Mortar_01_support_F",
 "B_Mortar_01_weapon_F",
-"B_UAV_01_backpack_F",
+//"B_UAV_01_backpack_F",
 
 
 // Рюкзаки Apex

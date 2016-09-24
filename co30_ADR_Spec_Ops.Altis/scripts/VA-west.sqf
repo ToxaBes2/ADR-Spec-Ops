@@ -46,7 +46,7 @@ _myBox = _this select 0;
 "B_Mortar_01_weapon_F",
 "B_AA_01_weapon_F",
 "B_AT_01_weapon_F",
-"B_UAV_01_backpack_F",
+//"B_UAV_01_backpack_F",
 "B_GMG_01_high_weapon_F",
 "B_HMG_01_high_weapon_F",
 "B_GMG_01_weapon_F",
