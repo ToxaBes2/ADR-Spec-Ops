@@ -14,12 +14,12 @@ _punishObject = objNull;
     _rule = _x;
     switch (_rule) do { 
     	case "vehicles" : {
-            _trigger = createTrigger ["EmptyDetector", _position, true]; 
-            _trigger setTriggerArea [_radius, _radius, 0, false];
-            _trigger setTriggerActivation ["WEST", "PRESENT", true];
-            _trigger setTriggerStatements ["this", "
+            _trigger1 = createTrigger ["EmptyDetector", _position, true]; 
+            _trigger1 setTriggerArea [_radius, _radius, 0, false];
+            _trigger1 setTriggerActivation ["WEST", "PRESENT", true];
+            _trigger1 setTriggerStatements ["this", "
                 {
-                    _allowed = ['O_Truck_03_covered_F', 'O_Truck_03_device_F', 'O_Truck_03_transport_F'];
+                    _allowed = ['O_Truck_03_covered_F', 'O_Truck_03_device_F', 'O_Truck_03_transport_F', 'O_T_Truck_03_device_ghex_F', 'O_T_Truck_03_transport_ghex_F','O_T_Truck_03_covered_ghex_F'];
                     _veh = vehicle _x;
                     if (_veh isKindOf 'LandVehicle' || _veh isKindOf 'Ship') then {
                     	if !(_veh isKindOf 'StaticWeapon' || (typeOf _veh) in _allowed) then {
@@ -28,7 +28,22 @@ _punishObject = objNull;
                     };
                 } forEach thislist;
             ", ""];
-            AID_TRIGGER = _trigger; publicVariable "AID_TRIGGER";
+            AID_TRIGGER1 = _trigger1; publicVariable "AID_TRIGGER1";
+            _trigger2 = createTrigger ["EmptyDetector", _position, true]; 
+            _trigger2 setTriggerArea [_radius, _radius, 0, false];
+            _trigger2 setTriggerActivation ["GUER", "PRESENT", true];
+            _trigger2 setTriggerStatements ["this", "
+                {
+                    _allowed = ['O_Truck_03_covered_F', 'O_Truck_03_device_F', 'O_Truck_03_transport_F', 'O_T_Truck_03_device_ghex_F', 'O_T_Truck_03_transport_ghex_F','O_T_Truck_03_covered_ghex_F'];
+                    _veh = vehicle _x;
+                    if (_veh isKindOf 'LandVehicle' || _veh isKindOf 'Ship') then {
+                        if !(_veh isKindOf 'StaticWeapon' || (typeOf _veh) in _allowed) then {
+                            [_veh] call QS_fnc_punishObject;
+                        };
+                    };
+                } forEach thislist;
+            ", ""];
+            AID_TRIGGER2 = _trigger2; publicVariable "AID_TRIGGER2";
         }; 
     	case "fire" : {
             _units = _position nearEntities [["Man", "LandVehicle"], _radius];
