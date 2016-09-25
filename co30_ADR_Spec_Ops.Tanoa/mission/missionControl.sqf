@@ -68,7 +68,7 @@ while { true } do {
             };
         };
         if !(isNil "AID_TRIGGER2") then {
-	        if !(isNull AID_TRIGGER2 then {
+	        if !(isNull AID_TRIGGER2) then {
     	        deleteVehicle AID_TRIGGER2;
             };
         };
