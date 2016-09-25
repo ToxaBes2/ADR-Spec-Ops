@@ -72,7 +72,6 @@ class QS
 		class getMainAO {};
 		class getShorePos {};
 		class killerCatcher {};
-		class loadInventory {};
 		class moveToHC {};
 		class partizanSUCCESS {};
 		class pilotCheck {};
