@@ -11,8 +11,8 @@ Changelog:
 //Def
 BTC_tk_blackscreen_punishment = 0;
 BTC_tk_last_warning = 10;
-BTC_tk_prison_coords = [15259,17355,0];
-BTC_tk_light_pos = [15244,17345,0];
+BTC_tk_prison_coords = [6907,7243,0];
+BTC_tk_light_pos = [6900,7230,0];
 
 BTC_fnc_tk_PVEH = {
 	//0 - first aid - create // [0,east,pos]

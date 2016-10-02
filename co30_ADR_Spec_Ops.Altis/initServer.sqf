@@ -100,21 +100,21 @@ deleteGroup enemyCasGroup;
 [base_arsenal_infantry, "SIT1", "ASIS"] call BIS_fnc_ambientAnim;
 
 // remove polygonal markers from channels
-_null = [] spawn {
-    while {true} do {
-        sleep 15;
-        {
-            if (markerShape _x == "POLYLINE") then {
-                _allowedChannels = ["1", "3", "4"];
-                _channelId = 0;
-                _arr = (format ["%1", _x]) splitString "/"; 
-                if (count _arr == 3) then {
-                    _channelId = _arr select 2;                   
-                };        
-                if !(_channelId in _allowedChannels) then {
-                    deleteMarker _x;
-                };
-            };
-        } forEach allMapMarkers;
-    };
-};
+//_null = [] spawn {
+//    while {true} do {
+//        sleep 15;
+//        {
+//            if (markerShape _x == "POLYLINE") then {
+//                _allowedChannels = ["1", "3", "4"];
+//                _channelId = 0;
+//                _arr = (format ["%1", _x]) splitString "/"; 
+//                if (count _arr == 3) then {
+//                    _channelId = _arr select 2;                   
+//                };        
+//                if !(_channelId in _allowedChannels) then {
+//                    deleteMarker _x;
+//                };
+//            };
+//        } forEach allMapMarkers;
+//    };
+//};

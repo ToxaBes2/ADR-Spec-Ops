@@ -75,8 +75,9 @@ hqSideChat = _c4Message; publicVariable "hqSideChat";
     deleteVehicle _object;
 };
 [AVANPOST_COORDS] spawn {
+    _coords = _this select 0;
     sleep 120;
-    _allObjects = nearestObjects [AVANPOST_COORDS, ["B_Quadbike_01_F"], 40];
+    _allObjects = nearestObjects [_coords, ["B_Quadbike_01_F"], 40];
     {
         hideObjectGlobal _x;
     } forEach _allObjects;
