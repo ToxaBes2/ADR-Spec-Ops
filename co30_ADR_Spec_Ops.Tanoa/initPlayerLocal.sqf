@@ -13,6 +13,12 @@ enableEngineArtillery false;
 
 waitUntil {!isNull player};
 
+[] spawn {
+	disableSerialization;
+	waitUntil {!isNull(findDisplay 46)};
+	(findDisplay 46) displayAddEventHandler ["keyDown", "_this call QS_fnc_KeyDown"];
+};
+
 // Resistance only
 if (playerSide == resistance) then {
 	player setUnitTrait ["Medic", true];

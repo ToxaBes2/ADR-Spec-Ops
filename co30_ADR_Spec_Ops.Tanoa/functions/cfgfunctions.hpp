@@ -70,6 +70,7 @@ class QS
 		class getMainAO {};
 		class getShorePos {};
 		class killerCatcher {};
+		class KeyDown {};
 		class moveToHC {};
 		class partizanSUCCESS {};
 		class pilotCheck {};

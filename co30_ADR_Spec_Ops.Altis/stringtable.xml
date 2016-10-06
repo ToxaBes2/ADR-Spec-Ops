@@ -5,6 +5,10 @@
 			<Original>Repack magazines</Original>
 			<Russian>Перепаковать магазины</Russian>
 		</Key>
+		<Key ID="STR_Map_NoCenter">
+			<Original>Centering is disabled. Use compass and map!</Original>
+			<Russian>Центрирование отключено. Используйте компасс и карту!</Russian>
+		</Key>
 	</Package>
 </Project>
 <Project name="Virtual Ammobox System">
