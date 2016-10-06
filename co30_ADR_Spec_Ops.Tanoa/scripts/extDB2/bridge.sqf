@@ -46,6 +46,7 @@ sqlResponse = {
     _queryName = param [1, ""];    
     _queryResult = param [2, false];
     _allowedLimit = 6000;
+    _allowedPilotLimit = 120;
     switch _queryName do {
         case "getPlayerHours": {
             _hrs = 0;
@@ -65,6 +66,31 @@ sqlResponse = {
                 };            	
             	_text = format["Слоты партизан доступны только после 100 часов игры на сервере!\nВаше время: %1 ч.", _hrs];
             	0 cutText[_text, "BLACK FADED"];
+                0 cutFadeOut 99999;
+                sleep 6;
+                ["end1", false, 2, false] call BIS_fnc_endMission;
+            } else {
+                0 cutText["", "BLACK IN"];
+            };
+        };
+        case "getPilotHours": {
+            _hrs = 0;
+            _queryResult = _queryResult call BIS_fnc_parseNumber;
+            if (typeName _queryResult == "ARRAY") then {
+                if (getPlayerUID player == "76561198114622790") then {                   
+                    _queryResult = _allowedPilotLimit + 1; // for local tests
+                } else {
+                    _queryResult = 0;
+                };                
+            };
+            if (_queryResult <= _allowedPilotLimit) then {
+                if (_queryResult == 0 || !(finite _queryResult)) then {
+                    _hrs = 0;
+                } else {
+                    _hrs = floor (_queryResult / 60);
+                };              
+                _text = format["Слоты пилотов доступны только после 2х часов игры на сервере!\nВаше время: %1 ч.", _hrs];
+                0 cutText[_text, "BLACK FADED"];
                 0 cutFadeOut 99999;
                 sleep 6;
                 ["end1", false, 2, false] call BIS_fnc_endMission;

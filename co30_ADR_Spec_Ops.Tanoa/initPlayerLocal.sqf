@@ -66,6 +66,10 @@ if (typeOf player in ["B_Helipilot_F", "B_T_Helipilot_F"]) then {
 	player addBackpack "B_AssaultPack_sgg";
 	player addItemToBackpack "ToolKit";
 
+	// check hours on server for become a pilot
+    ["getPilotHours",[getPlayerUID player], player] remoteExec ["sqlServerCall", 2];
+    sleep 10;
+
 	// Laser targets on pilots HMDs
 	player addEventHandler [ "GetInMan", {
 		[_this select 0, _this select 2] spawn QS_fnc_HMDLaserTarget;
