@@ -155,14 +155,38 @@ if (typeOf player in ["B_engineer_F", "B_T_Engineer_F", "I_G_engineer_F", "I_C_S
 if (playerSide == west) then {
 	player addEventHandler [ "Take", {
 		_player = _this select 0;
-		_helmet = _this select 2;
+		_item = _this select 2;
+		_catched = false;
 		_csatHelmets = ["H_Cap_brn_SPECOPS", "H_CrewHelmetHeli_O", "H_HelmetCrew_O", "H_HelmetCrew_O_ghex_F", "H_HelmetLeaderO_ghex_F", "H_HelmetLeaderO_ocamo", "H_HelmetLeaderO_oucamo", "H_HelmetO_ViperSP_ghex_F", "H_HelmetO_ViperSP_hex_F", "H_HelmetO_ghex_F", "H_HelmetO_ocamo", "H_HelmetO_oucamo", "H_HelmetSpecO_blk", "H_HelmetSpecO_ghex_F", "H_HelmetSpecO_ocamo", "H_MilCap_ghex_F", "H_MilCap_ocamo", "H_PilotHelmetFighter_O", "H_PilotHelmetHeli_O"];
-		if(_helmet in _csatHelmets) then {
-			_player unassignItem _helmet;
-			_player removeItem _helmet;
+		if(_item in _csatHelmets) then {
+			_player unassignItem _item;
+			_player removeItem _item;
 			systemChat "Головные уборы противника запрещены";
+			_catched = true;
+		};
+        if (!_catched) then {
+		    _backpacks = ["B_UAV_01_backpack_F", "O_UAV_01_backpack_F", "I_UAV_01_backpack_F"];
+            if(_item in _backpacks) then {
+		    	removeBackpack _player;
+		    	systemChat "Рюкзаки с беспилотниками запрещены";
+		    	_catched = true;
+		    };	
 		};
 	}];
+};
+
+// hide arsenal load buttons for partizans
+if (playerSide == resistance) then {
+    [missionNamespace, "arsenalOpened", {
+        disableSerialization;
+        _display = _this select 0;
+        _display displayAddEventHandler ["KeyDown", "if ((_this select 1) in [19,29]) then {true}"];
+        {
+            ( _display displayCtrl _x ) ctrlSetText "Disabled";
+            ( _display displayCtrl _x ) ctrlSetTextColor [ 1, 0, 0, 0.5 ];
+            ( _display displayCtrl _x ) ctrlRemoveAllEventHandlers "buttonclick";
+        }forEach [ 44146, 44147, 44150 ];
+    }] call BIS_fnc_addScriptedEventHandler;
 };
 
 // Add all players to Zeus curators as editable objects
