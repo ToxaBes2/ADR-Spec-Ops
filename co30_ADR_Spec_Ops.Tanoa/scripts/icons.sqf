@@ -197,8 +197,8 @@ QS_fnc_iconDrawGPS = compileFinal "
 [] spawn {
 	sleep 0.1;
 	//===== INIT MAP
-	waitUntil {sleep 0.1; !(isNull (findDisplay 12))};
-	clientEhDrawMap = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw",QS_fnc_iconDrawMap];
+	//waitUntil {sleep 0.1; !(isNull (findDisplay 12))};
+	//clientEhDrawMap = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw",QS_fnc_iconDrawMap];
 
 	//===== INIT GPS (waits for GPS to open)
 	disableSerialization;
@@ -212,9 +212,4 @@ QS_fnc_iconDrawGPS = compileFinal "
 		sleep 1;
 	};
 	clientEhDrawGps = _gps ctrlAddEventHandler ["Draw",QS_fnc_iconDrawGPS];
-
-	//===== INIT RESPAWN MENU MAP - UNSUPPORTED v1.0.0
-	//===== INIT ZEUS MAP - UNSUPPORTED v1.0.0
-	//===== INIT ARTILLERY COMPUTER - UNSUPPORTED v1.0.0
-	//===== INIT UAV TERMINAL MAP - UNSUPPORTED v1.0.0
 };
