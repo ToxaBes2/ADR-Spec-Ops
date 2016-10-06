@@ -172,6 +172,22 @@ if (playerSide == west) then {
 		    	_catched = true;
 		    };	
 		};
+		if (!_catched) then {
+		    _backpacks = ["B_ViperLightHarness_ghex_F","B_ViperLightHarness_khk_F","B_ViperHarness_ghex_F","B_Bergen_tna_F","B_Carryall_ghex_F","B_AssaultPack_tna_F","B_FieldPack_ghex_F"];
+            if(_item in _backpacks) then {
+		    	removeBackpack _player;
+		    	systemChat "Рюкзаки противника запрещены";
+		    	_catched = true;
+		    };	
+		};
+		if (!_catched) then {
+		    _vests = ["V_PlateCarrierIAGL_oli","V_PlateCarrierIAGL_dgtl","V_PlateCarrierIA2_dgtl","V_PlateCarrierIA1_dgtl","V_HarnessOSpec_gry","V_HarnessOSpec_brn","V_HarnessOGL_gry","V_HarnessO_gry","V_HarnessOGL_brn","V_HarnessO_brn","V_Chestrig_khk","V_Rangemaster_belt","V_BandollierB_khk","V_BandollierB_cbr","V_BandollierB_rgr","V_BandollierB_blk","V_BandollierB_oli","V_PlateCarrierIAGL_oli","V_I_G_resistanceLeader_F","V_RebreatherIA","V_TacChestrig_cbr_F","V_HarnessOGL_ghex_F","V_BandollierB_ghex_F"];
+            if(_item in _vests) then {
+		    	removeVest _player;
+		    	systemChat "Жилеты противника запрещены";
+		    	_catched = true;
+		    };	
+		};
 	}];
 };
 
