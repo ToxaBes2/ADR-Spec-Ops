@@ -67,6 +67,9 @@ if (typeOf player in ["B_Helipilot_F", "B_T_Helipilot_F"]) then {
 	player addItemToBackpack "ToolKit";
 
 	// check hours on server for become a pilot
+	0 cutText["Проверка игрового времени...", "BLACK FADED"];
+    0 cutFadeOut 9999999;
+    waitUntil {(getPlayerUID player) != ""};
     ["getPilotHours",[getPlayerUID player], player] remoteExec ["sqlServerCall", 2];
     sleep 10;
 
