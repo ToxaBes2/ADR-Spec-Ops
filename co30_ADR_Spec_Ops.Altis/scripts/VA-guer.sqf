@@ -136,6 +136,7 @@ _myBox = _this select 0;
 "I_UavTerminal",
 "ItemCompass",
 "ItemMap",
+"ItemGPS",
 "ItemRadio",
 "ItemWatch",
 "Medikit",

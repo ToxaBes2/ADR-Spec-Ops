@@ -87,7 +87,6 @@ if (typeOf player in ["B_Helipilot_F", "B_T_Helipilot_F"]) then {
 
 // Client executions
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\vehicle\crew\crew.sqf";}; 							// vehicle HUD
-_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\restrictions.sqf";}; 								// gear restrictions
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\pilotCheck.sqf";};									// pilots only
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\jump.sqf";};										// jump action
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\misc\diary.sqf";};									// diary tabs
@@ -164,57 +163,57 @@ if (typeOf player in ["B_engineer_F", "B_T_Engineer_F", "I_G_engineer_F", "I_C_S
 	};
 };
 
-// Remove CSAT helmets from BLUFOR players iventory
+// Add restrictions from BLUFOR players
 if (playerSide == west) then {
-	player addEventHandler [ "Take", {
-		_player = _this select 0;
-		_item = _this select 2;
-		_catched = false;
-		_csatHelmets = ["H_Cap_brn_SPECOPS", "H_CrewHelmetHeli_O", "H_HelmetCrew_O", "H_HelmetCrew_O_ghex_F", "H_HelmetLeaderO_ghex_F", "H_HelmetLeaderO_ocamo", "H_HelmetLeaderO_oucamo", "H_HelmetO_ViperSP_ghex_F", "H_HelmetO_ViperSP_hex_F", "H_HelmetO_ghex_F", "H_HelmetO_ocamo", "H_HelmetO_oucamo", "H_HelmetSpecO_blk", "H_HelmetSpecO_ghex_F", "H_HelmetSpecO_ocamo", "H_MilCap_ghex_F", "H_MilCap_ocamo", "H_PilotHelmetFighter_O", "H_PilotHelmetHeli_O"];
-		if(_item in _csatHelmets) then {
-			_player unassignItem _item;
-			_player removeItem _item;
-			systemChat "Головные уборы противника запрещены";
-			_catched = true;
-		};
-        if (!_catched) then {
-		    _backpacks = ["B_UAV_01_backpack_F", "O_UAV_01_backpack_F", "I_UAV_01_backpack_F"];
-            if(_item in _backpacks) then {
-		    	removeBackpack _player;
-		    	systemChat "Рюкзаки с беспилотниками запрещены";
-		    	_catched = true;
-		    };	
-		};
-		if (!_catched) then {
-		    _backpacks = ["B_ViperLightHarness_ghex_F","B_ViperLightHarness_khk_F","B_ViperHarness_ghex_F","B_Bergen_tna_F","B_Carryall_ghex_F","B_AssaultPack_tna_F","B_FieldPack_ghex_F"];
-            if(_item in _backpacks) then {
-		    	removeBackpack _player;
-		    	systemChat "Рюкзаки противника запрещены";
-		    	_catched = true;
-		    };	
-		};
-		if (!_catched) then {
-		    _vests = ["V_PlateCarrierIAGL_oli","V_PlateCarrierIAGL_dgtl","V_PlateCarrierIA2_dgtl","V_PlateCarrierIA1_dgtl","V_HarnessOSpec_gry","V_HarnessOSpec_brn","V_HarnessOGL_gry","V_HarnessO_gry","V_HarnessOGL_brn","V_HarnessO_brn","V_Chestrig_khk","V_Rangemaster_belt","V_BandollierB_khk","V_BandollierB_cbr","V_BandollierB_rgr","V_BandollierB_blk","V_BandollierB_oli","V_PlateCarrierIAGL_oli","V_I_G_resistanceLeader_F","V_RebreatherIA","V_TacChestrig_cbr_F","V_HarnessOGL_ghex_F","V_BandollierB_ghex_F"];
-            if(_item in _vests) then {
-		    	removeVest _player;
-		    	systemChat "Жилеты противника запрещены";
-		    	_catched = true;
-		    };	
-		};
-	}];
-};
-
-// hide arsenal load buttons for partizans
-if (playerSide == resistance) then {
+	player addEventHandler ["InventoryClosed", {
+	    [(_this select 0)] call QS_fnc_applyRestrictionsWest;
+    }];
+    player addEventHandler ["ContainerClosed", {
+	    [(_this select 1)] call QS_fnc_applyRestrictionsWest;
+    }];
+    player addEventHandler ["Take", {
+	    [(_this select 0)] call QS_fnc_applyRestrictionsWest;
+    }];
+    [missionNamespace, "arsenalClosed", {
+        if (playerSide == west) then {
+           [player] call QS_fnc_applyRestrictionsWest;
+        };        
+    }] call BIS_fnc_addScriptedEventHandler;
     [missionNamespace, "arsenalOpened", {
         disableSerialization;
         _display = _this select 0;
-        _display displayAddEventHandler ["KeyDown", "if ((_this select 1) in [19,29]) then {true}"];
+        _display displayAddEventHandler ["KeyDown", "if ((_this select 1) in [19,24,29,31,46,47]) then {true}"];
         {
-            ( _display displayCtrl _x ) ctrlSetText "Disabled";
-            ( _display displayCtrl _x ) ctrlSetTextColor [ 1, 0, 0, 0.5 ];
+            ( _display displayCtrl _x ) ctrlSetText "";
             ( _display displayCtrl _x ) ctrlRemoveAllEventHandlers "buttonclick";
-        }forEach [ 44146, 44147, 44150 ];
+        } forEach [ 44150 ];
+    }] call BIS_fnc_addScriptedEventHandler;
+};
+
+// hide arsenal load buttons for partizans and add restrictions
+if (playerSide == resistance) then {
+	player addEventHandler ["InventoryClosed", {
+	    [(_this select 0)] call QS_fnc_applyRestrictionsResistance;
+    }];
+    player addEventHandler ["ContainerClosed", {
+	    [(_this select 1)] call QS_fnc_applyRestrictionsResistance;
+    }];
+    player addEventHandler ["Take", {
+	    [(_this select 0)] call QS_fnc_applyRestrictionsResistance;
+    }];
+    [missionNamespace, "arsenalClosed", {
+        if (playerSide == resistance) then {
+           [player] call QS_fnc_applyRestrictionsResistance;
+        };        
+    }] call BIS_fnc_addScriptedEventHandler;
+    [missionNamespace, "arsenalOpened", {
+        disableSerialization;
+        _display = _this select 0;
+        _display displayAddEventHandler ["KeyDown", "if ((_this select 1) in [19,24,29,31,46,47]) then {true}"];
+        {
+            ( _display displayCtrl _x ) ctrlSetText "";
+            ( _display displayCtrl _x ) ctrlRemoveAllEventHandlers "buttonclick";
+        } forEach [ 44146, 44147, 44150 ];
     }] call BIS_fnc_addScriptedEventHandler;
 };
 

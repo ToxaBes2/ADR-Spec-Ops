@@ -120,6 +120,8 @@ _myBox = _this select 0;
 //--- Вещи
 "FirstAidKit",
 "I_UavTerminal",
+"ItemMap",
+"ItemGPS",
 "ItemCompass",
 "ItemMap",
 "ItemRadio",

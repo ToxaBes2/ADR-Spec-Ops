@@ -7,6 +7,8 @@ class QS
 		class AOenemy {};
 		class AOminefield {};
 		class AirbaseDefense {};
+		class applyRestrictionsWest {};
+		class applyRestrictionsResistance {};
 		class baseDefense {};
 		class clearItemsBase {};
 		class DeleteEnemyEAST {};
