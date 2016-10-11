@@ -84,7 +84,7 @@ _allowedBackpacks = ["B_Carryall_cbr","B_Carryall_oli","B_Carryall_khk","B_Carry
 "B_AssaultPack_rgr","B_AssaultPack_cbr","B_AssaultPack_sgg","B_AssaultPack_khk","B_AssaultPack_blk","B_AssaultPack_mcamo","B_AssaultPackG",
 "B_AssaultPack","B_Mortar_01_support_F","B_HMG_01_support_F","B_HMG_01_support_high_F","B_Mortar_01_weapon_F","B_AA_01_weapon_F",
 "B_AT_01_weapon_F","B_GMG_01_high_weapon_F","B_HMG_01_high_weapon_F","B_GMG_01_weapon_F","B_HMG_01_weapon_F","B_ViperLightHarness_oli_F",
-"B_ViperLightHarness_blk_F","B_ViperHarness_oli_F","B_ViperHarness_khk_F","B_ViperHarness_blk_F","B_Bergen_mcamo_F"];
+"B_ViperLightHarness_blk_F","B_ViperHarness_oli_F","B_ViperHarness_khk_F","B_ViperHarness_blk_F","B_Bergen_mcamo_F","B_AssaultPack_mcamo_AT","B_AssaultPack_rgr_Medic","B_Kitbag_mcamo_Eng"];
 
 // VESTS
 _allowedVests = ["V_PlateCarrier1_rgr","V_PlateCarrier2_rgr","V_PlateCarrier3_rgr","V_PlateCarrierGL_rgr","V_PlateCarrier1_blk","V_PlateCarrierSpec_rgr",
