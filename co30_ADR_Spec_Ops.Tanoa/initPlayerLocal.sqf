@@ -72,6 +72,11 @@ if (typeOf player in ["B_Helipilot_F", "B_T_Helipilot_F"]) then {
 	player addBackpack "B_AssaultPack_sgg";
 	player addItemToBackpack "ToolKit";
 
+	player unassignItem "NVGoggles";
+    player removeItem "NVGoggles";
+    player addItem "NVGoggles_tna_F";
+    player assignItem "NVGoggles_tna_F";
+
 	// check hours on server for become a pilot
 	0 cutText["Проверка игрового времени...", "BLACK FADED"];
     0 cutFadeOut 9999999;
