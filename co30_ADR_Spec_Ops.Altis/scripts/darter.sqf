@@ -23,9 +23,10 @@ createVehicleCrew _uav;
 [_uav] spawn {
     _uav = _this select 0;
     while {alive _uav} do {
-        sleep 60;
-        if (fuel _uav < 0.05) exitWith {
-        	_uav setDamage 1;
+        sleep 30;
+        if (fuel _uav <= 0.1) exitWith {
+            _uav setDamage 1;
+            deleteVehicle _uav;
         }; 
     };       	
 };
