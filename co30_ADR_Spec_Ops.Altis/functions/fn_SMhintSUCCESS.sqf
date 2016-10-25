@@ -27,8 +27,7 @@ _smRewards =
 	["Y-32 Xi'an", "O_T_VTOL_02_vehicle_F"]
 ];
 
-_smMarkerList =
-["smReward1", "smReward2", "smReward3", "smReward4", "smReward5", "smReward6", "smReward7", "smReward8", "smReward9", "smReward10", "smReward11", "smReward12", "smReward13", "smReward14", "smReward15", "smReward16", "smReward17", "smReward18", "smReward19", "smReward20", "smReward21", "smReward22", "smReward23", "smReward24", "smReward25", "smReward26", "smReward27"];
+_smMarkerList = ["smReward1", "smReward2", "smReward3", "smReward4", "smReward5", "smReward6", "smReward7", "smReward8", "smReward9", "smReward10", "smReward11", "smReward12", "smReward13", "smReward14", "smReward15", "smReward16", "smReward17", "smReward18", "smReward19", "smReward20", "smReward21", "smReward22", "smReward23", "smReward24", "smReward25", "smReward26", "smReward27"];
 
 _veh = selectRandom _smRewards;
 
@@ -90,6 +89,13 @@ call {
 		_reward removeMagazine ("6Rnd_155mm_Mo_AT_mine");
 		_reward removeMagazine ("6Rnd_155mm_Mo_mine");
 	};
+
+	if (_reward isKindOf "O_Heli_Attack_02_black_F") then {
+        _reward removeMagazineTurret ["38Rnd_80mm_rockets", [0]];
+        _reward removeWeaponTurret ["rockets_Skyfire", [0]];
+        _reward addMagazineTurret ["38Rnd_80mm_rockets", [-1]];
+        _reward addWeaponTurret ["rockets_Skyfire", [-1]];
+    };
 };
 
 // Setting reward vehicle timmer.

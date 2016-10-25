@@ -89,6 +89,13 @@ call {
 		_reward removeMagazine ("6Rnd_155mm_Mo_AT_mine");
 		_reward removeMagazine ("6Rnd_155mm_Mo_mine");
 	};
+
+	if (_reward isKindOf "O_Heli_Attack_02_black_F") then {
+        _reward removeMagazineTurret ["38Rnd_80mm_rockets", [0]];
+        _reward removeWeaponTurret ["rockets_Skyfire", [0]];
+        _reward addMagazineTurret ["38Rnd_80mm_rockets", [-1]];
+        _reward addWeaponTurret ["rockets_Skyfire", [-1]];
+    };
 };
 
 // Setting reward vehicle timmer.
