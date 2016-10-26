@@ -228,7 +228,7 @@ player createDiaryRecord ["teamspeak",
 
 player createDiaryRecord ["changelog",
 [
-"ADR:Spec Ops Altis v0.0.7 (27.10.2016)",
+"ADR:Spec Ops Altis v0.0.7 (27.10.16)",
 "
 <br /><font color='#3E9D3F'>Добавлено</font>
 <br />- аванпост у основного задания
@@ -270,7 +270,7 @@ player createDiaryRecord ["changelog",
 //Журнал изменений от ADR
 player createDiaryRecord ["changelog",
 [
-"ADR:Spec Ops v0.0.6 (12.08.2016)",
+"ADR:Spec Ops v0.0.6 (12.08.16)",
 "
 <br /><font color='#3E9D3F'>Добавлено</font>
 <br />- новая техника из обновления Apex
@@ -309,7 +309,7 @@ player createDiaryRecord ["changelog",
 
 player createDiaryRecord ["changelog",
 [
-"ADR:Spec Ops v0.0.5 (05.06.2016)",
+"ADR:Spec Ops v0.0.5 (05.06.16)",
 "
 <br /><font color='#3E9D3F'>Добавлено</font>
 <br />- С4 (подрывной заряд) можно прикреплять к поверхностям
@@ -349,7 +349,7 @@ player createDiaryRecord ["changelog",
 
 player createDiaryRecord ["changelog",
 [
-"ADR:Spec Ops v0.0.4 (18.05.2016)",
+"ADR:Spec Ops v0.0.4 (18.05.16)",
 "
 <br /><font color='#3E9D3F'>Добавлено</font>
 <br />- на спецоперации Заложники ботам добавлены ПНВ
@@ -382,7 +382,7 @@ player createDiaryRecord ["changelog",
 
 player createDiaryRecord ["changelog",
 [
-"ADR:Spec Ops v0.0.3 (23.04.2016)",
+"ADR:Spec Ops v0.0.3 (23.04.16)",
 "
 <br /><font color='#3E9D3F'>Добавлено</font>
 <br />- новые места (города) в дополнительных миссиях
@@ -419,7 +419,7 @@ player createDiaryRecord ["changelog",
 
 player createDiaryRecord ["changelog",
 [
-"ADR:Spec Ops v0.0.2 (08.04.2016)",
+"ADR:Spec Ops v0.0.2 (08.04.16)",
 "
 <br /><font color='#3E9D3F'>Добавлено</font>
 <br />- приоритетные цели с небольшим шансом появляются вместе с основной задачей 
@@ -455,7 +455,7 @@ player createDiaryRecord ["changelog",
 
 player createDiaryRecord ["changelog",
 [
-"ADR:Spec Ops v0.0.1 (01.04.2016)",
+"ADR:Spec Ops v0.0.1 (01.04.16)",
 "
 <br /><font color='#3E9D3F'>Добавлено</font>
 <br />- в сутках 2 ночи длиной в час, остальное время утро-день-вечер

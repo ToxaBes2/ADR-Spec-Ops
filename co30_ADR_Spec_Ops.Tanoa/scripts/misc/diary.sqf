@@ -229,7 +229,7 @@ player createDiaryRecord ["teamspeak",
 //Журнал изменений от ADR
 player createDiaryRecord ["changelog",
 [
-"ADR:Spec Ops Tanoa v0.0.3 (27.10.2016)",
+"ADR:Spec Ops Tanoa v0.0.3 (27.10.16)",
 "
 <br /><font color='#3E9D3F'>Добавлено</font>
 <br />- аванпост у основного задания
@@ -274,7 +274,7 @@ player createDiaryRecord ["changelog",
 
 player createDiaryRecord ["changelog",
 [
-"ADR:Spec Ops Tanoa v0.0.2 (30.08.2016)",
+"ADR:Spec Ops Tanoa v0.0.2 (30.08.16)",
 "
 <br /><font color='#3E9D3F'>Добавлено</font>
 <br />- новые лодки на каждой стороне главного острова, на остальных островах по одной лодке
@@ -306,7 +306,7 @@ player createDiaryRecord ["changelog",
 
 player createDiaryRecord ["changelog",
 [
-"ADR:Spec Ops Tanoa v0.0.1 (11.07.2016)",
+"ADR:Spec Ops Tanoa v0.0.1 (11.07.16)",
 "
 <br /><font color='#3E9D3F'>Добавлено</font>
 <br />- миссия портированна на остров Tanoa
