@@ -148,12 +148,12 @@ _myBox = _this select 0;
 "V_TacVest_brn",
 "V_TacVest_oli",
 "V_TacVest_blk",
-"V_TacVest_camo",
-"V_TacVest_blk_POLICE",
+//"V_TacVest_camo",
+//"V_TacVest_blk_POLICE",
 "V_TacVestIR_blk",
 "V_TacVestCamo_khk",
 "V_RebreatherB",
-"V_PlateCarrier_Kerry",
+//"V_PlateCarrier_Kerry",
 "V_PlateCarrierL_CTRG",
 "V_PlateCarrierH_CTRG",
 "V_PlateCarrierGL_blk",
@@ -169,7 +169,7 @@ _myBox = _this select 0;
 "V_TacChestrig_grn_F",
 "V_TacChestrig_cbr_F",
 "V_TacChestrig_oli_F",
-
+"V_PlateCarrier2_blk",
 
 //--- Жилеты зеленых
 //"V_PlateCarrierIA1_dgtl",
@@ -197,6 +197,8 @@ _myBox = _this select 0;
 "H_HelmetSpecB_blk",
 "H_HelmetB_grass",
 "H_HelmetB_snakeskin",
+"H_HelmetSpecB_snakeskin",
+"H_HelmetSpecB_sand",
 "H_HelmetB_desert",
 "H_HelmetB_black",
 "H_HelmetB_sand",
@@ -254,6 +256,7 @@ _myBox = _this select 0;
 //--- Кепки,банданы
 //"H_Cap_red",
 //"H_Cap_blu",
+"H_Cap_usblack",
 "H_Cap_oli",
 "H_Cap_oli_hs",
 "H_Cap_headphones",
@@ -359,13 +362,13 @@ _myBox = _this select 0;
 "muzzle_snds_58_blk_F",
 "muzzle_snds_B_snd_F",
 "muzzle_snds_65_TI_blk_F",
-"muzzle_snds_65_TI_hex_F",
+//"muzzle_snds_65_TI_hex_F",
 "muzzle_snds_H_snd_F",
 //"muzzle_snds_H_MG_khk_F",
 //"muzzle_snds_m_khk_F",
 //"muzzle_snds_58_wdm_F",
 //"muzzle_snds_H_khk_F",
-//"muzzle_snds_B_khk_F",
+"muzzle_snds_B_khk_F",
 //"muzzle_snds_65_TI_ghex_F",
 
 //Сошки
@@ -374,7 +377,7 @@ _myBox = _this select 0;
 "bipod_01_F_mtp",
 "bipod_02_F_blk",
 "bipod_02_F_tan",
-"bipod_02_F_hex",
+//"bipod_02_F_hex",
 "bipod_03_F_blk",
 "bipod_03_F_oli",
 //Tanoa
@@ -400,7 +403,7 @@ _myBox = _this select 0;
 "optic_AMS_khk",
 "optic_AMS_snd",
 "optic_KHS_blk",
-"optic_KHS_hex",
+//"optic_KHS_hex",
 "optic_KHS_old",
 "optic_KHS_tan",
 //Tanoa

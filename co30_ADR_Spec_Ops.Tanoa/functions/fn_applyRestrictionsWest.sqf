@@ -23,6 +23,7 @@ _player = _this select 0;
 #define ITEM_MSG "Предметы противника запрещены"
 #define UNIFORM_PILOT_MSG "Эта униформа доступна только пилотам"
 #define HEADGEAR_PILOT_MSG "Этот шлем доступен только пилотам"
+#define RESTRICTED_MSG "Оружие и приспособления в данной расцветке запрещены"
 
 // UAV TERMINAL
 _uavOperator = ["B_engineer_F", "B_T_Engineer_F"];
@@ -59,7 +60,7 @@ _grenadierWeapons = ["arifle_Katiba_GL_F","arifle_TRG21_GL_F","arifle_TRG21_GL_M
 
 // COMMANDERS
 _commanders = ["B_Soldier_SL_F","B_T_Soldier_SL_F"];
-_commanderItems = ["Laserdesignator","Laserdesignator_02","Laserdesignator_03","Laserdesignator_01_khk_F","Laserdesignator_02_ghex_F"];
+_commanderItems = ["Laserdesignator_01_khk_F"];
 
 // THERMAL
 _ThermalOpt = ["optic_Nightstalker","optic_tws","optic_tws_mg"];
@@ -71,6 +72,18 @@ _marksmanOpticsItems = ["optic_KHS_blk","optic_KHS_hex","optic_KHS_old","optic_K
 
 _ghillieGroups = ["B_soldier_M_F","B_sniper_F","B_T_soldier_M_F","B_T_Sniper_F"];
 _ghillieItems = ["U_B_GhillieSuit","U_O_GhillieSuit","U_I_GhillieSuit","U_B_FullGhillie_lsh","U_B_FullGhillie_sard","U_B_FullGhillie_ard","U_O_FullGhillie_lsh","U_O_FullGhillie_sard","U_O_FullGhillie_ard","U_I_FullGhillie_lsh","U_I_FullGhillie_sard","U_I_FullGhillie_ard","U_B_T_FullGhillie_tna_F","U_B_T_Sniper_F","U_O_T_FullGhillie_tna_F","U_O_T_Sniper_F"];
+
+// RESTRICTED PRIMARY WEAPON
+_primaryWeaponRestricted = ["arifle_MXC_F","arifle_MX_F","arifle_MX_GL_F","arifle_MX_SW_F","arifle_MXM_F","srifle_DMR_04_Tan_F","srifle_DMR_07_hex_F","srifle_DMR_07_ghex_F","srifle_DMR_05_hex_F","srifle_DMR_05_tan_f","srifle_GM6_ghex_F","srifle_GM6_camo_F","srifle_LRR_camo_F","srifle_DMR_02_sniper_F","srifle_DMR_03_multicam_F","srifle_DMR_03_tan_F","arifle_CTAR_hex_F","arifle_CTAR_ghex_F","arifle_CTAR_GL_hex_F","arifle_CTAR_GL_ghex_F","arifle_CTARS_hex_F","arifle_CTARS_ghex_F","arifle_SPAR_01_snd_F","arifle_SPAR_01_GL_snd_F","arifle_SPAR_02_snd_F","arifle_SPAR_03_snd_F","arifle_ARX_hex_F","arifle_ARX_ghex_F","MMG_01_hex_F","MMG_02_sand_F","MMG_02_camo_F","arifle_Mk20_F","arifle_Mk20_GL_F","arifle_Mk20C_F"];
+
+// RESTRICTED HEADGUN
+_headgunRestricted = ["hgun_Pistol_Signal_F","hgun_P07_F"];
+
+// RESTRICTED SECONDARY WEAPON
+_secondaryWeaponRestricted = ["launch_RPG32_F""launch_O_Titan_F","launch_O_Titan_ghex_F","launch_B_Titan_F""launch_I_Titan_F","launch_launch_B_Titan_short_F","launch_O_Titan_short_ghex_F","launch_I_Titan_short_F","launch_O_Titan_short_F"];
+
+// RESTRICTED ATTACMENTS
+_restrictedAttachments = ["optic_AMS_snd","optic_Arco","optic_Arco_ghex_F","optic_DMS_ghex_F","optic_ERCO_snd_F""optic_LRPS_ghex_F","optic_KHS_hex","optic_KHS_hex","bipod_02_F_hex""bipod_02_F_tan""bipod_01_F_mtp","bipod_01_F_snd","muzzle_snds_H_MG","muzzle_snds_338_sand""muzzle_snds_m_snd_F""muzzle_snds_58_wdm_F","muzzle_snds_H_snd_F","muzzle_snds_B_snd_F","muzzle_snds_93mmg_tan""muzzle_snds_65_TI_hex_F","muzzle_snds_65_TI_ghex_F"];
 
 // UNIFORM
 _allowedUniform = ["U_B_HeliPilotCoveralls","U_B_PilotCoveralls","U_B_Wetsuit","U_B_CTRG_Soldier_2_F","U_B_CTRG_Soldier_3_F","U_B_CTRG_Soldier_F",
@@ -278,3 +291,24 @@ _assignedItems = assignedItems _player;
 		[format ["<t color='#F44336' size = '.55'>%1</t>", ITEM_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
     };
 } forEach _assignedItems;
+
+// Restricted weapon
+if (({_player hasWeapon _x} count _primaryWeaponRestricted) > 0) then {
+    _player removeWeapon (primaryWeapon _player);
+	[format ["<t color='#F44336' size = '.55'>%1</t>", RESTRICTED_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
+};
+if (({_player hasWeapon _x} count _headgunRestricted) > 0) then {
+    _player removeWeapon (handgunWeapon _player);
+	[format ["<t color='#F44336' size = '.55'>%1</t>", RESTRICTED_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
+};
+if (({_player hasWeapon _x} count _secondaryWeaponRestricted) > 0) then {
+    _player removeWeapon (secondaryWeapon _player);
+	[format ["<t color='#F44336' size = '.55'>%1</t>", RESTRICTED_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
+};
+_attachments = primaryWeaponItems _player; 
+{
+    if (_x in _restrictedAttachments) then {
+        _player removePrimaryWeaponItem _x;
+        [format ["<t color='#F44336' size = '.55'>%1</t>", RESTRICTED_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
+    };
+} forEach _attachments;

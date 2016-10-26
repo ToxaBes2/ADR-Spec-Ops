@@ -23,17 +23,18 @@ _player = _this select 0;
 #define ITEM_MSG "Предметы противника запрещены"
 #define UNIFORM_PILOT_MSG "Эта униформа доступна только пилотам"
 #define HEADGEAR_PILOT_MSG "Этот шлем доступен только пилотам"
+#define RESTRICTED_MSG "Оружие и приспособления в данной расцветке запрещены"
 
 // UAV TERMINAL
 _uavOperator = ["B_engineer_F", "B_T_Engineer_F"];
 
 // AT / MISSILE LAUNCHERS
 _missileSoldiers = ["B_soldier_AT_F","B_T_Soldier_AT_F"];
-_missileSpecialised = ["launch_B_Titan_F","launch_O_Titan_F","launch_I_Titan_F","launch_B_Titan_short_F","launch_O_Titan_short_F","launch_I_Titan_short_F","launch_B_Titan_tna_F","launch_B_Titan_short_tna_F","launch_O_Titan_ghex_F","launch_O_Titan_short_ghex_F"];
+_missileSpecialised = ["launch_B_Titan_F","launch_B_Titan_short_F"];
 
 // SMALL MISSILE LAUNCHERS
 _missileSmallSoldiers = ["B_soldier_AT_F","B_T_Soldier_AT_F","B_Soldier_SL_F","B_T_Soldier_SL_F"];
-_missileSmallSpecialised = ["launch_RPG32_F","launch_NLAW_F","launch_RPG32_ghex_F","launch_RPG7_F"];
+_missileSmallSpecialised = ["launch_RPG32_F","launch_NLAW_F","launch_RPG7_F"];
 
 // SNIPER RIFLES
 _snipers = ["B_sniper_F","B_T_Sniper_F"];
@@ -59,7 +60,7 @@ _grenadierWeapons = ["arifle_Katiba_GL_F","arifle_TRG21_GL_F","arifle_TRG21_GL_M
 
 // COMMANDERS
 _commanders = ["B_Soldier_SL_F","B_T_Soldier_SL_F"];
-_commanderItems = ["Laserdesignator","Laserdesignator_02","Laserdesignator_03","Laserdesignator_01_khk_F","Laserdesignator_02_ghex_F"];
+_commanderItems = ["Laserdesignator"];
 
 // THERMAL
 _ThermalOpt = ["optic_Nightstalker","optic_tws","optic_tws_mg"];
@@ -71,6 +72,21 @@ _marksmanOpticsItems = ["optic_KHS_blk","optic_KHS_hex","optic_KHS_old","optic_K
 
 _ghillieGroups = ["B_soldier_M_F","B_sniper_F","B_T_soldier_M_F","B_T_Sniper_F"];
 _ghillieItems = ["U_B_GhillieSuit","U_O_GhillieSuit","U_I_GhillieSuit","U_B_FullGhillie_lsh","U_B_FullGhillie_sard","U_B_FullGhillie_ard","U_O_FullGhillie_lsh","U_O_FullGhillie_sard","U_O_FullGhillie_ard","U_I_FullGhillie_lsh","U_I_FullGhillie_sard","U_I_FullGhillie_ard","U_B_T_FullGhillie_tna_F","U_B_T_Sniper_F","U_O_T_FullGhillie_tna_F","U_O_T_Sniper_F"];
+
+// RESTRICTED PRIMARY WEAPON
+_primaryWeaponRestricted = ["arifle_MXC_khk_F","arifle_MX_khk_F","arifle_MX_GL_khk_F","arifle_MX_SW_khk_F","arifle_MXM_khk_F","srifle_DMR_07_hex_F","srifle_DMR_07_ghex_F","srifle_DMR_05_hex_F","srifle_GM6_ghex_F","srifle_GM6_camo_F","srifle_LRR_tna_F","arifle_CTAR_hex_F","arifle_CTAR_ghex_F","arifle_CTAR_GL_hex_F","arifle_CTAR_GL_ghex_F","arifle_CTARS_hex_F","arifle_CTARS_ghex_F","arifle_SPAR_01_khk_F","arifle_SPAR_01_GL_khk_F","arifle_SPAR_02_khk_F","arifle_SPAR_03_khk_F","arifle_ARX_hex_F","arifle_ARX_ghex_F","MMG_01_hex_F","arifle_Mk20_F","arifle_Mk20_GL_F","arifle_Mk20C_F"];
+
+// RESTRICTED HEADGUN
+_headgunRestricted = ["hgun_P07_khk_F","hgun_Pistol_Signal_F"];
+
+// RESTRICTED SECONDARY WEAPON
+_secondaryWeaponRestricted = ["launch_RPG32_ghex_F","launch_O_Titan_F","launch_O_Titan_ghex_F","launch_B_Titan_tna_F","launch_I_Titan_F","launch_O_Titan_short_ghex_F","launch_I_Titan_short_F","launch_O_Titan_short_F","launch_B_Titan_short_tna_F"];
+
+// RESTRICTED ATTACMENTS
+_restrictedAttachments = ["optic_KHS_hex","optic_Arco_ghex_F","optic_DMS_ghex_F","optic_LRPS_ghex_F","optic_LRPS_tna_F","optic_Hamr_khk_F","optic_SOS_khk_F","muzzle_snds_H_MG_khk_F","muzzle_snds_m_khk_F","muzzle_snds_58_wdm_F","muzzle_snds_H_khk_F","muzzle_snds_65_TI_hex_F","muzzle_snds_65_TI_ghex_F","bipod_02_F_hex"];
+
+// RESTRICTED GOOGLES
+_restrictedGoogles = ["G_Balaclava_TI_tna_F","G_Balaclava_TI_G_tna_F"];
 
 // UNIFORM
 _allowedUniform = ["U_B_CombatUniform_mcam","U_B_CombatUniform_mcam_tshirt","U_B_CombatUniform_mcam_vest","U_B_GhillieSuit",
@@ -88,10 +104,10 @@ _allowedBackpacks = ["B_Carryall_cbr","B_Carryall_oli","B_Carryall_khk","B_Carry
 
 // VESTS
 _allowedVests = ["V_PlateCarrier1_rgr","V_PlateCarrier2_rgr","V_PlateCarrier3_rgr","V_PlateCarrierGL_rgr","V_PlateCarrier1_blk","V_PlateCarrierSpec_rgr",
-"V_Chestrig_khk","V_Chestrig_rgr","V_Chestrig_blk","V_Chestrig_oli","V_TacVest_khk","V_TacVest_brn","V_TacVest_oli","V_TacVest_blk","V_TacVest_camo",
-"V_TacVest_blk_POLICE","V_TacVestIR_blk","V_TacVestCamo_khk","V_RebreatherB","V_PlateCarrier_Kerry","V_PlateCarrierL_CTRG","V_PlateCarrierH_CTRG",
+"V_Chestrig_khk","V_Chestrig_rgr","V_Chestrig_blk","V_Chestrig_oli","V_TacVest_khk","V_TacVest_brn","V_TacVest_oli","V_TacVest_blk",
+"V_TacVestIR_blk","V_TacVestCamo_khk","V_RebreatherB","V_PlateCarrierL_CTRG","V_PlateCarrierH_CTRG",
 "V_PlateCarrierGL_blk","V_PlateCarrierGL_mtp","V_PlateCarrierSpec_blk","V_PlateCarrierSpec_mtp","V_PlateCarrier1_rgr_noflag_F",
-"V_PlateCarrier2_rgr_noflag_F","V_TacChestrig_grn_F","V_TacChestrig_cbr_F","V_TacChestrig_oli_F"];
+"V_PlateCarrier2_rgr_noflag_F","V_TacChestrig_grn_F","V_TacChestrig_cbr_F","V_TacChestrig_oli_F","V_PlateCarrier2_blk"];
 
 // HEADGEAR
 _allowedHeadgear = ["H_HelmetB","H_HelmetB_camo","H_HelmetB_paint","H_HelmetB_light","H_HelmetB_light","H_Booniehat_indp","H_Booniehat_mcamo",
@@ -102,7 +118,8 @@ _allowedHeadgear = ["H_HelmetB","H_HelmetB_camo","H_HelmetB_paint","H_HelmetB_li
 "H_BandMask_demon","H_Beret_gen_F","H_Cap_oli","H_Cap_oli_hs","H_Cap_headphones","H_Cap_tan","H_Cap_blk","H_Cap_tan_specops_US","H_Cap_khaki_specops_UK",
 "H_Cap_grn","H_MilCap_mcamo","H_MilCap_rucamo","H_Bandanna_khk","H_Bandanna_khk_hs","H_Bandanna_cbr","H_Bandanna_sgg","H_Bandanna_gry","H_Bandanna_mcamo",
 "H_Shemag_khk","H_Shemag_tan","H_Beret_blk","H_Beret_blk_POLICE","H_Beret_red","H_Beret_grn","H_Beret_grn_SF","H_Beret_brn_SF","H_Beret_02",
-"H_Beret_Colonel","H_Watchcap_blk","H_Watchcap_khk","H_Watchcap_camo","H_Watchcap_sgg","H_TurbanO_blk"];
+"H_Beret_Colonel","H_Watchcap_blk","H_Watchcap_khk","H_Watchcap_camo","H_Watchcap_sgg","H_TurbanO_blk","H_Cap_usblack","H_HelmetSpecB_snakeskin",
+"H_HelmetSpecB_sand"];
 
 // ITEMS
 _allowedItems = ["ItemMap","ItemRadio","ItemGPS","ItemCompass","ItemWatch","G_Spectacles","B_UavTerminal","NVGoggles","NVGoggles_INDEP","NVGoggles_OPFOR",
@@ -283,3 +300,29 @@ _assignedItems = assignedItems _player;
 		[format ["<t color='#F44336' size = '.55'>%1</t>", ITEM_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
     };
 } forEach _assignedItems;
+
+// Restricted weapon
+if (({_player hasWeapon _x} count _primaryWeaponRestricted) > 0) then {
+    _player removeWeapon (primaryWeapon _player);
+	[format ["<t color='#F44336' size = '.55'>%1</t>", RESTRICTED_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
+};
+if (({_player hasWeapon _x} count _headgunRestricted) > 0) then {
+    _player removeWeapon (handgunWeapon _player);
+	[format ["<t color='#F44336' size = '.55'>%1</t>", RESTRICTED_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
+};
+if (({_player hasWeapon _x} count _secondaryWeaponRestricted) > 0) then {
+    _player removeWeapon (secondaryWeapon _player);
+	[format ["<t color='#F44336' size = '.55'>%1</t>", RESTRICTED_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
+};
+_attachments = primaryWeaponItems _player; 
+{
+    if (_x in _restrictedAttachments) then {
+        _player removePrimaryWeaponItem _x;
+        [format ["<t color='#F44336' size = '.55'>%1</t>", RESTRICTED_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
+    };
+} forEach _attachments;
+_goggles = goggles _player;
+if (_goggles in _restrictedGoogles) then {
+    removeGoggles _player;
+    [format ["<t color='#F44336' size = '.55'>%1</t>", RESTRICTED_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
+};

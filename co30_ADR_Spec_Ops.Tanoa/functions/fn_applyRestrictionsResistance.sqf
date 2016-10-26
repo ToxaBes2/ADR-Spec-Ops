@@ -37,7 +37,7 @@ _ThermalOpt = ["optic_Nightstalker","optic_tws","optic_tws_mg"];
 _ThermalTeam = [];
 
 // MARKSMAN OPTICS
-_marksmanOpticsGrp = ["I_G_Soldier_AR_F","I_G_engineer_F"];
+_marksmanOpticsGrp = ["I_G_engineer_F","I_C_Soldier_Para_8_F"];
 _marksmanOpticsItems = ["optic_KHS_blk","optic_KHS_hex","optic_KHS_old","optic_KHS_tan","optic_AMS","optic_AMS_khk","optic_AMS_snd","optic_SOS","optic_LRPS","optic_LRPS_ghex_F","optic_LRPS_tna_F","optic_SOS_khk_F"];
 
 _ghillieGroups = ["I_G_engineer_F","I_C_Soldier_Para_8_F"];
