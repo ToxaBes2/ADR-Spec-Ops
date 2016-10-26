@@ -176,3 +176,6 @@ if (!isNil {BTC_grain}) then {ppEffectDestroy BTC_grain;};
 
 // Don't show submenu actions on partizan arsenal box
 adr_partizan_submenu = false;
+
+// Add player to Zeus curators as editable objects
+[player] remoteExec ["QS_fnc_addCurators", 2];

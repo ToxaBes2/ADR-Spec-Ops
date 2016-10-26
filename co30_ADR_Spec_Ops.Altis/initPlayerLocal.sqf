@@ -216,10 +216,8 @@ if (playerSide == resistance) then {
     }] call BIS_fnc_addScriptedEventHandler;
 };
 
-// Add all players to Zeus curators as editable objects
-{
-	_x addCuratorEditableObjects [[player], false];
-} count allCurators;
+// Add player to Zeus curators as editable objects
+[player] remoteExec ["QS_fnc_addCurators", 2];
 
 // PVEHs
 "showNotification" addPublicVariableEventHandler {
