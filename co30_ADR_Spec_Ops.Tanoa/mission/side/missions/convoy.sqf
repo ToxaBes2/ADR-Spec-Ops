@@ -77,10 +77,15 @@ sideMissionUp = true; publicVariable "sideMissionUp";
 
 // wait for player in zone, then wait a bit and spawn convoy
 canStart = false;
-_trig = createTrigger ["EmptyDetector", _flatPos, false];
-_trig setTriggerArea [150, 150, 0, false];
-_trig setTriggerActivation ["WEST", "PRESENT", false];
-_trig setTriggerStatements ["this", "canStart = true;", ""];
+_trig1 = createTrigger ["EmptyDetector", _flatPos, false];
+_trig1 setTriggerArea [150, 150, 0, false];
+_trig1 setTriggerActivation ["WEST", "PRESENT", false];
+_trig1 setTriggerStatements ["this", "canStart = true;", ""];
+
+_trig2 = createTrigger ["EmptyDetector", _flatPos, false];
+_trig2 setTriggerArea [150, 150, 0, false];
+_trig2 setTriggerActivation ["GUER", "PRESENT", false];
+_trig2 setTriggerStatements ["this", "canStart = true;", ""];
 while {!canStart} do {
     sleep 5;
 };
@@ -598,6 +603,8 @@ while { sideMissionUp } do {
             };
             sleep 0.5;
         } forEach _enemiesArray;
+        deleteVehicle _trig1;
+        deleteVehicle _trig2;
     };
     sleep 3;
 };
