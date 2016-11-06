@@ -20,8 +20,12 @@ if (_diff > 0) exitWith {
 if (_status == 1) then {
     _player setVariable ["DIPLOMACY", 1];    
     ["<t color='#7FDA0B' size = '.48'>Вы выбрали перемирие с регулярной армией и видимы на их GPS-устройствах.</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
+    hqSideChat = format ["Партизан %1 объявил перемирие с регулярной армией", name _player];
+    publicVariable "hqSideChat"; [west, "HQ"] sideChat hqSideChat;
 } else {
     _player setVariable ["DIPLOMACY", 0];
     ["<t color='#F44336' size = '.48'>Вы выбрали войну с регулярной армией и пропали с их GPS-устройств.</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
+    hqSideChat = format ["Партизан %1 объявил войну регулярной армии", name _player];
+    publicVariable "hqSideChat"; [west, "HQ"] sideChat hqSideChat;
 };
 _player setVariable ["DIPLOMACY_TIME", time];
