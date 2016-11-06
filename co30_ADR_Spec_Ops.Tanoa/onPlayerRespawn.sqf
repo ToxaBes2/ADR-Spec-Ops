@@ -104,6 +104,10 @@ if (playerSide == resistance) then {
 
 	// Open unconscious players inventory
     player addAction ["<t color='#FFC107'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\uniform_ca.paa' size='1.0'/> Обыскать</t>",{player action ["Gear", cursorTarget]},[],7,true,true,"",'((vehicle player) == player && (cursorObject getVariable "BTC_need_revive") == 1 && (player distance cursorObject) < 2 && animationState player != "ainvpknlmstpsnonwrfldnon_medic0s")'];
+
+    // Diplomacy actions
+    player addAction ["<img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\gps_ca.paa' size='1.0'/> Дипломатия: <t color='#23D80E'>перемирие</t>", "scripts\diplomacy.sqf", 1, -100, false, true, "", '_target getVariable ["DIPLOMACY",0] != 1'];
+    player addAction ["<img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\gps_ca.paa' size='1.0'/> Дипломатия: <t color='#F44336'>война</t>", "scripts\diplomacy.sqf", 0, -100, false, true, "", '_target getVariable ["DIPLOMACY",0] == 1'];
 };
 
 // Deal with static map markers

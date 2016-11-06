@@ -164,7 +164,7 @@ QS_fnc_iconDrawGPS = compileFinal "
 	_textOffset = 'right';
 	{
 		_v = vehicle _x;
-		if ((side _v == playerSide) || (playerSide == west && _v isKindOf 'B_Soldier_base_F') || (playerSide == resistance && _v isKindOf 'I_G_Soldier_base_F')) then {
+		if ((side _v == playerSide) || (playerSide == west && side _v == resistance && _x getVariable ['DIPLOMACY', 0] == 1) || (playerSide == west && _v isKindOf 'B_Soldier_base_F') || (playerSide == resistance && _v isKindOf 'I_G_Soldier_base_F')) then {
 			if ((_x distance player) < 300) then {
 				_iconType = [_v] call QS_fnc_iconType;
 				_color = [_x] call QS_fnc_iconColor;	
