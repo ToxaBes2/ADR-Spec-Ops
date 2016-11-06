@@ -34,6 +34,7 @@ _ghosthawks = ["B_Heli_Transport_01_camo_F", "B_CTRG_Heli_Transport_01_tropic_F"
              "B_Heli_Transport_01_F"];														// Ghosthawks
 _hurons = ["B_Heli_Transport_03_F"];														// Hurons
 _blackfishes = ["B_T_VTOL_01_armed_F","B_T_VTOL_01_infantry_F","B_T_VTOL_01_vehicle_F"];	// Blackfish
+_noThermalVision = ["B_Plane_CAS_01_F", "O_Plane_CAS_02_F", "I_Plane_Fighter_03_CAS_F", "I_Plane_Fighter_03_AA_F"];
 
 call {
     if(_t in _taru) exitWith {
@@ -185,6 +186,10 @@ if (_u isKindOf "Air") then {
     if (_currentScanRange > 1000) then {
         _u setVariable ["irScanRangeMax", 1500, true];
     };
+};
+
+if (_t in _noThermalVision) then {
+    _u disableTIEquipment true;
 };
 
 //===== Vehicle Killer monitor system

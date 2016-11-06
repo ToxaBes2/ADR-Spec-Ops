@@ -32,6 +32,7 @@ _hellcat = ["I_Heli_light_03_unarmed_F", "I_Heli_light_03_F"];									// Hellca
 _mohawk = ["I_Heli_Transport_02_F"];															// CH-49 Mohawk
 _ammoTrucks = ["B_Truck_01_ammo_F", "O_Truck_02_Ammo_F", "I_Truck_02_ammo_F"];					// Ammo trucks with 10^12 ammo
 _ammoTrucksTempest = ["O_Truck_03_ammo_F"];														// Ammo trucks with 30 000 ammo
+_noThermalVision = ["B_Plane_CAS_01_F", "O_Plane_CAS_02_F", "I_Plane_Fighter_03_CAS_F", "I_Plane_Fighter_03_AA_F"];
 
 if (_t in _strider) then {
 	_u setObjectTextureGlobal [0, '\A3\soft_f_beta\mrap_03\data\mrap_03_ext_co.paa'];
@@ -111,6 +112,10 @@ if (_u isKindOf "Air") then {
     if (_currentScanRange > 1000) then {
     	_u setVariable ["irScanRangeMax", 1500, true];
     };
+};
+
+if (_t in _noThermalVision) then {
+    _u disableTIEquipment true;
 };
 
 //===== Vehicle Killer monitor system
