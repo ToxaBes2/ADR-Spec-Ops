@@ -1317,6 +1317,7 @@ BTC_player_killed = {
     profileNamespace setVariable ["primary_weapon", primaryWeapon _playerOld];
     profileNamespace setVariable ["primary_items", primaryWeaponItems _playerOld];
     profileNamespace setVariable ["primary_magazine", primaryWeaponMagazine _playerOld];
+    profileNamespace setVariable ["primary_ammo", _playerOld ammo primaryWeapon _playerOld];
     profileNamespace setVariable ["secondary_weapon", secondaryWeapon _playerOld];
     profileNamespace setVariable ["secondary_items", secondaryWeaponItems _playerOld];
     profileNamespace setVariable ["secondary_magazine", secondaryWeaponMagazine _playerOld];
@@ -2302,7 +2303,7 @@ BTC_r_spectator =
 };
 
 BTC_addMissingItems = {
-    private ["_player ","_allItems","_primaryWeapon","_primaryWeaponItems","_primaryWeaponMagazines"];
+    private ["_player ","_allItems","_primaryWeapon","_primaryWeaponItems","_primaryWeaponMagazines","_primaryAmmo"];
     _player = _this select 0;
     if (_player != player) exitWith {};
     sleep 5;
@@ -2321,6 +2322,7 @@ BTC_addMissingItems = {
         _primaryWeapon = profileNamespace getVariable "primary_weapon";
         _primaryWeaponItems = profileNamespace getVariable "primary_items";
         _primaryWeaponMagazines = profileNamespace getVariable "primary_magazine";
+        _primaryAmmo = profileNamespace getVariable "primary_ammo";
         _player addWeaponGlobal _primaryWeapon;
         {
             if (_x != "") then {
@@ -2335,6 +2337,7 @@ BTC_addMissingItems = {
             } forEach _primaryWeaponMagazines;
         };
         _player selectWeapon _primaryWeapon;
+        _player setAmmo [primaryWeapon player, _primaryAmmo];
     } else {
 
         // grenade launcher fix
