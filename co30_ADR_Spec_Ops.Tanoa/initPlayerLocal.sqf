@@ -88,6 +88,11 @@ if (typeOf player in ["B_Helipilot_F", "B_T_Helipilot_F"]) then {
 	player addEventHandler [ "GetInMan", {
 		[_this select 0, _this select 2] spawn QS_fnc_HMDLaserTarget;
 	}];
+
+    // Disable thermal vision on targeting pods during the day
+	player addEventHandler [ "GetInMan", {
+		[_this select 0, _this select 2] spawn QS_fnc_CheckVisionMode;
+	}];
 };
 
 // Client executions

@@ -12,6 +12,7 @@ class QS
 		class applyRestrictionsResistance {};
 		class baseDefense {};
 		class clearItemsBase {};
+		class CheckVisionMode {};
 		class DeleteEnemyEAST {};
 		class EWattack {};
 		class FillBots {};
