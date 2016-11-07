@@ -32,6 +32,8 @@ _hellcat = ["I_Heli_light_03_unarmed_F", "I_Heli_light_03_F"];									// Hellca
 _mohawk = ["I_Heli_Transport_02_F"];															// CH-49 Mohawk
 _ammoTrucks = ["B_Truck_01_ammo_F", "O_Truck_02_Ammo_F", "I_Truck_02_ammo_F"];					// Ammo trucks with 10^12 ammo
 _ammoTrucksTempest = ["O_Truck_03_ammo_F"];														// Ammo trucks with 30 000 ammo
+_mrap_lsv = ["B_MRAP_01_hmg_F","B_MRAP_01_gmg_F","B_T_LSV_01_unarmed_F","O_T_LSV_02_unarmed_F","I_MRAP_03_F","B_T_LSV_01_armed_F"];
+_apc = ["B_APC_Tracked_01_CRV_F","B_APC_Wheeled_01_cannon_F","B_APC_Tracked_01_rcws_F","B_T_APC_Tracked_01_CRV_F","B_T_APC_Wheeled_01_cannon_F"];
 
 if (_t in _strider) then {
 	_u setObjectTextureGlobal [0, '\A3\soft_f_beta\mrap_03\data\mrap_03_ext_co.paa'];
@@ -103,6 +105,30 @@ if ((_t in _ammoTrucks) or (_t in _ammoTrucksTempest)) then {
 		};
 		if (getAmmoCargo _u != 0) exitWith {}; // Due to very low values setAmmoCargo rounds to 0 on first try
 	};
+};
+
+// load items in cargo of MRAPs/LSVs/APCs
+if (_t in _mrap_lsv || _t in _apc) then {
+    clearWeaponCargoGlobal _u;
+    clearMagazineCargoGlobal _u;
+    clearBackpackCargoGlobal _u;
+    clearItemCargoGlobal _u;
+
+    _u addMagazineCargoGlobal ["30Rnd_65x39_caseless_mag", 3];
+    _u addMagazineCargoGlobal ["30Rnd_65x39_caseless_mag_Tracer", 3];
+    _u addMagazineCargoGlobal ["30Rnd_762x39_Mag_Green_F", 3];
+    _u addMagazineCargoGlobal ["30Rnd_762x39_Mag_Tracer_Green_F", 3];
+    _u addMagazineCargoGlobal ["30Rnd_556x45_Stanag_red", 4];
+    _u addMagazineCargoGlobal ["30Rnd_556x45_Stanag_Tracer_Red", 4];
+    _u addMagazineCargoGlobal ["SmokeShellBlue", 16];
+    _u addMagazineCargoGlobal ["HandGrenade", 4];
+    _u addItemCargoGlobal ["FirstAidKit", 8];
+
+    if (_t in _apc) then {
+       _u addMagazineCargoGlobal ["RPG32_F", 2];
+       _u addMagazineCargoGlobal ["RPG32_HE_F", 2];
+       _u addMagazineCargoGlobal ["NLAW_F", 2];
+    };
 };
 
 // decrease radar scan range

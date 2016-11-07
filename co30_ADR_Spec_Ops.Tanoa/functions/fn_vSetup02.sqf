@@ -30,10 +30,11 @@ _uavs = ["B_UAV_02_CAS_F", "B_UAV_02_F", "B_UGV_01_F", "B_UGV_01_rcws_F"];					/
 _ammoTrucks = ["B_Truck_01_ammo_F", "O_Truck_02_Ammo_F", "I_Truck_02_ammo_F"];				// Ammo trucks with 10^12 ammo
 _ammoTrucksTempest = ["O_Truck_03_ammo_F"];													// Ammo trucks with 30 000 ammo
 _prowlers = ["B_T_LSV_01_armed_F","B_T_LSV_01_unarmed_F"];									// Prowlers
-_ghosthawks = ["B_Heli_Transport_01_camo_F", "B_CTRG_Heli_Transport_01_tropic_F",
-             "B_Heli_Transport_01_F"];														// Ghosthawks
+_ghosthawks = ["B_Heli_Transport_01_camo_F", "B_CTRG_Heli_Transport_01_tropic_F", "B_Heli_Transport_01_F"];														// Ghosthawks
 _hurons = ["B_Heli_Transport_03_F"];														// Hurons
 _blackfishes = ["B_T_VTOL_01_armed_F","B_T_VTOL_01_infantry_F","B_T_VTOL_01_vehicle_F"];	// Blackfish
+_mrap_lsv = ["B_MRAP_01_hmg_F","B_MRAP_01_gmg_F","B_T_LSV_01_unarmed_F","O_T_LSV_02_unarmed_F","I_MRAP_03_F","B_T_LSV_01_armed_F"];
+_apc = ["B_APC_Tracked_01_CRV_F","B_APC_Wheeled_01_cannon_F","B_APC_Tracked_01_rcws_F","B_T_APC_Tracked_01_CRV_F","B_T_APC_Wheeled_01_cannon_F"];
 
 call {
     if(_t in _taru) exitWith {
@@ -176,6 +177,30 @@ call {
                 _u setObjectTextureGlobal [3, "\A3\Air_F_Exp\VTOL_01\Data\VTOL_01_EXT04_olive_CO.paa"];
             };
         };
+    };
+};
+
+// load items in cargo of MRAPs/LSVs/APCs
+if (_t in _mrap_lsv || _t in _apc) then {
+    clearWeaponCargoGlobal _u;
+    clearMagazineCargoGlobal _u;
+    clearBackpackCargoGlobal _u;
+    clearItemCargoGlobal _u;
+
+    _u addMagazineCargoGlobal ["30Rnd_65x39_caseless_mag", 3];
+    _u addMagazineCargoGlobal ["30Rnd_65x39_caseless_mag_Tracer", 3];
+    _u addMagazineCargoGlobal ["30Rnd_762x39_Mag_Green_F", 3];
+    _u addMagazineCargoGlobal ["30Rnd_762x39_Mag_Tracer_Green_F", 3];
+    _u addMagazineCargoGlobal ["30Rnd_556x45_Stanag_red", 4];
+    _u addMagazineCargoGlobal ["30Rnd_556x45_Stanag_Tracer_Red", 4];
+    _u addMagazineCargoGlobal ["SmokeShellBlue", 16];
+    _u addMagazineCargoGlobal ["HandGrenade", 4];
+    _u addItemCargoGlobal ["FirstAidKit", 8];
+
+    if (_t in _apc) then {
+       _u addMagazineCargoGlobal ["RPG32_F", 2];
+       _u addMagazineCargoGlobal ["RPG32_HE_F", 2];
+       _u addMagazineCargoGlobal ["NLAW_F", 2];
     };
 };
 
