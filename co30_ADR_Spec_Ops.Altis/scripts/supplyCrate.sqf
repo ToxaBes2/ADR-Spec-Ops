@@ -152,7 +152,6 @@ call {
     	_cargo addItemCargoGlobal ["Laserdesignator", 2];
     	_cargo addBackpackCargoGlobal ["B_AssaultPack_mcamo", 2];
     	_cargo addBackpackCargoGlobal ["B_Kitbag_mcamo_Eng", 2];
-    	_cargo addBackpackCargoGlobal ["B_UAV_01_backpack_F", 2];
     };
     if (_cargo_type == 13) exitWith {
         // Creating cargo
