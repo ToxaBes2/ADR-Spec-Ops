@@ -51,6 +51,7 @@ class QS
 		class addFurniture {};
 		class addHades {};
 		class attachMP {};
+		class baseVehicleAvanpost {};
 		class baseVehiclePartizan {};
 		class basePartizanSwitch {};
 		class cacheDebug {};
