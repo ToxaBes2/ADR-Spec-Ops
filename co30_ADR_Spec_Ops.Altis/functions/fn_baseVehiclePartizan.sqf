@@ -16,6 +16,17 @@ _veh setVariable ["irTarget", false, true];
     "partizan_vehicle" setMarkerPos [-10000, -10000];
 };
 
+// add box in vehicle
+_box = createVehicle ["Box_Syndicate_WpsLaunch_F", [0,0,0], [], 0, "NONE"];
+_box setVariable ["box", true];
+clearWeaponCargoGlobal _box;
+clearMagazineCargoGlobal _box;
+clearBackpackCargoGlobal _box;
+clearItemCargoGlobal _box;
+_box attachTo [_veh, [0,0,0]];
+_box hideObject true;
+_veh addAction ["<t color='#EDBC64'>Выгрузить ящик</t>","scripts\partizan\unload.sqf",[],-100,true,true,"","playerSide == resistance", 5];
+
 // Delete vehicle if there are no partizan palyers nearby
 0 = [_veh, _vehiclePos] spawn {
     private ["_veh", "_vehiclePos", "_u"];

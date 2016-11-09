@@ -49,6 +49,7 @@ class QS
 		class addActionTakeControl {};
 		class addActionTimer {};
 		class addFurniture {};
+		class addPartizanItems {};
 		class addHades {};
 		class attachMP {};
 		class baseVehicleAvanpost {};

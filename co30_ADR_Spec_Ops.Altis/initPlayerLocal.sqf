@@ -48,6 +48,7 @@ if (playerSide == resistance) then {
             _accepted = true;
         };
     };
+    [player] call QS_fnc_addPartizanItems;
     player setPos _newPlayerPos;
 	_dir = player getDir partizan_ammo;
 	player setDir _dir;
