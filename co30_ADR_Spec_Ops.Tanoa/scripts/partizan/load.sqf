@@ -30,7 +30,7 @@ _player setVariable ["drop_box", nil];
         detach _x;
         removeAllActions _x;
         _x attachTo [_veh, [0,0,0]];
-        _x hideObject true;    
+        _x hideObjectGlobal true;    
     };
 } forEach attachedObjects _player;
 _veh addAction ["<t color='#EDBC64'>Выгрузить ящик</t>","scripts\partizan\unload.sqf",[],-100,true,true,"","playerSide == resistance", 5];

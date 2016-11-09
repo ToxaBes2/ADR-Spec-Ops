@@ -24,7 +24,7 @@ clearMagazineCargoGlobal _box;
 clearBackpackCargoGlobal _box;
 clearItemCargoGlobal _box;
 _box attachTo [_veh, [0,0,0]];
-_box hideObject true;
+_box hideObjectGlobal true;
 _veh addAction ["<t color='#EDBC64'>Выгрузить ящик</t>","scripts\partizan\unload.sqf",[],-100,true,true,"","playerSide == resistance", 5];
 
 // Delete vehicle if there are no partizan palyers nearby
