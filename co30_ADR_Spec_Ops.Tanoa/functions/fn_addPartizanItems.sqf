@@ -19,7 +19,12 @@ _googles = ["G_Aviator","G_Balaclava_blk","G_Balaclava_lowprofile","G_Balaclava_
 "G_Bandanna_khk","G_Bandanna_oli","G_Bandanna_shades","G_Bandanna_sport","G_Bandanna_tan","G_Lowprofile","G_Shades_Black",
 "G_Shades_Blue","G_Shades_Green","G_Shades_Red","G_Spectacles","G_Spectacles_Tinted","G_Sport_Blackred","G_Sport_Blackyellow",
 "G_Sport_Checkered","G_Sport_Greenblack","G_Sport_Red","G_Squares","G_Squares_Tinted","G_balaclava_combat"];
-_weapons = ["arifle_Mk20_F","arifle_Mk20C_F","arifle_Mk20_plain_F","arifle_Mk20C_plain_F","arifle_TRG20_F","arifle_TRG21_F","arifle_AKS_F"];
+_weapons = ["arifle_Mk20_F","arifle_Mk20C_F","arifle_Mk20_plain_F","arifle_Mk20C_plain_F","arifle_TRG20_F","arifle_TRG21_F"];
+
+// check for Apex DLC to allow dlc weapons
+if (395180 in (getDLCs 1)) then {
+    _weapons = ["arifle_Mk20_F","arifle_Mk20C_F","arifle_Mk20_plain_F","arifle_Mk20C_plain_F","arifle_TRG20_F","arifle_TRG21_F","arifle_AKS_F"];
+};
 
 _player forceAddUniform (selectRandom _uniform);
 _player addVest (selectRandom _vests);
