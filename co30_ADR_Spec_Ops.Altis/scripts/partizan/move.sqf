@@ -20,22 +20,27 @@ if (_stop) exitWith {
 };
 _box removeAction _id;
 _box attachTo [_player,[0,1,1]];
-_action1 = _player addAction ["<t color='#EDBC64'>Поставить ящик</t>","scripts\partizan\unload.sqf",[],-100,true,true,"","playerSide == resistance"];
-_player setVariable ["drop_box",_action1];
-_action2 = _player addAction ["<t color='#EDBC64'>Загрузить ящик в технику</t>","scripts\partizan\load.sqf",[],-100,true,true,"",'playerSide == resistance && (_this distance cursorTarget) < 5 && cursorTarget isKindOf "Car"'];
-_player setVariable ["load_box",_action2];
+[_player, "QS_fnc_addActionUnload", nil, true] call BIS_fnc_MP;
+[_player, "QS_fnc_addActionLoad", nil, true] call BIS_fnc_MP;
 _player forceWalk true;
 _player action ["SwitchWeapon", _player, _player, 100];
 waitUntil {sleep 1; (vehicle _player != _player) || (!alive _player) || (!isPlayer _player) || count (attachedObjects _player) == 0};
 _player forceWalk false;
 if (count (attachedObjects _player) > 0) then {
     {
-       detach _x;
-       _x addAction ["<t color='#EDBC64'>Взять ящик</t>","scripts\partizan\move.sqf",[],-100,true,true,"","playerSide == resistance", 3];
-       _x setPosATL [getPosATL _box select 0,getPosATL _box select 1,0];
+        detach _x;
+        [_x, "QS_fnc_addActionMove", nil, true] call BIS_fnc_MP;
+        _x setPosATL [getPosATL _box select 0,getPosATL _box select 1,0];
     } forEach attachedObjects _player;
 };
-_player removeAction (_player getVariable "drop_box");
-_player setVariable ["drop_box", nil];
-_player removeAction (_player getVariable "load_box");
+_player removeAction _id;
+_id1 = _player getVariable ["load_box", 0];
+_id2 = _player getVariable ["drop_box", 0];
+if (_id1 > 0) then {
+   _player removeAction _id1;
+};
+if (_id2 > 0) then {
+   _player removeAction _id2;
+};
 _player setVariable ["load_box", nil];
+_player setVariable ["drop_box", nil];

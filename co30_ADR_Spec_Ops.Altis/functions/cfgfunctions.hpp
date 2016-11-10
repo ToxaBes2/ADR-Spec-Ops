@@ -43,6 +43,8 @@ class QS
 		class addActionGetData {};
 		class addActionGetIntel {};
 		class addActionHack {};
+		class addActionLoad {};
+		class addActionMove {};
 		class addActionNeutralize {};
 		class addActionRescue {};
 		class addActionRetreat {};
@@ -50,6 +52,7 @@ class QS
 		class addActionSurrender {};
 		class addActionTakeControl {};
 		class addActionTimer {};
+		class addActionUnload {};
 		class addFurniture {};
 		class addHades {};
 		class addPartizanItems {};
