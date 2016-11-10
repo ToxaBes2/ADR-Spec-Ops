@@ -14,7 +14,7 @@ _player = _this select 0;
 #define GHILLIIE_MSG "Использовать гилли и маскхалаты могут только снайперы и пехотные снайперы"
 
 // UAV TERMINAL
-_uavOperator = ["I_G_engineer_F","I_C_Soldier_Para_8_F"];
+_uavOperator = ["I_G_engineer_F","I_C_Soldier_Para_8_F","I_C_Soldier_Para_3_F"];
 
 // AT / MISSILE LAUNCHERS
 _missileSoldiers = ["I_G_Soldier_AR_F","I_C_Soldier_Para_4_F"];
@@ -25,7 +25,7 @@ _snipers = ["I_G_engineer_F","I_C_Soldier_Para_8_F"];
 _sniperSpecialised = ["srifle_GM6_camo_F","srifle_GM6_camo_SOS_F","srifle_GM6_camo_LRPS_F","srifle_LRR_camo_F","srifle_LRR_camo_SOS_F","srifle_LRR_camo_LRPS_F","srifle_GM6_F","srifle_GM6_SOS_F","srifle_GM6_LRPS_F","srifle_LRR_F","srifle_LRR_SOS_F","srifle_LRR_LRPS_F","srifle_LRR_tna_F","srifle_LRR_tna_LRPS_F","srifle_GM6_ghex_F","srifle_GM6_ghex_LRPS_F"];
 
 // LMG
-_autoRiflemen = ["I_G_Soldier_AR_F","I_C_Soldier_Para_4_F"];
+_autoRiflemen = ["I_G_Soldier_AR_F","I_C_Soldier_Para_4_F","I_C_Soldier_Para_7_F"];
 _autoSpecialised = ["LMG_Mk200_LP_BI_F","LMG_Mk200_BI_F","MMG_01_hex_F","MMG_01_tan_F","MMG_01_hex_ARCO_LP_F","MMG_02_camo_F","MMG_02_black_F","MMG_02_sand_F","MMG_02_sand_RCO_LP_F","MMG_02_black_RCO_BI_F","LMG_Mk200_F","LMG_Mk200_MRCO_F","LMG_Mk200_pointer_F","LMG_Zafir_F","LMG_Zafir_pointer_F","LMG_Zafir_ARCO_F","arifle_MX_SW_F","arifle_MX_SW_Black_F","arifle_MX_SW_khk_F","arifle_CTARS_blk_F","arifle_CTARS_ghex_F","arifle_CTARS_hex_F","arifle_CTARS_blk_Pointer_F","LMG_03_F","arifle_SPAR_02_blk_F","arifle_SPAR_02_khk_F","arifle_SPAR_02_snd_F","arifle_SPAR_02_blk_Pointer_F","arifle_MX_SW_khk_F","arifle_MX_SW_khk_Pointer_F"];
 
 // MARKSMAN
@@ -37,7 +37,7 @@ _ThermalOpt = ["optic_Nightstalker","optic_tws","optic_tws_mg"];
 _ThermalTeam = [];
 
 // MARKSMAN OPTICS
-_marksmanOpticsGrp = ["I_G_engineer_F","I_C_Soldier_Para_8_F"];
+_marksmanOpticsGrp = ["I_G_engineer_F","I_C_Soldier_Para_8_F","I_C_Soldier_Para_3_F","I_C_Soldier_Para_4_F","I_C_Soldier_Para_7_F"];
 _marksmanOpticsItems = ["optic_KHS_blk","optic_KHS_hex","optic_KHS_old","optic_KHS_tan","optic_AMS","optic_AMS_khk","optic_AMS_snd","optic_SOS","optic_LRPS","optic_LRPS_ghex_F","optic_LRPS_tna_F","optic_SOS_khk_F"];
 
 _ghillieGroups = ["I_G_engineer_F","I_C_Soldier_Para_8_F"];

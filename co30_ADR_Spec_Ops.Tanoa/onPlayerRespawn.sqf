@@ -86,8 +86,10 @@ _null = player addEventHandler ["Fired", {
     };
 }];
 
-if (typeOf player in ["I_G_Soldier_AR_F","I_G_engineer_F"]) then {
-    player setUnitTrait ["Medic",true];
+if (typeOf player in ["I_G_Soldier_AR_F","I_G_engineer_F","I_C_Soldier_Para_3_F","I_C_Soldier_Para_4_F","I_C_Soldier_Para_7_F","I_C_Soldier_Para_8_F"]) then {
+	if (typeOf player in ["I_C_Soldier_Para_3_F","I_C_Soldier_Para_7_F"]) then {
+	    player setUnitTrait ["Medic",true];
+	};    
     "partizan_base" setMarkerAlphaLocal 1;
 } else {
     "partizan_base" setMarkerAlphaLocal 0;

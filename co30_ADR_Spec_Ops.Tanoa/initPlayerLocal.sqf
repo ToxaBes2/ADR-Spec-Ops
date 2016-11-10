@@ -20,8 +20,7 @@ waitUntil {!isNull player};
 };
 
 // Resistance only
-if (playerSide == resistance) then {
-	player setUnitTrait ["Medic", true];
+if (playerSide == resistance) then {	
 	0 cutText["Проверка игрового времени...", "BLACK FADED"];
     0 cutFadeOut 9999999;
     waitUntil {(getPlayerUID player) != ""};
@@ -56,9 +55,12 @@ if (playerSide == resistance) then {
     sleep 10;
 
 	// Resistance engineers only
-	if (typeOf player in ["I_G_engineer_F","I_C_Soldier_Para_8_F"]) then {
+	if (typeOf player in ["I_G_engineer_F","I_C_Soldier_Para_8_F","I_C_Soldier_Para_3_F"]) then {
 		player setUnitTrait ["UAVHacker", true];
 		player setUnitTrait ["engineer", true];
+	};
+    if (typeOf player in ["I_C_Soldier_Para_3_F","I_C_Soldier_Para_7_F"]) then {
+	    player setUnitTrait ["Medic", true];
 	};
 
 	hqSideChat = "Разведка сообщила об увеличении активности партизан на острове.";
@@ -152,7 +154,7 @@ player addEventHandler [ "GetOutMan", {
 }];
 
 // Put earplugs in automaticly when controling UAV (Engineers only)
-if (typeOf player in ["B_engineer_F", "B_T_Engineer_F", "I_G_engineer_F", "I_C_Soldier_Para_8_F"]) then {
+if (typeOf player in ["B_engineer_F", "B_T_Engineer_F", "I_G_engineer_F", "I_C_Soldier_Para_8_F", "I_C_Soldier_Para_3_F"]) then {
 	_null = [] spawn {
 		private ["_uav", "_uav_action_id1", "_uav_action_id2"];
 		while {true} do {

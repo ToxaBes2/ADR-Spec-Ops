@@ -24286,12 +24286,12 @@ class Mission
 					{
 						rank="CORPORAL";
 						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
-						description="Партизан (пулеметчик/ракетчик)";
+						description="Партизан (медик/пулеметчик)";
 						isPlayer=1;
 						isPlayable=1;
 					};
 					id=2410;
-					type="I_C_Soldier_Para_4_F";
+					type="I_C_Soldier_Para_7_F";
 					atlOffset=0.0002951622;
 					class CustomAttributes
 					{
@@ -24331,11 +24331,11 @@ class Mission
 					{
 						rank="CORPORAL";
 						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
-						description="Партизан (пулеметчик/ракетчик)";
+						description="Партизан (медик/инженер)";
 						isPlayable=1;
 					};
 					id=2411;
-					type="I_C_Soldier_Para_4_F";
+					type="I_C_Soldier_Para_3_F";
 					atlOffset=0.00021696091;
 					class CustomAttributes
 					{
@@ -24374,11 +24374,11 @@ class Mission
 					{
 						rank="CORPORAL";
 						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
-						description="Партизан (снайпер/инженер)";
+						description="Партизан (ракетчик/пулеметчик)";
 						isPlayable=1;
 					};
 					id=2412;
-					type="I_C_Soldier_Para_8_F";
+					type="I_C_Soldier_Para_4_F";
 					atlOffset=0.296;
 					class CustomAttributes
 					{

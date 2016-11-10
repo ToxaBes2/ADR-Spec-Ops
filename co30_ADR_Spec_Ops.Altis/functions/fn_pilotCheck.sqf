@@ -1,7 +1,7 @@
 private ["_pilots", "_partizan_pilots", "_aircraft_nopilot", "_aircraft_nocopilot", "_mh9", "_aircraft_nopilot_partizan", "_aircraft_nocopilot_partizan", "_veh", "_players", "_playersCount", "_pilotsOnServer"];
 
 _pilots = ["B_Helipilot_F", "B_T_Helipilot_F"];	// Специализация пилота
-_partizan_pilots = ["I_G_Soldier_AR_F","I_G_engineer_F","I_C_Soldier_Para_4_F","I_C_Soldier_Para_8_F"];
+_partizan_pilots = ["I_G_Soldier_AR_F","I_G_engineer_F","I_C_Soldier_Para_4_F","I_C_Soldier_Para_8_F","I_G_Soldier_GL_F","I_G_medic_F"];
 
 //---------- Место пилота заблокировано
 _aircraft_nopilot = [
