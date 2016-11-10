@@ -6,6 +6,7 @@ _veh = createVehicle [_class, _vehiclePos, [], 0, "NONE"];
 _veh setDir (random 360);
 _veh lock 0;
 _veh setVariable ["irTarget", false, true];
+_veh addItemCargoGlobal ["Toolkit", 1];
 
 // Put market on the spawned vehicle for 60 seconds
 0 = [_vehiclePos] spawn {
@@ -27,7 +28,7 @@ switch (_class) do {
 };
 
 // add box in vehicle
-_box = createVehicle ["Box_Syndicate_WpsLaunch_F", [0,0,0], [], 0, "NONE"];
+_box = createVehicle ["Box_Syndicate_WpsLaunch_F", [1,1,1], [], 0, "NONE"];
 _box setVariable ["box", true];
 clearWeaponCargoGlobal _box;
 clearMagazineCargoGlobal _box;

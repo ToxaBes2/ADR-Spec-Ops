@@ -48,7 +48,6 @@ if (_player getUnitTrait "medic") then {
     _player addItem "Medikit";
 };
 if (_player getUnitTrait "engineer") then {
-    _player addItem "ToolKit";
     _player addItem "I_UavTerminal";
     _player assignItem "I_UavTerminal";
 } else {
@@ -74,7 +73,6 @@ _player addWeapon _selectedWeapon;
 partizan_ammo addItemCargoGlobal ["U_I_Wetsuit", 1];
 partizan_ammo addItemCargoGlobal ["V_RebreatherIA", 1];
 partizan_ammo addItemCargoGlobal ["G_Diving", 1];
-partizan_ammo addItemCargoGlobal ["U_I_Wetsuit", 1];
 partizan_ammo addWeaponCargoGlobal ["arifle_SDAR_F", 1];
 partizan_ammo addMagazineCargoGlobal ["20Rnd_556x45_UW_mag", 7];
 partizan_ammo addItemCargoGlobal ["FirstAidKit", 5];
