@@ -47,8 +47,7 @@ _c4Message = selectRandom [
     "Аванпост заминирован. У вас полторы минуты чтобы найти укрытие!",
     "Аванпост будет уничтожен через 90 секунд. Валите оттуда!"
 ];
-hqSideChat = _c4Message; publicVariable "hqSideChat"; 
-[west, "HQ"] sideChat _c4Message;
+hqSideChat = _c4Message; publicVariable "hqSideChat";
 [resistance, "HQ"] sideChat _c4Message;
 
 // destroy avanpost

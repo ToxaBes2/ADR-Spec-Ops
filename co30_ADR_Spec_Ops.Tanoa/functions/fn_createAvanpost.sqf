@@ -29,7 +29,7 @@ _objs = [["Land_CncBarrier_stripes_F",[0.828125,0.982422,0],272.513],["B_HMG_01_
 ["Land_Sacks_heap_F",[6.11133,7.1543,0],1.15248],["Land_CncShelter_F",[1.58008,-9.37695,0],0],["Land_CncWall1_F",[-8.59766,4.66211,0],90],
 ["Oil_Spill_F",[-6.18945,7.125,0],0],["Land_CncWall1_F",[4.71875,-8.86133,0],0],["Land_CanisterFuel_F",[8.33203,5.50391,5.19753e-005],213.132],
 ["Land_CncBarrierMedium_F",[-0.273438,-10.0449,0],267.899],["Land_CncWall1_F",[-8.55469,5.97266,0],90],
-["Land_Cargo20_military_green_F",[4.77148,9.07422,2.57492e-005],360],["Land_PaperBox_open_full_F",[7.77539,6.88867,0],0],
+["B_Slingload_01_Medevac_F",[4.77148,9.07422,0],89],["Land_PaperBox_open_full_F",[7.77539,6.88867,0],0],
 ["Land_PortableLight_single_F",[-0.0742188,10.7988,0],41.7905],["Land_PortableLight_double_F",[3.21289,-10.0938,0],359.714],
 ["Land_Portable_generator_F",[1.24023,10.7148,-0.000752211],181.708],["Land_CncWall1_F",[9.30078,6.08203,0],270],["Land_CncWall1_F",[-6.88867,-8.86133,0],0],
 ["Land_CncWall1_F",[-8.60352,-7.07422,0],90],["Land_CncWall4_F",[9.30469,-6.30469,0],270],
@@ -76,7 +76,7 @@ _multiplyMatrixFunc = {
 	_result
 };
 _lamps = ["Land_PortableLight_single_F","Land_PortableLight_double_F"];
-_exclude = ["Land_Cargo_Patrol_V1_F", "Land_Cargo_House_V1_F", "Land_Cargo20_military_green_F"];
+_exclude = ["Land_Cargo_Patrol_V1_F", "Land_Cargo_House_V1_F", "B_Slingload_01_Medevac_F"];
 for "_i" from 0 to ((count _objs) - 1) do {
 	private ["_obj", "_type", "_relPos", "_azimuth", "_fuel", "_damage", "_newObj", "_vehicleinit"];
 	_obj = _objs select _i;
@@ -104,6 +104,11 @@ for "_i" from 0 to ((count _objs) - 1) do {
 	    case ((typeOf _newObj) in _lamps): {
             //do nothing
 	    };
+	    case ((typeOf _newObj) == "B_Slingload_01_Medevac_F"): {
+	        _newObj allowDamage false;
+            _newObj enableRopeAttach false;
+            clearItemCargoGlobal _newObj;
+	    };
 	    case ((typeOf _newObj) == "Land_DataTerminal_01_F"): {
             _newPos = getPosATL _newObj;
             _newPos set [2, (_newPos select 2) + 0.8];
@@ -119,7 +124,7 @@ for "_i" from 0 to ((count _objs) - 1) do {
             } forEach allCurators;
 	    };
 		default {
-            _newObj allowDamage false;            
+            _newObj allowDamage false;     
             _class = typeOf _newObj;
             if !(_class in _exclude) then {
                 _newObj enableSimulation false;
