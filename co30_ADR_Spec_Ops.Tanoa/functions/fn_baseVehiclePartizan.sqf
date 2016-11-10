@@ -15,6 +15,16 @@ _veh setVariable ["irTarget", false, true];
     sleep 60;
     "partizan_vehicle" setMarkerPos [-10000, -10000];
 };
+_attachCoords = [0,0,0];
+switch (_class) do { 
+    case "B_T_Quadbike_01_F" : { _attachCoords = [0,-1,-0.3]; }; 
+    case "B_Quadbike_01_F" : {  _attachCoords = [0,-1,-0.3]; }; 
+    case "C_SUV_01_F" : {  _attachCoords = [0,-2.7,-0.5]; }; 
+    case "I_G_Offroad_01_F" : {  _attachCoords = [0,-2.5,-0.5]; }; 
+    case "C_Offroad_02_unarmed_F" : {  _attachCoords = [0,-1.5,-0.05]; }; 
+    case "I_C_Boat_Transport_02_F" : {  _attachCoords = [0,0.5,-0.5]; }; 
+    default {  _attachCoords = [0,0,0]; }; 
+};
 
 // add box in vehicle
 _box = createVehicle ["Box_Syndicate_WpsLaunch_F", [0,0,0], [], 0, "NONE"];
@@ -23,8 +33,7 @@ clearWeaponCargoGlobal _box;
 clearMagazineCargoGlobal _box;
 clearBackpackCargoGlobal _box;
 clearItemCargoGlobal _box;
-_box attachTo [_veh, [0,0,0]];
-_box hideObjectGlobal true;
+_box attachTo [_veh, _attachCoords];
 [_veh, "QS_fnc_addActionUnload", nil, true] spawn BIS_fnc_MP;
 
 // Delete vehicle if there are no partizan palyers nearby

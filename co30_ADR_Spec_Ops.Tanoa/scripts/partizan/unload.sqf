@@ -22,7 +22,6 @@ _player forceWalk false;
     	_posX = (_pos select 0) + (random _a) - (random _b);
     	_posY = (_pos select 1) + (random _a) - (random _b);
     	_newPos = [_posX, _posY, 0];
-        _x hideObjectGlobal false;
         detach _x;
         _x setPos _newPos;
         _x removeAction _id;
