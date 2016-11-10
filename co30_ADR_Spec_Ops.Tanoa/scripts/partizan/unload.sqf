@@ -23,7 +23,7 @@ _player forceWalk false;
     	_posY = (_pos select 1) + (random _a) - (random _b);
     	_newPos = [_posX, _posY, 0];
         detach _x;
-        _x setPos _newPos;
+        _x setPosATL _newPos;
         _x removeAction _id;
         [_x, "QS_fnc_addActionMove", nil, true] call BIS_fnc_MP;    
     };
