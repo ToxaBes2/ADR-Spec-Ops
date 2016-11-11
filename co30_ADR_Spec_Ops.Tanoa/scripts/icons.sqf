@@ -155,16 +155,17 @@ QS_fnc_iconDrawMap = compileFinal "
 
 //======================== DRAW GPS
 
-QS_fnc_iconDrawGPS = compileFinal "
+QS_fnc_iconDrawGPS = compile "
 	private [""_v"",""_iconType"",""_color"",""_pos"",""_iconSize"",""_dir"",""_text"",""_shadow"",""_textSize"",""_textFont"",""_textOffset""];
 	_text = """";
 	_shadow = 1;
 	_textSize = 0.05;
 	_textFont = 'puristaMedium';
 	_textOffset = 'right';
+	_allowedSides = [""west"", ""resistance""];
 	{
 		_v = vehicle _x;
-		if ((side _v == playerSide) || (partizan_ammo getVariable ['DIPLOMACY', 0] == 1) || (playerSide == west && _v isKindOf 'B_Soldier_base_F') || (playerSide == resistance && _v isKindOf 'I_G_Soldier_base_F')) then {
+		if ((side _v == playerSide) || ((partizan_ammo getVariable ['DIPLOMACY', 0] == 1) && (side _v) in _allowedSides)) then {
 			if ((_x distance player) < 300) then {
 				_iconType = [_v] call QS_fnc_iconType;
 				_color = [_x] call QS_fnc_iconColor;
