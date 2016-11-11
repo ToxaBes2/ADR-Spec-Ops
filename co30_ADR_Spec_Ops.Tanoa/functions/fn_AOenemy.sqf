@@ -340,9 +340,12 @@ if((random 10 <= PARAMS_AirPatrol)) then {
 	"O_T_Helipilot_F" createUnit [_randomPos,_airGroup];
 	((units _airGroup) select 0) assignAsDriver _air;
 	((units _airGroup) select 0) moveInDriver _air;
-	"O_T_Helicrew_F" createUnit [_randomPos,_airGroup];
-	((units _airGroup) select 1) assignAsGunner _air;
-	((units _airGroup) select 1) moveInGunner _air;
+    _excludeList = ["O_Heli_Light_02_F", "I_Heli_light_03_F"];
+    if !((typeOf _air) in _excludeList) then {
+        "O_T_Helicrew_F" createUnit [_randomPos,_airGroup];
+        ((units _airGroup) select 1) assignAsGunner _air;
+        ((units _airGroup) select 1) moveInGunner _air;
+    };  
 	[_airGroup, getMarkerPos currentAO, 800] call BIS_fnc_taskPatrol;
 	[(units _airGroup)] call QS_fnc_setSkill4;
 	_air flyInHeight 300;
