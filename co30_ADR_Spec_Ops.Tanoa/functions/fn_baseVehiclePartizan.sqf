@@ -29,7 +29,7 @@ switch (_class) do {
 
 // add box in vehicle
 _box = createVehicle ["Box_Syndicate_WpsLaunch_F", [1,1,1], [], 0, "NONE"];
-_box setVariable ["box", true];
+_box setVariable ["box", true, true];
 clearWeaponCargoGlobal _box;
 clearMagazineCargoGlobal _box;
 clearBackpackCargoGlobal _box;
