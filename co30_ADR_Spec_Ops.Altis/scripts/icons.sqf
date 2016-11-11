@@ -162,7 +162,7 @@ QS_fnc_iconDrawGPS = compile "
 	_textSize = 0.05;
 	_textFont = 'puristaMedium';
 	_textOffset = 'right';
-	_allowedSides = [""west"", ""resistance""];
+	_allowedSides = [""WEST"", ""GUER""];
 	{
 		_v = vehicle _x;
 		if ((side _v == playerSide) || ((partizan_ammo getVariable ['DIPLOMACY', 0] == 1) && (side _v) in _allowedSides)) then {
