@@ -143,6 +143,14 @@ if (playerSide == west) then {
     "B2_1" setMarkerAlphaLocal 1;
     "med" setMarkerAlphaLocal 1;
     "vehService" setMarkerAlphaLocal 1;
+    "P1_1" setMarkerAlphaLocal 0;
+    "P1_2" setMarkerAlphaLocal 0;
+    "P1_3" setMarkerAlphaLocal 0;
+    "P1_4" setMarkerAlphaLocal 0;
+    "P1_5" setMarkerAlphaLocal 0;
+    "P1_6" setMarkerAlphaLocal 0;
+    "P1_7" setMarkerAlphaLocal 0;
+    "P1_8" setMarkerAlphaLocal 0;
 } else {
     "partizan_base" setMarkerAlphaLocal 1;
 	"partizan_vehicle" setMarkerAlphaLocal 1;
@@ -164,6 +172,14 @@ if (playerSide == west) then {
     "B2_1" setMarkerAlphaLocal 0;
     "med" setMarkerAlphaLocal 0;
     "vehService" setMarkerAlphaLocal 0;
+    "P1_1" setMarkerAlphaLocal 1;
+    "P1_2" setMarkerAlphaLocal 1;
+    "P1_3" setMarkerAlphaLocal 1;
+    "P1_4" setMarkerAlphaLocal 1;
+    "P1_5" setMarkerAlphaLocal 1;
+    "P1_6" setMarkerAlphaLocal 1;
+    "P1_7" setMarkerAlphaLocal 1;
+    "P1_8" setMarkerAlphaLocal 1;
 };
 
 // Remove color corrections effects

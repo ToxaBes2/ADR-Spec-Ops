@@ -57,13 +57,13 @@ _null = [] call QS_fnc_createPartizanBase;
 PARTIZAN_REWARDS_LIST = []; publicVariable "PARTIZAN_REWARDS_LIST";
 
 // Hide turrets
-baseTurret2 hideObject true;
-baseTurret4 hideObject true;
-baseTurret6 hideObject true;
-baseTurret8 hideObject true;
-baseTurret10 hideObject true;
-baseTurret12 hideObject true;
-baseTurret14 hideObject true;
+baseTurret2 hideObjectGlobal true;
+baseTurret4 hideObjectGlobal true;
+baseTurret6 hideObjectGlobal true;
+baseTurret8 hideObjectGlobal true;
+baseTurret10 hideObjectGlobal true;
+baseTurret12 hideObjectGlobal true;
+baseTurret14 hideObjectGlobal true;
 _grpTurret1 = createGroup west;
 deleteVehicle (gunner baseTurret1);
 deleteVehicle (gunner baseTurret3);

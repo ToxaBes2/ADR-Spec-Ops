@@ -21,13 +21,13 @@ hqSideChat = "Защита базы включена, турели активи�
 sleep 1;
 
 // unhide turrets
-baseTurret2 hideObject false;
-baseTurret4 hideObject false;
-baseTurret6 hideObject false;
-baseTurret8 hideObject false;
-baseTurret10 hideObject false;
-baseTurret12 hideObject false;
-baseTurret14 hideObject false;
+baseTurret2 hideObjectGlobal false;
+baseTurret4 hideObjectGlobal false;
+baseTurret6 hideObjectGlobal false;
+baseTurret8 hideObjectGlobal false;
+baseTurret10 hideObjectGlobal false;
+baseTurret12 hideObjectGlobal false;
+baseTurret14 hideObjectGlobal false;
 
 // reload ammo
 baseTurret1 setvehicleammo 1;

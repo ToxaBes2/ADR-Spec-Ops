@@ -21,13 +21,16 @@ hqSideChat = "Защита базы включена, турели активи�
 sleep 1;
 
 // unhide turrets
-baseTurret2 hideObject false;
-baseTurret4 hideObject false;
-baseTurret6 hideObject false;
-baseTurret8 hideObject false;
-baseTurret10 hideObject false;
-baseTurret12 hideObject false;
-baseTurret14 hideObject false;
+baseTurret2 hideObjectGlobal false;
+baseTurret4 hideObjectGlobal false;
+baseTurret6 hideObjectGlobal false;
+baseTurret8 hideObjectGlobal false;
+baseTurret10 hideObjectGlobal false;
+baseTurret12 hideObjectGlobal false;
+baseTurret14 hideObjectGlobal false;
+baseTurret16 hideObjectGlobal false;
+baseTurret18 hideObjectGlobal false;
+baseTurret20 hideObjectGlobal false;
 
 // reload ammo
 baseTurret1 setvehicleammo 1;
@@ -45,6 +48,11 @@ baseTurret12 setvehicleammo 1;
 baseTurret13 setvehicleammo 1;
 baseTurret14 setvehicleammo 1;
 baseTurret15 setvehicleammo 1;
+baseTurret16 setvehicleammo 1;
+baseTurret17 setvehicleammo 1;
+baseTurret18 setvehicleammo 1;
+baseTurret19 setvehicleammo 1;
+baseTurret20 setvehicleammo 1;
 
 // put turrets on correct places
 baseTurret1 setPos [15283.8,17367.1,2.778];
@@ -59,9 +67,14 @@ baseTurret9 setPos [14923.6,17196.6,10.123];
 baseTurret10 setPos [14968.4,16964.1,12.3166];
 baseTurret11 setPos [14968,16966.1,12.3267];
 baseTurret12 setPos [15455.5,15754.1,15.613];
-baseTurret13 setPos [15363,15883.6,3.157];
+baseTurret13 setPos [15372,15852,4.4];
 baseTurret14 setPos [17776.3,18214.9,5.921];
-baseTurret15 setPos [17715.3,18117.9,0];
+baseTurret15 setPos [17726,18089.7,3.9];
+baseTurret16 setPos [15277.7,17232,4.4];
+baseTurret17 setPos [15275.7,17229.9,4.4];
+baseTurret18 setPos [15349.2,15755.8,15.6768];
+baseTurret19 setPos [17869.9,18201.7,0];
+baseTurret20 setPos [15061.2,17208.9,4.4];
 
 // replace tuuret operators
 _grpTurret1 = createGroup west;
@@ -73,6 +86,8 @@ deleteVehicle (gunner baseTurret9);
 deleteVehicle (gunner baseTurret11);
 deleteVehicle (gunner baseTurret13);
 deleteVehicle (gunner baseTurret15);
+deleteVehicle (gunner baseTurret17);
+deleteVehicle (gunner baseTurret19);
 "B_support_MG_F" createUnit [getposATL baseTurret1, _grpTurret1, "this moveInGunner baseTurret1"];
 "B_support_MG_F" createUnit [getposATL baseTurret3, _grpTurret1, "this moveInGunner baseTurret3"];
 "B_support_MG_F" createUnit [getposATL baseTurret5, _grpTurret1, "this moveInGunner baseTurret5"];
@@ -81,6 +96,8 @@ deleteVehicle (gunner baseTurret15);
 "B_support_MG_F" createUnit [getposATL baseTurret11, _grpTurret1, "this moveInGunner baseTurret11"];
 "B_support_MG_F" createUnit [getposATL baseTurret13, _grpTurret1, "this moveInGunner baseTurret13"];
 "B_support_MG_F" createUnit [getposATL baseTurret15, _grpTurret1, "this moveInGunner baseTurret15"];
+"B_support_MG_F" createUnit [getposATL baseTurret17, _grpTurret1, "this moveInGunner baseTurret17"];
+"B_support_MG_F" createUnit [getposATL baseTurret19, _grpTurret1, "this moveInGunner baseTurret19"];
 _grpTurret1 setBehaviour "COMBAT";
 _grpTurret1 setCombatMode "RED";
 [(units _grpTurret1)] call QS_fnc_setSkill4;
@@ -94,6 +111,9 @@ _grpTurret2 = createGroup west;
 "B_support_MG_F" createUnit [getposATL baseTurret10, _grpTurret2, "this moveInGunner baseTurret10"];
 "B_support_MG_F" createUnit [getposATL baseTurret12, _grpTurret2, "this moveInGunner baseTurret12"];
 "B_support_MG_F" createUnit [getposATL baseTurret14, _grpTurret2, "this moveInGunner baseTurret14"];
+"B_support_MG_F" createUnit [getposATL baseTurret16, _grpTurret2, "this moveInGunner baseTurret16"];
+"B_support_MG_F" createUnit [getposATL baseTurret18, _grpTurret2, "this moveInGunner baseTurret18"];
+"B_support_MG_F" createUnit [getposATL baseTurret20, _grpTurret2, "this moveInGunner baseTurret20"];
 _grpTurret2 setBehaviour "COMBAT";
 _grpTurret2 setCombatMode "RED";
 [(units _grpTurret2)] call QS_fnc_setSkill4;
