@@ -96,6 +96,7 @@ _null = [] spawn {_this call compile preProcessFileLineNumbers "mission\missionC
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\clean.sqf";};					                    // cleanup
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\time.sqf"};                                         // time and weather
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\zbe_cache\cache.sqf"};                              // ZBE Cache
+_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\bridges.sqf"};                                      // Custom bridges
 
 crossroad disableAI "ANIM";
 enemyCasArray = [];
