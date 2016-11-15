@@ -165,7 +165,7 @@ QS_fnc_iconDrawGPS = compile "
 	_allowedSides = [""WEST"", ""GUER""];
 	{
 		_v = vehicle _x;
-		if ((side _v == playerSide) || ((partizan_ammo getVariable ['DIPLOMACY', 0] == 1) && (side _v) in _allowedSides)) then {
+		if ((side _v == playerSide) || ((partizan_ammo getVariable ['DIPLOMACY', 0] == 1) && (side _v) in _allowedSides) || _v getVariable ['BTC_need_revive', 0] == 1) then {
 			if ((_x distance player) < 300) then {
 				_iconType = [_v] call QS_fnc_iconType;
 				_color = [_x] call QS_fnc_iconColor;
