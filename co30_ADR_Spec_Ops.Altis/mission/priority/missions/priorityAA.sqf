@@ -180,7 +180,9 @@ while {_loopVar} do {
 		_targetListEnemy = [];
 		{
 			if ((side _x) == west) then {
-				0 = _targetListEnemy pushBack _x;
+				if !(_x isKindOf "UAV") then {
+				    0 = _targetListEnemy pushBack _x;
+				};				
 			};
 		} count _targetList;
 		if ((count _targetListEnemy) > 0) then {
