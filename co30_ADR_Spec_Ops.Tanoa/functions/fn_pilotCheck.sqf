@@ -85,7 +85,7 @@ _aircraft_nopilot_partizan = [
 "B_Heli_Light_01_stripped_F",                   // Хамингберд зеленый
 "C_Plane_Civil_01_F",                           // Самолет Caesar BTT
 "C_Plane_Civil_01_racing_F",                    // Самолет Caesar BTT
-"I_C_Plane_Civil_01_F"б                         // Самолет Caesar BTT
+"I_C_Plane_Civil_01_F",                         // Самолет Caesar BTT
 "C_Heli_Light_01_civil_F"                       // Вертолет М-900
 ];
 
