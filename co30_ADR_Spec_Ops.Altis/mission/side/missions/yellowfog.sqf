@@ -423,7 +423,7 @@ while { sideMissionUp } do {
             _stomper = false;
             if (WIN_WEST > WIN_GUER) then {
                 _successSide = west;
-                [true] call QS_fnc_SMhintSUCCESS;
+                [true] call QS_fnc_bluforSUCCESS;
                 _stomper = "B_UGV_01_rcws_F";
             } else {
                 _successSide = resistance;

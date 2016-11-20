@@ -12,6 +12,7 @@ _player = _this select 0;
 #define MRK_MSG "Только снайперы могут использовать это оружие"
 #define MARKSMANOPT_MSG "Использовать оптические прицелы LRPS, SOS, AMS, KAHLIA могут только снайперы и пехотные снайперы"
 #define GHILLIIE_MSG "Использовать гилли и маскхалаты могут только снайперы и пехотные снайперы"
+#define ITEM_MSG "Предметы противника запрещены"
 
 // UAV TERMINAL
 _uavOperator = ["I_G_engineer_F","I_C_Soldier_Para_8_F","I_G_Soldier_GL_F"];
@@ -42,6 +43,9 @@ _marksmanOpticsItems = ["optic_KHS_blk","optic_KHS_hex","optic_KHS_old","optic_K
 
 _ghillieGroups = ["I_G_engineer_F","I_C_Soldier_Para_8_F"];
 _ghillieItems = ["U_B_GhillieSuit","U_O_GhillieSuit","U_I_GhillieSuit","U_B_FullGhillie_lsh","U_B_FullGhillie_sard","U_B_FullGhillie_ard","U_O_FullGhillie_lsh","U_O_FullGhillie_sard","U_O_FullGhillie_ard","U_I_FullGhillie_lsh","U_I_FullGhillie_sard","U_I_FullGhillie_ard","U_B_T_FullGhillie_tna_F","U_B_T_Sniper_F","U_O_T_FullGhillie_tna_F","U_O_T_Sniper_F"];
+
+// ITEMS
+_disabledItems = ["NVGogglesB_blk_F","NVGogglesB_grn_F","NVGogglesB_gry_F"];
 
 // Weapons check
 
@@ -113,3 +117,14 @@ if (({"I_UavTerminal" == _x} count _assignedItems) > 0) then {
 		[format ["<t color='#F44336' size = '.55'>%1</t>", UAV_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 	};
 };
+
+// Other items
+_assignedItems = assignedItems _player;
+{
+	_currentItem = _x;
+    if (_currentItem in _disabledItems) then {
+        _player unassignItem _currentItem;
+		_player removeItem _currentItem;
+		[format ["<t color='#F44336' size = '.55'>%1</t>", ITEM_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
+    };
+} forEach _assignedItems;

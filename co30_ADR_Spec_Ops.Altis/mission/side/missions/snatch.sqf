@@ -407,7 +407,7 @@ while { sideMissionUp } do {
                 WIN_GUER = WIN_GUER + 1; publicVariable "WIN_GUER";
             };
             if (WIN_WEST > WIN_GUER) then {
-                [true] spawn QS_fnc_SMhintSUCCESS;
+                [4] spawn QS_fnc_bluforSUCCESS;
             } else {
                 [4] spawn QS_fnc_partizanSUCCESS;
             };

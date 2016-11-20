@@ -116,7 +116,7 @@ while { sideMissionUp } do {
 
 		// DE-BRIEFING
 		if (WIN_WEST > WIN_GUER) then {
-            [false] spawn QS_fnc_SMhintSUCCESS;
+            [3] spawn QS_fnc_bluforSUCCESS;
         } else {
             [3] spawn QS_fnc_partizanSUCCESS;
         };

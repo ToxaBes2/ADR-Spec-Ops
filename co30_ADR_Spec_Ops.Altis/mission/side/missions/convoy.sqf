@@ -541,7 +541,7 @@ while { sideMissionUp } do {
         } else {
             _delConvoy = _convoyVehs;
             if (WIN_WEST > WIN_GUER) then {
-                [true] spawn QS_fnc_SMhintSUCCESS;
+                [4] spawn QS_fnc_bluforSUCCESS;
             } else {
                 [4] spawn QS_fnc_partizanSUCCESS;
             };

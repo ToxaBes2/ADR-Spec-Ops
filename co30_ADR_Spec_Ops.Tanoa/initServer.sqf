@@ -55,6 +55,7 @@ if (isNil {uiNamespace getVariable "life_sql_id"}) then {
 // Create partizan base
 _null = [] call QS_fnc_createPartizanBase;
 PARTIZAN_REWARDS_LIST = []; publicVariable "PARTIZAN_REWARDS_LIST";
+BLUFOR_REWARDS_LIST = []; publicVariable "BLUFOR_REWARDS_LIST";
 
 // Hide turrets
 baseTurret2 hideObjectGlobal true;

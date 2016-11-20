@@ -26,7 +26,7 @@ class QS
 		class SMenemyFIA {};
 		class SMenemyIND {};
 		class SMhintFAIL {};
-		class SMhintSUCCESS {};
+		class bluforSUCCESS {};
 		class TBdeleteObjects {};
 		class TBshuffle {};
 		class actionChangeLoadout {};

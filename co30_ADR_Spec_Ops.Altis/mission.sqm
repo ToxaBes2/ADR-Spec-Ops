@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1260;
+		nextID=1261;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={15431.13,114.52335,17187.676};
-		dir[]={-0.79526496,-0.39871064,0.4567115};
-		up[]={-0.34575164,0.91707665,0.19856134};
-		aside[]={0.49800757,3.259629e-009,0.86717343};
+		pos[]={14628.742,23.681824,16768.863};
+		dir[]={-0.85440254,-0.24460866,0.45844439};
+		up[]={-0.21554276,0.96962219,0.11565412};
+		aside[]={0.47280732,-4.0978193e-008,0.88116968};
 	};
 };
 binarizationWanted=0;
@@ -394,7 +394,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=495;
+		items=496;
 		class Item0
 		{
 			dataType="Marker";
@@ -739,7 +739,7 @@ class Mission
 		class Item33
 		{
 			dataType="Marker";
-			position[]={14686.555,17.91,16717.715};
+			position[]={14621.01,18.204803,16775.289};
 			name="Side";
 			text="Наградная техника";
 			type="b_unknown";
@@ -10062,7 +10062,7 @@ class Mission
 			class Attributes
 			{
 				ammo=0;
-				init="this enableRopeAttach false; this setMass 500000; " \n "this addAction [""<t color='#FFEB3B'><img image='\a3\ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa' size='1.0'/> Эвакуация базы</t>"",""scripts\misc\actions\basePartizan_switch.sqf"",[],19,true,true,"""",'((vehicle player) == player && playerSide == resistance) && !adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\GUI\Cfg\Notifications\tridentEnemy_ca.paa' size='1.0'/> Уничтожить базу партизан</t>"",""scripts\misc\actions\basePartizan_destroy.sqf"",[],18,true,true,"""",'((vehicle player) == player && playerSide == west)', 5];   " \n "this addAction [""<t color='#FF8000'><img image='\A3\Soft_F\Quadbike_01\Data\UI\map_Quad_CA.paa' size='1.0'/> Вызвать квадрацикл</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""quadbike""],17,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#FFBF00'><img image='\A3\soft_f_gamma\SUV_01\Data\UI\map_suv_01_CA.paa' size='1.0'/> Вызвать внедорожник (SUV)</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""suv""],16,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#BFFF00'><img image='\A3\soft_f\Offroad_01\Data\UI\map_offroad_01_CA.paa' size='1.0'/> Вызвать пикап</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""offroad""],15,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#01DFA5'><img image='\A3\Soft_F_Exp\Offroad_02\Data\UI\map_Offroad_02_base_CA.paa' size='1.0'/> Вызвать полноприводный джип</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""jeep""],14,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#2196F3'><img image='\a3\ui_f\data\map\VehicleIcons\iconShip_ca.paa' size='1.0'/> Вызвать лодку</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""ship""],13,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#BDBDBD'><img image='\a3\ui_f\data\Map\VehicleIcons\iconCar_ca.paa' size='1.0'/> Вызвать технику</>"", {[] spawn {adr_partizan_submenu = true; sleep 20, adr_partizan_submenu = false;}},[],6,true,false,"""",'((vehicle player) == player && playerSide == resistance) && !adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#BDBDBD'><img image='\a3\ui_f\data\Map\Diary\Icons\taskFailed_ca.paa' size='1.0'/> Отмена</>"", {adr_partizan_submenu = false;},[],6,true,false,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];" \n "this addAction[""<t color='#C6FF00'><img image='\a3\ui_f\data\GUI\Cfg\CommunicationMenu\supplydrop_ca.paa' size='1.0'/>Использовать трофеи</t>"",""createDialog 'VAS_Reward_Diag';"",[],7,true,false,"""",'((vehicle player) == player && playerSide == resistance) && !adr_partizan_submenu', 5];" \n "this addAction [""<img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\gps_ca.paa' size='1.0'/> Дипломатия: <t color='#23D80E'>перемирие</t>"", ""scripts\diplomacy.sqf"", 1, -100, false, true, """", '(_target getVariable [""DIPLOMACY"",0]) != 1 && playerSide == resistance'];" \n "this addAction [""<img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\gps_ca.paa' size='1.0'/> Дипломатия: <t color='#F44336'>война</t>"", ""scripts\diplomacy.sqf"", 0, -100, false, true, """", '(_target getVariable [""DIPLOMACY"",0] == 1) && playerSide == resistance'];";
+				init="this enableRopeAttach false; this setMass 500000; " \n "this addAction [""<t color='#FFEB3B'><img image='\a3\ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa' size='1.0'/> Эвакуация базы</t>"",""scripts\misc\actions\basePartizan_switch.sqf"",[],19,true,true,"""",'((vehicle player) == player && playerSide == resistance) && !adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\GUI\Cfg\Notifications\tridentEnemy_ca.paa' size='1.0'/> Уничтожить базу партизан</t>"",""scripts\misc\actions\basePartizan_destroy.sqf"",[],18,true,true,"""",'((vehicle player) == player && playerSide == west)', 5];   " \n "this addAction [""<t color='#FF8000'><img image='\A3\Soft_F\Quadbike_01\Data\UI\map_Quad_CA.paa' size='1.0'/> Вызвать квадрацикл</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""quadbike""],17,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#FFBF00'><img image='\A3\soft_f_gamma\SUV_01\Data\UI\map_suv_01_CA.paa' size='1.0'/> Вызвать внедорожник (SUV)</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""suv""],16,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#BFFF00'><img image='\A3\soft_f\Offroad_01\Data\UI\map_offroad_01_CA.paa' size='1.0'/> Вызвать пикап</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""offroad""],15,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#01DFA5'><img image='\A3\Soft_F_Exp\Offroad_02\Data\UI\map_Offroad_02_base_CA.paa' size='1.0'/> Вызвать полноприводный джип</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""jeep""],14,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#2196F3'><img image='\a3\ui_f\data\map\VehicleIcons\iconShip_ca.paa' size='1.0'/> Вызвать лодку</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""ship""],13,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#BDBDBD'><img image='\a3\ui_f\data\Map\VehicleIcons\iconCar_ca.paa' size='1.0'/> Вызвать технику</>"", {[] spawn {adr_partizan_submenu = true; sleep 20, adr_partizan_submenu = false;}},[],6,true,false,"""",'((vehicle player) == player && playerSide == resistance) && !adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#BDBDBD'><img image='\a3\ui_f\data\Map\Diary\Icons\taskFailed_ca.paa' size='1.0'/> Отмена</>"", {adr_partizan_submenu = false;},[],6,true,false,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];" \n "this addAction[""<t color='#C6FF00'><img image='\a3\ui_f\data\GUI\Cfg\CommunicationMenu\supplydrop_ca.paa' size='1.0'/>Использовать трофеи</t>"",""createDialog 'VAS_PARTIZAN_Reward_Diag';"",[],7,true,false,"""",'((vehicle player) == player && playerSide == resistance) && !adr_partizan_submenu', 5];" \n "this addAction [""<img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\gps_ca.paa' size='1.0'/> Дипломатия: <t color='#23D80E'>перемирие</t>"", ""scripts\diplomacy.sqf"", 1, -100, false, true, """", '(_target getVariable [""DIPLOMACY"",0]) != 1 && playerSide == resistance'];" \n "this addAction [""<img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\gps_ca.paa' size='1.0'/> Дипломатия: <t color='#F44336'>война</t>"", ""scripts\diplomacy.sqf"", 0, -100, false, true, """", '(_target getVariable [""DIPLOMACY"",0] == 1) && playerSide == resistance'];";
 				name="partizan_ammo";
 			};
 			id=997;
@@ -10450,6 +10450,7 @@ class Mission
 				angles[]={0,5.5229897,0};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 				lock="UNLOCKED";
@@ -10458,7 +10459,7 @@ class Mission
 			};
 			id=1075;
 			type="B_HMG_01_high_F";
-			atlOffset=9.9559517;
+			atlOffset=0.0011749268;
 		};
 		class Item452
 		{
@@ -10650,7 +10651,7 @@ class Mission
 			};
 			id=1158;
 			type="B_HMG_01_high_F";
-			atlOffset=5.9058661;
+			atlOffset=5.9029999;
 		};
 		class Item462
 		{
@@ -11324,6 +11325,24 @@ class Mission
 			b=0.5;
 			id=1259;
 			atlOffset=4.8312502;
+		};
+		class Item495
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={14620.431,19.196148,16775.311};
+				angles[]={0,5.4857965,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				skill=0.60000002;
+				init="this allowDamage false;this addAction[""<t color='#C6FF00'><img image='\a3\ui_f\data\GUI\Cfg\CommunicationMenu\supplydrop_ca.paa' size='1.0'/>Наградная Техника</t>"",""createDialog 'VAS_BLUFOR_Reward_Diag';"",[],7,true,false,"""",'((vehicle player) == player && playerSide == west)', 5];";
+			};
+			id=1260;
+			type="Land_Atm_02_F";
 		};
 	};
 	class Connections

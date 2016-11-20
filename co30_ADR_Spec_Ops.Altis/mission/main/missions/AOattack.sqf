@@ -9,7 +9,7 @@ Description: All main AO's in one file
 #define ALLOWED_EXPLOSIVES "IEDUrbanBig_Remote_Ammo","IEDUrbanBig_Remote_Ammo","IEDLandBig_Remote_Ammo","IEDUrbanSmall_Remote_Ammo","IEDLandSmall_Remote_Ammo","SatchelCharge_Remote_Ammo","DemoCharge_Remote_Ammo",""
 
 private ["_nameAO", "_positionAO", "_serviceMarkers", "_dt", "_chance", "_bunkerType", "_bunkerPos", "_distance", "_flatPos", "_res", "_null", "_obj", "_bunkerObjects", "_bunkerPositions", "_bunkerPosition", "_smallZ", "_bigZ", "_anotherChance", "_uav", "_uavPos", "_position", "_tower", "_allowedExplosives", "_tower_dmg", "_points", "_unit", "_campPos", "_hasMines", "_groundPos", "_minesArray", "_newPos", "_cargo", "_campObjects", "_type", "_nearestObject", "_enemiesArray", "_targetStartText", "_showTowerMessage", "_showBunkerMessage", "_viperSquadSpawned", "_radioTowerDownText", "_bunkerText", "_targetCompleteText", "_aliveBots", "_chanceDefend", "_vehicles", "_curVeh", "_isReward", "_unitTypes"];
-
+DEFEND_NOW = false; publicVariable "DEFEND_NOW";
 WinRadiotower = false; publicVariable "WinRadiotower";
 WinBunker = false; publicVariable "WinBunker";
 eastSide = createCenter ENEMY_SIDE;
@@ -253,6 +253,7 @@ while {alive radioTower || !MAIN_AO_SUCCESS || !_showTowerMessage || !_showBunke
         };
     };
 };
+
 currentAOUp = false; publicVariable "currentAOUp";
 
 // DE-BRIEF 1
@@ -261,6 +262,11 @@ _targetCompleteText = format ["<t align='center' size='2.2'>Захватили</
 { _x setMarkerPos [-10000, -10000, -10000];} forEach ["aoCircle", "aoMarker"];
 GlobalHint = _targetCompleteText; hint parseText GlobalHint; publicVariable "GlobalHint";
 showNotification = ["CompletedMain", _nameAO]; publicVariable "showNotification";
+sleep 3;
+if (WinBunker isEqualTo west && WinRadiotower isEqualTo west) then {
+    [1] spawn QS_fnc_bluforSUCCESS;
+};
+sleep 3;
 
 // DEFEND AO
 if (PARAMS_DefendAO == 1) then {
@@ -278,6 +284,7 @@ if (PARAMS_DefendAO == 1) then {
     } forEach allGroups;
     _chanceDefend = random 10;
     if (_chanceDefend > 5 && _aliveBots > 25) then {
+        DEFEND_NOW = true; publicVariable "DEFEND_NOW";
         sleep 3;
 	    _null = [_target] spawn {_this call compile preProcessFileLineNumbers "mission\main\missions\AOdefend.sqf";};
         waitUntil {sleep 10; !isNil "DEFEND_AO_VICTORY"};
@@ -285,7 +292,7 @@ if (PARAMS_DefendAO == 1) then {
         DEFEND_AO_VICTORY = true; publicVariable "DEFEND_AO_VICTORY";
     };
 };
-
+DEFEND_NOW = false; publicVariable "DEFEND_NOW";
 { _x setMarkerPos [-10000, -10000, -10000]; } forEach ["aoCircle_2", "aoMarker_2"];
 
 // DE-BRIEF
@@ -295,19 +302,7 @@ if (DEFEND_AO_VICTORY) then {
     _targetCompleteText = format ["<t align='center' size='2.2'>Отступление</t><br/><t size='1.5' align='center' color='#F44336'>%1</t><br/>____________________<br/>Мы отступаем! Возвращайтесь на базу для перегруппировки на следующее задание.<br/><br/>Командование перебросило Вашу наградную технику более результативным подразделениям.", _nameAO];
 
     // delete reward vehicles
-    _vehicles = nearestObjects [[14714,16710], ["LandVehicle","Air","Ship"], 150];
-    {
-        _curVeh = _x;
-        _isReward = _curVeh getVariable ["IS_REWARD", false];
-        if (_isReward) then {
-            if (count (crew _curVeh) > 0) then {
-                {
-                    _x action ["EJECT", _curVeh];
-                } forEach (crew _curVeh);
-            };
-            deleteVehicle _curVeh;
-        };
-    } forEach _vehicles;
+    BLUFOR_REWARDS_LIST = []; publicVariable "BLUFOR_REWARDS_LIST";
 };
 DEFEND_AO_VICTORY = nil; publicVariable "DEFEND_AO_VICTORY";
 GlobalSideHint = [west, _targetCompleteText]; publicVariable "GlobalSideHint";

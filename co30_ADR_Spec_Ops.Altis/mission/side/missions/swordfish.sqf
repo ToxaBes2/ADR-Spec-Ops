@@ -335,7 +335,7 @@ while { sideMissionUp } do {
         "sideCircle" setMarkerSize [300, 300]; publicVariable "sideCircle";
         "sideMarker" setMarkerText ""; publicVariable "sideMarker";
         if (WIN_WEST > WIN_GUER) then {
-            [true] spawn QS_fnc_SMhintSUCCESS;
+            [4] spawn QS_fnc_bluforSUCCESS;
         } else {
             [4] spawn QS_fnc_partizanSUCCESS;
         };

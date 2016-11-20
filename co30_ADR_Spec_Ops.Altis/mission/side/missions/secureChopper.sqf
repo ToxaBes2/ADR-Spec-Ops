@@ -109,7 +109,7 @@ while { sideMissionUp } do {
 
 		// DE-BRIEFING
 		if (WIN_WEST > WIN_GUER) then {
-            [false] call QS_fnc_SMhintSUCCESS;
+            [false] call QS_fnc_bluforSUCCESS;
         } else {
             [3] call QS_fnc_partizanSUCCESS;
         };

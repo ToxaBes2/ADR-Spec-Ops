@@ -289,12 +289,12 @@ class VAS_Info_Diag {
         };
 	};
 };
-class VAS_Reward_Diag {
+class VAS_PARTIZAN_Reward_Diag {
 	idd = 1544;
 	name= "Virtual_Ammobox_Sys Load";
 	movingEnable = false;
 	enableSimulation = true;
-	onLoad = "[1] spawn VAS_fnc_SaveLoad; uiNamespace setVariable ['VAS_Reward_Dispaly', (_this select 0)];_null = [] spawn {_this call compile preProcessFileLineNumbers 'scripts\VAS\reward.sqf';};";
+	onLoad = "[1] spawn VAS_fnc_SaveLoad; uiNamespace setVariable ['VAS_Reward_Display_Partizan', (_this select 0)];_null = [] spawn {_this call compile preProcessFileLineNumbers 'scripts\VAS\reward_partizan.sqf';};";
 	onUnload = "ppEffectDestroy VAS_blur;";
 
     class controlsBackground {
@@ -337,7 +337,7 @@ class VAS_Reward_Diag {
 		class VAS_XD_OkButton: VAS_XD_ButtonBase {
 			idc = 7779;
 			text = "ИСПОЛЬЗОВАТЬ";
-			action = "_null = [] spawn {_this call compile preProcessFileLineNumbers 'scripts\VAS\spawn_reward.sqf';};";
+			action = "_null = [] spawn {_this call compile preProcessFileLineNumbers 'scripts\VAS\spawn_reward_partizan.sqf';};";
 			x = 0;
 			y = 1.01;
 			w = 0.2;
@@ -379,3 +379,95 @@ class VAS_Reward_Diag {
         };
 	};
 };
+
+class VAS_BLUFOR_Reward_Diag {
+	idd = 1544;
+	name= "Virtual_Ammobox_Sys Load";
+	movingEnable = false;
+	enableSimulation = true;
+	onLoad = "[1] spawn VAS_fnc_SaveLoad; uiNamespace setVariable ['VAS_Reward_Display_Blufor', (_this select 0)];_null = [] spawn {_this call compile preProcessFileLineNumbers 'scripts\VAS\reward_blufor.sqf';};";
+	onUnload = "ppEffectDestroy VAS_blur;";
+
+    class controlsBackground {
+		class VAS_BackGround : VAS_RscBG {
+			x = 0;
+            y = 0;
+            w = 1;
+            h = 1;
+			colorBackground[] = {0.05,0.05,0.05,0.9};
+		};
+	};
+
+	class controls {
+		class VAS_XD_MainCaption : VAS_XC_RscText {
+			colorBackground[] = {1, 1, 1, 0};
+		    colorText[] = {1, 1, 1, 1};
+			idc = 7778;
+			text = "Наградная Техника";
+			x = 0;
+            y = -0.15;
+            w = 1;
+            h = 0.15;
+		    sizeEx = 0.05;
+		    style = 2;
+		    shadow = 0;
+		};
+
+        class VAS_XD_CloseButton: VAS_XD_ButtonBase {
+			idc = 9999;
+			text = "$STR_VAS_Main_btnClose";
+			action = "closeDialog 0;";
+			default = true;
+			x = 0.8;
+			y = 1.01;
+			w = 0.2;
+			colorFocused[] = { 1, 1, 1, 1 };
+			colorBackgroundFocused[] = { 1, 1, 1, 0 };
+		};
+
+		class VAS_XD_OkButton: VAS_XD_ButtonBase {
+			idc = 7779;
+			text = "ИСПОЛЬЗОВАТЬ";
+			action = "_null = [] spawn {_this call compile preProcessFileLineNumbers 'scripts\VAS\spawn_reward_blufor.sqf';};";
+			x = 0;
+			y = 1.01;
+			w = 0.2;
+			colorFocused[] = { 1, 1, 1, 1 };
+			colorBackgroundFocused[] = { 1, 1, 1, 0 };
+		};
+
+        class Table: VAS_RscListNBox {
+            idc = 7777;
+            type = 102;
+            columns[] = {0,0.07};
+            drawSideArrows = 0;
+            idcLeft = -1;
+            idcRight = -1;
+            maxHistoryDelay = 1;
+            rowHeight = 0.05;
+            x = 0.01;
+            y = 0.02;
+            w = 0.98;
+            h = 0.96;
+			font = "PuristaLight";
+	        sizeEx = 0.03921;
+		    soundSelect[] = {"", 0.1, 1};
+		    colorBackground[] = {0.05,0.05,0.05,0.9};
+		    colorPicture[] = {1,1,1,1};
+            colorPictureSelected[] = {1,1,1,1};
+            colorPictureDisabled[] = {1,1,1,1};
+            onLBSelChanged = "SELECTED_REWARD = _this; publicVariable ""SELECTED_REWARD""; false";
+		    class ListScrollBar {
+		    	width = 0.7;
+		    	height = 0.7;
+		    	scrollSpeed = 0.01;
+		    	arrowEmpty = "\A3\ui_f\data\gui\cfg\scrollbar\arrowEmpty_ca.paa";
+		    	arrowFull = "\A3\ui_f\data\gui\cfg\scrollbar\arrowFull_ca.paa";
+		    	border = "\A3\ui_f\data\gui\cfg\scrollbar\border_ca.paa";
+		    	thumb = "\A3\ui_f\data\gui\cfg\scrollbar\thumb_ca.paa";
+		    	color[] = {1,1,1,1};
+		    };
+        };
+	};
+};
+

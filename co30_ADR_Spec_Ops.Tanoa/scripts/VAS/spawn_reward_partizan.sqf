@@ -8,10 +8,11 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
     SELECTED_REWARD = nil; publicVariable "SELECTED_REWARD";
     _data = PARTIZAN_REWARDS_LIST deleteAt _idx;
     publicVariable "PARTIZAN_REWARDS_LIST";
-    _display = uiNamespace getVariable['VAS_Reward_Dispaly', displayNull];
+    _display = uiNamespace getVariable['VAS_Reward_Display_Partizan', displayNull];
     _ctrl = _display displayCtrl 7777;
     _ctrl lnbDeleteRow _idx;
-    _vehName = _data select 1;
+    _vehs = _data select 1;    
+    _vehName = _vehs select 0;
     _useAirfield = _data select 2;
     _ammoPos = getPos partizan_ammo;
     _rewardPos = [0,0,0];
@@ -71,6 +72,45 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
         {
             _x setName "[AI]";
         } forEach units _grp;
+    };
+
+    if (count _vehs > 1) then {
+        _vehs deleteAt 0;
+        {  
+            if (_x isKindOf "ReammoBox_F") then {
+                _newPos = [_rewardPos, 1, 5, 0.5, 0, 1, 0] call QS_fnc_findSafePos;
+                _newVeh = createVehicle [_x, _newPos, [], 0, "NONE"];                                
+            };
+            if (_x isKindOf "StaticWeapon" && _vehName == "I_G_Offroad_01_F") then {
+                _newVeh = createVehicle [_x, [10,10,10], [], 0, "NONE"];
+                switch (_x) do { 
+                    case "I_static_AT_F" : {
+                        _newDir = _rewardDir + 180;
+                        _newVeh attachTo [_veh, [0,-1.8, 0.3]];
+                        _newVeh setDir _newDir;
+                    }; 
+                    case "I_static_AA_F" : {
+                        _newVeh attachTo [_veh, [0,-2.3, 0.3]];
+                    }; 
+                    case "I_G_Mortar_01_F" : {
+                        _newVeh attachTo [_veh, [0,-2.3, 0]];
+                    }; 
+                    case "I_GMG_01_high_F" : {
+                        _newVeh attachTo [_veh, [0,-2.3, 1]];
+                    }; 
+                };                
+            };
+            if (_vehName == "I_Truck_02_ammo_F") then {
+                _newVeh = createVehicle [_x, [10,10,10], [], 0, "NONE"];
+                _newVeh attachTo [_veh, [0,-2, 1.95]];
+
+                // add EW (anti-UAV) actions
+            };
+            if (_vehName == "I_Truck_02_medical_F") then {
+
+                // add avanpost actions
+            };
+        } forEach _vehs;
     };
 
     // Put market on the spawned vehicle for 60 seconds
