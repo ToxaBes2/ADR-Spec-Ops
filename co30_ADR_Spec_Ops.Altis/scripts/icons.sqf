@@ -155,24 +155,22 @@ QS_fnc_iconDrawMap = compileFinal "
 
 //======================== DRAW GPS
 
-QS_fnc_iconDrawGPS = compile "
+QS_fnc_iconDrawEnemyGPS = compileFinal "
 	private [""_v"",""_iconType"",""_color"",""_pos"",""_iconSize"",""_dir"",""_text"",""_shadow"",""_textSize"",""_textFont"",""_textOffset""];
 	_text = """";
 	_shadow = 1;
 	_textSize = 0.05;
 	_textFont = 'puristaMedium';
 	_textOffset = 'right';
-	_allowedSides = [""WEST"", ""GUER""];
 	{
 		_v = vehicle _x;
-		if ((side _v == playerSide) || ((partizan_ammo getVariable ['DIPLOMACY', 0] == 1) && (side _v) in _allowedSides) || _v getVariable ['BTC_need_revive', 0] == 1) then {
+		if ((side _v == playerSide) || (playerSide == west && _v isKindOf 'B_Soldier_base_F') || (playerSide == resistance && _v isKindOf 'I_G_Soldier_base_F')) then {
 			if ((_x distance player) < 300) then {
 				_iconType = [_v] call QS_fnc_iconType;
 				_color = [_x] call QS_fnc_iconColor;
 				_pos = getPosASL _v;
 				_iconSize = [_v] call QS_fnc_iconSize;
 				_dir = getDir _x;
-
 				if (_x == crew _v select 0 || {_x in allUnitsUav}) then {
 					_this select 0 drawIcon [
 						_iconType,
@@ -191,6 +189,42 @@ QS_fnc_iconDrawGPS = compile "
 			};
 		};
 	} count (playableUnits + switchableUnits + allUnitsUav);
+";
+
+QS_fnc_iconDrawFriendlyGPS = compileFinal "
+	private [""_v"",""_iconType"",""_color"",""_pos"",""_iconSize"",""_dir"",""_text"",""_shadow"",""_textSize"",""_textFont"",""_textOffset""];
+	_text = """";
+	_shadow = 1;
+	_textSize = 0.05;
+	_textFont = 'puristaMedium';
+	_textOffset = 'right';
+	{
+		_v = vehicle _x;
+		if (side _v == west || side _v == independent || _v getVariable ['BTC_need_revive', 0] == 1) then {
+			if ((_x distance player) < 300) then {
+				_iconType = [_v] call QS_fnc_iconType;
+				_color = [_x] call QS_fnc_iconColor;
+				_pos = getPosASL _v;
+				_iconSize = [_v] call QS_fnc_iconSize;
+				_dir = getDir _x;
+				if (_x == crew _v select 0 || {_x in allUnitsUav}) then {
+					_this select 0 drawIcon [
+						_iconType,
+						_color,
+						_pos,
+						_iconSize,
+						_iconSize,
+						_dir,
+						_text,
+						_shadow,
+						_textSize,
+						_textFont,
+						_textOffset
+					]
+				};
+			};
+		};
+	} count allUnits;
 ";
 
 //=============================================================== INITIALIZATION
@@ -212,5 +246,23 @@ QS_fnc_iconDrawGPS = compile "
 		} count (uiNamespace getVariable "IGUI_Displays");
 		sleep 1;
 	};
-	clientEhDrawGps = _gps ctrlAddEventHandler ["Draw",QS_fnc_iconDrawGPS];
+    clientEhDrawGps = _gps ctrlAddEventHandler ["Draw",QS_fnc_iconDrawEnemyGPS];
+    _curStatus = 0;
+    while {true} do {
+        _diplomacyPartizan = partizan_ammo getVariable ['DIPLOMACY', 0];
+        _diplomacyBlufor = base_arsenal_infantry getVariable ["DIPLOMACY", 0];
+        if (_diplomacyPartizan == 1 && _diplomacyBlufor == 1 && _curStatus == 0) then {
+            _gps ctrlRemoveEventHandler ["Draw", clientEhDrawGps];
+            clientEhDrawGps = _gps ctrlAddEventHandler ["Draw", QS_fnc_iconDrawFriendlyGPS];
+            _curStatus = 1;
+            [1] remoteExec ["QS_fnc_diplomacySwitch", 2];
+        };
+        if ((_diplomacyPartizan == 0 || _diplomacyBlufor == 0) && _curStatus == 1) then {
+            _gps ctrlRemoveEventHandler ["Draw", clientEhDrawGps];
+            clientEhDrawGps = _gps ctrlAddEventHandler ["Draw", QS_fnc_iconDrawEnemyGPS];
+            _curStatus = 0;
+            [0] remoteExec ["QS_fnc_diplomacySwitch", 2];
+        };
+        sleep 5;  
+    };    
 };

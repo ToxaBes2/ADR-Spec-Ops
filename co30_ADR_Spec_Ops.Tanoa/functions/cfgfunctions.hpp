@@ -14,6 +14,7 @@ class QS
 		class clearItemsBase {};
 		class CheckVisionMode {};
 		class DeleteEnemyEAST {};
+		class diplomacySwitch {};
 		class EWattack {};
 		class FillBots {};
 		class FillCargoPatrol {};
