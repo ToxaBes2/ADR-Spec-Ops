@@ -11,10 +11,10 @@ _basepos = getMarkerPos "respawn_west";
 _flatPos = [0, 0, 0];
 _accepted = false;
 while {!_accepted} do {
-	_position = [[[_basepos, 2000]], ["water", "out"]] call QS_fnc_randomPos;
+	_position = [[[_basepos, 2500]], ["water", "out"]] call QS_fnc_randomPos;
 	_flatPos = _position isFlatEmpty [5, 0, 0.2, 5, 0, false];
 	while {(count _flatPos) < 2} do {
-		_position = [[[_basepos, 6000]], ["water", "out"]] call QS_fnc_randomPos;
+		_position = [[[_basepos, 2500]], ["water", "out"]] call QS_fnc_randomPos;
 		_flatPos = _position isFlatEmpty [5, 0, 0.2, 5, 0, false];
 	};
 	if ((_flatPos distance _basepos) > 2000) then {
@@ -34,16 +34,19 @@ _PTdir = random 360;
 sleep 1;
 priorityObj1 = "O_APC_Tracked_02_AA_F" createVehicle _flatPos1;
 waitUntil {!isNull priorityObj1};
+priorityObj1 allowDamage false;
 priorityObj1 setDir _PTdir;
 sleep 1;
 priorityObj2 = "O_APC_Tracked_02_AA_F" createVehicle _flatPos2;
 waitUntil {!isNull priorityObj2};
+priorityObj2 allowDamage false;
 priorityObj2 setDir _PTdir;
 sleep 1;
 
 // SPAWN AMMO TRUCK (for ambiance and plausibiliy of unlimited ammo)
 ammoTruck = "O_Truck_03_ammo_F" createVehicle _flatPos3;
 waitUntil {!isNull ammoTruck};
+ammoTruck allowDamage false;
 ammoTruck setDir random 360;
 {_x lock 0;_x allowCrewInImmobile true;} forEach [priorityObj1, priorityObj2, ammoTruck];
 
@@ -162,6 +165,10 @@ priorityTargetText = "Зенитная батарея"; publicVariable "priority
 _briefing = "<t align='center' size='2.2'>Внимание</t><br/><t size='1.5' color='#F44336'>Зенитная батарея</t><br/>____________________<br/>Обнаружена точка укрепления зенитных орудий противника. Её близлежащее расположение грозит как группам десантирования, так и всей нашей авиации в целом.";
 GlobalHint = _briefing; hint parseText _briefing; publicVariable "GlobalHint";
 showNotification = ["NewPriorityTarget", ["Зенитная батарея", "\a3\ui_f\data\gui\cfg\hints\target_ca.paa"]]; publicVariable "showNotification";
+
+priorityObj1 allowDamage true;
+priorityObj2 allowDamage true;
+ammoTruck allowDamage true;
 
 // 8. CORE LOOP
 waitUntil{sleep 1; !isNil "currentAOUp"};

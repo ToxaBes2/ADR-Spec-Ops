@@ -24,18 +24,19 @@ while {!_accepted} do {
 	_position = [[[getMarkerPos currentAO, 2500]], ["water", "out"]] call QS_fnc_randomPos;
 	_flatPos = _position isFlatEmpty [5, 0, 0.2, sizeOf "Land_Communication_F", 0, false];
 	while {(count _flatPos) < 2} do {
-		_position = [[[getMarkerPos currentAO, 2500]], ["water", "out"]] call QS_fnc_randomPos;
+		_position = [[[getMarkerPos currentAO, 3000]], ["water", "out"]] call QS_fnc_randomPos;
 		_flatPos = _position isFlatEmpty [5, 0, 0.2, sizeOf "Land_Communication_F", 0, false];
 	};
 	if ((_flatPos distance (getMarkerPos "respawn_west")) > 1800 && (_flatPos distance (getMarkerPos currentAO)) > 800) then {
 		_accepted = true;
 	};
 };
-_objPos = [_flatPos, 25, 35, 10, 0, 0.5, 0, [], [_flatPos]] call QS_fnc_findSafePos;
+_objPos = [_flatPos, 20, 50, 10, 0, 0.5, 0, [], [_flatPos]] call QS_fnc_findSafePos;
 
 // SPAWN OBJECTIVE
 sideObj = "Land_Communication_F" createVehicle _flatPos;
 waitUntil {!isNull sideObj};
+sideObj allowDamage false;
 sideObj setDir random 360;
 house = "Land_Cargo_HQ_V4_F" createVehicle _objPos;
 house setDir 180;
@@ -66,12 +67,14 @@ tower1 = "Land_Cargo_Patrol_V4_F" createVehicle _tower1;
 tower2 = "Land_Cargo_Patrol_V4_F" createVehicle _tower2;
 tower3 = "Land_Cargo_Patrol_V4_F" createVehicle _tower3;
 power = "Land_DieselGroundPowerUnit_01_F" createVehicle _power;
-power setDamage 0.5;
+power allowDamage false;
 light = "Land_PortableLight_double_F" createVehicle _light;
 light setDir 0;
 EWCar = "O_Truck_03_repair_F" createVehicle _EWCar;
+EWCar allowDamage false;
 EWCar setFuel 0;
 AwardCar = "O_Truck_03_ammo_F" createVehicle _AwardCar;
+AwardCar allowDamage false;
 AwardCar setFuel 0;
 barrels = "CargoNet_01_barrels_F" createVehicle _barrels;
 getpowerunit setPos [(getPos power select 0), (getPos power select 1), ((getPos power select 2) + 1)];
@@ -87,6 +90,11 @@ _enemiesArray = [sideObj] call QS_fnc_SMenemyEAST;
 _fuzzyPos = [((_flatPos select 0) - 300) + (random 600), ((_flatPos select 1) - 300) + (random 600), 0];
 _guardsGroup = [_fuzzyPos, 300, 15, ENEMY_SIDE] call QS_fnc_FillBots;
 _enemiesArray = _enemiesArray + [_guardsGroup];
+power allowDamage true;
+power setDamage 0.5;
+EWCar allowDamage true;
+AwardCar allowDamage true;
+sideObj allowDamage true;
 
 // BRIEF
 hqSideChat = "Штаб, это Дельта-Браво, ни черта понять не можем, не работают тепловизоры, ночное видение, ПТ. Что-то мешает работе. Прием."; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;

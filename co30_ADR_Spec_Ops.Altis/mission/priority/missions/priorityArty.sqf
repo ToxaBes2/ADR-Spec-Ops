@@ -32,10 +32,12 @@ _PTdir = random 360;
 sleep 0.3;
 priorityObj1 = "O_MBT_02_arty_F" createVehicle _flatPos1;
 waitUntil {!isNull priorityObj1};
+priorityObj1 allowDamage false;
 priorityObj1 setDir _PTdir;
 sleep 0.3;
 priorityObj2 = "O_MBT_02_arty_F" createVehicle _flatPos2;
 waitUntil {!isNull priorityObj2};
+priorityObj2 allowDamage false;
 priorityObj2 setDir _PTdir;
 sleep 0.3;
 priorityObj1 addEventHandler ["Fired", {if (!isPlayer (gunner priorityObj1)) then { priorityObj1 setVehicleAmmo 1; }; }];
@@ -44,6 +46,7 @@ priorityObj2 addEventHandler ["Fired", {if (!isPlayer (gunner priorityObj2)) the
 // SPAWN AMMO TRUCK (for ambiance and plausibiliy of unlimited ammo)
 ammoTruck = "O_Truck_03_ammo_F" createVehicle _flatPos3;
 waitUntil {!isNull ammoTruck};
+ammoTruck allowDamage false;
 ammoTruck setDir random 360;
 {_x lock 0; _x allowCrewInImmobile true;} forEach [priorityObj1, priorityObj2, ammoTruck];
 
@@ -109,6 +112,10 @@ _firingMessages = [
 	"Враг ведёт стрельбу из артиллерийских орудий. Пригнитесь!",
 	"Противник начал артобстрел наших позиций. В укрытие!"
 ];
+
+priorityObj1 allowDamage true;
+priorityObj2 allowDamage true;
+ammoTruck allowDamage true;
 
 // FIRING SEQUENCE LOOP
 _radius = 80;
