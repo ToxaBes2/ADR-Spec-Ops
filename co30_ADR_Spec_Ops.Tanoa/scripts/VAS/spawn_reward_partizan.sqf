@@ -103,14 +103,18 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
             if (_vehName == "I_Truck_02_ammo_F") then {
                 _newVeh = createVehicle [_x, [10,10,10], [], 0, "NONE"];
                 _newVeh attachTo [_veh, [0,-2, 1.95]];
-
-                // add EW (anti-UAV) actions
-            };
-            if (_vehName == "I_Truck_02_medical_F") then {
-
-                // add avanpost actions
-            };
+            };            
         } forEach _vehs;
+    };
+    if (_vehName == "I_Truck_02_ammo_F") then {
+
+        // add EW (anti-UAV) actions
+        _veh setVariable ["EW_ENABLED", 0, true];
+        [_veh, "QS_fnc_addActionAntiUAV", nil, true] spawn BIS_fnc_MP;
+    };
+    if (_vehName == "I_Truck_02_medical_F") then {
+
+        // add avanpost actions
     };
 
     // Put market on the spawned vehicle for 60 seconds

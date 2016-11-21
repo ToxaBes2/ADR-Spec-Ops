@@ -35,6 +35,7 @@ class QS
 		class actionGetCargoUniform {};
 		class actionPilotRepair {};
 		class addAction {};
+		class addActionAntiUAV {};
 		class addActionAvanpost {};
 		class addActionBlock {};
 		class addActionDefuse {};

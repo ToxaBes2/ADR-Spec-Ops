@@ -10,11 +10,13 @@ _display = uiNamespace getVariable['VAS_Reward_Display_Blufor', displayNull];
 if (count BLUFOR_REWARDS_LIST == 0) then {
     closeDialog 0;
     ["<t color='#F44336' size = '.48'>У регулярной армии пока нет наград</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
+    ppEffectDestroy VAS_blur;
 };
 if !(isNil "DEFEND_NOW") then {
     if (DEFEND_NOW) exitWith {
     	closeDialog 0;
         ["<t color='#F44336' size = '.48'>Вызов наградной техники недоступен во время обороны</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
+        ppEffectDestroy VAS_blur;
     };
 };
 _title = _display displayCtrl 7778;
