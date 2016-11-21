@@ -39,7 +39,9 @@ sleep 1;
 _veh setVariable ["EW_ENABLED", 1, true];
 _veh lock 2;
 _veh setFuel 0;
-_randomPos = [[[getPos _veh, 750], []], ["water", "out"]] call QS_fnc_randomPos;
+_veh setVelocity [0, 0, 0];
+_vehPos = getPos _veh;
+_randomPos = [[[_vehPos, 750], []], ["water", "out"]] call QS_fnc_randomPos;
 _markerName = format ["mkr_%1", ceil time];
 _marker = createMarker [_markerName, _randomPos];
 _veh setVariable ["EW_MARKER", _markerName, true];
@@ -51,3 +53,36 @@ _marker setMarkerAlpha 0.5;
 _marker setMarkerSize [_radius, _radius];
 
 //EW logic
+[_veh, _vehPos, _randomPos, _radius, _markerName] spawn {
+    _veh = _this select 0;
+    _vehPos = _this select 1;
+    _randomPos = _this select 2; 
+    _radius = _this select 3; 
+    _marker = _this select 4;
+    _working = true; 
+    while {_working} do {
+        if (!alive _veh || (_veh getVariable ["EW_ENABLED", 0]) == 0 || _vehPos distance2D _veh > 10) then {
+            _working = false;
+        };
+        {
+            if (_x distance2D _randomPos < _radius) then {
+                _x setFuel 0;                
+                [_x] spawn {
+                    _v = _this select 0;
+                    if (_v isKindOf "LandVehicle") then {
+                        sleep 5;                    
+                    } else {
+                        sleep 60;
+                    };
+                    if (alive _v) then {
+                        _v setDamage 1;
+                    };                    
+                };
+            };
+        } forEach allUnitsUAV;
+        sleep 3;
+    };
+    try {
+        deleteMarker _marker;
+    } catch {};
+};
