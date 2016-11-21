@@ -135,6 +135,7 @@ for "_c" from 1 to 2 do {
     _randomPos = [[[_startPoint, 100], []], ["water", "out"]] call QS_fnc_randomPos;
     _veh = _x createVehicle _randomPos;
     waitUntil{ !isNull _veh };
+    _veh allowDamage false;
     INFANTRY_VEHICLE_CREW createUnit [_randomPos, _vehGroup];
     INFANTRY_VEHICLE_CREW createUnit [_randomPos, _vehGroup];
     INFANTRY_VEHICLE_CREW createUnit [_randomPos, _vehGroup];
@@ -153,6 +154,7 @@ for "_c" from 1 to 2 do {
     _vehGroup setCombatMode "RED";
     [(units _vehGroup)] call QS_fnc_setSkill4;
     _enemiesArray = _enemiesArray + [_vehGroup];
+    _veh allowDamage true;
 } forEach [INFANTRY_VEHICLES];
 
 _nearestDevices = _flatPos nearObjects [INFANTRY_TERMINAL, 200];
