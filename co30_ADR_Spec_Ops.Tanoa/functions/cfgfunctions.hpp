@@ -46,6 +46,7 @@ class QS
 		class addActionLoad {};
 		class addActionMove {};
 		class addActionNeutralize {};
+		class addActionPartizanAvanpost {};
 		class addActionRescue {};
 		class addActionRetreat {};
 		class addActionSabotage {};

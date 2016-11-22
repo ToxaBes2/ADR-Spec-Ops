@@ -115,6 +115,7 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
     if (_vehName == "I_Truck_02_medical_F") then {
 
         // add avanpost actions
+        [_veh, "QS_fnc_addActionPartizanAvanpost", nil, true] spawn BIS_fnc_MP;
     };
 
     // Put market on the spawned vehicle for 60 seconds
