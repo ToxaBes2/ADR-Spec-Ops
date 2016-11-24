@@ -28,6 +28,9 @@ BTC_fnc_tk_PVEH = {
 BTC_EH_killed = {
 	_body = _this select 0;
 	_killer = _this select 1;
+	if (count _this > 2) then {
+        _killer = _this select 2;
+    };
 	_veh_body = vehicle _body;
 	_veh_killer = vehicle _killer;
 	_name = name _killer;

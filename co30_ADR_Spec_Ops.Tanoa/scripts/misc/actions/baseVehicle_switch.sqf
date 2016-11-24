@@ -1,6 +1,7 @@
 private ["_ammoPos", "_vehiclePos", "_params", "_mode", "_class", "_dist", "_accepted", "_diff"];
 
-_ammoPos = getPos partizan_ammo;
+_box = _this select 0;
+_ammoPos = getPos _box;
 _vehiclePos = [0,0,0];
 _params = _this select 3;
 _mode = _params select 0;

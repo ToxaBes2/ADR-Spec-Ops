@@ -25,13 +25,13 @@ _rewardsSideMission = [
     ["Беспилотник KH-3A Fenghuang", ["O_T_UAV_04_CAS_F"], true],
     ["Стомпер с гранатометом", ["I_UGV_01_rcws_F"]],
     ["Мобильный постановщик электронных помех", ["I_Truck_02_ammo_F", "Land_SatelliteAntenna_01_F"]],
+    ["Мобильный Аванпост", ["I_Truck_02_medical_F"]],
     ["Техничка с ПВО средством", ["I_G_Offroad_01_F","I_static_AA_F"]],
     ["Техничка с ПТ средством", ["I_G_Offroad_01_F", "I_static_AT_F"]],
     ["Техничка с гранатометом", ["I_G_Offroad_01_F", "I_GMG_01_high_F"]],
     ["Техничка с пулеметом", ["I_G_Offroad_01_armed_F"]],
     ["Техничка с минометом", ["I_G_Offroad_01_F", "I_G_Mortar_01_F"]], 
-    ["Вертолет Pawnee", ["B_Heli_Light_01_armed_F"]],    
-    //["Мобильный Аванпост", ["I_Truck_02_medical_F"]], // 4x "Land_TentDome_F" + 1x "Campfire_burning_F" + 1x "Land_Communication_F"
+    ["Вертолет Pawnee", ["B_Heli_Light_01_armed_F"]],     
     ["Вертолет Хеллкет (вооруженный)", ["I_Heli_light_03_F"]]
 ];
 _rewardsEndlessGame = [

@@ -867,6 +867,26 @@ BTC_fnc_wait_for_revive =
 	if (BTC_black_screen == 0 && BTC_disable_respawn == 0) then {if (BTC_action_respawn == 0) then {disableSerialization;_dlg = createDialog "BTC_respawn_button_dialog";} else {_id = player addAction [("<t color=""#ED2744"">") + ("Respawn") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_player_respawn], 9, true, true, "", "true"];};};
 	if (BTC_black_screen == 1 && BTC_disable_respawn == 0 && !Dialog) then {_dlg = createDialog "BTC_respawn_button_dialog";};
 	player switchMove "AinjPpneMstpSnonWrflDnon";
+	_allowAvanpostBlufor = AVANPOST_RESPAWN;
+    _allowAvanpostPartizan = false;
+    if (count AVANPOST_PARTIZAN_RESPAWN > 0) then {
+        _allowAvanpostPartizan = true;
+    };
+    lbClear 12;    
+    ctrlShow [10, false];
+    ctrlShow [11, false];
+    ctrlShow [12, false];    
+    if (_allowAvanpostBlufor && playerSide == west) then {
+        ctrlShow [10, true];
+    };		
+    if (_allowAvanpostPartizan && playerSide == resistance) then {
+        ctrlShow [11, true];
+        {
+            lbAdd [12, _x];
+        } forEach AVANPOST_PARTIZAN_RESPAWN;
+        lbSetCurSel [12, 0];
+        ctrlShow [12, true];
+    };
 	while {format ["%1", player getVariable "BTC_need_revive"] == "1" && time < BTC_r_timeout && !BTC_respawn_cond} do
 	{	    
 		if (BTC_disable_respawn == 0) then {
@@ -876,6 +896,11 @@ BTC_fnc_wait_for_revive =
 				};
 			};
 		};
+        if (_allowAvanpostBlufor && playerSide == west) then {
+            ctrlShow [10, true];
+        } else {
+            ctrlShow [10, false];
+        };
 		_healer = call BTC_check_healer;
 		_lifes = "";
 		if (BTC_active_lifes == 1) then {
@@ -885,13 +910,7 @@ BTC_fnc_wait_for_revive =
 			titleText [format ["%1\n%2\n%3", round (BTC_r_timeout - time),_healer,_lifes], "BLACK FADED"];
 		} else {
 		    hintSilent format ["%1\n%2\n%3", round (BTC_r_timeout - time),_healer,_lifes];
-		};
-        _allowAvanpost = AVANPOST_RESPAWN;
-        if (_allowAvanpost && playerSide == west) then {
-            ctrlShow [10, true];
-        } else {
-            ctrlShow [10, false];
-        };		
+		};		
 		if (format ["%1", player getVariable "BTC_need_revive"] == "0" || BTC_respawn_cond) then {
 			closeDialog 0;
 		};
@@ -1434,17 +1453,35 @@ BTC_player_killed = {
 				(_ui displayCtrl 120) ctrlShow false;
 				if (BTC_disable_respawn == 1) then {(_ui displayCtrl 122) ctrlShow false;};
 				BTC_r_camera_EH_keydown = (findDisplay 46) displayAddEventHandler ["KeyDown", "_keydown = _this spawn BTC_r_s_keydown"];
-			};
+			};		
+			_allowAvanpostBlufor = AVANPOST_RESPAWN;
+            _allowAvanpostPartizan = false;
+            if (count AVANPOST_PARTIZAN_RESPAWN > 0) then {
+                _allowAvanpostPartizan = true;
+            };
+            lbClear 12;    
+            ctrlShow [10, false];
+            ctrlShow [11, false];
+            ctrlShow [12, false];    
+            if (_allowAvanpostBlufor && playerSide == west) then {
+                ctrlShow [10, true];
+            };		
+            if (_allowAvanpostPartizan && playerSide == resistance) then {
+                ctrlShow [11, true];
+                {
+                    lbAdd [12, _x];
+                } forEach AVANPOST_PARTIZAN_RESPAWN;
+                lbSetCurSel [12, 0];
+                ctrlShow [12, true];
+            };	
 			while {(format ["%1", player getVariable "BTC_need_revive"] == "1") && {(time < _timeout)} && {(!BTC_respawn_cond)}} do {
-				if (BTC_disable_respawn == 0) then {if (BTC_black_screen == 1 || (BTC_black_screen == 0 && BTC_action_respawn == 0)) then {if (!Dialog && !BTC_respawn_cond) then {_dlg = createDialog "BTC_respawn_button_dialog";};};};
-				_allowAvanpost = AVANPOST_RESPAWN;
-                if (_allowAvanpost && playerSide == west) then {
+				if (BTC_disable_respawn == 0) then {if (BTC_black_screen == 1 || (BTC_black_screen == 0 && BTC_action_respawn == 0)) then {if (!Dialog && !BTC_respawn_cond) then {_dlg = createDialog "BTC_respawn_button_dialog";};};};   
+                if (_allowAvanpostBlufor && playerSide == west) then {
                     ctrlShow [10, true];
                 } else {
                     ctrlShow [10, false];
-                };
+                };		                
 				_healer = call BTC_check_healer;
-
                 _inProgress = player getVariable ["BTC_revivie_in_progress", false];
                 if (_inProgress) then {
                     _timeout = _timeout + 1;
@@ -1602,6 +1639,7 @@ BTC_check_healer =
 
 BTC_player_respawn = {
     _avanpost = param [0, false];
+    _avanpostPartizan = param [1, ""];
 	BTC_respawn_cond = true;
 	player setVariable ["BTC_revivie_in_progress", false, true];
 	if (BTC_active_lifes == 1) then {BTC_lifes = BTC_lifes - 1;};
@@ -1681,7 +1719,17 @@ BTC_player_respawn = {
 			if (_avanpost && playerSide == west) then {
 			    [] call QS_fnc_respawnAvanpost;
 		    };
-            
+            if (playerSide == resistance) then {
+		        if !(_avanpostPartizan == "") then {
+		        	_mkrName = format ["mkr_%1", _avanpostPartizan];
+		            _mkrPos = getMarkerPos _mkrName;		            
+		            _spawnPos = [_mkrPos, 0, 20, 1, 0, 0, 0] call QS_fnc_findSafePos;
+                    _spawnPos set [2, 0];
+                    player setDir (random 360);
+                    player setPosATL _spawnPos;               
+		        };
+		    };
+
 			// load missing items
             [player] spawn BTC_addMissingItems;
 

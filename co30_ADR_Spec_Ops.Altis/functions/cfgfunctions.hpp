@@ -39,6 +39,7 @@ class QS
 		class addAction {};
 		class addActionAntiUAV {};
 		class addActionAvanpost {};
+		class addActionAvanpostPartizan {};
 		class addActionBlock {};
 		class addActionDefuse {};
 		class addActionDestroy {};

@@ -220,6 +220,27 @@ class BTC_respawn_button_dialog
                 valign = "middle";
             };
 		};
+		class respawn_partizan_button : BTC_r_button_menu 
+		{
+			idc = 11;
+			text = "Аванпост"; 
+			action = "BTC_respawn_cond = true;_data = lbText [12, lbCurSel 12];closeDialog 0;if (BTC_r_new_system == 0) then {_respawn = [true, _data] spawn BTC_player_respawn;} else {player setDamage 1;};";
+			x = 0.53;
+			y = 0.4 * safezoneH + safezoneY;
+			w = 0.25;
+			class Attributes {
+                align = "center";
+                valign = "middle";
+            };
+		};
+        class BTC_r_spawn_points : BTC_r_combo 
+		{
+			idc = 12; //119
+			x = 0.23;
+			y = 0.4 * safezoneH + safezoneY;
+			w = 0.25; 
+			h = 0.04;
+		};
 	};
 };
 class BTC_move_to_mobile_dialog

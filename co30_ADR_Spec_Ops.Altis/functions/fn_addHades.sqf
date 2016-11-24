@@ -57,6 +57,9 @@ _punishObject = objNull;
                             _x addMPEventHandler ["MPKilled", {
                                 _curUnit = _this select 0;
                                 _curKiller = _this select 1;
+                                if (count _this > 2) then {
+                                    _curKiller = _this select 2;
+                                };
                                 _veh = vehicle _curKiller;
                                 if (_veh isKindOf "LandVehicle" || _veh isKindOf "Air" || _veh isKindOf "Ship") then {
                                     if !(_veh isKindOf "StaticWeapon") then {
@@ -83,6 +86,9 @@ _punishObject = objNull;
                         _x addMPEventHandler ["MPKilled", {
                             _curUnit = _this select 0;
                             _curKiller = _this select 1;
+                            if (count _this > 2) then {
+                                _curKiller = _this select 2;
+                            };
                             _veh = vehicle _curKiller;
                             if (_veh isKindOf "LandVehicle" || _veh isKindOf "Air" || _veh isKindOf "Ship") then {
                                 if !(_veh isKindOf "StaticWeapon") then { 

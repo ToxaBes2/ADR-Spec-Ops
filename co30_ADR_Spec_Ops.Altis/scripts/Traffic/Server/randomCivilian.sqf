@@ -150,6 +150,9 @@ randomCivilian = {
         (_this select 0) addMPEventhandler ["MPKilled",
         {
             _killer = _this select 1;
+            if (count _this > 2) then {
+                _killer = _this select 2;
+            };
             if (side _killer == west && _killer isKindOf "Man" && isPlayer _killer) then {
                 [[[_killer, 300, "STR_PRISON_CIVILIAN"], "scripts\=BTC=_TK_punishment\Prison.sqf"], "BIS_fnc_execVM", true, false, false] call BIS_fnc_MP;
             } else {

@@ -23,7 +23,6 @@ for [ {_i = 0}, {_i < count(paramsArray)}, {_i = _i + 1} ] do {
 	];
 };
 
-
 // extDB2 load
 _database = "Arma3";
 _protocol = "SQL_CUSTOM_V2";
@@ -56,6 +55,7 @@ if (isNil {uiNamespace getVariable "life_sql_id"}) then {
 _null = [] call QS_fnc_createPartizanBase;
 PARTIZAN_REWARDS_LIST = []; publicVariable "PARTIZAN_REWARDS_LIST";
 BLUFOR_REWARDS_LIST = []; publicVariable "BLUFOR_REWARDS_LIST";
+AVANPOST_PARTIZAN_RESPAWN = []; publicVariable "AVANPOST_PARTIZAN_RESPAWN";
 
 // Hide turrets
 baseTurret2 hideObjectGlobal true;
