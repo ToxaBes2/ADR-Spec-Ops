@@ -206,9 +206,6 @@ for "_x" from 1 to PARAMS_AAPatrol do {
 	[_aaGroup, getMarkerPos currentAO, 500] call BIS_fnc_taskPatrol;
 	[(units _aaGroup)] call QS_fnc_setSkill4;
 	_aa lock 0;
-	if (random 1 >= 0.3) then {
-		_aa allowCrewInImmobile true;
-	};
 	_enemiesArray = _enemiesArray + [_aaGroup];
 	sleep 0.1;
 	_enemiesArray = _enemiesArray + [_aa];
@@ -281,9 +278,6 @@ for "_x" from 0 to 1 do {
 	((units _AOmrapGroup) select 2) moveInCargo _AOmrap;
 	[_AOmrapGroup, getMarkerPos currentAO, 600] call BIS_fnc_taskPatrol;
 	_AOmrap lock 0;
-	if (random 1 >= 0.5) then {
-		_AOmrap allowCrewInImmobile true;
-	};
 	_enemiesArray = _enemiesArray + [_AOmrapGroup];
 	sleep 0.1;
 	_enemiesArray = _enemiesArray + [_AOmrap];
@@ -314,9 +308,6 @@ for "_x" from 0 to (1 + (random 2)) do {
 	[_AOvehGroup, getMarkerPos currentAO, 400] call BIS_fnc_taskPatrol;
 	[(units _AOvehGroup)] call QS_fnc_setSkill3;
 	_AOveh lock 0;
-	if (random 1 >= 0.4) then {
-		_AOveh allowCrewInImmobile true;
-	};
 	_enemiesArray = _enemiesArray + [_AOvehGroup,_AOveh];
 	sleep 0.1;
 	_enemiesArray = _enemiesArray + [_AOveh];
@@ -348,7 +339,7 @@ if((random 10 <= PARAMS_AirPatrol)) then {
     };	
 	[_airGroup, getMarkerPos currentAO, 800] call BIS_fnc_taskPatrol;
 	[(units _airGroup)] call QS_fnc_setSkill4;
-	_air flyInHeight 300;
+	_air flyInHeight 450;
 	_airGroup setCombatMode "RED";
 	_air lock 0;
 	_enemiesArray = _enemiesArray + [_airGroup];

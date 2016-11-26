@@ -356,6 +356,6 @@ _unitTypes = ["O_Soldier_F","O_Soldier_GL_F","O_Soldier_AR_F","O_Soldier_SL_F","
 "O_soldierU_repair_F","O_soldierU_exp_F","O_engineer_U_F","O_soldierU_A_F","O_Sharpshooter_F","O_Urban_Sharpshooter_F","O_sniper_F"];
 _units = nearestObjects [_positionAO, _unitTypes, PARAMS_AOSize];
 {
-    deleteVehicle _x;
+    deleteVehicle _x;   
 } foreach _units;
 true

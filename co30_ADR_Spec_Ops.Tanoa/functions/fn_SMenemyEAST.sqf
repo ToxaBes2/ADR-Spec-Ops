@@ -54,7 +54,6 @@ _SMvehPatrol = _data select 2;
 
 [_SMvehPatrol, getPos sideObj, 75] call BIS_fnc_taskPatrol;
 _SMveh1 lock 0;
-_SMveh1 allowCrewInImmobile true;
 sleep 0.1;
 
 _enemiesArray = _enemiesArray + [_SMveh1];
@@ -68,7 +67,6 @@ _SMveh2 = _data select 0;
 _SMvehPatrol = _data select 2;
 [_SMvehPatrol, getPos sideObj, 150] call BIS_fnc_taskPatrol;
 _SMveh2 lock 0;
-_SMveh2 allowCrewInImmobile true;
 sleep 0.1;
 
 _enemiesArray = _enemiesArray + [_SMveh2];
@@ -81,7 +79,6 @@ _data = [_randomPos, (random 360), "O_T_APC_Tracked_02_AA_ghex_F", ENEMY_SIDE] c
 _SMaa = _data select 0;
 _SMaaPatrol = _data select 2;
 _SMaa lock 0;
-_SMaa allowCrewInImmobile true;
 [_SMaaPatrol, getPos sideObj, 150] call BIS_fnc_taskPatrol;
 
 _enemiesArray = _enemiesArray + [_SMaaPatrol];

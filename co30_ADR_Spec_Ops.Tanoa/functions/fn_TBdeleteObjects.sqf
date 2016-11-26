@@ -19,8 +19,9 @@ if (typeName _objects != "ARRAY") then {
             };            	    
         }; 
     	case "OBJECT" : {
-            _isReward = _obj getVariable ["IS_REWARD", false];
-            if !(_isReward) then {
+            //_isReward = _obj getVariable ["IS_REWARD", false];
+            //if !(_isReward) then {
+            if (side _obj == east) then {
                 if !(_obj isKindOf "Man") then {
 			        {
 			            deleteVehicle _x;

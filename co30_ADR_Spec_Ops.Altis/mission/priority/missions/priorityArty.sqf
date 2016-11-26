@@ -48,7 +48,7 @@ ammoTruck = "O_Truck_03_ammo_F" createVehicle _flatPos3;
 waitUntil {!isNull ammoTruck};
 ammoTruck allowDamage false;
 ammoTruck setDir random 360;
-{_x lock 0; _x allowCrewInImmobile true;} forEach [priorityObj1, priorityObj2, ammoTruck];
+{_x lock 0;} forEach [priorityObj1, priorityObj2, ammoTruck];
 
 // 3. SPAWN CREW
 sleep 1;
@@ -182,7 +182,11 @@ showNotification = ["CompletedPriorityTarget", ["Артиллерия нейтр
 
 // DELETE
 { _x removeEventHandler ["Fired", 0]; } forEach [priorityObj1, priorityObj2];
-{ deleteVehicle _x } forEach [priorityObj1, priorityObj2, ammoTruck];
+{
+    if (side _x == east || side _x == sideEmpty) then {
+        deleteVehicle _x;
+    };
+} forEach [priorityObj1, priorityObj2, ammoTruck];
 sleep 60;
 {[_x] call QS_fnc_TBdeleteObjects;} forEach [_enemiesArray, _unitsArray];
 [_fuzzyPos, 500] call QS_fnc_DeleteEnemyEAST;

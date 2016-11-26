@@ -48,7 +48,7 @@ ammoTruck = "O_Truck_03_ammo_F" createVehicle _flatPos3;
 waitUntil {!isNull ammoTruck};
 ammoTruck allowDamage false;
 ammoTruck setDir random 360;
-{_x lock 0;_x allowCrewInImmobile true;} forEach [priorityObj1, priorityObj2, ammoTruck];
+{_x lock 0;} forEach [priorityObj1, priorityObj2, ammoTruck];
 
 // 3. SPAWN CREW
 _unitsArray = [objNull];
@@ -239,7 +239,11 @@ while {_loopVar} do {
 			{_x setMarkerPos [-10000, -10000, -10000];} forEach ["priorityMarker","priorityCircle"]; publicVariable "priorityMarker";
 
 			// 10. DELETE
-			{deleteVehicle _x;} forEach [priorityObj1, priorityObj2, ammoTruck];
+			{
+                if (side _x == east || side _x == sideEmpty) then {
+                    deleteVehicle _x;
+                };			   
+		    } forEach [priorityObj1, priorityObj2, ammoTruck];
 			{_x removeEventHandler ["Fired", 0];} forEach [priorityObj1, priorityObj2];
 			{_x removeEventHandler ["HandleDamage",1];} forEach [priorityObj1, priorityObj2];
 			sleep 60;
