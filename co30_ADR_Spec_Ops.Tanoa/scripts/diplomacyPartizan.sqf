@@ -22,6 +22,7 @@ if (_status == 1) then {
     if (_bluforStatus == 1) then {
         ["<t color='#7FDA0B' size = '.48'>Вы подтвердили перемирие с регулярной армией и появитесь на их GPS-устройствах.</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
         hqSideChat = "Партизаны подтвердили перемирие с регулярной армией";
+        "dip" setMarkerText "Текущий статус: перемирие";
     } else {
         ["<t color='#7FDA0B' size = '.48'>Вы объявили перемирие с регулярной армией, ожидайте подтверждения с их стороны.</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
         hqSideChat = "Партизаны объявила перемирие с регулярной армией. Подтвердите его на базе.";
@@ -33,5 +34,6 @@ if (_status == 1) then {
     ["<t color='#F44336' size = '.48'>Вы выбрали войну с регулярной армией и пропали с их GPS-устройств.</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
     hqSideChat = "Партизаны объявили войну регулярной армии!";
     publicVariable "hqSideChat"; [west, "HQ"] sideChat hqSideChat;
+    "dip" setMarkerText "Текущий статус: война";
 };
 partizan_ammo setVariable ["DIPLOMACY_TIME", time, true];

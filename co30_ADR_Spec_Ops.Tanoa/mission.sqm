@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.017453292;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=129;
+	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=2492;
+		nextID=2493;
 	};
 	class MarkerIDProvider
 	{
@@ -23,7 +23,7 @@ class EditorData
 		pos[]={7473.9937,32.480137,8476.3008};
 		dir[]={0,-0.70710683,0.70710683};
 		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,-0};
+		aside[]={0.99999994,0,0};
 	};
 };
 binarizationWanted=0;
@@ -669,7 +669,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=551;
+		items=552;
 		class Item0
 		{
 			dataType="Object";
@@ -6438,6 +6438,7 @@ class Mission
 			};
 			id=571;
 			type="Land_runway_edgelight_blue_F";
+			atlOffset=0.0061097145;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -6496,6 +6497,7 @@ class Mission
 			};
 			id=572;
 			type="Land_runway_edgelight_blue_F";
+			atlOffset=0.09542942;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -6606,12 +6608,12 @@ class Mission
 				angles[]={6.2825875,0.52359891,0.04142493};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
 			};
 			id=574;
 			type="Land_runway_edgelight_blue_F";
+			atlOffset=0.22572064;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -6664,13 +6666,12 @@ class Mission
 				angles[]={0.00034906584,0.52359879,6.271317};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
 			};
 			id=575;
 			type="Land_runway_edgelight_blue_F";
-			atlOffset=0.00026750565;
+			atlOffset=0.23600006;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -23238,8 +23239,8 @@ class Mission
 						};
 						class Attribute1
 						{
-							property="face";
-							expression="_this setface _value;";
+							property="enableStamina";
+							expression="_this enablestamina _value;";
 							class Value
 							{
 								class data
@@ -23248,10 +23249,10 @@ class Mission
 									{
 										type[]=
 										{
-											"STRING"
+											"BOOL"
 										};
 									};
-									value="WhiteHead_15";
+									value=0;
 								};
 							};
 						};
@@ -23314,8 +23315,8 @@ class Mission
 						};
 						class Attribute5
 						{
-							property="enableStamina";
-							expression="_this enablestamina _value;";
+							property="face";
+							expression="_this setface _value;";
 							class Value
 							{
 								class data
@@ -23324,10 +23325,10 @@ class Mission
 									{
 										type[]=
 										{
-											"BOOL"
+											"STRING"
 										};
 									};
-									value=0;
+									value="WhiteHead_15";
 								};
 							};
 						};
@@ -25205,7 +25206,7 @@ class Mission
 						angles[]={0,0.51408672,6.2826972};
 					};
 					side="Independent";
-					flags=6;
+					flags=2;
 					class Attributes
 					{
 						rank="CORPORAL";
@@ -25215,6 +25216,7 @@ class Mission
 					};
 					id=2413;
 					type="I_C_Soldier_Para_8_F";
+					atlOffset=0.29603243;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -25288,6 +25290,7 @@ class Mission
 			{
 			};
 			id=2488;
+			atlOffset=0.29603243;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25328,7 +25331,7 @@ class Mission
 						angles[]={0,0.4089132,6.2826972};
 					};
 					side="Independent";
-					flags=6;
+					flags=2;
 					class Attributes
 					{
 						rank="CORPORAL";
@@ -25338,6 +25341,7 @@ class Mission
 					};
 					id=2412;
 					type="I_C_Soldier_Para_4_F";
+					atlOffset=0.2962842;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -25411,6 +25415,7 @@ class Mission
 			{
 			};
 			id=2490;
+			atlOffset=0.2962842;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25434,6 +25439,17 @@ class Mission
 				};
 				nAttributes=1;
 			};
+		};
+		class Item551
+		{
+			dataType="Marker";
+			position[]={611.29803,0,15931.409};
+			name="dip";
+			text="Текущий статус: война";
+			type="mil_warning";
+			colorName="ColorWhite";
+			id=2492;
+			atlOffset=64.645386;
 		};
 	};
 	class Connections

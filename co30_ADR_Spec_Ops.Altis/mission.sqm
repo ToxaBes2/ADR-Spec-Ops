@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1268;
+		nextID=1269;
 	};
 	class MarkerIDProvider
 	{
@@ -394,7 +394,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=497;
+		items=498;
 		class Item0
 		{
 			dataType="Marker";
@@ -10308,6 +10308,7 @@ class Mission
 				angles[]={0,5.5229897,0};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 				lock="UNLOCKED";
@@ -10316,7 +10317,7 @@ class Mission
 			};
 			id=1075;
 			type="B_HMG_01_high_F";
-			atlOffset=9.9559517;
+			atlOffset=0.0011749268;
 		};
 		class Item451
 		{
@@ -10508,7 +10509,7 @@ class Mission
 			};
 			id=1158;
 			type="B_HMG_01_high_F";
-			atlOffset=5.9058661;
+			atlOffset=5.9029999;
 		};
 		class Item461
 		{
@@ -11444,6 +11445,17 @@ class Mission
 				};
 				nAttributes=1;
 			};
+		};
+		class Item497
+		{
+			dataType="Marker";
+			position[]={928.93005,1.3541944e+038,33330.48};
+			name="dip";
+			text="Текущий статус: война";
+			type="mil_warning";
+			colorName="ColorWhite";
+			id=1268;
+			atlOffset=1.3541944e+038;
 		};
 	};
 	class Connections
