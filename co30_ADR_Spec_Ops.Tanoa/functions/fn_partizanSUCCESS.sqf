@@ -96,7 +96,12 @@ switch (_mode) do {
 publicVariable "showNotification";
 GlobalSideHint = [resistance, _completeText]; publicVariable "GlobalSideHint"; 
 (parseText _completeText) remoteExec ["hint", resistance]; 
-if (_showFailBLUFOR) then {
-   showNotification = ["TotalFailed", "Партизаны выполнили его раньше", west]; 
-   publicVariable "showNotification";
+
+_diplomacyPartizan = partizan_ammo getVariable ['DIPLOMACY', 0];
+_diplomacyBlufor = base_arsenal_infantry getVariable ["DIPLOMACY", 0];
+if (_diplomacyPartizan == 0 || _diplomacyBlufor == 0) then {
+    if (_showFailBLUFOR) then {
+        showNotification = ["TotalFailed", "Партизаны выполнили его раньше", west]; 
+        publicVariable "showNotification";
+    };
 };
