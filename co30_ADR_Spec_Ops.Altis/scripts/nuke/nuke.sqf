@@ -4,11 +4,18 @@ Based on script made by MOERDERHOSCHI
 */
 _epicenter = _this select 0;
 
+_xpos = _epicenter select 0;
+_ypos = _epicenter select 1;
+
 // we don't want to show it for all players
 //if (player distance _epicenter > 5000) exitWith {};
 
 // make fake object for attaching effects
 _object = createVehicle ["Land_HelipadEmpty_F", _epicenter, [], 0, "NONE"];
+
+[_xpos, _ypos] execVM "scripts\nuke\effects\glare.sqf";
+[_xpos, _ypos] execVM "scripts\nuke\effects\light.sqf";
+[_xpos, _ypos] execVM "scripts\nuke\effects\aperture.sqf";
 
 // smoke conus
 _cone = "#particlesource" createVehicleLocal _epicenter;
@@ -49,10 +56,10 @@ _wave setParticleCircle [50, [-80, -80, 2.5]];
 _wave setDropInterval 0.0002;
 
 // light
-_light = "#lightpoint" createVehicleLocal [(_epicenter select 0),(_epicenter select 1),((_epicenter select 2) + 500)];
-_light setLightAmbient[1500, 1200, 1000];
-_light setLightColor[1500, 1200, 1000];
-_light setLightBrightness 100000.0;
+//_light = "#lightpoint" createVehicleLocal [(_epicenter select 0),(_epicenter select 1),((_epicenter select 2) + 500)];
+//_light setLightAmbient[1500, 1200, 1000];
+//_light setLightColor[1500, 1200, 1000];
+//_light setLightBrightness 100000.0;
 
 // flash
 "dynamicBlur" ppEffectEnable true;
@@ -73,7 +80,12 @@ _xHandle = []spawn
 "dynamicBlur" ppEffectCommit 1;
 "dynamicBlur" ppEffectAdjust [0.5];
 "dynamicBlur" ppEffectCommit 4;
-_light setLightBrightness 100000.0;
+//_light setLightBrightness 100000.0;
+
+[_xpos, _ypos] exec "scripts\nuke\effects\blast_1.sqs";
+[_xpos, _ypos] exec "scripts\nuke\effects\blast1.sqs";
+[_xpos, _ypos] exec "scripts\nuke\effects\hat.sqs";
+
 sleep 3.5;
 "colorCorrections" ppEffectAdjust [1, 1, 0, [0.5, 0.5, 0.5, 0], [1.0, 1.0, 0.8, 0.4],[0.3, 0.3, 0.3, 0.1]];
 "colorCorrections" ppEffectCommit 1; 
@@ -90,15 +102,15 @@ player spawn {
 _wave setDropInterval 0.001;
 deletevehicle _top;
 deletevehicle _top2;
-sleep 4.5;
-_i = 0;
-while {_i < 100} do
-{
-	_light setLightBrightness 100.0 - _i;
-	_i = _i + 1;
-	sleep 0.1;
-};
-deleteVehicle _light;
+//sleep 4.5;
+//_i = 0;
+//while {_i < 100} do
+//{
+//	_light setLightBrightness 100.0 - _i;
+//	_i = _i + 1;
+//	sleep 0.1;
+//};
+//deleteVehicle _light;
 sleep 2;
 _smoke setParticleParams [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48, 1], "", "Billboard", 1, 25, [0, 0, 0],
 				[0, 0, 45], 0, 1.7, 1, 0, [40,25,80], 
@@ -116,11 +128,22 @@ _smoke setParticleParams [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 
 _smoke setDropInterval 0.012;
 _cone setDropInterval 0.02;
 _wave setDropInterval 0.01;
+sleep 0.5;
+[_xpos, _ypos] exec "scripts\nuke\effects\hatnod.sqs";
+[_xpos, _ypos] exec "scripts\nuke\effects\blast1.sqs";
+[_xpos, _ypos] exec "scripts\nuke\effects\ring1.sqs";
+sleep 0.5;
+[_xpos, _ypos] exec "scripts\nuke\effects\ring2.sqs";
+[_xpos, _ypos] exec "scripts\nuke\effects\blast2.sqs";
+sleep 0.4;
+[_xpos, _ypos] exec "scripts\nuke\effects\blast3.sqs";
 sleep 15;
 deleteVehicle _wave;
 deleteVehicle _cone;
 deleteVehicle _smoke;
-sleep 6;
+sleep 10;
 "colorCorrections" ppEffectEnable false;
 sleep 2;
 "dynamicBlur" ppEffectEnable false;
+[_xpos, _ypos] execVM "scripts\nuke\effects\dust.sqf";
+[_xpos, _ypos] execVM "scripts\nuke\effects\snow.sqf";

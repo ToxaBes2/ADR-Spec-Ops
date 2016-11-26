@@ -1,0 +1,47 @@
+_posx = _this select 0
+_posy = _this select 1
+
+
+_next = 0
+_cnt = 0
+_size = 0.7
+_scl = 50
+_dis = 0
+_sclz = 0.8
+_agl = random 360
+
+
+#loop
+?(_cnt == 36) : goto "next"
+
+_velx = (sin _agl) * (100.0 + random 150.0)
+_vely = (cos _agl) * (100.0 + random 150.0)
+
+_dis = 1 + random 0.3
+_upposx = _posx + ((sin _agl) * _scl * _dis)
+_upposy = _posy + ((cos _agl) * _scl * _dis)
+
+_col = 0.2 - random 0.4
+
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48], "", "Billboard", 1, 10.0+random(10.0), [ _upposx, _upposy, -40.0 ], [ _velx, _vely, 0 ], 1, 1.2, 1.0, 0.008+random(0.002), [ _size*140+random(60) ], [ [ 0.55, 0.50, 0.45, 0.0 ], [ _col+0.55, _col+0.50, _col+0.45, _sclz*0.8 ], [ _col+0.55, _col+0.50, _col+0.45, _sclz*0.6 ], [ _col+0.50, _col+0.45, _col+0.40, _sclz*0.4 ], [ _col+0.45, _col+0.40, _col+0.35, _sclz*0.2 ], [ _col+0.40, _col+0.35, _col+0.30, 0.01 ] ], [0], 0.0, 0.1, "", "", "" ]
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48], "", "Billboard", 1, 1.0+random(5.0), [ _upposx, _upposy, -30.0 ], [ 0, 0, 40 ], 1, 1.2, 1.0, 0.008+random(0.002), [ _size*60+random(30) ], [ [ 0.55, 0.50, 0.45, 0.0 ], [ _col+0.55, _col+0.50, _col+0.45, _sclz*0.8 ], [ _col+0.55, _col+0.50, _col+0.45, _sclz*0.6 ], [ _col+0.50, _col+0.45, _col+0.40, _sclz*0.4 ], [ _col+0.45, _col+0.40, _col+0.35, _sclz*0.2 ], [ _col+0.40, _col+0.35, _col+0.30, 0.01 ] ], [0], 0.0, 0.1, "", "", "" ]
+
+
+_agl = _agl + 8.0 + random 4.0
+_cnt = _cnt + 1
+goto "loop"
+
+
+#next
+?(_next == 30) : goto "end"
+_cnt=0
+_agl = random 360
+_scl = _scl + 50
+_sclz = _sclz * 0.90
+_size=_size*1.10
+_next=_next+1
+goto "loop"
+
+
+#end
+exit

@@ -160,7 +160,13 @@ for "_i" from 0 to ((count _vehicles) - 1) do {
                     _allObjects2 = nearestObjects [_epicenter, ["LandVehicle","Air","Ship"], _radiusEMI];
                     {
                         _x engineOn false;
-                        _x setfuel 0;
+                        _fuel = fuel _x;
+                        _x setFuel 0;
+                        sleep 0.01;
+                        _x setFuel _fuel;
+                        _x setHit ["motor", 1];
+                        driver _x action ["lightOff", _x];
+                        _x setHit ["elektronika", 1];
                     } foreach _allObjects2;
                 };
                 [_curObj, "QS_fnc_removeAction0", nil, true] spawn BIS_fnc_MP;
@@ -169,8 +175,7 @@ for "_i" from 0 to ((count _vehicles) - 1) do {
 
             // show nuke explotion effect for players
             if (hasInterface) then {
-                //[[_epicenter], "scripts\nuke.sqf"] call BIS_fnc_execVM;
-                [_epicenter] execVM "scripts\nuke.sqf";
+                [_epicenter] execVM "scripts\nuke\nuke.sqf";
             };
         }];
 
@@ -567,7 +572,13 @@ while { sideMissionUp } do {
                         _allObjects2 = nearestObjects [_epicenter, ["LandVehicle","Air","Ship"], _radiusEMI];
                         {
                             _x engineOn false;
-                            _x setfuel 0;
+                            _fuel = fuel _x;
+                            _x setFuel 0;
+                            sleep 0.01;
+                            _x setFuel _fuel;
+                            _x setHit ["motor", 1];
+                            driver _x action ["lightOff", _x];
+                            _x setHit ["elektronika", 1];
                         } foreach _allObjects2;
                     };
                     [_curObj, "QS_fnc_removeAction0", nil, true] spawn BIS_fnc_MP;
@@ -576,8 +587,7 @@ while { sideMissionUp } do {
 
                 // show nuke explotion effect for players
                 if (hasInterface) then {
-                    //[[_epicenter], "scripts\nuke.sqf"] call BIS_fnc_execVM;
-                    [_epicenter] execVM "scripts\nuke.sqf";
+                    [_epicenter] execVM "scripts\nuke\nuke.sqf";
                 };
             }];
         };

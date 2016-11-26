@@ -1,0 +1,375 @@
+_posx = _this select 0
+_posy = _this select 1
+
+
+#mushvar
+_cntmush = 0
+_scl = 1.0
+_scl2 = 1.0
+_sclsize = 1.0
+_hatalfa1 = 1.0
+_hatalfa2 = 0.0
+
+#mushstart
+
+#mushloop
+?(_cntmush > 600) : goto "end"
+
+?(_cntmush > 5) : goto "mush1start"
+#mush1back
+
+?(_cntmush > 11) : goto "mush2start"
+#mush2back
+
+?(_cntmush > 17) : goto "mush3start"
+#mush3back
+
+?(_cntmush > 23) : goto "mush4start"
+#mush4back
+
+?(_cntmush > 29) : goto "mush5start"
+#mush5back
+
+?(_cntmush > 35) : goto "mush6start"
+#mush6back
+
+?(_cntmush > 41) : goto "mush7start"
+#mush7back
+
+?(_cntmush > 47) : goto "mush8start"
+#mush8back
+
+?(_cntmush > 53) : goto "mush9start"
+#mush9back
+
+?(_cntmush > 59) : goto "mush10start"
+#mush10back
+
+?(_cntmush > 65) : goto "mush11start"
+#mush11back
+
+?(_cntmush > 61) : goto "mush12start"
+#mush12back
+
+?(_cntmush > 67) : goto "mush13start"
+#mush13back
+
+?(_cntmush > 73) : goto "mush14start"
+#mush14back
+
+_cntmush = _cntmush + 1
+_scl = _scl * 0.990
+?(_cntmush > 20) : _scl2 = _scl2 * 0.970
+_sclsize = _sclsize * 0.997
+~0.5
+goto "mushloop"
+
+
+#mush1start
+_cnt = 0
+_agl = random 360
+#mush1loop
+?(_cnt == 18) : goto "mush1loopend"
+
+_velx = (sin _agl) * (-10.0 - (random 8.0))
+_vely = (cos _agl) * (-10.0 - (random 8.0))
+
+_dis = 1 + (random 0.5)
+_col = 0.1 - (random 0.2)
+_upposx = _posx + 320 * (sin _agl) * _scl * _dis
+_upposy = _posy + 320 * (cos _agl) * _scl * _dis
+
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,5.0 + random 2,[_upposx + (20 - random 40),_upposy + (20 - random 40),-10.0+(random 40)],[_velx,_vely,5.0+(random 5.0)],1,1.25,1.0,0.01,[_sclsize*110,_sclsize*100], [ [_col+0.40,_col+0.35,_col+0.30,0.0], [_col+0.40,_col+0.35,_col+0.30,_scl2*(_col+0.7)], [_col+0.35,_col+0.30,_col+0.25,0.0] ], [0],0.0,0.5,"","",""]
+
+_agl = _agl + 22 - (random 8)
+_cnt = _cnt + 1
+goto "mush1loop"
+#mush1loopend
+
+goto "mush1back"
+
+
+
+#mush2start
+_cnt = 0
+_agl = random 360
+#mush2loop
+?(_cnt == 18) : goto "mush2loopend"
+
+_dis = 1 + (random 0.5)
+_col = 0.1 - (random 0.2)
+_upposx = _posx + 140 * (sin _agl) * _scl * _dis
+_upposy = _posy + 140 * (cos _agl) * _scl * _dis
+
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,5.0 + random 2,[_upposx + (20 - random 40),_upposy + (20 - random 40),30.0+(random 40)],[0,0,10.0+(random 7.5)],1,1.25,1.0,0.01,[_sclsize*100,_sclsize*90], [ [_col+0.40,_col+0.35,_col+0.30,0.001], [_col+0.40,_col+0.35,_col+0.30,_scl2*(_col+0.7)], [_col+0.35,_col+0.30,_col+0.25,0.001] ], [0],0.0,0.5,"","",""]
+
+_agl = _agl + 22 - (random 8)
+_cnt = _cnt + 1
+goto "mush2loop"
+#mush2loopend
+
+goto "mush2back"
+
+
+
+#mush3start
+_cnt = 0
+_agl = random 360
+#mush3loop
+?(_cnt == 18) : goto "mush3loopend"
+
+_dis = 1 + (random 0.5)
+_col = 0.1 - (random 0.2)
+_upposx = _posx + 100 * (sin _agl) * _scl * _dis
+_upposy = _posy + 100 * (cos _agl) * _scl * _dis
+
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,5.0 + random 2,[_upposx + (20 - random 40),_upposy + (20 - random 40),85.0+(random 40)],[0,0,18.0+(random 10.0)],1,1.25,1.0,0.01,[_sclsize*90,_sclsize*80], [ [_col+0.40,_col+0.35,_col+0.30,0.001], [_col+0.40,_col+0.35,_col+0.30,_scl2*(_col+0.7)], [_col+0.35,_col+0.30,_col+0.25,0.001] ], [0],0.0,0.5,"","",""]
+
+_agl = _agl + 22 - (random 8)
+_cnt = _cnt + 1
+goto "mush3loop"
+#mush3loopend
+
+goto "mush3back"
+
+
+
+#mush4start
+_cnt = 0
+_agl = random 360
+#mush4loop
+?(_cnt == 18) : goto "mush4loopend"
+
+_dis = 1 + (random 0.5)
+_col = 0.1 - (random 0.2)
+_upposx = _posx + 80 * (sin _agl) * _scl * _dis
+_upposy = _posy + 80 * (cos _agl) * _scl * _dis
+
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,5.0 + random 2,[_upposx + (20 - random 40),_upposy + (20 - random 40),160.0+(random 40)],[0,0,28.0+(random 12.5)],1,1.25,1.0,0.01,[_sclsize*85,_sclsize*80], [ [_col+0.40,_col+0.35,_col+0.30,0.001], [_col+0.40,_col+0.35,_col+0.30,_scl2*(_col+0.7)], [_col+0.35,_col+0.30,_col+0.25,0.001] ], [0],0.0,0.5,"","",""]
+
+_agl = _agl + 22 - (random 8)
+_cnt = _cnt + 1
+goto "mush4loop"
+#mush4loopend
+
+goto "mush4back"
+
+
+
+#mush5start
+_cnt = 0
+_agl = random 360
+#mush5loop
+?(_cnt == 18) : goto "mush5loopend"
+
+_dis = 1 + (random 0.5)
+_col = 0.1 - (random 0.2)
+_upposx = _posx + 50 * (sin _agl) * _scl * _dis
+_upposy = _posy + 50 * (cos _agl) * _scl * _dis
+
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,5.0 + random 2,[_upposx + (20 - random 40),_upposy + (20 - random 40),230.0+(random 40)],[0,0,43.0+(random 15.0)],1,1.25,1.0,0.01,[_sclsize*83,_sclsize*78], [ [_col+0.40,_col+0.35,_col+0.30,0.001], [_col+0.40,_col+0.35,_col+0.30,_scl2*(_col+0.7)], [_col+0.35,_col+0.30,_col+0.25,0.001] ], [0],0.0,0.5,"","",""]
+
+_agl = _agl + 22 - (random 8)
+_cnt = _cnt + 1
+goto "mush5loop"
+#mush5loopend
+
+goto "mush5back"
+
+
+
+#mush6start
+_cnt = 0
+_agl = random 360
+#mush6loop
+?(_cnt == 18) : goto "mush6loopend"
+
+_dis = 1 + (random 0.5)
+_col = 0.1 - (random 0.2)
+_upposx = _posx + 50 * (sin _agl) * _scl * _dis
+_upposy = _posy + 50 * (cos _agl) * _scl * _dis
+
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,5.0 + random 2,[_upposx + (20 - random 40),_upposy + (20 - random 40),330.0+(random 40)],[0,0,43.0+(random 15.0)],1,1.25,1.0,0.01,[_sclsize*83,_sclsize*78], [ [_col+0.40,_col+0.35,_col+0.30,0.001], [_col+0.40,_col+0.35,_col+0.30,_scl2*(_col+0.7)], [_col+0.35,_col+0.30,_col+0.25,0.001] ], [0],0.0,0.5,"","",""]
+
+_agl = _agl + 22 - (random 8)
+_cnt = _cnt + 1
+goto "mush6loop"
+#mush6loopend
+
+goto "mush6back"
+
+
+
+#mush7start
+_cnt = 0
+_agl = random 360
+#mush7loop
+?(_cnt == 18) : goto "mush7loopend"
+
+_dis = 1 + (random 0.5)
+_col = 0.1 - (random 0.2)
+_upposx = _posx + 50 * (sin _agl) * _scl * _dis
+_upposy = _posy + 50 * (cos _agl) * _scl * _dis
+
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,5.0 + random 2,[_upposx + (20 - random 40),_upposy + (20 - random 40),420.0+(random 40)],[0,0,43.0+(random 15.0)],1,1.25,1.0,0.01,[_sclsize*83,_sclsize*78], [ [_col+0.40,_col+0.35,_col+0.30,0.001], [_col+0.40,_col+0.35,_col+0.30,_scl2*(_col+0.7)], [_col+0.35,_col+0.30,_col+0.25,0.001] ], [0],0.0,0.5,"","",""]
+
+_agl = _agl + 22 - (random 8)
+_cnt = _cnt + 1
+goto "mush7loop"
+#mush7loopend
+
+goto "mush7back"
+
+
+
+#mush8start
+_cnt = 0
+_agl = random 360
+#mush8loop
+?(_cnt == 18) : goto "mush8loopend"
+
+_dis = 1 + (random 0.5)
+_col = 0.1 - (random 0.2)
+_upposx = _posx + 50 * (sin _agl) * _scl * _dis
+_upposy = _posy + 50 * (cos _agl) * _scl * _dis
+
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,5.0 + random 2,[_upposx + (20 - random 40),_upposy + (20 - random 40),530.0+(random 40)],[0,0,43.0+(random 15.0)],1,1.25,1.0,0.01,[_sclsize*83,_sclsize*78], [ [_col+0.40,_col+0.35,_col+0.30,0.001], [_col+0.40,_col+0.35,_col+0.30,_scl2*(_col+0.7)], [_col+0.35,_col+0.30,_col+0.25,0.001] ], [0],0.0,0.5,"","",""]
+
+_agl = _agl + 22 - (random 8)
+_cnt = _cnt + 1
+goto "mush8loop"
+#mush8loopend
+
+goto "mush8back"
+
+
+
+#mush9start
+_cnt = 0
+_agl = random 360
+#mush9loop
+?(_cnt == 18) : goto "mush9loopend"
+
+_dis = 1 + (random 0.5)
+_col = 0.1 - (random 0.2)
+_upposx = _posx + 50 * (sin _agl) * _scl * _dis
+_upposy = _posy + 50 * (cos _agl) * _scl * _dis
+
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,5.0 + random 2,[_upposx + (20 - random 40),_upposy + (20 - random 40),640.0+(random 40)],[0,0,43.0+(random 15.0)],1,1.25,1.0,0.01,[_sclsize*83,_sclsize*78], [ [_col+0.40,_col+0.35,_col+0.30,0.001], [_col+0.40,_col+0.35,_col+0.30,_scl2*(_col+0.7)], [_col+0.35,_col+0.30,_col+0.25,0.001] ], [0],0.0,0.5,"","",""]
+
+_agl = _agl + 22 - (random 8)
+_cnt = _cnt + 1
+goto "mush9loop"
+#mush9loopend
+
+goto "mush9back"
+
+
+
+#mush10start
+_cnt = 0
+_agl = random 360
+#mush10loop
+?(_cnt == 18) : goto "mush10loopend"
+
+_dis = 1 + (random 0.5)
+_col = 0.1 - (random 0.2)
+_upposx = _posx + 50 * (sin _agl) * _scl * _dis
+_upposy = _posy + 50 * (cos _agl) * _scl * _dis
+
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,5.0 + random 2,[_upposx + (20 - random 40),_upposy + (20 - random 40),750.0+(random 40)],[0,0,43.0+(random 15.0)],1,1.25,1.0,0.01,[_sclsize*83,_sclsize*78], [ [_col+0.40,_col+0.35,_col+0.30,0.001], [_col+0.40,_col+0.35,_col+0.30,_scl2*(_col+0.7)], [_col+0.35,_col+0.30,_col+0.25,0.001] ], [0],0.0,0.5,"","",""]
+
+_agl = _agl + 22 - (random 8)
+_cnt = _cnt + 1
+goto "mush10loop"
+#mush10loopend
+
+goto "mush10back"
+
+
+
+#mush11start
+_cnt = 0
+_agl = random 360
+#mush11loop
+?(_cnt == 18) : goto "mush11loopend"
+
+_dis = 1 + (random 0.5)
+_col = 0.1 - (random 0.2)
+_upposx = _posx + 50 * (sin _agl) * _scl * _dis
+_upposy = _posy + 50 * (cos _agl) * _scl * _dis
+
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,5.0 + random 2,[_upposx + (20 - random 40),_upposy + (20 - random 40),860.0+(random 40)],[0,0,43.0+(random 15.0)],1,1.25,1.0,0.01,[_sclsize*83,_sclsize*78], [ [_col+0.40,_col+0.35,_col+0.30,0.001], [_col+0.40,_col+0.35,_col+0.30,_scl2*(_col+0.7)], [_col+0.35,_col+0.30,_col+0.25,0.001] ], [0],0.0,0.5,"","",""]
+
+_agl = _agl + 22 - (random 8)
+_cnt = _cnt + 1
+goto "mush11loop"
+#mush11loopend
+
+goto "mush11back"
+
+
+
+#mush12start
+_cnt = 0
+_agl = random 360
+#mush12loop
+?(_cnt == 18) : goto "mush12loopend"
+
+_dis = 1 + (random 0.5)
+_col = 0.1 - (random 0.2)
+_upposx = _posx + 50 * (sin _agl) * _scl * _dis
+_upposy = _posy + 50 * (cos _agl) * _scl * _dis
+
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,5.0 + random 2,[_upposx + (20 - random 40),_upposy + (20 - random 40),970.0+(random 40)],[0,0,43.0+(random 15.0)],1,1.25,1.0,0.01,[_sclsize*83,_sclsize*78], [ [_col+0.40,_col+0.35,_col+0.30,0.001], [_col+0.40,_col+0.35,_col+0.30,_scl2*(_col+0.7)], [_col+0.35,_col+0.30,_col+0.25,0.001] ], [0],0.0,0.5,"","",""]
+
+_agl = _agl + 22 - (random 8)
+_cnt = _cnt + 1
+goto "mush12loop"
+#mush12loopend
+
+goto "mush12back"
+
+
+
+#mush13start
+_cnt = 0
+_agl = random 360
+#mush13loop
+?(_cnt == 18) : goto "mush13loopend"
+
+_dis = 1 + (random 0.5)
+_col = 0.1 - (random 0.2)
+_upposx = _posx + 50 * (sin _agl) * _scl * _dis
+_upposy = _posy + 50 * (cos _agl) * _scl * _dis
+
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,5.0 + random 2,[_upposx + (20 - random 40),_upposy + (20 - random 40),1080.0+(random 40)],[0,0,43.0+(random 15.0)],1,1.25,1.0,0.01,[_sclsize*83,_sclsize*78], [ [_col+0.40,_col+0.35,_col+0.30,0.001], [_col+0.40,_col+0.35,_col+0.30,_scl2*(_col+0.7)], [_col+0.35,_col+0.30,_col+0.25,0.001] ], [0],0.0,0.5,"","",""]
+
+_agl = _agl + 22 - (random 8)
+_cnt = _cnt + 1
+goto "mush13loop"
+#mush13loopend
+
+goto "mush13back"
+
+
+
+#mush14start
+_cnt = 0
+_agl = random 360
+#mush14loop
+?(_cnt == 18) : goto "mush14loopend"
+
+_dis = 1 + (random 0.5)
+_col = 0.1 - (random 0.2)
+_upposx = _posx + 50 * (sin _agl) * _scl * _dis
+_upposy = _posy + 50 * (cos _agl) * _scl * _dis
+
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,5.0 + random 2,[_upposx + (20 - random 40),_upposy + (20 - random 40),1190.0+(random 40)],[0,0,43.0+(random 15.0)],1,1.25,1.0,0.01,[_sclsize*83,_sclsize*78], [ [_col+0.40,_col+0.35,_col+0.30,0.001], [_col+0.40,_col+0.35,_col+0.30,_scl2*(_col+0.7)], [_col+0.35,_col+0.30,_col+0.25,0.001] ], [0],0.0,0.5,"","",""]
+
+_agl = _agl + 22 - (random 8)
+_cnt = _cnt + 1
+goto "mush14loop"
+#mush14loopend
+
+goto "mush14back"

@@ -1,0 +1,40 @@
+_posx = _this select 0
+_posy = _this select 1
+
+
+_next = 0
+_cnt = 0
+_scl = 30
+_sclz = 0.4
+_dis = 0
+_agl = random 360
+
+
+#loop
+?(_cnt == 18) : goto "next"
+
+_dis = 1 + random 0.3
+_upposx = _posx + (sin _agl) * _scl * _dis
+_upposy = _posy + (cos _agl) * _scl * _dis
+
+_col = 0.1 - random 0.2
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,75.0,[_upposx,_upposy,0],[0,0,(25.0 + random 30) * _sclz],1,1.45 + (random 1.0),1.0,0.01,[160+random(80),240+random(120)], [ [ _col+0.55, _col+0.50, _col+0.45, _sclz*0.8 ], [ _col+0.40, _col+0.35, _col+0.30, 0.01 ]],[0],0.0,0.1,"","",""]
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,120.0,[_upposx,_upposy,0],[0,0,(15.0 + random 10) * _sclz],1,1.3,1.0,0.5,[160+random(80),260+random(130)],[ [ _col+0.55, _col+0.50, _col+0.45, _sclz*0.8 ], [ _col+0.40, _col+0.35, _col+0.30, 0.01 ]],[0],0.0,1.0,"","",""]
+
+_agl = _agl + 16.0 + random 8.0
+_cnt = _cnt + 1
+goto "loop"
+
+
+#next
+?(_next == 60) : goto "end"
+_cnt=0
+_agl = random 360
+_scl = _scl + 40
+_sclz = _sclz * 0.92
+_next=_next+1
+goto "loop"
+
+
+#end
+exit

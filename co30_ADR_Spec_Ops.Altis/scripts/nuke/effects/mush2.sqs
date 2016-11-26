@@ -1,0 +1,37 @@
+_posx = _this select 0
+_posy = _this select 1
+_upposz = _this select 2
+
+?(_upposz > 2200): exit
+
+_coef = (600 atan2 _upposz) / 90
+
+_agl = random 360
+
+_dis = 1 + (random 1)
+_col = 0.1 - (random 0.2)
+_upposx = _posx + 1 * (sin _agl) * _dis * _coef
+_upposy = _posy + 1 * (cos _agl) * _dis * _coef
+_coef2 = 0.5 + random 0.5
+
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,(150.0 + random 20) * _coef,[_upposx,_upposy,_upposz - random 15],[(random 1.0) - 0.5,(random 1.0) - 0.5,(random 1.0) - 0.5],1,1.28,1.0,0.0,[40 + random 40,80 + random 80, 60 + random 60], [ [_col+0.90,_col+0.35,_col+0.30,0.0], [_col+0.90,_col+0.35,_col+0.30, 0.7 * _coef * _coef2], [_col+0.90,_col+0.35,_col+0.30, 0.7 * _coef * _coef2], [_col+0.90,_col+0.35,_col+0.30, 0.5 * _coef * _coef2], [_col+0.90,_col+0.35,_col+0.30, 0.4 * _coef * _coef2], [_col+0.90,_col+0.35,_col+0.30, 0.2 * _coef * _coef2], [_col+0.35,_col+0.30,_col+0.25, 0.0] ], [0],0.0,0,"","",""]
+
+_agl = _agl + 100 + random 20
+_dis = 1 + (random 1)
+_col = 0.1 - (random 0.2)
+_upposx = _posx + 1 * (sin _agl) * _dis * _coef
+_upposy = _posy + 1 * (cos _agl) * _dis * _coef
+_coef2 = 0.5 + random 0.5
+
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,(150.0 + random 20) * _coef,[_upposx,_upposy,_upposz - random 15],[(random 1.0) - 0.5,(random 1.0) - 0.5,(random 1.0) - 0.5],1,1.28,1.0,0.0,[40 + random 40,80 + random 80, 60 + random 60], [ [_col+0.90,_col+0.35,_col+0.30,0.0], [_col+0.90,_col+0.35,_col+0.30, 0.7 * _coef * _coef2], [_col+0.90,_col+0.35,_col+0.30, 0.7 * _coef * _coef2], [_col+0.90,_col+0.35,_col+0.30, 0.5 * _coef * _coef2], [_col+0.90,_col+0.35,_col+0.30, 0.4 * _coef * _coef2], [_col+0.90,_col+0.35,_col+0.30, 0.2 * _coef * _coef2], [_col+0.35,_col+0.30,_col+0.25, 0.0] ], [0],0.0,0,"","",""]
+
+_agl = _agl + 100 + random 20
+_dis = 1 + (random 1)
+_col = 0.1 - (random 0.2)
+_upposx = _posx + 1 * (sin _agl) * _dis * _coef
+_upposy = _posy + 1 * (cos _agl) * _dis * _coef
+_coef2 = 0.5 + random 0.5
+
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,(150.0 + random 20) * _coef,[_upposx,_upposy,_upposz - random 15],[(random 1.0) - 0.5,(random 1.0) - 0.5,(random 1.0) - 0.5],1,1.28,1.0,0.0,[40 + random 40,80 + random 80, 60 + random 60], [ [_col+0.90,_col+0.35,_col+0.30,0.0], [_col+0.90,_col+0.35,_col+0.30, 0.7 * _coef * _coef2], [_col+0.90,_col+0.35,_col+0.30, 0.7 * _coef * _coef2], [_col+0.90,_col+0.35,_col+0.30, 0.5 * _coef * _coef2], [_col+0.90,_col+0.35,_col+0.30, 0.4 * _coef * _coef2], [_col+0.90,_col+0.35,_col+0.30, 0.2 * _coef * _coef2], [_col+0.35,_col+0.30,_col+0.25, 0.0] ], [0],0.0,0,"","",""]
+
+exit

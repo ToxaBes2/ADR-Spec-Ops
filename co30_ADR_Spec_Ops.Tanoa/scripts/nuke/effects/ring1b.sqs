@@ -1,0 +1,25 @@
+_posx = _this select 0
+_posy = _this select 1
+
+_next = 0
+_dis = 100
+_height = 60
+_con = 3
+#start
+_cnt = 0
+_agl = random 360
+_con = _con + 2
+#loop
+?(_cnt > 89) : _dis = _dis + 20; _height = _height - 3; _next = _next + 1; goto "start"
+?(_next == 30):exit
+
+_cof = 0.98 + random 0.04
+_velx = (sin _agl) * 20.0 * _cof
+_vely = (cos _agl) * 20.0 * _cof
+_velz = 0.5
+drop ["\A3\data_f\Cl_basic","","Billboard",1,_con + random 1,[_posx + _dis * (sin _agl),_posy + _dis * (cos _agl), _height],[_velx,_vely,_velz],1,1.275,1.0,0.01,[70,110],[[1.0,1.0,1.0,0.0],[1.0,1.0,1.0,0.1],[1.0,1.0,1.0,0.2],[1.0,1.0,1.0,0.1],[1.0,1.0,1.0,0.05],[1.0,1.0,1.0,0.025],[1.0,1.0,1.0,0.0]],[0],0.0,2.0,"","",""]
+
+_agl = _agl + 4
+_cnt = _cnt + 1
+goto "loop"
+
