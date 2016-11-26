@@ -31,7 +31,7 @@ _units = nearestObjects [_pos, _unitTypes, _radius];
 {
 	//_isReward = _x getVariable ["IS_REWARD", false];
 	//if (side _x == ENEMY_SIDE && !_isReward) then {
-	if (side _x == ENEMY_SIDE) {
+	if (side _x == east) {
         if !(_x isKindOf "Man") then {
 	        {
 	            deleteVehicle _x;
