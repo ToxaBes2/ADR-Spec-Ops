@@ -19,15 +19,23 @@ _unitTypes = ["O_Soldier_F","O_Soldier_GL_F","O_Soldier_AR_F","O_Soldier_SL_F","
 "I_G_Soldier_GL_F","I_G_soldier_M_F","I_G_officer_F","I_G_Soldier_F","I_G_soldier_LAT_F","I_G_Soldier_lite_F","I_G_Soldier_SL_F","I_G_Soldier_TL_F"];
 _units = nearestObjects [_pos, _unitTypes, _radius];
 {
-	//_isReward = _x getVariable ["IS_REWARD", false];
-	//if (side _x == ENEMY_SIDE && !_isReward) then {
-	if (side _x == east) {
-        if !(_x isKindOf "Man") then {        	
-	        {
-	            deleteVehicle _x;
+	_isReward = _x getVariable ["IS_REWARD", false];
+	if (side _x == ENEMY_SIDE && !_isReward) then {
+        if !(_x isKindOf "Man") then {   
+            _remove = true; 
+            {
+                if ((side _x) isEqualTo WEST || (side _x) isEqualTo RESISTANCE) then {
+                    _remove = false;
+                } else {
+                    deleteVehicle _x;
+                };	            
 	        } forEach (crew _x);
-	    };
-	    deleteVehicle _x;
+            if (_remove) then {
+            	deleteVehicle _x;
+            };
+	    } else {
+            deleteVehicle _x;
+	    };	    
     };
 } foreach _units;
 _units = _pos nearObjects ["Man", _radius];
