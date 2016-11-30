@@ -15,8 +15,6 @@ class QS
 		class CheckVisionMode {};
 		class DeleteEnemyEAST {};
 		class diplomacySwitch {};
-		class EGcreateTarget {};
-		class EGcreateAvanpost {};
 		class EWattack {};
 		class FillBots {};
 		class FillCargoPatrol {};

@@ -34,16 +34,11 @@ _rewardsSideMission = [
     ["Вертолет Pawnee", ["B_Heli_Light_01_armed_F"]],    
     ["Вертолет Хеллкет (вооруженный)", ["I_Heli_light_03_F"]]
 ];
-_rewardsEndlessGame = [
-    ["Отряд Viper", ['configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "SpecOps" >> "O_T_ViperTeam"']],
-    ["Вооруженная ударная группа", ['configfile >> "CfgGroups" >> "Indep" >> "IND_C_F" >> "Infantry" >> "ParaCombatGroup"']]  
-];
 _rewards = _rewardsMainAO;
-_mode = _this select 0; // 1 - bunker, 2 - radiotower., 3 - side mission, 4 - special operation, 5 - endless game
+_mode = _this select 0; // 1 - bunker, 2 - radiotower., 3 - side mission, 4 - special operation
 switch (_mode) do { 
     case 3 : { _rewards = _rewardsSideMission; }; 
-    case 4 : { _rewards = _rewardsSideMission; }; 
-    case 5 : { _rewards = _rewardsEndlessGame; }; 
+    case 4 : { _rewards = _rewardsSideMission; };  
 };
 
 _veh = selectRandom _rewards;
@@ -87,11 +82,6 @@ switch (_mode) do {
         showNotification = ["CompletedSpecMission", sideMarkerText]; 
         _showFailBLUFOR = true;
 	};
-    case 5 : { 
-        _completeText = format["<t align='center'><t size='2.2'>Endless Game</t><br/><t size='1.5' color='#C6FF00'>миссия завершена силами партизан</t><br/>____________________<br/>За успешное проведение, непосредственные участники задания получают в награду:<br/><br/><t size='1.1' color='#FFC107'>%1</t</t>", _vehName];    
-        showNotification = ["CompletedSpecMission", sideMarkerText]; 
-        _showFailBLUFOR = true;
-    };
 };
 publicVariable "showNotification";
 GlobalSideHint = [resistance, _completeText]; publicVariable "GlobalSideHint"; 

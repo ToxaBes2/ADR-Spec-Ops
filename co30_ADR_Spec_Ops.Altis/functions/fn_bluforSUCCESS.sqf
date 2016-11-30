@@ -30,16 +30,11 @@ _rewardsSideMission = [
     ["V-44 X Blackfish", ["B_T_VTOL_01_armed_F"]],
     ["M4 «Скорчер»", ["B_MBT_01_arty_F"]]
 ];
-_rewardsEndlessGame = [
-    ["Разведывательный отряд", ['configfile >> "CfgGroups" >> "West" >> "BLU_F" >> "Infantry" >> "BUS_ReconSquad"']],
-    ["Штурмовой отряд", ['configfile >> "CfgGroups" >> "West" >> "BLU_F" >> "Infantry" >> "BUS_InfAssault"']]
-];
 _rewards = _rewardsMainAO;
-_mode = _this select 0; // 1 - bunker + radiotower, 2 - defend AO, 3 - side mission, 4 - special operation, 5 - endless game
+_mode = _this select 0; // 1 - bunker + radiotower, 2 - defend AO, 3 - side mission, 4 - special operation
 switch (_mode) do { 
     case 3 : { _rewards = _rewardsSideMission; }; 
     case 4 : { _rewards = _rewardsSideMission; }; 
-    case 5 : { _rewards = _rewardsEndlessGame; }; 
 };
 
 _veh = selectRandom _rewards;
@@ -67,10 +62,6 @@ switch (_mode) do {
         _completeText = format["<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#C6FF00'>выполнена регулярной армией</t><br/>____________________<br/>За успешное проведение, непосредственные участники задания получают в награду:<br/><br/><t size='1.1' color='#FFC107'>%1</t</t>", _vehName];    
         showNotification = ["CompletedSpecMission", sideMarkerText]; 
 	};
-    case 5 : { 
-        _completeText = format["<t align='center'><t size='2.2'>Endless Game</t><br/><t size='1.5' color='#C6FF00'>миссия выполнена регулярной армией</t><br/>____________________<br/>За успешное проведение, непосредственные участники задания получают в награду:<br/><br/><t size='1.1' color='#FFC107'>%1</t</t>", _vehName];    
-        showNotification = ["CompletedSpecMission", sideMarkerText]; 
-    };
 };
 
 GlobalSideHint = [west, _completeText]; publicVariable "GlobalSideHint"; (parseText _completeText) remoteExec ["hint", west];

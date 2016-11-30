@@ -5,7 +5,7 @@ Description: Secure HQ supplies before destroying it.
 #define OUR_SIDE WEST
 #define ENEMY_SIDE EAST
 
-private ["_flatPos", "_accepted", "_position", "_enemiesArray", "_fuzzyPos", "_x", "_briefing", "_unitsArray", "_object", "_SMveh", "_SMaa", "_tower1", "_tower2", "_tower3", "_flatPos1", "_flatPos2"];
+private ["_flatPos", "_accepted", "_position", "_enemiesArray", "_fuzzyPos", "_x", "_briefing", "_object", "_SMveh", "_SMaa", "_tower1", "_tower2", "_tower3", "_flatPos1", "_flatPos2"];
 
 _c4Message = selectRandom [
 	"Перехват оружия завершён. Заряд установлен! 30 секунд до взрыва.",
@@ -86,7 +86,7 @@ while { sideMissionUp } do {
 		sleep 120;
 		{ deleteVehicle _x } forEach [sideObj, truck1, truck2];
 		deleteVehicle nearestObject [getPos sideObj, "Land_Cargo_House_V2_ruins_F"];
-		{ [_x] call QS_fnc_TBdeleteObjects; } forEach [_unitsArray, _enemiesArray, _guardsGroup];
+		{ [_x] call QS_fnc_TBdeleteObjects; } forEach [_enemiesArray, _guardsGroup];
 		[_fuzzyPos, 500] call QS_fnc_DeleteEnemyEAST;
 	};
 
@@ -113,7 +113,7 @@ while { sideMissionUp } do {
 		sleep 120;
 		{ deleteVehicle _x } forEach [sideObj, truck1, truck2];
 		deleteVehicle nearestObject [getPos sideObj, "Land_Cargo_House_V2_ruins_F"];
-		{ [_x] call QS_fnc_TBdeleteObjects; } forEach [_unitsArray, _enemiesArray, _guardsGroup];
+		{ [_x] call QS_fnc_TBdeleteObjects; } forEach [_enemiesArray, _guardsGroup];
 		[_fuzzyPos, 500] call QS_fnc_DeleteEnemyEAST;
 	};
 };
