@@ -20,11 +20,11 @@ _missionList = [
 	"snatch",
 	"swordfish",
 	"yellowfog",
-	"grapeswrath"
+	"grapeswrath",
+	"oilmama"
 ];
 AVANPOST_COORDS = false; publicVariable "AVANPOST_COORDS";
 AVANPOST_RESPAWN = false; publicVariable "AVANPOST_RESPAWN";
-WINS = 4; publicVariable "WINS";
 while { true } do {
 	if (PARAMS_AO == 1) then {
 	    currentMission = [] spawn {_this call compile preProcessFileLineNumbers "mission\main\missions\AOattack.sqf"};

@@ -20,7 +20,8 @@ _missionList = [
 	"snatch",
 	"swordfish",
 	"yellowfog",
-	"grapeswrath"
+	"grapeswrath",
+	"oilmama"
 ];
 AVANPOST_COORDS = false; publicVariable "AVANPOST_COORDS";
 AVANPOST_RESPAWN = false; publicVariable "AVANPOST_RESPAWN";
