@@ -1283,7 +1283,7 @@ class Mission
 			dataType="Marker";
 			position[]={21579.258,-0.004926472,32311.875};
 			name="st";
-			text="Site - tehgam.com";
+			text="Site - tehgam1.com";
 			type="mil_box";
 			colorName="ColorWhite";
 			id=584;
