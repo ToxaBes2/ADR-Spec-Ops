@@ -27,7 +27,7 @@ _striders = ["I_MRAP_03_F", "I_MRAP_03_hmg_F", "I_MRAP_03_gmg_F"];							// Stri
 _mh9 = ["B_Heli_Light_01_F", "B_Heli_Light_01_armed_F", "B_Heli_Light_01_stripped_F"];		// MH-9
 _hellcats = ["I_Heli_light_03_unarmed_F", "I_Heli_light_03_F"];								// Hellcats
 _uavs = ["B_UAV_02_CAS_F", "B_UAV_02_F", "B_UGV_01_F", "B_UGV_01_rcws_F"];					// UAVs
-_ammoTrucks = ["B_Truck_01_ammo_F", "O_Truck_02_Ammo_F", "I_Truck_02_ammo_F"];				// Ammo trucks with 10^12 ammo
+_ammoTrucks = ["B_Truck_01_ammo_F", "O_Truck_02_Ammo_F", "I_Truck_02_ammo_F","B_T_APC_Tracked_01_CRV_F"];// Ammo trucks with 10^12 ammo
 _ammoTrucksTempest = ["O_Truck_03_ammo_F"];													// Ammo trucks with 30 000 ammo
 _prowlers = ["B_T_LSV_01_armed_F","B_T_LSV_01_unarmed_F"];									// Prowlers
 _ghosthawks = ["B_Heli_Transport_01_camo_F", "B_CTRG_Heli_Transport_01_tropic_F", "B_Heli_Transport_01_F"];														// Ghosthawks
@@ -72,22 +72,6 @@ call {
     		_u = _this select 0;
     		sleep 2;
     		createVehicleCrew _u;
-    	};
-    };
-
-    // Ammo trucks
-    // Set ammo trucks cargo ammo to 32 562 ammo (one full AA rearm)
-    if ((_t in _ammoTrucks) or (_t in _ammoTrucksTempest)) exitWith {
-    	while {true} do {
-    		call {
-    			if (_t in _ammoTrucks) exitWith {
-    				_u setAmmoCargo 0.000000032562; // 32 562 ammo
-    			};
-    			if (_t in _ammoTrucksTempest) exitWith {
-    				_u setAmmoCargo 1.08538;        // 32 562 ammo
-    			};
-    		};
-    		if (getAmmoCargo _u != 0) exitWith {}; // Due to very low values setAmmoCargo rounds to 0 on first try
     	};
     };
 
@@ -201,6 +185,23 @@ if (_t in _mrap_lsv || _t in _apc) then {
        _u addMagazineCargoGlobal ["RPG32_F", 2];
        _u addMagazineCargoGlobal ["RPG32_HE_F", 2];
        _u addMagazineCargoGlobal ["NLAW_F", 2];
+    };
+};
+
+
+// Ammo trucks
+// Set ammo trucks cargo ammo to 32 562 ammo (one full AA rearm)
+if ((_t in _ammoTrucks) or (_t in _ammoTrucksTempest)) exitWith {
+    while {true} do {
+        call {
+            if (_t in _ammoTrucks) exitWith {
+                _u setAmmoCargo 0.000000032562; // 32 562 ammo
+            };
+            if (_t in _ammoTrucksTempest) exitWith {
+                _u setAmmoCargo 1.08538;        // 32 562 ammo
+            };
+        };
+        if (getAmmoCargo _u != 0) exitWith {}; // Due to very low values setAmmoCargo rounds to 0 on first try
     };
 };
 

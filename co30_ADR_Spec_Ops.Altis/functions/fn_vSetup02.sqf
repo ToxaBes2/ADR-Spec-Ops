@@ -30,7 +30,7 @@ _mh9 = ["B_Heli_Light_01_F", "B_Heli_Light_01_armed_F", "B_Heli_Light_01_strippe
 _uav = ["B_UAV_02_CAS_F", "B_UAV_02_F", "B_UGV_01_F", "B_UGV_01_rcws_F"];						// UAVs
 _hellcat = ["I_Heli_light_03_unarmed_F", "I_Heli_light_03_F"];									// Hellcat
 _mohawk = ["I_Heli_Transport_02_F"];															// CH-49 Mohawk
-_ammoTrucks = ["B_Truck_01_ammo_F", "O_Truck_02_Ammo_F", "I_Truck_02_ammo_F"];					// Ammo trucks with 10^12 ammo
+_ammoTrucks = ["B_Truck_01_ammo_F", "O_Truck_02_Ammo_F", "I_Truck_02_ammo_F","B_APC_Tracked_01_CRV_F"]; // Ammo trucks with 10^12 ammo
 _ammoTrucksTempest = ["O_Truck_03_ammo_F"];														// Ammo trucks with 30 000 ammo
 _mrap_lsv = ["B_MRAP_01_hmg_F","B_MRAP_01_gmg_F","B_T_LSV_01_unarmed_F","O_T_LSV_02_unarmed_F","I_MRAP_03_F","B_T_LSV_01_armed_F"];
 _apc = ["B_APC_Tracked_01_CRV_F","B_APC_Wheeled_01_cannon_F","B_APC_Tracked_01_rcws_F","B_T_APC_Tracked_01_CRV_F","B_T_APC_Wheeled_01_cannon_F"];
@@ -91,22 +91,6 @@ if (_t in _gh_huron) then {
 	[[_u, 2, "LMG_Minigun_Transport2", 0], "QS_fnc_uh80Turret", true, false] spawn BIS_fnc_MP;
 };
 
-// Ammo trucks
-// Set ammo trucks cargo ammo to 32 562 ammo (one full AA rearm)
-if ((_t in _ammoTrucks) or (_t in _ammoTrucksTempest)) then {
-	while {true} do {
-		call {
-			if (_t in _ammoTrucks) exitWith {
-				_u setAmmoCargo 0.000000032562; // 32 562 ammo
-			};
-			if (_t in _ammoTrucksTempest) exitWith {
-				_u setAmmoCargo 1.08538;        // 32 562 ammo
-			};
-		};
-		if (getAmmoCargo _u != 0) exitWith {}; // Due to very low values setAmmoCargo rounds to 0 on first try
-	};
-};
-
 // load items in cargo of MRAPs/LSVs/APCs
 if (_t in _mrap_lsv || _t in _apc) then {
     clearWeaponCargoGlobal _u;
@@ -129,6 +113,22 @@ if (_t in _mrap_lsv || _t in _apc) then {
        _u addMagazineCargoGlobal ["RPG32_HE_F", 2];
        _u addMagazineCargoGlobal ["NLAW_F", 2];
     };
+};
+
+// Ammo trucks
+// Set ammo trucks cargo ammo to 32 562 ammo (one full AA rearm)
+if ((_t in _ammoTrucks) or (_t in _ammoTrucksTempest)) then {
+	while {true} do {
+		call {
+			if (_t in _ammoTrucks) exitWith {
+				_u setAmmoCargo 0.000000032562; // 32 562 ammo
+			};
+			if (_t in _ammoTrucksTempest) exitWith {
+				_u setAmmoCargo 1.08538;        // 32 562 ammo
+			};
+		};
+		if (getAmmoCargo _u != 0) exitWith {}; // Due to very low values setAmmoCargo rounds to 0 on first try
+	};
 };
 
 // decrease radar scan range

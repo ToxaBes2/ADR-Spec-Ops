@@ -43,7 +43,7 @@ call {
     if (_cargo_type == 8) exitWith {
         _cargo = "Land_Pod_Heli_Transport_04_ammo_F" createVehicle (getMarkerPos "Ammo_Supply_drop");
         while {true} do {
-            _cargo setAmmoCargo 1.08538; // Set cargo ammo to 32 562 instead of 30 000
+            _cargo setAmmoCargo 0.000000032562; // Set cargo ammo to 32 562 instead of 10^12
             if (getAmmoCargo _cargo != 0) exitWith {}; // Due to very low values setAmmoCargo rounds to 0 on the first try
         };
     };
