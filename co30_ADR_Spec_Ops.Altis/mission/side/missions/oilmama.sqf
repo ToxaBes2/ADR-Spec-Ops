@@ -590,7 +590,7 @@ _exclude = ["O_Heli_Transport_04_bench_F", "O_Heli_Transport_04_covered_F", "C_V
     _newObj = createVehicle [_type, [50,50,150], [], 0, "CAN_COLLIDE"];
     _newObj setVariable ["BIS_enableRandomization", false];     
     if (_type in _exclude) then {
-        _newObj setVariable ["IS_REWARD", true, true];
+        _newObj setVariable ["ALLOW_ONCE", true, true];
         if (_newObj isKindOf "Air") then {
         	if (_type == "O_Heli_Transport_04_covered_F") then {        		
         	    _newObj AnimateDoor ["Door_1_source", 1, true];

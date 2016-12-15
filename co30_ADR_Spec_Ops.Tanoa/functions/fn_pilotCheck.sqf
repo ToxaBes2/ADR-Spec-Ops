@@ -126,8 +126,41 @@ _pilotsOnServer = false;
 
 // Kick player out of the vehicle if he is not a pliot
 if !((typeOf player) in _pilots) then {
+
     // allow Humminbird for all players if there are less than 7 players on the server and no pilots
     if ((_playersCount < 7) and ((typeOf _veh) in _mh9) and !_pilotsOnServer) exitWith {};
+
+    // all helicopters from spec operations available for all pilots until next landing
+    _allowOnce = _veh getVariable ["ALLOW_ONCE", false];
+    if (_allowOnce && ((side player == west && !_pilotsOnServer) || side player == resistance)) exitWith {
+        systemChat "Вы можете занимать место пилота только до следующего приземления";
+        _allowOnce = _veh getVariable ["ALLOW_ONCE", false];    
+        if ((driver _veh == player || player == _veh turretUnit [0]) && _allowOnce) then {
+            [player, _veh] spawn {
+                _player = _this select 0; 
+                _veh = _this select 1;      
+                _check = true;
+                while {_check} do {            
+                    if !(driver _veh == player || player == _veh turretUnit [0]) then {
+                        _check = false;
+                    } else {
+                        if (getPosATL _veh select 2 > 5 && speed _veh > 5) then {
+                            _check = false;
+                        };
+                    };
+                    sleep 5;
+                };
+                waitUntil {isTouchingGround (vehicle _player)};
+                sleep 1;
+                if (driver _veh == player || player == _veh turretUnit [0]) then {
+                    (vehicle _player) setVariable ["ALLOW_ONCE", false, true]; 
+                    (vehicle _player) engineOn false;
+                    _player action ["getOut", (vehicle _player)];
+                };            
+            };
+        };              
+    };
+
     if ((typeOf player) in _partizan_pilots) then {
         call {
             if (!((typeOf _veh) in _aircraft_nopilot_partizan) and (player == driver _veh)) exitWith {

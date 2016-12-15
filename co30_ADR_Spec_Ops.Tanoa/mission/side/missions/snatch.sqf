@@ -185,6 +185,7 @@ heliSnatch addMPEventHandler ["MPKilled",
         };
     }
 ];
+heliSnatch setVariable ["ALLOW_ONCE", true, true];
 
 // make heli a bit special
 heliSnatch setFuel 0.005;
