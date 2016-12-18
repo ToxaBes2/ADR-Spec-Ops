@@ -12,12 +12,12 @@
 _parameters = [
 	["SIDE", civilian],
 	["VEHICLES", ["B_Quadbike_01_F", "C_SUV_01_F", "I_G_Offroad_01_F", "C_Offroad_02_unarmed_F"]],
-	["VEHICLES_COUNT", 12],
-	["MIN_SPAWN_DISTANCE", 1500],
-	["MAX_SPAWN_DISTANCE", 5500],
+	["VEHICLES_COUNT", 15],
+	["MIN_SPAWN_DISTANCE", 500],
+	["MAX_SPAWN_DISTANCE", 15000],
 	["MIN_SKILL", 1],
 	["MAX_SKILL", 1],
-	["DEBUG", false]
+	["DEBUG", true]
 ];
 
 // Start an instance of the traffic

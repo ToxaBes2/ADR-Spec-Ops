@@ -1,4 +1,4 @@
-_timeout = 2400; // 40 mins
+_timeout = 1200; // 20 mins
 if (isNil "COMMANDER_ARTSTRIKE") then {
     COMMANDER_ARTSTRIKE = time - 1; publicVariable "COMMANDER_ARTSTRIKE";
 };

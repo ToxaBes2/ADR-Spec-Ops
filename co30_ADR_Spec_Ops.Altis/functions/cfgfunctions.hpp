@@ -62,7 +62,8 @@ class QS
 		class baseVehicleAvanpost {};
 		class baseVehiclePartizan {};
 		class basePartizanSwitch {};
-		class cacheDebug {};
+		class cacheDebug {};		
+		class chemlightUse {};
 		class conditionClearInventory {};
 		class conditionGetCargoUniform {};
 		class conditionPilotRepair {};
@@ -81,7 +82,7 @@ class QS
 		class garrisonFortFIA {};
 		class garrisonFortIND {};
 		class getMainAO {};
-		class getShorePos {};
+		class getShorePos {};		
 		class killerCatcher {};
 		class KeyDown {};
 		class moveToHC {};
@@ -101,6 +102,7 @@ class QS
 		class setSkill3 {};
 		class setSkill4 {};
 		class spawnViper {};
+		class strobeUse {};
 		class taskMaxDistPatrol {};
 		class uh80Turret {};
 		class uh80TurretActions {};

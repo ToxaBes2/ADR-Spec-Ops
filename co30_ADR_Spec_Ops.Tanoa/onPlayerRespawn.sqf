@@ -106,7 +106,29 @@ if (playerSide == resistance) then {
 
 	// Open unconscious players inventory
     player addAction ["<t color='#FFC107'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\uniform_ca.paa' size='1.0'/> Обыскать</t>",{player action ["Gear", cursorTarget]},[],7,true,true,"",'((vehicle player) == player && (cursorObject getVariable "BTC_need_revive") == 1 && (player distance cursorObject) < 2 && animationState player != "ainvpknlmstpsnonwrfldnon_medic0s")'];
+ 
+    // add IR grenade in hand
+    player addAction ["Прицепить ИК гранату на плечо", QS_fnc_strobeUse,"I_IRStrobe",-999,false,false,"",' isNil "STROBE_ITEM" && "I_IR_Grenade" in (magazines player) && vehicle player == player '];
+} else {
+    
+    // add IR grenade in hand
+    player addAction ["Прицепить ИК гранату на плечо", QS_fnc_strobeUse,"B_IRStrobe",-999,false,false,"",' isNil "STROBE_ITEM" && "B_IR_Grenade" in (magazines player) && vehicle player == player '];
 };
+
+// Drop IR grenade action
+player addAction ["Выбросить ИК гранату", {if (isNil "STROBE_ITEM") exitWith {};detach STROBE_ITEM;deleteVehicle (nearestObject [getpos STROBE_ITEM,"nvg_targetC"]);deleteVehicle STROBE_ITEM;STROBE_ITEM = nil;},"",-1001,false,false,"",'!isNil "STROBE_ITEM" && vehicle player == player '];
+
+// Add chemlight actions
+player addAction ["Взять химсвет (красный) в руки", QS_fnc_chemlightUse,"Chemlight_red",-999,false,false,"",'isNil "HAND_ITEM" && "Chemlight_red" in (magazines player) && vehicle player == player '];
+player addAction ["Взять химсвет (желтый) в руки", QS_fnc_chemlightUse,"Chemlight_yellow",-999,false,false,"",'isNil "HAND_ITEM" && "Chemlight_yellow" in (magazines player) && vehicle player == player '];
+player addAction ["Взять химсвет (зеленый) в руки", QS_fnc_chemlightUse,"Chemlight_green",-999,false,false,"",'isNil "HAND_ITEM" && "Chemlight_green" in (magazines player) && vehicle player == player '];
+player addAction ["Взять химсвет (синий) в руки", QS_fnc_chemlightUse,"Chemlight_blue",-999,false,false,"",'isNil "HAND_ITEM" && "Chemlight_blue" in (magazines player) && vehicle player == player '];
+
+// Move chemlight to body
+player addAction ["Прицепить химсвет на плечо", {if (isNil "HAND_ITEM") exitWith {};detach HAND_ITEM;HAND_ITEM attachTo [player, [0,0,0], "RightShoulder"];player setVariable ["IN_HAND", false, true];},"",-1000,false,false,"",'!isNil "HAND_ITEM" && vehicle player == player && player getVariable ["IN_HAND", false]'];
+
+// Drop chemlight action
+player addAction ["Выбросить химсвет", {if (isNil "HAND_ITEM") exitWith {};detach HAND_ITEM;HAND_ITEM = nil;player setVariable ["IN_HAND", false, true];},"",-1001,false,false,"",'!isNil "HAND_ITEM" && vehicle player == player '];
 
 // Deal with static map markers
 if (playerSide == west) then {

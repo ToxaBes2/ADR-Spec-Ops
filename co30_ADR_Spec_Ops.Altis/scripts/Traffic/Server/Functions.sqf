@@ -281,35 +281,10 @@ ENGIMA_TRAFFIC_StartTraffic = {
 	[] spawn ENGIMA_TRAFFIC_FindEdgeRoads;
 	waitUntil { sleep 1; (ENGIMA_TRAFFIC_edgeRoadsUseful select _currentInstanceIndex) };
 	sleep 5;
-	_pilots = ["B_Helipilot_F", "B_T_Helipilot_F"];
 	while {true} do {
 	    scopeName "mainScope";
 	    private ["_sleepSeconds", "_correctedVehicleCount", "_markerSize", "_avgMarkerRadius", "_coveredShare", "_restDistance", "_coveredAreaShare"];
-        _allPlayerPositions = [];
-		_allPlayerPositionsTemp = [];
-		if (isMultiplayer) then {
-			{
-				if (isPlayer _x && {side _x == west}) then {
-					if ((typeOf _x) in _pilots) then {
-						if ((vehicle _x) isKindOf "Air") then {
-                            _allPlayerPositionsTemp = _allPlayerPositionsTemp + [position vehicle _x];
-                        };
-				    };
-				};
-			} foreach (playableUnits);
-		} else {
-			_allPlayerPositionsTemp = [position vehicle player];
-		};
-
-		{
-            if (isUAVConnected _x) then {
-                _allPlayerPositionsTemp = _allPlayerPositionsTemp + [position _x];
-            };
-	    } forEach allUnitsUAV;
-	
-		if (count _allPlayerPositionsTemp > 0) then {
-			_allPlayerPositions = _allPlayerPositionsTemp;
-		};
+        _allPlayerPositions = [getMarkerPos "respawn_west"];		
 	
 	    // If there are few vehicles, add a vehicle	    
 	    if (_areaMarkerName == "") then {
@@ -425,15 +400,14 @@ ENGIMA_TRAFFIC_StartTraffic = {
 	            _vehicle = _result select 0;
 	            _vehiclesCrew = _result select 1;
 	            _vehiclesGroup = _result select 2;
-	            if (random 10 > 5) then {
+	            if (random 10 > 4) then {
 	                createVehicleCrew _vehicle;
 	                _vehiclesCrew = crew _vehicle;
 	            };
 	                            
 	            {
 					[_x] call randomCivilian;												
-				} forEach _vehiclesCrew;
-	         
+				} forEach _vehiclesCrew;	         
 	            
 	            // Name vehicle
 	            sleep random 0.1;
@@ -465,7 +439,7 @@ ENGIMA_TRAFFIC_StartTraffic = {
 	            
 	            // Run spawn script and attach handle to vehicle
 	            _vehicle setVariable ["dre_scriptHandle", _result spawn _fnc_OnSpawnVehicle];
-	            _vehicle lock 3;	            
+	            _vehicle lock 0;	            
 	        };
 	        
             _tries = _tries + 1;
@@ -484,23 +458,22 @@ ENGIMA_TRAFFIC_StartTraffic = {
 	        _group = _x select 1;
 	        _crewUnits = _x select 2;
 	        _debugMarkerName = _x select 3;
-	        
-	        _closestUnitDistance = 1000000;
-	        
-	        {
-	            _distance = (_x distance _vehicle);
-	            if (_distance < _closestUnitDistance) then {
-	                _closestUnitDistance = _distance;
-	            };
-	            
-	            sleep 0.01;
-	        } foreach _allPlayerPositions;
-	        
-	        if (_closestUnitDistance < _maxSpawnDistance) then {
-	            _tempVehiclesAndGroup pushBack _x;
-	        }
-	        else {
-	            // Run callback before deleting
+  
+            _keep = true;
+            if !(alive _vehicle) then {
+                _keep = false;
+            } else {
+                _people = _vehicle nearEntities ["Man", 1000];
+                if (count _people == 0) then {
+                    _keep = false;
+                };
+            };
+
+            if (_keep) then {
+                _tempVehiclesAndGroup pushBack _x;
+            } else {
+
+                // Run callback before deleting
 	            _vehicle call _fnc_OnRemoveVehicle;
 	            
 	            // Delete crew
@@ -519,15 +492,13 @@ ENGIMA_TRAFFIC_StartTraffic = {
 	
 	            [_debugMarkerName] call ENGIMA_TRAFFIC_DeleteDebugMarkerAllClients;
 	            _deletedVehiclesCount = _deletedVehiclesCount + 1;
-	        };
-	        
-            sleep 0.01;
-		} foreach _activeVehiclesAndGroup;
+            };
+		} forEach _activeVehiclesAndGroup;
 	    
 	    _activeVehiclesAndGroup = _tempVehiclesAndGroup;
 	    
 	    // Do nothing but update debug markers for X seconds
-	    _sleepSeconds = 20;
+	    _sleepSeconds = 180;
 	    if (_debug) then {
 		    for "_i" from 1 to _sleepSeconds do {
 		        {
@@ -558,8 +529,7 @@ ENGIMA_TRAFFIC_StartTraffic = {
 		    
 		    	sleep 1;
 		    };
-    	}
-    	else {
+    	} else {
     		sleep _sleepSeconds;
     	};
 	};

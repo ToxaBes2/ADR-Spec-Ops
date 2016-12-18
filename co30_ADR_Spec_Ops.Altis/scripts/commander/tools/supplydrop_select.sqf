@@ -1,4 +1,4 @@
-_timeout = 3600; // 60 mins
+_timeout = 1200; // 60 mins
 _pilots = ["B_Helipilot_F", "B_T_Helipilot_F"];
 _players = objNull;
 if (isMultiplayer) then {
