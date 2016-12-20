@@ -11,5 +11,5 @@ if (_type == "I_IRStrobe") then {
     _type = "I_IR_Grenade";
 };
 player removeMagazine _type;
-{HAND_ITEM attachTo [player, [0,0,0], "lefthand"];} remoteExec ["bis_fnc_call", 0, TRUE];
+HAND_ITEM attachTo [player, [0,0,0], "lefthand"];
 player setVariable ["IN_HAND", true, true];

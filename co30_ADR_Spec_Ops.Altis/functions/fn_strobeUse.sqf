@@ -11,4 +11,4 @@ if (_type == "I_IRStrobe") then {
     _type = "I_IR_Grenade";
 };
 player removeMagazine _type;
-{STROBE_ITEM attachTo [player, [0,0,0], "RightShoulder"];} remoteExec ["bis_fnc_call", 0, TRUE];
+STROBE_ITEM attachTo [player, [0,0,0], "RightShoulder"];
