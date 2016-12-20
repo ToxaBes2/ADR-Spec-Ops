@@ -94,11 +94,12 @@ _grpTurret1 setCombatMode "RED";
 [(units _grpTurret1)] call QS_fnc_setSkill4;
 
 // Server scripts
-_null = [] spawn {_this call compile preProcessFileLineNumbers "mission\missionControl.sqf";};                              // Main AO and side objectives
-_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\clean.sqf";};					                    // cleanup
-_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\time.sqf"};                                         // time and weather
-_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\zbe_cache\cache.sqf"};                              // ZBE Cache
-_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\bridges.sqf"};                                      // Custom bridges
+_null = [] spawn {_this call compile preProcessFileLineNumbers "mission\missionControl.sqf"};                              // Main AO and side objectives
+_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\clean.sqf"};					                   // cleanup
+_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\time.sqf"};                                        // time and weather
+_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\zbe_cache\cache.sqf"};                             // ZBE Cache
+_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\bridges.sqf"};                                     // Custom bridges
+_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\traffic\traffic.sqf"};                             // Civilian traffic system
 
 crossroad disableAI "ANIM";
 enemyCasArray = [];
