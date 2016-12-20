@@ -14,18 +14,18 @@ if (isNil "currentAO") then {
 _accepted = false;
 while {!_accepted} do {
 	_position = [[[getMarkerPos currentAO, 2500]], ["water", "out"]] call QS_fnc_randomPos;
-	_flatPos = _position isFlatEmpty [5, 0, 0.2, 5, 0, false];
+	_flatPos = _position isFlatEmpty [10, 0, 0.2, 5, 0, false];
 	while {(count _flatPos) < 2} do {
 		_position = [[[getMarkerPos currentAO, 2500]], ["water", "out"]] call QS_fnc_randomPos;
-		_flatPos = _position isFlatEmpty [5, 0, 0.2, 5, 0, false];
+		_flatPos = _position isFlatEmpty [10, 0, 0.2, 5, 0, false];
 	};
 	if ((_flatPos distance (getMarkerPos "respawn_west")) > 1800 && (_flatPos distance (getMarkerPos currentAO)) > 800) then {
 		_accepted = true;
 	};
 };
-_flatPos1 = [(_flatPos select 0) - 2, (_flatPos select 1) - 2, (_flatPos select 2)];
-_flatPos2 = [(_flatPos select 0) + 2, (_flatPos select 1) + 2, (_flatPos select 2)];
-_flatPos3 = [(_flatPos select 0) + 20, (_flatPos select 1) + random 20, (_flatPos select 2)];
+_flatPos1 = [(_flatPos select 0) - 4, (_flatPos select 1) - 4, (_flatPos select 2)];
+_flatPos2 = [(_flatPos select 0) + 4, (_flatPos select 1) + 4, (_flatPos select 2)];
+_flatPos3 = [(_flatPos select 0) + 24, (_flatPos select 1) + 24, (_flatPos select 2)];
 
 // 2. SPAWN OBJECTIVES
 _PTdir = random 360;
@@ -76,7 +76,7 @@ _unitsArray = _unitsArray + [_priorityGroup];
 
 // 4. SPAWN H-BARRIER RING
 sleep 1;
-_distance = 16;
+_distance = 18;
 _dir = 0;
 for "_c" from 0 to 7 do {
 	_pos = [_flatPos, _distance, _dir] call BIS_fnc_relPos;
