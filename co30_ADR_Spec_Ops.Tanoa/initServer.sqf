@@ -104,6 +104,27 @@ deleteGroup enemyCasGroup;
 [base_arsenal_infantry, "SIT1", "ASIS"] call BIS_fnc_ambientAnim;
 [base_arsenal_pilots, "STAND_U3", "ASIS"] call BIS_fnc_ambientAnim;
 
+// monitor and kill freezed UAVs
+_null = [] spawn {
+    while {true} do {
+        sleep 60;
+        {
+            if (isUAVConnected _x) then {
+                _control = UAVControl _x;
+                if (count _control > 0) then {
+                    _unit = _control select 0;
+                    if (isNull _unit) then {
+                        _side = side _x;
+                        _x setDamage 1;
+                        [_side, "HQ"] sideChat "Беспилотник потерял управление и был уничтожен";
+                    };          
+                };           
+            };
+        } forEach allUnitsUAV;
+        sleep 60;
+    };
+};
+
 // remove polygonal markers from channels
 //_null = [] spawn {
 //    while {true} do {

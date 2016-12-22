@@ -110,7 +110,7 @@ if (typeOf player in ["B_Soldier_SL_F", "B_T_Soldier_SL_F"]) then {
 
 // UAV operator tools
 if (typeOf player in ["B_engineer_F", "B_T_Engineer_F"]) then {
-    player addAction ["<t color='#D8D80E'><img image='\A3\Drones_F\Air_F_Gamma\UAV_01\Data\UI\icon_B_C_UAV_rgr_ca.paa' size='1.0'/> Вызвать AR-2 дартер</t>", "scripts\darter.sqf", "", -99, false, true, "", ""];	
+    player addAction ["<t color='#D8D80E'>Вызвать AR-2 дартер</t>", "scripts\darter.sqf", "", -99, false, true, "", ""];	
 };
 
 if !(isNil "EW_ATTACK") then {
