@@ -98,20 +98,10 @@ _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\vehicle\
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\pilotCheck.sqf";};									// pilots only
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\misc\diary.sqf";};									// diary tabs
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\icons.sqf";};										// blufor map tracker
-_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\admin_uid.sqf";};                                   // Admin tools
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\3rd_view_restrictions.sqf";};                       // 3rd view restrictions
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\heliRearRamp.sqf";};                                // Block rear ramp actions for non-pilots
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\stickyC4\stickycharge.sqf";};                       // Sticky C4 logic
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\vehicle\tow\tow.sqf";};                             // TOW script
-
-if (typeOf player in ["B_Soldier_SL_F", "B_T_Soldier_SL_F"]) then {
-    _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\commander\menu.sqf";};                          // Commander tools
-};
-
-// UAV operator tools
-if (typeOf player in ["B_engineer_F", "B_T_Engineer_F"]) then {
-    player addAction ["<t color='#D8D80E'>Вызвать AR-2 дартер</t>", "scripts\darter.sqf", "", -99, false, true, "", ""];	
-};
 
 if !(isNil "EW_ATTACK") then {
     if (EW_ATTACK) then {

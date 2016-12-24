@@ -1,5 +1,14 @@
 private ["_btc_tk_prison", "_tk", "_rules", "_playerType", "_null"];
 
+removeAllActions player;
+_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\admin_uid.sqf";};                                   // Admin tools
+if (typeOf player in ["B_Soldier_SL_F", "B_T_Soldier_SL_F"]) then {
+    _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\commander\menu.sqf";};                          // Commander tools
+};
+if (typeOf player in ["B_engineer_F", "B_T_Engineer_F"]) then {                                                             // UAV operator tools
+    player addAction ["<t color='#D8D80E'>Вызвать AR-2 дартер</t>", "scripts\darter.sqf", "", -99, false, true, "", ""];	
+};
+
 //=========================== PILOTS ONLY
 if (typeOf player in ["B_Helipilot_F", "B_T_Helipilot_F"]) then {
 	//===== HELI TURRETS LOCK
