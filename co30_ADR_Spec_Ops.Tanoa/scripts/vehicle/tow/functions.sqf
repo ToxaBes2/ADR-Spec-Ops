@@ -167,6 +167,13 @@ SA_Simulate_Towing = {
 	_maxVehicleSpeed = getNumber (configFile >> "CfgVehicles" >> typeOf _vehicle >> "maxSpeed");
 	_cargoCanFloat = if( getNumber (configFile >> "CfgVehicles" >> typeOf _cargo >> "canFloat") == 1 ) then { true } else { false };
 
+	// Flip vehicle if needed
+    _up = (vectorUp _cargo) select 2;
+    if (_up < 0) then {
+       _cargo setVectorUp [0,0,1];
+       _cargo setPosATL[getPosATL _cargo select 0,getPosATL _cargo select 1, 0.5]; 
+    };
+
 	private ["_cargoCenterOfMassAGL","_cargoModelCenterGroundPosition"];
 	SA_Find_Surface_AGL_Under_Model(_cargo,getCenterOfMass _cargo,_cargoCenterOfMassAGL,_cargoCanFloat);
 	_cargoModelCenterGroundPosition = _cargo worldToModelVisual _cargoCenterOfMassAGL;
