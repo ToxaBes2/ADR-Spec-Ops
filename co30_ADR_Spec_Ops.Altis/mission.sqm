@@ -8064,7 +8064,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="CAPTAIN";
-						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\commander\menu.sqf"";};}];";
+						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
 						description="Командир отделения";
 						isPlayable=1;
 					};
@@ -8338,7 +8338,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="CAPTAIN";
-						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\commander\menu.sqf"";};}];";
+						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
 						description="Командир отделения";
 						isPlayable=1;
 					};
