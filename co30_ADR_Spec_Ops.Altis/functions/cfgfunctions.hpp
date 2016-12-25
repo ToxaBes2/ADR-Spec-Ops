@@ -13,6 +13,7 @@ class QS
 		class baseDefense {};
 		class clearItemsBase {};
 		class CheckVisionMode {};
+		class darter {};
 		class DeleteEnemyEAST {};
 		class diplomacySwitch {};
 		class EWattack {};

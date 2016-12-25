@@ -28,6 +28,6 @@ createVehicleCrew _uav;
             _uav setDamage 1;
             deleteVehicle _uav;
         }; 
-    };       	
+    };          
 };
 ["<t color='#7FDA0B' size = '.48'>Дартер вызван и ожидает на базе.</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
