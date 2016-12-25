@@ -116,6 +116,16 @@ if (typeOf player in ["I_G_Soldier_AR_F","I_G_engineer_F","I_G_Soldier_GL_F","I_
 ((getMarkerPos "respawn_west") nearestObject 491010) allowDamage false;
 ((getMarkerPos "respawn_west") nearestObject 493386) allowDamage false;
 
+HAND_ITEM = nil;
+_detachItems = ["B_IRStrobe","B_IR_Grenade","I_IRStrobe","I_IR_Grenade","Chemlight_red","Chemlight_yellow","Chemlight_green","Chemlight_blue"];
+{
+    _type = typeOf _x;
+    if (_type in _detachItems) then {
+        detach _x;
+    };
+} forEach attachedObjects player;
+player setVariable ["IN_HAND", false, true];
+
 // Add actions specific to resistance players
 if (playerSide == resistance) then {
 	// Take uniform from CSAT dead bodies
