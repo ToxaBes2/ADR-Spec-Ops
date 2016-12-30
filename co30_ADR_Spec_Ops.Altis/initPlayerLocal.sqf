@@ -218,6 +218,95 @@ if (playerSide == resistance) then {
 // Add player to Zeus curators as editable objects
 [player] remoteExec ["QS_fnc_addCurators", 2];
 
+// Add custom name tags
+TAGS = addMissionEventHandler ["Draw3D", {
+    _target = cursorTarget;
+    if (alive _target) then {    	
+        if (_target isKindOf "MAN") then { 
+            _show = false;
+            if (side _target == playerSide) then {
+                _show = true;
+            } else {
+                _diplomacyPartizan = partizan_ammo getVariable ["DIPLOMACY", 0];
+                _diplomacyBlufor = base_arsenal_infantry getVariable ["DIPLOMACY", 0];
+                if (_diplomacyPartizan == 1 && _diplomacyBlufor == 1 && (side _target == west || side _target == resistance)) then {
+                    _show = true;
+                };
+            };
+            if (_show) then {
+                _nametagPos = visiblePosition _target;
+    	        _dist = (player distance _target) / 30;
+                _color = [0.24,0.91,0.22,1];
+                if (side _target == WEST) then {
+                    _color = [0,0.5,1,1];
+                };           
+                _color set [3, 1 - _dist]; 
+                _size = 0.035 - (_dist/3000);
+                _text = "";          
+                _nametagPos set [2, 
+                    (_nametagPos select 2) + ((_target modelToWorld (_target selectionPosition 'body')) select 2) - 0.1
+                ];
+                _role = roleDescription _target;            
+                if (_role == "") then {
+                    _text = format ["%1", name _target];
+                } else {
+                    _text = format ["%1 (%2)", name _target, _role];
+                };               
+                drawIcon3D ["", _color, _nametagPos, 0, 0, 0, _text, 2, _size, "PuristaSemiBold"];
+            };
+        } else {
+            if ({_target isKindOf _x;} count ["AIR","CAR","SHIP","TANK"] > 0) then {
+            	_unitsCount = count (crew _target);
+            	if (_unitsCount > 0) then {
+            		_show = false;
+                    if (side _target == playerSide) then {
+                        _show = true;
+                    } else {
+                        _diplomacyPartizan = partizan_ammo getVariable ['DIPLOMACY', 0];
+                        _diplomacyBlufor = base_arsenal_infantry getVariable ["DIPLOMACY", 0];
+                        if (_diplomacyPartizan == 1 && _diplomacyBlufor  == 1 && (side _target == west || side _target == resistance)) then {
+                            _show = true;
+                        };
+                    };
+                    if (_show) then {
+            		    _nametagPos = visiblePosition _target;
+    	                _dist = (player distance _target) / 30;
+                        _color = [0.24,0.91,0.22,1];
+                        if (side _target == WEST) then {
+                            _color = [0,0.5,1,1];
+                        };           
+                        _color set [3, 1 - _dist]; 
+                        _size = 0.035 - (_dist/3000);
+                        _text = "";
+            		    _nametagPos set [2, 
+                           (_nametagPos select 2) + ((_target modelToWorld (_target selectionPosition 'body')) select 2) - 0.2
+                        ];
+            	        _name = "";            	    
+            	        if (alive (driver _target)) then {	
+				            _name = name (driver _target);
+                        } else {
+                            if (alive (commander _target)) then {	
+			                   _name = name (commander _target);
+			                } else {
+                                if (alive (gunner _target)) then {
+                                   _name = name (gunner _target);
+			                    } else {
+                                    _name = name ((crew _target) select 0);
+			                    };
+			                };
+                        };          	    
+			            if (_unitsCount > 1) then {
+			                _name = format ["%1 (+%2)", _name, (_unitsCount - 1)];
+			            };
+                        _text = format ["%1: %2", getText(configFile >> "CfgVehicles" >> (typeOf _target) >> "DisplayName"), _name];             
+                        drawIcon3D ["", _color, _nametagPos, 0, 0, 0, _text, 2, _size, "PuristaSemiBold"];
+                    };
+                };
+            };
+        };       
+    };
+}];
+
 // PVEHs
 "showNotification" addPublicVariableEventHandler {
 	private ["_array", "_type", "_message", "_side"];
