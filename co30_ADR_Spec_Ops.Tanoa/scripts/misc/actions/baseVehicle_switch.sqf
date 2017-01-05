@@ -38,6 +38,9 @@ switch (_mode) do {
     case "jeep" : {
         _class = "C_Offroad_02_unarmed_F";
     };
+    case "hatchback" : {
+        _class = "C_Hatchback_01_sport_F";
+    };
     case "ship" : {
         _class = "I_C_Boat_Transport_02_F";
     };
