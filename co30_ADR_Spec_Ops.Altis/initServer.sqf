@@ -58,27 +58,14 @@ BLUFOR_REWARDS_LIST = []; publicVariable "BLUFOR_REWARDS_LIST";
 AVANPOST_PARTIZAN_RESPAWN = []; publicVariable "AVANPOST_PARTIZAN_RESPAWN";
 
 // Hide turrets
-baseTurret2 hideObjectGlobal true;
-baseTurret4 hideObjectGlobal true;
-baseTurret6 hideObjectGlobal true;
-baseTurret8 hideObjectGlobal true;
-baseTurret10 hideObjectGlobal true;
-baseTurret12 hideObjectGlobal true;
-baseTurret14 hideObjectGlobal true;
-baseTurret16 hideObjectGlobal true;
-baseTurret18 hideObjectGlobal true;
-baseTurret20 hideObjectGlobal true;
 _grpTurret1 = createGroup west;
-deleteVehicle (gunner baseTurret1);
-deleteVehicle (gunner baseTurret3);
-deleteVehicle (gunner baseTurret5);
-deleteVehicle (gunner baseTurret7);
-deleteVehicle (gunner baseTurret9);
-deleteVehicle (gunner baseTurret11);
-deleteVehicle (gunner baseTurret13);
-deleteVehicle (gunner baseTurret15);
-deleteVehicle (gunner baseTurret17);
-deleteVehicle (gunner baseTurret19);
+
+_turrets = [baseTurret1, baseTurret2, baseTurret3, baseTurret4, baseTurret5, baseTurret6, baseTurret7, baseTurret8, baseTurret9, baseTurret10, 
+baseTurret11, baseTurret12, baseTurret13, baseTurret14, baseTurret15, baseTurret16, baseTurret17, baseTurret18, baseTurret19, baseTurret20];
+{
+    deleteVehicle (gunner _x);
+} foreach _turrets;
+
 "B_support_MG_F" createUnit [getposATL baseTurret1, _grpTurret1, "this moveInGunner baseTurret1"];
 "B_support_MG_F" createUnit [getposATL baseTurret3, _grpTurret1, "this moveInGunner baseTurret3"];
 "B_support_MG_F" createUnit [getposATL baseTurret5, _grpTurret1, "this moveInGunner baseTurret5"];

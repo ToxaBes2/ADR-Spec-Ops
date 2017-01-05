@@ -20,32 +20,6 @@ BASEDEFENSE_SWITCH = true; publicVariable "BASEDEFENSE_SWITCH";
 hqSideChat = "Защита базы включена, турели активированы!"; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
 sleep 1;
 
-// unhide turrets
-baseTurret2 hideObjectGlobal false;
-baseTurret4 hideObjectGlobal false;
-baseTurret6 hideObjectGlobal false;
-baseTurret8 hideObjectGlobal false;
-baseTurret10 hideObjectGlobal false;
-baseTurret12 hideObjectGlobal false;
-baseTurret14 hideObjectGlobal false;
-
-// reload ammo
-baseTurret1 setvehicleammo 1;
-baseTurret2 setvehicleammo 1;
-baseTurret3 setvehicleammo 1;
-baseTurret4 setvehicleammo 1;
-baseTurret5 setvehicleammo 1;
-baseTurret6 setvehicleammo 1;
-baseTurret7 setvehicleammo 1;
-baseTurret8 setvehicleammo 1;
-baseTurret9 setvehicleammo 1;
-baseTurret10 setvehicleammo 1;
-baseTurret11 setvehicleammo 1;
-baseTurret12 setvehicleammo 1;
-baseTurret13 setvehicleammo 1;
-baseTurret14 setvehicleammo 1;
-baseTurret15 setvehicleammo 1;
-
 // put turrets on correct places
 baseTurret1 setPos [15283.8,17367.1,2.778];
 baseTurret2 setPos [15286.4,17369.3,2.78095];
@@ -63,40 +37,19 @@ baseTurret13 setPos [15363,15883.6,3.157];
 baseTurret14 setPos [17776.3,18214.9,5.921];
 baseTurret15 setPos [17715.3,18117.9,0];
 
-// replace tuuret operators
-_grpTurret1 = createGroup west;
-deleteVehicle (gunner baseTurret1);
-deleteVehicle (gunner baseTurret3);
-deleteVehicle (gunner baseTurret5);
-deleteVehicle (gunner baseTurret7);
-deleteVehicle (gunner baseTurret9);
-deleteVehicle (gunner baseTurret11);
-deleteVehicle (gunner baseTurret13);
-deleteVehicle (gunner baseTurret15);
-"B_support_MG_F" createUnit [getposATL baseTurret1, _grpTurret1, "this moveInGunner baseTurret1"];
-"B_support_MG_F" createUnit [getposATL baseTurret3, _grpTurret1, "this moveInGunner baseTurret3"];
-"B_support_MG_F" createUnit [getposATL baseTurret5, _grpTurret1, "this moveInGunner baseTurret5"];
-"B_support_MG_F" createUnit [getposATL baseTurret7, _grpTurret1, "this moveInGunner baseTurret7"];
-"B_support_MG_F" createUnit [getposATL baseTurret9, _grpTurret1, "this moveInGunner baseTurret9"];
-"B_support_MG_F" createUnit [getposATL baseTurret11, _grpTurret1, "this moveInGunner baseTurret11"];
-"B_support_MG_F" createUnit [getposATL baseTurret13, _grpTurret1, "this moveInGunner baseTurret13"];
-"B_support_MG_F" createUnit [getposATL baseTurret15, _grpTurret1, "this moveInGunner baseTurret15"];
-_grpTurret1 setBehaviour "COMBAT";
-_grpTurret1 setCombatMode "RED";
-[(units _grpTurret1)] call QS_fnc_setSkill4;
+_turrets = [baseTurret1, baseTurret2, baseTurret3, baseTurret4, baseTurret5, baseTurret6, baseTurret7, baseTurret8, baseTurret9, baseTurret10, 
+baseTurret11, baseTurret12, baseTurret13, baseTurret14, baseTurret15, baseTurret16, baseTurret17, baseTurret18, baseTurret19, baseTurret20];
 
-// add turret operators
-_grpTurret2 = createGroup west;
-"B_support_MG_F" createUnit [getposATL baseTurret2, _grpTurret2, "this moveInGunner baseTurret2"];
-"B_support_MG_F" createUnit [getposATL baseTurret4, _grpTurret2, "this moveInGunner baseTurret4"];
-"B_support_MG_F" createUnit [getposATL baseTurret6, _grpTurret2, "this moveInGunner baseTurret6"];
-"B_support_MG_F" createUnit [getposATL baseTurret8, _grpTurret2, "this moveInGunner baseTurret8"];
-"B_support_MG_F" createUnit [getposATL baseTurret10, _grpTurret2, "this moveInGunner baseTurret10"];
-"B_support_MG_F" createUnit [getposATL baseTurret12, _grpTurret2, "this moveInGunner baseTurret12"];
-"B_support_MG_F" createUnit [getposATL baseTurret14, _grpTurret2, "this moveInGunner baseTurret14"];
-_grpTurret2 setBehaviour "COMBAT";
-_grpTurret2 setCombatMode "RED";
-[(units _grpTurret2)] call QS_fnc_setSkill4;
+_grpTurret = createGroup west;
+{
+    _x setvehicleammo 1;
+    deleteVehicle (gunner _x);   
+    "B_support_MG_F" createUnit [getposATL _x, _grpTurret, "currentGunner = this"];
+    currentGunner moveInGunner _x;
+} foreach _turrets;
+_grpTurret setBehaviour "COMBAT";
+_grpTurret setCombatMode "RED";
+[(units _grpTurret)] call QS_fnc_setSkill4;
 
 //---------- Active time
 sleep _activeTimer;
@@ -104,16 +57,23 @@ sleep _activeTimer;
 //---------- Delete after use
 {
     deleteVehicle _x;
-} forEach (units _grpTurret2);
-deleteGroup _grpTurret2;
-
-baseTurret2 hideObject true;
-baseTurret4 hideObject true;
-baseTurret6 hideObject true;
-baseTurret8 hideObject true;
-baseTurret10 hideObject true;
-baseTurret12 hideObject true;
-baseTurret14 hideObject true;
+} forEach (units _grpTurret);
+deleteGroup _grpTurret;
+sleep 2;
+_grpTurret = createGroup west;
+_number = 1;
+{
+    _x setvehicleammo 1;
+    deleteVehicle (gunner _x);   
+    if (_number % 2 == 0) then {
+    	"B_support_MG_F" createUnit [getposATL _x, _grpTurret, "currentGunner = this"];
+        currentGunner moveInGunner _x;
+    };    
+    _number = _number + 1;
+} foreach _turrets;
+_grpTurret setBehaviour "COMBAT";
+_grpTurret setCombatMode "RED";
+[(units _grpTurret)] call QS_fnc_setSkill4;
 
 //---------- Cool-off period before next use
 sleep _inactiveTimer;
