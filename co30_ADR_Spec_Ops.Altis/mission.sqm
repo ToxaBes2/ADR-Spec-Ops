@@ -5327,7 +5327,7 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="0 = [this,300,305,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,1200,305,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				textures="Green";
 			};
 			id=813;

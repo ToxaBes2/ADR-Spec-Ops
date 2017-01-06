@@ -755,7 +755,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="null = [this, 300, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="null = [this, 1200, False, QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				textures="Green";
 			};
 			id=50;
