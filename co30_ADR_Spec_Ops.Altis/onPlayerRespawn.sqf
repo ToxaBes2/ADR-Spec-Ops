@@ -102,6 +102,18 @@ if (typeOf player in ["I_G_Soldier_AR_F","I_G_engineer_F","I_G_Soldier_GL_F","I_
     "partizan_base" setMarkerAlphaLocal 0;
 };
 
+// add group leader
+if (typeOf player in ["B_Soldier_SL_F","B_T_Soldier_SL_F","I_G_Soldier_AR_F","I_G_engineer_F","I_C_Soldier_Para_8_F","I_C_Soldier_Para_4_F"]) then {
+    [group player, player] remoteExec ["selectLeader", groupOwner group player];
+} else {
+    [] spawn {
+    waitUntil {!isNull (findDisplay 46)};
+        (findDisplay 46) displayAddEventHandler ["KeyDown", {
+            if ((_this select 1) in (actionKeys "ForceCommandingMode")) then {true} else {false};     
+        }];
+    };
+};
+
 // Hide objects near heli landing
 ((getMarkerPos "respawn_west") nearestObject 492374) hideObject true;
 ((getMarkerPos "respawn_west") nearestObject 492375) hideObject true;

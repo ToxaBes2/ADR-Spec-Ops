@@ -24,6 +24,7 @@ _rewardsSideMission = [
     ["Y-32 Xi'an", ["O_T_VTOL_02_vehicle_F"]],
     ["T-100 «Варсук»", ["O_MBT_02_cannon_F"]],
     ["MBT-52 «Кума»", ["I_MBT_03_cannon_F"]],
+    ["Отряд CTRG", ["ctrg"]],
     //["M5 РСЗО «Сэндсторм»", ["B_MBT_01_mlrs_F"]],
     ["M2A1 «Сламмер»", ["B_MBT_01_cannon_F"]],
     ["M2A4 «Сламмер» UP", ["B_MBT_01_TUSK_F"]],

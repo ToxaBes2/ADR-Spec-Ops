@@ -10,7 +10,9 @@ _display = uiNamespace getVariable['VAS_Reward_Display_Partizan', displayNull];
 if (count PARTIZAN_REWARDS_LIST == 0) then {
     closeDialog 0;
     ["<t color='#F44336' size = '.48'>У партизан пока нет трофеев</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
-    ppEffectDestroy VAS_blur;
+    if !(isNil "VAS_blur") then {
+        ppEffectDestroy VAS_blur;
+    };   
 };
 _title = _display displayCtrl 7778;
 _ctrl = _display displayCtrl 7777;

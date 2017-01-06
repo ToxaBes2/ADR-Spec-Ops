@@ -43,7 +43,7 @@ baseTurret19 setPos [17869.9,18201.7,0];
 baseTurret20 setPos [15061.2,17208.9,4.4];
 
 _turrets = [baseTurret1, baseTurret2, baseTurret3, baseTurret4, baseTurret5, baseTurret6, baseTurret7, baseTurret8, baseTurret9, baseTurret10, 
-baseTurret11, baseTurret12, baseTurret13, baseTurret14, baseTurret15];
+baseTurret11, baseTurret12, baseTurret13, baseTurret14, baseTurret15, baseTurret16, baseTurret17, baseTurret18, baseTurret19, baseTurret20];
 
 _grpTurret = createGroup west;
 {

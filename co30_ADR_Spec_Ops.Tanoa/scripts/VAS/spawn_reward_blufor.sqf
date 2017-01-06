@@ -17,65 +17,74 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
     _vehName = _vehs select 0;
     _rewardDir = 90;
     ["<t color='#7FDA0B' size = '.48'>Вызываем награду...</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
+    if (_vehName == "ctrg") then {
 
-    // Spawn the vehicle
-    _veh = createVehicle [_vehName, getMarkerPos "smReward1", _smMarkerList, 0, "NONE"];
-    waitUntil {!isNull _veh};
-    _veh setDir _rewardDir;
-    _veh lock 0;
-    if (getNumber(configFile >> "CfgVehicles" >> typeof _veh >> "isUav") == 1) then {
-        createVehicleCrew _veh;
-        _crew = crew _veh;
-        _grp = createGroup WEST;
-        _crew joinSilent _grp;
-        _grp addVehicle _veh;
-        {
-            _x setName "[AI]";
-        } forEach units _grp;
-    };    
-    [_veh] call QS_fnc_killerCatcher;
-    _veh setVariable ["IS_REWARD", true];    
-    _class = typeOf _veh;
-    switch (_class) do { 
-        case "I_APC_Wheeled_03_cannon_F": {
-            _veh setObjectTextureGlobal [0, "A3\Armor_F_Gamma\APC_Wheeled_03\Data\apc_wheeled_03_ext_co.paa"];
-            _veh setObjectTextureGlobal [1, "A3\Armor_F_Gamma\APC_Wheeled_03\Data\apc_wheeled_03_ext2_co.paa"];
-            _veh setObjectTextureGlobal [2, "A3\Armor_F_Gamma\APC_Wheeled_03\Data\rcws30_co.paa"];
-            _veh setObjectTextureGlobal [3, "A3\Armor_F_Gamma\APC_Wheeled_03\Data\apc_wheeled_03_ext_alpha_co.paa"];
-        }; 
-        case "O_APC_Wheeled_02_rcws_F": {
-            _veh addWeapon ("Rocket_04_AP_Plane_CAS_01_F");
-            _veh addMagazine ("7Rnd_Rocket_04_AP_F");
-            _veh addMagazine ("7Rnd_Rocket_04_AP_F");
-            _veh addWeapon ("Rocket_04_HE_Plane_CAS_01_F");
-            _veh addMagazine ("7Rnd_Rocket_04_HE_F");
-            _veh addMagazine ("7Rnd_Rocket_04_HE_F");
-        };
-        case "B_T_MBT_01_arty_F": {
-            _veh removeMagazine ("6Rnd_155mm_Mo_AT_mine");
-            _veh removeMagazine ("6Rnd_155mm_Mo_mine");
-        };
-        case "O_Heli_Attack_02_black_F": {
-            _veh removeMagazineTurret ["38Rnd_80mm_rockets", [0]];
-            _veh removeWeaponTurret ["rockets_Skyfire", [0]];
-            _veh addMagazineTurret ["38Rnd_80mm_rockets", [-1]];
-            _veh addWeaponTurret ["rockets_Skyfire", [-1]];
-        };
-        case "I_MBT_03_cannon_F": {
-            _veh addMagazineTurret ["SmokeLauncherMag", [-1]];
-            _veh addWeaponTurret ["SmokeLauncher", [-1]];
-        };
-        case "O_MBT_02_cannon_F": {
-            _veh addMagazineTurret ["SmokeLauncherMag", [-1]];
-            _veh addWeaponTurret ["SmokeLauncher", [-1]];
-        };
-        case "B_T_MBT_01_TUSK_F": {
-            _veh addMagazineTurret ["SmokeLauncherMag", [-1]];
-            _veh addWeaponTurret ["SmokeLauncher", [-1]];
-        };
-        case "B_T_MBT_01_cannon_F": {
-            _veh addMagazineTurret ["SmokeLauncherMag", [-1]];
-            _veh addWeaponTurret ["SmokeLauncher", [-1]];
+        // spawn group of bots
+        _rewardGroup = [getPos player, west, (configfile >> "CfgGroups" >> "West" >> "BLU_CTRG_F" >> "Infantry" >> "CTRG_InfSquad")] call BIS_fnc_spawnGroup;
+        [(units _rewardGroup)] call QS_fnc_setSkill4;
+        (units _rewardGroup) joinSilent player;
+        deleteGroup _rewardGroup;
+    } else {
+        
+        // Spawn the vehicle
+        _veh = createVehicle [_vehName, getMarkerPos "smReward1", _smMarkerList, 0, "NONE"];
+        waitUntil {!isNull _veh};
+        _veh setDir _rewardDir;
+        _veh lock 0;
+        if (getNumber(configFile >> "CfgVehicles" >> typeof _veh >> "isUav") == 1) then {
+            createVehicleCrew _veh;
+            _crew = crew _veh;
+            _grp = createGroup WEST;
+            _crew joinSilent _grp;
+            _grp addVehicle _veh;
+            {
+                _x setName "[AI]";
+            } forEach units _grp;
+        };    
+        [_veh] call QS_fnc_killerCatcher;
+        _veh setVariable ["IS_REWARD", true];    
+        _class = typeOf _veh;
+        switch (_class) do { 
+            case "I_APC_Wheeled_03_cannon_F": {
+                _veh setObjectTextureGlobal [0, "A3\Armor_F_Gamma\APC_Wheeled_03\Data\apc_wheeled_03_ext_co.paa"];
+                _veh setObjectTextureGlobal [1, "A3\Armor_F_Gamma\APC_Wheeled_03\Data\apc_wheeled_03_ext2_co.paa"];
+                _veh setObjectTextureGlobal [2, "A3\Armor_F_Gamma\APC_Wheeled_03\Data\rcws30_co.paa"];
+                _veh setObjectTextureGlobal [3, "A3\Armor_F_Gamma\APC_Wheeled_03\Data\apc_wheeled_03_ext_alpha_co.paa"];
+            }; 
+            case "O_APC_Wheeled_02_rcws_F": {
+                _veh addWeapon ("Rocket_04_AP_Plane_CAS_01_F");
+                _veh addMagazine ("7Rnd_Rocket_04_AP_F");
+                _veh addMagazine ("7Rnd_Rocket_04_AP_F");
+                _veh addWeapon ("Rocket_04_HE_Plane_CAS_01_F");
+                _veh addMagazine ("7Rnd_Rocket_04_HE_F");
+                _veh addMagazine ("7Rnd_Rocket_04_HE_F");
+            };
+            case "B_T_MBT_01_arty_F": {
+                _veh removeMagazine ("6Rnd_155mm_Mo_AT_mine");
+                _veh removeMagazine ("6Rnd_155mm_Mo_mine");
+            };
+            case "O_Heli_Attack_02_black_F": {
+                _veh removeMagazineTurret ["38Rnd_80mm_rockets", [0]];
+                _veh removeWeaponTurret ["rockets_Skyfire", [0]];
+                _veh addMagazineTurret ["38Rnd_80mm_rockets", [-1]];
+                _veh addWeaponTurret ["rockets_Skyfire", [-1]];
+            };
+            case "I_MBT_03_cannon_F": {
+                _veh addMagazineTurret ["SmokeLauncherMag", [-1]];
+                _veh addWeaponTurret ["SmokeLauncher", [-1]];
+            };
+            case "O_MBT_02_cannon_F": {
+                _veh addMagazineTurret ["SmokeLauncherMag", [-1]];
+                _veh addWeaponTurret ["SmokeLauncher", [-1]];
+            };
+            case "B_T_MBT_01_TUSK_F": {
+                _veh addMagazineTurret ["SmokeLauncherMag", [-1]];
+                _veh addWeaponTurret ["SmokeLauncher", [-1]];
+            };
+            case "B_T_MBT_01_cannon_F": {
+                _veh addMagazineTurret ["SmokeLauncherMag", [-1]];
+                _veh addWeaponTurret ["SmokeLauncher", [-1]];
+            };
         };
     };
 } else {
