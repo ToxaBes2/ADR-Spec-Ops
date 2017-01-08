@@ -579,6 +579,12 @@ if (random 10 > 5) then {
         ["O_Heli_Transport_04_bench_F",[19141,21676.2,58.1635],266.752,[-0.998391,-0.0566605,-0.00218898],[-0.00227843,0.00151419,0.999996]]
     ];
 };
+
+_objectsDel = nearestObjects [_flatPos, ["All"], 200];
+{
+    deleteVehicle _x;
+} forEach _objectsDel;
+
 _standard = ["Land_Offices_01_V1_F", "Land_Offices_01_V1_F", "Land_MilOffices_V1_F", "Land_GuardHouse_01_F", "Land_i_Barracks_V2_F","Land_LampHalogen_F","PortableHelipadLight_01_red_F","Land_runway_edgelight_blue_F"];
 _exclude = ["O_Heli_Transport_04_bench_F", "O_Heli_Transport_04_covered_F", "C_Van_01_transport_F", "C_Van_01_fuel_F", "O_HMG_01_high_F", "O_GMG_01_high_F"];
 { 	
