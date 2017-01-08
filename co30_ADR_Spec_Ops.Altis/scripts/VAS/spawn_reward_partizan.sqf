@@ -22,9 +22,45 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
     if (_vehName == "viper") then {
 
         // spawn group of bots
-        _rewardGroup = [getPos player, resistance, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "SpecOps" >> "OI_ViperTeam")] call BIS_fnc_spawnGroup;
-        [(units _rewardGroup)] call QS_fnc_setSkill4;
-        (units _rewardGroup) joinSilent player;
+        _rewardGroup = [[0,0,0], resistance, (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "SpecOps" >> "OI_ViperTeam")] call BIS_fnc_spawnGroup;
+      
+        // AA Soldier
+        "O_V_Soldier_LAT_hex_F" createUnit [[0,0,0], _rewardGroup, "currentUnit1 = this"];
+        currentUnit1 removeMagazines "MiniGrenade";
+        currentUnit1 removeMagazines "RPG32_F";        
+        currentUnit1 removeWeapon "launch_RPG32_F";
+        currentUnit1 addMagazine "Titan_AA";
+        currentUnit1 addMagazine "Titan_AA";
+        currentUnit1 addWeapon "launch_O_Titan_F";
+
+        // AA Soldier
+        "O_V_Soldier_LAT_hex_F" createUnit [[0,0,0], _rewardGroup, "currentUnit2 = this"];
+        currentUnit2 removeMagazines "MiniGrenade";
+        currentUnit2 removeMagazines "RPG32_F";        
+        currentUnit2 removeWeapon "launch_RPG32_F";
+        currentUnit2 addMagazine "Titan_AA";
+        currentUnit2 addMagazine "Titan_AA";
+        currentUnit2 addWeapon "launch_O_Titan_F";
+
+        // AT Soldier
+        "O_V_Soldier_LAT_hex_F" createUnit [[0,0,0], _rewardGroup, "currentUnit3 = this"];
+        currentUnit3 removeMagazines "MiniGrenade";
+        currentUnit3 removeMagazines "RPG32_F";        
+        currentUnit3 removeWeapon "launch_RPG32_F";
+        currentUnit3 addMagazine "Titan_AT";
+        currentUnit3 addMagazine "Titan_AT";
+        currentUnit3 addWeapon "launch_O_Titan_short_F";
+
+        _units = units _rewardGroup;
+        [_units] call QS_fnc_setSkill4;
+        (_units) joinSilent player;
+        {
+            if (typeOf _x == "O_V_Soldier_TL_hex_F") then {
+                deleteVehicle _x;
+            } else {
+                _x setPos (getPos player);
+            };
+        } forEach _units;
         deleteGroup _rewardGroup;
     } else {
         if (_useAirfield) then {

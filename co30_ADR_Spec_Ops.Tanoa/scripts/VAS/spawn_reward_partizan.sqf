@@ -23,8 +23,44 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
         
         // spawn group of bots
         _rewardGroup = [getPos player, resistance, (configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "SpecOps" >> "O_T_ViperTeam")] call BIS_fnc_spawnGroup;
-        [(units _rewardGroup)] call QS_fnc_setSkill4;
-        (units _rewardGroup) joinSilent player;
+        
+        // AA Soldier
+        "O_V_Soldier_LAT_ghex_F" createUnit [[0,0,0], _rewardGroup, "currentUnit1 = this"];
+        currentUnit1 removeMagazines "MiniGrenade";
+        currentUnit1 removeMagazines "RPG32_F";        
+        currentUnit1 removeWeapon "launch_RPG32_ghex_F";
+        currentUnit1 addMagazine "Titan_AA";
+        currentUnit1 addMagazine "Titan_AA";
+        currentUnit1 addWeapon "launch_O_Titan_ghex_F";
+
+        // AA Soldier
+        "O_V_Soldier_LAT_ghex_F" createUnit [[0,0,0], _rewardGroup, "currentUnit2 = this"];
+        currentUnit1 removeMagazines "MiniGrenade";
+        currentUnit1 removeMagazines "RPG32_F";        
+        currentUnit1 removeWeapon "launch_RPG32_ghex_F";
+        currentUnit1 addMagazine "Titan_AA";
+        currentUnit1 addMagazine "Titan_AA";
+        currentUnit1 addWeapon "launch_O_Titan_ghex_F";
+
+        // AT Soldier
+        "O_V_Soldier_LAT_ghex_F" createUnit [[0,0,0], _rewardGroup, "currentUnit3 = this"];
+        currentUnit3 removeMagazines "MiniGrenade";
+        currentUnit3 removeMagazines "RPG32_F";        
+        currentUnit3 removeWeapon "launch_RPG32_ghex_F";
+        currentUnit3 addMagazine "Titan_AT";
+        currentUnit3 addMagazine "Titan_AT";
+        currentUnit3 addWeapon "launch_O_Titan_short_ghex_F";
+
+        _units = units _rewardGroup;
+        [_units] call QS_fnc_setSkill4;
+        _units joinSilent player;
+        {    
+            if (typeOf _x == "O_V_Soldier_TL_ghex_F") then {
+                deleteVehicle _x;
+            } else {
+                _x setPos (getPos player);
+            };            
+        } forEach _units;
         deleteGroup _rewardGroup;
     } else {
         if (_useAirfield) then {
