@@ -1333,21 +1333,57 @@ BTC_player_killed = {
 	private ["_type_backpack","_weapons","_magazines","_weapon_backpack","_ammo_backpack","_score","_score_array","_name","_body_marker","_ui"];
 
 	// save primary weapon
-    _playerOld = _this select 0;
-    profileNamespace setVariable ["primary_weapon", primaryWeapon _playerOld];
-    profileNamespace setVariable ["primary_items", primaryWeaponItems _playerOld];
-    profileNamespace setVariable ["primary_magazine", primaryWeaponMagazine _playerOld];
-    profileNamespace setVariable ["primary_ammo", _playerOld ammo primaryWeapon _playerOld];
-    profileNamespace setVariable ["secondary_weapon", secondaryWeapon _playerOld];
-    profileNamespace setVariable ["secondary_items", secondaryWeaponItems _playerOld];
-    profileNamespace setVariable ["secondary_magazine", secondaryWeaponMagazine _playerOld];
+    _body = _this select 0;
+    profileNamespace setVariable ["primary_weapon", primaryWeapon _body];
+    profileNamespace setVariable ["primary_items", primaryWeaponItems _body];
+    profileNamespace setVariable ["primary_magazine", primaryWeaponMagazine _body];
+    profileNamespace setVariable ["primary_ammo", _body ammo primaryWeapon _body];
+    profileNamespace setVariable ["secondary_weapon", secondaryWeapon _body];
+    profileNamespace setVariable ["secondary_items", secondaryWeaponItems _body];
+    profileNamespace setVariable ["secondary_magazine", secondaryWeaponMagazine _body];
     saveProfileNamespace;
+   
+    _diplomacyPartizan = partizan_ammo getVariable ['DIPLOMACY', 0];
+    _diplomacyBlufor = base_arsenal_infantry getVariable ["DIPLOMACY", 0];
+    if (_diplomacyPartizan == 1 && _diplomacyBlufor == 1) then {
+    	_killer = _this select 1;
+    	_text = "";
+        switch (true) do {
+		    case (_killer == _body): {
+		        if (vehicle _body == _body) then {
+		            _text = "%1 покончил с собой";
+		        } else {
+		            if (driver (vehicle _body) == _body) then {
+		                _text = "%1 не справился с управлением и разбился";
+		            } else {
+		                if ((vehicle _body) isKindOf "Air") then {
+		                    _text = "%1 разбился в авиакатастрофе";
+		                };
+		                if ((vehicle _body) isKindOf "LandVehicle") then {
+		                    _text = "%1 попал в ДТП";
+		                };
+                        if ((vehicle _body) isKindOf "Ship") then {
+		                    _text = "%1 утонул при кораблекрушении";
+		                };
+		            };                    
+		        };                
+		    };
+		    case (isNull _killer): {
+		        _text = "%1 просто не повезло";
+		    };
+		    default {
+                _text = "%1 срочно требуется медпомощь!";
+		    };
+	    };
+        systemChat format [_text, (name _body)];
+    };
+
 	BTC_gear = [player] call BTC_get_gear;
 	titleText ["", "BLACK OUT"];
-	_body = _this select 0;
+	
 	killed_PrimaryWeapon = primaryWeapon _body;
 	if (!isNil killed_PrimaryWeapon) then {killed_PrimaryWeaponItems = primaryWeaponItems _body;};
-	[_body,[player,"KilledInventory"]] call BIS_fnc_saveInventory;
+	[_body,[player,"KilledInventory"]] call BIS_fnc_saveInventory;    
 	[_body] spawn
 	{
 		_body = _this select 0;
