@@ -21,21 +21,21 @@ hqSideChat = "Защита базы включена, турели активи�
 sleep 1;
 
 // put turrets on correct places
-baseTurret1 setPos [15283.8,17367.1,2.778];
-baseTurret2 setPos [15286.4,17369.3,2.78095];
-baseTurret3 setPos [15322,17399.6,2.22285];
-baseTurret4 setPos [15189.2,17523.5,4.349];
-baseTurret5 setPos [15186.6,17526.1,4.338];
-baseTurret6 setPos [15167.1,17370.6,4.127];
-baseTurret7 setPos [15187.7,17361.9,3.132];
-baseTurret8 setPos [15052.7,17329.3,10.1012];
-baseTurret9 setPos [14923.6,17196.6,10.123];
-baseTurret10 setPos [14968.4,16964.1,12.3166];
-baseTurret11 setPos [14968,16966.1,12.3267];
-baseTurret12 setPos [15455.5,15754.1,15.613];
-baseTurret13 setPos [15363,15883.6,3.157];
-baseTurret14 setPos [17776.3,18214.9,5.921];
-baseTurret15 setPos [17715.3,18117.9,0];
+baseTurret1 setPos [6901.915,7427.831,17.389];
+baseTurret2 setPos [6903.232,7420.661,17.388];
+baseTurret3 setPos [6759.780,7360.070,14.680];
+baseTurret4 setPos [6768.262,7352.225,14.001];
+baseTurret5 setPos [6867.946,7231.052,26.171];
+baseTurret6 setPos [6865.113,7225.583,26.851];
+baseTurret7 setPos [7003.567,7196.284,8.664];
+baseTurret8 setPos [6925.936,7334.559,7.866];
+baseTurret9 setPos [6888.327,7415.918,8.545];
+baseTurret10 setPos [6904.970,7331.776,8.545];
+baseTurret11 setPos [6909.526,7420.086,8.545];
+baseTurret12 setPos [6726.377,6940.746,10.151];
+baseTurret13 setPos [6724.382,6943.204,10.140];
+baseTurret14 setPos [6620.341,7306.560,15.359];
+baseTurret15 setPos [6623.384,7307.074,15.359];
 
 _turrets = [baseTurret1, baseTurret2, baseTurret3, baseTurret4, baseTurret5, baseTurret6, baseTurret7, baseTurret8, baseTurret9, baseTurret10, 
 baseTurret11, baseTurret12, baseTurret13, baseTurret14, baseTurret15];
