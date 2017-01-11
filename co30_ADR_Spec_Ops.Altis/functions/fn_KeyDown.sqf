@@ -18,5 +18,30 @@ if (!_shift && !_ctrlKey && !_alt) then {
            _handled = true;
         };
     };
+    _jumping = player getVariable ["is_jumping", false];
+    if (_dikCode in (actionKeys "GetOver") && {alive player} && {currentWeapon player == primaryWeapon player || currentWeapon player == handgunWeapon player} 
+        && {isNull objectParent player} && {speed player > 11} && {stance player == "STAND"} && {getFatigue player < 0.5} && {isTouchingGround player} 
+        && {!_jumping}) then {
+        player setVariable ["is_jumping", true];
+        0 spawn {
+            private _v = velocity player;
+            private _veloH = [(_v select 0) + 0.6, (_v select 1) + 0.6, (_v select 2) + 0.1];
+            private _veloL = [_v select 0, _v select 1, (_v select 2) - 1];
+            private _maxHight = (getPosATL player select 2) + 1.3;            
+            [player, "AovrPercMrunSrasWrflDf"] remoteExecCall ["switchMove"];
+            sleep 0.05;
+            while {animationState player == "AovrPercMrunSrasWrflDf"} do {
+                if (getPosATL player select 2 > _maxHight) then {
+                    player setVelocity _veloL;
+                } else {
+                    player setVelocity _veloH;
+                };
+                sleep 0.05;
+            };
+            sleep 1;
+            player setVariable ["is_jumping", false];
+        };
+        _handled = true;
+    };
 };
 _handled;  
