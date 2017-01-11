@@ -154,12 +154,14 @@ if (typeOf player in ["B_engineer_F", "B_T_Engineer_F", "I_G_engineer_F", "I_C_S
 				1 fadeSound 0.33;
 				_uav_action_id1 = _uav addAction ["<t color='#FFEB3B'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\radio_ca.paa' size='1.0'/> Вставить беруши</t>", {1 fadeSound 0.33}, "", -95, false, true, "", "soundVolume == 1"];
 				_uav_action_id2 = _uav addAction ["<t color='#FFEB3B'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\radio_ca.paa' size='1.0'/> Вытащить беруши</t>", {1 fadeSound 1}, "", -95, false, true, "", "soundVolume != 1"];
-				while {cameraOn == _uav} do {
+				_uav_action_id3 = _uav addAction ["<t color='#FFEB3B'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\top_close_gs.paa' size='1.0'/> Уничтожить беспилотник</t>", {(_this select 0) setDamage 1}, "", -99, false];                                                                
+                while {cameraOn == _uav} do {
 					sleep 5;
 				};
 				1 fadeSound 1;
 				_uav removeAction _uav_action_id1;
 				_uav removeAction _uav_action_id2;
+                _uav removeAction _uav_action_id3;
 			};
 		    sleep 5;
 		};
