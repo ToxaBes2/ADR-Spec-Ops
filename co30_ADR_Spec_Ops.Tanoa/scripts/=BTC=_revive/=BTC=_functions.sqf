@@ -1374,7 +1374,7 @@ BTC_player_killed = {
                 _text = "%1 срочно требуется медпомощь!";
 		    };
 	    };
-        systemChat format [_text, (name _body)];
+        (format [_text, (name _body)]) remoteExec ["systemChat", -2];
     };
 
 	BTC_gear = [player] call BTC_get_gear;
