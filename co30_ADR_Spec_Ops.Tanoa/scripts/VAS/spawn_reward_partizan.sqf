@@ -108,7 +108,7 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
         _spawned = true;
     }; 
 
-    if !(_spawned) {
+    if (!_spawned) then {
         if (_useAirfield) then {
             _row = _airfieldPositions select 0;
             _rewardPos = _row select 0;
