@@ -51,3 +51,5 @@ WinBunker = side _player; publicVariable "WinBunker";
 if (WinBunker isEqualTo resistance) then {
     [1] call QS_fnc_partizanSUCCESS;
 };
+sleep 2;
+deleteVehicle _object;
