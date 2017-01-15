@@ -3,7 +3,6 @@ Author: ToxaBes
 Description: partizan rewards per mission type
 */
 _rewardsMainAO = [
-    ["Дартер AR-2", ["I_UAV_01_F"]],
     ["Оружие BLUFOR", ["Box_NATO_Equip_F", "Box_NATO_Wps_F", "Box_NATO_WpsSpecial_F"]],
     ["Припасы BLUFOR", ["Box_NATO_Support_F", "B_supplyCrate_F", "Box_NATO_Ammo_F"]],
     ["Оружие OPFOR", ["Box_CSAT_Equip_F", "Box_East_Wps_F", "Box_East_WpsSpecial_F"]],
@@ -15,23 +14,24 @@ _rewardsMainAO = [
     ["Самолет Caesar BTT", ["C_Plane_Civil_01_F"], true]
 ];
 _rewardsSideMission = [
+    ["Вооруженная боевая группа", ["bandits"]],
     ["Минно-взрывные средства", ["Box_NATO_AmmoOrd_F", "Box_East_AmmoOrd_F", "Box_IED_Exp_F"]],
     ["Пусковые установки", ["Box_NATO_WpsLaunch_F", "Box_East_WpsLaunch_F", "Box_IND_WpsLaunch_F", "Box_Syndicate_WpsLaunch_F"]],
-    ["Qilin с пулеметом", ["O_T_LSV_02_armed_F"]],
-    ["Страйдер с пулеметом", ["I_MRAP_03_hmg_F"]],
-    ["Отряд Viper", ["viper"]],
-    ["Ифрит с пулеметом", ["O_MRAP_02_hmg_F"]],
+    ["Противотанковая группа", ["atgroup"]],
+    ["Qilin, Strider и Ifrit с пулеметами", ["O_T_LSV_02_armed_F", "I_MRAP_03_hmg_F", "O_T_MRAP_02_hmg_ghex_F"]],
+    ["Отряд Viper", ["viper"]],    
     ["Беспилотник MQ-12 Falcon", ["B_T_UAV_03_F"]],
     ["Беспилотник KH-3A Fenghuang", ["O_T_UAV_04_CAS_F"], true],
-    ["Стомпер с гранатометом", ["I_UGV_01_rcws_F"]],
+    ["Стомпер с гранатометом + Дартер AR-2", ["I_UGV_01_rcws_F", "I_UAV_01_F"]],
     ["Отряд Viper", ["viper"]],
     ["Мобильный постановщик электронных помех", ["I_Truck_02_ammo_F", "Land_SatelliteAntenna_01_F"]],
     ["Мобильный Аванпост", ["I_Truck_02_medical_F"]],
-    ["Техничка с ПВО средством", ["I_G_Offroad_01_F","I_static_AA_F"]],
-    ["Техничка с ПТ средством", ["I_G_Offroad_01_F", "I_static_AT_F"]],
+    //["Техничка с ПВО средством", ["I_G_Offroad_01_F","I_static_AA_F"]],
+    //["Техничка с ПТ средством", ["I_G_Offroad_01_F", "I_static_AT_F"]],
     ["Техничка с гранатометом", ["I_G_Offroad_01_F", "I_GMG_01_high_F"]],
-    ["Техничка с пулеметом", ["I_G_Offroad_01_armed_F"]],
-    ["Техничка с минометом", ["I_G_Offroad_01_F", "I_G_Mortar_01_F"]], 
+    //["Техничка с пулеметом", ["I_G_Offroad_01_armed_F"]],
+    //["Техничка с минометом", ["I_G_Offroad_01_F", "I_G_Mortar_01_F"]], 
+    ["Отделение тяжелого оружия", ["heavyweapon"]],
     ["Вертолет Pawnee", ["B_Heli_Light_01_armed_F"]],    
     ["Вертолет Хеллкет (вооруженный)", ["I_Heli_light_03_F"]]
 ];

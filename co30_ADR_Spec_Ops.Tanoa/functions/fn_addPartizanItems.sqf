@@ -44,15 +44,16 @@ _player addItem "FirstAidKit";
 _player addItem "FirstAidKit";
 _player addItem "FirstAidKit";
 _player addItem "FirstAidKit";
-if (_player getUnitTrait "medic") then {
+if (_player getUnitTrait "medic" || typeOf _player in ["I_C_Soldier_Para_3_F", "I_C_Soldier_Para_7_F"]) then {
     _player addItem "Medikit";
 };
-if (_player getUnitTrait "engineer") then {
+if (_player getUnitTrait "engineer" || typeOf _player in ["I_C_Soldier_Para_7_F", "I_C_Soldier_Para_8_F"]) then {
+    _player removeItem "ItemGPS";
     _player addItem "I_UavTerminal";
     _player assignItem "I_UavTerminal";
 } else {
-	_player addItem "ItemGPS";
-	_player assignItem "ItemGPS";
+	  _player addItem "ItemGPS";
+	  _player assignItem "ItemGPS";
 };
 _selectedWeapon = selectRandom _weapons;
 if (_selectedWeapon == "arifle_AKS_F") then {

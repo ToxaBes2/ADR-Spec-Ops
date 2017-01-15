@@ -3,9 +3,9 @@ Author: ToxaBes
 Description: blufor rewards per mission type
 */
 _rewardsMainAO = [
-    ["Qilin с пулеметом", ["O_T_LSV_02_armed_F"]],
-    ["Страйдер с пулеметом", ["I_MRAP_03_hmg_F"]],
-    ["Ифрит с пулеметом", ["O_MRAP_02_hmg_F"]],   
+    //["Qilin с пулеметом", ["O_T_LSV_02_armed_F"]],
+    //["Страйдер с пулеметом", ["I_MRAP_03_hmg_F"]],
+    //["Ифрит с пулеметом", ["O_MRAP_02_hmg_F"]],   
     ["AH-99 «Блэкфут»", ["B_Heli_Attack_01_F"]],
     ["ПО-30 «Касатка»", ["O_Heli_Light_02_F"]],
     ["Беспилотник KH-3A Fenghuang", ["O_T_UAV_04_CAS_F"]],

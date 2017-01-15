@@ -19,6 +19,7 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
     _rewardDir = random 360;
     _airfieldPositions = [[[9264.86,21576.4,0], 225], [[11688.3,11937.4,0], 217], [[26832.7,24541.6,0], 40],
                           [[23147,18404.4,0], 0], [[21076.3,7096.31,0], 10], [[9629.85,12461.7,0], 137]];
+    _spawned = false;
     if (_vehName == "viper") then {
         
         // spawn group of bots
@@ -62,7 +63,52 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
             };            
         } forEach _units;
         deleteGroup _rewardGroup;
-    } else {
+        _spawned = true;
+    };
+
+    if (_vehName == "atgroup") then {
+
+        // spawn group of bots
+        _rewardGroup = [[0,0,0], resistance, (configfile >> "CfgGroups" >> "West" >> "Guerilla" >> "Infantry" >> "IRG_InfTeam_AT")] call BIS_fnc_spawnGroup;
+        _units = units _rewardGroup;
+        [_units] call QS_fnc_setSkill4;
+        (_units) joinSilent player;
+        {
+            _x setPos (getPos player);
+        } forEach _units;
+        deleteGroup _rewardGroup;
+        _spawned = true;
+    }; 
+
+    if (_vehName == "heavyweapon") then {
+
+        // spawn group of bots
+        _rewardGroup = [[0,0,0], resistance, (configfile >> "CfgGroups" >> "West" >> "Guerilla" >> "Infantry" >> "IRG_InfSquad_Weapons")] call BIS_fnc_spawnGroup;
+        _units = units _rewardGroup;
+        [_units] call QS_fnc_setSkill4;
+        (_units) joinSilent player;
+        {
+            _x setPos (getPos player);
+        } forEach _units;
+        deleteGroup _rewardGroup;
+        _spawned = true;
+    }; 
+
+    if (_vehName == "bandits") then {
+
+        // spawn group of bots
+        _rewardGroup = [[0,0,0], resistance, (configfile >> "CfgGroups" >> "Indep" >> "IND_C_F" >> "Infantry" >> "ParaCombatGroup")] call BIS_fnc_spawnGroup;
+        _units = units _rewardGroup;
+        [_units] call QS_fnc_setSkill4;
+        (_units) joinSilent player;
+        {
+            _x setPos (getPos player);
+        } forEach _units;
+        deleteGroup _rewardGroup;
+        _spawned = true;
+    }; 
+
+    if !(_spawned) {
         if (_useAirfield) then {
             _row = _airfieldPositions select 0;
             _rewardPos = _row select 0;
@@ -120,13 +166,16 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
     
         if (count _vehs > 1) then {
             _vehs deleteAt 0;
+            _spawned = false;
             {  
                 if (_x isKindOf "ReammoBox_F") then {
                     _newPos = [_rewardPos, 1, 5, 0.5, 0, 1, 0] call QS_fnc_findSafePos;
-                    _newVeh = createVehicle [_x, _newPos, [], 0, "NONE"];                                
+                    _newVeh = createVehicle [_x, _newPos, [], 0, "NONE"];       
+                    _spawned = true;                        
                 };
                 if (_x isKindOf "StaticWeapon" && _vehName == "I_G_Offroad_01_F") then {
                     _newVeh = createVehicle [_x, [10,10,10], [], 0, "NONE"];
+                    _spawned = true;
                     switch (_x) do { 
                         case "I_static_AT_F" : {
                             _newDir = _rewardDir + 180;
@@ -147,7 +196,14 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
                 if (_vehName == "I_Truck_02_ammo_F") then {
                     _newVeh = createVehicle [_x, [10,10,10], [], 0, "NONE"];
                     _newVeh attachTo [_veh, [0,-2, 1.95]];
+                    _spawned = true;
                 };            
+                if (!_spawned) then {
+                    _newPos = [_rewardPos, 3, 50, 3, 0, 1, 0] call QS_fnc_findSafePos;
+                    _addVeh = createVehicle [_x, [10,10,10], [], 0, "NONE"];
+                    _addVeh setPos _newPos;
+                    _spawned = true;
+                };
             } forEach _vehs;
         };
         if (_vehName == "I_Truck_02_ammo_F") then {
