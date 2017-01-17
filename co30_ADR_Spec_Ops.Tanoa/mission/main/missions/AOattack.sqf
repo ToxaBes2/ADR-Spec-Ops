@@ -189,6 +189,12 @@ sleep 1;
 currentAO = "aoMarker";
 _enemiesArray = [currentAO, _bunkerPos, _flatPos, _hasMines, _bunkerType, _avanpostPos] call QS_fnc_AOenemy;
 
+// spawn small bunkers
+_res = [_positionAO] call QS_fnc_createSmallBunkers;
+if (count _res > 0) then {
+    _enemiesArray = _enemiesArray + _res;
+};
+
 // Set target start text
 _targetStartText = format
 [

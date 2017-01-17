@@ -205,7 +205,7 @@ for "_x" from 1 to PARAMS_AAPatrol do {
 	((units _aaGroup) select 2) moveInCommander _aa;
 	[_aaGroup, getMarkerPos currentAO, 500] call BIS_fnc_taskPatrol;
 	[(units _aaGroup)] call QS_fnc_setSkill4;
-	_aa lock 0;
+	_aa lock false;
 	_enemiesArray = _enemiesArray + [_aaGroup];
 	sleep 0.1;
 	_enemiesArray = _enemiesArray + [_aa];
@@ -237,7 +237,7 @@ for "_x" from 1 to PARAMS_StaticMG do {
 	_staticGroup setCombatMode "RED";
 	[(units _staticGroup)] call QS_fnc_setSkill3;
 	_static setVectorUp [0,0,1];
-	_static lock 0;
+	_static lock false;
 	_enemiesArray = _enemiesArray + [_staticGroup];
 	sleep 0.1;
 	_enemiesArray = _enemiesArray + [_static];
@@ -277,7 +277,7 @@ for "_x" from 0 to 1 do {
 	((units _AOmrapGroup) select 2) assignAsCargo _AOmrap;
 	((units _AOmrapGroup) select 2) moveInCargo _AOmrap;
 	[_AOmrapGroup, getMarkerPos currentAO, 600] call BIS_fnc_taskPatrol;
-	_AOmrap lock 0;
+	_AOmrap lock false;
 	_enemiesArray = _enemiesArray + [_AOmrapGroup];
 	sleep 0.1;
 	_enemiesArray = _enemiesArray + [_AOmrap];
@@ -307,7 +307,7 @@ for "_x" from 0 to (1 + (random 2)) do {
 	((units _AOvehGroup) select 2) moveInCommander _AOveh;
 	[_AOvehGroup, getMarkerPos currentAO, 400] call BIS_fnc_taskPatrol;
 	[(units _AOvehGroup)] call QS_fnc_setSkill3;
-	_AOveh lock 0;
+	_AOveh lock false;
 	_enemiesArray = _enemiesArray + [_AOvehGroup,_AOveh];
 	sleep 0.1;
 	_enemiesArray = _enemiesArray + [_AOveh];
@@ -341,7 +341,8 @@ if((random 10 <= PARAMS_AirPatrol)) then {
 	[(units _airGroup)] call QS_fnc_setSkill4;
 	_air flyInHeight 450;
 	_airGroup setCombatMode "RED";
-	_air lock 0;
+    _airGroup setVariable ["zbe_cacheDisabled", true];
+	_air lock false;
 	_enemiesArray = _enemiesArray + [_airGroup];
 	sleep 0.1;
 	_enemiesArray = _enemiesArray + [_air];

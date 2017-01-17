@@ -42,7 +42,7 @@ _maxDist = _this select 2;
 _objDist = _this select 3;
 _waterMode = _this select 4;
 _maxGradient = _this select 5;
-_shoreMode = _this select 6;
+_shoreMode = param [6, 0];
 _result = [];
 if (_shoreMode == 0) then {_shoreMode = false} else {_shoreMode = true};
 _blacklist = [];

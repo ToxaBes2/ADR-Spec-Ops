@@ -83,6 +83,9 @@ if (_chance < 5) then {
     _bunkerObjects = [_bunkerPos, _smallZ, _bigZ] call QS_fnc_createBunker;
 };
 
+// create small bunkers
+
+
 // add UAV with MK200
 _anotherChance = random 10;
 _uav = objNull;
@@ -188,6 +191,12 @@ if (_positionAO distance2D (getMarkerPos "respawn_west") > 2500) then {
 sleep 1;
 currentAO = "aoMarker";
 _enemiesArray = [currentAO, _bunkerPos, _flatPos, _hasMines, _bunkerType, _avanpostPos] call QS_fnc_AOenemy;
+
+// spawn small bunkers
+_res = [_positionAO] call QS_fnc_createSmallBunkers;
+if (count _res > 0) then {
+    _enemiesArray = _enemiesArray + _res;
+};
 
 // Set target start text
 _targetStartText = format
