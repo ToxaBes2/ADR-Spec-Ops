@@ -84,7 +84,6 @@ _compositions = [
     ]
 ];
 
-
 _newObjs = [];
 _multiplyMatrixFunc =
 {
@@ -98,88 +97,91 @@ _multiplyMatrixFunc =
     _result
 };
 _staticGroup = createGroup east;
-for "_i" from 0 to 3 do {
-    _pos = [_centerPos, 0, 1000, 12, 0, 10] call QS_fnc_findSafePos;       
-    _azi = [_centerPos, _pos] call BIS_fnc_dirTo;
-    _objs = selectRandom _compositions;    
-    _posX = _pos select 0;
-    _posY = _pos select 1;
-    {       
-        _type = _x select 0;
-        _relPos = _x select 1;
-        _azimuth = _x select 2;
-        if ((count _x) > 3) then {_fuel = _x select 3};
-        if ((count _x) > 4) then {_damage = _x select 4};
-        if ((count _x) > 5) then {_orientation = _x select 5};
-        if ((count _x) > 6) then {_varName = _x select 6};
-        if ((count _x) > 7) then {_init = _x select 7};
-        if ((count _x) > 8) then {_simulation = _x select 8};
-        if ((count _x) > 9) then {_ASL = _x select 9};
-        private ["_rotMatrix", "_newRelPos", "_newPos"];
-        _rotMatrix =
-        [
-            [cos _azi, sin _azi],
-            [-(sin _azi), cos _azi]
-        ];
-        _newRelPos = [_rotMatrix, _relPos] call _multiplyMatrixFunc;    
-        private ["_z"];
-        if ((count _relPos) > 2) then {_z = _relPos select 2} else {_z = 0};
-        _newPos = [_posX + (_newRelPos select 0), _posY + (_newRelPos select 1), _z];
-        _newObj = _type createVehicle _newPos;
-        _newObj setDir (_azi + _azimuth);
-        _newObj setPos _newPos;     
-        if (!isNil "_fuel") then {_newObj setFuel _fuel};
-        if (!isNil "_damage") then {_newObj setDamage _damage;};
-        if (!isNil "_orientation") then 
-        {
-            if ((count _orientation) > 0) then 
+_cnt = selectRandom [1,2,3];
+for "_i" from 0 to _cnt do {
+    _pos = [_centerPos, 0, 1000, 12, 0, 10] call QS_fnc_findSafePos;    
+    if (format ["%1", _pos] != "[0,0,0]") then {   
+        _azi = [_centerPos, _pos] call BIS_fnc_dirTo;
+        _objs = selectRandom _compositions;    
+        _posX = _pos select 0;
+        _posY = _pos select 1;
+        {       
+            _type = _x select 0;
+            _relPos = _x select 1;
+            _azimuth = _x select 2;
+            if ((count _x) > 3) then {_fuel = _x select 3};
+            if ((count _x) > 4) then {_damage = _x select 4};
+            if ((count _x) > 5) then {_orientation = _x select 5};
+            if ((count _x) > 6) then {_varName = _x select 6};
+            if ((count _x) > 7) then {_init = _x select 7};
+            if ((count _x) > 8) then {_simulation = _x select 8};
+            if ((count _x) > 9) then {_ASL = _x select 9};
+            private ["_rotMatrix", "_newRelPos", "_newPos"];
+            _rotMatrix =
+            [
+                [cos _azi, sin _azi],
+                [-(sin _azi), cos _azi]
+            ];
+            _newRelPos = [_rotMatrix, _relPos] call _multiplyMatrixFunc;    
+            private ["_z"];
+            if ((count _relPos) > 2) then {_z = _relPos select 2} else {_z = 0};
+            _newPos = [_posX + (_newRelPos select 0), _posY + (_newRelPos select 1), _z];
+            _newObj = _type createVehicle _newPos;
+            _newObj setDir (_azi + _azimuth);
+            _newObj setPos _newPos;     
+            if (!isNil "_fuel") then {_newObj setFuel _fuel};
+            if (!isNil "_damage") then {_newObj setDamage _damage;};
+            if (!isNil "_orientation") then 
             {
-                ([_newObj] + _orientation) call BIS_fnc_setPitchBank;
+                if ((count _orientation) > 0) then 
+                {
+                    ([_newObj] + _orientation) call BIS_fnc_setPitchBank;
+                };
             };
-        };
-        if (!isNil "_varName") then 
-        {
-            if (_varName != "") then 
+            if (!isNil "_varName") then 
             {
-                _newObj setVehicleVarName _varName;
-                call (compile (_varName + " = _newObj;"));
+                if (_varName != "") then 
+                {
+                    _newObj setVehicleVarName _varName;
+                    call (compile (_varName + " = _newObj;"));
+                };
             };
-        };
-        if (!isNil "_init") then {_newObj call (compile ("this = _this; " + _init));};
-        if (!isNil "_simulation") then {_newObj enableSimulation _simulation; _newObj setVariable ["BIS_DynO_simulation", _simulation];};
-    
-        if (typeOf _newObj in ["O_HMG_01_high_F","O_GMG_01_high_F","O_static_AT_F"]) then {
-            "O_T_Support_MG_F" createUnit [[0,0,0], _staticGroup, "currentGunner = this", 0, (selectRandom ["CAPTAIN","MAJOR","COLONEL"])];
-            currentGunner assignAsGunner _newObj;
-            currentGunner moveInGunner _newObj;            
-            _newObjs = _newObjs + [currentGunner];
-        };
-        _newObjs = _newObjs + [_newObj];
-    } forEach _objs;    
-    _bunkerGroup = [_pos, 30, 5, east] call QS_fnc_FillBots;
-    _newObjs = _newObjs + [_bunkerGroup];
-    _cargoPostGroups = [_pos, 30, east] call QS_fnc_FillCargoPatrol;  
-    {
-        _newObjs = _newObjs + [_x];
-    } forEach _cargoPostGroups;
+            if (!isNil "_init") then {_newObj call (compile ("this = _this; " + _init));};
+            if (!isNil "_simulation") then {_newObj enableSimulation _simulation; _newObj setVariable ["BIS_DynO_simulation", _simulation];};
         
-    _unitGroup = createGroup east;
-    if (random 10 > 5) then {
-        _pos1 = [_pos, 0, 30, 1, 0, 10] call QS_fnc_findSafePos;
-        "O_T_Engineer_F" createUnit [_pos1, _unitGroup, "", 0, (selectRandom ["CAPTAIN","MAJOR","COLONEL"])];
+            if (typeOf _newObj in ["O_HMG_01_high_F","O_GMG_01_high_F","O_static_AT_F"]) then {
+                "O_T_Support_MG_F" createUnit [[0,0,0], _staticGroup, "currentGunner = this", 0, (selectRandom ["CAPTAIN","MAJOR","COLONEL"])];
+                currentGunner assignAsGunner _newObj;
+                currentGunner moveInGunner _newObj;            
+                _newObjs = _newObjs + [currentGunner];
+            };
+            _newObjs = _newObjs + [_newObj];
+        } forEach _objs;    
+        _bunkerGroup = [_pos, 30, 5, east] call QS_fnc_FillBots;
+        _newObjs = _newObjs + [_bunkerGroup];
+        _cargoPostGroups = [_pos, 30, east] call QS_fnc_FillCargoPatrol;  
+        {
+            _newObjs = _newObjs + [_x];
+        } forEach _cargoPostGroups;
+            
+        _unitGroup = createGroup east;
+        if (random 10 > 5) then {
+            _pos1 = [_pos, 0, 30, 1, 0, 10] call QS_fnc_findSafePos;
+            "O_T_Engineer_F" createUnit [_pos1, _unitGroup, "", 0, (selectRandom ["CAPTAIN","MAJOR","COLONEL"])];
+        };
+        if (random 10 > 5) then {
+            _pos2 = [_pos, 0, 30, 1, 0, 10] call QS_fnc_findSafePos;
+            "O_T_Soldier_AAA_F" createUnit [_pos2, _unitGroup, "", 0, (selectRandom ["CAPTAIN","MAJOR","COLONEL"])];
+        };
+        if (random 10 > 5) then {
+            _pos3 = [_pos, 0, 30, 1, 0, 10] call QS_fnc_findSafePos;
+            "O_T_Soldier_AAT_F" createUnit [_pos3, _unitGroup, "", 0, (selectRandom ["CAPTAIN","MAJOR","COLONEL"])];
+        };
+        _unitGroup setBehaviour "COMBAT";
+        _unitGroup setCombatMode "RED";
+        [(units _unitGroup)] call QS_fnc_setSkill4;   
+        _newObjs = _newObjs + [_unitGroup];
     };
-    if (random 10 > 5) then {
-        _pos2 = [_pos, 0, 30, 1, 0, 10] call QS_fnc_findSafePos;
-        "O_T_Soldier_AAA_F" createUnit [_pos2, _unitGroup, "", 0, (selectRandom ["CAPTAIN","MAJOR","COLONEL"])];
-    };
-    if (random 10 > 5) then {
-        _pos3 = [_pos, 0, 30, 1, 0, 10] call QS_fnc_findSafePos;
-        "O_T_Soldier_AAT_F" createUnit [_pos3, _unitGroup, "", 0, (selectRandom ["CAPTAIN","MAJOR","COLONEL"])];
-    };
-    _unitGroup setBehaviour "COMBAT";
-    _unitGroup setCombatMode "RED";
-    [(units _unitGroup)] call QS_fnc_setSkill4;   
-    _newObjs = _newObjs + [_unitGroup];
 };
 
 _staticGroup setBehaviour "COMBAT";
