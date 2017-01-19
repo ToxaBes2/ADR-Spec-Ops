@@ -198,6 +198,12 @@ if (count _res > 0) then {
     _enemiesArray = _enemiesArray + _res;
 };
 
+// spawn road blocks
+_res = [_positionAO, 850] call QS_fnc_createRoadBlocks;
+if (count _res > 0) then {
+    _enemiesArray = _enemiesArray + _res;
+};
+
 // Set target start text
 _targetStartText = format
 [
