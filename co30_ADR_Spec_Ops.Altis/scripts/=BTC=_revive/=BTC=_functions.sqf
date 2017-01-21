@@ -901,6 +901,14 @@ BTC_fnc_wait_for_revive =
         } else {
             ctrlShow [10, false];
         };
+        if (count AVANPOST_PARTIZAN_RESPAWN > 0 && playerSide == resistance) then {
+            ctrlShow [11, true];
+            ctrlShow [12, true];
+        } else {
+            ctrlShow [11, false];
+            ctrlShow [12, false];
+        };
+
 		_healer = call BTC_check_healer;
 		_lifes = "";
 		if (BTC_active_lifes == 1) then {
@@ -1518,6 +1526,14 @@ BTC_player_killed = {
                 } else {
                     ctrlShow [10, false];
                 };
+                if (count AVANPOST_PARTIZAN_RESPAWN > 0 && playerSide == resistance) then {
+                    ctrlShow [11, true];
+                    ctrlShow [12, true];
+                } else {
+                    ctrlShow [11, false];
+                    ctrlShow [12, false];
+                };
+                
 				_healer = call BTC_check_healer;
                 _inProgress = player getVariable ["BTC_revivie_in_progress", false];
                 if (_inProgress) then {
