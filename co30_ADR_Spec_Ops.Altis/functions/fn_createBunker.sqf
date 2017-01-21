@@ -7,6 +7,7 @@ if (!isServer) exitWith {};
 _flatPos = _this select 0;
 _small = _this select 1;
 _big = _this select 2;
+_inMain = _this select 3;
 _startPoint = [_flatPos select 0, _flatPos select 1, 0];
 _startDir = 0;
 _objects = [];
@@ -78,15 +79,19 @@ _composition = [
     _obj setVariable ["BIS_enableRandomization", _randomization];
     if (_name == "Land_Dome_Small_F") then {
     	_pos set [2, _small];
-    	{
-            _x addCuratorEditableObjects [[_obj], true];
-        } forEach allCurators;
+    	if (_inMain) then {
+            {
+                _x addCuratorEditableObjects [[_obj], true];
+            } forEach allCurators;
+        }; 
     };
     if (_name == "Land_Dome_Big_F") then {
     	_pos set [2, _big];
-    	{
-            _x addCuratorEditableObjects [[_obj], true];
-        } forEach allCurators;
+    	if (_inMain) then {
+            {
+                _x addCuratorEditableObjects [[_obj], true];
+            } forEach allCurators;
+        }; 
         _obj animate ["door_3_rot", 1];
     };
     if (_name == "Land_CncWall1_F" || _name == "Land_CncWall4_F") then {
@@ -113,11 +118,13 @@ _composition = [
         _cargo addMPEventHandler ["MPKilled", {MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";}];
     };
     if (_name == "Land_DataTerminal_01_F") then {
-        _obj addEventHandler ["HandleDamage", {0}];
-        _obj addMPEventHandler ["MPKilled", {MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";}];
+        _obj addEventHandler ["HandleDamage", {0}];        
         [_obj, "red", "orange", "green"] call BIS_fnc_DataTerminalColor;
         [_obj, 3] call BIS_fnc_dataTerminalAnimate;
-        [_obj, "QS_fnc_addActionTakeControl", nil, true] spawn BIS_fnc_MP; // add terminal action
+        if (_inMain) then {
+            _obj addMPEventHandler ["MPKilled", {MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";}];
+            [_obj, "QS_fnc_addActionTakeControl", nil, true] spawn BIS_fnc_MP; // add terminal action
+        };        
     };
     _obj allowDamage _damage;
     _obj enableSimulation _simulation;

@@ -1,10 +1,11 @@
 /*
 Author: ToxaBes
 Description: add furniture to given tower
-Format: [position, small dome z, big dome z] call QS_fnc_addFurniture;
+Format: [position, add action to terminal] call QS_fnc_addFurniture;
 */
 if (!isServer) exitWith {};
 _hq = _this select 0;
+_inMain = _this select 1
 _hqPos = getPosASL _hq;
 _hqDir = getDir _hq;
 _terminalPosition = selectRandom [13,14,15,16];
@@ -19,10 +20,12 @@ _terminal setDir (_terminalDir + 180);
 [_terminal, "red", "orange", "green"] call BIS_fnc_DataTerminalColor;
 [_terminal, 3] call BIS_fnc_dataTerminalAnimate;
 _terminal addEventHandler ["HandleDamage", {0}];
-_terminal addMPEventHandler ["MPKilled", {MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";}];
+if (_inMain) then {
+    _terminal addMPEventHandler ["MPKilled", {MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";}];
 
-// add terminal action
-[_terminal, "QS_fnc_addActionTakeControl", nil, true] spawn BIS_fnc_MP;
+    // add terminal action
+    [_terminal, "QS_fnc_addActionTakeControl", nil, true] spawn BIS_fnc_MP;
+};
 _positions = [
     ["MapBoard_altis_F",-5,-4,12.8,220],
     ["Land_PressureWasher_01_F",5,4,12.8,40],

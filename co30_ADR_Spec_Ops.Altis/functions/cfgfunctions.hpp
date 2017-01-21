@@ -74,6 +74,7 @@ class QS
 		class createBunker {};
 		class createPartizanBase {};
 		class createRoadBlocks {};
+		class createSecondCommandCenter {};
 		class createSmallBunkers {};
 		class defendAO {};
 		class deleteOldSMUnits {};

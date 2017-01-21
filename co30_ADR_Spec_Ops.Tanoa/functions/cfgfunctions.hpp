@@ -73,6 +73,7 @@ class QS
 		class createAvanpost {};		
 		class createBunker {};
 		class createPartizanBase {};
+		class createSecondCommandCenter {};
 		class createSmallBunkers {};
 		class defendAO {};
 		class deleteOldSMUnits {};

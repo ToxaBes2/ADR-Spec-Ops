@@ -51,6 +51,11 @@ _dt setTriggerStatements ["this", "", ""];
 
 // spawn bunker or tower outpost
 _chance = random 10;
+_terminalChance = random 10;
+_inMain = true;
+if (_terminalChance > 5) then {
+    _inMain = false;
+};
 if (_chance < 5) then {
     _bunkerType = 1;
     _bunkerPos = [_positionAO, 1, (PARAMS_AOSize/2), 30, 0, 4, 0, [], [_positionAO]] call QS_fnc_findSafePos;
@@ -66,13 +71,15 @@ if (_chance < 5) then {
     _null = [_bunkerPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "Empty" >> "Military" >> "Outposts" >> "OutpostB")] call BIS_fnc_spawnGroup;
     _bunkerPos set [2, 0];
     _obj = _bunkerPos nearestObject "Land_Cargo_Tower_V1_F";
-    {
-        _x addCuratorEditableObjects [[_obj], true];
-    } forEach allCurators;
+    if (_inMain) then {
+        {
+            _x addCuratorEditableObjects [[_obj], true];
+        } forEach allCurators;
+    };    
     _obj allowDamage false;
     _obj addEventHandler ["HandleDamage", {0}];
     _obj addMPEventHandler ["MPKilled", {MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";}];
-    _bunkerObjects = [_obj] call QS_fnc_addFurniture;
+    _bunkerObjects = [_obj, _inMain] call QS_fnc_addFurniture;
 } else {
     _bunkerType = 2;
     _bunkerPositions = _target select 2;
@@ -80,11 +87,13 @@ if (_chance < 5) then {
     _bunkerPos = [_bunkerPosition select 0, _bunkerPosition select 1, 0];
     _smallZ = _bunkerPosition select 2;
     _bigZ = _bunkerPosition select 3;
-    _bunkerObjects = [_bunkerPos, _smallZ, _bigZ] call QS_fnc_createBunker;
+    _bunkerObjects = [_bunkerPos, _smallZ, _bigZ, _inMain] call QS_fnc_createBunker;
 };
 
-// create small bunkers
-
+// add second command center
+_inSecond = !_inMain;
+_secondObjects = [_positionAO, _inSecond] call QS_fnc_createSecondCommandCenter;
+_bunkerObjects = _bunkerObjects + _secondObjects;
 
 // add UAV with MK200
 _anotherChance = random 10;
