@@ -89,11 +89,11 @@ _multiplyMatrixFunc =
 	_result
 };
 _staticGroup = createGroup east;
-_pos = [_centerPos, 0, (PARAMS_AOSize/2), 20, 0, 4, 0, [], [_positionAO]] call QS_fnc_findSafePos;    
+_pos = [_centerPos, 0, 500, 20, 0, 3, 0, []] call QS_fnc_findSafePos;    
 _flatPos = _pos isFlatEmpty [5, 1, 0.3, 20, 0, false];
 _res = count _flatPos;
 while {_res == 0} do {
-    _pos = [_positionAO, 1, (PARAMS_AOSize/2), 20, 0, 3, 0, [], [_positionAO]] call QS_fnc_findSafePos;
+    _pos = [_centerPos, 0, 60, 15, 0, 4, 0, []] call QS_fnc_findSafePos;
     _res = count _flatPos;
 };
 
