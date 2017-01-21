@@ -152,8 +152,11 @@ _posY = _pos select 1;
     	if (_addAction) then {
     	    {
                 _x addCuratorEditableObjects [[_newObj], true];
-            } forEach allCurators;
+            } forEach allCurators;  
+            _newObj addMPEventHandler ["MPKilled", {MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";}];            
     	};
+        _newObj allowDamage false;
+        _newObj addEventHandler ["HandleDamage", {0}]; 
         _bunkerObjects = [_newObj, _addAction] call QS_fnc_addFurniture;
         _newObjs = _newObjs + _bunkerObjects;
     };
