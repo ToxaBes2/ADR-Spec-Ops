@@ -5,7 +5,7 @@ Format: [position, add action to terminal] call QS_fnc_addFurniture;
 */
 if (!isServer) exitWith {};
 _hq = _this select 0;
-_inMain = _this select 1
+_inMain = _this select 1;
 _hqPos = getPosASL _hq;
 _hqDir = getDir _hq;
 _terminalPosition = selectRandom [13,14,15,16];
