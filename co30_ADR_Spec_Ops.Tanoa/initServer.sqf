@@ -118,6 +118,17 @@ _null = [] spawn {
     };
 };
 
+// Disable autoreport in chat
+{
+    if (isDedicated) exitWith {};
+    [] spawn {
+        waitUntil {!(isNull player) && (time > 0)};
+        enableSentences false;
+        showSubtitles false;
+        player addMPEventHandler ["MPRespawn", { enableSentences false; showSubtitles false; }];
+    };
+} remoteExec ["bis_fnc_call", 0, true]; 
+
 // remove polygonal markers from channels
 //_null = [] spawn {
 //    while {true} do {
