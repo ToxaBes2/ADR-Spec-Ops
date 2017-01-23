@@ -9,6 +9,9 @@ private ["_basepos", "_loopVar", "_dir", "_PTdir", "_pos", "_barrier", "_unitsAr
 // 1. FIND POSITION FOR OBJECTIVE
 _basepos = getMarkerPos "respawn_west";
 _flatPos = [0, 0, 0];
+if (isNil "currentAO") then {
+   currentAO = "aoMarker";
+};
 _accepted = false;
 while {!_accepted} do {
 	_position = [[[_basepos, 2500]], ["water", "out"]] call QS_fnc_randomPos;

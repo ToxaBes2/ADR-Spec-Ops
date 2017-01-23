@@ -73,6 +73,7 @@ class QS
 		class createAvanpost {};		
 		class createBunker {};
 		class createPartizanBase {};
+		class createRoadBlocks {};
 		class createSecondCommandCenter {};
 		class createSmallBunkers {};
 		class defendAO {};

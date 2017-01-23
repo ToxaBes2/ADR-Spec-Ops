@@ -93,7 +93,17 @@ if (_chance < 5) then {
 // add second command center
 _inSecond = !_inMain;
 _secondObjects = [_positionAO, _inSecond] call QS_fnc_createSecondCommandCenter;
-_bunkerObjects = _bunkerObjects + _secondObjects;
+if (count _secondObjects > 0) then {
+    _bunkerObjects = _bunkerObjects + _secondObjects;
+} else {
+    if (_inSecond) then {
+        {
+            _x addCuratorEditableObjects [[_obj], true];
+        } forEach allCurators;
+        _obj addMPEventHandler ["MPKilled", {MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";}];
+        [_obj, "QS_fnc_addActionTakeControl", nil, true] spawn BIS_fnc_MP;
+    };
+};
 
 // add UAV with MK200
 _anotherChance = random 10;

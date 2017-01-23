@@ -160,13 +160,13 @@ _dir = 0;
 _selRoads = [];
 while {_dir < 360} do {
     _relPos = [_centerPos, _distance, _dir] call BIS_fnc_relPos;
-    _roads = _relPos nearRoads 300;
+    _roads = _relPos nearRoads 100;
     {
-        if ((getPos _x) isFlatEmpty [20, -1, -1, -1, -1] isEqualTo []) then {
+        if ((getPos _x) isFlatEmpty [25, -1, -1, -1, -1] isEqualTo []) then {
             _selRoads pushBack _x;
         };
     } forEach _roads;
-    _dir = _dir + 15;
+    _dir = _dir + 24;
 };
 _roadPoses = [];
 _cnt = selectRandom [2,3,4,5];
@@ -185,6 +185,11 @@ _cnt = selectRandom [2,3,4,5];
     };    
 } forEach _selRoads;
 {            
+    //_markerNameA = format["mkr_%1", random 100000];
+    //_markerA = createMarker[_markerNameA, getPos _x];
+    //_markerA setMarkercolor "colorRed";
+    //_markerA setMarkerSize [1,1];
+    //_markerA setMarkerType "Mil_dot";
     _pos = getPos _x;
     if (format ["%1", _pos] != "[0,0,0]") then {
         _relAzi = [_centerPos, _pos] call BIS_fnc_dirTo;
@@ -192,10 +197,13 @@ _cnt = selectRandom [2,3,4,5];
         _connectedRoad = _roadConnectedTo select 0;
         _azi = [_x, _connectedRoad] call BIS_fnc_DirTo;
         _delta = _relAzi - _azi;
-        if (_delta < 0) then {
+        if (_delta < -360) then {
+            _delta = _delta + 360;
+        };
+        if (_delta < 0) then {            
             _delta = -_delta;
         };
-        if (_delta > 90) then {
+        if (_delta <= 90) then {
             _azi = _azi + 180;
         };
         _objs = selectRandom _compositions;    
