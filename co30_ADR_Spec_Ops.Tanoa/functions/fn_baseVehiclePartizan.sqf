@@ -67,9 +67,18 @@ _box attachTo [_veh, _attachCoords];
                 };
             } forEach _u;
             if (_remove && {count (crew _veh) == 0}) then {
+                if (count (attachedObjects _veh) > 0) then {
+                    {
+                        deleteVehicle _x;
+                    } forEach (attachedObjects _veh);
+                };
                 deleteVehicle _veh;
             };
         };
     };
 };
+
+// Delete attached objects from destroyed vehicle
+_veh addEventHandler ["Killed",{{deleteVehicle _x;} forEach attachedObjects (_this select 0);}];
+
 true

@@ -84,6 +84,7 @@ while {true} do {
 				_v setPos _sp; sleep 0.1;
 				_v setDamage 0; sleep 0.1;
 				_v setVehicleAmmo 1; sleep 0.1;
+				_v setVelocity [0, 0, 0];
 				if ((fuel _v) < 0.95) then {[[_v, 1],"setFuel", true, false] spawn BIS_fnc_MP;};
 				if (isEngineOn _v) then {_v engineOn FALSE;}; sleep 0.1;
 				if (isCollisionLightOn _v) then {_v setCollisionLight FALSE;}; sleep 0.1;
