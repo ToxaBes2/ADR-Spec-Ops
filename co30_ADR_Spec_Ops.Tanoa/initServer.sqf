@@ -114,6 +114,19 @@ _null = [] spawn {
                 };           
             };
         } forEach allUnitsUAV;
+        {
+            _unit = _x;
+            _action = _unit getVariable ["hide_action", false];
+            if (!_action) then {
+                _unit addAction ["Спрятать тело", {
+                    (_this select 1) playMove "AinvPknlMstpSnonWrflDnon_medic";
+                    hideBody (_this select 0);
+                    sleep 3;
+                    deleteVehicle (_this select 0);
+                }, nil, -10, false, true, "", "_this distance _target < 5"];
+                _unit setVariable ["hide_action", true, true];
+            };
+        } forEach AllDeadMen;
         sleep 60;
     };
 };
