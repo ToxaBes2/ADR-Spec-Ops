@@ -51,6 +51,7 @@ switch (_class) do {
     case "O_MRAP_02_ghex_F";
     case "O_MRAP_02_gmg_ghex_F";
     case "O_MRAP_02_hmg_ghex_F" : { _attachCoords = [0,-4,-1]; };
+    case "I_G_Van_01_transport_F" : { _attachCoords = [0,-3,-0.4]; };
     default { _attachCoords = [0,0,0]; }; 
 };
 _player forceWalk false;

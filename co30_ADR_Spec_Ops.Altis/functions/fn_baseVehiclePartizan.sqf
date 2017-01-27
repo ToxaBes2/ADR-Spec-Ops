@@ -25,6 +25,7 @@ switch (_class) do {
     case "C_Offroad_02_unarmed_F" : {  _attachCoords = [0,-1.5,-0.05]; }; 
     case "C_Hatchback_01_sport_F" : {  _attachCoords = [0,-1.7,-0.5]; };
     case "I_C_Boat_Transport_02_F" : {  _attachCoords = [0,0.5,-0.5]; }; 
+    case "I_G_Van_01_transport_F" : { _attachCoords = [0,-3,-0.4]; };
     default {  _attachCoords = [0,0,0]; }; 
 };
 
