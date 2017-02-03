@@ -139,8 +139,7 @@ if (format ["%1", _pos] != "[0,0,0]") then {
         if (typeOf _newObj in ["O_HMG_01_high_F","O_GMG_01_high_F","O_static_AT_F"]) then {
             "O_support_MG_F" createUnit [[0,0,0], _staticGroup, "currentGunner = this", 0, (selectRandom ["CAPTAIN","MAJOR","COLONEL"])];
             currentGunner assignAsGunner _newObj;
-            currentGunner moveInGunner _newObj;            
-            _newObjs = _newObjs + [currentGunner];
+            currentGunner moveInGunner _newObj;
         };
         if (typeOf _newObj in ["Land_Cargo_Tower_V1_F","Land_Cargo_Tower_V3_F","Land_Cargo_Tower_V4_F"]) then {
         	if (_addAction) then {
@@ -154,16 +153,10 @@ if (format ["%1", _pos] != "[0,0,0]") then {
             _bunkerObjects = [_newObj, _addAction] call QS_fnc_addFurniture;
             _newObjs = _newObjs + _bunkerObjects;
         };
-        _newObjs = _newObjs + [_newObj];
+        _newObjs pushBack _newObj;
     } forEach _objs;    
-    
-    _bunkerGroup = [_pos, 30, 10, east] call QS_fnc_FillBots;
-    _newObjs = _newObjs + [_bunkerGroup];
-    
-    _cargoPostGroups = [_pos, 30, east] call QS_fnc_FillCargoPatrol;  
-    {
-        _newObjs = _newObjs + [_x];
-    } forEach _cargoPostGroups;           
+    _bunkerGroup = [_pos, 30, 10, east] call QS_fnc_FillBots;   
+    _cargoPostGroups = [_pos, 30, east] call QS_fnc_FillCargoPatrol;           
     
     _staticGroup setBehaviour "COMBAT";
     _staticGroup setCombatMode "RED";

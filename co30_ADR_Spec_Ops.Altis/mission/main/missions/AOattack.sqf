@@ -23,6 +23,7 @@ LAST_MAIN_MISSION = _target select 0;
 publicVariable "LAST_MAIN_MISSION";
 _nameAO = _target select 0;
 _positionAO = _target select 1;
+_objects = [];
 
 // Edit and place markers for new target
 {_x setMarkerPos _positionAO;} forEach ["aoCircle", "aoMarker"];
@@ -94,7 +95,7 @@ if (_chance < 5) then {
 _inSecond = !_inMain;
 _secondObjects = [_positionAO, _inSecond] call QS_fnc_createSecondCommandCenter;
 if (count _secondObjects > 0) then {
-    _bunkerObjects = _bunkerObjects + _secondObjects;
+    _objects = _objects + _secondObjects;
 } else {
     if (_inSecond) then {
         {
@@ -212,16 +213,12 @@ currentAO = "aoMarker";
 _enemiesArray = [currentAO, _bunkerPos, _flatPos, _hasMines, _bunkerType, _avanpostPos] call QS_fnc_AOenemy;
 
 // spawn small bunkers
-_res = [_positionAO] call QS_fnc_createSmallBunkers;
-if (count _res > 0) then {
-    _enemiesArray = _enemiesArray + _res;
-};
+_smallBunkers = [_positionAO] call QS_fnc_createSmallBunkers;
+_objects = _objects + _smallBunkers;
 
 // spawn road blocks
-_res = [_positionAO, 850] call QS_fnc_createRoadBlocks;
-if (count _res > 0) then {
-    _enemiesArray = _enemiesArray + _res;
-};
+_roadBlocks = [_positionAO, 850] call QS_fnc_createRoadBlocks;
+_objects = _objects + _roadBlocks;
 
 // Set target start text
 _targetStartText = format
@@ -352,7 +349,7 @@ sleep 120;
 deleteVehicle _dt;
 deleteVehicle radioTower;
 if (_chance < PARAMS_RadioTowerMineFieldChance) then {
-    [_minesArray] call QS_fnc_TBdeleteObjects;
+    _minesArray call QS_fnc_TBdeleteObjects;
 };
 if (_anotherChance < 4) then {
     if (_uav distance _uavPos < 5) then {
@@ -380,16 +377,38 @@ if (count _avanpostPos > 0) then {
         deleteVehicle _x;
     } foreach _units;
 };
+{
+    deleteVehicle _x;
+} forEach _objects;
 [_enemiesArray] call QS_fnc_TBdeleteObjects;
 sleep 10;
-_unitTypes = ["O_Soldier_F","O_Soldier_GL_F","O_Soldier_AR_F","O_Soldier_SL_F","O_Soldier_TL_F","O_soldier_M_F","O_Soldier_LAT_F",
-"O_medic_F","O_soldier_repair_F","O_soldier_exp_F","O_Soldier_AT_F","O_Soldier_AA_F","O_engineer_F","O_soldier_PG_F","O_recon_F",
-"O_recon_M_F","O_recon_LAT_F","O_recon_medic_F","O_recon_TL_F","O_Soldier_AAT_F","O_soldierU_M_F","O_SoldierU_GL_F",
-"O_HeavyGunner_F","O_Urban_HeavyGunner_F","O_support_MG_F","O_soldierU_F","O_soldierU_AR_F","O_soldierU_AAR_F","O_soldierU_LAT_F",
-"O_soldierU_AT_F","O_soldierU_AAT_F","O_soldierU_AA_F","O_soldierU_AAA_F","O_soldierU_TL_F","O_SoldierU_SL_F","O_soldierU_medic_F",
-"O_soldierU_repair_F","O_soldierU_exp_F","O_engineer_U_F","O_soldierU_A_F","O_Sharpshooter_F","O_Urban_Sharpshooter_F","O_sniper_F"];
-_units = nearestObjects [_positionAO, _unitTypes, PARAMS_AOSize];
 {
-    deleteVehicle _x;   
-} foreach _units;
+    _curGrp = _x;
+    if (side _curGrp == east) then {
+        _units = units _curGrp;
+        if (count _units > 0) then {
+            _unit = _units select 0;
+            if (_unit distance2D _positionAO <= (PARAMS_AOSize* 1.4)) then {                
+                {
+                    deleteVehicle _x;
+                } forEach _units;
+                deleteGroup _curGrp;
+            };
+        } else {
+            deleteGroup _curGrp;
+        };
+    };
+} forEach AllGroups;
+sleep 1;
+_vehs = nearestObjects [_positionAO, ["LandVehicle"], (PARAMS_AOSize* 1.4)];
+{
+    _isUAV = unitIsUAV _x;
+    _hasCrew = false;
+    if (count (fullCrew _x) > 0) then {
+        _hasCrew = true;
+    };
+    if (!_isUAV && !_hasCrew) then {
+        deleteVehicle _x;
+    };
+} forEach _vehs;
 true

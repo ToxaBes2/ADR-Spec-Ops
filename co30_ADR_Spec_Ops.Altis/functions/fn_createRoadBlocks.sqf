@@ -253,35 +253,28 @@ _cnt = selectRandom [2,3,4,5];
                 if (typeOf _newObj in ["O_HMG_01_high_F","O_GMG_01_high_F","O_static_AT_F"]) then {
                     "O_support_MG_F" createUnit [[0,0,0], _unitGroup, "currentGunner = this", 0, (selectRandom ["CAPTAIN","MAJOR","COLONEL"])];
                     currentGunner assignAsGunner _newObj;
-                    currentGunner moveInGunner _newObj;            
-            	    _newObjs = _newObjs + [currentGunner];
+                    currentGunner moveInGunner _newObj;
                 };
                 if (typeOf _newObj in ["O_MRAP_02_hmg_F"]) then {
                     "O_engineer_F" createUnit [[0,0,0], _unitGroup, "currentGunner = this", 0, (selectRandom ["CAPTAIN","MAJOR","COLONEL"])];
                     currentGunner assignAsGunner _newObj;
                     currentGunner moveInGunner _newObj;            
-                    _newObjs = _newObjs + [currentGunner];
                 };
                 if (typeOf _newObj in ["Land_BagBunker_Large_F"]) then {
                     _pos1 = [_newPos, 0, 6, 1, 0, 10] call QS_fnc_findSafePos;
                     "O_Soldier_AR_F" createUnit [_pos1, _unitGroup, "", 0, (selectRandom ["CAPTAIN","MAJOR","COLONEL"])];
                 };
-        		_newObjs = _newObjs + [_newObj];
+        		_newObjs pushBack _newObj;
             } forEach _objs;    
             _bunkerGroup = [_pos, 30, 5, east] call QS_fnc_FillBots;
-            _newObjs = _newObjs + [_bunkerGroup];
-            _cargoPostGroups = [_pos, 30, east] call QS_fnc_FillCargoPatrol;  
-            {
-                _newObjs = _newObjs + [_x];
-            } forEach _cargoPostGroups;                    
+            _cargoPostGroups = [_pos, 30, east] call QS_fnc_FillCargoPatrol;                  
             _pos2 = [_pos, 0, 5, 1, 0, 10] call QS_fnc_findSafePos;
             "O_Soldier_AA_F" createUnit [_pos2, _unitGroup, "", 0, (selectRandom ["CAPTAIN","MAJOR","COLONEL"])];
             _pos3 = [_pos, 0, 12, 1, 0, 10] call QS_fnc_findSafePos;
             "O_Soldier_AT_F" createUnit [_pos3, _unitGroup, "", 0, (selectRandom ["CAPTAIN","MAJOR","COLONEL"])];
             _unitGroup setBehaviour "COMBAT";
             _unitGroup setCombatMode "RED";
-            [(units _unitGroup)] call QS_fnc_setSkill4;   
-            _newObjs = _newObjs + [_unitGroup];
+            [(units _unitGroup)] call QS_fnc_setSkill4;
         };
     };
 } forEach _roadPoses;

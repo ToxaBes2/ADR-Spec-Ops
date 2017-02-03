@@ -152,18 +152,12 @@ for "_i" from 0 to _cnt do {
             if (typeOf _newObj in ["O_HMG_01_high_F","O_GMG_01_high_F","O_static_AT_F"]) then {
                 "O_support_MG_F" createUnit [[0,0,0], _staticGroup, "currentGunner = this", 0, (selectRandom ["CAPTAIN","MAJOR","COLONEL"])];
                 currentGunner assignAsGunner _newObj;
-                currentGunner moveInGunner _newObj;            
-        	    _newObjs = _newObjs + [currentGunner];
+                currentGunner moveInGunner _newObj;
             };
-    		_newObjs = _newObjs + [_newObj];
+    		_newObjs pushBack _newObj;
         } forEach _objs;    
         _bunkerGroup = [_pos, 30, 5, east] call QS_fnc_FillBots;
-        _newObjs = _newObjs + [_bunkerGroup];
-        _cargoPostGroups = [_pos, 30, east] call QS_fnc_FillCargoPatrol;  
-        {
-            _newObjs = _newObjs + [_x];
-        } forEach _cargoPostGroups;
-            
+        _cargoPostGroups = [_pos, 30, east] call QS_fnc_FillCargoPatrol;            
         _unitGroup = createGroup east;
         if (random 10 > 5) then {
             _pos1 = [_pos, 0, 30, 1, 0, 10] call QS_fnc_findSafePos;
@@ -179,8 +173,7 @@ for "_i" from 0 to _cnt do {
         };
         _unitGroup setBehaviour "COMBAT";
         _unitGroup setCombatMode "RED";
-        [(units _unitGroup)] call QS_fnc_setSkill4;   
-        _newObjs = _newObjs + [_unitGroup];
+        [(units _unitGroup)] call QS_fnc_setSkill4;
     };
 };
 

@@ -45,6 +45,7 @@ class QS
 		class addActionGetData {};
 		class addActionGetIntel {};
 		class addActionHack {};
+		class addActionHideBody {};
 		class addActionLoad {};
 		class addActionMove {};
 		class addActionNeutralize {};
