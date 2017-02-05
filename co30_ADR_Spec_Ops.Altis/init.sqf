@@ -7,18 +7,19 @@ call compile preprocessFile "scripts\=BTC=_revive\=BTC=_revive_init.sqf";       
 call compile preprocessFile "scripts\=BTC=_TK_punishment\=BTC=_tk_init.sqf";                                        // Teamkill punish action
 
 // Hide objects inside player base
-((getMarkerPos "respawn_west") nearestObject 492374) hideObject true;
-((getMarkerPos "respawn_west") nearestObject 492375) hideObject true;
-((getMarkerPos "respawn_west") nearestObject 492438) hideObject true;
-((getMarkerPos "respawn_west") nearestObject 492359) hideObject true;
-((getMarkerPos "respawn_west") nearestObject 492364) hideObject true;
-((getMarkerPos "respawn_west") nearestObject 492365) hideObject true;
-((getMarkerPos "respawn_west") nearestObject 492366) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 490993) hideObject true;
 ((getMarkerPos "respawn_west") nearestObject 529331) hideObject true;
 ((getMarkerPos "respawn_west") nearestObject 493984) hideObject true;
 ((getMarkerPos "respawn_west") nearestObject 491093) allowDamage false;
 ((getMarkerPos "respawn_west") nearestObject 491010) allowDamage false;
 ((getMarkerPos "respawn_west") nearestObject 493386) allowDamage false;
+((getMarkerPos "respawn_west") nearestObject 490995) allowDamage false;
+((getMarkerPos "respawn_west") nearestObject 490879) allowDamage false;
+((getMarkerPos "respawn_west") nearestObject 490856) allowDamage false;
+((getMarkerPos "respawn_west") nearestObject 490857) allowDamage false;
+((getMarkerPos "respawn_west") nearestObject 490734) allowDamage false;
+((getMarkerPos "respawn_west") nearestObject 490766) allowDamage false;
+((getMarkerPos "respawn_west") nearestObject 490818) allowDamage false;
 
 if (isDedicated) exitWith {
 	"addToScore" addPublicVariableEventHandler {

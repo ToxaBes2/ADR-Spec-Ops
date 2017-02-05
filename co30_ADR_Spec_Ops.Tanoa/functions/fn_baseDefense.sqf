@@ -75,6 +75,14 @@ _grpTurret setBehaviour "COMBAT";
 _grpTurret setCombatMode "RED";
 [(units _grpTurret)] call QS_fnc_setSkill4;
 
+sleep 5;
+_enemies = nearestObjects [(getMarkerPos "respawn_west"), ["SoldierGB", "SoldierEB"], 250];
+if (count _enemies > 0) then {
+    {
+        _grpTurret reveal [_x, 1.5];
+    } forEach _enemies;
+};
+
 //---------- Cool-off period before next use
 sleep _inactiveTimer;
 BASEDEFENSE_SWITCH = nil; publicVariable "BASEDEFENSE_SWITCH";
