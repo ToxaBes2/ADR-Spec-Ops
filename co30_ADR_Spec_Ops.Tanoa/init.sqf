@@ -5,6 +5,8 @@ if (!hasInterface && !isDedicated) exitWith {};
 [] spawn {_this call compile preProcessFileLineNumbers "scripts\extDB2\bridge.sqf";};                               // DB call function
 call compile preprocessFile "scripts\=BTC=_revive\=BTC=_revive_init.sqf";                                           // Revive system
 call compile preprocessFile "scripts\=BTC=_TK_punishment\=BTC=_tk_init.sqf";                                        // Teamkill punish action
+UAV_RANGE = compileFinal preprocessFileLineNumbers "scripts\UAV_Range.sqf";                                         // UAV range restriction
+["darter","onEachFrame",{0 call UAV_RANGE }] call BIS_fnc_addStackedEventHandler;
 
 // Hide objects inside player base
 ((getMarkerPos "respawn_west") nearestObject 136404) hideObject true; // lamphalogen_f.p3d
