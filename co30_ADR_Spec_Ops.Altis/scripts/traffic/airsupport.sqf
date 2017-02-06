@@ -4,7 +4,7 @@ Description: add support plane landed on blufor base airfield every X mins
 */
 private ["_interval","_height","_name","_corners","_crew","_plane","_group","_wp","_pos","_posX"];
 _interval = 420; // 7 mins (~10 mins total time)
-_height = 1000; // meters
+_height = 2000; // meters
 _name = worldName;
 _plane = false;
 if (_name == "Altis") then {
