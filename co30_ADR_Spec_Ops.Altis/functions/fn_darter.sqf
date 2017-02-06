@@ -20,6 +20,7 @@ _groundPos = [[14724,16698,0], 0, 50, 1, 0, 0, 0] call QS_fnc_findSafePos;
 _uav = createVehicle ["B_UAV_01_F", _groundPos, [], 0, "NONE"];
 _uav setVariable ["BLUFOR_UAV", true];
 createVehicleCrew _uav;
+_uav addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 [_uav] spawn {
     _uav = _this select 0;
     while {alive _uav} do {

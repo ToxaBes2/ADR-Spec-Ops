@@ -47,7 +47,8 @@ _object setPos [(getPos sideObj select 0), (getPos sideObj select 1), ((getPos s
 
 truck1 = "B_Truck_01_ammo_F" createVehicle _flatPos1;
 truck2 = "I_Truck_02_ammo_F" createVehicle _flatPos2;
-
+truck1 addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
+truck2 addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 { _x setDir random 360 } forEach [truck1, truck2];
 { _x lock 0 } forEach [truck1, truck2];
 

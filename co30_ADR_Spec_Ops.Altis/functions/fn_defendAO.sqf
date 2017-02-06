@@ -50,6 +50,7 @@ for "_counter" from 1 to _lightVehiclesGroups do {
 	    _isWater = false;
 	};
     _vehicle = createVehicle [_vehType, _groundPos, [], 0, "CAN_COLLIDE"];
+    _vehicle addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
     _vehicles = _vehicles + [_vehicle];
     createVehicleCrew _vehicle;
     (crew _vehicle) join _bGroup;
@@ -93,6 +94,7 @@ for "_counter" from 1 to _armoredVehicles do {
     _groundPos = [_startPoint, 700, 1000, 2, 0, 10, 0, [], [_startPoint]] call QS_fnc_findSafePos;
     _vehType = selectRandom ["O_APC_Wheeled_02_rcws_F", "O_APC_Tracked_02_cannon_F", "O_MBT_02_cannon_F", "O_APC_Tracked_02_AA_F"];
     _vehicle = createVehicle [_vehType, _groundPos, [], 0, "CAN_COLLIDE"];
+    _vehicle addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
     _vehicles = _vehicles + [_vehicle];
     createVehicleCrew _vehicle;
     (crew _vehicle) join _cGroup;
@@ -119,6 +121,7 @@ for "_counter" from 1 to _helicopterGroups do {
     };
 	_groundPos = [_startPoint, 2000, 3000, 1, 0, 10, 0, [], [_startPoint]] call QS_fnc_findSafePos;
     _vehicle = createVehicle [_vehType, _groundPos, [], 0, "FLY"];
+    _vehicle addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
     _vehicles = _vehicles + [_vehicle];
     createVehicleCrew _vehicle;
     (crew _vehicle) join _fGroup;

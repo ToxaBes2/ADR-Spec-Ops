@@ -138,6 +138,7 @@ for "_c" from 0 to 4 do {
     _safePos = [_subPos, 2, 50, 2, 2, 5, 0, [], [_subPos]] call QS_fnc_findSafePos;
     _sdv = createVehicle [(selectRandom [INFANTRY_SDV]), [0,0,0], [], 0, "NONE"];
     waitUntil {alive _sdv};
+    _sdv addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
     _sdv setPos [_safePos select 0, _safePos select 1, getTerrainHeightASL _safePos];
     _sdv setDir (random 360);
     _unitsArray = _unitsArray + [_sdv];

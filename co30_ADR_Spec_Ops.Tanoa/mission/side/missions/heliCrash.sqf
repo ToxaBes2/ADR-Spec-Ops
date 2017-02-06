@@ -289,6 +289,7 @@ for "_x" from 1 to 2 do {
     };
     _technicalVehicle = selectRandom [INFANTRY_MOTORIZED] createVehicle _randomPos;
     waitUntil{!isNull _technicalVehicle};
+    _technicalVehicle addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
     "O_T_Engineer_F" createUnit [_randomPos,_technicalGroup];
     "O_T_Engineer_F" createUnit [_randomPos,_technicalGroup];
     ((units _technicalGroup) select 0) assignAsDriver _technicalVehicle;

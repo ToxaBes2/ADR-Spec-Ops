@@ -194,6 +194,7 @@ for "_x" from 1 to PARAMS_AAPatrol do {
     };
 	_aa = "O_T_APC_Tracked_02_AA_ghex_F" createVehicle _randomPos;
 	waitUntil{!isNull _aa};
+    _aa addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 	"O_T_Engineer_F" createUnit [_randomPos,_aaGroup];
 	"O_T_Engineer_F" createUnit [_randomPos,_aaGroup];
 	"O_T_Engineer_F" createUnit [_randomPos,_aaGroup];
@@ -267,6 +268,7 @@ for "_x" from 0 to 1 do {
     };
 	_AOmrap = selectRandom [MRAP_TYPE] createVehicle _randomPos;
 	waitUntil {!isNull _AOmrap};
+    _AOmrap addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 	"O_T_Engineer_F" createUnit [_randomPos,_AOmrapGroup];
 	"O_T_Engineer_F" createUnit [_randomPos,_AOmrapGroup];
 	"O_T_Engineer_F" createUnit [_randomPos,_AOmrapGroup];
@@ -296,6 +298,7 @@ for "_x" from 0 to (1 + (random 1)) do {
     };
 	_AOveh = selectRandom [VEH_TYPE] createVehicle _randomPos;
 	waitUntil{!isNull _AOveh};
+    _AOveh addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 	"O_engineer_F" createUnit [_randomPos,_AOvehGroup];
 	"O_engineer_F" createUnit [_randomPos,_AOvehGroup];
 	"O_engineer_F" createUnit [_randomPos,_AOvehGroup];
@@ -319,6 +322,7 @@ if((random 10 <= PARAMS_AirPatrol)) then {
 	_randomPos = [[[getMarkerPos currentAO, PARAMS_AOSize], _dt], ["water", "out"]] call QS_fnc_randomPos;
 	_air = selectRandom [AIR_TYPE] createVehicle [_randomPos select 0, _randomPos select 1, 1000];
 	waitUntil{!isNull _air};
+    _air addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 	_air engineOn true;
 	_air setPos [_randomPos select 0, _randomPos select 1, 300];
 	_air spawn {

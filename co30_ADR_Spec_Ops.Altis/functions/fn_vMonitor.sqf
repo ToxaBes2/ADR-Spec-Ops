@@ -35,9 +35,8 @@ _sp = getPosATL _v;		// spawn position
 sleep (5 + (random 5));
 
 [_v] call _i;
-
+_v addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 //======================================== MONITOR LOOP
-
 while {true} do {
 
 	//======================================== IF DESTROYED
@@ -56,6 +55,7 @@ while {true} do {
 			_v setDir _sd; sleep 0.1;
 			_v setPos [(_sp select 0), (_sp select 1), ((_sp select 2) + 0.1)]; sleep 0.1;
 			[_v] call _i;
+			_v addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 		};
 	};
 

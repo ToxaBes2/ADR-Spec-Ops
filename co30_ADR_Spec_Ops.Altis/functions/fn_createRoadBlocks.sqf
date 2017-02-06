@@ -251,11 +251,13 @@ _cnt = selectRandom [2,3,4,5];
         		if (!isNil "_simulation") then {_newObj enableSimulation _simulation; _newObj setVariable ["BIS_DynO_simulation", _simulation];};
         	
                 if (typeOf _newObj in ["O_HMG_01_high_F","O_GMG_01_high_F","O_static_AT_F"]) then {
+                    _newObj addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
                     "O_support_MG_F" createUnit [[0,0,0], _unitGroup, "currentGunner = this", 0, (selectRandom ["CAPTAIN","MAJOR","COLONEL"])];
                     currentGunner assignAsGunner _newObj;
                     currentGunner moveInGunner _newObj;
                 };
                 if (typeOf _newObj in ["O_MRAP_02_hmg_F"]) then {
+                    _newObj addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
                     "O_engineer_F" createUnit [[0,0,0], _unitGroup, "currentGunner = this", 0, (selectRandom ["CAPTAIN","MAJOR","COLONEL"])];
                     currentGunner assignAsGunner _newObj;
                     currentGunner moveInGunner _newObj;            

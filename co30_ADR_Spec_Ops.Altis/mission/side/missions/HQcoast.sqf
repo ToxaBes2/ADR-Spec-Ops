@@ -48,6 +48,7 @@ _assaultBoatPos = [_flatPos, 15, 25, 10, 0, 1, 0, [], [_flatPos]] call QS_fnc_fi
 // ENEMY HMG BOAT (SEEMS RIGHT SINCE ITS BY THE COAST)
 boat = "O_Boat_Armed_01_hmg_F" createVehicle _boatPos;
 waitUntil {sleep 0.3; alive boat};
+boat addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 boat setDir random 360;
 
 "B_diver_TL_F" createUnit [_boatPos, _smuggleGroup];
@@ -77,6 +78,7 @@ trawler setDir random 360;
 trawler allowDamage false;
 
 assaultBoat = "O_Boat_Transport_01_F" createVehicle _assaultBoatPos;
+assaultBoat addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 assaultBoat setDir random 360;
 assaultBoat allowDamage false;
 

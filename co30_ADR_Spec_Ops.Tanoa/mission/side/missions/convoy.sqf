@@ -132,6 +132,7 @@ for "_i" from 0 to ((count _vehicles) - 1) do {
     _currentVeh = _vehicles select _i;
     _spawn = [_initPosition, 180, _currentVeh, _convoyGroup] call BIS_fnc_spawnVehicle;
     _spawned = (_spawn select 0);
+    _spawned addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
     _initDir = (_positions select _i) select 3;
     _spawned setPos _initPosition;
     _spawned setDir _initDir;

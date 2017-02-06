@@ -134,6 +134,7 @@ TRAFFIC_CreateVehicle = {
 	    _pos = [_posX, _posY, 0];
         _vehicleType = selectRandom [CIV_VEHICLES];
         _vehicle = _vehicleType createVehicle _pos;
+        _vehicle addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
         _vehicle setDir _direction;
         _vehiclesGroup  = createGroup CIV_SIDE;
         _unitType = selectRandom _units;

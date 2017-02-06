@@ -50,6 +50,7 @@ for "_counter" from 1 to _lightVehiclesGroups do {
 	    _isWater = false;
 	};
     _vehicle = createVehicle [_vehType, _groundPos, [], 0, "CAN_COLLIDE"];
+    _vehicle addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
     _vehicles = _vehicles + [_vehicle];
     createVehicleCrew _vehicle;
     (crew _vehicle) join _bGroup;
@@ -95,6 +96,7 @@ for "_counter" from 1 to _armoredVehicles do {
     _vehicle = createVehicle [_vehType, _groundPos, [], 0, "CAN_COLLIDE"];
     _vehicles = _vehicles + [_vehicle];
     createVehicleCrew _vehicle;
+    _vehicle addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
     (crew _vehicle) join _cGroup;
     _cGroup setBehaviour "COMBAT";
     _cGroup setCombatMode "RED";
@@ -121,6 +123,7 @@ for "_counter" from 1 to _helicopterGroups do {
     _vehicle = createVehicle [_vehType, _groundPos, [], 0, "FLY"];
     _vehicles = _vehicles + [_vehicle];
     createVehicleCrew _vehicle;
+    _vehicle addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
     (crew _vehicle) join _fGroup;
     _fGroup setBehaviour "COMBAT";
     _fGroup setCombatMode "RED";

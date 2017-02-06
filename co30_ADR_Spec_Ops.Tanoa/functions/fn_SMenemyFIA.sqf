@@ -50,7 +50,7 @@ for "_x" from 0 to 3 do {
 	_randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call QS_fnc_randomPos;
 	_SMveh = "B_G_Offroad_01_armed_F" createVehicle _randomPos;
 	waitUntil{!isNull _SMveh};
-
+    _SMveh addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 	"O_G_engineer_F" createUnit [_randomPos,_SMvehPatrol];
 	"O_G_engineer_F" createUnit [_randomPos,_SMvehPatrol];
 	"O_G_engineer_F" createUnit [_randomPos,_SMvehPatrol];
@@ -76,6 +76,7 @@ for "_x" from 0 to 1 do {
 	_data = [_randomPos, (random 360), "O_T_APC_Tracked_02_AA_ghex_F", ENEMY_SIDE] call BIS_fnc_spawnVehicle;
     _SMaa = _data select 0;
     _SMaaPatrol = _data select 2;
+    _SMaa addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 	_SMaa lock 0;
 	[_SMaaPatrol, getPos sideObj, 150] call BIS_fnc_taskPatrol;
 	_enemiesArray = _enemiesArray + [_SMaaPatrol];

@@ -113,6 +113,7 @@ _uavPos = [0,0,0];
 if (_anotherChance < 4) then {
     _uavPos = [_bunkerPos, 40, 200, 3, 0, 20, 0, [], [_bunkerPos]] call QS_fnc_findSafePos;
     _uav = createVehicle ["B_UAV_01_F", _uavPos, [], 0, "NONE"];
+    _uav addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
     _uav addWeapon ("LMG_Mk200_F");
     _uav addMagazine ("200Rnd_65x39_cased_Box_Tracer");
     createVehicleCrew _uav;

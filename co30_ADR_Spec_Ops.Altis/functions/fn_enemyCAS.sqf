@@ -61,6 +61,7 @@ if ((count enemyCasArray) < _casLimit) then {
 	_casSelect = _casArray select (floor (random (count _casArray)));
 	_casVehicle = createVehicle [_casSelect, _spawnPos, [], 0, "FLY"];
 	waitUntil {!isNull _casVehicle};
+	_casVehicle addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 	_casVehicle setPos [_spawnPos select 0, _spawnPos select 1, 400];
 	_casVehicle setDir ([_casVehicle, _aoPos] call BIS_fnc_dirTo);
 	_casVehicle allowCrewInImmobile true;

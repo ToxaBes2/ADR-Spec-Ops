@@ -441,6 +441,7 @@ while { sideMissionUp } do {
                 _uavGroup = createGroup _successSide;
                 _spawn = [_stomperPos, (random 360), _stomper, [_uavGroup]] call BIS_fnc_spawnVehicle;
                 _uav = (_spawn select 0);
+                _uav addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
                 _uav addWeapon "missiles_titan";
                 _uav addMagazine "2Rnd_GAT_missiles";
                 _uav addWeapon "Missile_AA_03_Plane_CAS_02_F";

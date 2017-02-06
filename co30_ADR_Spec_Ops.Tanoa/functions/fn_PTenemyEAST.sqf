@@ -55,7 +55,7 @@ _randomPos = [[[getPos priorityObj1, 300], []], ["water", "out"]] call QS_fnc_ra
 _data = [_randomPos, (random 360), (selectRandom [VEH_TYPES]), ENEMY_SIDE] call BIS_fnc_spawnVehicle;
 _SMveh1 = _data select 0;
 _SMvehPatrol = _data select 2;
-
+_SMveh1 addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 _SMveh1 lock 0;
 [_SMvehPatrol, getPos priorityObj1, 75] call BIS_fnc_taskPatrol;
 sleep 0.1;
@@ -69,6 +69,7 @@ _randomPos = [[[getPos priorityObj1, 300], []], ["water", "out"]] call QS_fnc_ra
 _data = [_randomPos, (random 360), (selectRandom [VEH_TYPES]), ENEMY_SIDE] call BIS_fnc_spawnVehicle;
 _SMveh2 = _data select 0;
 _SMvehPatrol = _data select 2;
+_SMveh2 addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 _SMveh2 lock 0;
 [_SMvehPatrol, getPos priorityObj1, 150] call BIS_fnc_taskPatrol;
 sleep 0.1;
@@ -83,6 +84,7 @@ _randomPos = [[[getPos priorityObj1, 300], []], ["water", "out"]] call QS_fnc_ra
 _data = [_randomPos, (random 360), "O_APC_Tracked_02_AA_F", ENEMY_SIDE] call BIS_fnc_spawnVehicle;
 _SMaa = _data select 0;
 _SMaaPatrol = _data select 2;
+_SMaa addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 _SMaa lock 0;
 [_SMaaPatrol, getPos priorityObj1, 150] call BIS_fnc_taskPatrol;
 

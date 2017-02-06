@@ -29,6 +29,7 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
         // Spawn the vehicle
         _veh = createVehicle [_vehName, getMarkerPos "smReward1", _smMarkerList, 0, "NONE"];
         waitUntil {!isNull _veh};
+        _veh addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
         _veh setDir _rewardDir;
         _veh lock 0;
         if (getNumber(configFile >> "CfgVehicles" >> typeof _veh >> "isUav") == 1) then {

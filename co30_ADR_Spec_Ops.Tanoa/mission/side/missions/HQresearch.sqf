@@ -40,6 +40,7 @@ sideObj setPos [(getPos sideObj select 0), (getPos sideObj select 1), (getPos si
 sideObj setVectorUp [0, 0, 1];
 
 veh = selectRandom [VEH_TYPE] createVehicle _vehPos;
+veh addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 veh lock 0;
 
 // SPAWN (okay, tp) TABLE, AND LAPTOP ON IT.

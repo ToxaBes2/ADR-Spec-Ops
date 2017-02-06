@@ -37,4 +37,8 @@ _veh setVariable ["irTarget", false, true];
         };
     };
 };
+
+// Delete attached objects from destroyed vehicle
+_veh addEventHandler ["Killed",{{deleteVehicle _x;} forEach attachedObjects (_this select 0);}];
+_veh addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 true

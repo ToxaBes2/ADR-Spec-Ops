@@ -3,6 +3,7 @@ private ["_vehiclePos", "_class", "_veh"];
 _vehiclePos = _this select 0;
 _class = _this select 1;
 _veh = createVehicle [_class, _vehiclePos, [], 0, "NONE"];
+_veh addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 _veh setDir (random 360);
 _veh lock 0;
 _veh setVariable ["irTarget", false, true];

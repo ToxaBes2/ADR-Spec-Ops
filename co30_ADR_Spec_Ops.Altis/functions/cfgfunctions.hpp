@@ -20,6 +20,7 @@ class QS
 		class FillBots {};
 		class FillCargoPatrol {};
 		class FindPosBuilding {};
+		class HandleIncomingMissile {};
 		class HMDLaserTarget {};
 		class PTenemyEAST {};
 		class RadioSound {};

@@ -150,6 +150,7 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
 
         // Spawn the vehicle
         _veh = createVehicle [_vehName, _rewardPos, [], 0, "NONE"];
+        _veh addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
         _veh setDir _rewardDir;
         _veh lock 0;
         _veh setVariable ["irTarget", false, true];

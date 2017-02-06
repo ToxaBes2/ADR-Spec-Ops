@@ -177,6 +177,7 @@ _unitsArray pushBack _heliLand;
 _heliData = selectRandom _helicopters;
 _heliType = _heliData select 0;
 heliSnatch = createVehicle [_heliType, _heliPos, [], 0, "NONE"];
+heliSnatch addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 heliSnatch setDir _heliDir;
 heliSnatch addMPEventHandler ["MPKilled",
     {
@@ -235,6 +236,7 @@ for "_i" from 1 to _n do {
     _uavData = [_posSpawn, 90, "B_UAV_01_F", ENEMY_SIDE] call BIS_fnc_spawnVehicle;
     _uav = _uavData select 0;
     _uavGroup = _uavData select 2;
+    _uav addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
     _uav addWeapon ("LMG_Mk200_F");
     _uav addMagazine ("200Rnd_65x39_cased_Box_Tracer");
     _uavGroup setBehaviour "SAFE";
@@ -253,7 +255,7 @@ _fuelNet setDir _fuelDir;
 _unitsArray pushBack _fuelNet;
 _fuelVeh = createVehicle [INFANTRY_FUEL_VEHICLE, _fuelPos, [], 0, "CAN_COLLIDE"];
 _fuelVeh setDir _fuelDir;
-
+_fuelVeh addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 _unitsArray pushBack _fuelVeh;
 
 // spawn AA vehicle
@@ -262,6 +264,7 @@ _aaPos =  [(_position select 5) select 0, (_position select 5) select 1, 0];
 _aaDir = (_position select 5) select 2;
 _aaVeh = [_aaPos, _aaDir, INFANTRY_AA_VEHICLE, _aaGroup] call BIS_fnc_spawnVehicle;
 _aa = _aaVeh select 0;
+_aa addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 _aa setFuel 0;
 _aa setVehicleLock "LOCKED";
 _aa lock true;

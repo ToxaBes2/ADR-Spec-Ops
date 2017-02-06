@@ -137,6 +137,7 @@ for "_c" from 1 to 2 do {
     _randomPos = [[[_startPoint, 100], []], ["water", "out"]] call QS_fnc_randomPos;
     _veh = _x createVehicle _randomPos;
     waitUntil{ !isNull _veh };
+    _veh addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
     _veh allowDamage false;
     INFANTRY_VEHICLE_CREW createUnit [_randomPos, _vehGroup];
     INFANTRY_VEHICLE_CREW createUnit [_randomPos, _vehGroup];

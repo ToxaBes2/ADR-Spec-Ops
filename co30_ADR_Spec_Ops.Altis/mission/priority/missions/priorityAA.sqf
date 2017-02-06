@@ -49,6 +49,7 @@ sleep 1;
 // SPAWN AMMO TRUCK (for ambiance and plausibiliy of unlimited ammo)
 ammoTruck = "O_Truck_03_ammo_F" createVehicle _flatPos3;
 waitUntil {!isNull ammoTruck};
+ammoTruck addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 ammoTruck allowDamage false;
 ammoTruck setDir random 360;
 {_x lock 0;} forEach [priorityObj1, priorityObj2, ammoTruck];

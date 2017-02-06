@@ -20,6 +20,7 @@ while {true} do {
     if (!_plane) then {
     	_pos = selectRandom _corners;
         _plane = createVehicle ["B_T_VTOL_01_infantry_F", _pos, [], 0, "FLY"];
+        _plane addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
         _plane lock 2;
         createVehicleCrew _plane;
         _plane allowCrewInImmobile true;
