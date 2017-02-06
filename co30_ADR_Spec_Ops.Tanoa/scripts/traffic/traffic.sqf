@@ -6,7 +6,7 @@ Based on Enigma Traffic script
 if (!isServer) exitWith {};
 #define CIV_SIDE civilian
 #define CIV_VEHICLES "B_Quadbike_01_F", "C_SUV_01_F", "I_G_Offroad_01_F", "C_Offroad_02_unarmed_F", "C_Hatchback_01_sport_F", "I_C_Van_01_transport_F"
-#define CIV_COUNT 20
+#define CIV_COUNT 10
 #define CIV_DEBUG false
 
 TRAFFIC_RandomCivilian = {
