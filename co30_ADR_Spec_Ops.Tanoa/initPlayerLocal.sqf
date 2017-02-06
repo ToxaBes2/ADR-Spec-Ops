@@ -401,3 +401,7 @@ _null = [_uid, _profileName] spawn {
         sleep 295;
     };
 };
+
+// Set initial view distance to 1 km
+setViewDistance 1000;
+setObjectViewDistance [1000,50];
