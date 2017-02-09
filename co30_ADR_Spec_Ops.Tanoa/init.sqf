@@ -9,25 +9,36 @@ UAV_RANGE = compileFinal preprocessFileLineNumbers "scripts\UAV_Range.sqf";     
 ["darter","onEachFrame",{0 call UAV_RANGE }] call BIS_fnc_addStackedEventHandler;
 
 // Hide objects inside player base
-((getMarkerPos "respawn_west") nearestObject 136404) hideObject true; // lamphalogen_f.p3d
-((getMarkerPos "respawn_west") nearestObject 136555) hideObject true; // tbox_f.p3d
-((getMarkerPos "respawn_west") nearestObject 136586) hideObject true; // cargo40_brick_red_f.p3d
-((getMarkerPos "respawn_west") nearestObject 136588) hideObject true; // cargo40_blue_f.p3d
-((getMarkerPos "respawn_west") nearestObject 136589) hideObject true; // cargo40_blue_f.p3d
-((getMarkerPos "respawn_west") nearestObject 136585) hideObject true; // lamphalogen_f.p3d
-((getMarkerPos "respawn_west") nearestObject 136596) hideObject true; // t_leucaena_f.p3d
-((getMarkerPos "respawn_west") nearestObject 136595) hideObject true; // t_leucaena_f.p3d
-((getMarkerPos "respawn_west") nearestObject 136553) hideObject true; // dp_smalltank_f.p3d
-((getMarkerPos "respawn_west") nearestObject 136346) hideObject true; // ttowersmall_2_f.p3d
-((getMarkerPos "respawn_west") nearestObject 135618) hideObject true; // cargo40_blue_f.p3d
-((getMarkerPos "respawn_west") nearestObject 135617) hideObject true; // cargo40_blue_f.p3d
-((getMarkerPos "respawn_west") nearestObject 135537) hideObject true; // cargo40_brick_red_f.p3d
-((getMarkerPos "respawn_west") nearestObject 135678) hideObject true; // shed_07_f.p3d
-((getMarkerPos "respawn_west") nearestObject 136336) hideObject true; // t_leucaena_f.p3d
-((getMarkerPos "respawn_west") nearestObject 136559) allowDamage false; // airport_02_hangar_right_f.p3d
-((getMarkerPos "respawn_west") nearestObject 136554) allowDamage false; // airport_02_hangar_left_f.p3d
-((getMarkerPos "respawn_west") nearestObject 136351) allowDamage false; // airport_01_hangar_f.p3d
-((getMarkerPos "respawn_west") nearestObject 135916) allowDamage false; // airport_01_hangar_f.p3d
+((getMarkerPos "respawn_west") nearestObject 135537) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 135617) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 135618) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 136346) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 136347) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 136351) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 136404) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 136555) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 136585) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 136586) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 136588) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 136589) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 136402) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 136342) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 136343) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 136344) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 136345) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 136348) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 136349) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 136350) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 136352) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 136353) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 136403) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 135676) allowDamage false;
+((getMarkerPos "respawn_west") nearestObject 135677) allowDamage false;
+((getMarkerPos "respawn_west") nearestObject 135916) allowDamage false;
+((getMarkerPos "respawn_west") nearestObject 136318) allowDamage false;
+((getMarkerPos "respawn_west") nearestObject 136553) allowDamage false;
+((getMarkerPos "respawn_west") nearestObject 485460) allowDamage false;
+
 ([5130,11680] nearestObject 1471614) hideObject true;
 ([5130,11680] nearestObject 1471615) hideObject true;
 ([5130,11680] nearestObject 1471616) hideObject true;

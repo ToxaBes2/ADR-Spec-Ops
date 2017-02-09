@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={15161.931,37.960575,17313.326};
-		dir[]={0.84833467,-0.38152486,-0.36715552};
-		up[]={0.35015005,0.92435384,-0.15154263};
-		aside[]={-0.39719945,1.1734664e-007,-0.9177531};
+		pos[]={15154.53,78.988983,17023.676};
+		dir[]={-0.31779888,-0.38152486,-0.86803138};
+		up[]={-0.13117078,0.92435384,-0.35827997};
+		aside[]={-0.9390614,1.1734664e-007,0.34380376};
 	};
 };
 binarizationWanted=0;
@@ -980,7 +980,7 @@ class Mission
 		class Item62
 		{
 			dataType="Marker";
-			position[]={15127.442,-1.3513827e-034,17218.395};
+			position[]={15162.447,17.91,17235.83};
 			name="Helo_spawn";
 			text="Вертолеты";
 			type="b_air";
@@ -988,7 +988,6 @@ class Mission
 			a=0.5;
 			b=0.5;
 			id=553;
-			atlOffset=-17.91;
 		};
 		class Item63
 		{
@@ -1051,7 +1050,7 @@ class Mission
 		class Item68
 		{
 			dataType="Marker";
-			position[]={15182.154,17.874405,17329.84};
+			position[]={15194.143,17.938858,17292.197};
 			name="Armor";
 			text="Бронетехника";
 			type="b_armor";
@@ -1377,7 +1376,7 @@ class Mission
 		class Item103
 		{
 			dataType="Marker";
-			position[]={15286.087,17.735424,17420.365};
+			position[]={15226.667,17.99354,17331.512};
 			name="Laptops";
 			text="ПВО/Очистка";
 			type="loc_Transmitter";
