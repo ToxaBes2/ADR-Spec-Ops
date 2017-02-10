@@ -168,6 +168,10 @@ if (playerSide == west) then {
 	"base_vehicle_service" setMarkerAlphaLocal 1;
 	"base_helipad" setMarkerAlphaLocal 1;
 	"base_dock" setMarkerAlphaLocal 1;
+	"arsenal1" setMarkerAlphaLocal 1;
+	"laptops1" setMarkerAlphaLocal 1;
+	"arsenal2" setMarkerAlphaLocal 1;
+	"laptops2" setMarkerAlphaLocal 1;
 	"partizan_dock1" setMarkerAlphaLocal 0;
 	"partizan_dock2" setMarkerAlphaLocal 0;
 	"partizan_dock3" setMarkerAlphaLocal 0;
@@ -184,6 +188,10 @@ if (playerSide == west) then {
 } else {
     "partizan_base" setMarkerAlphaLocal 1;
 	"partizan_vehicle" setMarkerAlphaLocal 1;
+	"arsenal1" setMarkerAlphaLocal 0;
+	"laptops1" setMarkerAlphaLocal 0;
+	"arsenal2" setMarkerAlphaLocal 0;
+	"laptops2" setMarkerAlphaLocal 0;
 	"base_drone_service" setMarkerAlphaLocal 0;
 	"base_aircraft_service" setMarkerAlphaLocal 0;
 	"base_reward" setMarkerAlphaLocal 0;

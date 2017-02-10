@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={15154.53,78.988983,17023.676};
-		dir[]={-0.31779888,-0.38152486,-0.86803138};
-		up[]={-0.13117078,0.92435384,-0.35827997};
-		aside[]={-0.9390614,1.1734664e-007,0.34380376};
+		pos[]={15129.92,78.988983,17009.965};
+		dir[]={-0.49536946,-0.57004017,-0.65551502};
+		up[]={-0.34368306,0.82161242,-0.45479137};
+		aside[]={-0.79782915,6.7055225e-008,0.60291511};
 	};
 };
 binarizationWanted=0;
@@ -371,11 +371,11 @@ class Mission
 		overviewText="version 0.0.6";
 		resistanceWest=0;
 		timeOfChanges=28800;
-		startWeather=0.30000001;
+		startWeather=0;
 		startWind=0.099999994;
 		startWindDir=135;
 		startGust=0.099999994;
-		forecastWeather=0.30000001;
+		forecastWeather=0;
 		forecastWind=0.099999994;
 		forecastWaves=0;
 		forecastGust=0.099999994;
@@ -389,8 +389,10 @@ class Mission
 		day=9;
 		hour=5;
 		minute=0;
-		startFogDecay=0.013;
-		forecastFogDecay=0.013;
+		startFogBase=-1000;
+		forecastFogBase=-1000;
+		startFogDecay=0;
+		forecastFogDecay=0;
 	};
 	class Entities
 	{
@@ -11855,15 +11857,15 @@ class Mission
 		class Item397
 		{
 			dataType="Marker";
-			position[]={-10000,7.411334e+023,-10000};
+			position[]={-10000,-5.1908646e-028,-10000};
 			name="partizan_vehicle";
 			text="Вызванная техника";
 			type="mil_box";
-			colorName="ColorGreen";
+			colorName="ColorGUER";
 			a=0.5;
 			b=0.5;
 			id=1201;
-			atlOffset=7.411334e+023;
+			atlOffset=185.97;
 		};
 		class Item398
 		{
