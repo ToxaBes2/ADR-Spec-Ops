@@ -1,78 +1,69 @@
 /*
 Author: ToxaBes
-Description: add support plane landed on blufor base airfield every X mins
+Description: add support air landed on blufor base every X mins
 */
-private ["_interval","_height","_name","_corners","_crew","_plane","_group","_wp","_pos","_posX"];
-_interval = 420; // 7 mins (~10 mins total time)
-_height = 2000; // meters
-_name = worldName;
-_plane = false;
-if (_name == "Altis") then {
-    _corners = [[15000,30000,_height],[0,15000,_height],[30000,15000,_height],[15000,0,_height]];
-    _posX = [7258.77,6814.46,0];
-};
-if (_name == "Tanoa") then {
-    _corners = [[7500,15000,_height],[0,7500,_height],[7500,0,_height],[15000,7500,_height]];
-    _posX = [5647.6,10402.6,0];
-};
-sleep _interval;
+_interval = 420;
+_height = 500;
+_land = [6946.16,7454.14,0];
+landpoint = "Land_HelipadEmpty_F" createVehicle _land;
+_start = [0,0,0];
+_height = 1000;
 while {true} do {
-    if (!_plane) then {
-    	_pos = selectRandom _corners;
-        _plane = createVehicle ["B_T_VTOL_01_infantry_F", _pos, [], 0, "FLY"];
-        _plane addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
-        _plane lock 2;
-        createVehicleCrew _plane;
-        _plane allowCrewInImmobile true;
-        _crew = crew _plane;  
-        _group = group (driver _plane);
-        {
-         	_x addCuratorEditableObjects [[_plane], true]
-        } forEach allCurators;      
-    };       
-    _wp = _group addWayPoint [_posX,0];
-    _wp setWaypointType "MOVE";
-    _plane flyInHeight _height;
+    if (random 10 > 6) then {
+        _start = [8508,2498,_height];
+    } else {        
+        _start = [2789,10203,_height];
+    };    
+    _veh = createVehicle ["B_T_VTOL_01_infantry_F", _start, [], 0, "FLY"];
+    createVehicleCrew _veh;
+    _veh setPos _start;
+    _veh addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
+    _veh lock 2;
+    _veh allowCrewInImmobile true;
+    _veh setPilotLight true;
+    _veh setCollisionLight true;
+    _crew = crew _veh;
+    _group = group (driver _veh);
+    {
+        _x addCuratorEditableObjects [[_veh], true];
+    } forEach allCurators;       
+    _wp0 = _group addWayPoint [_land, 0];
+    _wp0 setWaypointBehaviour "SAFE";
+    _wp0 setWaypointSpeed "NORMAL";
+    _wp0 setWaypointBehaviour "CARELESS";
+    _wp0 setWaypointForceBehaviour true;
+    _wp0 setWaypointCombatMode "BLUE";
+    _wp0 setWaypointCompletionRadius 30;
+    _wp0 setWaypointType "SCRIPTED";
+    _wp0 setWaypointScript "A3\functions_f\waypoints\fn_wpLand.sqf";
+    _wp2 = _group addWayPoint [_start, 1];
+    _wp2 setWaypointType "MOVE";
+    _wp2 setWaypointBehaviour "SAFE";
+    _wp2 setWaypointForceBehaviour true;
+    _wp2 setWaypointSpeed "FULL";    
+    _wp2 setWaypointStatements ["true", "cleanUpveh = vehicle leader this; {deleteVehicle _x} forEach crew cleanUpveh + [cleanUpveh];"];
+    _success = false;    
     waitUntil {
         sleep 5;
-        if (!(alive _plane) || (_plane distance2D _posX < 2000)) exitWith {true};        
-    }; 
-    if (alive _plane) then {
-    	while {(count (waypoints _group)) > 0} do {
-            deleteWaypoint ((waypoints _group) select 0);
-        }; 
-        _plane landAt 0;
+        if (!(alive _veh) || ((_veh distance2D _land < 10) && ((getPosATL _veh) select 2 < 2))) exitWith {true};        
     };
-    waitUntil {
-        sleep 3;
-        if (!(alive _plane) || (getPosATL _plane) select 2 < 1) exitWith {true};        
-    };    
-    while {(count (waypoints _group)) > 0} do {
-        deleteWaypoint ((waypoints _group) select 0);
-    };
-    _plane engineOn false;
     sleep 10;
-    if (alive _plane) then {    
-        // spawn vehicles here
-        
-        _plane setDamage 0;
-        _plane setFuel 1;
-        _plane setVehicleAmmo 1;
-        _plane engineOn true;
-        while {(count (waypoints _group)) > 0} do {
-            deleteWaypoint ((waypoints _group) select 0);
-        };
-        _wp = _group addWayPoint [_pos,0];
-        _wp setWaypointType "MOVE";
-        _plane flyInHeight _height;             
+    if (alive _veh) then {  
+        _success = true;
+    }; 
+    if (_success) then {    
+
+        _veh setDamage 0;
+        _veh setFuel 1;
+        _veh setVehicleAmmo 1;        
     };
-    sleep 60;
+    sleep 90;
     try {
         {
             deleteVehicle _x;
         } forEach _crew;
-        deleteVehicle _plane;
+        deleteGroup _group;
+        deleteVehicle _veh;
     } catch {};
-    _plane = false;
     sleep _interval;
 };

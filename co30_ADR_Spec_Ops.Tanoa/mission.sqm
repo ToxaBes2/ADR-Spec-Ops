@@ -8,7 +8,7 @@ class EditorData
 	toggles=9;
 	class ItemIDProvider
 	{
-		nextID=3439;
+		nextID=3447;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=609;
+		nextID=677;
 	};
 	class Camera
 	{
-		pos[]={6855.8794,22.209024,7307.9697};
-		dir[]={-0.3629384,-0.39725232,-0.8429746};
-		up[]={-0.15711632,0.9176923,-0.36492309};
-		aside[]={-0.91855603,-8.8475645e-008,0.39547369};
+		pos[]={6989.915,110.36236,7280.6328};
+		dir[]={-0.22377078,-0.62567192,0.74730408};
+		up[]={-0.1794764,0.78008509,0.59937876};
+		aside[]={0.95797545,0,0.28685367};
 	};
 };
 binarizationWanted=0;
@@ -4708,7 +4708,7 @@ class Mission
 		class Item110
 		{
 			dataType="Marker";
-			position[]={6924.4888,2.6600001,7475.1367};
+			position[]={6973.3726,2.6600001,7348.7119};
 			name="smReward1";
 			type="Empty";
 			id=916;
@@ -4716,7 +4716,7 @@ class Mission
 		class Item111
 		{
 			dataType="Marker";
-			position[]={6927.0322,2.6600001,7460.5151};
+			position[]={6967.2236,2.6600001,7365.6021};
 			name="smReward2";
 			type="Empty";
 			id=917;
@@ -4724,7 +4724,7 @@ class Mission
 		class Item112
 		{
 			dataType="Marker";
-			position[]={6930.4707,2.6600001,7443.7212};
+			position[]={6962.1001,2.6600001,7382.0288};
 			name="smReward3";
 			type="Empty";
 			id=930;
@@ -4732,7 +4732,7 @@ class Mission
 		class Item113
 		{
 			dataType="Marker";
-			position[]={6932.9946,2.6600001,7426.8677};
+			position[]={6953.8062,2.6600001,7399.8354};
 			name="smReward4";
 			type="Empty";
 			id=931;
@@ -4740,7 +4740,7 @@ class Mission
 		class Item114
 		{
 			dataType="Marker";
-			position[]={6936.0762,2.6600001,7411.4009};
+			position[]={6938.0313,2.6600001,7412.3813};
 			name="smReward5";
 			type="Empty";
 			id=932;
@@ -9814,8 +9814,8 @@ class Mission
 						};
 						class Attribute1
 						{
-							property="face";
-							expression="_this setface _value;";
+							property="enableStamina";
+							expression="_this enablestamina _value;";
 							class Value
 							{
 								class data
@@ -9824,10 +9824,10 @@ class Mission
 									{
 										type[]=
 										{
-											"STRING"
+											"BOOL"
 										};
 									};
-									value="WhiteHead_15";
+									value=0;
 								};
 							};
 						};
@@ -9871,8 +9871,8 @@ class Mission
 						};
 						class Attribute4
 						{
-							property="enableStamina";
-							expression="_this enablestamina _value;";
+							property="face";
+							expression="_this setface _value;";
 							class Value
 							{
 								class data
@@ -9881,10 +9881,10 @@ class Mission
 									{
 										type[]=
 										{
-											"BOOL"
+											"STRING"
 										};
 									};
-									value=0;
+									value="WhiteHead_15";
 								};
 							};
 						};
@@ -10460,7 +10460,7 @@ class Mission
 			};
 			id=2425;
 			type="B_HMG_01_high_F";
-			atlOffset=0.20094585;
+			atlOffset=0.20239449;
 		};
 		class Item285
 		{
