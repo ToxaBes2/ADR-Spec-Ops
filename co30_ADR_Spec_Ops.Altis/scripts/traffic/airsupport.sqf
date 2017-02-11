@@ -4,7 +4,7 @@ Description: add support air landed on blufor base every X mins
 */
 _interval = 420;
 _height = 1000;
-_land = [15173,17070,0];
+_land = [15323,17322,0];
 landpoint = "Land_HelipadEmpty_F" createVehicle _land;
 _start = [0,0,0];
 while {true} do {

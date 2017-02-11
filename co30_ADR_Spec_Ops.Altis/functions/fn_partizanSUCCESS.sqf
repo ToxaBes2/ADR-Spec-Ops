@@ -10,7 +10,7 @@ _rewardsMainAO = [
     ["Оружие партизан", ["Box_AAF_Equip_F", "Box_IND_Wps_F", "Box_IND_WpsSpecial_F"]],
     ["Припасы партизан", ["Box_IND_Support_F", "IG_supplyCrate_F", "Box_IND_Ammo_F"]],
     ["Снаряжение Синдиката", ["Box_Syndicate_Wps_F", "Box_Syndicate_Ammo_F"]],       
-    ["Вертолет M900", ["C_Heli_Light_01_civil_F"]],
+    ["Вертолет M900", ["B_Heli_Light_01_stripped_F"]],
     ["Самолет Caesar BTT", ["C_Plane_Civil_01_F"], true]
 ];
 _rewardsSideMission = [

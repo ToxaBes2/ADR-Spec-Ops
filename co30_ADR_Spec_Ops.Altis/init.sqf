@@ -22,6 +22,9 @@ UAV_RANGE = compileFinal preprocessFileLineNumbers "scripts\UAV_Range.sqf";     
 ((getMarkerPos "respawn_west") nearestObject 490734) allowDamage false;
 ((getMarkerPos "respawn_west") nearestObject 490766) allowDamage false;
 ((getMarkerPos "respawn_west") nearestObject 490818) allowDamage false;
+((getMarkerPos "respawn_west") nearestObject 493417) allowDamage false;
+((getMarkerPos "respawn_west") nearestObject 493418) allowDamage false;
+((getMarkerPos "respawn_west") nearestObject 493419) allowDamage false;
 
 if (isDedicated) exitWith {
 	"addToScore" addPublicVariableEventHandler {
