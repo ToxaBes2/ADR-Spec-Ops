@@ -45,12 +45,12 @@ while {true} do {
     _success = false;    
     waitUntil {
         sleep 5;
-        if (!(alive _veh) || ((_veh distance2D _land < 10) && ((getPosATL _veh) select 2 < 2))) exitWith {true};        
+        if (!(alive _veh) || (getPos _veh) select 2 < 1) exitWith {true};        
     };
     sleep 10;
-    if (alive _veh) then {  
+    if (alive _veh && _veh distance2D _land < 20) then {  
         _success = true;
-    }; 
+    };
     if (_success) then {    
 
         _veh setDamage 0;

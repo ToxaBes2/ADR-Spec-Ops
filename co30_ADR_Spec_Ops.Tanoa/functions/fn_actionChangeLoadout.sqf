@@ -29,7 +29,7 @@ if (_vehType in _allowedVehicles) then {
 	_veh setDamage 0;
 
 	//Remove current magazines and weapons
-	systemChat "Снимамаем навесное вооружение ...";
+	systemChat "Снимаем навесное вооружение ...";
 	_magazines = magazinesAllTurrets _veh;
 	_weapons = _veh weaponsTurret [-1];
 
