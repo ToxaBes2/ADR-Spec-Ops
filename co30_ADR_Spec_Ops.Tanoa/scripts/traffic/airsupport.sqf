@@ -41,21 +41,18 @@ while {true} do {
     _wp2 setWaypointBehaviour "SAFE";
     _wp2 setWaypointForceBehaviour true;
     _wp2 setWaypointSpeed "FULL";    
-    _wp2 setWaypointStatements ["true", "cleanUpveh = vehicle leader this; {deleteVehicle _x} forEach crew cleanUpveh + [cleanUpveh];"];
-    _success = false;    
+    _wp2 setWaypointStatements ["true", "cleanUpveh = vehicle leader this; {deleteVehicle _x} forEach crew cleanUpveh + [cleanUpveh];"];   
     waitUntil {
         sleep 5;
         if (!(alive _veh) || (getPos _veh) select 2 < 1) exitWith {true};        
     };
     sleep 10;
     if (alive _veh && _veh distance2D _land < 20) then {  
-        _success = true;
-    };
-    if (_success) then {    
-
+        SUPPORT_CYCLES = SUPPORT_CYCLES + 1;
+        publicVariableServer "SUPPORT_CYCLES"; 
         _veh setDamage 0;
         _veh setFuel 1;
-        _veh setVehicleAmmo 1;        
+        _veh setVehicleAmmo 1;
     };
     sleep 90;
     try {

@@ -146,6 +146,10 @@ _null = [] spawn {
     };
 } remoteExec ["bis_fnc_call", 0, true]; 
 
+// initialise support cycles
+SUPPORT_CYCLES = 0; 
+publicVariableServer "SUPPORT_CYCLES";
+
 // remove polygonal markers from channels
 //_null = [] spawn {
 //    while {true} do {

@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={15128.409,35.120667,17184.857};
-		dir[]={-0.88098234,-0.39473373,0.26087812};
-		up[]={-0.37848839,0.91879594,0.11207881};
-		aside[]={0.28393537,-1.8626451e-008,0.95884562};
+		pos[]={15291.237,109.70615,17300.938};
+		dir[]={-0.72755939,-0.59109771,-0.34822789};
+		up[]={-0.53317446,0.80659968,-0.25519046};
+		aside[]={-0.43172327,0,0.90200686};
 	};
 };
 binarizationWanted=0;
@@ -1872,7 +1872,7 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="0 = [this,300,305,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,300,2,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=634;
 			type="B_Truck_01_medical_F";
@@ -1883,7 +1883,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={15344.252,3.3772342,15816.295};
+				position[]={15344.252,3.3773067,15816.295};
 				angles[]={0,2.9670596,0};
 			};
 			side="Empty";
@@ -1891,11 +1891,11 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="0 = [this,60,FALSE,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,60,1,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=635;
 			type="B_Boat_Armed_01_minigun_F";
-			atlOffset=5.9459276;
+			atlOffset=5.9460001;
 		};
 		class Item117
 		{
@@ -1910,7 +1910,7 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="0 = [this,60,FALSE,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,60,1,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=636;
 			type="B_Boat_Armed_01_minigun_F";
@@ -1921,27 +1921,27 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={15403.577,1.8746082,15831.657};
-				angles[]={0,3.158982,0};
+				position[]={15403.577,1.8743876,15831.657};
+				angles[]={0,3.1589761,0};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="0 = [this,60,FALSE,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,60,0,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=637;
 			type="B_SDV_01_F";
-			atlOffset=3.3912206;
+			atlOffset=3.391;
 		};
 		class Item119
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={15145.171,21.258635,17269.859};
-				angles[]={0.0026520467,0.78539819,0};
+				position[]={15145.17,21.258636,17269.859};
+				angles[]={0.0026529003,0.78539819,0};
 			};
 			side="Empty";
 			flags=4;
@@ -1950,12 +1950,11 @@ class Mission
 				skill=0.60000002;
 				ammo=0.66858453;
 				lock="UNLOCKED";
-				init="0 = [this,300,305,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,300,3,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				name="OB_1";
 			};
 			id=638;
 			type="B_Heli_Transport_03_F";
-			atlOffset=-1.9073486e-006;
 		};
 		class Item120
 		{
@@ -1971,7 +1970,7 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="0 = [this,300,305,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,300,2,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=639;
 			type="B_Truck_01_fuel_F";
@@ -2068,8 +2067,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={15191.024,19.732611,17344.504};
-				angles[]={6.2818484,5.497787,0.0013372133};
+				position[]={15191.024,19.732628,17344.504};
+				angles[]={6.2818413,5.497787,0.0013439035};
 			};
 			side="Empty";
 			flags=4;
@@ -2077,13 +2076,12 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="0 = [this,300,305,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,300,2,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				name="strider1";
 				textures="Blufor";
 			};
 			id=646;
 			type="I_MRAP_03_F";
-			atlOffset=-1.7166138e-005;
 		};
 		class Item127
 		{
@@ -2099,7 +2097,7 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="0 = [this,300,305,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,300,1,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				name="LB_1";
 				presence=0.71179271;
 			};
@@ -2120,7 +2118,7 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="0 = [this,60,65,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,120,2,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				name="H_4";
 			};
 			id=650;
@@ -2527,7 +2525,7 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="0 = [this,600,605,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,600,2,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				name="Mora_1";
 			};
 			id=664;
@@ -4075,7 +4073,7 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="0 = [this,300,305,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,300,2,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				name="GH_1_1";
 			};
 			id=756;
@@ -4103,7 +4101,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={15180.36,20.388754,17372.492};
+				position[]={15180.36,20.388763,17372.492};
 				angles[]={0,3.9448979,6.2818937};
 			};
 			side="Empty";
@@ -4112,11 +4110,10 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="0 = [this,600,605,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,600,1,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=758;
 			type="B_APC_Tracked_01_CRV_F";
-			atlOffset=-9.5367432e-006;
 		};
 		class Item189
 		{
@@ -4132,7 +4129,7 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="0 = [this,300,305,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,300,2,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				textures="Black";
 			};
 			id=759;
@@ -4143,7 +4140,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={15061.705,20.548397,17156.176};
+				position[]={15061.704,20.548397,17156.176};
 				angles[]={0,2.0943952,0};
 			};
 			side="Empty";
@@ -4151,11 +4148,34 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="0 = [this,1800,1805,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,1800,4,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=760;
 			type="I_Plane_Fighter_03_AA_F";
 			atlOffset=0.29999924;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],true]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item191
 		{
@@ -4179,7 +4199,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={15154.001,21.019579,17202.773};
+				position[]={15154,21.019579,17202.773};
 				angles[]={0,5.497787,0};
 			};
 			side="Empty";
@@ -4188,7 +4208,7 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="0 = [this,300,305,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,300,1,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				textures="Black";
 			};
 			id=762;
@@ -4385,114 +4405,114 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={17773.473,3.8772342,18207.008};
-				angles[]={6.2418756,5.4105206,0.045302324};
+				position[]={17773.473,3.8773386,18207.008};
+				angles[]={6.2418733,5.4105206,0.045308746};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
-				init="0 = [this,60,FALSE,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,60,1,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				name="boat1";
 			};
 			id=772;
 			type="B_Boat_Armed_01_minigun_F";
-			atlOffset=4.8228955;
+			atlOffset=4.823;
 		};
 		class Item203
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={17799.52,3.8772342,18185.186};
+				position[]={17799.52,3.8776264,18185.186};
 				angles[]={0,5.4105206,0};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
-				init="0 = [this,60,FALSE,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,60,1,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				name="boat2";
 			};
 			id=773;
 			type="B_Boat_Armed_01_minigun_F";
-			atlOffset=4.1506081;
+			atlOffset=4.151;
 		};
 		class Item204
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={17811.148,0.93553352,18151.83};
+				position[]={17811.148,0.93556046,18151.83};
 				angles[]={0,5.4105206,0};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
-				init="0 = [this,60,FALSE,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,60,0,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				name="boat5";
 			};
 			id=776;
 			type="B_Boat_Transport_01_F";
-			atlOffset=3.8409736;
+			atlOffset=3.8410006;
 		};
 		class Item205
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={17807.773,1.2111435,18148.064};
+				position[]={17807.773,1.2111337,18148.064};
 				angles[]={0,5.4105206,0};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
-				init="0 = [this,60,FALSE,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,60,0,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				name="boat6";
 			};
 			id=777;
 			type="B_Boat_Transport_01_F";
-			atlOffset=2.7660098;
+			atlOffset=2.766;
 		};
 		class Item206
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={17815.314,1.1462319,18160.504};
+				position[]={17815.314,1.1466936,18160.504};
 				angles[]={0,5.4105206,0};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
-				init="0 = [this,60,FALSE,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,60,0,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				name="boat7";
 			};
 			id=778;
 			type="B_SDV_01_F";
-			atlOffset=3.6415381;
+			atlOffset=3.642;
 		};
 		class Item207
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={17812.285,1.1633738,18156.871};
+				position[]={17812.285,1.163509,18156.871};
 				angles[]={0,5.4105206,0};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
-				init="0 = [this,60,FALSE,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,60,0,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				name="boat8";
 			};
 			id=779;
 			type="B_SDV_01_F";
-			atlOffset=4.1808653;
+			atlOffset=4.1810007;
 		};
 		class Item208
 		{
@@ -4603,57 +4623,57 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={15400.139,1.9961797,15831.501};
-				angles[]={0,3.1491945,0};
+				position[]={15400.139,1.9963168,15831.501};
+				angles[]={0,3.1492023,0};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="0 = [this,60,FALSE,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,60,0,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=787;
 			type="B_SDV_01_F";
-			atlOffset=3.442863;
+			atlOffset=3.4430001;
 		};
 		class Item211
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={15411.849,1.1332498,15833.856};
-				angles[]={0,3.1198237,0};
+				position[]={15411.849,1.1336129,15833.856};
+				angles[]={0,3.1198285,0};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="0 = [this,60,FALSE,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,60,0,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=788;
 			type="B_Boat_Transport_01_F";
-			atlOffset=2.4466367;
+			atlOffset=2.4469998;
 		};
 		class Item212
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={15407.481,1.2446525,15833.535};
-				angles[]={0,3.1198237,0};
+				position[]={15407.481,1.2449307,15833.535};
+				angles[]={0,3.1198285,0};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="0 = [this,60,FALSE,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,60,0,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=789;
 			type="B_Boat_Transport_01_F";
-			atlOffset=2.8147218;
+			atlOffset=2.8150001;
 		};
 		class Item213
 		{
@@ -5086,7 +5106,7 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="0 = [this,300,305,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,300,2,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=809;
 			type="O_Heli_Light_02_unarmed_F";
@@ -5096,8 +5116,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={15193.801,20.391121,17287.652};
-				angles[]={0,5.497787,0.0012918708};
+				position[]={15193.801,20.391123,17287.652};
+				angles[]={0,5.497787,0.0012915437};
 			};
 			side="Empty";
 			flags=4;
@@ -5105,11 +5125,10 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="0 = [this,600,605,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,600,3,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=810;
 			type="B_APC_Tracked_01_rcws_F";
-			atlOffset=-1.9073486e-006;
 		};
 		class Item230
 		{
@@ -5125,7 +5144,7 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="0 = [this,1200,305,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,1200,2,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				textures="Green";
 			};
 			id=813;
@@ -5505,7 +5524,7 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="0 = [this,300,305,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,300,2,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				textures="Black";
 			};
 			id=829;
@@ -7259,7 +7278,7 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="0 = [this,300,305,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,300,2,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=899;
 			type="B_Truck_01_ammo_F";
@@ -9410,8 +9429,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={15081.277,17.994232,17244.164};
-						angles[]={0,3.1415927,6.2822089};
+						position[]={15081.273,17.993801,17244.164};
+						angles[]={0,3.1415927,6.282208};
 					};
 					side="West";
 					flags=6;
@@ -9420,14 +9439,15 @@ class Mission
 					};
 					id=961;
 					type="B_UAV_AI";
+					atlOffset=0.083997726;
 				};
 				class Item1
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={15081.277,17.994232,17244.164};
-						angles[]={0,3.1415927,6.2822089};
+						position[]={15081.273,17.993801,17244.164};
+						angles[]={0,3.1415927,6.282208};
 					};
 					side="West";
 					flags=4;
@@ -9436,6 +9456,7 @@ class Mission
 					};
 					id=962;
 					type="B_UAV_AI";
+					atlOffset=0.083997726;
 				};
 			};
 			class Attributes
@@ -9474,26 +9495,49 @@ class Mission
 				};
 			};
 			id=959;
-			atlOffset=0.08442688;
+			atlOffset=0.083997726;
 		};
 		class Item324
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={15081.275,19.570845,17244.113};
-				angles[]={0,3.1415927,6.2822089};
+				position[]={15081.275,19.570415,17244.113};
+				angles[]={0,3.1415927,6.282208};
 			};
 			side="West";
 			flags=6;
 			class Attributes
 			{
 				skill=0.60000002;
-				init="0 = [this,900,FALSE,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,900,3,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=960;
 			type="B_UAV_02_CAS_F";
-			atlOffset=0.08442688;
+			atlOffset=0.083997726;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],true]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item325
 		{
@@ -9507,8 +9551,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={15063.629,18.011467,17240.801};
-						angles[]={0,1.5707964,6.2822089};
+						position[]={15063.627,18.011438,17240.801};
+						angles[]={0,1.5707964,6.282208};
 					};
 					side="West";
 					flags=4;
@@ -9517,14 +9561,15 @@ class Mission
 					};
 					id=965;
 					type="B_UAV_AI";
+					atlOffset=0.10000038;
 				};
 				class Item1
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={15063.629,18.011467,17240.801};
-						angles[]={0,1.5707964,6.2822089};
+						position[]={15063.627,18.011438,17240.801};
+						angles[]={0,1.5707964,6.282208};
 					};
 					side="West";
 					flags=6;
@@ -9533,6 +9578,7 @@ class Mission
 					};
 					id=966;
 					type="B_UAV_AI";
+					atlOffset=0.10000038;
 				};
 			};
 			class Attributes
@@ -9571,26 +9617,26 @@ class Mission
 				};
 			};
 			id=963;
-			atlOffset=0.10002899;
+			atlOffset=0.10000038;
 		};
 		class Item326
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={15063.629,20.08717,17240.703};
-				angles[]={0,1.5707964,6.2822089};
+				position[]={15063.629,20.087141,17240.703};
+				angles[]={0,1.5707964,6.282208};
 			};
 			side="West";
 			flags=6;
 			class Attributes
 			{
 				skill=0.60000002;
-				init="0 = [this,300,FALSE,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,300,2,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=964;
 			type="B_UGV_01_rcws_F";
-			atlOffset=0.10002899;
+			atlOffset=0.10000038;
 		};
 		class Item327
 		{
@@ -9685,11 +9731,34 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="0 = [this,900,FALSE,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,900,3,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=968;
 			type="B_UAV_02_F";
 			atlOffset=0.086000443;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],true]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item329
 		{
@@ -11142,21 +11211,20 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={15178.018,20.059324,17319.127};
-				angles[]={6.2791886,2.3561945,0.0066682254};
+				position[]={15178.018,20.059519,17319.127};
+				angles[]={6.2791882,2.3561945,0.0066671576};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
 				lock="UNLOCKED";
-				init="0 = [this,60,65,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,120,1,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				name="prowler1";
 				textures="Black";
 			};
 			id=1171;
 			type="B_T_LSV_01_unarmed_F";
-			atlOffset=-0.00019454956;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -11186,21 +11254,20 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={15172.606,19.592113,17313.361};
-				angles[]={0.0053265258,2.3561945,0.0026520467};
+				position[]={15172.606,19.592207,17313.361};
+				angles[]={0.0053232545,2.3561945,0.0026529003};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
 				lock="UNLOCKED";
-				init="0 = [this,60,65,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,120,1,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				name="qilin1";
 				textures="Black";
 			};
 			id=1177;
 			type="O_T_LSV_02_unarmed_F";
-			atlOffset=-9.3460083e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -11230,20 +11297,19 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={15122.139,24.674278,17293.221};
-				angles[]={6.2765174,2.3561945,0.0039967569};
+				position[]={15122.139,24.674875,17293.221};
+				angles[]={6.2765183,2.3561945,0.0039968039};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
 				lock="UNLOCKED";
-				init="0 = [this,300,305,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,300,3,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				textures="Olive";
 			};
 			id=1196;
 			type="B_T_VTOL_01_vehicle_F";
-			atlOffset=-0.00059700012;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -11502,76 +11568,76 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={15332.45,1.3158979,15779.84};
-				angles[]={0,2.9298689,0};
+				position[]={15332.45,1.3155336,15779.84};
+				angles[]={0,2.9298668,0};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="0 = [this,60,FALSE,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,60,1,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=1220;
 			type="I_C_Boat_Transport_02_F";
-			atlOffset=9.136364;
+			atlOffset=9.1359997;
 		};
 		class Item371
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={15336.852,1.3158092,15761.291};
-				angles[]={0,2.9026289,0};
+				position[]={15336.852,1.3150597,15761.29};
+				angles[]={0,2.9026222,0};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="0 = [this,60,FALSE,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,60,1,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=1224;
 			type="I_C_Boat_Transport_02_F";
-			atlOffset=11.081298;
+			atlOffset=11.081;
 		};
 		class Item372
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={17822.42,1.3312479,18168.475};
-				angles[]={0,5.3886366,0};
+				position[]={17822.42,1.3314304,18168.475};
+				angles[]={0,5.3886342,0};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
-				init="0 = [this,60,FALSE,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,60,1,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				name="boat3";
 			};
 			id=1225;
 			type="I_C_Boat_Transport_02_F";
-			atlOffset=4.5108175;
+			atlOffset=4.5110002;
 		};
 		class Item373
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={17818.951,1.2232972,18164.367};
+				position[]={17818.951,1.223187,18164.367};
 				angles[]={0,5.4105206,0};
 			};
 			side="Empty";
 			class Attributes
 			{
 				skill=0.60000002;
-				init="0 = [this,60,FALSE,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,60,1,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				name="boat4";
 			};
 			id=1226;
 			type="I_C_Boat_Transport_02_F";
-			atlOffset=4.8171096;
+			atlOffset=4.8169994;
 		};
 		class Item374
 		{
@@ -11585,7 +11651,7 @@ class Mission
 			class Attributes
 			{
 				lock="UNLOCKED";
-				init="0 = [this,60,FALSE,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,60,0,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=1228;
 			type="I_C_Boat_Transport_02_F";
@@ -11603,7 +11669,7 @@ class Mission
 			class Attributes
 			{
 				lock="UNLOCKED";
-				init="0 = [this,60,FALSE,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,60,0,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=1231;
 			type="I_C_Boat_Transport_02_F";
@@ -11620,7 +11686,7 @@ class Mission
 			side="Empty";
 			class Attributes
 			{
-				init="0 = [this,60,FALSE,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,60,0,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=1234;
 			type="I_C_Boat_Transport_02_F";
@@ -11631,87 +11697,88 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={27944.576,1.3158979,23758.316};
-				angles[]={0,5.8622622,0};
+				position[]={27944.576,1.31599,23758.316};
+				angles[]={0,5.8622642,0};
 			};
 			side="Empty";
 			class Attributes
 			{
-				init="0 = [this,60,FALSE,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,60,0,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=1237;
 			type="I_C_Boat_Transport_02_F";
-			atlOffset=5.3489079;
+			atlOffset=5.349;
 		};
 		class Item378
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={21647.01,1.316288,20836.768};
-				angles[]={0,3.1563148,0};
+				position[]={21647.01,1.3165369,20836.768};
+				angles[]={0,3.1563232,0};
 			};
 			side="Empty";
 			class Attributes
 			{
+				init="0 = [this,60,0,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=1240;
 			type="I_C_Boat_Transport_02_F";
-			atlOffset=4.816751;
+			atlOffset=4.8169999;
 		};
 		class Item379
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={16720.205,0.83155131,21884.449};
-				angles[]={0,3.7259912,0};
+				position[]={16720.205,0.83190036,21884.449};
+				angles[]={0,3.7259986,0};
 			};
 			side="Empty";
 			class Attributes
 			{
 				lock="LOCKED";
-				init="0 = [this,60,FALSE,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,60,0,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=1243;
 			type="I_C_Boat_Transport_02_F";
-			atlOffset=1.1046511;
+			atlOffset=1.1050001;
 		};
 		class Item380
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={3313.6709,0.8941884,12929.812};
+				position[]={3313.6709,0.89449072,12929.812};
 				angles[]={0,4.1223283,0};
 			};
 			side="Empty";
 			class Attributes
 			{
 				lock="UNLOCKED";
-				init="0 = [this,60,FALSE,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,60,0,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=1246;
 			type="I_C_Boat_Transport_02_F";
-			atlOffset=4.1376977;
+			atlOffset=4.138;
 		};
 		class Item381
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={2926.2805,0.85566771,18588.076};
+				position[]={2926.281,0.85614634,18588.076};
 				angles[]={0,2.6583457,0};
 			};
 			side="Empty";
 			class Attributes
 			{
 				lock="UNLOCKED";
-				init="0 = [this,60,FALSE,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,60,0,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 			};
 			id=1249;
 			type="I_C_Boat_Transport_02_F";
-			atlOffset=1.1715312;
+			atlOffset=1.1720001;
 		};
 		class Item382
 		{
@@ -25511,7 +25578,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={15196.521,20.365913,17350.352};
+				position[]={15196.521,20.365917,17350.352};
 				angles[]={0,5.497787,0.0039968039};
 			};
 			side="Empty";
@@ -25520,13 +25587,12 @@ class Mission
 			{
 				skill=0.60000002;
 				lock="UNLOCKED";
-				init="0 = [this,300,305,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
+				init="0 = [this,300,2,QS_fnc_vSetup02] spawn QS_fnc_vMonitor;";
 				name="strider2";
 				textures="Blufor";
 			};
 			id=1900;
 			type="I_MRAP_03_hmg_F";
-			atlOffset=-3.8146973e-006;
 		};
 		class Item731
 		{
