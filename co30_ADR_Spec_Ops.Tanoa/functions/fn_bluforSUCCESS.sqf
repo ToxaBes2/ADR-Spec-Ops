@@ -5,31 +5,48 @@ Description: blufor rewards per mission type
 _rewardsMainAO = [
     //["Qilin с пулеметом", ["O_T_LSV_02_armed_F"]],
     //["Страйдер с пулеметом", ["I_MRAP_03_hmg_F"]],
-    //["Ифрит с пулеметом", ["O_MRAP_02_hmg_F"]],    
+    //["Ифрит с пулеметом", ["O_MRAP_02_hmg_F"]],   
+    //["Беспилотник MQ-12 Falcon", ["B_T_UAV_03_F"]],
+    //["То-199 «Неофрон» (штурмовик)", ["O_Plane_CAS_02_F"]],
+    //["А-164 «Вайпаут» (штурмовик)", ["B_Plane_CAS_01_F"]],
+    //["Отряд CTRG", ["ctrg"]],
+    //["M5 РСЗО «Сэндсторм»", ["B_MBT_01_mlrs_F"]],
     ["AH-99 «Блэкфут»", ["B_Heli_Attack_01_F"]],
     ["ПО-30 «Касатка»", ["O_Heli_Light_02_F"]],
-    ["Беспилотник KH-3A Fenghuang", ["O_T_UAV_04_CAS_F"]],
-    ["Беспилотник MQ-12 Falcon", ["B_T_UAV_03_F"]],
+    ["Беспилотник KH-3A Fenghuang", ["O_T_UAV_04_CAS_F"]],    
     ["AFV-4 «Горгона»", ["I_APC_Wheeled_03_cannon_F"]],
     ["БТР-К «Камыш»", ["O_APC_Tracked_02_cannon_F"]],
     ["ЗСУ-39 «Тигр»", ["O_APC_Tracked_02_AA_F"]],
     ["IFV-6a «Гепард»", ["B_APC_Tracked_01_AA_F"]],
     ["FV-720 «Мора»", ["I_APC_tracked_03_cannon_F"]],
-    ["MSE-3 «Марид» с НУРС", ["O_APC_Wheeled_02_rcws_F"]]
-];
-_rewardsSideMission = [
-    ["То-199 «Неофрон» (штурмовик)", ["O_Plane_CAS_02_F"]],
-    ["А-164 «Вайпаут» (штурмовик)", ["B_Plane_CAS_01_F"]],
+    ["MSE-3 «Марид» с НУРС", ["O_APC_Wheeled_02_rcws_F"]],
     ["Ми-48 «Кайман»", ["O_Heli_Attack_02_black_F"]],
     ["Y-32 Xi'an", ["O_T_VTOL_02_vehicle_F"]],
     ["T-100 «Варсук»", ["O_MBT_02_cannon_F"]],
-    ["MBT-52 «Кума»", ["I_MBT_03_cannon_F"]],
-    ["Отряд CTRG", ["ctrg"]],
-    //["M5 РСЗО «Сэндсторм»", ["B_T_MBT_01_mlrs_F"]],
-    ["M2A1 «Сламмер»", ["B_T_MBT_01_cannon_F"]],
-    ["M2A4 «Сламмер» UP", ["B_T_MBT_01_TUSK_F"]],
+    ["MBT-52 «Кума»", ["I_MBT_03_cannon_F"]],   
+    ["M2A1 «Сламмер»", ["B_MBT_01_cannon_F"]],
+    ["M2A4 «Сламмер» UP", ["B_MBT_01_TUSK_F"]],
     ["V-44 X Blackfish", ["B_T_VTOL_01_armed_F"]],
-    ["M4 «Скорчер»", ["B_T_MBT_01_arty_F"]]
+    ["M4 «Скорчер»", ["B_MBT_01_arty_F"]]
+];
+_rewardsSideMission = [
+    ["AH-99 «Блэкфут»", ["B_Heli_Attack_01_F"]],
+    ["ПО-30 «Касатка»", ["O_Heli_Light_02_F"]],
+    ["Беспилотник KH-3A Fenghuang", ["O_T_UAV_04_CAS_F"]],    
+    ["AFV-4 «Горгона»", ["I_APC_Wheeled_03_cannon_F"]],
+    ["БТР-К «Камыш»", ["O_APC_Tracked_02_cannon_F"]],
+    ["ЗСУ-39 «Тигр»", ["O_APC_Tracked_02_AA_F"]],
+    ["IFV-6a «Гепард»", ["B_APC_Tracked_01_AA_F"]],
+    ["FV-720 «Мора»", ["I_APC_tracked_03_cannon_F"]],
+    ["MSE-3 «Марид» с НУРС", ["O_APC_Wheeled_02_rcws_F"]],
+    ["Ми-48 «Кайман»", ["O_Heli_Attack_02_black_F"]],
+    ["Y-32 Xi'an", ["O_T_VTOL_02_vehicle_F"]],
+    ["T-100 «Варсук»", ["O_MBT_02_cannon_F"]],
+    ["MBT-52 «Кума»", ["I_MBT_03_cannon_F"]],   
+    ["M2A1 «Сламмер»", ["B_MBT_01_cannon_F"]],
+    ["M2A4 «Сламмер» UP", ["B_MBT_01_TUSK_F"]],
+    ["V-44 X Blackfish", ["B_T_VTOL_01_armed_F"]],
+    ["M4 «Скорчер»", ["B_MBT_01_arty_F"]]
 ];
 _rewards = _rewardsMainAO;
 _mode = _this select 0; // 1 - bunker + radiotower, 2 - defend AO, 3 - side mission, 4 - special operation
