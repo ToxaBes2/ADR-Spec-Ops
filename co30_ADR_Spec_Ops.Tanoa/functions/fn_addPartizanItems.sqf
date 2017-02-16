@@ -19,11 +19,26 @@ _googles = ["G_Aviator","G_Balaclava_blk","G_Balaclava_lowprofile","G_Balaclava_
 "G_Bandanna_khk","G_Bandanna_oli","G_Bandanna_shades","G_Bandanna_sport","G_Bandanna_tan","G_Lowprofile","G_Shades_Black",
 "G_Shades_Blue","G_Shades_Green","G_Shades_Red","G_Spectacles","G_Spectacles_Tinted","G_Sport_Blackred","G_Sport_Blackyellow",
 "G_Sport_Checkered","G_Sport_Greenblack","G_Sport_Red","G_Squares","G_Squares_Tinted","G_balaclava_combat"];
-_weapons = ["arifle_Mk20_F","arifle_Mk20C_F","arifle_Mk20_plain_F","arifle_Mk20C_plain_F","arifle_TRG20_F","arifle_TRG21_F"];
+//_weapons = ["arifle_Mk20_F","arifle_Mk20C_F","arifle_Mk20_plain_F","arifle_Mk20C_plain_F","arifle_TRG20_F","arifle_TRG21_F"];
+
+_weapons = [
+    ["hgun_ACPC2_F", ["9Rnd_45ACP_Mag"]],
+    ["hgun_ACPC2_snds_F", ["9Rnd_45ACP_Mag"]],
+    ["gun_P07_F", ["16Rnd_9x21_Mag","16Rnd_9x21_red_Mag","16Rnd_9x21_green_Mag","16Rnd_9x21_yellow_Mag","30Rnd_9x21_Mag","30Rnd_9x21_Red_Mag","30Rnd_9x21_Yellow_Mag","30Rnd_9x21_Green_Mag"], "muzzle_snds_L"],
+    ["hgun_P07_snds_F", [ "16Rnd_9x21_Mag","16Rnd_9x21_red_Mag","16Rnd_9x21_green_Mag","16Rnd_9x21_yellow_Mag","30Rnd_9x21_Mag","30Rnd_9x21_Red_Mag","30Rnd_9x21_Yellow_Mag","30Rnd_9x21_Green_Mag"]],
+    ["hgun_Pistol_heavy_01_F", ["11Rnd_45ACP_Mag"], "optic_MRD"],
+    ["hgun_Pistol_heavy_01_snds_F", ["11Rnd_45ACP_Mag"], "optic_MRD"],
+    ["hgun_Pistol_heavy_01_MRD_F", ["11Rnd_45ACP_Mag"], "muzzle_snds_acp"],
+    ["hgun_Pistol_heavy_02_F", ["6Rnd_45ACP_Cylinder"]],
+    ["hgun_Pistol_heavy_02_Yorris_F", ["6Rnd_45ACP_Cylinder"]],
+    ["hgun_Rook40_F", ["16Rnd_9x21_Mag","16Rnd_9x21_red_Mag","16Rnd_9x21_green_Mag","16Rnd_9x21_yellow_Mag","30Rnd_9x21_Mag","30Rnd_9x21_Red_Mag","30Rnd_9x21_Yellow_Mag","30Rnd_9x21_Green_Mag"]],
+    ["hgun_Rook40_snds_F", ["16Rnd_9x21_Mag","16Rnd_9x21_red_Mag","16Rnd_9x21_green_Mag","16Rnd_9x21_yellow_Mag","30Rnd_9x21_Mag","30Rnd_9x21_Red_Mag","30Rnd_9x21_Yellow_Mag","30Rnd_9x21_Green_Mag"]]
+];
 
 // check for Apex DLC to allow dlc weapons
 if (395180 in (getDLCs 1)) then {
-    _weapons = ["arifle_Mk20_F","arifle_Mk20C_F","arifle_Mk20_plain_F","arifle_Mk20C_plain_F","arifle_TRG20_F","arifle_TRG21_F","arifle_AKS_F"];
+    //_weapons = ["arifle_Mk20_F","arifle_Mk20C_F","arifle_Mk20_plain_F","arifle_Mk20C_plain_F","arifle_TRG20_F","arifle_TRG21_F","arifle_AKS_F"];
+    _weapons append [["hgun_Pistol_01_F", ["10Rnd_9x21_Mag"]]];
 };
 
 _player forceAddUniform (selectRandom _uniform);
@@ -55,26 +70,38 @@ if (_player getUnitTrait "engineer" || typeOf _player in ["I_C_Soldier_Para_3_F"
 	  _player addItem "ItemGPS";
 	  _player assignItem "ItemGPS";
 };
-_selectedWeapon = selectRandom _weapons;
-if (_selectedWeapon == "arifle_AKS_F") then {
-   _player addMagazines ["30Rnd_545x39_Mag_F", 2];
-   _player addMagazines ["30Rnd_545x39_Mag_Green_F", 2];
-   _player addMagazines ["30Rnd_545x39_Mag_Tracer_F", 2];
-   _player addMagazines ["30Rnd_545x39_Mag_Tracer_Green_F", 2];
-} else {
-    _player addPrimaryWeaponItem "acc_flashlight";
-    _player addMagazines ["30Rnd_556x45_Stanag", 2];
-    _player addMagazines ["30Rnd_556x45_Stanag_Tracer_Red", 2];
-    _player addMagazines ["30Rnd_556x45_Stanag_Tracer_Green", 2];
-    _player addMagazines ["30Rnd_556x45_Stanag_Tracer_Yellow", 2];
+_weaponData = selectRandom _weapons;
+_selectedWeapon = _weaponData select 0;
+_selectedMagazines = _weaponData select 1;
+_selectedAttachment = false;
+if (count _weaponData == 3) then {
+    if (random 10 > 6) then {
+        selectedAttachment = _weaponData select 2;
+    };
 };
+for "_i" from 0 to 5 do {
+    _player addMagazines [(selectRandom _selectedMagazines), 1];
+};
+//_selectedWeapon = selectRandom _weapons;
+//if (_selectedWeapon == "arifle_AKS_F") then {
+//   _player addMagazines ["30Rnd_545x39_Mag_F", 2];
+//   _player addMagazines ["30Rnd_545x39_Mag_Green_F", 2];
+//   _player addMagazines ["30Rnd_545x39_Mag_Tracer_F", 2];
+//   _player addMagazines ["30Rnd_545x39_Mag_Tracer_Green_F", 2];
+//} else {
+//    _player addPrimaryWeaponItem "acc_flashlight";
+//    _player addMagazines ["30Rnd_556x45_Stanag", 2];
+//    _player addMagazines ["30Rnd_556x45_Stanag_Tracer_Red", 2];
+//    _player addMagazines ["30Rnd_556x45_Stanag_Tracer_Green", 2];
+//    _player addMagazines ["30Rnd_556x45_Stanag_Tracer_Yellow", 2];
+//};
 _player addWeapon _selectedWeapon;
 
 // add needed things in partizan ammo
 partizan_ammo addItemCargoGlobal ["U_I_Wetsuit", 1];
 partizan_ammo addItemCargoGlobal ["V_RebreatherIA", 1];
 partizan_ammo addItemCargoGlobal ["G_Diving", 1];
-partizan_ammo addWeaponCargoGlobal ["arifle_SDAR_F", 1];
-partizan_ammo addMagazineCargoGlobal ["20Rnd_556x45_UW_mag", 7];
-partizan_ammo addItemCargoGlobal ["FirstAidKit", 5];
+//partizan_ammo addWeaponCargoGlobal ["arifle_SDAR_F", 1];
+//partizan_ammo addMagazineCargoGlobal ["20Rnd_556x45_UW_mag", 7];
+//partizan_ammo addItemCargoGlobal ["FirstAidKit", 5];
 true
