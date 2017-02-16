@@ -895,7 +895,7 @@ BTC_fnc_wait_for_revive =
 					_dlg = createDialog "BTC_respawn_button_dialog";
 				};
 			};
-		};   
+		};
         if (_allowAvanpostBlufor && playerSide == west) then {
             ctrlShow [10, true];
         } else {
@@ -918,8 +918,7 @@ BTC_fnc_wait_for_revive =
 			titleText [format ["%1\n%2\n%3", round (BTC_r_timeout - time),_healer,_lifes], "BLACK FADED"];
 		} else {
 		    hintSilent format ["%1\n%2\n%3", round (BTC_r_timeout - time),_healer,_lifes];
-		};
-        
+		};		
 		if (format ["%1", player getVariable "BTC_need_revive"] == "0" || BTC_respawn_cond) then {
 			closeDialog 0;
 		};
@@ -1350,7 +1349,7 @@ BTC_player_killed = {
     profileNamespace setVariable ["secondary_items", secondaryWeaponItems _body];
     profileNamespace setVariable ["secondary_magazine", secondaryWeaponMagazine _body];
     saveProfileNamespace;
-   
+
     _diplomacyPartizan = partizan_ammo getVariable ['DIPLOMACY', 0];
     _diplomacyBlufor = base_arsenal_infantry getVariable ["DIPLOMACY", 0];
     if (_diplomacyPartizan == 1 && _diplomacyBlufor == 1) then {
@@ -1383,15 +1382,14 @@ BTC_player_killed = {
                 _text = "%1 срочно требуется медпомощь!";
 		    };
 	    };
-	    (format [_text, (name _body)]) remoteExec ["systemChat", -2];
+        (format [_text, (name _body)]) remoteExec ["systemChat", -2];
     };
 
 	BTC_gear = [player] call BTC_get_gear;
-	titleText ["", "BLACK OUT"];
-	
+	titleText ["", "BLACK OUT"];	
 	killed_PrimaryWeapon = primaryWeapon _body;
 	if (!isNil killed_PrimaryWeapon) then {killed_PrimaryWeaponItems = primaryWeaponItems _body;};
-	[_body,[player,"KilledInventory"]] call BIS_fnc_saveInventory;    
+	[_body,[player,"KilledInventory"]] call BIS_fnc_saveInventory;
 	[_body] spawn
 	{
 		_body = _this select 0;
@@ -1498,8 +1496,8 @@ BTC_player_killed = {
 				(_ui displayCtrl 120) ctrlShow false;
 				if (BTC_disable_respawn == 1) then {(_ui displayCtrl 122) ctrlShow false;};
 				BTC_r_camera_EH_keydown = (findDisplay 46) displayAddEventHandler ["KeyDown", "_keydown = _this spawn BTC_r_s_keydown"];
-			};
-            _allowAvanpostBlufor = AVANPOST_RESPAWN;
+			};		
+			_allowAvanpostBlufor = AVANPOST_RESPAWN;
             _allowAvanpostPartizan = false;
             if (count AVANPOST_PARTIZAN_RESPAWN > 0) then {
                 _allowAvanpostPartizan = true;
@@ -1518,14 +1516,14 @@ BTC_player_killed = {
                 } forEach AVANPOST_PARTIZAN_RESPAWN;
                 lbSetCurSel [12, 0];
                 ctrlShow [12, true];
-            };
+            };	
 			while {(format ["%1", player getVariable "BTC_need_revive"] == "1") && {(time < _timeout)} && {(!BTC_respawn_cond)}} do {
-				if (BTC_disable_respawn == 0) then {if (BTC_black_screen == 1 || (BTC_black_screen == 0 && BTC_action_respawn == 0)) then {if (!Dialog && !BTC_respawn_cond) then {_dlg = createDialog "BTC_respawn_button_dialog";};};};								
+				if (BTC_disable_respawn == 0) then {if (BTC_black_screen == 1 || (BTC_black_screen == 0 && BTC_action_respawn == 0)) then {if (!Dialog && !BTC_respawn_cond) then {_dlg = createDialog "BTC_respawn_button_dialog";};};};   
                 if (_allowAvanpostBlufor && playerSide == west) then {
                     ctrlShow [10, true];
                 } else {
                     ctrlShow [10, false];
-                };
+                };		               
                 if (count AVANPOST_PARTIZAN_RESPAWN > 0 && playerSide == resistance) then {
                     ctrlShow [11, true];
                     ctrlShow [12, true];
@@ -1691,7 +1689,7 @@ BTC_check_healer =
 };
 
 BTC_player_respawn = {
-    _avanpostBlufor = param [0, false];
+    _avanpost = param [0, false];
     _avanpostPartizan = param [1, ""];
 	BTC_respawn_cond = true;
 	player setVariable ["BTC_revivie_in_progress", false, true];
@@ -1769,20 +1767,20 @@ BTC_player_respawn = {
 			player switchMove "";//amovpercmstpsraswrfldnon	
 			
 			[] call QS_fnc_respawnPilot;		
-			if (_avanpostBlufor && playerSide == west) then {
+			if (_avanpost && playerSide == west) then {
 			    [] call QS_fnc_respawnAvanpost;
 		    };
-		    if (playerSide == resistance) then {
+            if (playerSide == resistance) then {
 		        if !(_avanpostPartizan == "") then {
 		        	_mkrName = format ["mkr_%1", _avanpostPartizan];
 		            _mkrPos = getMarkerPos _mkrName;		            
 		            _spawnPos = [_mkrPos, 0, 20, 1, 0, 0, 0] call QS_fnc_findSafePos;
                     _spawnPos set [2, 0];
                     player setDir (random 360);
-                    player setPosATL _spawnPos;                
+                    player setPosATL _spawnPos;               
 		        };
 		    };
-		                
+
 			// load missing items
             [player] spawn BTC_addMissingItems;
 
