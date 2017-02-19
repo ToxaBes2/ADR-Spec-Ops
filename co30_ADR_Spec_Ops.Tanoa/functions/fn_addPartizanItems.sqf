@@ -109,9 +109,9 @@ for "_i" from 0 to 5 do {
 _player addWeapon _selectedWeapon;
 
 // add needed things in partizan ammo
-partizan_ammo addItemCargoGlobal ["U_I_Wetsuit", 1];
-partizan_ammo addItemCargoGlobal ["V_RebreatherIA", 1];
-partizan_ammo addItemCargoGlobal ["G_Diving", 1];
+//partizan_ammo addItemCargoGlobal ["U_I_Wetsuit", 1];
+//partizan_ammo addItemCargoGlobal ["V_RebreatherIA", 1];
+//partizan_ammo addItemCargoGlobal ["G_Diving", 1];
 //partizan_ammo addWeaponCargoGlobal ["arifle_SDAR_F", 1];
 //partizan_ammo addMagazineCargoGlobal ["20Rnd_556x45_UW_mag", 7];
 //partizan_ammo addItemCargoGlobal ["FirstAidKit", 5];

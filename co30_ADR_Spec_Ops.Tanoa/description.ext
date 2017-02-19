@@ -14,7 +14,7 @@ class Header
 	{
 		gameType = COOP;								// Unknown, COOP, DM, TDM, CTF, SC, CTI, RPG, Sandbox, Seize, Defend.
 		minPlayers = 1;
-		maxPlayers = 31;
+		maxPlayers = 30;
 	};
 
 //------------------------- Admin

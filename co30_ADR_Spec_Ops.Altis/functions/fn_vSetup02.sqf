@@ -34,6 +34,23 @@ _ammoTrucks = ["B_Truck_01_ammo_F", "O_Truck_02_Ammo_F", "I_Truck_02_ammo_F","B_
 _ammoTrucksTempest = ["O_Truck_03_ammo_F"];														// Ammo trucks with 30 000 ammo
 _mrap_lsv = ["B_MRAP_01_hmg_F","B_MRAP_01_gmg_F","B_T_LSV_01_unarmed_F","O_T_LSV_02_unarmed_F","I_MRAP_03_F","B_T_LSV_01_armed_F"];
 _apc = ["B_APC_Tracked_01_CRV_F","B_APC_Wheeled_01_cannon_F","B_APC_Tracked_01_rcws_F","B_T_APC_Tracked_01_CRV_F","B_T_APC_Wheeled_01_cannon_F"];
+_rhib = ["I_C_Boat_Transport_02_F"];
+_boat = ["B_Boat_Armed_01_minigun_F","B_T_Boat_Armed_01_minigun_F"];
+
+if (_t in _rhib) then {
+    partizan_ammo addItemCargoGlobal ["U_I_Wetsuit", 1];
+    partizan_ammo addItemCargoGlobal ["V_RebreatherIA", 1];
+    partizan_ammo addItemCargoGlobal ["G_Diving", 1];
+    partizan_ammo addMagazineCargoGlobal ["20Rnd_556x45_UW_mag", 5];
+};
+
+if (_t in _boat) then {
+    partizan_ammo addItemCargoGlobal ["U_I_Wetsuit", 1];
+    partizan_ammo addItemCargoGlobal ["V_RebreatherIA", 1];
+    partizan_ammo addItemCargoGlobal ["G_Diving", 1];    
+    partizan_ammo addMagazineCargoGlobal ["20Rnd_556x45_UW_mag", 5];
+    partizan_ammo addWeaponCargoGlobal ["arifle_SDAR_F", 1];
+};
 
 if (_t in _strider) then {
 	_u setObjectTextureGlobal [0, '\A3\soft_f_beta\mrap_03\data\mrap_03_ext_co.paa'];

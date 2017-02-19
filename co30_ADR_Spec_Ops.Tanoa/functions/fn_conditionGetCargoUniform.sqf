@@ -9,7 +9,7 @@ if (typeOf _cargo == "GroundWeaponHolder") then {
         _items = everyContainer _cargo;
         {
             _itemClass = _x select 0;
-            if ((_itemClass select [0, 4]) in ["U_O_", "U_C_"]) then {
+            if ((_itemClass select [0, 4]) in ["U_O_", "U_C_", "U_IG_", "U_I_"]) then {
                 _cfgItem = configfile >> "cfgweapons" >> _itemClass;
                 _type = getnumber (_cfgItem >> "type");
                 if (istext (_cfgItem >> "type")) then {_type = gettext (_cfgItem >> "type") call bis_fnc_parsenumber};

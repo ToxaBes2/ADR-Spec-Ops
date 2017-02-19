@@ -16,11 +16,11 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=1221;
+		nextID=1289;
 	};
 	class Camera
 	{
-		pos[]={6676.0977,10.397892,6953.7241};
+		pos[]={6604.7114,10.397892,6887.4429};
 		dir[]={0.87267298,-0.40244731,0.27655321};
 		up[]={0.3836444,0.91544253,0.1215781};
 		aside[]={0.30209762,5.4133125e-008,-0.95327801};
@@ -7494,7 +7494,30 @@ class Mission
 			};
 			id=1238;
 			type="B_T_Boat_Armed_01_minigun_F";
-			atlOffset=1.6040001;
+			atlOffset=1.604;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""arifle_SDAR_F""],[1]],[[""20Rnd_556x45_UW_mag""],[5]],[[""FirstAidKit"",""Medikit"",""U_B_Wetsuit"",""G_B_Diving"",""V_RebreatherB""],[10,1,1,1,1]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item146
 		{
@@ -7529,6 +7552,29 @@ class Mission
 			id=1247;
 			type="I_C_Boat_Transport_02_F";
 			atlOffset=3.1940002;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_B_Wetsuit"",""G_B_Diving"",""V_RebreatherB""],[2,1,1,1]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item148
 		{
@@ -9703,7 +9749,7 @@ class Mission
 					class Attributes
 					{
 						skill=1;
-						init="enableSentences false; null = [this] spawn {_this call compile preProcessFileLineNumbers ""scripts\VA-west.sqf"";};  " \n "this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacearsenal_ca.paa' size='1.0'/> Арсенал</t>"",{['Open',[false, base_arsenal_infantry, player]] call BIS_fnc_arsenal},[],15,true,true,'','((player distance _target) < 8) && (playerSide == west) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8];  " \n "this addAction [""<t color='#C6FF00'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_toolbox_modules_ca.paa' size='1.0'/> "" + localize 'STR_VAS_Menu_Title' + ""</t>"",""createDialog 'VAS_Info_Diag';"",[],12,true,true,'','((player distance _target) < 8) && (playerSide == west) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8];this addAction [""<img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\gps_ca.paa' size='1.0'/> Дипломатия: <t color='#23D80E'>перемирие</t>"", ""scripts\diplomacyBlufor.sqf"", 1, -100, false, true, """", '(_target getVariable [""DIPLOMACY"",0]) != 1 && playerSide == west'];" \n "this addAction [""<img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\gps_ca.paa' size='1.0'/> Дипломатия: <t color='#F44336'>война</t>"", ""scripts\diplomacyBlufor.sqf"", 0, -100, false, true, """", '(_target getVariable [""DIPLOMACY"",0] == 1) && playerSide == west'];";
+						init="enableSentences false; null = [this] spawn {_this call compile preProcessFileLineNumbers ""scripts\VA-west.sqf"";};  " \n "this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacearsenal_ca.paa' size='1.0'/> Арсенал</t>"",{['Open',[false, base_arsenal_infantry, player]] call BIS_fnc_arsenal},[],15,true,true,'','((player distance _target) < 8) && (playerSide == west) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8];  " \n "this addAction [""<t color='#C6FF00'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_toolbox_modules_ca.paa' size='1.0'/> "" + localize 'STR_VAS_Menu_Title' + ""</t>"",""createDialog 'VAS_Info_Diag';"",[],12,true,true,'','((player distance _target) < 8) && (playerSide == west) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])', 8];this addAction [""<img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\gps_ca.paa' size='1.0'/> Дипломатия: <t color='#23D80E'>объявить перемирие</t>"", ""scripts\diplomacyBlufor.sqf"", 1, -100, false, true, """", '(_target getVariable [""DIPLOMACY"",0]) != 1 && playerSide == west'];" \n "this addAction [""<img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\gps_ca.paa' size='1.0'/> Дипломатия: <t color='#F44336'>объявить войну</t>"", ""scripts\diplomacyBlufor.sqf"", 0, -100, false, true, """", '(_target getVariable [""DIPLOMACY"",0] == 1) && playerSide == west'];";
 						name="base_arsenal_infantry";
 						disableSimulation=1;
 						class Inventory
@@ -9761,8 +9807,8 @@ class Mission
 						};
 						class Attribute1
 						{
-							property="enableStamina";
-							expression="_this enablestamina _value;";
+							property="face";
+							expression="_this setface _value;";
 							class Value
 							{
 								class data
@@ -9771,10 +9817,10 @@ class Mission
 									{
 										type[]=
 										{
-											"BOOL"
+											"STRING"
 										};
 									};
-									value=0;
+									value="WhiteHead_15";
 								};
 							};
 						};
@@ -9818,8 +9864,8 @@ class Mission
 						};
 						class Attribute4
 						{
-							property="face";
-							expression="_this setface _value;";
+							property="enableStamina";
+							expression="_this enablestamina _value;";
 							class Value
 							{
 								class data
@@ -9828,10 +9874,10 @@ class Mission
 									{
 										type[]=
 										{
-											"STRING"
+											"BOOL"
 										};
 									};
-									value="WhiteHead_15";
+									value=0;
 								};
 							};
 						};
@@ -10146,6 +10192,29 @@ class Mission
 			id=2284;
 			type="I_C_Boat_Transport_02_F";
 			atlOffset=2.8220003;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_B_Wetsuit"",""G_B_Diving"",""V_RebreatherB""],[2,1,1,1]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item264
 		{
@@ -10163,6 +10232,29 @@ class Mission
 			id=2285;
 			type="I_C_Boat_Transport_02_F";
 			atlOffset=2.441;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_B_Wetsuit"",""G_B_Diving"",""V_RebreatherB""],[2,1,1,1]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item265
 		{
@@ -10227,7 +10319,7 @@ class Mission
 			class Attributes
 			{
 				ammo=0;
-				init="this enableRopeAttach false; this setMass 500000;" \n "this addAction [""<t color='#FFEB3B'><img image='\a3\ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa' size='1.0'/> Эвакуация базы</t>"",""scripts\misc\actions\basePartizan_switch.sqf"",[],-99,true,true,"""",'((vehicle player) == player && playerSide == resistance) && !adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\GUI\Cfg\Notifications\tridentEnemy_ca.paa' size='1.0'/> Уничтожить базу партизан</t>"",""scripts\misc\actions\basePartizan_destroy.sqf"",[],18,true,true,"""",'((vehicle player) == player && playerSide == west)', 5];   " \n "this addAction [""<t color='#FF8000'><img image='\A3\Soft_F\Quadbike_01\Data\UI\map_Quad_CA.paa' size='1.0'/> Вызвать квадроцикл</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""quadbike""],17,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#FFBF00'><img image='\A3\soft_f_gamma\SUV_01\Data\UI\map_suv_01_CA.paa' size='1.0'/> Вызвать внедорожник (SUV)</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""suv""],16,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#BFFF00'><img image='\A3\soft_f\Offroad_01\Data\UI\map_offroad_01_CA.paa' size='1.0'/> Вызвать пикап</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""offroad""],15,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#01DFA5'><img image='\A3\Soft_F_Exp\Offroad_02\Data\UI\map_Offroad_02_base_CA.paa' size='1.0'/> Вызвать полноприводный джип</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""jeep""],14,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5]; " \n "this addAction [""<t color='#FFD700'><img image='\A3\soft_f_gamma\Van_01\Data\UI\map_Van_01_box_CA.paa' size='1.0'/> Вызвать грузовик</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""truck""],15,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5]; " \n "this addAction [""<t color='#CD0000'><img image='\A3\soft_f_gamma\Hatchback_01\Data\UI\map_car_CA.paa' size='1.0'/> Вызвать спортивный хэтчбек</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""hatchback""],15,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];" \n "this addAction [""<t color='#2196F3'><img image='\a3\ui_f\data\map\VehicleIcons\iconShip_ca.paa' size='1.0'/> Вызвать лодку</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""ship""],13,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#BDBDBD'><img image='\a3\ui_f\data\Map\VehicleIcons\iconCar_ca.paa' size='1.0'/> Вызвать технику</>"", {[] spawn {adr_partizan_submenu = true; sleep 20, adr_partizan_submenu = false;}},[],6,true,false,"""",'((vehicle player) == player && playerSide == resistance) && !adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#BDBDBD'><img image='\a3\ui_f\data\Map\Diary\Icons\taskFailed_ca.paa' size='1.0'/> Отмена</>"", {adr_partizan_submenu = false;},[],6,true,false,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];" \n "this addAction[""<t color='#C6FF00'><img image='\a3\ui_f\data\GUI\Cfg\CommunicationMenu\supplydrop_ca.paa' size='1.0'/>Использовать трофеи</t>"",""createDialog 'VAS_PARTIZAN_Reward_Diag';"",[],-1,true,false,"""",'((vehicle player) == player && playerSide == resistance) && !adr_partizan_submenu', 5];" \n "this addAction [""<img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\gps_ca.paa' size='1.0'/> Дипломатия: <t color='#23D80E'>перемирие</t>"", ""scripts\diplomacyPartizan.sqf"", 1, -100, false, true, """", '(_target getVariable [""DIPLOMACY"",0]) != 1 && playerSide == resistance'];" \n "this addAction [""<img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\gps_ca.paa' size='1.0'/> Дипломатия: <t color='#F44336'>война</t>"", ""scripts\diplomacyPartizan.sqf"", 0, -100, false, true, """", '(_target getVariable [""DIPLOMACY"",0] == 1) && playerSide == resistance'];";
+				init="this enableRopeAttach false; this setMass 500000;" \n "this addAction [""<t color='#FFEB3B'><img image='\a3\ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa' size='1.0'/> Эвакуация базы</t>"",""scripts\misc\actions\basePartizan_switch.sqf"",[],-99,true,true,"""",'((vehicle player) == player && playerSide == resistance) && !adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\GUI\Cfg\Notifications\tridentEnemy_ca.paa' size='1.0'/> Уничтожить базу партизан</t>"",""scripts\misc\actions\basePartizan_destroy.sqf"",[],18,true,true,"""",'((vehicle player) == player && playerSide == west)', 5];   " \n "this addAction [""<t color='#FF8000'><img image='\A3\Soft_F\Quadbike_01\Data\UI\map_Quad_CA.paa' size='1.0'/> Вызвать квадроцикл</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""quadbike""],17,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#FFBF00'><img image='\A3\soft_f_gamma\SUV_01\Data\UI\map_suv_01_CA.paa' size='1.0'/> Вызвать внедорожник (SUV)</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""suv""],16,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#BFFF00'><img image='\A3\soft_f\Offroad_01\Data\UI\map_offroad_01_CA.paa' size='1.0'/> Вызвать пикап</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""offroad""],15,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#01DFA5'><img image='\A3\Soft_F_Exp\Offroad_02\Data\UI\map_Offroad_02_base_CA.paa' size='1.0'/> Вызвать полноприводный джип</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""jeep""],14,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5]; " \n "this addAction [""<t color='#FFD700'><img image='\A3\soft_f_gamma\Van_01\Data\UI\map_Van_01_box_CA.paa' size='1.0'/> Вызвать грузовик</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""truck""],15,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5]; " \n "this addAction [""<t color='#CD0000'><img image='\A3\soft_f_gamma\Hatchback_01\Data\UI\map_car_CA.paa' size='1.0'/> Вызвать спортивный хэтчбек</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""hatchback""],15,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];" \n "this addAction [""<t color='#2196F3'><img image='\a3\ui_f\data\map\VehicleIcons\iconShip_ca.paa' size='1.0'/> Вызвать лодку</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""ship""],13,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#BDBDBD'><img image='\a3\ui_f\data\Map\VehicleIcons\iconCar_ca.paa' size='1.0'/> Вызвать технику</>"", {[] spawn {adr_partizan_submenu = true; sleep 20, adr_partizan_submenu = false;}},[],6,true,false,"""",'((vehicle player) == player && playerSide == resistance) && !adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#BDBDBD'><img image='\a3\ui_f\data\Map\Diary\Icons\taskFailed_ca.paa' size='1.0'/> Отмена</>"", {adr_partizan_submenu = false;},[],6,true,false,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];" \n "this addAction[""<t color='#C6FF00'><img image='\a3\ui_f\data\GUI\Cfg\CommunicationMenu\supplydrop_ca.paa' size='1.0'/>Использовать трофеи</t>"",""createDialog 'VAS_PARTIZAN_Reward_Diag';"",[],-1,true,false,"""",'((vehicle player) == player && playerSide == resistance) && !adr_partizan_submenu', 5];" \n "this addAction [""<img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\gps_ca.paa' size='1.0'/> Дипломатия: <t color='#23D80E'>объявить перемирие</t>"", ""scripts\diplomacyPartizan.sqf"", 1, -100, false, true, """", '(_target getVariable [""DIPLOMACY"",0]) != 1 && playerSide == resistance'];" \n "this addAction [""<img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\gps_ca.paa' size='1.0'/> Дипломатия: <t color='#F44336'>объявить войну</t>"", ""scripts\diplomacyPartizan.sqf"", 0, -100, false, true, """", '(_target getVariable [""DIPLOMACY"",0] == 1) && playerSide == resistance'];";
 				name="partizan_ammo";
 			};
 			id=2404;
@@ -10682,6 +10774,29 @@ class Mission
 			id=2455;
 			type="C_Boat_Transport_02_F";
 			atlOffset=6.3920002;
+			class CustomAttributes
+            {
+            	class Attribute0
+            	{
+            		property="ammoBox";
+            		expression="[_this,_value] call bis_fnc_initAmmoBox;";
+            		class Value
+            		{
+            			class data
+            			{
+            				class type
+            				{
+            					type[]=
+            					{
+            						"STRING"
+            					};
+            				};
+            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_I_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+            			};
+            		};
+            	};
+            	nAttributes=1;
+            };
 		};
 		class Item286
 		{
@@ -10713,6 +10828,29 @@ class Mission
 			id=2458;
 			type="C_Boat_Transport_02_F";
 			atlOffset=4.3930001;
+			class CustomAttributes
+            {
+            	class Attribute0
+            	{
+            		property="ammoBox";
+            		expression="[_this,_value] call bis_fnc_initAmmoBox;";
+            		class Value
+            		{
+            			class data
+            			{
+            				class type
+            				{
+            					type[]=
+            					{
+            						"STRING"
+            					};
+            				};
+            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_I_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+            			};
+            		};
+            	};
+            	nAttributes=1;
+            };
 		};
 		class Item288
 		{
@@ -10744,6 +10882,29 @@ class Mission
 			id=2460;
 			type="C_Boat_Transport_02_F";
 			atlOffset=8.3920002;
+			class CustomAttributes
+            {
+            	class Attribute0
+            	{
+            		property="ammoBox";
+            		expression="[_this,_value] call bis_fnc_initAmmoBox;";
+            		class Value
+            		{
+            			class data
+            			{
+            				class type
+            				{
+            					type[]=
+            					{
+            						"STRING"
+            					};
+            				};
+            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_I_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+            			};
+            		};
+            	};
+            	nAttributes=1;
+            };
 		};
 		class Item290
 		{
@@ -10775,6 +10936,29 @@ class Mission
 			id=2462;
 			type="C_Boat_Transport_02_F";
 			atlOffset=1.452;
+			class CustomAttributes
+            {
+            	class Attribute0
+            	{
+            		property="ammoBox";
+            		expression="[_this,_value] call bis_fnc_initAmmoBox;";
+            		class Value
+            		{
+            			class data
+            			{
+            				class type
+            				{
+            					type[]=
+            					{
+            						"STRING"
+            					};
+            				};
+            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_I_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+            			};
+            		};
+            	};
+            	nAttributes=1;
+            };
 		};
 		class Item292
 		{
@@ -10806,6 +10990,29 @@ class Mission
 			id=2464;
 			type="C_Boat_Transport_02_F";
 			atlOffset=3.855;
+			class CustomAttributes
+            {
+            	class Attribute0
+            	{
+            		property="ammoBox";
+            		expression="[_this,_value] call bis_fnc_initAmmoBox;";
+            		class Value
+            		{
+            			class data
+            			{
+            				class type
+            				{
+            					type[]=
+            					{
+            						"STRING"
+            					};
+            				};
+            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_I_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+            			};
+            		};
+            	};
+            	nAttributes=1;
+            };
 		};
 		class Item294
 		{
@@ -10837,6 +11044,29 @@ class Mission
 			id=2466;
 			type="C_Boat_Transport_02_F";
 			atlOffset=1.321;
+			class CustomAttributes
+            {
+            	class Attribute0
+            	{
+            		property="ammoBox";
+            		expression="[_this,_value] call bis_fnc_initAmmoBox;";
+            		class Value
+            		{
+            			class data
+            			{
+            				class type
+            				{
+            					type[]=
+            					{
+            						"STRING"
+            					};
+            				};
+            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_I_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+            			};
+            		};
+            	};
+            	nAttributes=1;
+            };
 		};
 		class Item296
 		{
@@ -10868,6 +11098,29 @@ class Mission
 			id=2468;
 			type="C_Boat_Transport_02_F";
 			atlOffset=0.85269237;
+			class CustomAttributes
+            {
+            	class Attribute0
+            	{
+            		property="ammoBox";
+            		expression="[_this,_value] call bis_fnc_initAmmoBox;";
+            		class Value
+            		{
+            			class data
+            			{
+            				class type
+            				{
+            					type[]=
+            					{
+            						"STRING"
+            					};
+            				};
+            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_I_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+            			};
+            		};
+            	};
+            	nAttributes=1;
+            };
 		};
 		class Item298
 		{
@@ -10899,6 +11152,29 @@ class Mission
 			id=2470;
 			type="C_Boat_Transport_02_F";
 			atlOffset=0.96699905;
+			class CustomAttributes
+            {
+            	class Attribute0
+            	{
+            		property="ammoBox";
+            		expression="[_this,_value] call bis_fnc_initAmmoBox;";
+            		class Value
+            		{
+            			class data
+            			{
+            				class type
+            				{
+            					type[]=
+            					{
+            						"STRING"
+            					};
+            				};
+            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_I_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+            			};
+            		};
+            	};
+            	nAttributes=1;
+            };
 		};
 		class Item300
 		{
@@ -10930,6 +11206,29 @@ class Mission
 			id=2472;
 			type="C_Boat_Transport_02_F";
 			atlOffset=1.273;
+			class CustomAttributes
+            {
+            	class Attribute0
+            	{
+            		property="ammoBox";
+            		expression="[_this,_value] call bis_fnc_initAmmoBox;";
+            		class Value
+            		{
+            			class data
+            			{
+            				class type
+            				{
+            					type[]=
+            					{
+            						"STRING"
+            					};
+            				};
+            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_I_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+            			};
+            		};
+            	};
+            	nAttributes=1;
+            };
 		};
 		class Item302
 		{
@@ -10961,6 +11260,29 @@ class Mission
 			id=2474;
 			type="C_Boat_Transport_02_F";
 			atlOffset=1.2819581;
+			class CustomAttributes
+            {
+            	class Attribute0
+            	{
+            		property="ammoBox";
+            		expression="[_this,_value] call bis_fnc_initAmmoBox;";
+            		class Value
+            		{
+            			class data
+            			{
+            				class type
+            				{
+            					type[]=
+            					{
+            						"STRING"
+            					};
+            				};
+            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_I_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+            			};
+            		};
+            	};
+            	nAttributes=1;
+            };
 		};
 		class Item304
 		{
@@ -10992,6 +11314,29 @@ class Mission
 			id=2476;
 			type="C_Boat_Transport_02_F";
 			atlOffset=1.425;
+			class CustomAttributes
+            {
+            	class Attribute0
+            	{
+            		property="ammoBox";
+            		expression="[_this,_value] call bis_fnc_initAmmoBox;";
+            		class Value
+            		{
+            			class data
+            			{
+            				class type
+            				{
+            					type[]=
+            					{
+            						"STRING"
+            					};
+            				};
+            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_I_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+            			};
+            		};
+            	};
+            	nAttributes=1;
+            };
 		};
 		class Item306
 		{
@@ -11023,6 +11368,29 @@ class Mission
 			id=2478;
 			type="C_Boat_Transport_02_F";
 			atlOffset=1.791;
+			class CustomAttributes
+            {
+            	class Attribute0
+            	{
+            		property="ammoBox";
+            		expression="[_this,_value] call bis_fnc_initAmmoBox;";
+            		class Value
+            		{
+            			class data
+            			{
+            				class type
+            				{
+            					type[]=
+            					{
+            						"STRING"
+            					};
+            				};
+            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_I_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+            			};
+            		};
+            	};
+            	nAttributes=1;
+            };
 		};
 		class Item308
 		{
@@ -11054,6 +11422,29 @@ class Mission
 			id=2480;
 			type="C_Boat_Transport_02_F";
 			atlOffset=0.9187417;
+			class CustomAttributes
+            {
+            	class Attribute0
+            	{
+            		property="ammoBox";
+            		expression="[_this,_value] call bis_fnc_initAmmoBox;";
+            		class Value
+            		{
+            			class data
+            			{
+            				class type
+            				{
+            					type[]=
+            					{
+            						"STRING"
+            					};
+            				};
+            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_I_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+            			};
+            		};
+            	};
+            	nAttributes=1;
+            };
 		};
 		class Item310
 		{
