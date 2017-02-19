@@ -1913,7 +1913,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="[[[[""arifle_SDAR_F""],[1]],[[""20Rnd_556x45_UW_mag""],[5]],[[""FirstAidKit"",""Medikit"",""U_B_Wetsuit"",""G_B_Diving"",""V_RebreatherB""],[10,1,1,1,1]],[[],[]]],false]";
+							value="[[[[""arifle_SDAR_F""],[1]],[[""20Rnd_556x45_UW_mag""],[5]],[[""FirstAidKit"",""Medikit"",""U_B_Wetsuit"",""G_Diving"",""V_RebreatherB""],[10,1,1,1,1]],[[],[]]],false]";
 						};
 					};
 				};
@@ -1955,7 +1955,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="[[[[""arifle_SDAR_F""],[1]],[[""20Rnd_556x45_UW_mag""],[5]],[[""FirstAidKit"",""Medikit"",""U_B_Wetsuit"",""G_B_Diving"",""V_RebreatherB""],[10,1,1,1,1]],[[],[]]],false]";
+							value="[[[[""arifle_SDAR_F""],[1]],[[""20Rnd_556x45_UW_mag""],[5]],[[""FirstAidKit"",""Medikit"",""U_B_Wetsuit"",""G_Diving"",""V_RebreatherB""],[10,1,1,1,1]],[[],[]]],false]";
 						};
 					};
 				};
@@ -4481,7 +4481,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="[[[[""arifle_SDAR_F""],[1]],[[""20Rnd_556x45_UW_mag""],[5]],[[""FirstAidKit"",""Medikit"",""U_B_Wetsuit"",""G_B_Diving"",""V_RebreatherB""],[10,1,1,1,1]],[[],[]]],false]";
+							value="[[[[""arifle_SDAR_F""],[1]],[[""20Rnd_556x45_UW_mag""],[5]],[[""FirstAidKit"",""Medikit"",""U_B_Wetsuit"",""G_Diving"",""V_RebreatherB""],[10,1,1,1,1]],[[],[]]],false]";
 						};
 					};
 				};
@@ -4523,7 +4523,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="[[[[""arifle_SDAR_F""],[1]],[[""20Rnd_556x45_UW_mag""],[5]],[[""FirstAidKit"",""Medikit"",""U_B_Wetsuit"",""G_B_Diving"",""V_RebreatherB""],[10,1,1,1,1]],[[],[]]],false]";
+							value="[[[[""arifle_SDAR_F""],[1]],[[""20Rnd_556x45_UW_mag""],[5]],[[""FirstAidKit"",""Medikit"",""U_B_Wetsuit"",""G_Diving"",""V_RebreatherB""],[10,1,1,1,1]],[[],[]]],false]";
 						};
 					};
 				};
@@ -11691,7 +11691,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_B_Wetsuit"",""G_B_Diving"",""V_RebreatherB""],[2,1,1,1]],[[],[]]],false]";
+							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_B_Wetsuit"",""G_Diving"",""V_RebreatherB""],[2,1,1,1]],[[],[]]],false]";
 						};
 					};
 				};
@@ -11733,7 +11733,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_B_Wetsuit"",""G_B_Diving"",""V_RebreatherB""],[2,1,1,1]],[[],[]]],false]";
+							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_B_Wetsuit"",""G_Diving"",""V_RebreatherB""],[2,1,1,1]],[[],[]]],false]";
 						};
 					};
 				};
@@ -11775,7 +11775,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_B_Wetsuit"",""G_B_Diving"",""V_RebreatherB""],[2,1,1,1]],[[],[]]],false]";
+							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_B_Wetsuit"",""G_Diving"",""V_RebreatherB""],[2,1,1,1]],[[],[]]],false]";
 						};
 					};
 				};
@@ -11817,7 +11817,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_B_Wetsuit"",""G_B_Diving"",""V_RebreatherB""],[2,1,1,1]],[[],[]]],false]";
+							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_B_Wetsuit"",""G_Diving"",""V_RebreatherB""],[2,1,1,1]],[[],[]]],false]";
 						};
 					};
 				};
@@ -11858,7 +11858,7 @@ class Mission
             						"STRING"
             					};
             				};
-            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_I_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
             			};
             		};
             	};
@@ -11899,7 +11899,7 @@ class Mission
             						"STRING"
             					};
             				};
-            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_I_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
             			};
             		};
             	};
@@ -11939,7 +11939,7 @@ class Mission
             						"STRING"
             					};
             				};
-            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_I_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
             			};
             		};
             	};
@@ -11979,7 +11979,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_I_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
 						};
 					};
 				};

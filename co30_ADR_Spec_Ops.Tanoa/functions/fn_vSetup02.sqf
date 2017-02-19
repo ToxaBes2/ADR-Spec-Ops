@@ -35,18 +35,18 @@ _hurons = ["B_Heli_Transport_03_F"];														// Hurons
 _blackfishes = ["B_T_VTOL_01_armed_F","B_T_VTOL_01_infantry_F","B_T_VTOL_01_vehicle_F"];	// Blackfish
 _mrap_lsv = ["B_MRAP_01_hmg_F","B_MRAP_01_gmg_F","B_T_LSV_01_unarmed_F","O_T_LSV_02_unarmed_F","I_MRAP_03_F","B_T_LSV_01_armed_F"];
 _apc = ["B_APC_Tracked_01_CRV_F","B_APC_Wheeled_01_cannon_F","B_APC_Tracked_01_rcws_F","B_T_APC_Tracked_01_CRV_F","B_T_APC_Wheeled_01_cannon_F"];
-_rhib = ["I_C_Boat_Transport_02_F"];
-_boat = ["B_Boat_Armed_01_minigun_F","B_T_Boat_Armed_01_minigun_F"];
+_boat_partizan = ["C_Boat_Transport_02_F"];
+_boat_blufor = ["B_Boat_Armed_01_minigun_F","B_T_Boat_Armed_01_minigun_F","I_C_Boat_Transport_02_F"];
 
 call {
-    if (_t in _rhib) then {
+    if (_t in _boat_partizan) then {
         partizan_ammo addItemCargoGlobal ["U_I_Wetsuit", 1];
         partizan_ammo addItemCargoGlobal ["V_RebreatherIA", 1];
         partizan_ammo addItemCargoGlobal ["G_Diving", 1];
         partizan_ammo addMagazineCargoGlobal ["20Rnd_556x45_UW_mag", 5];
     };
     
-    if (_t in _boat) then {
+    if (_t in _boat_blufor) then {
         partizan_ammo addItemCargoGlobal ["U_I_Wetsuit", 1];
         partizan_ammo addItemCargoGlobal ["V_RebreatherIA", 1];
         partizan_ammo addItemCargoGlobal ["G_Diving", 1];    
