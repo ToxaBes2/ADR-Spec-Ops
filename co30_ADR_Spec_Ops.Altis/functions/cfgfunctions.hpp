@@ -87,6 +87,7 @@ class QS
 		class garrisonFortEAST {};
 		class garrisonFortFIA {};
 		class garrisonFortIND {};
+		class getCargoData {};
 		class getMainAO {};
 		class getShorePos {};		
 		class killerCatcher {};

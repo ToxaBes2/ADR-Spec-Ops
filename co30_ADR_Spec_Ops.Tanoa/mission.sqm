@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=1289;
+		nextID=1357;
 	};
 	class Camera
 	{
-		pos[]={6604.7114,10.397892,6887.4429};
-		dir[]={0.87267298,-0.40244731,0.27655321};
-		up[]={0.3836444,0.91544253,0.1215781};
-		aside[]={0.30209762,5.4133125e-008,-0.95327801};
+		pos[]={6885.4648,96.071663,7189.6797};
+		dir[]={0.77391279,-0.42944685,0.46544725};
+		up[]={0.36801738,0.90309125,0.22133282};
+		aside[]={0.51539177,-7.5437129e-008,-0.8569566};
 	};
 };
 binarizationWanted=0;
@@ -725,8 +725,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={6919.02,4.0602427,7188.7241};
-				angles[]={0,1.5311948,0};
+				position[]={6919.3555,4.0602136,7188.7256};
+				angles[]={0,4.6855726,0};
 			};
 			side="Empty";
 			flags=4;
@@ -736,15 +736,15 @@ class Mission
 			};
 			id=33;
 			type="B_Heli_Light_01_F";
-			atlOffset=2.3841858e-007;
+			atlOffset=-2.8848648e-005;
 		};
 		class Item2
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={6917.8428,5.7769318,7220.9214};
-				angles[]={0,1.5350344,6.2751913};
+				position[]={6918.6865,5.7701893,7220.9438};
+				angles[]={0,4.6701875,6.2751918};
 			};
 			side="Empty";
 			flags=4;
@@ -755,7 +755,7 @@ class Mission
 			};
 			id=40;
 			type="O_Heli_Transport_04_F";
-			atlOffset=2.3841858e-007;
+			atlOffset=7.1525574e-006;
 		};
 		class Item3
 		{
@@ -763,6 +763,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={6947.9268,5.5335765,7131.5234};
+				angles[]={0,3.135941,0};
 			};
 			side="Empty";
 			flags=4;
@@ -779,8 +780,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={6918.3188,4.1910753,7156.519};
-				angles[]={0,1.572751,0};
+				position[]={6920.6479,4.1910763,7155.1968};
+				angles[]={0,4.7148442,0};
 			};
 			side="Empty";
 			flags=4;
@@ -791,7 +792,7 @@ class Mission
 			};
 			id=50;
 			type="I_Heli_light_03_F";
-			atlOffset=-2.3841858e-007;
+			atlOffset=7.1525574e-007;
 		};
 		class Item5
 		{
@@ -799,6 +800,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={6970.1201,6.0215874,7132.1685};
+				angles[]={0,3.1668954,0};
 			};
 			side="Empty";
 			flags=4;
@@ -3421,7 +3423,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={6920.1191,2.6600001,7156.563};
+				position[]={6920.1465,2.6599998,7155.2554};
 				angles[]={0,4.711853,0};
 			};
 			side="Empty";
@@ -3432,6 +3434,7 @@ class Mission
 			};
 			id=586;
 			type="Land_HelipadCivil_F";
+			atlOffset=-2.3841858e-007;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -3541,7 +3544,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={6927.1802,2.6600237,7136.6069};
+				position[]={6928.4917,2.6600018,7137.2476};
 				angles[]={0,0.48438549,0};
 			};
 			side="Empty";
@@ -3552,7 +3555,7 @@ class Mission
 			};
 			id=606;
 			type="Land_HelipadCivil_F";
-			atlOffset=2.3603439e-005;
+			atlOffset=1.6689301e-006;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -7494,7 +7497,7 @@ class Mission
 			};
 			id=1238;
 			type="B_T_Boat_Armed_01_minigun_F";
-			atlOffset=1.604;
+			atlOffset=1.6040001;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -7599,8 +7602,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={6927.1929,4.7992477,7136.9453};
-				angles[]={0,0.472321,0};
+				position[]={6928.5044,4.7992477,7137.5859};
+				angles[]={0,3.6237564,0};
 			};
 			side="Empty";
 			flags=4;
@@ -7610,7 +7613,6 @@ class Mission
 			};
 			id=1278;
 			type="B_CTRG_Heli_Transport_01_tropic_F";
-			atlOffset=2.3841858e-007;
 		};
 		class Item150
 		{
@@ -9109,7 +9111,7 @@ class Mission
 			};
 			id=1342;
 			type="Land_CampingTable_small_F";
-			atlOffset=59.133324;
+			atlOffset=59.133537;
 		};
 		class Item202
 		{
@@ -9126,7 +9128,7 @@ class Mission
 			};
 			id=1343;
 			type="Land_SatellitePhone_F";
-			atlOffset=59.350281;
+			atlOffset=59.350266;
 		};
 		class Item203
 		{
@@ -9171,7 +9173,7 @@ class Mission
 			};
 			id=1346;
 			type="Land_Laptop_device_F";
-			atlOffset=59.383755;
+			atlOffset=59.38369;
 		};
 		class Item206
 		{
@@ -9188,7 +9190,7 @@ class Mission
 			};
 			id=1347;
 			type="Land_Laptop_unfolded_F";
-			atlOffset=59.383755;
+			atlOffset=59.38369;
 		};
 		class Item207
 		{
@@ -9205,7 +9207,7 @@ class Mission
 			};
 			id=1348;
 			type="Box_NATO_AmmoOrd_F";
-			atlOffset=59.255772;
+			atlOffset=59.255833;
 		};
 		class Item208
 		{
@@ -9222,7 +9224,7 @@ class Mission
 			};
 			id=1349;
 			type="Box_NATO_AmmoOrd_F";
-			atlOffset=59.255772;
+			atlOffset=59.255833;
 		};
 		class Item209
 		{
@@ -9807,8 +9809,8 @@ class Mission
 						};
 						class Attribute1
 						{
-							property="face";
-							expression="_this setface _value;";
+							property="enableStamina";
+							expression="_this enablestamina _value;";
 							class Value
 							{
 								class data
@@ -9817,10 +9819,10 @@ class Mission
 									{
 										type[]=
 										{
-											"STRING"
+											"BOOL"
 										};
 									};
-									value="WhiteHead_15";
+									value=0;
 								};
 							};
 						};
@@ -9864,8 +9866,8 @@ class Mission
 						};
 						class Attribute4
 						{
-							property="enableStamina";
-							expression="_this enablestamina _value;";
+							property="face";
+							expression="_this setface _value;";
 							class Value
 							{
 								class data
@@ -9874,10 +9876,10 @@ class Mission
 									{
 										type[]=
 										{
-											"BOOL"
+											"STRING"
 										};
 									};
-									value=0;
+									value="WhiteHead_15";
 								};
 							};
 						};
@@ -10419,7 +10421,7 @@ class Mission
 			};
 			id=2417;
 			type="B_GMG_01_high_F";
-			atlOffset=0.16807795;
+			atlOffset=0.16745234;
 		};
 		class Item271
 		{
@@ -10497,7 +10499,7 @@ class Mission
 			};
 			id=2425;
 			type="B_HMG_01_high_F";
-			atlOffset=0.20239449;
+			atlOffset=0.20094585;
 		};
 		class Item275
 		{
@@ -10775,28 +10777,28 @@ class Mission
 			type="C_Boat_Transport_02_F";
 			atlOffset=6.3920002;
 			class CustomAttributes
-            {
-            	class Attribute0
-            	{
-            		property="ammoBox";
-            		expression="[_this,_value] call bis_fnc_initAmmoBox;";
-            		class Value
-            		{
-            			class data
-            			{
-            				class type
-            				{
-            					type[]=
-            					{
-            						"STRING"
-            					};
-            				};
-            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
-            			};
-            		};
-            	};
-            	nAttributes=1;
-            };
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item286
 		{
@@ -10829,28 +10831,28 @@ class Mission
 			type="C_Boat_Transport_02_F";
 			atlOffset=4.3930001;
 			class CustomAttributes
-            {
-            	class Attribute0
-            	{
-            		property="ammoBox";
-            		expression="[_this,_value] call bis_fnc_initAmmoBox;";
-            		class Value
-            		{
-            			class data
-            			{
-            				class type
-            				{
-            					type[]=
-            					{
-            						"STRING"
-            					};
-            				};
-            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
-            			};
-            		};
-            	};
-            	nAttributes=1;
-            };
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item288
 		{
@@ -10883,28 +10885,28 @@ class Mission
 			type="C_Boat_Transport_02_F";
 			atlOffset=8.3920002;
 			class CustomAttributes
-            {
-            	class Attribute0
-            	{
-            		property="ammoBox";
-            		expression="[_this,_value] call bis_fnc_initAmmoBox;";
-            		class Value
-            		{
-            			class data
-            			{
-            				class type
-            				{
-            					type[]=
-            					{
-            						"STRING"
-            					};
-            				};
-            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
-            			};
-            		};
-            	};
-            	nAttributes=1;
-            };
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item290
 		{
@@ -10937,28 +10939,28 @@ class Mission
 			type="C_Boat_Transport_02_F";
 			atlOffset=1.452;
 			class CustomAttributes
-            {
-            	class Attribute0
-            	{
-            		property="ammoBox";
-            		expression="[_this,_value] call bis_fnc_initAmmoBox;";
-            		class Value
-            		{
-            			class data
-            			{
-            				class type
-            				{
-            					type[]=
-            					{
-            						"STRING"
-            					};
-            				};
-            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
-            			};
-            		};
-            	};
-            	nAttributes=1;
-            };
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item292
 		{
@@ -10991,28 +10993,28 @@ class Mission
 			type="C_Boat_Transport_02_F";
 			atlOffset=3.855;
 			class CustomAttributes
-            {
-            	class Attribute0
-            	{
-            		property="ammoBox";
-            		expression="[_this,_value] call bis_fnc_initAmmoBox;";
-            		class Value
-            		{
-            			class data
-            			{
-            				class type
-            				{
-            					type[]=
-            					{
-            						"STRING"
-            					};
-            				};
-            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
-            			};
-            		};
-            	};
-            	nAttributes=1;
-            };
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item294
 		{
@@ -11045,28 +11047,28 @@ class Mission
 			type="C_Boat_Transport_02_F";
 			atlOffset=1.321;
 			class CustomAttributes
-            {
-            	class Attribute0
-            	{
-            		property="ammoBox";
-            		expression="[_this,_value] call bis_fnc_initAmmoBox;";
-            		class Value
-            		{
-            			class data
-            			{
-            				class type
-            				{
-            					type[]=
-            					{
-            						"STRING"
-            					};
-            				};
-            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
-            			};
-            		};
-            	};
-            	nAttributes=1;
-            };
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item296
 		{
@@ -11099,28 +11101,28 @@ class Mission
 			type="C_Boat_Transport_02_F";
 			atlOffset=0.85269237;
 			class CustomAttributes
-            {
-            	class Attribute0
-            	{
-            		property="ammoBox";
-            		expression="[_this,_value] call bis_fnc_initAmmoBox;";
-            		class Value
-            		{
-            			class data
-            			{
-            				class type
-            				{
-            					type[]=
-            					{
-            						"STRING"
-            					};
-            				};
-            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
-            			};
-            		};
-            	};
-            	nAttributes=1;
-            };
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item298
 		{
@@ -11151,30 +11153,30 @@ class Mission
 			};
 			id=2470;
 			type="C_Boat_Transport_02_F";
-			atlOffset=0.96699905;
+			atlOffset=3.4630003;
 			class CustomAttributes
-            {
-            	class Attribute0
-            	{
-            		property="ammoBox";
-            		expression="[_this,_value] call bis_fnc_initAmmoBox;";
-            		class Value
-            		{
-            			class data
-            			{
-            				class type
-            				{
-            					type[]=
-            					{
-            						"STRING"
-            					};
-            				};
-            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
-            			};
-            		};
-            	};
-            	nAttributes=1;
-            };
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item300
 		{
@@ -11207,28 +11209,28 @@ class Mission
 			type="C_Boat_Transport_02_F";
 			atlOffset=1.273;
 			class CustomAttributes
-            {
-            	class Attribute0
-            	{
-            		property="ammoBox";
-            		expression="[_this,_value] call bis_fnc_initAmmoBox;";
-            		class Value
-            		{
-            			class data
-            			{
-            				class type
-            				{
-            					type[]=
-            					{
-            						"STRING"
-            					};
-            				};
-            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
-            			};
-            		};
-            	};
-            	nAttributes=1;
-            };
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item302
 		{
@@ -11261,28 +11263,28 @@ class Mission
 			type="C_Boat_Transport_02_F";
 			atlOffset=1.2819581;
 			class CustomAttributes
-            {
-            	class Attribute0
-            	{
-            		property="ammoBox";
-            		expression="[_this,_value] call bis_fnc_initAmmoBox;";
-            		class Value
-            		{
-            			class data
-            			{
-            				class type
-            				{
-            					type[]=
-            					{
-            						"STRING"
-            					};
-            				};
-            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
-            			};
-            		};
-            	};
-            	nAttributes=1;
-            };
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item304
 		{
@@ -11315,28 +11317,28 @@ class Mission
 			type="C_Boat_Transport_02_F";
 			atlOffset=1.425;
 			class CustomAttributes
-            {
-            	class Attribute0
-            	{
-            		property="ammoBox";
-            		expression="[_this,_value] call bis_fnc_initAmmoBox;";
-            		class Value
-            		{
-            			class data
-            			{
-            				class type
-            				{
-            					type[]=
-            					{
-            						"STRING"
-            					};
-            				};
-            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
-            			};
-            		};
-            	};
-            	nAttributes=1;
-            };
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item306
 		{
@@ -11369,28 +11371,28 @@ class Mission
 			type="C_Boat_Transport_02_F";
 			atlOffset=1.791;
 			class CustomAttributes
-            {
-            	class Attribute0
-            	{
-            		property="ammoBox";
-            		expression="[_this,_value] call bis_fnc_initAmmoBox;";
-            		class Value
-            		{
-            			class data
-            			{
-            				class type
-            				{
-            					type[]=
-            					{
-            						"STRING"
-            					};
-            				};
-            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
-            			};
-            		};
-            	};
-            	nAttributes=1;
-            };
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item308
 		{
@@ -11423,28 +11425,28 @@ class Mission
 			type="C_Boat_Transport_02_F";
 			atlOffset=0.9187417;
 			class CustomAttributes
-            {
-            	class Attribute0
-            	{
-            		property="ammoBox";
-            		expression="[_this,_value] call bis_fnc_initAmmoBox;";
-            		class Value
-            		{
-            			class data
-            			{
-            				class type
-            				{
-            					type[]=
-            					{
-            						"STRING"
-            					};
-            				};
-            				value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
-            			};
-            		};
-            	};
-            	nAttributes=1;
-            };
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item310
 		{
@@ -26492,7 +26494,7 @@ class Mission
 			};
 			id=3168;
 			type="Land_Cargo20_military_green_F";
-			atlOffset=2.4880495;
+			atlOffset=2.488049;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -26654,7 +26656,7 @@ class Mission
 			};
 			id=3176;
 			type="Land_Cargo20_military_green_F";
-			atlOffset=2.4356465;
+			atlOffset=2.4356461;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -28398,7 +28400,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={6919.3652,2.6599922,7220.8735};
-				angles[]={0,4.6774821,0};
+				angles[]={0,4.6637154,0};
 			};
 			side="Empty";
 			flags=4;

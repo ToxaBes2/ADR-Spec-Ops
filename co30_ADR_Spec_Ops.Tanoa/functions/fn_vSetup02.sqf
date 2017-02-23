@@ -40,18 +40,18 @@ _boat_blufor = ["B_Boat_Armed_01_minigun_F","B_T_Boat_Armed_01_minigun_F","I_C_B
 
 call {
     if (_t in _boat_partizan) then {
-        partizan_ammo addItemCargoGlobal ["U_I_Wetsuit", 1];
-        partizan_ammo addItemCargoGlobal ["V_RebreatherIA", 1];
-        partizan_ammo addItemCargoGlobal ["G_Diving", 1];
-        partizan_ammo addMagazineCargoGlobal ["20Rnd_556x45_UW_mag", 5];
+        _u addItemCargoGlobal ["U_I_Wetsuit", 1];
+        _u addItemCargoGlobal ["V_RebreatherIA", 1];
+        _u addItemCargoGlobal ["G_Diving", 1];
+        _u addMagazineCargoGlobal ["20Rnd_556x45_UW_mag", 5];
     };
     
     if (_t in _boat_blufor) then {
-        partizan_ammo addItemCargoGlobal ["U_I_Wetsuit", 1];
-        partizan_ammo addItemCargoGlobal ["V_RebreatherIA", 1];
-        partizan_ammo addItemCargoGlobal ["G_Diving", 1];    
-        partizan_ammo addMagazineCargoGlobal ["20Rnd_556x45_UW_mag", 5];
-        partizan_ammo addWeaponCargoGlobal ["arifle_SDAR_F", 1];
+        _u addItemCargoGlobal ["U_I_Wetsuit", 1];
+        _u addItemCargoGlobal ["V_RebreatherIA", 1];
+        _u addItemCargoGlobal ["G_Diving", 1];    
+        _u addMagazineCargoGlobal ["20Rnd_556x45_UW_mag", 5];
+        _u addWeaponCargoGlobal ["arifle_SDAR_F", 1];
     };
 
     if(_t in _taru) exitWith {

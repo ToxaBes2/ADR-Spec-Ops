@@ -12,7 +12,7 @@ if (!isServer) exitWith {};
 TRAFFIC_RandomCivilian = {
     _unit = _this select 0;
     _rds_rhs_civilian = ["U_BG_Guerilla1_1","U_BG_Guerilla2_1","U_BG_Guerilla2_2","U_BG_Guerilla2_3","U_BG_Guerilla3_1","U_BG_Guerilla3_2",
-    "U_BG_Guerilla6_1","U_BG_Guerrilla_6_1","U_BG_leader","U_IG_Guerrilla_6_1","U_IG_leader","U_I_G_resistanceLeader_F","U_OG_Guerilla1_1",
+    "U_BG_leader","U_IG_Guerrilla_6_1","U_IG_leader","U_I_G_resistanceLeader_F","U_OG_Guerilla1_1",
     "U_OG_Guerilla2_1","U_OG_Guerilla2_2","U_OG_Guerilla2_3","U_OG_Guerilla3_1","U_OG_Guerilla3_2","U_OG_Guerrilla_6_1","U_OG_leader"] call BIS_fnc_selectRandom;
     _rhsHeadGear = ["H_Bandanna_camo","H_Bandanna_cbr","H_Bandanna_gry","H_Bandanna_khk","H_Bandanna_khk_hs","H_Bandanna_mcamo","H_Bandanna_sgg",
     "H_Bandanna_surfer","H_Beret_02","H_Beret_Colonel","H_Beret_blk","H_Beret_blk_POLICE","H_Beret_brn_SF","H_Beret_grn","H_Beret_grn_SF",

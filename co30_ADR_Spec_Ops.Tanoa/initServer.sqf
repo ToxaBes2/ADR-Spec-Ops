@@ -169,3 +169,22 @@ publicVariableServer "SUPPORT_CYCLES";
 //        } forEach allMapMarkers;
 //    };
 //};
+
+// load partizan base items and then save it every 43 mins
+_map = 0;
+if (worldName == "Tanoa") then {
+    _map = 1;
+};
+["getPartizanItems",[_map], 0] remoteExec ["sqlServerCall", 2];
+[_map] spawn {
+    _map = _this select 0;
+    while {true} do {
+        sleep 2580;
+        ["clearPartizanItems",[_map], 0] remoteExec ["sqlServerCall", 2];
+        sleep 3;       
+        _data = [partizan_ammo, _map] call QS_fnc_getCargoData;
+        {
+            ["setPartizanItems",[_x select 0, _x select 1, _x select 2, _x select 3], 0] remoteExec ["sqlServerCall", 2];
+        } forEach _data;
+    };
+};
