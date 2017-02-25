@@ -655,7 +655,7 @@ class Mission
 	class Intel
 	{
 		briefingName="Co-30 ADR: Spec Ops [Tanoa]";
-		overviewText="version 0.0.2";
+		overviewText="version 0.0.4";
 		resistanceWest=0;
 		timeOfChanges=28800;
 		startWeather=0;
