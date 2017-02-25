@@ -170,52 +170,82 @@ publicVariableServer "SUPPORT_CYCLES";
 //    };
 //};
 
-// load partizan base items and then save it every 43 mins
-_map = 0;
-if (worldName == "Tanoa") then {
-    _map = 1;
-};
-["getPartizanItems",[_map], 0] remoteExec ["sqlServerCall", 2];
-[_map] spawn {
-    _map = _this select 0;
-    while {true} do {
-        sleep 2580;
-        ["clearPartizanItems",[_map], 0] remoteExec ["sqlServerCall", 2];
-        sleep 3;       
-        _data = [partizan_ammo, _map] call QS_fnc_getCargoData;
-        {
-            ["setPartizanItems",[_x select 0, _x select 1, _x select 2, _x select 3], 0] remoteExec ["sqlServerCall", 2];
-        } forEach _data;
+// persistent data management
+if (_continue) then {
+
+    // load partizan base items and then save it every 43 mins
+    _map = 0;
+    if (worldName == "Tanoa") then {
+        _map = 1;
     };
-};
-
-// load rewards and save it every 34 mins
-["getRewardsBlufor",[_map], 0] remoteExec ["sqlServerCall", 2];
-["getRewardsPartizans",[_map], 0] remoteExec ["sqlServerCall", 2];
-[_map] spawn {
-    _map = _this select 0;
-    while {true} do {
-        sleep 2040;
-        ["clearRewards",[_map, 0], 0] remoteExec ["sqlServerCall", 2];
-        ["clearRewards",[_map, 1], 0] remoteExec ["sqlServerCall", 2];
-        sleep 3;       
-
-        // blufor save
-        _data = [0] call QS_fnc_getRewardsData;
-        {
-            _name = format ['"%1"', _x select 0];
-            _item = format ["%1", _x select 1];
-            _airfield = 0;
-            ["setRewards",[_map, 0, _name, _item, _airfield], 0] remoteExec ["sqlServerCall", 2];
-        } forEach _data;
-
-        // partizans save
-        _data = [1] call QS_fnc_getRewardsData;
-        {
-            _name = format ['"%1"', _x select 0];
-            _item = format ["%1", _x select 1];
-            _airfield = 0;
-            ["setRewards",[_map, 1, _name, _item, _airfield], 0] remoteExec ["sqlServerCall", 2];
-        } forEach _data;
+    ["getPartizanItems",[_map], 0] remoteExec ["sqlServerCall", 2];
+    [_map] spawn {
+        _map = _this select 0;
+        while {true} do {
+            sleep 2580;
+            ["clearPartizanItems",[_map], 0] remoteExec ["sqlServerCall", 2];
+            sleep 3;       
+            _data = [partizan_ammo, _map] call QS_fnc_getCargoData;
+            {
+                ["setPartizanItems",[_x select 0, _x select 1, _x select 2, _x select 3], 0] remoteExec ["sqlServerCall", 2];
+            } forEach _data;
+        };
     };
+    
+    // load rewards and save it every 34 mins
+    ["getRewardsBlufor",[_map], 0] remoteExec ["sqlServerCall", 2];
+    ["getRewardsPartizans",[_map], 0] remoteExec ["sqlServerCall", 2];
+    [_map] spawn {
+        _map = _this select 0;
+        while {true} do {
+            sleep 2040;
+            ["clearRewards",[_map, 0], 0] remoteExec ["sqlServerCall", 2];
+            ["clearRewards",[_map, 1], 0] remoteExec ["sqlServerCall", 2];
+            sleep 3;       
+    
+            // blufor save
+            _data = [0] call QS_fnc_getRewardsData;
+            {
+                _name = format ['"%1"', _x select 0];
+                _item = format ["%1", _x select 1];
+                _airfield = 0;
+                ["setRewards",[_map, 0, _name, _item, _airfield], 0] remoteExec ["sqlServerCall", 2];
+            } forEach _data;
+    
+            // partizans save
+            _data = [1] call QS_fnc_getRewardsData;
+            {
+                _name = format ['"%1"', _x select 0];
+                _item = format ["%1", _x select 1];
+                _airfield = 0;
+                ["setRewards",[_map, 1, _name, _item, _airfield], 0] remoteExec ["sqlServerCall", 2];
+            } forEach _data;
+        };
+    };
+    
+    // load avanposts and save it every 26 mins
+    ["getAvanpostPartizans",[_map], 0] remoteExec ["sqlServerCall", 2];
+    [_map] spawn {
+        _map = _this select 0;
+        while {true} do {
+            sleep 1560;
+            ["clearAvanpostPartizans",[_map], 0] remoteExec ["sqlServerCall", 2];
+            if (count AVANPOST_PARTIZAN_RESPAWN > 0) then {
+                _markers = AVANPOST_PARTIZAN_RESPAWN;
+                _n = 0;
+                {
+                    _mkrName = format ["mkr_%1", _x];
+                    _mkrPos = getMarkerPos _mkrName;
+                    if (_n < 2) then {
+                        if !(_mkrPos isEqualTo [0,0,0]) then {
+                            _position = format ["%1,%2", floor (_mkrPos select 0), floor (_mkrPos select 1)];
+                            ["setAvanpostPartizans",[_map, _position], 0] remoteExec ["sqlServerCall", 2];
+                            _n = _n + 1;
+                        };
+                    };
+                } forEach _markers;
+            };
+        };
+    };
+
 };

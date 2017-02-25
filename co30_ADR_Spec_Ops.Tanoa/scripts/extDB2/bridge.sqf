@@ -155,6 +155,17 @@ sqlResponse = {
                 publicVariable "PARTIZAN_REWARDS_LIST";  
             };
         };
+        case "getAvanpostPartizans": {
+            _queryResult = call compile _queryResult;
+            if (count _queryResult > 1) then {
+                _queryResult = _queryResult select 1;
+                if (count _queryResult > 0) then {
+                    {
+                        [_x] call QS_fnc_addAvanpost;
+                    } forEach _queryResult;              
+                };
+            };
+        };
     };           
 };
 KRON_StrToArray = {
