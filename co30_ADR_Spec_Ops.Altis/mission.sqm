@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1966;
+		nextID=1969;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={21664.746,18.25042,20870.834};
-		dir[]={-0.42875686,-0.4203513,-0.79967231};
-		up[]={-0.19862981,0.90736145,-0.37046364};
-		aside[]={-0.88131636,-8.3819032e-008,0.47253197};
+		pos[]={15130.306,22.048603,17237.564};
+		dir[]={-0.89773899,-0.3361935,0.28467512};
+		up[]={-0.32046723,0.94179249,0.10162087};
+		aside[]={0.30226934,3.9115548e-008,0.95322293};
 	};
 };
 binarizationWanted=0;
@@ -85,7 +85,8 @@ addons[]=
 	"A3_Structures_F_Mil_Cargo",
 	"A3_Boat_F_Exp_Boat_Transport_02",
 	"A3_Structures_F_Exp_Industrial_SurfaceMine_01",
-	"A3_Static_F_AT_01"
+	"A3_Static_F_AT_01",
+	"A3_Modules_F_Effects"
 };
 class AddonsMetaData
 {
@@ -396,7 +397,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=750;
+		items=751;
 		class Item0
 		{
 			dataType="Marker";
@@ -6646,7 +6647,6 @@ class Mission
 			{
 				skill=0.60000002;
 				init="this allowDamage false;";
-				createAsSimpleObject=1;
 			};
 			id=876;
 			type="Land_PortableLight_double_F";
@@ -11104,7 +11104,7 @@ class Mission
 			};
 			id=1075;
 			type="B_HMG_01_high_F";
-			atlOffset=10.101;
+			atlOffset=9.9559517;
 		};
 		class Item348
 		{
@@ -11277,7 +11277,7 @@ class Mission
 			};
 			id=1158;
 			type="B_HMG_01_high_F";
-			atlOffset=5.9029999;
+			atlOffset=5.9058661;
 		};
 		class Item357
 		{
@@ -26537,7 +26537,7 @@ class Mission
 			};
 			id=1964;
 			type="C_Boat_Transport_02_F";
-			atlOffset=5.0242105;
+			atlOffset=5.0242109;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -26597,6 +26597,41 @@ class Mission
 								};
 							};
 							value="[[[[],[]],[[],[]],[[""FirstAidKit"",""U_I_Wetsuit"",""G_Diving"",""V_RebreatherIA""],[2,1,1,1]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item750
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={15229.957,18.462612,17322.619};
+				angles[]={0,0,6.2824869};
+			};
+			id=1967;
+			type="ModuleChemlight_F";
+			atlOffset=4.7683716e-005;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ModuleChemlight_F_Type";
+					expression="_this setVariable ['Type',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="Chemlight_Blue";
 						};
 					};
 				};

@@ -8,7 +8,7 @@ class EditorData
 	toggles=9;
 	class ItemIDProvider
 	{
-		nextID=3486;
+		nextID=3488;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=1357;
+		nextID=1425;
 	};
 	class Camera
 	{
-		pos[]={6885.4648,96.071663,7189.6797};
-		dir[]={0.77391279,-0.42944685,0.46544725};
-		up[]={0.36801738,0.90309125,0.22133282};
-		aside[]={0.51539177,-7.5437129e-008,-0.8569566};
+		pos[]={6915.9473,41.130932,7223.1948};
+		dir[]={-0.29913393,-0.46938789,0.83078432};
+		up[]={-0.15901476,0.88299102,0.44163305};
+		aside[]={0.94087154,-1.1175871e-008,0.33877197};
 	};
 };
 binarizationWanted=0;
@@ -104,7 +104,8 @@ addons[]=
 	"A3_Structures_F_Civ_Market",
 	"A3_Structures_F_Mil_Shelters",
 	"A3_Supplies_F_Heli_Bladders",
-	"A3_Structures_F_Naval_Buoys"
+	"A3_Structures_F_Naval_Buoys",
+	"A3_Modules_F_Effects"
 };
 class AddonsMetaData
 {
@@ -678,7 +679,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=805;
+		items=806;
 		class Item0
 		{
 			dataType="Object";
@@ -7613,6 +7614,7 @@ class Mission
 			};
 			id=1278;
 			type="B_CTRG_Heli_Transport_01_tropic_F";
+			atlOffset=2.3841858e-007;
 		};
 		class Item150
 		{
@@ -9111,7 +9113,7 @@ class Mission
 			};
 			id=1342;
 			type="Land_CampingTable_small_F";
-			atlOffset=59.133537;
+			atlOffset=59.133324;
 		};
 		class Item202
 		{
@@ -9128,7 +9130,7 @@ class Mission
 			};
 			id=1343;
 			type="Land_SatellitePhone_F";
-			atlOffset=59.350266;
+			atlOffset=59.350281;
 		};
 		class Item203
 		{
@@ -9173,7 +9175,7 @@ class Mission
 			};
 			id=1346;
 			type="Land_Laptop_device_F";
-			atlOffset=59.38369;
+			atlOffset=59.383755;
 		};
 		class Item206
 		{
@@ -9190,7 +9192,7 @@ class Mission
 			};
 			id=1347;
 			type="Land_Laptop_unfolded_F";
-			atlOffset=59.38369;
+			atlOffset=59.383755;
 		};
 		class Item207
 		{
@@ -9207,7 +9209,7 @@ class Mission
 			};
 			id=1348;
 			type="Box_NATO_AmmoOrd_F";
-			atlOffset=59.255833;
+			atlOffset=59.255772;
 		};
 		class Item208
 		{
@@ -9224,7 +9226,7 @@ class Mission
 			};
 			id=1349;
 			type="Box_NATO_AmmoOrd_F";
-			atlOffset=59.255833;
+			atlOffset=59.255772;
 		};
 		class Item209
 		{
@@ -9809,8 +9811,8 @@ class Mission
 						};
 						class Attribute1
 						{
-							property="enableStamina";
-							expression="_this enablestamina _value;";
+							property="face";
+							expression="_this setface _value;";
 							class Value
 							{
 								class data
@@ -9819,10 +9821,10 @@ class Mission
 									{
 										type[]=
 										{
-											"BOOL"
+											"STRING"
 										};
 									};
-									value=0;
+									value="WhiteHead_15";
 								};
 							};
 						};
@@ -9866,8 +9868,8 @@ class Mission
 						};
 						class Attribute4
 						{
-							property="face";
-							expression="_this setface _value;";
+							property="enableStamina";
+							expression="_this enablestamina _value;";
 							class Value
 							{
 								class data
@@ -9876,10 +9878,10 @@ class Mission
 									{
 										type[]=
 										{
-											"STRING"
+											"BOOL"
 										};
 									};
-									value="WhiteHead_15";
+									value=0;
 								};
 							};
 						};
@@ -10421,7 +10423,7 @@ class Mission
 			};
 			id=2417;
 			type="B_GMG_01_high_F";
-			atlOffset=0.16745234;
+			atlOffset=0.16807795;
 		};
 		class Item271
 		{
@@ -10499,7 +10501,7 @@ class Mission
 			};
 			id=2425;
 			type="B_HMG_01_high_F";
-			atlOffset=0.20094585;
+			atlOffset=0.20239449;
 		};
 		class Item275
 		{
@@ -11153,7 +11155,7 @@ class Mission
 			};
 			id=2470;
 			type="C_Boat_Transport_02_F";
-			atlOffset=3.4630003;
+			atlOffset=0.96699905;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -26494,7 +26496,7 @@ class Mission
 			};
 			id=3168;
 			type="Land_Cargo20_military_green_F";
-			atlOffset=2.488049;
+			atlOffset=2.4880495;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -26656,7 +26658,7 @@ class Mission
 			};
 			id=3176;
 			type="Land_Cargo20_military_green_F";
-			atlOffset=2.4356461;
+			atlOffset=2.4356465;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -32111,6 +32113,39 @@ class Mission
 								};
 							};
 							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item805
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={6875.8359,3.1630001,7309.5742};
+			};
+			id=3486;
+			type="ModuleChemlight_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ModuleChemlight_F_Type";
+					expression="_this setVariable ['Type',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="Chemlight_Blue";
 						};
 					};
 				};

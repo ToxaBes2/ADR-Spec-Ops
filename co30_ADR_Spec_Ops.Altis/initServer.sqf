@@ -189,3 +189,34 @@ if (worldName == "Tanoa") then {
         } forEach _data;
     };
 };
+
+// load rewards and save it every 34 mins
+["getRewardsBlufor",[_map], 0] remoteExec ["sqlServerCall", 2];
+["getRewardsPartizans",[_map], 0] remoteExec ["sqlServerCall", 2];
+[_map] spawn {
+    _map = _this select 0;
+    while {true} do {
+        sleep 2040;
+        ["clearRewards",[_map, 0], 0] remoteExec ["sqlServerCall", 2];
+        ["clearRewards",[_map, 1], 0] remoteExec ["sqlServerCall", 2];
+        sleep 3;       
+
+        // blufor save
+        _data = [0] call QS_fnc_getRewardsData;
+        {
+            _name = format ['"%1"', _x select 0];
+            _item = format ["%1", _x select 1];
+            _airfield = 0;
+            ["setRewards",[_map, 0, _name, _item, _airfield], 0] remoteExec ["sqlServerCall", 2];
+        } forEach _data;
+
+        // partizans save
+        _data = [1] call QS_fnc_getRewardsData;
+        {
+            _name = format ['"%1"', _x select 0];
+            _item = format ["%1", _x select 1];
+            _airfield = 0;
+            ["setRewards",[_map, 1, _name, _item, _airfield], 0] remoteExec ["sqlServerCall", 2];
+        } forEach _data;
+    };
+};

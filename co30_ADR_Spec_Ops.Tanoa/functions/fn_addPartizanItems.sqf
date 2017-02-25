@@ -24,7 +24,7 @@ _googles = ["G_Aviator","G_Balaclava_blk","G_Balaclava_lowprofile","G_Balaclava_
 _weapons = [
     ["hgun_ACPC2_F", ["9Rnd_45ACP_Mag"]],
     ["hgun_ACPC2_snds_F", ["9Rnd_45ACP_Mag"]],
-    ["gun_P07_F", ["16Rnd_9x21_Mag","16Rnd_9x21_red_Mag","16Rnd_9x21_green_Mag","16Rnd_9x21_yellow_Mag","30Rnd_9x21_Mag","30Rnd_9x21_Red_Mag","30Rnd_9x21_Yellow_Mag","30Rnd_9x21_Green_Mag"], "muzzle_snds_L"],
+    ["hgun_P07_F", ["16Rnd_9x21_Mag","16Rnd_9x21_red_Mag","16Rnd_9x21_green_Mag","16Rnd_9x21_yellow_Mag","30Rnd_9x21_Mag","30Rnd_9x21_Red_Mag","30Rnd_9x21_Yellow_Mag","30Rnd_9x21_Green_Mag"], "muzzle_snds_L"],
     ["hgun_P07_snds_F", [ "16Rnd_9x21_Mag","16Rnd_9x21_red_Mag","16Rnd_9x21_green_Mag","16Rnd_9x21_yellow_Mag","30Rnd_9x21_Mag","30Rnd_9x21_Red_Mag","30Rnd_9x21_Yellow_Mag","30Rnd_9x21_Green_Mag"]],
     ["hgun_Pistol_heavy_01_F", ["11Rnd_45ACP_Mag"], "optic_MRD"],
     ["hgun_Pistol_heavy_01_snds_F", ["11Rnd_45ACP_Mag"], "optic_MRD"],
