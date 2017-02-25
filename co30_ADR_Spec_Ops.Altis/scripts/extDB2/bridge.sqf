@@ -134,29 +134,25 @@ sqlResponse = {
             };
         };
         case "getRewardsBlufor": {
-            if (typeName _queryResult == "ARRAY") then {
-                _queryResult = call compile _queryResult;
-                if (count _queryResult > 1) then {
-                    _queryResult = _queryResult select 1;
-                    BLUFOR_REWARDS_LIST = [];
-                    {
-                        BLUFOR_REWARDS_LIST pushBack [_x select 0, _x select 1, false];
-                    } forEach _queryResult;
-                    publicVariable "BLUFOR_REWARDS_LIST";  
-                };
+            _queryResult = call compile _queryResult;
+            if (count _queryResult > 1) then {
+                _queryResult = _queryResult select 1;
+                BLUFOR_REWARDS_LIST = [];
+                {
+                    BLUFOR_REWARDS_LIST pushBack [_x select 0, _x select 1, false];
+                } forEach _queryResult;
+                publicVariable "BLUFOR_REWARDS_LIST";  
             };
         };
         case "getRewardsPartizans": {
-            if (typeName _queryResult == "ARRAY") then {
-                _queryResult = call compile _queryResult;
-                if (count _queryResult > 1) then {
-                    _queryResult = _queryResult select 1;
-                    PARTIZAN_REWARDS_LIST = []; 
-                    {
-                        PARTIZAN_REWARDS_LIST pushBack [_x select 0, _x select 1, false];
-                    } forEach _queryResult;
-                    publicVariable "PARTIZAN_REWARDS_LIST";  
-                };
+            _queryResult = call compile _queryResult;
+            if (count _queryResult > 1) then {
+                _queryResult = _queryResult select 1;
+                PARTIZAN_REWARDS_LIST = []; 
+                {
+                    PARTIZAN_REWARDS_LIST pushBack [_x select 0, _x select 1, false];
+                } forEach _queryResult;
+                publicVariable "PARTIZAN_REWARDS_LIST";  
             };
         };
     };           
