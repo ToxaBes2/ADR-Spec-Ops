@@ -108,30 +108,24 @@ sqlResponse = {
             clearItemCargoGlobal partizan_ammo;
             clearMagazineCargoGlobal partizan_ammo;
             clearBackpackCargoGlobal partizan_ammo;
-            if (typeName _queryResult == "ARRAY") then {
-                _queryResult = call compile _queryResult;
-                if (count _queryResult > 1) then {  
-                    _queryResult = _queryResult select 1;
-                    //if (typeName _queryResult == "ARRAY") then {    
-                        {
-                            _item = _x select 0;
-                            _qty = _x select 1;
-                            _type = _x select 2;
-                            switch (_type) do { 
-                                case "weapon" :   {partizan_ammo addWeaponCargoGlobal [_item, _qty];}; 
-                                case "magazine" : {partizan_ammo addMagazineCargoGlobal [_item, _qty];};
-                                case "uniform" :  {partizan_ammo addItemCargoGlobal [_item, _qty];}; 
-                                case "vest" :     {partizan_ammo addItemCargoGlobal [_item, _qty];}; 
-                                case "backpack" : {partizan_ammo addBackpackCargoGlobal [_item, _qty];}; 
-                                case "headgear" : {partizan_ammo addItemCargoGlobal [_item, _qty];};
-                                case "glassess" : {partizan_ammo addItemCargoGlobal [_item, _qty];};
-                                case "item" :     {partizan_ammo addItemCargoGlobal [_item, _qty];};
-                                default {}; 
-                            };                   
-                        } forEach _queryResult;   
-                    //};            
-                };
-            };
+            _queryResult = call compile _queryResult;                
+            _queryResult = _queryResult select 1; 
+            {
+                _item = _x select 0;
+                _qty = _x select 1;
+                _type = _x select 2;
+                switch (_type) do { 
+                    case "weapon" :   {partizan_ammo addWeaponCargoGlobal [_item, _qty];}; 
+                    case "magazine" : {partizan_ammo addMagazineCargoGlobal [_item, _qty];};
+                    case "uniform" :  {partizan_ammo addItemCargoGlobal [_item, _qty];}; 
+                    case "vest" :     {partizan_ammo addItemCargoGlobal [_item, _qty];}; 
+                    case "backpack" : {partizan_ammo addBackpackCargoGlobal [_item, _qty];}; 
+                    case "headgear" : {partizan_ammo addItemCargoGlobal [_item, _qty];};
+                    case "glassess" : {partizan_ammo addItemCargoGlobal [_item, _qty];};
+                    case "item" :     {partizan_ammo addItemCargoGlobal [_item, _qty];};
+                    default {}; 
+                };                   
+            } forEach _queryResult;             
         };
         case "getRewardsBlufor": {
             _queryResult = call compile _queryResult;
@@ -147,10 +141,10 @@ sqlResponse = {
             };
         };
         case "getRewardsPartizans": {
-            _queryResult = call compile _queryResult;
+            _queryResult = call compile _queryResult;            
             if (typeName _queryResult == "ARRAY") then {
                 if (count _queryResult > 1) then {
-                    _queryResult = _queryResult select 1;
+                    _queryResult = _queryResult select 1;                    
                     PARTIZAN_REWARDS_LIST = []; 
                     {
                         PARTIZAN_REWARDS_LIST pushBack [_x select 0, _x select 1, false];
