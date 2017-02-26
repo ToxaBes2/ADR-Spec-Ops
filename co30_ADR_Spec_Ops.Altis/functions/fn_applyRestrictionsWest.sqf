@@ -107,7 +107,7 @@ _allowedVests = ["V_PlateCarrier1_rgr","V_PlateCarrier2_rgr","V_PlateCarrier3_rg
 "V_Chestrig_khk","V_Chestrig_rgr","V_Chestrig_blk","V_Chestrig_oli","V_TacVest_khk","V_TacVest_brn","V_TacVest_oli","V_TacVest_blk",
 "V_TacVestIR_blk","V_TacVestCamo_khk","V_RebreatherB","V_PlateCarrierL_CTRG","V_PlateCarrierH_CTRG",
 "V_PlateCarrierGL_blk","V_PlateCarrierGL_mtp","V_PlateCarrierSpec_blk","V_PlateCarrierSpec_mtp","V_PlateCarrier1_rgr_noflag_F",
-"V_PlateCarrier2_rgr_noflag_F","V_TacChestrig_grn_F","V_TacChestrig_cbr_F","V_TacChestrig_oli_F","V_PlateCarrier2_blk"];
+"V_PlateCarrier2_rgr_noflag_F","V_TacChestrig_grn_F","V_TacChestrig_cbr_F","V_TacChestrig_oli_F","V_PlateCarrier2_blk","V_PlateCarrierIAGL_oli"];
 
 // HEADGEAR
 _allowedHeadgear = ["H_HelmetB","H_HelmetB_camo","H_HelmetB_paint","H_HelmetB_light","H_HelmetB_light","H_Booniehat_indp","H_Booniehat_mcamo",
