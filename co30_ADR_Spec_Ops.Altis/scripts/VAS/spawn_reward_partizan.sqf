@@ -164,6 +164,13 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
                 _x setName "[AI]";
             } forEach units _grp;
         };
+
+        if (_veh isKindOf "LandVehicle") then {
+            clearWeaponCargoGlobal _veh;
+            clearMagazineCargoGlobal _veh;
+            clearBackpackCargoGlobal _veh;
+            clearItemCargoGlobal _veh;
+        };
     
         if (count _vehs > 1) then {
             _vehs deleteAt 0;

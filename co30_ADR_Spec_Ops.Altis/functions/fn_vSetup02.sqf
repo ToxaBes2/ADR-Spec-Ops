@@ -20,7 +20,7 @@ _u = _this select 0;
 _t = typeOf _u;
 
 if (isNull _u) exitWith {};
-
+_u setVariable ["AUTOSPAWNED", true, true];
 _gh_huron = ["B_Heli_Transport_01_camo_F", "B_Heli_Transport_01_F", "B_Heli_Transport_03_F"]; 	// ghosthawk and huron
 _huron = ["B_Heli_Transport_03_F"];																// huron
 _taru = ["O_Heli_Transport_04_F"];																// taru

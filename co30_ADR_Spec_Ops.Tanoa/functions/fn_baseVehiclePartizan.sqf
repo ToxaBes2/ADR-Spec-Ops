@@ -6,6 +6,7 @@ _veh = createVehicle [_class, _vehiclePos, [], 0, "NONE"];
 _veh setDir (random 360);
 _veh lock 0;
 _veh setVariable ["irTarget", false, true];
+_veh setVariable ["PARTIZANSPAWNED", true, true];
 _veh addItemCargoGlobal ["Toolkit", 1];
 
 // Put market on the spawned vehicle for 60 seconds

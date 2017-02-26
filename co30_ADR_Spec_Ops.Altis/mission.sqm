@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=1;
+	toggles=129;
 	class ItemIDProvider
 	{
-		nextID=1969;
+		nextID=1977;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={15130.306,22.048603,17237.564};
-		dir[]={-0.89773899,-0.3361935,0.28467512};
-		up[]={-0.32046723,0.94179249,0.10162087};
-		aside[]={0.30226934,3.9115548e-008,0.95322293};
+		pos[]={15122.574,42.91,17176.008};
+		dir[]={-0.53921318,-0.55779868,0.63096094};
+		up[]={-0.36238694,0.8299759,0.42404753};
+		aside[]={0.76021522,0,0.64967287};
 	};
 };
 binarizationWanted=0;
@@ -397,7 +397,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=751;
+		items=752;
 		class Item0
 		{
 			dataType="Marker";
@@ -10750,7 +10750,7 @@ class Mission
 			class Attributes
 			{
 				ammo=0;
-				init="this enableRopeAttach false; this setMass 500000; " \n "this addAction [""<t color='#FFEB3B'><img image='\a3\ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa' size='1.0'/> Эвакуация базы</t>"",""scripts\misc\actions\basePartizan_switch.sqf"",[],-99,true,true,"""",'((vehicle player) == player && playerSide == resistance) && !adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\GUI\Cfg\Notifications\tridentEnemy_ca.paa' size='1.0'/> Уничтожить базу партизан</t>"",""scripts\misc\actions\basePartizan_destroy.sqf"",[],18,true,true,"""",'((vehicle player) == player && playerSide == west)', 5];   " \n "this addAction [""<t color='#FF8000'><img image='\A3\Soft_F\Quadbike_01\Data\UI\map_Quad_CA.paa' size='1.0'/> Вызвать квадроцикл</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""quadbike""],17,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#FFBF00'><img image='\A3\soft_f_gamma\SUV_01\Data\UI\map_suv_01_CA.paa' size='1.0'/> Вызвать внедорожник (SUV)</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""suv""],16,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#BFFF00'><img image='\A3\soft_f\Offroad_01\Data\UI\map_offroad_01_CA.paa' size='1.0'/> Вызвать пикап</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""offroad""],15,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#01DFA5'><img image='\A3\Soft_F_Exp\Offroad_02\Data\UI\map_Offroad_02_base_CA.paa' size='1.0'/> Вызвать полноприводный джип</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""jeep""],14,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];" \n "this addAction [""<t color='#FFD700'><img image='\A3\soft_f_gamma\Van_01\Data\UI\map_Van_01_box_CA.paa' size='1.0'/> Вызвать грузовик</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""truck""],15,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5]; " \n "this addAction [""<t color='#CD0000'><img image='\A3\soft_f_gamma\Hatchback_01\Data\UI\map_car_CA.paa' size='1.0'/> Вызвать спортивный хэтчбек</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""hatchback""],15,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5]; " \n "this addAction [""<t color='#2196F3'><img image='\a3\ui_f\data\map\VehicleIcons\iconShip_ca.paa' size='1.0'/> Вызвать лодку</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""ship""],13,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#BDBDBD'><img image='\a3\ui_f\data\Map\VehicleIcons\iconCar_ca.paa' size='1.0'/> Вызвать технику</>"", {[] spawn {adr_partizan_submenu = true; sleep 20, adr_partizan_submenu = false;}},[],6,true,false,"""",'((vehicle player) == player && playerSide == resistance) && !adr_partizan_submenu', 5];    " \n "this addAction [""<t color='#BDBDBD'><img image='\a3\ui_f\data\Map\Diary\Icons\taskFailed_ca.paa' size='1.0'/> Отмена</>"", {adr_partizan_submenu = false;},[],6,true,false,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];" \n "this addAction[""<t color='#C6FF00'><img image='\a3\ui_f\data\GUI\Cfg\CommunicationMenu\supplydrop_ca.paa' size='1.0'/>Использовать трофеи</t>"",""createDialog 'VAS_PARTIZAN_Reward_Diag';"",[],-1,true,false,"""",'((vehicle player) == player && playerSide == resistance) && !adr_partizan_submenu', 5];" \n "this addAction [""<img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\gps_ca.paa' size='1.0'/> Дипломатия: <t color='#23D80E'>объявить перемирие</t>"", ""scripts\diplomacyPartizan.sqf"", 1, -100, false, true, """", '(_target getVariable [""DIPLOMACY"",0]) != 1 && playerSide == resistance'];" \n "this addAction [""<img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\gps_ca.paa' size='1.0'/> Дипломатия: <t color='#F44336'>объявить войну</t>"", ""scripts\diplomacyPartizan.sqf"", 0, -100, false, true, """", '(_target getVariable [""DIPLOMACY"",0] == 1) && playerSide == resistance'];";
+				init="this enableRopeAttach false; this setMass 500000;  " \n "this addAction [""<t color='#FFEB3B'><img image='\a3\ui_f\data\GUI\Cfg\CommunicationMenu\call_ca.paa' size='1.0'/> Эвакуация базы</t>"",""scripts\misc\actions\basePartizan_switch.sqf"",[],-99,true,true,"""",'((vehicle player) == player && playerSide == resistance) && !adr_partizan_submenu', 5];     " \n "this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\GUI\Cfg\Notifications\tridentEnemy_ca.paa' size='1.0'/> Уничтожить базу партизан</t>"",""scripts\misc\actions\basePartizan_destroy.sqf"",[],18,true,true,"""",'((vehicle player) == player && playerSide == west)', 5];    " \n "this addAction [""<t color='#FF8000'><img image='\A3\Soft_F\Quadbike_01\Data\UI\map_Quad_CA.paa' size='1.0'/> Вызвать квадроцикл</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""quadbike""],17,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];     " \n "this addAction [""<t color='#FFBF00'><img image='\A3\soft_f_gamma\SUV_01\Data\UI\map_suv_01_CA.paa' size='1.0'/> Вызвать внедорожник (SUV)</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""suv""],16,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];     " \n "this addAction [""<t color='#BFFF00'><img image='\A3\soft_f\Offroad_01\Data\UI\map_offroad_01_CA.paa' size='1.0'/> Вызвать пикап</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""offroad""],15,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];     " \n "this addAction [""<t color='#01DFA5'><img image='\A3\Soft_F_Exp\Offroad_02\Data\UI\map_Offroad_02_base_CA.paa' size='1.0'/> Вызвать полноприводный джип</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""jeep""],14,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5]; " \n "this addAction [""<t color='#FFD700'><img image='\A3\soft_f_gamma\Van_01\Data\UI\map_Van_01_box_CA.paa' size='1.0'/> Вызвать грузовик</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""truck""],15,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];  " \n "this addAction [""<t color='#CD0000'><img image='\A3\soft_f_gamma\Hatchback_01\Data\UI\map_car_CA.paa' size='1.0'/> Вызвать спортивный хэтчбек</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""hatchback""],15,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];  " \n "this addAction [""<t color='#2196F3'><img image='\a3\ui_f\data\map\VehicleIcons\iconShip_ca.paa' size='1.0'/> Вызвать лодку</>"", ""scripts\misc\actions\baseVehicle_switch.sqf"",[""ship""],13,true,true,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5];     " \n "this addAction [""<t color='#BDBDBD'><img image='\a3\ui_f\data\Map\VehicleIcons\iconCar_ca.paa' size='1.0'/> Вызвать технику</>"", {[] spawn {adr_partizan_submenu = true; sleep 20, adr_partizan_submenu = false;}},[],6,true,false,"""",'((vehicle player) == player && playerSide == resistance) && !adr_partizan_submenu', 5];     " \n "this addAction [""<t color='#BDBDBD'><img image='\a3\ui_f\data\Map\Diary\Icons\taskFailed_ca.paa' size='1.0'/> Отмена</>"", {adr_partizan_submenu = false;},[],6,true,false,"""",'((vehicle player) == player && playerSide == resistance) && adr_partizan_submenu', 5]; " \n "this addAction [""<t color='#C6FF00'><img image='\a3\ui_f\data\GUI\Cfg\CommunicationMenu\supplydrop_ca.paa' size='1.0'/>Использовать трофеи</t>"",""createDialog 'VAS_PARTIZAN_Reward_Diag';"",[],-1,true,false,"""",'((vehicle player) == player && playerSide == resistance) && !adr_partizan_submenu', 5]; " \n "this addAction [""<img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\gps_ca.paa' size='1.0'/> Дипломатия: <t color='#23D80E'>объявить перемирие</t>"", ""scripts\diplomacyPartizan.sqf"", 1, -100, false, true, """", '(_target getVariable [""DIPLOMACY"",0]) != 1 && playerSide == resistance']; " \n "this addAction [""<img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\gps_ca.paa' size='1.0'/> Дипломатия: <t color='#F44336'>объявить войну</t>"", ""scripts\diplomacyPartizan.sqf"", 0, -100, false, true, """", '(_target getVariable [""DIPLOMACY"",0] == 1) && playerSide == resistance']; " \n "this addAction [""<t color='#C6FF00'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacegarage_ca.paa' size='1.0'/> Поставить технику в гараж</t>"",""[_this select 1] call QS_fnc_garage;"",[],-5,true,true,"""",'(playerSide == resistance && !(vehicle player == player) && (driver (vehicle player) == player))',15];  " \n "";
 				name="partizan_ammo";
 			};
 			id=997;
@@ -11096,6 +11096,7 @@ class Mission
 				angles[]={0,5.5229897,0};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 				lock="UNLOCKED";
@@ -11104,7 +11105,7 @@ class Mission
 			};
 			id=1075;
 			type="B_HMG_01_high_F";
-			atlOffset=9.9559517;
+			atlOffset=0.0011749268;
 		};
 		class Item348
 		{
@@ -11277,7 +11278,7 @@ class Mission
 			};
 			id=1158;
 			type="B_HMG_01_high_F";
-			atlOffset=5.9058661;
+			atlOffset=5.9029999;
 		};
 		class Item357
 		{
@@ -11940,7 +11941,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this allowDamage false;this addAction[""<t color='#C6FF00'><img image='\a3\ui_f\data\GUI\Cfg\CommunicationMenu\supplydrop_ca.paa' size='1.0'/>Наградная Техника</t>"",""createDialog 'VAS_BLUFOR_Reward_Diag';"",[],7,true,false,"""",'((vehicle player) == player && playerSide == west)', 5];";
+				init="this allowDamage false; " \n "this addAction[""<t color='#C6FF00'><img image='\a3\ui_f\data\GUI\Cfg\CommunicationMenu\supplydrop_ca.paa' size='1.0'/> Наградная Техника</t>"",""createDialog 'VAS_BLUFOR_Reward_Diag';"",[],7,true,false,"""",'((vehicle player) == player && playerSide == west)', 5]; " \n "this addAction[""<t color='#C6FF00'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacegarage_ca.paa' size='1.0'/> Поставить технику в гараж</t>"",""[_this select 1] call QS_fnc_garage;"",[],-5,true,true,"""",'(playerSide == west && !(vehicle player == player) && (driver (vehicle player) == player))',15];  " \n "";
 			};
 			id=1260;
 			type="Land_Atm_02_F";
@@ -26632,6 +26633,41 @@ class Mission
 								};
 							};
 							value="Chemlight_Blue";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item751
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={16008.111,13.553171,17039.396};
+			};
+			name="partizan_chemlight";
+			id=1976;
+			type="ModuleChemlight_F";
+			atlOffset=-9.5367432e-007;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ModuleChemlight_F_Type";
+					expression="_this setVariable ['Type',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="Chemlight_Yellow";
 						};
 					};
 				};

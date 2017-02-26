@@ -42,3 +42,4 @@ partizan_ammo setPos _position;
 "respawn_guerrila" setMarkerPos _respawnPos;
 "partizan_base" setMarkerPos _position;
 ["partizan_base", 0] remoteExec ["setMarkerAlphaLocal", west];
+partizan_chemlight setPos _position;

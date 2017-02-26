@@ -160,7 +160,7 @@ _myBox = _this select 0;
 "V_PlateCarrierGL_mtp",
 "V_PlateCarrierSpec_blk",
 "V_PlateCarrierSpec_mtp",
-//"V_PlateCarrierIAGL_oli",
+"V_PlateCarrierIAGL_oli",
 //"V_I_G_resistanceLeader_F",
 // Tanoa
 //"V_TacVest_gen_F",

@@ -7,6 +7,7 @@ _veh addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissi
 _veh setDir (random 360);
 _veh lock 0;
 _veh setVariable ["irTarget", false, true];
+_veh setVariable ["PARTIZANSPAWNED", true, true];
 _veh addItemCargoGlobal ["Toolkit", 1];
 
 // Put market on the spawned vehicle for 60 seconds

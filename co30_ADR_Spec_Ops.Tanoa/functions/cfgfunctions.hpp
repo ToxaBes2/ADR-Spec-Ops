@@ -85,6 +85,7 @@ class QS
 		class enemyCAS {};
 		class findOverwatch {};
 		class findSafePos {};
+		class garage {};
 		class garrisonFortEAST {};
 		class garrisonFortFIA {};
 		class garrisonFortIND {};

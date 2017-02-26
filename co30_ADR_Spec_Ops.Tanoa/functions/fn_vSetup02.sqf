@@ -20,7 +20,7 @@ _u = _this select 0;
 _t = typeOf _u;
 
 if (isNull _u) exitWith {};
-
+_u setVariable ["AUTOSPAWNED", true, true];
 _taru = ["O_Heli_Transport_04_F"];															// Taru
 _taru_covered = ["O_Heli_Transport_04_covered_F"];											// Taru covered
 _striders = ["I_MRAP_03_F", "I_MRAP_03_hmg_F", "I_MRAP_03_gmg_F"];							// Striders

@@ -97,6 +97,14 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
                         _x setName "[AI]";
                     } forEach units _grp;
                 };    
+
+                if (_vehReward isKindOf "LandVehicle") then {
+                    clearWeaponCargoGlobal _vehReward;
+                    clearMagazineCargoGlobal _vehReward;
+                    clearBackpackCargoGlobal _vehReward;
+                    clearItemCargoGlobal _vehReward;
+                };
+                
                 [_vehReward] call QS_fnc_killerCatcher;
                 _vehReward setVariable ["IS_REWARD", true];    
                 _class = typeOf _vehReward;

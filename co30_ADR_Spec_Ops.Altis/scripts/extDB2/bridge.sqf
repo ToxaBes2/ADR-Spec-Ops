@@ -112,7 +112,7 @@ sqlResponse = {
                 _queryResult = call compile _queryResult;
                 if (count _queryResult > 1) then {  
                     _queryResult = _queryResult select 1;
-                    if (typeName _queryResult == "ARRAY") then {    
+                    //if (typeName _queryResult == "ARRAY") then {    
                         {
                             _item = _x select 0;
                             _qty = _x select 1;
@@ -129,40 +129,46 @@ sqlResponse = {
                                 default {}; 
                             };                   
                         } forEach _queryResult;   
-                    };            
+                    //};            
                 };
             };
         };
         case "getRewardsBlufor": {
             _queryResult = call compile _queryResult;
-            if (count _queryResult > 1) then {
-                _queryResult = _queryResult select 1;
-                BLUFOR_REWARDS_LIST = [];
-                {
-                    BLUFOR_REWARDS_LIST pushBack [_x select 0, _x select 1, false];
-                } forEach _queryResult;
-                publicVariable "BLUFOR_REWARDS_LIST";  
+            if (typeName _queryResult == "ARRAY") then {
+                if (count _queryResult > 1) then {
+                    _queryResult = _queryResult select 1;
+                    BLUFOR_REWARDS_LIST = [];
+                    {
+                        BLUFOR_REWARDS_LIST pushBack [_x select 0, _x select 1, false];
+                    } forEach _queryResult;
+                    publicVariable "BLUFOR_REWARDS_LIST";  
+                };
             };
         };
         case "getRewardsPartizans": {
             _queryResult = call compile _queryResult;
-            if (count _queryResult > 1) then {
-                _queryResult = _queryResult select 1;
-                PARTIZAN_REWARDS_LIST = []; 
-                {
-                    PARTIZAN_REWARDS_LIST pushBack [_x select 0, _x select 1, false];
-                } forEach _queryResult;
-                publicVariable "PARTIZAN_REWARDS_LIST";  
+            if (typeName _queryResult == "ARRAY") then {
+                if (count _queryResult > 1) then {
+                    _queryResult = _queryResult select 1;
+                    PARTIZAN_REWARDS_LIST = []; 
+                    {
+                        PARTIZAN_REWARDS_LIST pushBack [_x select 0, _x select 1, false];
+                    } forEach _queryResult;
+                    publicVariable "PARTIZAN_REWARDS_LIST";  
+                };
             };
         };
         case "getAvanpostPartizans": {
             _queryResult = call compile _queryResult;
-            if (count _queryResult > 1) then {
-                _queryResult = _queryResult select 1;
-                if (count _queryResult > 0) then {
-                    {
-                        [_x] call QS_fnc_addAvanpost;
-                    } forEach _queryResult;              
+            if (typeName _queryResult == "ARRAY") then {
+                if (count _queryResult > 1) then {
+                    _queryResult = _queryResult select 1;
+                    if (count _queryResult > 0) then {
+                        {
+                            [_x] call QS_fnc_addAvanpost;
+                        } forEach _queryResult;              
+                    };
                 };
             };
         };
