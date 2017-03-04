@@ -23,6 +23,7 @@ if (_status == 1) then {
         ["<t color='#7FDA0B' size = '.48'>Вы подтвердили перемирие с партизанами и появитесь на их GPS-устройствах.</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
         hqSideChat = "Регулярная армия подтвердила перемирие с партизанами";
         "dip" setMarkerText "Текущий статус: перемирие";
+        ["setDiplomacy",[1], 0] remoteExec ["sqlServerCall", 2];
     } else {
         ["<t color='#7FDA0B' size = '.48'>Вы объявили перемирие с партизанами, ожидайте подтверждения с их стороны.</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
         hqSideChat = "Регулярная армия объявила перемирие с партизанами. Подтвердите его на базе.";
@@ -35,5 +36,6 @@ if (_status == 1) then {
     hqSideChat = "Регулярная армия объявила войну партизанам!";
     publicVariable "hqSideChat"; [resistance, "HQ"] sideChat hqSideChat;
     "dip" setMarkerText "Текущий статус: война";
+    ["setDiplomacy",[0], 0] remoteExec ["sqlServerCall", 2];
 };
 base_arsenal_infantry setVariable ["DIPLOMACY_TIME", time, true];

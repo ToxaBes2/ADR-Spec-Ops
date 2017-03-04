@@ -69,6 +69,13 @@ _blackList = [];
 _devicePos = [0,0,0];
 _nearestDevices = _flatPos nearObjects [INFANTRY_TERMINAL, 200];
 
+// save info in DB
+try {
+    _position = format ["%1,%2", floor (_flatPos select 0), floor (_flatPos select 1)];
+    ["setInfo",["spec_name", "Гроздья Гнева"], 0] remoteExec ["sqlServerCall", 2];
+    ["setInfo",["spec_position", _position], 0] remoteExec ["sqlServerCall", 2];
+} catch {};
+
 // spawn 3 devices
 while {count _nearestDevices < 3} do {
     _groundPos = selectRandom _goodPoses;

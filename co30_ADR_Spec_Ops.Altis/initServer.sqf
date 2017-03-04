@@ -246,6 +246,10 @@ if (_continue) then {
                     };
                 } forEach _markers;
             };
+
+            // update current time in DB
+            _hour = floor (date select 3);
+            ["setTime",[_hour], 0] remoteExec ["sqlServerCall", 2];
         };
     };
 

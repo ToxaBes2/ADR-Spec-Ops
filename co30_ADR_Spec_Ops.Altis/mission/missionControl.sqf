@@ -27,6 +27,7 @@ AVANPOST_COORDS = false; publicVariable "AVANPOST_COORDS";
 AVANPOST_RESPAWN = false; publicVariable "AVANPOST_RESPAWN";
 while { true } do {
 	if (PARAMS_AO == 1) then {
+		[] spawn QS_fnc_clearInfo;
 	    currentMission = [] spawn {_this call compile preProcessFileLineNumbers "mission\main\missions\AOattack.sqf"};
 	    _chance = random 10;
         if (_chance < PARAMS_PriorityObjectivesChance) then {
@@ -47,6 +48,7 @@ while { true } do {
 	    };
     };
     if (PARAMS_SideObjectives == 1) then {
+    	[] spawn QS_fnc_clearInfo;
         hqSideChat = "Вторичная цель выявлена, ждите указаний!"; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
 	    _mission = selectRandom _missionList;
 	    if !(isNil "LAST_SIDE_MISSION") then {

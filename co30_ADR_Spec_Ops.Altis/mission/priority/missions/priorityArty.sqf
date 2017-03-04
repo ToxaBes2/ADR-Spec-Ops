@@ -120,6 +120,13 @@ priorityObj1 allowDamage true;
 priorityObj2 allowDamage true;
 ammoTruck allowDamage true;
 
+// save info in DB
+try {
+    _position = format ["%1,%2", floor (_fuzzyPos select 0), floor (_fuzzyPos select 1)];
+    ["setInfo",["prio_name", "Артиллерия"], 0] remoteExec ["sqlServerCall", 2];
+    ["setInfo",["prio_position", _position], 0] remoteExec ["sqlServerCall", 2];
+} catch {};
+
 // FIRING SEQUENCE LOOP
 _radius = 80;
 waitUntil{sleep 1; !isNil "currentAOUp"};

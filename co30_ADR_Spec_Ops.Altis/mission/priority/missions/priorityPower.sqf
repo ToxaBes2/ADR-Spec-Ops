@@ -105,7 +105,7 @@ hqSideChat = "Дельта-Браво, вас поняли, ждем данны�
 sleep 10;
 { _x setMarkerPos _fuzzyPos; } forEach ["priorityMarker", "priorityCircle"];
 priorityTargetText = "Узел связи"; publicVariable "priorityTargetText";
-"priorityMarker" setMarkerText "Приоритетная цель: Узел связи"; publicVariable "priorityMarker";
+"priorityMarker" setMarkerText "Приоритетная цель: Узел связи и РЭБ"; publicVariable "priorityMarker";
 _briefing = "<t align='center'><t size='2.2'>Внимание</t><br/><t size='1.5' color='#F44336'>Узел связи и РЭБ</t><br/>____________________<br/>Разведка сообщает, что для поддержки своего наступления противник развернул полевой узел связи и РЭБ. Пока они работают - работа нашего электронного оборудования частично парализована.</t>";
 GlobalHint = _briefing; hint parseText _briefing; publicVariable "GlobalHint";
 showNotification = ["NewPriorityTarget", ["Уничтожить Узел связи и РЭБ", "\a3\ui_f\data\gui\cfg\hints\uavconncetion_ca.paa"]]; publicVariable "showNotification";
@@ -125,6 +125,13 @@ _bots = _fuzzyPos nearObjects ["Man", 600];
         _x addPrimaryWeaponItem "acc_flashlight";
 	};
 } forEach _bots;
+
+// save info in DB
+try {
+    _position = format ["%1,%2", floor (_fuzzyPos select 0), floor (_fuzzyPos select 1)];
+    ["setInfo",["prio_name", "Узел связи и РЭБ"], 0] remoteExec ["sqlServerCall", 2];
+    ["setInfo",["prio_position", _position], 0] remoteExec ["sqlServerCall", 2];
+} catch {};
 
 // MAIN LOOP
 while {currentAOUp} do {

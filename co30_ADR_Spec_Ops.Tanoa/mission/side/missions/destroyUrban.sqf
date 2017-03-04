@@ -51,6 +51,13 @@ showNotification = ["NewSideMission", "Склад"]; publicVariable "showNotific
 sideMissionUp = true; publicVariable "sideMissionUp";
 SM_SUCCESS = false;	publicVariable "SM_SUCCESS";
 
+// save info in DB
+try {
+    _position = format ["%1,%2", floor (_smPos select 0), floor (_smPos select 1)];
+    ["setInfo",["side_name", "Склад"], 0] remoteExec ["sqlServerCall", 2];
+    ["setInfo",["side_position", _position], 0] remoteExec ["sqlServerCall", 2];
+} catch {};
+
 // WAIT UNTIL OBJECTIVE COMPLETE: Sent to sabotage.sqf to wait for SM_SUCCESS var.
 waitUntil { sleep 3; SM_SUCCESS };
 

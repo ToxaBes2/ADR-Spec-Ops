@@ -408,6 +408,14 @@ sleep 0.1;
     [(units _x)] call QS_fnc_setSkill3;
 } forEach [_hqGroup, _houseGroup, _sniperGroup, _groundGroup, _patrolGroup1, _patrolGroup2, _patrolGroup3];
 [_startPoint, 200, ["vehicles", "fire"]] call QS_fnc_addHades;
+
+// save info in DB
+try {
+    _position = format ["%1,%2", floor (_flatPos select 0), floor (_flatPos select 1)];
+    ["setInfo",["spec_name", "Желтый туман"], 0] remoteExec ["sqlServerCall", 2];
+    ["setInfo",["spec_position", _position], 0] remoteExec ["sqlServerCall", 2];
+} catch {};
+
 while { sideMissionUp } do {
     sleep 2;
 

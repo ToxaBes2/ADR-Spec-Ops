@@ -328,6 +328,14 @@ _showSabotageMessage = true;
 _showGetdataMessage = true;
 _viperSquadSpawned = false;
 [_startPoint, 200, ["vehicles", "fire"]] call QS_fnc_addHades;
+
+// save info in DB
+try {
+    _position = format ["%1,%2", floor (_flatPos select 0), floor (_flatPos select 1)];
+    ["setInfo",["spec_name", "Прерванный Полет"], 0] remoteExec ["sqlServerCall", 2];
+    ["setInfo",["spec_position", _position], 0] remoteExec ["sqlServerCall", 2];
+} catch {};
+
 while { sideMissionUp } do {
 	// Heli part done
     if ((SM_SUCCESS_SABOTAGE || !alive _heliObj) && _showSabotageMessage) then {

@@ -68,6 +68,7 @@ class QS
 		class basePartizanSwitch {};
 		class cacheDebug {};		
 		class chemlightUse {};
+		class clearInfo {};
 		class conditionClearInventory {};
 		class conditionGetCargoUniform {};
 		class conditionPilotRepair {};

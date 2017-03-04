@@ -70,6 +70,19 @@ if (_hour in _hours) then {
             forceWeatherChange;
         };
     };      
+
+    // save info in DB
+    try {
+        ["clearWeather",[], 0] remoteExec ["sqlServerCall", 2];
+        ["setWeather",["overcast", _data select 0], 0] remoteExec ["sqlServerCall", 2];
+        ["setWeather",["rain", _data select 1], 0] remoteExec ["sqlServerCall", 2];
+        ["setWeather",["fog", _data select 2], 0] remoteExec ["sqlServerCall", 2];
+        ["setWeather",["fogDecay", _data select 3], 0] remoteExec ["sqlServerCall", 2];
+        ["setWeather",["fogBase", _data select 4], 0] remoteExec ["sqlServerCall", 2];
+        ["setWeather",["waves", _waves], 0] remoteExec ["sqlServerCall", 2];
+        ["setWeather",["wind", _wind], 0] remoteExec ["sqlServerCall", 2];
+        ["setWeather",["lightning", _data select 8], 0] remoteExec ["sqlServerCall", 2];
+    } catch {};
 } else {
     if (_hour == 20) then {
         _delay setOvercast 0;
@@ -90,6 +103,19 @@ if (_hour in _hours) then {
                 forceWeatherChange;
             };
         };
+
+        // save info in DB
+        try {
+            ["clearWeather",[], 0] remoteExec ["sqlServerCall", 2];
+            ["setWeather",["overcast", 0], 0] remoteExec ["sqlServerCall", 2];
+            ["setWeather",["rain", 0], 0] remoteExec ["sqlServerCall", 2];
+            ["setWeather",["fog", 0], 0] remoteExec ["sqlServerCall", 2];
+            ["setWeather",["fogDecay", 0], 0] remoteExec ["sqlServerCall", 2];
+            ["setWeather",["fogBase", 0], 0] remoteExec ["sqlServerCall", 2];
+            ["setWeather",["waves", _rand], 0] remoteExec ["sqlServerCall", 2];
+            ["setWeather",["wind", _rand], 0] remoteExec ["sqlServerCall", 2];
+            ["setWeather",["lightning", 0], 0] remoteExec ["sqlServerCall", 2];
+        } catch {};
     };
 };
 lastWeatherTime = _hour; publicVariable "lastWeatherTime";

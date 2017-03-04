@@ -76,6 +76,13 @@ sideMarkerText = "Лагерь"; publicVariable "sideMarkerText";
 sideMissionUp = true; publicVariable "sideMissionUp";
 SM_SUCCESS = false; publicVariable "SM_SUCCESS";
 
+// save info in DB
+try {
+    _position = format ["%1,%2", floor (_fuzzyPos select 0), floor (_fuzzyPos select 1)];
+    ["setInfo",["side_name", "Лагерь"], 0] remoteExec ["sqlServerCall", 2];
+    ["setInfo",["side_position", _position], 0] remoteExec ["sqlServerCall", 2];
+} catch {};
+
 while { sideMissionUp } do {
 
 	// IF PACKAGE DESTROYED [FAIL]

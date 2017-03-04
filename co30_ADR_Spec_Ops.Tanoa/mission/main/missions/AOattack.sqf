@@ -28,7 +28,15 @@ _objects = [];
 // Edit and place markers for new target
 {_x setMarkerPos _positionAO;} forEach ["aoCircle", "aoMarker"];
 "aoMarker" setMarkerText format["Захватить: %1", _nameAO];
+CURRENT_AO_NAME = _nameAO; publicVariable "CURRENT_AO_NAME";
 sleep 1;
+
+// save info in DB
+try {
+    _position = format ["%1,%2", floor (_positionAO select 0), floor (_positionAO select 1)];
+    ["setInfo",["main_name", format ["Захват %1", _nameAO]], 0] remoteExec ["sqlServerCall", 2];
+    ["setInfo",["main_position", _position], 0] remoteExec ["sqlServerCall", 2];
+} catch {};
 
 // Color nearby vehicle service markers in grey(inactive) while AO is up
 CURRENT_AO_POSITION = _positionAO; publicVariable "CURRENT_AO_POSITION";

@@ -174,6 +174,13 @@ priorityObj1 allowDamage true;
 priorityObj2 allowDamage true;
 ammoTruck allowDamage true;
 
+// save info in DB
+try {
+    _position = format ["%1,%2", floor (_fuzzyPos select 0), floor (_fuzzyPos select 1)];
+    ["setInfo",["prio_name", "Зенитная Батарея"], 0] remoteExec ["sqlServerCall", 2];
+    ["setInfo",["prio_position", _position], 0] remoteExec ["sqlServerCall", 2];
+} catch {};
+
 // 8. CORE LOOP
 waitUntil{sleep 1; !isNil "currentAOUp"};
 _loopVar = TRUE;
