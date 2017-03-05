@@ -24,6 +24,7 @@ publicVariable "LAST_MAIN_MISSION";
 _nameAO = _target select 0;
 _positionAO = _target select 1;
 _objects = [];
+CLEAR_POSITIONS = []; publicVariable "CLEAR_POSITIONS";
 
 // Edit and place markers for new target
 {_x setMarkerPos _positionAO;} forEach ["aoCircle", "aoMarker"];
@@ -76,6 +77,7 @@ if (_chance < 5) then {
         _flatPos = _bunkerPos isFlatEmpty [5, 1, 0.3, 15, 0, false];
         _res = count _flatPos;
     };
+    CLEAR_POSITIONS pushBack [_bunkerPos, 30]; publicVariable "CLEAR_POSITIONS";
     _null = [_bunkerPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "Empty" >> "Military" >> "Outposts" >> "OutpostB")] call BIS_fnc_spawnGroup;
     _bunkerPos set [2, 0];
     _obj = _bunkerPos nearestObject "Land_Cargo_Tower_V1_F";
@@ -95,6 +97,7 @@ if (_chance < 5) then {
     _bunkerPos = [_bunkerPosition select 0, _bunkerPosition select 1, 0];
     _smallZ = _bunkerPosition select 2;
     _bigZ = _bunkerPosition select 3;
+    CLEAR_POSITIONS pushBack [_bunkerPos, 50]; publicVariable "CLEAR_POSITIONS";
     _bunkerObjects = [_bunkerPos, _smallZ, _bigZ, _inMain] call QS_fnc_createBunker;
 };
 
@@ -139,6 +142,7 @@ while {_res < 1} do {
         _res = 0;
     };
 };
+CLEAR_POSITIONS pushBack [_flatPos, 20]; publicVariable "CLEAR_POSITIONS";
 _tower = selectRandom [RADIO_TOWERS];
 radioTower = _tower createVehicle _flatPos;
 waitUntil { sleep 0.5; alive radioTower };
@@ -407,6 +411,23 @@ sleep 10;
         };
     };
 } forEach AllGroups;
+sleep 1;
+if (count CLEAR_POSITIONS > 0) then {
+    {
+        _pos = _x select 0;
+        _distance = _x select 1;
+        _objects = _pos nearEntities _distance;
+        {
+            _delete = true;
+            if (_x isKindOf "Man" || _x isKindOf "LandVehicle") then {
+                _delete = false;
+            };
+            if (_delete) then {
+                deleteVehicle _x;
+            };
+        } forEach _objects;
+    } forEach CLEAR_POSITIONS;
+};
 sleep 1;
 _vehs = nearestObjects [_positionAO, ["LandVehicle"], (PARAMS_AOSize* 1.4)];
 {

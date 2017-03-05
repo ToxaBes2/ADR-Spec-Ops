@@ -89,8 +89,12 @@ _multiplyMatrixFunc =
 	];
 	_result
 };
+if (isNil "CLEAR_POSITIONS") then {
+    CLEAR_POSITIONS = [];
+};
 _pos = [_centerPos, 0, 600, 20, 0, 3, 0, []] call QS_fnc_findSafePos;
 if (format ["%1", _pos] != "[0,0,0]") then {
+    CLEAR_POSITIONS pushBack [_pos, 50];
     _staticGroup = createGroup east;
     _azi = 180; // important for furniture spawn
     _objs = selectRandom _compositions;    
@@ -164,4 +168,5 @@ if (format ["%1", _pos] != "[0,0,0]") then {
     _staticGroup setCombatMode "RED";
     [(units _staticGroup)] call QS_fnc_setSkill4;
 };
+publicVariable "CLEAR_POSITIONS";
 _newObjs

@@ -170,6 +170,9 @@ while {_dir < 360} do {
 };
 _roadPoses = [];
 _cnt = selectRandom [2,3,4,5];
+if (isNil "CLEAR_POSITIONS") then {
+    CLEAR_POSITIONS = [];
+};
 {
     if ((count _roadPoses) < _cnt) then {
         _selRoad = _x;
@@ -195,6 +198,7 @@ _cnt = selectRandom [2,3,4,5];
         _relAzi = [_centerPos, _pos] call BIS_fnc_dirTo;
         _roadConnectedTo = roadsConnectedTo _x;
         if (count _roadConnectedTo > 0) then {
+            CLEAR_POSITIONS pushBack [_pos, 30];
             _connectedRoad = _roadConnectedTo select 0;
             _azi = [_x, _connectedRoad] call BIS_fnc_DirTo;
             _delta = _relAzi - _azi;
@@ -285,5 +289,5 @@ _cnt = selectRandom [2,3,4,5];
         };
     };
 } forEach _roadPoses;
-
+publicVariable "CLEAR_POSITIONS";
 _newObjs

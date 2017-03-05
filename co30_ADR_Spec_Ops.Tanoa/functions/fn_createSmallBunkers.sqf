@@ -98,9 +98,13 @@ _multiplyMatrixFunc =
 };
 _staticGroup = createGroup east;
 _cnt = selectRandom [1,2,3];
+if (isNil "CLEAR_POSITIONS") then {
+    CLEAR_POSITIONS = [];
+};
 for "_i" from 0 to _cnt do {
     _pos = [_centerPos, 0, 1000, 12, 0, 10] call QS_fnc_findSafePos;    
     if (format ["%1", _pos] != "[0,0,0]") then {   
+        CLEAR_POSITIONS pushBack [_pos, 20];
         _azi = [_centerPos, _pos] call BIS_fnc_dirTo;
         _objs = selectRandom _compositions;    
         _posX = _pos select 0;
@@ -178,7 +182,7 @@ for "_i" from 0 to _cnt do {
         [(units _unitGroup)] call QS_fnc_setSkill4;
     };
 };
-
+publicVariable "CLEAR_POSITIONS";
 _staticGroup setBehaviour "COMBAT";
 _staticGroup setCombatMode "RED";
 [(units _staticGroup)] call QS_fnc_setSkill4;
