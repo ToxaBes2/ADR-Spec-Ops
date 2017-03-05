@@ -1757,7 +1757,7 @@ BTC_player_respawn = {
             _flush = false;
             {
                 if !(_flush) then {
-                    if (typeOf _x in "I_C_Soldier_Para_3_F") then {
+                    if (typeOf _x == "I_C_Soldier_Para_3_F") then {
                         _flush = true;                
                     };
                 };

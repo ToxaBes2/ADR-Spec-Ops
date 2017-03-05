@@ -6259,7 +6259,7 @@ class Mission
 					{
 						rank="CORPORAL";
 						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
-						description="Пилот - слот доступен только после 2ч игры на сервере!";
+						description="Пилот";
 						isPlayable=1;
 					};
 					id=1067;
@@ -6302,7 +6302,7 @@ class Mission
 					{
 						rank="CORPORAL";
 						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
-						description="Пилот - слот доступен только после 2ч игры на сервере!";
+						description="Пилот";
 						isPlayable=1;
 					};
 					id=1069;
@@ -11422,7 +11422,7 @@ class Mission
 					class Attributes
 					{
 						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
-						description="Партизан (медик/пулеметчик) - слот доступен только после 100ч игры на сервере!";
+						description="Партизан (медик/пулеметчик)";
 						isPlayable=1;
 					};
 					id=3493;
@@ -11466,7 +11466,7 @@ class Mission
 					{
 						rank="COLONEL";
 						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
-						description="Партизан (командир отделения/ракетчик ПТ) - слот доступен только после 100ч игры на сервере!";
+						description="Партизан (командир отделения/ракетчик ПТ)";
 						isPlayable=1;
 					};
 					id=3489;
@@ -11510,7 +11510,7 @@ class Mission
 					{
 						rank="CORPORAL";
 						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
-						description="Партизан (снайпер/инженер) - слот доступен только после 100ч игры на сервере!";
+						description="Партизан (снайпер/инженер)";
 						isPlayable=1;
 					};
 					id=3491;
@@ -11588,7 +11588,7 @@ class Mission
 					flags=1;
 					class Attributes
 					{
-						description="Партизан (медик/пулеметчик) - слот доступен только после 100ч игры на сервере!";
+						description="Партизан (медик/пулеметчик)";
 						isPlayable=1;
 					};
 					id=3494;
@@ -11632,7 +11632,7 @@ class Mission
 					{
 						rank="COLONEL";
 						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
-						description="Партизан (командир отделения/ракетчик ПТ) - слот доступен только после 100ч игры на сервере!";
+						description="Партизан (командир отделения/ракетчик ПТ)";
 						isPlayable=1;
 					};
 					id=3490;
@@ -11676,7 +11676,7 @@ class Mission
 					{
 						rank="CORPORAL";
 						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
-						description="Партизан (снайпер/инженер) - слот доступен только после 100ч игры на сервере!";
+						description="Партизан (снайпер/инженер)";
 						isPlayable=1;
 					};
 					id=3492;
