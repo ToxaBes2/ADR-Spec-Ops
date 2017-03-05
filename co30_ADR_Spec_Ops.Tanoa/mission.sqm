@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.017453292;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=137;
+	toggles=9;
 	class ItemIDProvider
 	{
-		nextID=3489;
+		nextID=3495;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=1561;
+		nextID=1629;
 	};
 	class Camera
 	{
-		pos[]={6940.4683,11.758394,7335.9536};
-		dir[]={-0.88147742,-0.46938789,0.051781483};
-		up[]={-0.46858057,0.88299102,0.027526803};
-		aside[]={0.058643147,-1.1175871e-008,0.99828207};
+		pos[]={7475.1387,10.963944,8512.6445};
+		dir[]={-0.59954095,-0.40590689,0.68977886};
+		up[]={-0.26628074,0.9139145,0.30635932};
+		aside[]={0.75475264,3.7252903e-008,0.65601534};
 	};
 };
 binarizationWanted=0;
@@ -6244,13 +6244,13 @@ class Mission
 			side="West";
 			class Entities
 			{
-				items=4;
+				items=2;
 				class Item0
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={6932.5762,2.6614227,7179.5791};
+						position[]={6932.5762,2.6614389,7179.5796};
 						angles[]={0,3.1415927,0};
 					};
 					side="West";
@@ -6259,12 +6259,11 @@ class Mission
 					{
 						rank="CORPORAL";
 						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
-						description="Пилот";
+						description="Пилот - слот доступен только после 2ч игры на сервере!";
 						isPlayable=1;
 					};
 					id=1067;
 					type="B_T_Helipilot_F";
-					atlOffset=-1.6212463e-005;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -6294,7 +6293,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={6930.605,2.6614349,7178.5205};
+						position[]={6930.605,2.6614389,7178.52};
 						angles[]={0,3.1415927,0};
 					};
 					side="West";
@@ -6303,100 +6302,11 @@ class Mission
 					{
 						rank="CORPORAL";
 						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
-						description="Пилот";
+						description="Пилот - слот доступен только после 2ч игры на сервере!";
 						isPlayable=1;
 					};
 					id=1069;
 					type="B_T_Helipilot_F";
-					atlOffset=-4.0531158e-006;
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=0.99000001;
-								};
-							};
-						};
-						nAttributes=1;
-					};
-				};
-				class Item2
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={6932.6904,2.6614425,7176.1714};
-						angles[]={0,3.1415927,0};
-					};
-					side="West";
-					flags=4;
-					class Attributes
-					{
-						rank="CORPORAL";
-						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
-						description="Пилот";
-						isPlayable=1;
-					};
-					id=1071;
-					type="B_T_Helipilot_F";
-					atlOffset=3.5762787e-006;
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=0.99000001;
-								};
-							};
-						};
-						nAttributes=1;
-					};
-				};
-				class Item3
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={6930.667,2.6614327,7175.7651};
-						angles[]={0,3.1415927,0};
-					};
-					side="West";
-					flags=4;
-					class Attributes
-					{
-						rank="CORPORAL";
-						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
-						description="Пилот";
-						isPlayable=1;
-					};
-					id=1073;
-					type="B_T_Helipilot_F";
-					atlOffset=-6.1988831e-006;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -6426,7 +6336,6 @@ class Mission
 			{
 			};
 			id=1065;
-			atlOffset=-1.6212463e-005;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -9811,8 +9720,8 @@ class Mission
 						};
 						class Attribute1
 						{
-							property="face";
-							expression="_this setface _value;";
+							property="enableStamina";
+							expression="_this enablestamina _value;";
 							class Value
 							{
 								class data
@@ -9821,10 +9730,10 @@ class Mission
 									{
 										type[]=
 										{
-											"STRING"
+											"BOOL"
 										};
 									};
-									value="WhiteHead_15";
+									value=0;
 								};
 							};
 						};
@@ -9868,8 +9777,8 @@ class Mission
 						};
 						class Attribute4
 						{
-							property="enableStamina";
-							expression="_this enablestamina _value;";
+							property="face";
+							expression="_this setface _value;";
 							class Value
 							{
 								class data
@@ -9878,10 +9787,10 @@ class Mission
 									{
 										type[]=
 										{
-											"BOOL"
+											"STRING"
 										};
 									};
-									value=0;
+									value="WhiteHead_15";
 								};
 							};
 						};
@@ -10328,7 +10237,7 @@ class Mission
 			};
 			id=2404;
 			type="I_CargoNet_01_ammo_F";
-			atlOffset=0.21700001;
+			atlOffset=0.21700048;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -10501,7 +10410,7 @@ class Mission
 			};
 			id=2425;
 			type="B_HMG_01_high_F";
-			atlOffset=0.20094585;
+			atlOffset=0.20239449;
 		};
 		class Item275
 		{
@@ -11492,6 +11401,7 @@ class Mission
 			};
 			id=2483;
 			type="Land_Atm_02_F";
+			atlOffset=-2.3841858e-007;
 		};
 		class Item313
 		{
@@ -11499,27 +11409,25 @@ class Mission
 			side="Independent";
 			class Entities
 			{
-				items=2;
+				items=3;
 				class Item0
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={7472.9531,7.7874713,8516.0254};
-						angles[]={0,0.51408672,6.2826972};
+						position[]={7471.8452,7.7884388,8513.4717};
 					};
 					side="Independent";
-					flags=2;
+					flags=5;
 					class Attributes
 					{
-						rank="CORPORAL";
 						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
-						description="Партизан (снайпер/инженер)";
+						description="Партизан (медик/пулеметчик) - слот доступен только после 100ч игры на сервере!";
 						isPlayable=1;
 					};
-					id=2413;
-					type="I_C_Soldier_Para_8_F";
-					atlOffset=0.29603243;
+					id=3493;
+					type="I_C_Soldier_Para_3_F";
+					atlOffset=0.00042533875;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -11549,6 +11457,50 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
+						position[]={7472.9531,7.7874389,8516.0254};
+						angles[]={0,0.51408672,6.2826962};
+					};
+					side="Independent";
+					flags=2;
+					class Attributes
+					{
+						rank="COLONEL";
+						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
+						description="Партизан (командир отделения/ракетчик ПТ) - слот доступен только после 100ч игры на сервере!";
+						isPlayable=1;
+					};
+					id=3489;
+					type="I_C_Soldier_Para_5_F";
+					atlOffset=0.296;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.01;
+								};
+							};
+						};
+						nAttributes=1;
+					};
+				};
+				class Item2
+				{
+					dataType="Object";
+					class PositionInfo
+					{
 						position[]={7469.1182,7.7894387,8514.9648};
 						angles[]={0,0.5512448,6.2826962};
 					};
@@ -11558,11 +11510,11 @@ class Mission
 					{
 						rank="CORPORAL";
 						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
-						description="Партизан (медик/пулеметчик)";
+						description="Партизан (снайпер/инженер) - слот доступен только после 100ч игры на сервере!";
 						isPlayable=1;
 					};
-					id=2410;
-					type="I_C_Soldier_Para_7_F";
+					id=3491;
+					type="I_C_Soldier_Para_8_F";
 					atlOffset=9.393692e-005;
 					class CustomAttributes
 					{
@@ -11593,7 +11545,7 @@ class Mission
 			{
 			};
 			id=2488;
-			atlOffset=0.29603243;
+			atlOffset=0.296;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -11624,27 +11576,24 @@ class Mission
 			side="Independent";
 			class Entities
 			{
-				items=2;
+				items=3;
 				class Item0
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={7472.4385,7.7877231,8519.4238};
-						angles[]={0,0.4089132,6.2826972};
+						position[]={7470.563,7.7884388,8522.0088};
 					};
 					side="Independent";
-					flags=2;
+					flags=1;
 					class Attributes
 					{
-						rank="CORPORAL";
-						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
-						description="Партизан (ракетчик/пулеметчик)";
+						description="Партизан (медик/пулеметчик) - слот доступен только после 100ч игры на сервере!";
 						isPlayable=1;
 					};
-					id=2412;
-					type="I_C_Soldier_Para_4_F";
-					atlOffset=0.2962842;
+					id=3494;
+					type="I_C_Soldier_Para_3_F";
+					atlOffset=0.29699993;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -11674,6 +11623,50 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
+						position[]={7472.438,7.7874389,8519.4238};
+						angles[]={0,0.4089132,6.2826962};
+					};
+					side="Independent";
+					flags=2;
+					class Attributes
+					{
+						rank="COLONEL";
+						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
+						description="Партизан (командир отделения/ракетчик ПТ) - слот доступен только после 100ч игры на сервере!";
+						isPlayable=1;
+					};
+					id=3490;
+					type="I_C_Soldier_Para_5_F";
+					atlOffset=0.296;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=0.99000001;
+								};
+							};
+						};
+						nAttributes=1;
+					};
+				};
+				class Item2
+				{
+					dataType="Object";
+					class PositionInfo
+					{
 						position[]={7469.3711,7.7894387,8518.8779};
 						angles[]={0,0.62938321,0};
 					};
@@ -11683,11 +11676,11 @@ class Mission
 					{
 						rank="CORPORAL";
 						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
-						description="Партизан (медик/инженер)";
+						description="Партизан (снайпер/инженер) - слот доступен только после 100ч игры на сервере!";
 						isPlayable=1;
 					};
-					id=2411;
-					type="I_C_Soldier_Para_3_F";
+					id=3492;
+					type="I_C_Soldier_Para_8_F";
 					atlOffset=0.00021696091;
 					class CustomAttributes
 					{
@@ -11718,7 +11711,7 @@ class Mission
 			{
 			};
 			id=2490;
-			atlOffset=0.2962842;
+			atlOffset=0.296;
 			class CustomAttributes
 			{
 				class Attribute0

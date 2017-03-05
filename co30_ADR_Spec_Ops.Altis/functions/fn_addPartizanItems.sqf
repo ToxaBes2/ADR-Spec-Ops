@@ -70,10 +70,10 @@ _player addItem "FirstAidKit";
 _player addItem "FirstAidKit";
 _player addItem "FirstAidKit";
 _player addItem "FirstAidKit";
-if (_player getUnitTrait "medic" || typeOf _player in ["I_G_Soldier_GL_F", "I_G_medic_F"]) then {
+if (_player getUnitTrait "medic" || typeOf _player in ["I_G_medic_F"]) then {
     _player addItem "Medikit";
 };
-if (_player getUnitTrait "engineer" || typeOf _player in ["I_G_engineer_F", "I_G_Soldier_GL_F"]) then {
+if (_player getUnitTrait "engineer" || typeOf _player in ["I_G_engineer_F"]) then {
     _player removeItem "ItemGPS";
     _player addItem "I_UavTerminal";
     _player assignItem "I_UavTerminal";

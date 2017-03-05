@@ -5,7 +5,7 @@ _shift = _this select 2;
 _ctrlKey = _this select 3;
 _alt = _this select 4;  
 _handled = false;
-_allowedComanders = ["B_Soldier_SL_F","B_T_Soldier_SL_F","I_G_Soldier_AR_F","I_G_engineer_F","I_C_Soldier_Para_8_F","I_C_Soldier_Para_4_F"];
+_allowedComanders = ["B_Soldier_SL_F","I_G_engineer_F"];
 _player = typeOf player;
 if (!_shift && !_ctrlKey && !_alt) then {
     if (_dikCode in (actionKeys "ShowMap")) then {

@@ -55,11 +55,11 @@ if (playerSide == resistance) then {
     sleep 10;
 
 	// Resistance engineers only
-	if (typeOf player in ["I_G_engineer_F","I_C_Soldier_Para_8_F","I_C_Soldier_Para_3_F"]) then {
+	if (typeOf player in ["I_C_Soldier_Para_8_F"]) then {
 		player setUnitTrait ["UAVHacker", true];
 		player setUnitTrait ["engineer", true];
 	};
-    if (typeOf player in ["I_C_Soldier_Para_3_F","I_C_Soldier_Para_7_F"]) then {
+    if (typeOf player in ["I_C_Soldier_Para_3_F"]) then {
 	    player setUnitTrait ["Medic", true];
 	};
 
@@ -71,7 +71,7 @@ if (playerSide == resistance) then {
 };
 
 // Pilots only
-if (typeOf player in ["B_Helipilot_F", "B_T_Helipilot_F"]) then {
+if (typeOf player in ["B_T_Helipilot_F"]) then {
 	player addBackpack "B_AssaultPack_sgg";
 	player addItemToBackpack "ToolKit";
 
@@ -145,7 +145,7 @@ player addEventHandler [ "GetOutMan", {
 }];
 
 // Put earplugs in automaticly when controling UAV (Engineers only)
-if (typeOf player in ["B_engineer_F", "B_T_Engineer_F", "I_G_engineer_F", "I_C_Soldier_Para_8_F", "I_C_Soldier_Para_3_F"]) then {
+if (typeOf player in ["B_T_Engineer_F", "I_C_Soldier_Para_8_F"]) then {
 	_null = [] spawn {
 		private ["_uav", "_uav_action_id1", "_uav_action_id2"];
 		while {true} do {

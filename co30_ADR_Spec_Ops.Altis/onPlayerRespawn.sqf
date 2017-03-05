@@ -93,8 +93,8 @@ _null = player addEventHandler ["Fired", {
     };
 }];
 
-if (typeOf player in ["I_G_Soldier_AR_F","I_G_engineer_F","I_G_Soldier_GL_F","I_G_medic_F"]) then {
-    if (typeOf player in ["I_G_Soldier_GL_F","I_G_medic_F"]) then {
+if (typeOf player in ["I_G_Soldier_LAT_F","I_G_engineer_F","I_G_medic_F"]) then {
+    if (typeOf player in ["I_G_medic_F"]) then {
         player setUnitTrait ["Medic",true];
     };    
     "partizan_base" setMarkerAlphaLocal 1;
@@ -103,7 +103,7 @@ if (typeOf player in ["I_G_Soldier_AR_F","I_G_engineer_F","I_G_Soldier_GL_F","I_
 };
 
 // add group leader
-if (typeOf player in ["B_Soldier_SL_F","B_T_Soldier_SL_F","I_G_Soldier_AR_F","I_G_engineer_F","I_C_Soldier_Para_8_F","I_C_Soldier_Para_4_F"]) then {
+if (typeOf player in ["B_Soldier_SL_F","I_G_Soldier_LAT_F"]) then {
     [group player, player] remoteExec ["selectLeader", groupOwner group player];
 };
 
