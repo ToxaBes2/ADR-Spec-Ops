@@ -52,6 +52,15 @@ if (395180 in (getDLCs 1)) then {
     _weapons append [["hgun_Pistol_01_F", ["10Rnd_9x21_Mag"]],["SMG_05_F", ["30Rnd_9x21_Mag_SMG_02","30Rnd_9x21_Mag_SMG_02_Tracer_Red","30Rnd_9x21_Mag_SMG_02_Tracer_Yellow","30Rnd_9x21_Mag_SMG_02_Tracer_Green"], "muzzle_snds_L"]];
 };
 
+removeAllweapons _player;
+removevest _player;
+removeBackpack _player;
+removeheadgear _player;
+removegoggles _player;
+removeBackPack _player;
+{_player removeItem _x} foreach (items _player);
+{_player unassignItem _x; _player removeItem _x} foreach (assignedItems _player);
+
 _player forceAddUniform (selectRandom _uniform);
 _player addVest (selectRandom _vests);
 _player addGoggles (selectRandom _googles);

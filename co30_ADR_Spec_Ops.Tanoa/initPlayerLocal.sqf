@@ -23,16 +23,7 @@ waitUntil {!isNull player};
 if (playerSide == resistance) then {	
 	0 cutText["Проверка игрового времени...", "BLACK FADED"];
     0 cutFadeOut 9999999;
-    waitUntil {(getPlayerUID player) != ""};
-    removeAllweapons player;
-	removevest player;
-	removeBackpack player;
-	removeheadgear player;
-	removegoggles player;
-	removeBackPack player;
-	{player removeItem _x} foreach (items player);
-	{player unassignItem _x; player removeItem _x} foreach (assignedItems player);
-	sleep 1;
+    waitUntil {(getPlayerUID player) != ""};   
     _partizanPos = getMarkerPos "partizan_base";
 	_dist = 6;
     _accepted = false;
