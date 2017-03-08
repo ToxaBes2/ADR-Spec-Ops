@@ -15,10 +15,10 @@ We welcome for any contributions to the ongoing development of this mission. You
 Мы приветствуем любой вклад в развитие данной миссии. Вы можете помочь нам в этом оставляя свои отзывы на форуме [Tehgam](http://www.tehgam.com/forum.php). Полное описание миссии находится на сайте [Tehgam1](https://tehgam1.com).<br/>
 <p align="center">
   <a href="https://github.com/ToxaBes/ADR-Spec-Ops/raw/master/co30_ADR_Spec_Ops.Altis.pbo">
-    <img src="https://img.shields.io/badge/Download-Altis%20v0.0.8-green.svg?style=flat" alt="Download" />
+    <img src="https://img.shields.io/badge/Download-Altis%20v0.0.9-green.svg?style=flat" alt="Download" />
   </a>
   <a href="https://github.com/ToxaBes/ADR-Spec-Ops/raw/master/co30_ADR_Spec_Ops.Tanoa.pbo">
-    <img src="https://img.shields.io/badge/Download-Tanoa%20v0.0.4-green.svg?style=flat" alt="Download" />
+    <img src="https://img.shields.io/badge/Download-Tanoa%20v0.0.5-green.svg?style=flat" alt="Download" />
   </a>
   <a href="https://tehgam1.com">
     <img src="https://img.shields.io/badge/TEHGAM1-Site-red.svg?style=flat"
