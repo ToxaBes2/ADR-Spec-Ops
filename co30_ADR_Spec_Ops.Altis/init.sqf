@@ -2,7 +2,7 @@ if (!hasInterface && !isDedicated) exitWith {};
 [] spawn {_this call compile preProcessFileLineNumbers "scripts\radio\createChannels.sqf"};                         // Custom channels
 [] spawn {_this call compile preProcessFileLineNumbers "scripts\radio\speakEvent.sqf"};                             // Radio effects (psh-psh)
 [] spawn {_this call compile preProcessFileLineNumbers "scripts\outlw_magRepack\MagRepack_init_sv.sqf"};            // Magazines repack
-[] spawn {_this call compile preProcessFileLineNumbers "scripts\extDB2\bridge.sqf";};                               // DB call function
+[] spawn {_this call compile preProcessFileLineNumbers "scripts\extDB3\bridge.sqf";};                               // DB call function
 call compile preprocessFile "scripts\=BTC=_revive\=BTC=_revive_init.sqf";                                           // Revive system
 call compile preprocessFile "scripts\=BTC=_TK_punishment\=BTC=_tk_init.sqf";                                        // Teamkill punish action
 UAV_RANGE = compileFinal preprocessFileLineNumbers "scripts\UAV_Range.sqf";                                         // UAV range restriction

@@ -23,17 +23,14 @@ sqlServerCall = {
     _sql = "";
     _queryResult = "";
     if (!isServer) exitWith {_queryResult};      
-    _connectionId = uiNamespace getVariable ["life_sql_id", ""];    
-    _connectionId = format ["%1", _connectionId];
-    _connectionId = [_connectionId,"{",""] call KRON_Replace;
-    _connectionId = [_connectionId,"}",""] call KRON_Replace;    
+    _connectionId = "sql";  
     if (count _params > 0) then {
         _par = _params joinString ":";        
         _sql = format ["0:%1:%2:%3", _connectionId, _queryName, _par];
     } else {
         _sql = format ["0:%1:%2", _connectionId, _queryName];
     };
-    _queryResult = "extDB2" callExtension _sql;
+    _queryResult = "extDB3" callExtension _sql;
     if (_clientId > 0) then {          
         _queryResult = _queryResult splitString ","; 
         if (count _queryResult < 2) then {
@@ -141,10 +138,10 @@ sqlResponse = {
             };
         };
         case "getRewardsPartizans": {
-            _queryResult = call compile _queryResult;
+            _queryResult = call compile _queryResult;            
             if (typeName _queryResult == "ARRAY") then {
                 if (count _queryResult > 1) then {
-                    _queryResult = _queryResult select 1;
+                    _queryResult = _queryResult select 1;                    
                     PARTIZAN_REWARDS_LIST = []; 
                     {
                         PARTIZAN_REWARDS_LIST pushBack [_x select 0, _x select 1, false];

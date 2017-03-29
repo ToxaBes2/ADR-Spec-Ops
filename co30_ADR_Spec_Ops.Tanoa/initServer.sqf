@@ -23,30 +23,27 @@ for [ {_i = 0}, {_i < count(paramsArray)}, {_i = _i + 1} ] do {
 	];
 };
 
-// extDB2 load
+// extDB3 load
 _database = "Arma3";
-_protocol = "SQL_CUSTOM_V2";
-_protocol_options = "specops";
+_protocol = "SQL_CUSTOM";
+_protocol_name = "sql";
+_protocol_options = "specops.ini";
 _continue = true;
-if (isNil {uiNamespace getVariable "life_sql_id"}) then {
-    life_sql_id = round(random(999999));
-    uiNamespace setVariable ["life_sql_id",life_sql_id];
-    _version = "extDB2" callExtension "9:VERSION";
-    if(_version == "") then {
+_version = "extDB3" callExtension "9:VERSION";
+if(_version == "") then {
+    _continue = false;
+};
+if (_continue) then {
+    _result = call compile ("extDB3" callExtension format["9:ADD_DATABASE:%1", _database]);
+    if (_result select 0 isEqualTo 0) then {
         _continue = false;
     };
     if (_continue) then {
-        _result = call compile ("extDB2" callExtension format["9:ADD_DATABASE:%1", _database]);
-	    if (_result select 0 isEqualTo 0) then {
+        _result = call compile ("extDB3" callExtension format["9:ADD_DATABASE_PROTOCOL:%1:%2:%3:%4", _database, _protocol, _protocol_name, _protocol_options]);
+        if ((_result select 0) isEqualTo 0) then {
             _continue = false;
-	    };
-        if (_continue) then {
-            _result = call compile ("extDB2" callExtension format["9:ADD_DATABASE_PROTOCOL:%1:%2:%3:%4", _database, _protocol, life_sql_id, _protocol_options]);
-            if ((_result select 0) isEqualTo 0) then {
-                _continue = false;
-            } else {
-                "extDB2" callExtension "9:LOCK";
-            };
+        } else {
+            "extDB3" callExtension "9:LOCK";
         };
     };
 };

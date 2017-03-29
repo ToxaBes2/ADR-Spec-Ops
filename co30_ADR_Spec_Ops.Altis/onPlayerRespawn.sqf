@@ -154,6 +154,7 @@ if (playerSide == resistance) then {
 player addAction ["Выбросить ИК гранату", {if (isNil "STROBE_ITEM" || isNull STROBE_ITEM) exitWith {};detach STROBE_ITEM;deleteVehicle (nearestObject [getpos STROBE_ITEM,"nvg_targetC"]);deleteVehicle STROBE_ITEM;STROBE_ITEM = nil;},"",-1001,false,false,"",'!isNil "STROBE_ITEM" && vehicle player == player '];
 
 // Add chemlight actions
+HAND_ITEM = nil;
 player addAction ["Взять химсвет (красный) в руки", QS_fnc_chemlightUse,"Chemlight_red",-999,false,false,"",'isNil "HAND_ITEM" && "Chemlight_red" in (magazines player) && vehicle player == player '];
 player addAction ["Взять химсвет (желтый) в руки", QS_fnc_chemlightUse,"Chemlight_yellow",-999,false,false,"",'isNil "HAND_ITEM" && "Chemlight_yellow" in (magazines player) && vehicle player == player '];
 player addAction ["Взять химсвет (зеленый) в руки", QS_fnc_chemlightUse,"Chemlight_green",-999,false,false,"",'isNil "HAND_ITEM" && "Chemlight_green" in (magazines player) && vehicle player == player '];
