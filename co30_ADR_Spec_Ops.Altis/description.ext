@@ -284,6 +284,13 @@ class Params {
 		texts[] = {"Слепые котята","По Сомалийски","Человеческая","Нечеловеческая","AIM + WALLHACK + NORECOIL"};
 		default = 2;
 	};
+
+	class Weather {
+		title = "Погода";
+		values[] = {0,1};
+		texts[] = {"Реальная","Aрхивная"};
+		default = 0;
+	};
 };
 
 //------------------------- Notifications

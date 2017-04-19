@@ -1,6 +1,6 @@
 /*
 Author:	ToxaBes
-Description: Climate fata for airport of Simferopol at 2015
+Description: Climate fata for airport of Lemnos at 2015
 */
 private ["_row", "_weather"];
 _row = _this select 0;

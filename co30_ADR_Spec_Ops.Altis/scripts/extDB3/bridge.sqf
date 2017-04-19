@@ -163,6 +163,55 @@ sqlResponse = {
                 };
             };
         };
+        case "getWeather": {
+            _queryResult = call compile _queryResult;            
+            if (typeName _queryResult == "ARRAY") then {
+                if (count _queryResult > 1) then {
+                    _queryResult = _queryResult select 1; 
+                    diag_log format ["weather result: %1", _queryResult];
+                    _delay = 1200;
+                    {
+                        _param = _x select 0;
+                        _value = _x select 1;
+                        switch (_param) do { 
+                            case "overcast": {
+                                _delay setOvercast _value;
+                            }; 
+                            case "wind": {
+                                _delay setWind _value;
+                            }; 
+                            case "wind_dir": {
+                                _delay setWindDir _value;
+                            };
+                            case "wind_gusts": {
+                                //_delay setGusts _value;
+                            };
+                            case "waves": {
+                                _delay setWaves _value;
+                            };
+                            case "rain": {
+                                _delay setRain _value;
+                            };
+                            case "ligthning": {
+                                _delay setLightnings _value;
+                            };
+                            case "fog": {
+                                _delay setFog _value;
+                            };
+                        };                       
+                    } forEach _queryResult;  
+                    simulWeatherSync; 
+                    if (lastWeatherTime == 0) then {
+                        forceWeatherChange;
+                    } else {
+                        _null = [_delay] spawn { 
+                            sleep (_this select 0);   
+                            forceWeatherChange;
+                        };
+                    };                    
+                };
+            };
+        };
     };           
 };
 KRON_StrToArray = {
