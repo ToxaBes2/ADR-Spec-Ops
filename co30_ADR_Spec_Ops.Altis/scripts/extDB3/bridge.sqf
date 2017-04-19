@@ -178,7 +178,8 @@ sqlResponse = {
                                 _delay setOvercast _value;
                             }; 
                             case "wind": {
-                                _delay setWind _value;
+                                _delay setWindStr _value;
+                                _delay setWindForce _value;
                             }; 
                             case "wind_dir": {
                                 _delay setWindDir _value;
