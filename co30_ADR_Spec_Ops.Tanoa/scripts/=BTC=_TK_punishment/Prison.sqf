@@ -3,7 +3,7 @@ Author:	ToxaBes
 Description: prison logic.
 */
 private ["_tk_prison_coords", "_time", "_n", "_count","_target","_reason"];
-_prisonCoords = [6907,7243,0];
+_prisonCoords = [6845,7166,0];
 _defaultTime  = 120;
 _target       = _this select 0;
 _prisonTime   = param [1, 0];
