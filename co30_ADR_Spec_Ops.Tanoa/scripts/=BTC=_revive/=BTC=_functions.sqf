@@ -1753,18 +1753,18 @@ BTC_player_respawn = {
 
         // if partizan have a medic - replace his equipment with starter kit
         if (playerSide == resistance) then {    
-            _justPlayers = allPlayers - entities "HeadlessClient_F";
-            _flush = false;
-            {
-                if !(_flush) then {
-                    if (typeOf _x == "I_C_Soldier_Para_3_F") then {
-                        _flush = true;                
-                    };
-                };
-            } forEach _justPlayers;
-            if (_flush) then {
+            //_justPlayers = allPlayers - entities "HeadlessClient_F";
+            //_flush = false;
+            //{
+            //    if !(_flush) then {
+            //        if (typeOf _x == "I_C_Soldier_Para_3_F") then {
+            //            _flush = true;                
+            //        };
+            //    };
+            //} forEach _justPlayers;
+            //if (_flush) then {
                [player] call QS_fnc_addPartizanItems;
-            };
+            //};
         };
 
 		if (BTC_dlg_on_respawn != 0) then

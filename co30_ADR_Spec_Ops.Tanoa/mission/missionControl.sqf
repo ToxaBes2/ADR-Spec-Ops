@@ -25,28 +25,7 @@ _missionList = [
 ];
 AVANPOST_COORDS = false; publicVariable "AVANPOST_COORDS";
 AVANPOST_RESPAWN = false; publicVariable "AVANPOST_RESPAWN";
-while { true } do {
-	if (PARAMS_AO == 1) then {
-		[] spawn QS_fnc_clearInfo;
-	    currentMission = [] spawn {_this call compile preProcessFileLineNumbers "mission\main\missions\AOattack.sqf"};
-	    _chance = random 10;
-        if (_chance < PARAMS_PriorityObjectivesChance) then {
-        	sleep (_loopTimeout * 3);
-        	_prio = selectRandom _prioList;
-	        if !(isNil "LAST_PRIO_MISSION") then {
-                while {_prio == LAST_PRIO_MISSION} do {
-                    _prio = selectRandom _prioList;
-                };
-	        };
-	        LAST_PRIO_MISSION = _prio;
-	        publicVariable "LAST_PRIO_MISSION";
-            _null = [_prio] spawn {_this call compile preProcessFileLineNumbers format ["mission\priority\missions\%1.sqf", _this select 0]};
-        };
-	    waitUntil {
-	    	sleep _loopTimeout;
-	    	scriptDone currentMission;
-	    };
-    };
+while { true } do {	
 	if (PARAMS_SideObjectives == 1) then {
 		[] spawn QS_fnc_clearInfo;
         hqSideChat = "Вторичная цель выявлена, ждите указаний!"; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
@@ -76,4 +55,25 @@ while { true } do {
             };
         };
 	};
+	if (PARAMS_AO == 1) then {
+		[] spawn QS_fnc_clearInfo;
+	    currentMission = [] spawn {_this call compile preProcessFileLineNumbers "mission\main\missions\AOattack.sqf"};
+	    _chance = random 10;
+        if (_chance < PARAMS_PriorityObjectivesChance) then {
+        	sleep (_loopTimeout * 3);
+        	_prio = selectRandom _prioList;
+	        if !(isNil "LAST_PRIO_MISSION") then {
+                while {_prio == LAST_PRIO_MISSION} do {
+                    _prio = selectRandom _prioList;
+                };
+	        };
+	        LAST_PRIO_MISSION = _prio;
+	        publicVariable "LAST_PRIO_MISSION";
+            _null = [_prio] spawn {_this call compile preProcessFileLineNumbers format ["mission\priority\missions\%1.sqf", _this select 0]};
+        };
+	    waitUntil {
+	    	sleep _loopTimeout;
+	    	scriptDone currentMission;
+	    };
+    };
 };
