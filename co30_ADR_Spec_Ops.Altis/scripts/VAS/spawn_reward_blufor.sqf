@@ -60,16 +60,16 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
             _veh setFuel 1;
             _veh setVehicleAmmo 1;  
             _spawnPos = getPos _cargo;
-            _spawnDamage = damage _cargo;
+            //_spawnDamage = damage _cargo;
             deleteVehicle _cargo;
-            
+            sleep 2;
             if (_vehName == "ctrg") then {
         
                 // spawn group of bots
                 _rewardGroup = [_spawnPos, west, (configfile >> "CfgGroups" >> "West" >> "BLU_CTRG_F" >> "Infantry" >> "CTRG_InfSquad")] call BIS_fnc_spawnGroup;
-                {
-                    _x setDamage _spawnDamage;
-                } forEach (units _rewardGroup);
+                //{
+                //    _x setDamage _spawnDamage;
+                //} forEach (units _rewardGroup);
                 [(units _rewardGroup)] call QS_fnc_setSkill4;
                 if ((getPos (leader _rewardGroup)) distance2D _land < 50) then {
                     hqSideChat = "Груз доставлен";
@@ -86,7 +86,7 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
                 _vehReward  addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
                 _vehReward setDir _rewardDir;
                 _vehReward lock 0;
-                _vehReward setDamage _spawnDamage;
+                //_vehReward setDamage _spawnDamage;
                 if (getNumber(configFile >> "CfgVehicles" >> typeof _vehReward >> "isUav") == 1) then {
                     createVehicleCrew _vehReward;
                     _crew = crew _vehReward;
