@@ -58,6 +58,7 @@ class QS
 		class addActionTakeControl {};
 		class addActionTimer {};
 		class addActionUnload {};
+		class addActionUnloadAmmo {};
 		class addAvanpost {};
 		class addFurniture {};
 		class addPartizanItems {};

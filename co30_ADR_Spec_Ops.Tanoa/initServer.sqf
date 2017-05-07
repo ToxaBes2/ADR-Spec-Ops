@@ -82,7 +82,8 @@ _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\time.sqf
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\zbe_cache\cache.sqf"};          // ZBE Cache
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\bridges.sqf"};                  // Custom bridges
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\traffic\traffic.sqf"};          // Civilian traffic system
-_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\traffic\airsupport.sqf"};       // Blufor support system 
+_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\traffic\airsupport.sqf"};       // Blufor air support system 
+_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\traffic\groundsupport.sqf"};    // Blufor ground support system
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\patrolAA.sqf"};                 // random AA patrols 
 
 crossroad disableAI "ANIM";
