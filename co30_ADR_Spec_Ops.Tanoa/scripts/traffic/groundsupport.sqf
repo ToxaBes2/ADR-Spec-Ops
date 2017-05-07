@@ -19,7 +19,8 @@ while {true} do {
     _roadDirection1 = getDir _segment;         
     _firstPos = getPos _segment;  
     
-    _veh1 = createVehicle [_truck, _firstPos, [], 0, "NONE"];
+    _veh1 = createVehicle [_truck, [50,50,500], [], 0, "NONE"];
+    _veh1 setPos _firstPos;
     _veh1 setDir _roadDirection1;
     createVehicleCrew _veh1;
     _veh1 addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
@@ -34,7 +35,8 @@ while {true} do {
     };
     _roadDirection2 = getDir _segment;   
     
-    _veh2 = createVehicle [_guards, _secondPos, [], 0, "NONE"];
+    _veh2 = createVehicle [_guards, [40,40,400], [], 0, "NONE"];
+    _veh2 setPos _secondPos;
     _veh2 setDir _roadDirection2;
     createVehicleCrew _veh2;
     _veh2 addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
@@ -104,6 +106,7 @@ while {true} do {
         _endPos = _this select 2;
         _group1 = group _veh1;
         _group2 = group _veh2;
+        sleep 30;
         while {true} do {                 
             sleep 5;
             while {(count (waypoints _group2)) > 0} do {
@@ -127,24 +130,29 @@ while {true} do {
                 publicVariable "hqSideChat"; 
                 [WEST, "HQ"] sideChat hqSideChat;                
             };
+            if (side _veh1 == resistance) exitWith { 
+                hqSideChat = "Конвой захвачен партизанами!";
+                publicVariable "hqSideChat"; 
+                [WEST, "HQ"] sideChat hqSideChat; 
+            };
         };
+        sleep 5;
+        try {
+            {
+                deleteVehicle _x;
+            } forEach (units _group1);
+            deleteGroup _group1;
+            if !(side _veh1 == resistance) then {
+                deleteVehicle _veh1;
+            };
+            {
+                deleteVehicle _x;
+            } forEach (units _group2);
+            deleteGroup _group2;                    
+            if !(side _veh2 == resistance) then {
+                deleteVehicle _veh2;
+            };                           
+        } catch {};
     };    
-    sleep 5;
-    try {
-        {
-            deleteVehicle _x;
-        } forEach (units _group1);
-        deleteGroup _group1;
-        if !(side _veh1 == resistance) then {
-            deleteVehicle _veh1;
-        };
-        {
-            deleteVehicle _x;
-        } forEach (units _group2);
-        deleteGroup _group2;                    
-        if !(side _veh2 == resistance) then {
-            deleteVehicle _veh2;
-        };                           
-    } catch {};
     sleep _interval;
 };
