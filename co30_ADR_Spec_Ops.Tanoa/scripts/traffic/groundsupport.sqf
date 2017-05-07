@@ -4,15 +4,15 @@ Description: add ammo support for blufor base every X mins
 */
 _interval = 2400;
 _endPos = [6883,7382];
-_minDist = 2000;
-_maxDist = 6000;
 _truck = "B_T_Truck_01_box_F";
 _guards = "B_T_LSV_01_armed_F";
+_poses = [[5811.72,10489.4,0],[8158.5,12942.2,0],[13395.4,11555.3,0],[12783.7,7398.31,0],[9012.55,6755.04,0],[10119,8668.76,0],[10894.2,9570.02,0],
+[9018.49,10435.7,0],[10118.9,11765.5,0],[9448.07,7461.05,0],[11824.9,11146.3,0],[11069.4,7915.39,0],[4557.32,8677.53,0],[8242.2,11051,0]];
 while {true} do {
-    _startPos = [_endPos, _minDist, _maxDist, 2, 0, 0, 0] call QS_fnc_findSafePos;
+    _startPos = selectRandom _poses;
     _roadSegments = _startPos nearRoads 500;
     while {count _roadSegments == 0} do {
-        _startPos = [_endPos, _minDist, _maxDist, 2, 0, 0, 0] call QS_fnc_findSafePos;
+        _startPos = selectRandom _poses;
         _roadSegments = _startPos nearRoads 500;
     };
     _segment = selectRandom _roadSegments;
