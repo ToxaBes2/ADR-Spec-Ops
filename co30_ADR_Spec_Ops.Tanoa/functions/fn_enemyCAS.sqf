@@ -12,7 +12,7 @@ Description:
 private ["_casArray", "_casLimit", "_aoPos", "_basePos", "_spawnPos", "_players", "_minDist", "_distance", "_casSelect", "_casVehicle", "_casCrew"];
 
 //Array of possible enemy CAS vehicles
-_casArray = ["O_Plane_CAS_02_F", "I_Plane_Fighter_03_AA_F", "O_Heli_Attack_02_F", "O_Heli_Light_02_F"];
+_casArray = ["O_Plane_CAS_02_F", "I_Plane_Fighter_03_AA_F", "O_Heli_Attack_02_F", "O_Heli_Light_02_F", "O_Plane_Fighter_02_F","O_Plane_Fighter_02_Stealth_F","I_Plane_Fighter_04_F"];
 
 //Limit of how many CAS vehicles are allowed to operate at the same time
 _casLimit = 1;
@@ -112,6 +112,15 @@ if ((count enemyCasArray) < _casLimit) then {
                 }; 
                 case "O_Heli_Light_02_F" : { // PO-30 Orca
                     _empty = [_casVehicle, ["12Rnd_PG_missiles"]] call checkAmmo;
+                }; 
+                case "I_Plane_Fighter_04_F" : { // A-149 Gryphon
+                    _empty = [_casVehicle, ["magazine_Fighter04_Gun20mm_AA_x250"]] call checkAmmo;
+                }; 
+                case "O_Plane_Fighter_02_F" : { // To-201 Shikra
+                    _empty = [_casVehicle, ["magazine_Fighter02_Gun30mm_AA_x180"]] call checkAmmo;
+                }; 
+                case "O_Plane_Fighter_02_Stealth_F" : { // To-201 Shikra stealth
+                    _empty = [_casVehicle, ["magazine_Fighter02_Gun30mm_AA_x180"]] call checkAmmo;
                 }; 
             };
             if (_empty) then {
