@@ -35,7 +35,12 @@ _aircraft_nopilot = [
 "B_T_VTOL_01_infantry_F",						// V-44 X Blackfish транспортный
 "B_T_VTOL_01_vehicle_F",						// V-44 X Blackfish грузовой
 "O_T_VTOL_02_infantry_F",						// Y-32 Xi'an транспортный
-"O_T_VTOL_02_vehicle_F"							// Y-32 Xi'an грузовой
+"O_T_VTOL_02_vehicle_F",						// Y-32 Xi'an грузовой
+"B_Plane_Fighter_01_F",                         // F/A-181 Черная Оса 2
+"B_Plane_Fighter_01_Stealth_F",                 // F/A-181 Черная Оса 2 стелс
+"O_Plane_Fighter_02_F",                         // To-201 Шикра
+"O_Plane_Fighter_02_Stealth_F",                 // To-201 Шикра стелс
+"I_Plane_Fighter_04_F"                          // А-149 Грифон
 ];
 
 //---------- Место 2-го пилота заблокировано
