@@ -79,9 +79,9 @@ if (typeOf player in ["B_Helipilot_F"]) then {
 	}];
 
 	// Disable thermal vision on targeting pods during the day
-	player addEventHandler [ "GetInMan", {
-		[_this select 0, _this select 2] spawn QS_fnc_CheckVisionMode;
-	}];
+	//player addEventHandler [ "GetInMan", {
+	//	[_this select 0, _this select 2] spawn QS_fnc_CheckVisionMode;
+	//}];
 };
 
 // Client executions
