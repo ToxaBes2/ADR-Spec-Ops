@@ -239,13 +239,10 @@ QS_fnc_iconDrawFriendlyGPS = compileFinal "
 	disableSerialization;
 	_gps = controlNull;
 	while {isNull _gps} do {
-		{
-			if !(isNil {_x displayctrl 101}) then {
-				_gps = _x displayctrl 101
-			};
-		} count (uiNamespace getVariable "IGUI_Displays");
-		sleep 1;
-	};
+        _display = uiNamespace getVariable ["RscCustomInfoMiniMap", displayNull];
+        _gps = _display displayctrl 101;
+        sleep 1;
+    };
     clientEhDrawGps = _gps ctrlAddEventHandler ["Draw",QS_fnc_iconDrawEnemyGPS];
     _curStatus = 0;
     while {true} do {
@@ -263,6 +260,6 @@ QS_fnc_iconDrawFriendlyGPS = compileFinal "
             _curStatus = 0;
             [0] remoteExec ["QS_fnc_diplomacySwitch", 2];
         };
-        sleep 5;  
-    };    
+        sleep 5;
+    };
 };
