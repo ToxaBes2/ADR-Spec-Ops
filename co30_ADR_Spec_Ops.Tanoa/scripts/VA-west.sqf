@@ -285,6 +285,9 @@ _myBox = _this select 0;
 "NVGoggles_INDEP",
 "NVGoggles_OPFOR",
 "ToolKit",
+"NVGogglesB_blk_F",
+"NVGogglesB_grn_F",
+"NVGogglesB_gry_F",
 
 // Вещи Apex
 "G_Balaclava_TI_G_blk_F",

@@ -128,7 +128,8 @@ _allowedHeadgear = ["H_HelmetB","H_HelmetB_camo","H_HelmetB_paint","H_HelmetB_li
 
 // ITEMS
 _allowedItems = ["ItemMap","ItemRadio","ItemGPS","ItemCompass","ItemWatch","G_Spectacles","B_UavTerminal","NVGoggles","NVGoggles_INDEP","NVGoggles_OPFOR",
-"FirstAidKit","Medikit","ToolKit","Rangefinder","Laserdesignator","MineDetector","FirstAidKit","Medikit","ToolKit","Binocular","Laserbatteries"];
+"FirstAidKit","Medikit","ToolKit","Rangefinder","Laserdesignator","MineDetector","FirstAidKit","Medikit","ToolKit","Binocular","Laserbatteries","O_NVGoggles_hex_F",
+"O_NVGoggles_urb_F","O_NVGoggles_ghex_F","NVGoggles_tna_F","NVGogglesB_blk_F","NVGogglesB_grn_F","NVGogglesB_gry_F"];
 
 // Weapons check
 

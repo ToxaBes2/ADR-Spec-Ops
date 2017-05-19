@@ -99,6 +99,7 @@ _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\heliRear
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\stickyC4\stickycharge.sqf";};                       // Sticky C4 logic
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\vehicle\tow\tow.sqf";};                             // TOW script
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\admin_uid.sqf";};                                   // Admin tools
+_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\shutDownThermal.sqf";};                             // Disable thermal mode for Viper's helmet and ENVG-II goggles
 
 if !(isNil "EW_ATTACK") then {
     if (EW_ATTACK) then {

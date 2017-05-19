@@ -45,7 +45,7 @@ _ghillieGroups = ["I_C_Soldier_Para_8_F"];
 _ghillieItems = ["U_B_GhillieSuit","U_O_GhillieSuit","U_I_GhillieSuit","U_B_FullGhillie_lsh","U_B_FullGhillie_sard","U_B_FullGhillie_ard","U_O_FullGhillie_lsh","U_O_FullGhillie_sard","U_O_FullGhillie_ard","U_I_FullGhillie_lsh","U_I_FullGhillie_sard","U_I_FullGhillie_ard","U_B_T_FullGhillie_tna_F","U_B_T_Sniper_F","U_O_T_FullGhillie_tna_F","U_O_T_Sniper_F"];
 
 // ITEMS
-_disabledItems = ["NVGogglesB_blk_F","NVGogglesB_grn_F","NVGogglesB_gry_F"];
+//_disabledItems = ["NVGogglesB_blk_F","NVGogglesB_grn_F","NVGogglesB_gry_F"];
 
 // Weapons check
 
@@ -119,12 +119,12 @@ if (({"I_UavTerminal" == _x} count _assignedItems) > 0) then {
 };
 
 // Other items
-_assignedItems = assignedItems _player;
-{
-	_currentItem = _x;
-    if (_currentItem in _disabledItems) then {
-        _player unassignItem _currentItem;
-		_player removeItem _currentItem;
-		[format ["<t color='#F44336' size = '.55'>%1</t>", ITEM_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
-    };
-} forEach _assignedItems;
+//_assignedItems = assignedItems _player;
+//{
+//	_currentItem = _x;
+//    if (_currentItem in _disabledItems) then {
+//        _player unassignItem _currentItem;
+//		_player removeItem _currentItem;
+//		[format ["<t color='#F44336' size = '.55'>%1</t>", ITEM_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
+//    };
+//} forEach _assignedItems;//

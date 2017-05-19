@@ -438,11 +438,13 @@ _myBox = _this select 0;
 "NVGoggles_OPFOR",
 "FirstAidKit",
 "Medikit",
-"ToolKit"
+"ToolKit",
 //Tanoa
 //"O_NVGoggles_hex_F",
 //"O_NVGoggles_urb_F",
-
+"NVGogglesB_blk_F",
+"NVGogglesB_grn_F",
+"NVGogglesB_gry_F"
 //--- Пресса
 //"V_Press_F",
 //"H_Cap_press",
