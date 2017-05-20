@@ -1,4 +1,4 @@
-version=52;
+version=53;
 class EditorData
 {
 	moveGridStep=15.093437;
@@ -16,7 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=1629;
+		nextID=1697;
 	};
 	class Camera
 	{
@@ -117,259 +117,259 @@ class AddonsMetaData
 			className="A3_Air_F_Gamma";
 			name="Arma 3 - Aircrafts";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item1
 		{
 			className="A3_Air_F";
 			name="Arma 3 Alpha - Aircrafts";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item2
 		{
 			className="A3_Air_F_Heli";
 			name="Arma 3 Helicopters - Aircrafts";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item3
 		{
 			className="A3_Air_F_EPB";
 			name="Arma 3 Adapt Episode - Aircrafts";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item4
 		{
 			className="A3_Structures_F_Exp";
 			name="Arma 3 Apex - Buildings and Structures";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item5
 		{
 			className="A3_Structures_F";
 			name="Arma 3 - Buildings and Structures";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item6
 		{
 			className="A3_Ui_F";
 			name="Arma 3 - User Interface";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item7
 		{
 			className="A3_Structures_F_EPA";
 			name="Arma 3 Survive Episode - Buildings and Structures";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item8
 		{
 			className="A3_Structures_F_EPC";
 			name="Arma 3 Win Episode - Buildings and Structures";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item9
 		{
 			className="A3_Props_F_Exp";
 			name="Arma 3 Apex - Decorative and Mission Objects";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item10
 		{
 			className="A3_Structures_F_Heli";
 			name="Arma 3 Helicopters - Buildings and Structures";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item11
 		{
 			className="A3_Data_F_Curator";
 			name="Arma 3 Zeus Update - Main Configuration";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item12
 		{
 			className="A3_Props_F_Exp_A";
 			name="Arma 3 Nexus Update - Decorative and Mission Objects";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item13
 		{
 			className="A3_Supplies_F_Heli";
 			name="Arma 3 Helicopters - Ammoboxes and Supplies";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item14
 		{
 			className="A3_Structures_F_EPB";
 			name="Arma 3 Adapt Episode - Buildings and Structures";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item15
 		{
 			className="A3_Characters_F_Exp";
 			name="Arma 3 Apex - Characters and Clothing";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item16
 		{
 			className="A3_Characters_F";
 			name="Arma 3 Alpha - Characters and Clothing";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item17
 		{
 			className="A3_Characters_F_Kart";
 			name="Arma 3 Karts - Characters and Clothing";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item18
 		{
 			className="A3_Structures_F_Mil";
 			name="Arma 3 - Military Buildings and Structures";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item19
 		{
 			className="A3_Roads_F";
 			name="Arma 3 - Roads";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item20
 		{
 			className="A3_Modules_F";
 			name="Arma 3 Alpha - Scripted Modules";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item21
 		{
 			className="A3_Boat_F_Beta";
 			name="Arma 3 Beta - Boats and Submersibles";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item22
 		{
 			className="A3_Drones_F";
 			name="Arma 3 Beta - Drones";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item23
 		{
 			className="A3_Modules_F_Curator";
 			name="Arma 3 Zeus Update - Scripted Modules";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item24
 		{
 			className="A3_Soft_F_Exp";
 			name="Arma 3 Apex - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item25
 		{
 			className="A3_Boat_F_Exp";
 			name="Arma 3 Apex - Boats and Submersibles";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item26
 		{
 			className="A3_Soft_F";
 			name="Arma 3 Alpha - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item27
 		{
 			className="A3_Air_F_Exp";
 			name="Arma 3 Apex - Aircrafts";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item28
 		{
 			className="A3_Weapons_F";
 			name="Arma 3 Alpha - Weapons and Accessories";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item29
 		{
 			className="A3_Structures_F_Ind";
 			name="Arma 3 - Industrial Structures";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item30
 		{
 			className="A3_Soft_F_Beta";
 			name="Arma 3 Beta - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item31
 		{
 			className="A3_Armor_F_Exp";
 			name="Arma 3 Apex - Armored Land Vehicles";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item32
 		{
 			className="A3_Weapons_F_Exp";
 			name="Arma 3 Apex - Weapons and Accessories";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item33
 		{
 			className="A3_Static_F";
 			name="Arma 3 Alpha - Turrets";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item34
 		{
 			className="A3_Signs_F";
 			name="Arma 3 - Signs";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item35
 		{
 			className="A3_Structures_F_Exp_Industrial";
 			name="Arma 3 Apex - Industrial Structures";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item36
 		{
 			className="A3_Structures_F_Kart";
 			name="Arma 3 Karts - Buildings and Structures";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 	};
 };
@@ -454,7 +454,7 @@ class CustomAttributes
 		};
 		class Attribute3
 		{
-			property="ReviveRequiredItemsFakConsumed";
+			property="ReviveMedicSpeedMultiplier";
 			expression="false";
 			class Value
 			{
@@ -464,10 +464,10 @@ class CustomAttributes
 					{
 						type[]=
 						{
-							"BOOL"
+							"SCALAR"
 						};
 					};
-					value=1;
+					value=2;
 				};
 			};
 		};
@@ -492,25 +492,6 @@ class CustomAttributes
 		};
 		class Attribute5
 		{
-			property="ReviveMedicSpeedMultiplier";
-			expression="false";
-			class Value
-			{
-				class data
-				{
-					class type
-					{
-						type[]=
-						{
-							"SCALAR"
-						};
-					};
-					value=2;
-				};
-			};
-		};
-		class Attribute6
-		{
 			property="RespawnButton";
 			expression="true";
 			class Value
@@ -528,7 +509,7 @@ class CustomAttributes
 				};
 			};
 		};
-		class Attribute7
+		class Attribute6
 		{
 			property="ReviveForceRespawnDelay";
 			expression="false";
@@ -547,7 +528,7 @@ class CustomAttributes
 				};
 			};
 		};
-		class Attribute8
+		class Attribute7
 		{
 			property="ReviveBleedOutDelay";
 			expression="false";
@@ -566,7 +547,7 @@ class CustomAttributes
 				};
 			};
 		};
-		class Attribute9
+		class Attribute8
 		{
 			property="ReviveDelay";
 			expression="false";
@@ -585,7 +566,7 @@ class CustomAttributes
 				};
 			};
 		};
-		class Attribute10
+		class Attribute9
 		{
 			property="ReviveUnconsciousStateMode";
 			expression="false";
@@ -604,7 +585,7 @@ class CustomAttributes
 				};
 			};
 		};
-		class Attribute11
+		class Attribute10
 		{
 			property="ReviveRequiredItems";
 			expression="false";
@@ -623,7 +604,7 @@ class CustomAttributes
 				};
 			};
 		};
-		nAttributes=12;
+		nAttributes=11;
 	};
 	class Category1
 	{
@@ -697,6 +678,7 @@ class Mission
 			};
 			id=3;
 			type="I_Plane_Fighter_03_AA_F";
+			atlOffset=-0.084400177;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -737,7 +719,7 @@ class Mission
 			};
 			id=33;
 			type="B_Heli_Light_01_F";
-			atlOffset=-2.8848648e-005;
+			atlOffset=-0.37893081;
 		};
 		class Item2
 		{
@@ -4984,13 +4966,12 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={6860.2061,2.6598759,7282.8003};
+				position[]={6860.2061,2.6600001,7282.7998};
 				angles[]={0,5.1138148,0};
 			};
 			init="this addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];";
 			id=1005;
 			type="ModuleRespawnVehicle_F";
-			atlOffset=-0.00012421608;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -5065,7 +5046,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="20";
+							value="15";
 						};
 					};
 				};
@@ -5160,7 +5141,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="30";
+							value="20";
 						};
 					};
 				};
@@ -6444,6 +6425,7 @@ class Mission
 				};
 			};
 			id=1076;
+			atlOffset=0.0097134113;
 		};
 		class Item126
 		{
@@ -6461,6 +6443,7 @@ class Mission
 			};
 			id=1077;
 			type="B_UAV_02_CAS_F";
+			atlOffset=0.0097134113;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -6559,6 +6542,7 @@ class Mission
 				};
 			};
 			id=1080;
+			atlOffset=0.0097134113;
 		};
 		class Item128
 		{
@@ -6576,6 +6560,7 @@ class Mission
 			};
 			id=1081;
 			type="B_UAV_02_F";
+			atlOffset=0.0097134113;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -7523,7 +7508,7 @@ class Mission
 			};
 			id=1278;
 			type="B_CTRG_Heli_Transport_01_tropic_F";
-			atlOffset=2.3841858e-007;
+			atlOffset=-1.2159348e-005;
 		};
 		class Item150
 		{
@@ -9720,8 +9705,8 @@ class Mission
 						};
 						class Attribute1
 						{
-							property="enableStamina";
-							expression="_this enablestamina _value;";
+							property="face";
+							expression="_this setface _value;";
 							class Value
 							{
 								class data
@@ -9730,10 +9715,10 @@ class Mission
 									{
 										type[]=
 										{
-											"BOOL"
+											"STRING"
 										};
 									};
-									value=0;
+									value="WhiteHead_15";
 								};
 							};
 						};
@@ -9777,8 +9762,8 @@ class Mission
 						};
 						class Attribute4
 						{
-							property="face";
-							expression="_this setface _value;";
+							property="enableStamina";
+							expression="_this enablestamina _value;";
 							class Value
 							{
 								class data
@@ -9787,10 +9772,10 @@ class Mission
 									{
 										type[]=
 										{
-											"STRING"
+											"BOOL"
 										};
 									};
-									value="WhiteHead_15";
+									value=0;
 								};
 							};
 						};
@@ -10029,7 +10014,7 @@ class Mission
 			};
 			id=2280;
 			type="C_Scooter_Transport_01_F";
-			atlOffset=2.464;
+			atlOffset=2.4663191;
 		};
 		class Item261
 		{
@@ -10046,7 +10031,7 @@ class Mission
 			};
 			id=2282;
 			type="C_Scooter_Transport_01_F";
-			atlOffset=2.3069999;
+			atlOffset=2.309319;
 		};
 		class Item262
 		{
@@ -10218,6 +10203,7 @@ class Mission
 			name="respawn_guerrila";
 			type="Empty";
 			id=2396;
+			atlOffset=0.12634802;
 		};
 		class Item267
 		{
@@ -10237,7 +10223,7 @@ class Mission
 			};
 			id=2404;
 			type="I_CargoNet_01_ammo_F";
-			atlOffset=0.21700048;
+			atlOffset=0.028376579;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -10410,7 +10396,7 @@ class Mission
 			};
 			id=2425;
 			type="B_HMG_01_high_F";
-			atlOffset=0.20239449;
+			atlOffset=0.20094585;
 		};
 		class Item275
 		{
@@ -11427,7 +11413,7 @@ class Mission
 					};
 					id=3493;
 					type="I_C_Soldier_Para_3_F";
-					atlOffset=0.00042533875;
+					atlOffset=0.13720417;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -11461,7 +11447,7 @@ class Mission
 						angles[]={0,0.51408672,6.2826962};
 					};
 					side="Independent";
-					flags=2;
+					flags=6;
 					class Attributes
 					{
 						rank="COLONEL";
@@ -11471,7 +11457,7 @@ class Mission
 					};
 					id=3489;
 					type="I_C_Soldier_Para_5_F";
-					atlOffset=0.296;
+					atlOffset=0.16368532;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -11515,7 +11501,7 @@ class Mission
 					};
 					id=3491;
 					type="I_C_Soldier_Para_8_F";
-					atlOffset=9.393692e-005;
+					atlOffset=0.12134361;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -11545,7 +11531,7 @@ class Mission
 			{
 			};
 			id=2488;
-			atlOffset=0.296;
+			atlOffset=0.16368532;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -11585,7 +11571,7 @@ class Mission
 						position[]={7470.563,7.7884388,8522.0088};
 					};
 					side="Independent";
-					flags=1;
+					flags=5;
 					class Attributes
 					{
 						description="Партизан (медик/пулеметчик)";
@@ -11593,7 +11579,7 @@ class Mission
 					};
 					id=3494;
 					type="I_C_Soldier_Para_3_F";
-					atlOffset=0.29699993;
+					atlOffset=0.09988451;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -11627,7 +11613,7 @@ class Mission
 						angles[]={0,0.4089132,6.2826962};
 					};
 					side="Independent";
-					flags=2;
+					flags=6;
 					class Attributes
 					{
 						rank="COLONEL";
@@ -11637,7 +11623,7 @@ class Mission
 					};
 					id=3490;
 					type="I_C_Soldier_Para_5_F";
-					atlOffset=0.296;
+					atlOffset=0.10565901;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -11681,7 +11667,7 @@ class Mission
 					};
 					id=3492;
 					type="I_C_Soldier_Para_8_F";
-					atlOffset=0.00021696091;
+					atlOffset=0.12903595;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -11711,7 +11697,7 @@ class Mission
 			{
 			};
 			id=2490;
-			atlOffset=0.296;
+			atlOffset=0.10565901;
 			class CustomAttributes
 			{
 				class Attribute0
