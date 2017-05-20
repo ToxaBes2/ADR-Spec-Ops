@@ -2441,7 +2441,7 @@ BTC_addMissingItems = {
         _primaryWeapon = profileNamespace getVariable "primary_weapon";
         _primaryWeaponItems = profileNamespace getVariable "primary_items";
         _primaryWeaponMagazines = profileNamespace getVariable "primary_magazine";
-        _primaryAmmo = profileNamespace getVariable "primary_ammo";
+        
         _player addWeaponGlobal _primaryWeapon;
         {
             if (_x != "") then {
@@ -2455,9 +2455,7 @@ BTC_addMissingItems = {
                 };
             } forEach _primaryWeaponMagazines;
         };
-        _player selectWeapon _primaryWeapon;
-        _player setAmmo [primaryWeapon player, _primaryAmmo];
-    } else {
+        _player selectWeapon _primaryWeapon;        
 
         // grenade launcher fix
         _launchers = ["EGLM", "GL_3GL_F", "3GL"];
@@ -2479,6 +2477,9 @@ BTC_addMissingItems = {
             } forEach _muzzles;
         };
     };
+
+    _primaryAmmo = profileNamespace getVariable "primary_ammo";
+    _player setAmmo [primaryWeapon _player, _primaryAmmo];
 
     //load secondary weapon
     if (secondaryWeapon _player == "") then {
