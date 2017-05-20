@@ -147,7 +147,7 @@ QS_fnc_iconDrawMap = compileFinal "
 					_textSize,
 					_textFont,
 					_textOffset
-				]
+				];
 			};
 		};
 	} count (playableUnits + switchableUnits + allUnitsUav);
@@ -184,7 +184,7 @@ QS_fnc_iconDrawEnemyGPS = compileFinal "
 						_textSize,
 						_textFont,
 						_textOffset
-					]
+					];
 				};
 			};
 		};
@@ -220,7 +220,7 @@ QS_fnc_iconDrawFriendlyGPS = compileFinal "
 						_textSize,
 						_textFont,
 						_textOffset
-					]
+					];
 				};
 			};
 		};

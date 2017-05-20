@@ -3,6 +3,7 @@ Author:	Quicksilver (changed by ToxaBes)
 Description: check for restriction weapons and gear after load from aresenal or take from container
 */
 _player = _this select 0;
+_remove = _this param [1, false];
 
 #define AT_MSG "Только ракетчики ПТ могут использовать это оружие"
 #define AT_SMALL_MSG "Только ракетчики ПТ и командиры отделений могут использовать это оружие"
@@ -132,11 +133,15 @@ _allowedItems = ["ItemMap","ItemRadio","ItemGPS","ItemCompass","ItemWatch","G_Sp
 "O_NVGoggles_urb_F","O_NVGoggles_ghex_F","NVGoggles_tna_F","NVGogglesB_blk_F","NVGogglesB_grn_F","NVGogglesB_gry_F"];
 
 // Weapons check
-
+_box = createVehicle ["groundWeaponHolder", _player modelToWorld [0,0.6,0], [], 0.5, "CAN_COLLIDE"];
+_box setDir floor (random 360);
 // Pilots
 if (({_player isKindOf _x} count _pilot) > 0) then {
 	if (!(primaryWeapon _player in _pilotWeapons) and (primaryWeapon _player != "")) then {
-		_player removeWeapon (primaryWeapon _player);
+		if (!_remove) then {
+		    _box addWeaponCargoGlobal [primaryWeapon _player, 1];
+	    };		
+	    _player removeWeapon (primaryWeapon _player);
 		[format ["<t color='#F44336' size = '.55'>%1</t>", PILOT_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 	};
 };
@@ -144,7 +149,10 @@ if (({_player isKindOf _x} count _pilot) > 0) then {
 // Grenadiers
 if (({_player hasWeapon _x} count _grenadierWeapons) > 0) then {
 	if (({_player isKindOf _x} count _grenadier) < 1) then {
-		_player removeWeapon (primaryWeapon _player);
+		if (!_remove) then {
+		    _box addWeaponCargoGlobal [primaryWeapon _player, 1];
+	    };		
+	    _player removeWeapon (primaryWeapon _player);
 		[format ["<t color='#F44336' size = '.55'>%1</t>", GRENADIER_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 	};
 };
@@ -152,6 +160,9 @@ if (({_player hasWeapon _x} count _grenadierWeapons) > 0) then {
 // Sniper Rifles
 if (({_player hasWeapon _x} count _sniperSpecialised) > 0) then {
 	if (({_player isKindOf _x} count _snipers) < 1) then {
+		if (!_remove) then {
+		    _box addWeaponCargoGlobal [primaryWeapon _player, 1];
+	    };
 		_player removeWeapon (primaryWeapon _player);
 		[format ["<t color='#F44336' size = '.55'>%1</t>", SNIPER_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 	};
@@ -160,6 +171,9 @@ if (({_player hasWeapon _x} count _sniperSpecialised) > 0) then {
 // LMG
 if (({_player hasWeapon _x} count _autoSpecialised) > 0) then {
 	if (({_player isKindOf _x} count _autoRiflemen) < 1) then {
+		if (!_remove) then {
+		    _box addWeaponCargoGlobal [primaryWeapon _player, 1];
+	    };
 		_player removeWeapon (primaryWeapon _player);
 		[format ["<t color='#F44336' size = '.55'>%1</t>", MG_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 	};
@@ -168,6 +182,9 @@ if (({_player hasWeapon _x} count _autoSpecialised) > 0) then {
 // Marksman
 if (({_player hasWeapon _x} count _marksmanGun) > 0) then {
 	if (({_player isKindOf _x} count _marksman) < 1) then {
+		if (!_remove) then {
+		    _box addWeaponCargoGlobal [primaryWeapon _player, 1];
+	    };
 		_player removeWeapon (primaryWeapon _player);
 		[format ["<t color='#F44336' size = '.55'>%1</t>", MRK_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 	};
@@ -176,6 +193,9 @@ if (({_player hasWeapon _x} count _marksmanGun) > 0) then {
 // Launchers
 if (({_player hasWeapon _x} count _missileSpecialised) > 0) then {
 	if (({_player isKindOf _x} count _missileSoldiers) < 1) then {
+		if (!_remove) then {
+		    _box addWeaponCargoGlobal [secondaryWeapon _player, 1];
+	    };
 		_player removeWeapon (secondaryWeapon _player);
 		[format ["<t color='#F44336' size = '.55'>%1</t>", AT_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 	};
@@ -184,6 +204,9 @@ if (({_player hasWeapon _x} count _missileSpecialised) > 0) then {
 // Small Launchers
 if (({_player hasWeapon _x} count _missileSmallSpecialised) > 0) then {
 	if (({_player isKindOf _x} count _missileSmallSoldiers) < 1) then {
+		if (!_remove) then {
+		    _box addWeaponCargoGlobal [secondaryWeapon _player, 1];
+	    };
 		_player removeWeapon (secondaryWeapon _player);
 		[format ["<t color='#F44336' size = '.55'>%1</t>", AT_SMALL_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 	};
@@ -220,7 +243,7 @@ if (({_x in _optics} count _marksmanOpticsItems) > 0) then {
 // Ghillie
 _uniform = format ["%1", uniform _player];
 if (_uniform != "") then {
-    if (_uniform in _ghillieItems) then {
+    if (_uniform in _ghillieItems) then {    	
     	if (({_player isKindOf _x} count _ghillieGroups) < 1) then {
     		removeUniform _player;
     		[format ["<t color='#F44336' size = '.55'>%1</t>", GHILLIIE_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;

@@ -3,6 +3,7 @@ Author:	Quicksilver (changed by ToxaBes)
 Description: check for restriction weapons and gear after load from aresenal or take from container
 */
 _player = _this select 0;
+_remove = _this param [1, false];
 
 #define AT_MSG "Только ракетчики ПТ могут использовать это оружие"
 #define SNIPER_MSG "Только снайперы могут использовать это оружие"
@@ -48,10 +49,14 @@ _ghillieItems = ["U_B_GhillieSuit","U_O_GhillieSuit","U_I_GhillieSuit","U_B_Full
 //_disabledItems = ["NVGogglesB_blk_F","NVGogglesB_grn_F","NVGogglesB_gry_F"];
 
 // Weapons check
-
+_box = createVehicle ["groundWeaponHolder", _player modelToWorld [0,0.6,0], [], 0.5, "CAN_COLLIDE"];
+_box setDir floor (random 360);
 // Sniper Rifles
 if (({_player hasWeapon _x} count _sniperSpecialised) > 0) then {
 	if (({_player isKindOf _x} count _snipers) < 1) then {
+		if (!_remove) then {
+		    _box addWeaponCargoGlobal [primaryWeapon _player, 1];
+	    };
 		_player removeWeapon (primaryWeapon _player);
 		[format ["<t color='#F44336' size = '.55'>%1</t>", SNIPER_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 	};
@@ -60,6 +65,9 @@ if (({_player hasWeapon _x} count _sniperSpecialised) > 0) then {
 // LMG
 if (({_player hasWeapon _x} count _autoSpecialised) > 0) then {
 	if (({_player isKindOf _x} count _autoRiflemen) < 1) then {
+		if (!_remove) then {
+		    _box addWeaponCargoGlobal [primaryWeapon _player, 1];
+	    };
 		_player removeWeapon (primaryWeapon _player);
 		[format ["<t color='#F44336' size = '.55'>%1</t>", MG_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 	};
@@ -68,6 +76,9 @@ if (({_player hasWeapon _x} count _autoSpecialised) > 0) then {
 // Marksman
 if (({_player hasWeapon _x} count _marksmanGun) > 0) then {
 	if (({_player isKindOf _x} count _marksman) < 1) then {
+		if (!_remove) then {
+		    _box addWeaponCargoGlobal [primaryWeapon _player, 1];
+	    };
 		_player removeWeapon (primaryWeapon _player);
 		[format ["<t color='#F44336' size = '.55'>%1</t>", MRK_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 	};
@@ -76,6 +87,9 @@ if (({_player hasWeapon _x} count _marksmanGun) > 0) then {
 // Launchers
 if (({_player hasWeapon _x} count _missileSpecialised) > 0) then {
 	if (({_player isKindOf _x} count _missileSoldiers) < 1) then {
+		if (!_remove) then {
+		    _box addWeaponCargoGlobal [secondaryWeapon _player, 1];
+	    };
 		_player removeWeapon (secondaryWeapon _player);
 		[format ["<t color='#F44336' size = '.55'>%1</t>", AT_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 	};
