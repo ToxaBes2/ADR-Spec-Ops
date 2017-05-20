@@ -14,3 +14,8 @@ _diplomacyBlufor = base_arsenal_infantry getVariable ["DIPLOMACY", 0];
 if (_diplomacyPartizan == 1 && _diplomacyBlufor == 1) then {
     ["setDiplomacy",[1], 0] remoteExec ["sqlServerCall", 2];
 };
+
+// set auto remove for groups
+{
+    _x deleteGroupWhenEmpty true;
+} forEach allGroups;
