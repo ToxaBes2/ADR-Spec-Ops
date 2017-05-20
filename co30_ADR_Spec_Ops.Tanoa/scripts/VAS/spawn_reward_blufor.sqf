@@ -60,6 +60,7 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
             _veh setFuel 1;
             _veh setVehicleAmmo 1;  
             _spawnPos = getPos _cargo;
+            _spawnPos set [2, 0];
             //f_spawnDamage = damage _cargo;
             deleteVehicle _cargo;
             sleep 2;
@@ -148,6 +149,18 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
                     case "B_T_MBT_01_cannon_F": {
                         _vehReward addMagazineTurret ["SmokeLauncherMag", [-1]];
                         _vehReward addWeaponTurret ["SmokeLauncher", [-1]];
+                    };
+                    case "O_T_VTOL_02_vehicle_F": {
+                        _vehReward removeMagazineTurret ["38Rnd_80mm_rockets", [0]];
+                        _vehReward removeWeaponTurret ["rockets_Skyfire", [0]];
+                        _vehReward addMagazineTurret ["38Rnd_80mm_rockets", [-1]];
+                        _vehReward addWeaponTurret ["rockets_Skyfire", [-1]];
+                    };
+                    case "O_T_VTOL_02_infantry_F": {
+                        _vehReward removeMagazineTurret ["38Rnd_80mm_rockets", [0]];
+                        _vehReward removeWeaponTurret ["rockets_Skyfire", [0]];
+                        _vehReward addMagazineTurret ["38Rnd_80mm_rockets", [-1]];
+                        _vehReward addWeaponTurret ["rockets_Skyfire", [-1]];
                     };
                 };
                 if (_vehReward distance2D _land < 50) then {
