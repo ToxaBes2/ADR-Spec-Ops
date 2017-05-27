@@ -251,3 +251,44 @@ if (_continue) then {
     };
 
 };
+
+// show restart warnings
+[] spawn {
+    waitUntil { if (serverTime > 0) then {true} else {sleep 1; false} };
+    _missionStartTime = missionStart;
+    _hours = [4,16];
+    _longCheck = true;
+    while {true} do {
+        _minsStart = ((_missionStartTime select 3) * 60) + (_missionStartTime select 4);
+        _minsDuration = floor (serverTime / 60);  
+        _total = _minsStart + _minsDuration;
+        _hour = floor (_total / 60);
+        _min = _total - (_hour * 60);
+        if (_hour in _hours) then {
+            _m = 0;
+            switch (_min) do { 
+                case 30 : {
+                    _m = 30;
+                }; 
+                case 45 : {
+                    _m = 15;
+                }; 
+                case 59 : {
+                    _m = 1;
+                };
+                default {}; 
+            };
+            if (_m > 0) then {
+               (format["Внимание: %1 мин. до рестарта сервера!", _m]) remoteExec ["systemChat"]; 
+            };
+            _longCheck = false;
+        } else {
+            _longCheck = true;
+        };
+        if (_longCheck) then {
+            sleep 1200;
+        } else {
+            sleep 60;
+        };
+    };    
+};
