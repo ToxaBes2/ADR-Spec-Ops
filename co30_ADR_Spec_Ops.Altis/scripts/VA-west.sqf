@@ -424,6 +424,7 @@ _myBox = _this select 0;
 //--- Дополнения
 "acc_flashlight",
 "acc_pointer_IR",
+"acc_flashlight_pistol",
 
 //--- Вещи
 "ItemMap",

@@ -117,6 +117,10 @@ for "_i" from 0 to 5 do {
 //};
 _player addWeapon _selectedWeapon;
 
+if ((handgunWeapon _player) isKindOf ["Pistol"]) then {
+    _player addHandgunItem "acc_flashlight_pistol";
+};
+
 // add needed things in partizan ammo
 //partizan_ammo addItemCargoGlobal ["U_I_Wetsuit", 1];
 //partizan_ammo addItemCargoGlobal ["V_RebreatherIA", 1];
