@@ -101,7 +101,7 @@ QS_fnc_iconText = compileFinal "
 			};
 		};
 		if (!isPlayer _v) then {
-			_au = [""I_UAV_01_F"",""B_UAV_01_F"",""O_UAV_01_F"",""B_UAV_05_F"",""I_UAV_02_F"",""O_UAV_02_F"",""I_UAV_02_CAS_F"",""O_UAV_02_CAS_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""O_UAV_01_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""I_UGV_01_F"",""B_UGV_01_F"",""I_UGV_01_rcws_F"",""B_UGV_01_rcws_F"",""B_GMG_01_A_F"",""B_HMG_01_A_F"",""O_GMG_01_A_F"",""O_HMG_01_A_F"",""I_GMG_01_A_F"",""I_HMG_01_A_F""];
+			_au = [""I_UAV_01_F"",""B_UAV_01_F"",""O_UAV_01_F"",""B_UAV_05_F"",""B_UAV_02_dynamicLoadout_F"",""I_UAV_02_F"",""O_UAV_02_F"",""I_UAV_02_CAS_F"",""O_UAV_02_CAS_F"",""B_UAV_02_F"",""B_UAV_02_CAS_F"",""O_UAV_01_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""I_UGV_01_F"",""B_UGV_01_F"",""I_UGV_01_rcws_F"",""B_UGV_01_rcws_F"",""B_GMG_01_A_F"",""B_HMG_01_A_F"",""O_GMG_01_A_F"",""O_HMG_01_A_F"",""I_GMG_01_A_F"",""I_HMG_01_A_F""];
 			_iau = ({typeOf _v == _x} count _au) > 0;
 			if (_iau) exitWith {
 				if (isUavConnected _v) then {
