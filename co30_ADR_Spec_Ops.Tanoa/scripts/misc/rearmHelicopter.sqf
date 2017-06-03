@@ -6,7 +6,7 @@ Description: Repair, rearm and refuel a helicopter
 private ["_veh", "_fuel", "_dmgList", "_dmgSum", "_mags", "_ammo"];
 _veh = _this;
 _uavs = ["B_UAV_01_F","B_UAV_02_F","B_UAV_05_F","B_UAV_02_CAS_F","B_UGV_01_F","B_UGV_01_rcws_F","I_UAV_01_F","I_UAV_02_F","I_UAV_02_CAS_F","I_UGV_01_F","I_UGV_01_rcws_F",
-"O_UAV_01_F","O_UAV_02_F","O_UAV_02_CAS_F","O_UGV_01_F","O_UGV_01_rcws_F","B_T_UAV_03_F","O_T_UAV_04_CAS_F","B_UAV_02_dynamicLoadout_F"];
+"O_UAV_01_F","O_UAV_02_F","O_UAV_02_CAS_F","O_UGV_01_F","O_UGV_01_rcws_F","B_T_UAV_03_F","O_T_UAV_04_CAS_F","B_UAV_02_dynamicLoadout_F","B_T_UAV_03_dynamicLoadout_F"];
 
 if (_veh isKindOf "ParachuteBase" || !alive _veh) exitWith {};
 if (!(_veh isKindOf "Helicopter") or ((typeOf _veh) in _uavs)) exitWith {
