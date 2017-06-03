@@ -164,7 +164,8 @@ sqlResponse = {
             };
         };
         case "getWeather": {
-            _queryResult = call compile _queryResult;            
+            _queryResult = call compile _queryResult;    
+            if (isNil "_queryResult") exitWith {};        
             if (typeName _queryResult == "ARRAY") then {
                 if (count _queryResult > 1) then {
                     _queryResult = _queryResult select 1; 

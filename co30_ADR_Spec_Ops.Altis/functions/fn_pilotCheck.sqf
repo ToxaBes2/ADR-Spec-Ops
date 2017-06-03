@@ -25,6 +25,10 @@ _aircraft_nopilot = [
 "B_Heli_Light_01_armed_F",						// Пауни
 "B_Heli_Light_01_F",							// Хамингберд желтый
 "B_Heli_Light_01_stripped_F",           		// Хамингберд зеленый
+"O_Heli_Light_02_dynamicLoadout_F",
+"O_Heli_Attack_02_dynamicLoadout_F",
+"B_Heli_Attack_01_dynamicLoadout_F",
+"I_Heli_light_03_dynamicLoadout_F",
 
 // Самолеты
 "B_Plane_CAS_01_F",								// А10
@@ -40,7 +44,14 @@ _aircraft_nopilot = [
 "B_Plane_Fighter_01_Stealth_F",                 // F/A-181 Черная Оса 2 стелс
 "O_Plane_Fighter_02_F",                         // To-201 Шикра
 "O_Plane_Fighter_02_Stealth_F",                 // To-201 Шикра стелс
-"I_Plane_Fighter_04_F"                          // А-149 Грифон
+"I_Plane_Fighter_04_F",                         // А-149 Грифон
+"O_Plane_CAS_02_dynamicLoadout_F",
+"B_Plane_CAS_01_dynamicLoadout_F",
+"O_T_VTOL_02_infantry_dynamicLoadout_F",
+"I_Plane_Fighter_04_F",
+"B_Plane_Fighter_01_F",
+"O_Plane_Fighter_02_F",
+"I_Plane_Fighter_03_dynamicLoadout_F"
 ];
 
 //---------- Место 2-го пилота заблокировано
@@ -62,13 +73,17 @@ _aircraft_nocopilot = [
 "B_Heli_Light_01_armed_F",						// Пауни
 "B_Heli_Light_01_F",							// Хамингберд желтый
 "B_Heli_Light_01_stripped_F",					// Хамингберд зеленый
+"O_Heli_Light_02_dynamicLoadout_F",
+"O_Heli_Attack_02_dynamicLoadout_F",
+"B_Heli_Attack_01_dynamicLoadout_F",
 
 // Самолеты
 "B_T_VTOL_01_armed_F",							// V-44 X Blackfish боевой
 "B_T_VTOL_01_infantry_F",						// V-44 X Blackfish транспортный
 "B_T_VTOL_01_vehicle_F",						// V-44 X Blackfish грузовой
 "O_T_VTOL_02_infantry_F",						// Y-32 Xi'an транспортный
-"O_T_VTOL_02_vehicle_F"							// Y-32 Xi'an грузовой
+"O_T_VTOL_02_vehicle_F",						// Y-32 Xi'an грузовой
+"O_T_VTOL_02_infantry_dynamicLoadout_F"
 ];
 
 _mh9 = [

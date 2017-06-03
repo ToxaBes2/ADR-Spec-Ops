@@ -161,6 +161,62 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
                         _vehReward addMagazineTurret ["38Rnd_80mm_rockets", [-1]];
                         _vehReward addWeaponTurret ["rockets_Skyfire", [-1]];
                     };
+                    case "O_T_VTOL_02_infantry_dynamicLoadout_F": {
+                        _idx = 0;
+                        _textures = getArray (configfile >> "CfgVehicles" >> "O_T_VTOL_02_infantry_dynamicLoadout_F" >> "TextureSources" >> "Grey" >> "textures");
+                        {
+                            _vehReward setObjectTextureGlobal [_idx, _x];
+                            _idx = _idx + 1;
+                        } forEach _textures;
+                    };
+                    case "O_Heli_Light_02_dynamicLoadout_F": {
+                        _idx = 0;
+                        _textures = getArray (configfile >> "CfgVehicles" >> "O_Heli_Light_02_dynamicLoadout_F" >> "TextureSources" >> "Blackcustom" >> "textures");
+                        {
+                            _vehReward setObjectTextureGlobal [_idx, _x];
+                            _idx = _idx + 1;
+                        } forEach _textures;
+                    };
+                    case "O_Heli_Attack_02_dynamicLoadout_F": {
+                        _idx = 0;
+                        _textures = getArray (configfile >> "CfgVehicles" >> "O_Heli_Attack_02_dynamicLoadout_F" >> "TextureSources" >> "Black" >> "textures");
+                        {
+                            _vehReward setObjectTextureGlobal [_idx, _x];
+                            _idx = _idx + 1;
+                        } forEach _textures;
+                    };
+                    case "I_Plane_Fighter_04_F": {
+                        _idx = 0;
+                        _textures = getArray (configfile >> "CfgVehicles" >> "I_Plane_Fighter_04_F" >> "TextureSources" >> "DigitalCamoGrey" >> "textures");
+                        {
+                            _vehReward setObjectTextureGlobal [_idx, _x];
+                            _idx = _idx + 1;
+                        } forEach _textures;
+                    };
+                    case "B_Plane_Fighter_01_F": {
+                        _idx = 0;
+                        _textures = getArray (configfile >> "CfgVehicles" >> "B_Plane_Fighter_01_F" >> "TextureSources" >> "DarkGreyCamo" >> "textures");
+                        {
+                            _vehReward setObjectTextureGlobal [_idx, _x];
+                            _idx = _idx + 1;
+                        } forEach _textures;
+                    };
+                    case "O_Plane_Fighter_02_F": {
+                        _idx = 0;
+                        _textures = getArray (configfile >> "CfgVehicles" >> "O_Plane_Fighter_02_F" >> "TextureSources" >> "CamoGreyHex" >> "textures");
+                        {
+                            _vehReward setObjectTextureGlobal [_idx, _x];
+                            _idx = _idx + 1;
+                        } forEach _textures;
+                    };
+                    case "B_UAV_05_F": {
+                        _idx = 0;
+                        _textures = getArray (configfile >> "CfgVehicles" >> "B_UAV_05_F" >> "TextureSources" >> "DarkGreyCamo" >> "textures");
+                        {
+                            _vehReward setObjectTextureGlobal [_idx, _x];
+                            _idx = _idx + 1;
+                        } forEach _textures;
+                    };
                 };
                 if (_vehReward distance2D _land < 50) then {
                     hqSideChat = "Груз доставлен";                    

@@ -65,12 +65,24 @@ corpseRemovalMaxTime = 120;								// Max time before removal
 #include "scripts\=BTC=_revive\=BTC=_respawn.h"			// BTC medic revive system
 #include "scripts\rules\dialog.hpp"		                // Server rules dialog
 #include "scripts\outlw_magRepack\MagRepack_config.hpp" // Mag Repack by Outlawled
-
+#include "scripts\dynamic_loadout\parent.hpp"           // Dynamic loadout
+#include "scripts\dynamic_loadout\dialog.hpp"           // Dynamic loadout
 
 class CfgFunctions
 	{
 		#include "functions\cfgfunctions.hpp"			// Integrated I&A functions
 		#include "scripts\taw_vd\CfgFunctions.hpp"		// View distance
+
+		// Dynamic loadout
+		class DL {
+	        class init {
+		        class aircraftLoadoutInit{
+		            file = "scripts\dynamic_loadout\init.sqf";
+		            preInit = 1;
+		        };
+	        };
+        };
+        
 		class FETT {
 	        class curator {
 	            class eventHandlers {postInit = 1;};
