@@ -36,7 +36,7 @@ if !(isNull _player) exitWith {
 	    _actId = _this select 1;
 	    while {true} do {
 	        sleep 2;
-	        if (_player distance rearmTrigger < 10) exitWith {
+	        if (_player distance rearmTrigger > 10) exitWith {
                 _player removeAction _actId;
             };
 	    };               

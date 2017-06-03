@@ -2,10 +2,6 @@
 Author: Grumpy Old Man
 ADR changes: ToxaBes
 Description: make one vehicle act as a loadout station
-to add this to an ammo truck put this in the ammo trucks init:
-    _add = [this] call DL_fnc_addAircraftLoadout
-to have a player inside the jet be able to use it put this in the pilots init field:
-    _add = [vehicle player,"PILOT"] call DL_fnc_addAircraftLoadout
 */
 DL_fnc_aircraftLoadout_NeedsFuelSource = false;   //(default: true) needs fuel supply within 50m of the aircraft or functions will be unavailable
 DL_fnc_aircraftLoadout_NeedsAmmoSource = false;   //(default: true) needs ammo supply within 50m of the aircraft or functions will be unavailable
@@ -13,15 +9,6 @@ DL_fnc_aircraftLoadout_NeedsRepairSource = false; //(default: true) needs repair
 DL_fnc_allowAllPylons = false;                    //(default: false) removes check that only allows compatible pylons to be mounted
 DL_fnc_aircraftLoadoutRepairTime = 60;            //(default: 60) time it takes to repair a vehicle from 0 to 100% health. Going from 50% to 100% will take half the time
 DL_fnc_aircraftLoadoutRefuelRate = 1800;          //(default: 1800) rate in liters per minute a vehicle will be refuelled at. Going from 0 to 100% fuel will take 60 seconds if the vehicle holds 1800l max fuel. wipeout has 1000l max fuel as a measurement
-
-DL_fnc_addAircraftLoadout = {
-	params [["_obj",objnull],["_pilot",""]];
-	if (_pilot isEqualTo "PILOT" AND isPlayer driver _obj) exitWith {
-		_add = [_obj,"PILOT"] call DL_fnc_AircraftLoadout;
-	};
-	//[_obj,["Change Aircraft Loadout",{_this call DL_fnc_aircraftLoadout}, [], 1, true, true, "", "isPlayer _this AND {_this isequalto vehicle _this} AND {speed _this isequalto 0}"]] remoteExec ["addAction",0,true];
-	true
-};
 
 DL_fnc_roundByDecimals = {
 	params ["_num",["_digits",2]];
@@ -360,7 +347,7 @@ DL_fnc_setPylonsRepair = {
 		_timeNeeded = ceil (_curDamage / _repairtick);
 		_damDisp = [((_curDamage * 100) - 100) * -1] call DL_fnc_roundByDecimals;
 		(vehicle player) vehicleChat "Техника должна быть неподвижной во время ремонта!";
-		(vehicle player) vehicleChat format ["Ремонт %1 из %2%3! Общее время: %4сек.",_vehDispName,_damDisp,"%",_timeNeeded];
+		(vehicle player) vehicleChat format ["Ремонт %1 за %2%3! Общее время: %4сек.",_vehDispName,_damDisp,"%",_timeNeeded];
 		for "_i" from 1 to _timeneeded + 1 do {
 			if (speed _veh > 3 OR speed _repairSource > 3) exitWith {(vehicle player) vehicleChat "Ремонт прекращен т.к. техника перемещается!"};
 		    _curDamage = damage _veh;
@@ -415,7 +402,7 @@ DL_fnc_setPylonsRefuel = {
 		   _fuelTick = ((1 - _curFuel) / _timeNeeded);
 	    };
 		(vehicle player) vehicleChat "Техника должна оставаться неподвижной в процессе заправки!";
-		(vehicle player) vehicleChat format ["Заправка %1 из %2. %3л из %4сек. Скорость: 1800л/мин.",_vehDispName,_sourceDispname,[_missingfuel,1] call DL_fnc_roundByDecimals,_timeNeeded];
+		(vehicle player) vehicleChat format ["Заправка %1 за %2. %3л за %4сек. Скорость: 1800л/мин.",_vehDispName,_sourceDispname,[_missingfuel,1] call DL_fnc_roundByDecimals,_timeNeeded];
 		for "_i" from 1 to _timeneeded do {
 			_timeout = time + 1;
 			waituntil {time > _timeout OR speed _veh > 3 OR speed _refuelSource > 3};
@@ -433,7 +420,7 @@ DL_fnc_setPylonsRefuel = {
 	    _refuelSource setVariable ["DL_fnc_aircraftLoadoutBusyFuelSource",false,true];
 	    _veh setfuel 1;
 		playSound "Click";
-		(vehicle player) vehicleChat format ["%1 filled up!",_vehDispName];
+		(vehicle player) vehicleChat format ["%1 заправлен!",_vehDispName];
 	};
     true
 };
@@ -656,8 +643,7 @@ DL_fnc_aircraftLoadout = {
 	params ["_obj",["_pilot",""]];
 	createdialog "GOM_dialog_aircraftLoadout";
 	playSound "Click";
-	_vehicles = vehicles select {typeof _x iskindof "Air" AND {_x distance2d _obj <= 50} AND {speed _x < 1} AND {alive _x}};
-	if (_pilot isEqualTo "PILOT") then {_vehicles = [_obj]};
+	_vehicles = [_obj];
     _obj setVariable ["DL_fnc_setPylonLoadoutVehicles",_vehicles];
 	(finddisplay 66 displayctrl 1100) ctrlSetStructuredText parsetext "<t align='center'>Выберите технику!";
 	_resourceCheck = [_obj] call DL_fnc_aircraftLoadoutResourcesCheck;
@@ -686,14 +672,14 @@ DL_fnc_aircraftLoadout = {
 	buttonSetAction [1606, format ["[%1] call DL_fnc_aircraftLoadoutSavePreset",_getvar]];
 	buttonSetAction [1607, format ["[%1] call DL_fnc_aircraftLoadoutDeletePreset",_getvar]];
 	buttonSetAction [1608, format ["[%1] call DL_fnc_aircraftLoadoutLoadPreset",_getvar]];
-	findDisplay 66 displayAddEventHandler ["KeyDown",{if (_this select 3) then {ctrlEnable [1607,true];ctrlSetText [1607,"Delete"]};}];
+	findDisplay 66 displayAddEventHandler ["KeyDown",{if (_this select 3) then {ctrlEnable [1607,true];ctrlSetText [1607,"Удалить"]};}];
 	findDisplay 66 displayAddEventHandler ["KeyUp",{if (_this select 3) then {ctrlEnable [1607,false];ctrlSetText [1607,"CTRL"];};}];
 	ctrlEnable [1607,false];
 	ctrlSetText [1607,"Удалить"];
 	findDisplay 66 displayCtrl 2800 ctrlAddEventHandler ["CheckedChanged",format ["[_this,%1] call DL_fnc_CheckComponents",_getvar]];
 	findDisplay 66 displayCtrl 2801 ctrlAddEventHandler ["CheckedChanged",format ["[_this,%1] call DL_fnc_CheckComponents",_getvar]];
 	findDisplay 66 displayCtrl 2802 ctrlAddEventHandler ["CheckedChanged",format ["[_this,%1] call DL_fnc_CheckComponents",_getvar]];
-	_color = [0,0,0,0.6];
+	_color = [0,0,0,0.7];
 	_dark = [1100,1103,1104,1105,1109,1101,1102,1103,1104,1105,1400,1401,1500,1501,1800,1801,1802,1803,1804,1805,1806,1807,1808,1809,2100,2101];
 	{
 		findDisplay 66 displayCtrl _x ctrlSetBackgroundColor _color;
