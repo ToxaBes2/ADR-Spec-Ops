@@ -180,6 +180,15 @@ if (playerSide == west) then {
             ( _display displayCtrl _x ) ctrlRemoveAllEventHandlers "buttonclick";
         } forEach [ 44150 ];
     }] call BIS_fnc_addScriptedEventHandler;
+
+    // clear items from unit on first load
+    if !(ARSENAL_ENABLED) then {
+        removeAllweapons player;
+        removeBackpack player;
+        removeVest player;
+        removeHeadgear player;
+        {player removeItem _x} foreach (items player);
+    };
 };
 
 // hide arsenal load buttons for partizans and add restrictions

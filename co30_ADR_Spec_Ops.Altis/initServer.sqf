@@ -149,6 +149,10 @@ _null = [] spawn {
 SUPPORT_CYCLES = 0; 
 publicVariableServer "SUPPORT_CYCLES";
 
+// arsenal availability
+ARSENAL_ENABLED = true;
+publicVariable "ARSENAL_ENABLED";
+
 // remove polygonal markers from channels
 //_null = [] spawn {
 //    while {true} do {

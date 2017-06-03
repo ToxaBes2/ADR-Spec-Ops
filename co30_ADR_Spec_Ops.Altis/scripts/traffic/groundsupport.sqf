@@ -8,12 +8,35 @@ _minDist = 2000;
 _maxDist = 6000;
 _truck = "B_Truck_01_box_F";
 _guards = "B_LSV_01_armed_F";
+_first = true;
+_start = [[14035.5,12981.6,0],[12788,14381.6,0],[16474,9975.23,0],[16694.5,12488.6,0],[21254.2,12935.4,0],[24008.4,16108.3,0],
+[25059.9,18941.7,0],[21805.1,21208.6,0],[21429.5,19919.3,0],[17965.2,19133.6,0],[16749.4,19817.8,0],[16906,21931.8,0],
+[12126.4,22850.1,0],[12049,10383.6,0],[9351.13,10943.5,0]];
 while {true} do {
-    _startPos = [_endPos, _minDist, _maxDist, 2, 0, 0, 0] call QS_fnc_findSafePos;
-    _roadSegments = _startPos nearRoads 500;
+    if (!_first) then {
+        try {
+            {
+                deleteVehicle _x;
+            } forEach (units _group1);
+            deleteGroup _group1;
+            if !(side _veh1 == resistance) then {
+                deleteVehicle _veh1;
+            };
+            {
+                deleteVehicle _x;
+            } forEach (units _group2);
+            deleteGroup _group2;                    
+            if !(side _veh2 == resistance) then {
+                deleteVehicle _veh2;
+            };                           
+        } catch {};
+    };
+    _first = false;
+    _startPos = selectRandom _start;
+    _roadSegments = _startPos nearRoads 10;
     while {count _roadSegments == 0} do {
-        _startPos = [_endPos, _minDist, _maxDist, 2, 0, 0, 0] call QS_fnc_findSafePos;
-        _roadSegments = _startPos nearRoads 500;
+        _startPos = selectRandom _start;
+        _roadSegments = _startPos nearRoads 20;
     };
     _segment = selectRandom _roadSegments;
     _roadDirection1 = getDir _segment;         
@@ -26,7 +49,7 @@ while {true} do {
     _veh1 addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
     [_veh1, "QS_fnc_addActionUnloadAmmo", nil, true] spawn BIS_fnc_MP; 
     
-    _roadSegments = _firstPos nearRoads 200;
+    _roadSegments = _firstPos nearRoads 50;
     _segment = selectRandom _roadSegments;
     _secondPos = getPos _segment;  
     while {_secondPos distance2D _firstPos < 20} do {
@@ -116,23 +139,31 @@ while {true} do {
             _wp2 setWaypointCompletionRadius 5;
             _wp2 setWaypointSpeed "LIMITED";
             _wp2 setWaypointBehaviour "SAFE";
-            if (!(alive _veh1) || !(canMove _veh2)) exitWith {    
+            if (!(alive _veh1) || !(canMove _veh1)) exitWith {    
                 hqSideChat = "Конвой с боеприпасами уничтожен!";
                 publicVariable "hqSideChat"; 
                 [WEST, "HQ"] sideChat hqSideChat;
+
+                ARSENAL_ENABLED = false;
+                publicVariable "ARSENAL_ENABLED";
             };            
             if (_veh1 distance2D _endPos <= 15) exitWith {
-            
-                // add ammo on blufor baze here
-
                 hqSideChat = "Боеприпасы доставлены на базу!";
                 publicVariable "hqSideChat"; 
-                [WEST, "HQ"] sideChat hqSideChat;                
+                [WEST, "HQ"] sideChat hqSideChat;  
+
+                ARSENAL_ENABLED = true;
+                publicVariable "ARSENAL_ENABLED";
+                ARSENAL_TIME = serverTime;
+                publicVariableServer "ARSENAL_TIME";             
             };
             if (side _veh1 == resistance) exitWith { 
                 hqSideChat = "Конвой захвачен партизанами!";
                 publicVariable "hqSideChat"; 
                 [WEST, "HQ"] sideChat hqSideChat; 
+
+                ARSENAL_ENABLED = false;
+                publicVariable "ARSENAL_ENABLED";
             };
         };
         sleep 5;

@@ -480,14 +480,12 @@ _myBox = _this select 0;
 "30Rnd_9x21_Mag",
 "5Rnd_127x108_Mag",
 "7Rnd_408_Mag",
-
 // Marksman
 "10Rnd_127x54_Mag",
 "10Rnd_338_Mag",
 "10Rnd_93x64_DMR_05_Mag",
 "130Rnd_338_Mag",
 "150Rnd_93x64_Mag",
-
 // Подстволы
 "1Rnd_HE_Grenade_shell",
 "1Rnd_SmokeBlue_Grenade_shell",
@@ -515,12 +513,10 @@ _myBox = _this select 0;
 "UGL_FlareRed_F",
 "UGL_FlareWhite_F",
 "UGL_FlareYellow_F",
-
 // Гранаты
 "B_IR_Grenade",
 "HandGrenade",
 "MiniGrenade",
-
 // Дымы
 "SmokeShell",
 "SmokeShellBlue",
@@ -529,14 +525,11 @@ _myBox = _this select 0;
 "SmokeShellPurple",
 "SmokeShellRed",
 "SmokeShellYellow",
-
-
 // Химсвет
 "Chemlight_blue",
 "Chemlight_green",
 "Chemlight_red",
 "Chemlight_yellow",
-
 // Взрывчатка,мины
 "APERSBoundingMine_Range_Mag",
 "APERSMine_Range_Mag",
@@ -550,7 +543,6 @@ _myBox = _this select 0;
 "IEDUrbanSmall_Remote_Mag",
 "SLAMDirectionalMine_Wire_Mag",
 "SatchelCharge_Remote_Mag",
-
 // Ракеты
 "NLAW_F",
 "RPG32_F",
@@ -558,10 +550,8 @@ _myBox = _this select 0;
 "Titan_AA",
 "Titan_AP",
 "Titan_AT",
-
 //Батарейки
 "Laserbatteries",
-
 // Патроны Apex
 "100Rnd_580x42_Mag_F",
 "100Rnd_580x42_Mag_Tracer_F",

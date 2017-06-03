@@ -6,8 +6,9 @@ _interval = 2400;
 _endPos = [6883,7382];
 _truck = "B_T_Truck_01_box_F";
 _guards = "B_T_LSV_01_armed_F";
-_poses = [[5811.72,10489.4,0],[8158.5,12942.2,0],[13395.4,11555.3,0],[12783.7,7398.31,0],[9012.55,6755.04,0],[10119,8668.76,0],[10894.2,9570.02,0],
-[9018.49,10435.7,0],[10118.9,11765.5,0],[9448.07,7461.05,0],[11824.9,11146.3,0],[11069.4,7915.39,0],[4557.32,8677.53,0],[8242.2,11051,0]];
+_poses = [[5526.76,10046,0],[8293.19,13625.1,0],[8430.55,10233,0],[9287.9,7475.36,0],[4548.1,8794.23,0],[6468.69,10654.3,0],[6097.89,9550.94,0],
+[9234.67,8717.86,0],[9359.05,11205.2,0],[10014.8,9388.81,0],[10907.3,9571.63,0],[8911.55,11851.6,0],[8600.67,8983.73,0],[8236.75,11043.3,0],
+[8366.87,7330.08,0]];
 while {true} do {
     _startPos = selectRandom _poses;
     _roadSegments = _startPos nearRoads 500;
@@ -26,7 +27,7 @@ while {true} do {
     _veh1 addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
     [_veh1, "QS_fnc_addActionUnloadAmmo", nil, true] spawn BIS_fnc_MP; 
     
-    _roadSegments = _firstPos nearRoads 200;
+    _roadSegments = _firstPos nearRoads 50;
     _segment = selectRandom _roadSegments;
     _secondPos = getPos _segment;  
     while {_secondPos distance2D _firstPos < 20} do {

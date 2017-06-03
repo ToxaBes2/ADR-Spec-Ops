@@ -57,7 +57,6 @@ removevest _player;
 removeBackpack _player;
 removeheadgear _player;
 removegoggles _player;
-removeBackPack _player;
 {_player removeItem _x} foreach (items _player);
 {_player unassignItem _x; _player removeItem _x} foreach (assignedItems _player);
 
