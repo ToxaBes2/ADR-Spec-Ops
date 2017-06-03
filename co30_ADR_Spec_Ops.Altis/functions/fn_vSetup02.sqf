@@ -114,21 +114,23 @@ if (_t in _mrap_lsv || _t in _apc) then {
     clearMagazineCargoGlobal _u;
     clearBackpackCargoGlobal _u;
     clearItemCargoGlobal _u;
-
-    _u addMagazineCargoGlobal ["30Rnd_65x39_caseless_mag", 3];
-    _u addMagazineCargoGlobal ["30Rnd_65x39_caseless_mag_Tracer", 3];
-    _u addMagazineCargoGlobal ["30Rnd_762x39_Mag_Green_F", 3];
-    _u addMagazineCargoGlobal ["30Rnd_762x39_Mag_Tracer_Green_F", 3];
-    _u addMagazineCargoGlobal ["30Rnd_556x45_Stanag_red", 4];
-    _u addMagazineCargoGlobal ["30Rnd_556x45_Stanag_Tracer_Red", 4];
-    _u addMagazineCargoGlobal ["SmokeShellBlue", 16];
-    _u addMagazineCargoGlobal ["HandGrenade", 4];
-    _u addItemCargoGlobal ["FirstAidKit", 8];
-
-    if (_t in _apc) then {
-       _u addMagazineCargoGlobal ["RPG32_F", 2];
-       _u addMagazineCargoGlobal ["RPG32_HE_F", 2];
-       _u addMagazineCargoGlobal ["NLAW_F", 2];
+    
+    if (ARSENAL_ENABLED) then {
+        _u addMagazineCargoGlobal ["30Rnd_65x39_caseless_mag", 3];
+        _u addMagazineCargoGlobal ["30Rnd_65x39_caseless_mag_Tracer", 3];
+        _u addMagazineCargoGlobal ["30Rnd_762x39_Mag_Green_F", 3];
+        _u addMagazineCargoGlobal ["30Rnd_762x39_Mag_Tracer_Green_F", 3];
+        _u addMagazineCargoGlobal ["30Rnd_556x45_Stanag_red", 4];
+        _u addMagazineCargoGlobal ["30Rnd_556x45_Stanag_Tracer_Red", 4];
+        _u addMagazineCargoGlobal ["SmokeShellBlue", 16];
+        _u addMagazineCargoGlobal ["HandGrenade", 4];
+        _u addItemCargoGlobal ["FirstAidKit", 8];
+    
+        if (_t in _apc) then {
+           _u addMagazineCargoGlobal ["RPG32_F", 2];
+           _u addMagazineCargoGlobal ["RPG32_HE_F", 2];
+           _u addMagazineCargoGlobal ["NLAW_F", 2];
+        };
     };
 };
 
