@@ -8,7 +8,7 @@ class EditorData
 	toggles=9;
 	class ItemIDProvider
 	{
-		nextID=3503;
+		nextID=3504;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=1901;
+		nextID=1969;
 	};
 	class Camera
 	{
-		pos[]={6923.8081,43.451702,7189.0791};
-		dir[]={-0.039972708,-0.51199508,-0.85805935};
-		up[]={-0.023825498,0.85898852,-0.5114404};
-		aside[]={-0.99891746,1.1269003e-007,0.046535186};
+		pos[]={6762.2056,42.987793,7306.7603};
+		dir[]={0.90682495,-0.25668645,-0.33434793};
+		up[]={0.24083927,0.96649492,-0.088797867};
+		aside[]={-0.34593883,-1.5832484e-007,-0.93826032};
 	};
 };
 binarizationWanted=0;
@@ -660,7 +660,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=807;
+		items=808;
 		class Item0
 		{
 			dataType="Object";
@@ -9567,8 +9567,8 @@ class Mission
 						};
 						class Attribute1
 						{
-							property="enableStamina";
-							expression="_this enablestamina _value;";
+							property="face";
+							expression="_this setface _value;";
 							class Value
 							{
 								class data
@@ -9577,10 +9577,10 @@ class Mission
 									{
 										type[]=
 										{
-											"BOOL"
+											"STRING"
 										};
 									};
-									value=0;
+									value="WhiteHead_15";
 								};
 							};
 						};
@@ -9624,8 +9624,8 @@ class Mission
 						};
 						class Attribute4
 						{
-							property="face";
-							expression="_this setface _value;";
+							property="enableStamina";
+							expression="_this enablestamina _value;";
 							class Value
 							{
 								class data
@@ -9634,10 +9634,10 @@ class Mission
 									{
 										type[]=
 										{
-											"STRING"
+											"BOOL"
 										};
 									};
-									value="WhiteHead_15";
+									value=0;
 								};
 							};
 						};
@@ -9853,13 +9853,12 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={6826.8105,2.6599903,7282.4263};
+				position[]={6826.811,2.6600001,7282.4258};
 			};
 			name="HC1";
 			isPlayable=1;
 			id=2279;
 			type="HeadlessClient_F";
-			atlOffset=-9.7751617e-006;
 		};
 		class Item256
 		{
@@ -29015,7 +29014,7 @@ class Mission
 			angle=6.1226501;
 			class Attributes
 			{
-			    name="rearmTrigger";
+				name="rearmTrigger";
 				condition="this and ((getPos (thisList select 0)) select 2 < 1)";
 				onActivation="null = [(thisList select 0)] spawn {_this call compile preProcessFileLineNumbers ""scripts\changeLoadoutWarning.sqf"";};";
 				sizeA=5;
@@ -32170,6 +32169,20 @@ class Mission
 			};
 			id=3502;
 			type="I_Heli_light_03_dynamicLoadout_F";
+			atlOffset=-2.3841858e-007;
+		};
+		class Item807
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={6820.4609,4.101552,7279.96};
+			};
+			name="HC2";
+			isPlayable=1;
+			id=3503;
+			type="HeadlessClient_F";
+			atlOffset=1.3039536;
 		};
 	};
 	class Connections

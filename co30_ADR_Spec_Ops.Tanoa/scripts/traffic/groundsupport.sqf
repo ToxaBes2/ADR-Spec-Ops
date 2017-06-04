@@ -10,11 +10,11 @@ _poses = [[5526.76,10046,0],[8293.19,13625.1,0],[8430.55,10233,0],[9287.9,7475.3
 [9234.67,8717.86,0],[9359.05,11205.2,0],[10014.8,9388.81,0],[10907.3,9571.63,0],[8911.55,11851.6,0],[8600.67,8983.73,0],[8236.75,11043.3,0],
 [8366.87,7330.08,0]];
 while {true} do {
-    _startPos = selectRandom _poses;
-    _roadSegments = _startPos nearRoads 500;
+    _startPos = selectRandom _start;
+    _roadSegments = _startPos nearRoads 10;
     while {count _roadSegments == 0} do {
-        _startPos = selectRandom _poses;
-        _roadSegments = _startPos nearRoads 500;
+        _startPos = selectRandom _start;
+        _roadSegments = _startPos nearRoads 20;
     };
     _segment = selectRandom _roadSegments;
     _roadDirection1 = getDir _segment;         
@@ -107,7 +107,6 @@ while {true} do {
         _endPos = _this select 2;
         _group1 = group _veh1;
         _group2 = group _veh2;
-        sleep 30;
         while {true} do {                 
             sleep 5;
             while {(count (waypoints _group2)) > 0} do {
@@ -118,23 +117,31 @@ while {true} do {
             _wp2 setWaypointCompletionRadius 5;
             _wp2 setWaypointSpeed "LIMITED";
             _wp2 setWaypointBehaviour "SAFE";
-            if (!(alive _veh1) || !(canMove _veh2)) exitWith {    
+            if (!(alive _veh1) || !(canMove _veh1)) exitWith {    
                 hqSideChat = "Конвой с боеприпасами уничтожен!";
                 publicVariable "hqSideChat"; 
                 [WEST, "HQ"] sideChat hqSideChat;
+
+                ARSENAL_ENABLED = false;
+                publicVariable "ARSENAL_ENABLED";
             };            
             if (_veh1 distance2D _endPos <= 15) exitWith {
-            
-                // add ammo on blufor baze here
-
                 hqSideChat = "Боеприпасы доставлены на базу!";
                 publicVariable "hqSideChat"; 
-                [WEST, "HQ"] sideChat hqSideChat;                
+                [WEST, "HQ"] sideChat hqSideChat;  
+
+                ARSENAL_ENABLED = true;
+                publicVariable "ARSENAL_ENABLED";
+                ARSENAL_TIME = serverTime;
+                publicVariableServer "ARSENAL_TIME";             
             };
             if (side _veh1 == resistance) exitWith { 
                 hqSideChat = "Конвой захвачен партизанами!";
                 publicVariable "hqSideChat"; 
                 [WEST, "HQ"] sideChat hqSideChat; 
+
+                ARSENAL_ENABLED = false;
+                publicVariable "ARSENAL_ENABLED";
             };
         };
         sleep 5;
@@ -154,6 +161,6 @@ while {true} do {
                 deleteVehicle _veh2;
             };                           
         } catch {};
-    };    
-    sleep _interval;
+    };        
+    sleep _interval;    
 };

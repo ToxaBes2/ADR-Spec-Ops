@@ -8,30 +8,10 @@ _minDist = 2000;
 _maxDist = 6000;
 _truck = "B_Truck_01_box_F";
 _guards = "B_LSV_01_armed_F";
-_first = true;
 _start = [[14035.5,12981.6,0],[12788,14381.6,0],[16474,9975.23,0],[16694.5,12488.6,0],[21254.2,12935.4,0],[24008.4,16108.3,0],
 [25059.9,18941.7,0],[21805.1,21208.6,0],[21429.5,19919.3,0],[17965.2,19133.6,0],[16749.4,19817.8,0],[16906,21931.8,0],
 [12126.4,22850.1,0],[12049,10383.6,0],[9351.13,10943.5,0]];
 while {true} do {
-    if (!_first) then {
-        try {
-            {
-                deleteVehicle _x;
-            } forEach (units _group1);
-            deleteGroup _group1;
-            if !(side _veh1 == resistance) then {
-                deleteVehicle _veh1;
-            };
-            {
-                deleteVehicle _x;
-            } forEach (units _group2);
-            deleteGroup _group2;                    
-            if !(side _veh2 == resistance) then {
-                deleteVehicle _veh2;
-            };                           
-        } catch {};
-    };
-    _first = false;
     _startPos = selectRandom _start;
     _roadSegments = _startPos nearRoads 10;
     while {count _roadSegments == 0} do {
@@ -184,5 +164,5 @@ while {true} do {
             };                           
         } catch {};
     };        
-    sleep _interval;
+    sleep _interval;    
 };
