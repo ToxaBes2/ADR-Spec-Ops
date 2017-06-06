@@ -4,16 +4,18 @@ Description: add ammo support for blufor base every X mins
 */
 _interval = 2400;
 _endPos = [15266,17398];
-_minDist = 2000;
-_maxDist = 6000;
 _truck = "B_Truck_01_box_F";
 _guards = "B_LSV_01_armed_F";
-_start = [[14035.5,12981.6,0],[12788,14381.6,0],[16474,9975.23,0],[16694.5,12488.6,0],[21254.2,12935.4,0],[24008.4,16108.3,0],
-[25059.9,18941.7,0],[21805.1,21208.6,0],[21429.5,19919.3,0],[17965.2,19133.6,0],[16749.4,19817.8,0],[16906,21931.8,0],
-[12126.4,22850.1,0],[12049,10383.6,0],[9351.13,10943.5,0]];
+_start = [
+[17992.5,19156.4,0],[16594,12433.6,0],[16998.9,13324.9,0],[12685.8,14225.5,0],[14217.8,12977.7,0],
+[16991,21983.7,0],[16689.4,20517.7,0],[16784.9,19845.5,0],[17753.1,18101.9,0],[20687.1,20317.5,0],
+[20666,19387.2,0],[21809.4,20894.1,0],[21712.5,21219.7,0],[11755,11898.8,0],[12457.1,12806.8,0],
+[11536.4,18783.3,0],[14593.6,20865.3,0],[12199.7,20118.7,0],[9028.34,15538.7,0],[11223.7,17505.3,0],
+[10630.4,13292.5,0],[10909.3,14657.6,0],[18477.3,15559.2,0],[21147.2,16322.6,0],[20459.7,17476.2,0]
+];
 while {true} do {
     _startPos = selectRandom _start;
-    _roadSegments = _startPos nearRoads 10;
+    _roadSegments = _startPos nearRoads 20;
     while {count _roadSegments == 0} do {
         _startPos = selectRandom _start;
         _roadSegments = _startPos nearRoads 20;
@@ -29,10 +31,10 @@ while {true} do {
     _veh1 addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
     [_veh1, "QS_fnc_addActionUnloadAmmo", nil, true] spawn BIS_fnc_MP; 
     
-    _roadSegments = _firstPos nearRoads 50;
+    _roadSegments = _firstPos nearRoads 70;
     _segment = selectRandom _roadSegments;
     _secondPos = getPos _segment;  
-    while {_secondPos distance2D _firstPos < 20} do {
+    while {_secondPos distance2D _firstPos < 10} do {
         _segment = selectRandom _roadSegments;
         _secondPos = getPos _segment; 
     };

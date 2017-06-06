@@ -6,12 +6,15 @@ _interval = 2400;
 _endPos = [6883,7382];
 _truck = "B_T_Truck_01_box_F";
 _guards = "B_T_LSV_01_armed_F";
-_poses = [[5526.76,10046,0],[8293.19,13625.1,0],[8430.55,10233,0],[9287.9,7475.36,0],[4548.1,8794.23,0],[6468.69,10654.3,0],[6097.89,9550.94,0],
-[9234.67,8717.86,0],[9359.05,11205.2,0],[10014.8,9388.81,0],[10907.3,9571.63,0],[8911.55,11851.6,0],[8600.67,8983.73,0],[8236.75,11043.3,0],
-[8366.87,7330.08,0]];
+_start = [
+[9338.55,8510.36,0],[9279.14,7524.7,0],[9893.94,9357.81,0],[10293.4,9579.52,0],[9326.46,11185.6,0],
+[8928.65,11849.9,0],[10114.5,9786.71,0],[8492.07,10829.1,0],[8247.4,11063.5,0],[7978.5,10594.4,0],
+[7015.62,10672.2,0],[5477.16,8727.74,0],[6089.17,9559.84,0],[5454.75,10102.3,0],[5780,10705,0],
+[4365.64,8446.58,0],[5200.58,8566.34,0],[8600.33,8983.37,0],[4448.98,8759.18,0],[8390.99,10243.2,0]
+];
 while {true} do {
     _startPos = selectRandom _start;
-    _roadSegments = _startPos nearRoads 10;
+    _roadSegments = _startPos nearRoads 20;
     while {count _roadSegments == 0} do {
         _startPos = selectRandom _start;
         _roadSegments = _startPos nearRoads 20;
@@ -27,10 +30,10 @@ while {true} do {
     _veh1 addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
     [_veh1, "QS_fnc_addActionUnloadAmmo", nil, true] spawn BIS_fnc_MP; 
     
-    _roadSegments = _firstPos nearRoads 50;
+    _roadSegments = _firstPos nearRoads 70;
     _segment = selectRandom _roadSegments;
     _secondPos = getPos _segment;  
-    while {_secondPos distance2D _firstPos < 20} do {
+    while {_secondPos distance2D _firstPos < 10} do {
         _segment = selectRandom _roadSegments;
         _secondPos = getPos _segment; 
     };
