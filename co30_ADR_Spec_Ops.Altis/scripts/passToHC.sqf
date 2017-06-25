@@ -1,27 +1,27 @@
 /*
  * Author: eulerfoiler (from reddit)
  * Modified for 2 HC: ToxaBes
- * Description: round-robing balancing for headless clients
+ * Description: move opfor and civilian groups to 2 headless clients
  */
-if (!isServer) exitWith {};
+if (!isServer || !isMultiplayer) exitWith {};
 [] spawn {
-    waitUntil {!isNil "HC1"};
-    waitUntil {!isNull HC1};
-    HC1_ID = -1;
-    HC2_ID = -1; 
-    rebalanceTimer = 600;
+    waitUntil {!isNil "HC1" && !isNil "HC2"};
+    waitUntil {!isNull HC1 && !isNull HC2};
     while {true} do {
-        sleep rebalanceTimer;
-        _loadBalance = false;
-        try {
-            HC1_ID = owner HC1;
-            if !(HC1_ID > 2) then {
-                HC1 = objNull;
-                HC1_ID = -1;
+        sleep 300;
+        HC1_ID = -1;
+        HC2_ID = -1;
+        if (!isNil "HC1") then {
+            try {
+                HC1_ID = owner HC1;
+                if !(HC1_ID > 2) then {
+                    HC1 = objNull;
+                    HC1_ID = -1;
+                };
+            } catch {
+                HC1 = objNull; 
+                HC1_ID = -1; 
             };
-        } catch {
-            HC1 = objNull; 
-            HC1_ID = -1; 
         };
         if (!isNil "HC2") then {
             try {
@@ -35,90 +35,74 @@ if (!isServer) exitWith {};
                 HC2_ID = -1; 
             };
         };
-        if ((isNull HC1) && (isNull HC2)) then { 
-            waitUntil {!isNull HC1};
-        };  
-        if (!isNull HC1 && !isNull HC2) then { 
-            _loadBalance = true;
-        };
-        _currentHC = 0;  
-        if (!isNull HC1) then { 
-            _currentHC = 1; 
-        } else { 
-            if (!isNull HC2) then { 
-                _currentHC = 2; 
-            };
-        };  
-        _numTransfered = 0;
-        {
-            _swap = true;
-            {
-                if (isPlayer _x) then {
-                    _swap = false;
-                } else {
-                    if (_x getVariable ["hc_blacklist", false]) then {
-                        _swap = false;
-                    };
-                };
-            } forEach (units _x);
-            if (side _x == blufor || side _x == resistance) then {
-                _swap = false;
-            };
-            if (_swap) then {
-                _rc = false;
-                if (_loadBalance) then {
-                  switch (_currentHC) do {
-                    case 1: { 
-                        _rc = _x setGroupOwner HC1_ID; 
-                        if (!isNull HC2) then { 
-                            _currentHC = 2; 
-                        } else { 
-                            _currentHC = 1;
-                        };
-                    };
-                    case 2: { 
-                        _rc = _x setGroupOwner HC2_ID; 
-                        if (!isNull HC1) then { 
-                            _currentHC = 1; 
-                        } else { 
-                            _currentHC = 2;
-                        };
-                    };
-                  };
-                } else {
-                    switch (_currentHC) do {
-                        case 1: { 
-                            _rc = _x setGroupOwner HC1_ID;
-                        };
-                        case 2: { 
-                            _rc = _x setGroupOwner HC2_ID;
-                        };
-                    };
-                };    
-                if (_rc) then {
-                    _numTransfered = _numTransfered + 1;
-                };
-            };
-        } forEach (allGroups);  
-        if (_numTransfered > 0) then {
+
+        if (HC1_ID > 0 && HC2_ID > 0) then {
+            
+            // get current load
             _numHC1 = 0;
-            _numHC2 = 0;  
+            _numHC2 = 0;
             {
-                switch (owner ((units _x) select 0)) do {
+                _count = count (units _x);
+                switch (groupOwner _x) do {
                     case HC1_ID: { 
-                        _numHC1 = _numHC1 + 1;
+                        _numHC1 = _numHC1 + _count;
                     };
                     case HC2_ID: {
-                        _numHC2 = _numHC2 + 1;
+                        _numHC2 = _numHC2 + _count;
                     };
                 };
-            } forEach (allGroups);    
-            if (_numHC1 > 0) then { 
-                diag_log format ["passToHCs: %1 AI groups currently on HC1", _numHC1];
-            };
-            if (_numHC2 > 0) then { 
-                diag_log format ["passToHCs: %1 AI groups currently on HC2", _numHC2]; 
-            };
+            } forEach (allGroups);   
+
+            // move opfor and civilian groups
+            { 
+                _group = _x;
+                if (side _group == opfor || side _group == civilian) then {
+                    _group deleteGroupWhenEmpty true;
+                    _move = true;
+
+                    // exclude blacklisted units
+                    if (_group getVariable ["hc_blacklist", false]) then {
+                        _move = false;
+                    };
+                    if (_move) then {
+                        {
+                            if (isPlayer _x) then {
+                                _move = false;
+                            } else {
+                                if (_x getVariable ["hc_blacklist", false]) then {
+                                    _move = false;
+                                };
+                            };
+                        } forEach (units _group);
+                    };
+
+                    // don't move already moved groups but move groups which placed on disconnected HC (fallback)                  
+                    if (_move) then {
+                        _curOwner = groupOwner _group;
+                        if (_curOwner == HC1_ID && {!isNull HC1}) then {
+                            _move = false;                       
+                        };
+                        if (_curOwner == HC2_ID && {!isNull HC2}) then {
+                            _move = false;                        
+                        };
+                    };
+
+                    // move group to HC
+                    if (_move) then {
+                        _idToMove = 2; // server id
+                        _count = count (units _group);
+                        if (_numHC1 <= _numHC2 && {!isNull HC1}) then {
+                            _idToMove = HC1_ID; 
+                            _numHC1 = _numHC1 + _count;
+                        };
+                        if (_numHC1 > _numHC2 && {!isNull HC2}) then {
+                            _idToMove = HC2_ID;
+                            _numHC2 = _numHC2 + _count;
+                        };
+                        _group setGroupOwner _idToMove;
+                    };
+                };
+            } forEach (allGroups);
         };
     };
 };
