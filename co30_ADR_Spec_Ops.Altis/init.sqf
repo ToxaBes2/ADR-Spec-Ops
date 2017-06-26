@@ -1,4 +1,5 @@
 if (!hasInterface && !isDedicated) exitWith {};
+[] spawn {_this call compile preProcessFileLineNumbers "scripts\AI\init.sqf"};                                      // AI custom system
 [] spawn {_this call compile preProcessFileLineNumbers "scripts\radio\createChannels.sqf"};                         // Custom channels
 [] spawn {_this call compile preProcessFileLineNumbers "scripts\radio\speakEvent.sqf"};                             // Radio effects (psh-psh)
 [] spawn {_this call compile preProcessFileLineNumbers "scripts\outlw_magRepack\MagRepack_init_sv.sqf"};            // Magazines repack
