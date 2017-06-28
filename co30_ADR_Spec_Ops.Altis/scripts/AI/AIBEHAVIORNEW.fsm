@@ -1557,7 +1557,7 @@ class FSM
           priority = 60.000000;
           to="Clear_Building";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
-          condition=/*%FSM<CONDITION""">*/"( ((nearestBuilding _MyNearestEnemy)  distance _MyNearestEnemy) < 8 ) && !(_VCOMAI_ActivelyClearing) && ((random 100) > 90)" \n
+          condition=/*%FSM<CONDITION""">*/"( ((nearestBuilding _MyNearestEnemy) distance2D _MyNearestEnemy) < 10 ) && !(_VCOMAI_ActivelyClearing) && ((random 100) > 50)" \n
            ""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
