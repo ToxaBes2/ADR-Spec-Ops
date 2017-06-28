@@ -258,7 +258,7 @@ _unitPos = ["UP", "MIDDLE"];
             currentHostage allowDamage true;
         } else {
             if (_holyRandom > 3 || _withHostages) then {
-                (selectRandom [INFANTRY_SUPPORT]) createUnit [_pos, _houseGroup, "currentGuard = this"];
+                (selectRandom [INFANTRY_SUPPORT]) createUnit [_pos, _houseGroup, "currentGuard = this;this setvariable [""NOAI"",true];"];
                 currentGuard allowDamage false;
                 doStop currentGuard;
                 commandStop currentGuard;
@@ -279,7 +279,7 @@ _commanderGroup = createGroup ENEMY_SIDE;
 
 _posATL = _cargoHQ buildingPos (selectRandom [1,6]);
 _posATL = [(_posATL select 0), (_posATL select 1), ((_posATL select 2) + 0.2)];
-(selectRandom [INFANTRY_OFFICER]) createUnit [[1,1,0], _commanderGroup, "officer = this"];
+(selectRandom [INFANTRY_OFFICER]) createUnit [[1,1,0], _commanderGroup, "officer = this;this setvariable [""NOAI"",true];"];
 waitUntil{!isNull officer};
 officer allowDamage false;
 officer setPos _posATL;
@@ -327,7 +327,7 @@ _staticGroup = createGroup ENEMY_SIDE;
     _y = 0;
     _posATL = _cargoHQ buildingPos _x;
     _posATL = [(_posATL select 0), (_posATL select 1), (_posATL select 2) + 0.3];
-    (selectRandom [INFANTRY_HOUSE]) createUnit [[10,10,10], _houseGroup, "currentGuard = this"];
+    (selectRandom [INFANTRY_HOUSE]) createUnit [[10,10,10], _houseGroup, "currentGuard = this;this setvariable [""NOAI"",true];"];
     currentGuard allowDamage false;
     sleep 0.1;
     currentGuard setPos _posATL;
