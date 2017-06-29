@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=1969;
+		nextID=2037;
 	};
 	class Camera
 	{
-		pos[]={6762.2056,42.987793,7306.7603};
-		dir[]={0.90682495,-0.25668645,-0.33434793};
-		up[]={0.24083927,0.96649492,-0.088797867};
-		aside[]={-0.34593883,-1.5832484e-007,-0.93826032};
+		pos[]={7075.6738,42.126644,7217.3643};
+		dir[]={-0.85870463,-0.5088737,0.060724102};
+		up[]={-0.50760639,0.86084116,0.035896193};
+		aside[]={0.07054057,-1.0058284e-007,0.99751323};
 	};
 };
 binarizationWanted=0;
@@ -88,6 +88,7 @@ addons[]=
 	"A3_Static_F_AT_01",
 	"A3_Structures_F_Exp_Military_ContainerBases",
 	"A3_Structures_F_EPC_Civ_Accessories",
+	"A3_Structures_F_Argo",
 	"A3_Signs_F",
 	"A3_Structures_F_Exp_Industrial_Port",
 	"A3_Structures_F_Kart_Civ_SportsGrounds",
@@ -111,7 +112,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=37;
+		items=38;
 		class Item0
 		{
 			className="A3_Air_F";
@@ -338,33 +339,40 @@ class AddonsMetaData
 		};
 		class Item32
 		{
+			className="A3_Structures_F_Argo";
+			name="Arma 3 Malden - Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item33
+		{
 			className="A3_Signs_F";
 			name="Arma 3 - Signs";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item33
+		class Item34
 		{
 			className="A3_Structures_F_Exp_Industrial";
 			name="Arma 3 Apex - Industrial Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item34
+		class Item35
 		{
 			className="A3_Structures_F_Kart";
 			name="Arma 3 Karts - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item35
+		class Item36
 		{
 			className="A3_Air_F_Gamma";
 			name="Arma 3 - Aircrafts";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item36
+		class Item37
 		{
 			className="A3_Air_F_EPB";
 			name="Arma 3 Adapt Episode - Aircrafts";
@@ -633,6 +641,7 @@ class CustomAttributes
 };
 class Mission
 {
+	appId=395180;
 	class Intel
 	{
 		briefingName="Co-30 ADR: Spec Ops [Tanoa]";
@@ -1718,7 +1727,6 @@ class Mission
 				angles[]={0,3.059545,0};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
 				init="this allowDamage false; this enableSimulationGlobal false; this setObjectTextureGlobal [0, ""a3\structures_f\items\electronics\data\electronics_screens_laptop_co.paa""]; this setObjectTextureGlobal [1, ""a3\structures_f\items\electronics\data\electronics_screens_laptop_co.paa""]; this addAction [""<t color='#C6FF00'><img image='\a3\ui_f\data\map\VehicleIcons\iconStaticMGNest_ca.paa' size='1.0'/> Защита Базы</t>"",""scripts\misc\actions\baseDefense_switch.sqf"",[],21,true,true,"""",'((vehicle player) == player && playerSide == west)', 5];";
@@ -1727,7 +1735,7 @@ class Mission
 			};
 			id=361;
 			type="Land_TripodScreen_01_dual_v2_F";
-			atlOffset=0.004342556;
+			atlOffset=0.50734258;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -1809,7 +1817,7 @@ class Mission
 			};
 			id=367;
 			type="Land_PortableLongRangeRadio_F";
-			atlOffset=0.84700012;
+			atlOffset=0.76587868;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -2010,7 +2018,6 @@ class Mission
 				angles[]={0,2.2894909,0};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
 				createAsSimpleObject=1;
@@ -2018,7 +2025,7 @@ class Mission
 			};
 			id=403;
 			type="B_CargoNet_01_ammo_F";
-			atlOffset=0.055758715;
+			atlOffset=0.55875874;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -2153,7 +2160,6 @@ class Mission
 				angles[]={0,0.71869421,0};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
 				createAsSimpleObject=1;
@@ -2161,7 +2167,7 @@ class Mission
 			};
 			id=415;
 			type="Land_PlasticCase_01_medium_F";
-			atlOffset=0.055755377;
+			atlOffset=0.5587554;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -2214,7 +2220,6 @@ class Mission
 				angles[]={0,4.5409656,0};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
 				createAsSimpleObject=1;
@@ -2222,7 +2227,7 @@ class Mission
 			};
 			id=419;
 			type="Land_Ammobox_rounds_F";
-			atlOffset=0.025084257;
+			atlOffset=0.52808428;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -2256,7 +2261,6 @@ class Mission
 				angles[]={0,3.842834,0};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
 				createAsSimpleObject=1;
@@ -2264,7 +2268,7 @@ class Mission
 			};
 			id=421;
 			type="Land_PaperBox_open_empty_F";
-			atlOffset=0.055758953;
+			atlOffset=0.55875897;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -2298,14 +2302,13 @@ class Mission
 				angles[]={0,1.0154004,0};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
 				createAsSimpleObject=1;
 			};
 			id=440;
 			type="Land_FireExtinguisher_F";
-			atlOffset=0.029859781;
+			atlOffset=0.5328598;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -2339,6 +2342,7 @@ class Mission
 				angles[]={0,1.5358897,0};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 				init="this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\map\VehicleIcons\iconplane_ca.paa' size='1.0'/> Активировать ПВО</t>"",""scripts\misc\actions\airbaseDefense_switch.sqf"",[],21,true,true,"""",'((vehicle player) == player)', 5];";
@@ -2347,7 +2351,7 @@ class Mission
 			};
 			id=512;
 			type="Land_Laptop_unfolded_F";
-			atlOffset=0.81299901;
+			atlOffset=0.003745079;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -2381,6 +2385,7 @@ class Mission
 				angles[]={0,1.5358897,0};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 				init="this addAction [""<t color='#00BCD4'><img image='\a3\ui_f\data\map\VehicleIcons\iconlogic_ca.paa' size='1.0'/> Очистка базы</t>"",""scripts\misc\actions\clearItemsBASE_switch.sqf"",[],21,true,true,"""",'((vehicle player) == player)', 5];";
@@ -2389,7 +2394,7 @@ class Mission
 			};
 			id=513;
 			type="Land_Laptop_device_F";
-			atlOffset=0.81299901;
+			atlOffset=0.003745079;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -2515,7 +2520,7 @@ class Mission
 			};
 			id=516;
 			type="Land_PortableLongRangeRadio_F";
-			atlOffset=0.023992062;
+			atlOffset=0.027745247;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -2549,6 +2554,7 @@ class Mission
 				angles[]={0,5.0614548,0};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 				createAsSimpleObject=1;
@@ -2556,7 +2562,7 @@ class Mission
 			};
 			id=517;
 			type="Land_PCSet_01_mouse_F";
-			atlOffset=0.81299901;
+			atlOffset=0.003745079;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -2590,6 +2596,7 @@ class Mission
 				angles[]={0,1.0821041,0};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 				createAsSimpleObject=1;
@@ -2597,7 +2604,7 @@ class Mission
 			};
 			id=518;
 			type="Land_MobilePhone_old_F";
-			atlOffset=0.81299901;
+			atlOffset=0.003745079;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -2631,6 +2638,7 @@ class Mission
 				angles[]={0,1.9722221,0};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
 				createAsSimpleObject=1;
@@ -2638,7 +2646,7 @@ class Mission
 			};
 			id=519;
 			type="Intel_File1_F";
-			atlOffset=0.81299901;
+			atlOffset=0.003745079;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -2722,7 +2730,7 @@ class Mission
 			};
 			id=521;
 			type="Land_CampingTable_F";
-			atlOffset=1.6689301e-006;
+			atlOffset=-0.0037517548;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -4661,8 +4669,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={7157.9028,2.6600001,7186.4102};
-				angles[]={0,0.59341192,0};
+				position[]={7015.7744,2.6600001,7222.8408};
+				angles[]={-0,5.6253185,0};
 			};
 			side="Empty";
 			flags=4;
@@ -4701,7 +4709,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={7157.9458,2.6600001,7186.3516};
+				position[]={7015.8174,2.6600001,7222.7822};
 			};
 			side="Empty";
 			flags=4;
@@ -4737,7 +4745,7 @@ class Mission
 		class Item109
 		{
 			dataType="Trigger";
-			position[]={7157.8662,2.6600001,7186.3452};
+			position[]={7015.7378,2.6600001,7222.7759};
 			angle=2.3038347;
 			class Attributes
 			{
@@ -4755,7 +4763,7 @@ class Mission
 		class Item110
 		{
 			dataType="Marker";
-			position[]={7157.937,4.7683002e+017,7186.3501};
+			position[]={7016.1343,4.7683002e+017,7222.769};
 			name="base_aircraft_service";
 			text="Сервис самолетов";
 			type="b_service";
@@ -5149,7 +5157,7 @@ class Mission
 					};
 					id=1161;
 					type="B_T_Soldier_SL_F";
-					atlOffset=0.1102016;
+					atlOffset=0.029080153;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -5193,7 +5201,7 @@ class Mission
 					};
 					id=1163;
 					type="B_T_Soldier_AT_F";
-					atlOffset=0.091277838;
+					atlOffset=0.010156393;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -5227,7 +5235,6 @@ class Mission
 						angles[]={0,2.1434867,0};
 					};
 					side="West";
-					flags=4;
 					class Attributes
 					{
 						rank="CORPORAL";
@@ -5237,7 +5244,7 @@ class Mission
 					};
 					id=1164;
 					type="B_T_Soldier_AR_F";
-					atlOffset=0.020010233;
+					atlOffset=0.52301025;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -5281,7 +5288,7 @@ class Mission
 					};
 					id=1165;
 					type="B_T_Soldier_AR_F";
-					atlOffset=0.087311268;
+					atlOffset=0.0061898232;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -5324,7 +5331,7 @@ class Mission
 					};
 					id=1167;
 					type="B_T_Medic_F";
-					atlOffset=0.093847275;
+					atlOffset=0.01272583;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -5358,7 +5365,6 @@ class Mission
 						angles[]={0,2.2575941,0};
 					};
 					side="West";
-					flags=4;
 					class Attributes
 					{
 						rank="CORPORAL";
@@ -5368,7 +5374,7 @@ class Mission
 					};
 					id=1168;
 					type="B_T_Medic_F";
-					atlOffset=0.073754311;
+					atlOffset=0.57675433;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -5402,7 +5408,6 @@ class Mission
 						angles[]={0,2.3915188,0};
 					};
 					side="West";
-					flags=4;
 					class Attributes
 					{
 						rank="CORPORAL";
@@ -5412,7 +5417,7 @@ class Mission
 					};
 					id=1169;
 					type="B_T_Medic_F";
-					atlOffset=0.056087017;
+					atlOffset=0.55908704;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -5456,7 +5461,7 @@ class Mission
 					};
 					id=1170;
 					type="B_T_Engineer_F";
-					atlOffset=0.086171865;
+					atlOffset=0.0050504208;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -5500,7 +5505,7 @@ class Mission
 					};
 					id=1171;
 					type="B_T_Sniper_F";
-					atlOffset=0.13186097;
+					atlOffset=0.050739527;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -5533,7 +5538,6 @@ class Mission
 						position[]={6852.1685,3.2155373,7311.3384};
 					};
 					side="West";
-					flags=4;
 					class Attributes
 					{
 						rank="CORPORAL";
@@ -5543,7 +5547,7 @@ class Mission
 					};
 					id=1172;
 					type="B_T_soldier_M_F";
-					atlOffset=0.051098347;
+					atlOffset=0.55409837;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -5586,7 +5590,7 @@ class Mission
 					};
 					id=1173;
 					type="B_T_soldier_M_F";
-					atlOffset=0.089490175;
+					atlOffset=0.0083687305;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -5616,7 +5620,7 @@ class Mission
 			{
 			};
 			id=1014;
-			atlOffset=0.1102016;
+			atlOffset=0.029080153;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -5744,7 +5748,6 @@ class Mission
 						angles[]={0,3.7652342,0};
 					};
 					side="West";
-					flags=4;
 					class Attributes
 					{
 						rank="CORPORAL";
@@ -5754,7 +5757,7 @@ class Mission
 					};
 					id=1177;
 					type="B_T_Soldier_AR_F";
-					atlOffset=0.036192179;
+					atlOffset=0.5391922;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -5788,7 +5791,6 @@ class Mission
 						angles[]={0,4.1581068,0};
 					};
 					side="West";
-					flags=4;
 					class Attributes
 					{
 						rank="CORPORAL";
@@ -5798,7 +5800,7 @@ class Mission
 					};
 					id=1178;
 					type="B_T_Soldier_AR_F";
-					atlOffset=0.033271313;
+					atlOffset=0.53627133;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -5874,7 +5876,6 @@ class Mission
 						angles[]={0,4.5617499,0};
 					};
 					side="West";
-					flags=4;
 					class Attributes
 					{
 						rank="CORPORAL";
@@ -5884,7 +5885,7 @@ class Mission
 					};
 					id=1181;
 					type="B_T_Medic_F";
-					atlOffset=0.079672813;
+					atlOffset=0.58267283;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -5928,7 +5929,7 @@ class Mission
 					};
 					id=1182;
 					type="B_T_Medic_F";
-					atlOffset=0.088274956;
+					atlOffset=0.007153511;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -5961,7 +5962,6 @@ class Mission
 						position[]={6855.4663,3.2192302,7308.3574};
 					};
 					side="West";
-					flags=4;
 					class Attributes
 					{
 						rank="CORPORAL";
@@ -5971,7 +5971,7 @@ class Mission
 					};
 					id=1183;
 					type="B_T_Engineer_F";
-					atlOffset=0.054791212;
+					atlOffset=0.55779123;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -6015,7 +6015,7 @@ class Mission
 					};
 					id=1184;
 					type="B_T_Sniper_F";
-					atlOffset=0.087799549;
+					atlOffset=0.0066781044;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -6049,7 +6049,6 @@ class Mission
 						angles[]={0,4.1186914,0};
 					};
 					side="West";
-					flags=4;
 					class Attributes
 					{
 						rank="CORPORAL";
@@ -6059,7 +6058,7 @@ class Mission
 					};
 					id=1185;
 					type="B_T_soldier_M_F";
-					atlOffset=0.053512812;
+					atlOffset=0.55651283;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -6093,7 +6092,6 @@ class Mission
 						angles[]={0,4.0723181,0};
 					};
 					side="West";
-					flags=4;
 					class Attributes
 					{
 						rank="CORPORAL";
@@ -6103,7 +6101,7 @@ class Mission
 					};
 					id=1186;
 					type="B_T_soldier_M_F";
-					atlOffset=0.017058611;
+					atlOffset=0.52005863;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -9505,7 +9503,7 @@ class Mission
 						angles[]={0,4.3315258,0};
 					};
 					side="West";
-					flags=7;
+					flags=3;
 					class Attributes
 					{
 						skill=1;
@@ -9543,7 +9541,7 @@ class Mission
 					};
 					id=463;
 					type="B_T_Officer_F";
-					atlOffset=0.055443764;
+					atlOffset=0.55844378;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -9567,8 +9565,8 @@ class Mission
 						};
 						class Attribute1
 						{
-							property="face";
-							expression="_this setface _value;";
+							property="enableStamina";
+							expression="_this enablestamina _value;";
 							class Value
 							{
 								class data
@@ -9577,10 +9575,10 @@ class Mission
 									{
 										type[]=
 										{
-											"STRING"
+											"BOOL"
 										};
 									};
-									value="WhiteHead_15";
+									value=0;
 								};
 							};
 						};
@@ -9624,8 +9622,8 @@ class Mission
 						};
 						class Attribute4
 						{
-							property="enableStamina";
-							expression="_this enablestamina _value;";
+							property="face";
+							expression="_this setface _value;";
 							class Value
 							{
 								class data
@@ -9634,10 +9632,10 @@ class Mission
 									{
 										type[]=
 										{
-											"BOOL"
+											"STRING"
 										};
 									};
-									value=0;
+									value="WhiteHead_15";
 								};
 							};
 						};
@@ -9651,7 +9649,7 @@ class Mission
 				behaviour="CARELESS";
 			};
 			id=462;
-			atlOffset=0.055443764;
+			atlOffset=0.55844378;
 		};
 		class Item245
 		{
@@ -9672,14 +9670,13 @@ class Mission
 				angles[]={0,1.5040927,0};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
 				disableSimulation=1;
 			};
 			id=2126;
 			type="Land_CampingChair_V2_F";
-			atlOffset=0.055758953;
+			atlOffset=0.55875897;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -21690,6 +21687,7 @@ class Mission
 			};
 			id=2896;
 			type="Land_MilOffices_V1_F";
+			atlOffset=0.081121445;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -28494,6 +28492,7 @@ class Mission
 			};
 			id=3320;
 			type="Land_BagBunker_01_large_green_F";
+			atlOffset=0.030430555;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -30766,7 +30765,7 @@ class Mission
 			};
 			id=3430;
 			type="ContainmentArea_02_forest_F";
-			atlOffset=1.9626598;
+			atlOffset=1.932229;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -31968,6 +31967,7 @@ class Mission
 			};
 			id=3486;
 			type="ModuleChemlight_F";
+			atlOffset=0.50300002;
 			class CustomAttributes
 			{
 				class Attribute0
