@@ -329,6 +329,7 @@ class ScenarioData
 		minPlayers=1;
 		maxPlayers=30;
 	};
+	wreckRemovalMaxTime=3600;
 };
 class CustomAttributes
 {

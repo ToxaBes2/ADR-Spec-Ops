@@ -15,7 +15,7 @@ UAV_RANGE = compileFinal preprocessFileLineNumbers "scripts\UAV_Range.sqf";     
 ((getMarkerPos "respawn_west") nearestObject 168680) hideObject true;
 ((getMarkerPos "respawn_west") nearestObject 168681) hideObject true;
 ((getMarkerPos "respawn_west") nearestObject 168707) hideObject true;
-((getMarkerPos "respawn_west") nearestObject 168711) hideObject true;
+//((getMarkerPos "respawn_west") nearestObject 168711) hideObject true;
 ((getMarkerPos "respawn_west") nearestObject 167578) hideObject true;
 ((getMarkerPos "respawn_west") nearestObject 167570) hideObject true;
 ((getMarkerPos "respawn_west") nearestObject 168751) hideObject true;
