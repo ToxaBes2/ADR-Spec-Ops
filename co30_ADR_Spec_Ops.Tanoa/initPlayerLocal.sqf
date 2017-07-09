@@ -160,7 +160,7 @@ if (typeOf player in ["B_T_Engineer_F", "I_C_Soldier_Para_8_F"]) then {
 	};
 };
 
-// Add restrictions from BLUFOR players
+// Add restrictions for BLUFOR players
 if (playerSide == west) then {
 	player addEventHandler ["InventoryClosed", {
 	    [(_this select 0)] call QS_fnc_applyRestrictionsWest;
@@ -185,6 +185,20 @@ if (playerSide == west) then {
             ( _display displayCtrl _x ) ctrlRemoveAllEventHandlers "buttonclick";
         } forEach [ 44150 ];
     }] call BIS_fnc_addScriptedEventHandler;
+
+    if (isNil "ARSENAL_ENABLED") then {
+        ARSENAL_ENABLED = true;
+        publicVariable "ARSENAL_ENABLED";
+    };
+
+    // clear items from unit on first load
+    if !(ARSENAL_ENABLED) then {
+        removeAllweapons player;
+        removeBackpack player;
+        removeVest player;
+        removeHeadgear player;
+        {player removeItem _x} foreach (items player);
+    };
 };
 
 // hide arsenal load buttons for partizans and add restrictions

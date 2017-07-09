@@ -155,7 +155,7 @@ if (typeOf player in ["B_engineer_F", "I_G_engineer_F"]) then {
 	};
 };
 
-// Add restrictions from BLUFOR players
+// Add restrictions for BLUFOR players
 if (playerSide == west) then {
 	player addEventHandler ["InventoryClosed", {
 	    [(_this select 0)] call QS_fnc_applyRestrictionsWest;
@@ -181,6 +181,11 @@ if (playerSide == west) then {
         } forEach [ 44150 ];
     }] call BIS_fnc_addScriptedEventHandler;
 
+    if (isNil "ARSENAL_ENABLED") then {
+        ARSENAL_ENABLED = true;
+        publicVariable "ARSENAL_ENABLED";
+    };
+    
     // clear items from unit on first load
     if !(ARSENAL_ENABLED) then {
         removeAllweapons player;

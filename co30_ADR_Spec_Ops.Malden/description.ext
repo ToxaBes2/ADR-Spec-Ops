@@ -1,0 +1,515 @@
+/*
+Authors: Quiksilver & Rarek [AW]
+	Invade & Annex 2.00 was developed by Rarek [ahoyworld.co.uk] with hundreds of hours of work,
+	The current iterations have been developed by Quiksilver with hundreds of hours of work.
+Contributors: Razgriz33 [AW], Jester [AW], Kamaradski [AW], David [AW], chucky [allFPS].
+	www.ahoyworld.co.uk 	www.allfps.com.au
+*/
+//------------------------- On Load
+author = "ToxaBes";
+onLoadName = "ADR: Spec Ops";
+OnLoadMission = "Malden v0.0.1";
+loadScreen = "media\images\adr_specops_malden_loading.jpg";
+overviewPicture = "media\images\adr_specops_malden_loading.jpg";
+
+onLoadIntro = "";										// Displays a message while the intro is loading.
+onLoadIntroTime = 0;									// Time and date displayed while the intro loads. 1 visible, 0 hidden.
+onLoadMissionTime = 0;									// Time and date displayed while the mission loads. 1 visible, 0 hidden.
+forceRotorLibSimulation= 1;								// Default value: 0 - options-based; 1 - force enable; 2 - force disable
+class Header
+	{
+		gameType = COOP;								// Unknown, COOP, DM, TDM, CTF, SC, CTI, RPG, Sandbox, Seize, Defend.
+		minPlayers = 1;
+		maxPlayers = 32;
+	};
+
+//------------------------- Admin
+
+enableDebugConsole = 1;									// 0 = disabled. 1 = admins, 2 = everybody. 0 is recommended in MP.
+allowFunctionsLog = 0; 									// Log functions to .rpt. disabled with 0
+
+//------------------------- Misc
+
+disableChannels[]={{0, true, true},{1, false, true},{2, true, true},{3, false, false},{4, false, false},{5, false, false},{6, false, false}};
+disabledAI = 1;											// No AI in playable units
+aiKills = 0; 											// disable scorelist for AI players
+enableItemsDropping = 0; 								// disabled with 0
+joinUnassigned = 1;										// 0 = players forced into role on join
+showUAVFeed = 1;										// Enables/Disables the UAV Feed. Zeus-related.
+showHUD[] = {
+	true,	// Scripted HUD (same as showHUD command)   // should be true because of issue in 1.64
+	true,	// Vehicle + soldier info
+	true,	// Vehicle radar 
+	true,	// Vehicle compass
+	true,	// Tank direction indicator
+	true,	// Commanding menu
+	true,	// Group Bar
+	true,	// HUD Weapon Cursors                       // should be true because of issue in 1.64
+	true	// HUD Squad Radar
+};
+briefing = 0;                                           // Enables/Disables briefing screen
+//------------------------- Respawn
+
+Respawn = 3;											// 0 = none. 1 = bird. 2 = instant where died. 3 = base or respawn_west marker. 4 = respawn with team, or bird. 5 = into AI or bird.
+RespawnDelay = 4;										// Delay prior to respawn, ensure longer than BTC revive delay.
+RespawnDialog = 0;										// default = 1. show respawn timer and scoreboard when killed.
+
+//------------------------- Garbage collector
+
+wreckLimit = 3;											// Limit before removal is triggered
+wreckRemovalMinTime = 120;								// Min time before removal
+wreckRemovalMaxTime = 360;								// Max time before removal
+corpseLimit = 10;										// Limit before removal is triggered
+corpseRemovalMinTime = 60;								// Min time before removal
+corpseRemovalMaxTime = 180;								// Max time before removal
+
+//------------------------- Includes / Functions
+
+#include "scripts\VAS\menu.hpp" 						// VAS
+#include "scripts\taw_vd\dialog.hpp" 					// TAW View Distance
+#include "scripts\vehicle\crew\common.hpp"  			// vehicle crew hud
+#include "scripts\=BTC=_revive\=BTC=_respawn.h"			// BTC medic revive system
+#include "scripts\rules\dialog.hpp"		                // Server rules dialog
+#include "scripts\outlw_magRepack\MagRepack_config.hpp" // Mag Repack by Outlawled
+#include "scripts\dynamic_loadout\parent.hpp"           // Dynamic loadout
+#include "scripts\dynamic_loadout\dialog.hpp"           // Dynamic loadout
+
+class CfgFunctions
+	{
+		#include "functions\cfgfunctions.hpp"			// Integrated I&A functions
+		#include "scripts\taw_vd\CfgFunctions.hpp"		// View distance
+
+		// Dynamic loadout
+		class DL {
+	        class init {
+		        class aircraftLoadoutInit{
+		            file = "scripts\dynamic_loadout\init.sqf";
+		            preInit = 1;
+		        };
+	        };
+        };
+
+		class FETT {
+	        class curator {
+	            class eventHandlers {postInit = 1;};
+	            class objPlaced {};
+	            class grpPlaced {};
+	        };
+	    };
+	    class Briefing {
+	    	class ServerSideFunctions {
+	    		class skip {
+	    			preInit = 1;
+	    			file = "scripts\skipBriefing.sqf";
+	    		};
+	    	};
+	    };
+	};
+
+class RscTitles
+	{
+		#include "scripts\vehicle\crew\namesleft.hpp"	// Occupants HUD for vehicles
+	};
+
+// this sounds taken from task-force-arma-3-radio (https://github.com/michail-nikolaev/task-force-arma-3-radio) by Michail Nicolaev
+class CfgSounds
+{
+	sounds[] = {};
+	class playerRadioStart
+	{
+		name = "player radio start";
+		sound[] = {"media\sounds\player_start.wav", db+5, 1};
+		titles[] = {};
+	};
+	class playerRadioEnd
+	{
+		name = "player radio end";
+		sound[] = {"media\sounds\player_end.wav", db+9, 1};
+		titles[] = {};
+	};
+	class playerOperativeStart
+	{
+		name = "operative radio start";
+		sound[] = {"media\sounds\operative_start.wav", db+5, 1};
+		titles[] = {};
+	};
+	class playerOperativeEnd
+	{
+		name = "operative radio end";
+		sound[] = {"media\sounds\operative_end.wav", db+9, 1};
+		titles[] = {};
+	};
+};
+
+//------------------------- Parameters
+
+class Params {
+	class AO {
+		title = "Основное задание";
+		values[] = {1,0};
+		texts[] = {"Включено","Выключено"};
+		default = 1;
+	};
+
+	class DefendAO {
+		title = "Защита";
+		values[] = {1,0};
+		texts[] = {"Включено","Выключена"};
+		default = 1;
+	};
+
+	class SideObjectives {
+		title = "Дополнительные миссии";
+		values[] = {1,0};
+		texts[] = {"Включено","Выключено"};
+		default = 1;
+	};
+
+	class PriorityObjectivesChance {
+		title = "Шанс появления приоритетной цели";
+		values[] = {0,1,2,3,4,5,6,7,8,9,10};
+		texts[] = {"0%","10%","20%","30%","40%","50%","60%","70%","80%","90%","100%"};
+		default = 3;
+	};
+
+	class AOReinforcementCas {
+		title = "Вражеская авиация оказывает поддержку";
+		values[] = {1,0};
+		texts[] = {"Включено","Выключено"};
+		default = 1;
+	};
+
+	class EnemyLeftThreshhold {
+		title = "Кол-во оставшихся врагов для завершения миссии";
+		values[] = {2,4,8,16,20};
+		texts[] = {"2","4","8","16","20"};
+		default = 20;
+	};
+
+	class RadioTowerMineFieldChance {
+		title = "Шанс появления минного поля рядом с вышкой";
+		values[] = {0,1,2,3,4,5,6,7,8,9,11};
+		texts[] = {"0%","10%","20%","30%","40%","50%","60%","70%","80%","90%","100%"};
+		default = 5;
+	};
+
+	class ArtilleryTargetTickTimeMin {
+		title = "Минимальный интервал стрельбы артиллерии";
+		values[] = {30,60,120,180,240,300,600,900};
+		texts[] = {"30 секунд","1 минута","2 минуты","3 минуты","4 минуты","5 минут","10 минут","15 минут"};
+		default = 60;
+	};
+
+	class ArtilleryTargetTickTimeMax {
+		title = "Максимальный интервал стрельбы артиллерии";
+		values[] = {30,60,120,180,240,300,600,900};
+		texts[] = {"30 секунд","1 минута","2 минуты","3 минуты","4 минуты","5 минут","10 минут","15 минут"};
+		default = 180;
+	};
+
+	class ArtilleryTargetTickWarning {
+		title = "Предупреждение о залпе артилерии";
+		values[] = {1,0};
+		texts[] = {"Включено","Выключено"};
+		default = 1;
+	};
+
+	class AOSize {
+		title = "Диаметр маркера основной миссии";
+		values[] = {200,300,400,500,600,700,800,900,1000};
+		texts[] = {"200m","300m","400m","500m","600m","700m","800m","900m","1,000m"};
+		default = 1000;
+	};
+
+	class VehicleRespawnDistance {
+		title = "Расстояние от транспорта до игроков, при котором транспорт респавнится";
+		values[] = {10,50,100,200,300,400,500,1000,2000,5000,10000};
+		texts[] = {"10m","50m","100m","200m","300m","400m","500m","1km","2km","5km","10km"};
+		default = 500;
+	};
+
+	class GroupPatrol {
+		title = "Кол-во групп патрулей";
+		values[] = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+		texts[] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
+		default = 4; // default 11... remember, more AI = less FPS
+	};
+
+	class SniperTeamsPatrol {
+		title = "Кол-во групп снайперов";
+		values[] = {0,1,2,3};
+		texts[] = {1,2,3,4};
+		default = 1;
+	};
+
+	class StaticMG {
+		title = "Кол-во стационарных установок";
+		values[] = {0,1,2,3};
+		texts[] = {1,2,3,4};
+		default = 1;
+	};
+
+	class Overwatch {
+		title = "Кол-во разведывательных патрулей";
+		values[] = {0,1,2,3,4,5,6,7};
+		texts[] = {1,2,3,4,5,6,7,8};
+		default = 2;
+	};
+
+	class VEHPatrol {
+		title = "Кол-во техники";
+		values[] = {0,1,2,3,4,5,6};
+		texts[] = {1,2,3,4,5,6,7};
+		default = 2;
+	};
+
+	class AAPatrol {
+		title = "Кол-во ЗСУ";
+		values[] = {0,1,2,3,4};
+		texts[] = {0,1,2,3,4};
+		default = 2;
+	};
+
+	class AirPatrol {
+		title = "Шанс появления вражеского штурмовика";
+		values[] = {0,1,2,3,4,5,6,7,8,9,10};
+		texts[] = {0%,10%,20%,30%,40%,50%,60%,70%,80%,90%,100%};
+		default = 5;
+	};
+
+	class PilotRespawn {
+		title = "Респавн пилотов";
+		values[] = {0,1};
+		texts[] = {"Выключено","Включено"};
+		default = 1;
+	};
+
+	class Fatigue {
+		title = "Усталость игроков";
+		values[] = {0,1};
+		texts[] = {"Выключено","Включено"};
+		default = 1;
+	};
+
+	class AimingAccuracy {
+		title = "Точность противников";
+		values[] = {0,1,2,3,4};
+		texts[] = {"Слепые котята","По Сомалийски","Человеческая","Нечеловеческая","AIM + WALLHACK + NORECOIL"};
+		default = 2;
+	};
+
+	class Weather {
+		title = "Погода";
+		values[] = {0,1};
+		texts[] = {"Реальная","Aрхивная"};
+		default = 0;
+	};
+};
+
+//------------------------- Notifications
+
+class CfgNotifications
+{
+	class Default
+	{
+		title = ""; 			// Tile displayed as text on black background. Filled by arguments.
+		iconPicture = ""; 		// Small icon displayed in left part. Colored by "color", filled by arguments.
+		iconText = ""; 			// Short text displayed over the icon. Colored by "color", filled by arguments.
+		description = ""; 		// Brief description displayed as structured text. Colored by "color", filled by arguments.
+		color[] = {1,1,1,1}; 	// Icon and text color
+		duration = 5; 			// How many seconds will the notification be displayed
+		priority = 0; 			// Priority; higher number = more important; tasks in queue are selected by priority
+		difficulty[] = {}; 		// Required difficulty settings. All listed difficulties has to be enabled
+	};
+
+	class NewMain
+	{
+		title = "ОСНОВНАЯ ЗАДАЧА";
+		description = "Захватить %1";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\tactical_view_ca.paa";
+		color[] = {1, 0.76, 0.03, 1};
+		priority = 9;
+	};
+
+	class CompletedMain
+	{
+		title = "ЗАДАЧА ВЫПОЛНЕНА";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\tactical_view_ca.paa";
+		description = "Точка %1 захвачена";
+		color[] = {0.78, 1, 0, 1};
+		priority = 9;
+	};
+
+	class NewMainDefend
+	{
+		title = "КРУГОВАЯ ОБОРОНА";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\normaldamage_ca.paa";
+		description = "Защитить %1";
+		color[] = {1, 0.76, 0.03, 1};
+		priority = 9;
+	};
+
+	class CompletedMainDefended
+	{
+		title = "ОБОРОНА ВЫСТОЯЛА";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\normaldamage_ca.paa";
+		description = "Точка %1 защищена";
+		color[] = {0.78, 1, 0, 1};
+		priority = 9;
+	};
+
+	class FailedMainDefended
+	{
+		title = "ПРОТИВНИК ЗАХВАТИЛ НАШИ ПОЗИЦИИ";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\normaldamage_ca.paa";
+		description = "Точка %1 потеряна";
+		color[] = {0.97, 0.26, 0.21, 1};
+		priority = 9;
+	};
+
+	class NewSub
+	{
+		title = "НОВОЕ ПОДЗАДАНИЕ";
+		iconPicture = "%2";
+		description = "%1";
+		color[] = {1, 0.76, 0.03, 1};
+		priority = 6;
+	};
+
+	class CompletedSub
+	{
+		title = "ПОДЗАДАНИЕ ВЫПОЛНЕНО";
+		iconPicture = "%2";
+		description = "%1";
+		color[] = {0.78, 1, 0, 1};
+		priority = 6;
+	};
+
+	class NewSideMission
+	{
+		title = "НОВОЕ ДОПЗАДАНИЕ";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\map_ca.paa";
+		description = "%1";
+		color[] = {1, 0.76, 0.03, 1};
+		priority = 7;
+	};
+
+	class CompletedSideMission
+	{
+		title = "ДОПЗАДАНИЕ ВЫПОЛНЕНО";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\map_ca.paa";
+		description = "%1";
+		color[] = {0.78, 1, 0, 1};
+		priority = 7;
+	};
+
+	class FailedSideMission
+	{
+		title = "ДОПЗАДАНИЕ ПРОВАЛЕНО";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\map_ca.paa";
+		description = "%1";
+		color[] = {0.97, 0.26, 0.21, 1};
+		priority = 7;
+	};
+
+	class NewSpecMission
+	{
+		title = "НОВАЯ СПЕЦОПЕРАЦИЯ";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\stamina_ca.paa";
+		description = "%1";
+		color[] = {1, 0.76, 0.03, 1};
+		priority = 7;
+	};
+
+	class CompletedSpecMission
+	{
+		title = "СПЕЦОПЕРАЦИЯ ВЫПОЛНЕНА";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\stamina_ca.paa";
+		description = "%1";
+		color[] = {0.78, 1, 0, 1};
+		priority = 7;
+	};
+
+	class FailedSpecMission
+	{
+		title = "СПЕЦОПЕРАЦИЯ ПРОВАЛЕНА";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\stamina_ca.paa";
+		description = "%1";
+		color[] = {0.97, 0.26, 0.21, 1};
+		priority = 7;
+	};
+
+	class NewPriorityTarget
+	{
+		title = "НОВАЯ ПРИОРИТЕТНАЯ ЦЕЛЬ";
+		iconPicture = "%2";
+		description = "%1";
+		color[] = {0.97, 0.26, 0.21, 1};
+		priority = 8;
+	};
+
+	class CompletedPriorityTarget
+	{
+		title = "ПРИОРИТЕТНАЯ ЦЕЛЬ НЕЙТРАЛИЗОВАНА";
+		iconPicture = "%2";
+		description = "%1";
+		color[] = {0.78, 1, 0, 1};
+		priority = 8;
+	};
+
+	class FailedPriorityTarget
+	{
+		title = "ПРИОРИТЕТНАЯ ЦЕЛЬ ПРОВАЛЕНА";
+		iconPicture = "%2";
+		description = "%1";
+		color[] = {0.97, 0.26, 0.21, 1};
+		priority = 8;
+	};
+
+	class EnemyCas
+	{
+		title = "ОБНАРУЖЕНА ВРАЖЕСКАЯ АВИАПОДДЕРЖКА";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\countermeasures_ca.paa";
+		description = "%1";
+		color[] = {0.97, 0.26, 0.21, 1};
+		priority = 5;
+	};
+
+	class EnemyCasDown
+	{
+		title = "ВРАЖЕСКАЯ АВИАПОДДЕРЖКА УНИЧТОЖЕНА";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\countermeasures_ca.paa";
+		description = "%1";
+		color[] = {0.78, 1, 0, 1};
+		priority = 5;
+	};
+
+	class Reward
+	{
+		title = "НАГРАДА";
+		description = "Ваша команда получила %1";
+		iconPicture = "\a3\ui_f\data\gui\cfg\hints\vehiclecommanding_ca.paa";
+		color[] = {0.78, 1, 0, 1};
+		priority = 4;
+	};
+
+	class ScoreBonus
+	{
+		title = "БОНУС";
+		iconPicture = "\a3\ui_f\data\gui\rsc\rscdisplaymultiplayer\mp_serverempty_ca.paa";
+		iconText = "+%2";
+		description = "%1";
+		color[] = {0.78, 1, 0, 1};
+		difficulty[] = {"scoreTable"};
+		priority = 4;
+	};
+
+	class TotalFailed
+	{
+		title = "ЗАДАНИЕ ПРОВАЛЕНО";
+		iconPicture = "\a3\ui_f\data\GUI\Cfg\Debriefing\endDefault_ca.paa";
+		description = "%1";
+		color[] = {0.97, 0.26, 0.21, 1};
+		priority = 7;
+	};
+};

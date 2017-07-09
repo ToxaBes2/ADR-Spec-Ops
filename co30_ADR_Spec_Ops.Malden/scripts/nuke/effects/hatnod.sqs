@@ -1,0 +1,74 @@
+_posx = _this select 0
+_posy = _this select 1
+
+#hatvar
+_next = 0
+_hatposz = 30.0
+_hatsize = 0.6
+_scl = 1.0
+_hatalfa1 = 1.0
+_hatalfa2 = 0.0
+_col = 0.01
+_mushflag = 0
+_glaretrans = 0.3
+#hatstart
+[_posx + (50 - random 100),_posy + (50 - random 100),_hatposz] exec "scripts\nuke\effects\mush2.sqs"
+_cnt = 0
+_agl = random 360
+_scl = _scl * 0.995
+?(_col < 0.6 and _next > 50) : _col = _col * 1.02
+?(_hatsize  < 0.99) : _hatsize  = _hatsize  * 1.004
+?(_hatalfa1 > 0.01 and _next > 200) : _hatalfa1 = _hatalfa1 * 0.98
+?(_hatalfa2 < 0.99 and _next > 10) : _hatalfa2 = _hatalfa2 + 0.02
+_hatposz = _hatposz + (10.0 * _scl)
+_next = _next + 1
+?(_next == 2000) : goto "end"
+#hatloop
+?(_cnt == 10) : goto "hatloopend"
+
+_velx = (sin _agl) * (10.0 + random 10.0) * _hatsize
+_vely = (cos _agl) * (10.0 + random 10.0) * _hatsize
+
+_rdm = (random 36) - 18
+_rdm2 = (random 36) - 18
+_hatposx1 = _posx + ((sin (_agl + _rdm)) * 15 * _hatsize)
+_hatposy1 = _posy + ((cos (_agl + _rdm)) * 15 * _hatsize)
+
+_rdm = (random 36) - 18
+_rdm2 = 5 - (random 10)
+_hatposx2 = _posx + ((sin (_agl + _rdm)) * (80 + _rdm2) * _hatsize)
+_hatposy2 = _posy + ((cos (_agl + _rdm)) * (80 + _rdm2) * _hatsize)
+
+_rdm = (random 36) - 18
+_rdm2 = 25 - (random 50)
+_hatposx3 = _posx + ((sin (_agl + _rdm)) * (230 + _rdm2) * _hatsize)
+_hatposy3 = _posy + ((cos (_agl + _rdm)) * (230 + _rdm2) * _hatsize)
+
+_rdm = (random 36) - 18
+_rdm2 = 20 - (random 40)
+_hatposx4 = _posx + ((sin (_agl + _rdm)) * (300 + _rdm2) * _hatsize)
+_hatposy4 = _posy + ((cos (_agl + _rdm)) * (300 + _rdm2) * _hatsize)
+
+_rdm = (random 36) - 18
+_hatposx5 = _posx + ((sin (_agl + _rdm)) * (random 270) * _hatsize)
+_hatposy5 = _posy + ((cos (_agl + _rdm)) * (random 270) * _hatsize)
+
+_dcol = 0.2 + random 0.1
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,3.0 + random 2,[_hatposx2,_hatposy2,_hatposz + 30 + (30 - random 60)],[_velx*2,_vely*2,5*_scl],1,1.5,1.0,0.01,[240 * _hatsize,300 * _hatsize],[[_col+0.0,_col+0.0,_col+0.0,0.0],[_col+_dcol+0.0,_col+_dcol+0.0,_col+_dcol+0.0,_hatalfa1*_hatalfa2*1.0],[_col+_dcol+0.1,_col+_dcol+0.1,_col+_dcol+0.1,0.0]],[0],0.0,0.5,"","",""]
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,2.0 + random 1,[_hatposx3,_hatposy3,_hatposz - 20 + (30 - random 60)],[_velx,_vely,5*_scl],1,1.5,1.0,0.01,[27 * _hatsize,300 * _hatsize],[[_col+0.0,_col+0.0,_col+0.0,0.0],[_col+_dcol+0.0,_col+_dcol+0.0,_col+_dcol+0.0,_hatalfa1*_hatalfa2*1.0],[_col+_dcol+0.1,_col+_dcol+0.1,_col+_dcol+0.1,0.0]],[0],0.0,0.5,"","",""]
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,2.0 + random 1,[_hatposx4,_hatposy4,_hatposz - 100 + (30 - random 60)],[_velx*(-0.8),_vely*(-0.8),10*_scl],1,1.5,1.0,0.01,[270 * _hatsize,240 * _hatsize],[[_col+0.0,_col+0.0,_col+0.0,0.0],[_col+_dcol+0.0,_col+_dcol+0.0,_col+_dcol+0.0,_hatalfa1*_hatalfa2*1.0],[_col+_dcol+0.1,_col+_dcol+0.1,_col+_dcol+0.1,0.0]],[0],0.0,0.5,"","",""]
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,3.0 + random 2,[_hatposx4,_hatposy4,_hatposz - 180 + (30 - random 60)],[_velx*(-0.8),_vely*(-0.8),10*_scl],1,1.5,1.0,0.01,[300 * _hatsize,370 * _hatsize],[[_col+0.0,_col+0.0,_col+0.0,0.0],[_col+_dcol+0.0,_col+_dcol+0.0,_col+_dcol+0.0,_hatalfa1*_hatalfa2*1.0],[_col+_dcol+0.1,_col+_dcol+0.1,_col+_dcol+0.1,0.0]],[0],0.0,0.5,"","",""]
+
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,1.0 + random 1,[_hatposx5,_hatposy5,_hatposz - 110 + (15 - random 30)],[_velx*0.8,_vely*0.8,0],1,1.5,1.0,0.01,[270 * _hatsize,300 * _hatsize],[[_dcol+0.7,_dcol+0.1,_dcol+0.0,0.0],[_dcol+0.7,_dcol+0.1,_dcol+0.0,_dcol+_hatalfa1*_hatalfa2*0.3],[_dcol+0.7,_dcol+0.1,_dcol+0.0,0.0]],[0],0.0,0.5,"","",""]
+
+_agl = _agl + 36.0
+_cnt = _cnt + 1
+goto "hatloop"
+#hatloopend
+
+~0.2
+?(_mushflag == 0) : [_posx,_posy] exec "scripts\nuke\effects\mush.sqs"; _mushflag = 1
+goto "hatstart"
+
+#end
+exit

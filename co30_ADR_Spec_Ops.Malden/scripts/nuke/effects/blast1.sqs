@@ -1,0 +1,46 @@
+_posx = _this select 0
+_posy = _this select 1
+
+
+_cnt = 0
+_next = 0
+_agl = random 360
+_aglz = 0
+
+
+#loop
+?(_cnt > 30) : goto "next"
+
+_coef = 0.9 + random 0.2
+_velx = (sin _agl) * 1000.0 * _coef
+_vely = (cos _agl) * 1000.0 * _coef
+_velz = 50 * _coef
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,6.0 + random 3,[_posx,_posy, -10],[_velx,_vely,_velz],1,1.25,1.0,0.0001,[50,550,950,2000],[[1.0,1.0,1.0,0.0],[1.0,1.0,1.0,0.2],[1.0,1.0,1.0,0.1],[1.0,1.0,1.0,0.05],[1.0,1.0,1.0,0.025],[1.0,1.0,1.0,0.012],[1.0,1.0,1.0,0.0]],[0],0.0,2.0,"","",""]
+
+_velx = (sin (_agl + 120)) * 1000.0 * _coef
+_vely = (cos (_agl + 120)) * 1000.0 * _coef
+_velz = 50 * _coef
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,6.0 + random 3,[_posx,_posy, -10],[_velx,_vely,_velz],1,1.25,1.0,0.0001,[50,550,950,2000],[[1.0,1.0,1.0,0.0],[1.0,1.0,1.0,0.2],[1.0,1.0,1.0,0.1],[1.0,1.0,1.0,0.05],[1.0,1.0,1.0,0.025],[1.0,1.0,1.0,0.012],[1.0,1.0,1.0,0.0]],[0],0.0,2.0,"","",""]
+
+_velx = (sin (_agl + 240)) * 1000.0 * _coef
+_vely = (cos (_agl + 240)) * 1000.0 * _coef
+_velz = 50 * _coef
+drop [["A3\Data_F\ParticleEffects\Universal\universal.p3d", 16, 7, 48],"","Billboard",1,6.0 + random 3,[_posx,_posy, -10],[_velx,_vely,_velz],1,1.25,1.0,0.0001,[50,550,950,2000],[[1.0,1.0,1.0,0.0],[1.0,1.0,1.0,0.2],[1.0,1.0,1.0,0.1],[1.0,1.0,1.0,0.05],[1.0,1.0,1.0,0.025],[1.0,1.0,1.0,0.012],[1.0,1.0,1.0,0.0]],[0],0.0,2.0,"","",""]
+
+_agl = _agl + 4
+_cnt = _cnt + 1
+goto "loop"
+
+
+#next
+exit
+?(_next == 9) : goto "end"
+_cnt = 0
+_agl = random 360
+_aglz = _aglz + 9.0
+_next = _next + 1
+goto "loop"
+
+
+#end
+exit
