@@ -5,7 +5,7 @@ Description: add ammo support for blufor base every X mins
 _interval = 2400;
 _endPos = [8107,9980];
 _truck = "B_Truck_01_box_F";
-_guards = "B_LSV_01_armed_F";
+_guards = selectRandom ["B_MRAP_01_hmg_F","B_MRAP_01_gmg_F","B_LSV_01_armed_F","B_LSV_01_armed_olive_F","B_LSV_01_armed_sand_F","B_APC_Wheeled_01_cannon_F"];
 _start = [
     [3105.2,8406.68,0],[5576.79,11476.9,0],[1660.25,4658.95,0],[1139.85,601.48,0],[3741.1,3081.08,0],[5112.64,1238.34,0],
     [5808.74,2441.88,0],[6798.63,2757.28,0],[8243.75,3274.42,0],[7610.85,5872.55,0],[5661.72,6980.78,0]
@@ -27,7 +27,10 @@ while {true} do {
     createVehicleCrew _veh1;
     _veh1 addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
     [_veh1, "QS_fnc_addActionUnloadAmmo", nil, true] spawn BIS_fnc_MP; 
-    
+
+    _driver = driver _veh1;
+    _repairUnit = (group _driver) createUnit ["B_soldier_repair_F", _firstPos, [], 0, "CARGO"];
+
     _roadSegments = _firstPos nearRoads 70;
     _segment = selectRandom _roadSegments;
     _secondPos = getPos _segment;  
