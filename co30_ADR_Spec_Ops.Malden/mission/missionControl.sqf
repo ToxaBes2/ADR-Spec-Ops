@@ -14,13 +14,13 @@ _missionList = [
 	"HQside",
 	"destroyUrban",
 	"secureSide",
-	"rescueHostages"
-    //"heliCrash",
+	"rescueHostages",
+    "heliCrash",
 	//"convoy",
 	//"snatch",
 	//"swordfish",
 	//"yellowfog",
-	//"grapeswrath",
+	"grapeswrath"
 	//"oilmama"
 ];
 AVANPOST_COORDS = false; publicVariable "AVANPOST_COORDS";

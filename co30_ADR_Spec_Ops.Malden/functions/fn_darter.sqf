@@ -16,7 +16,7 @@ _allUAVs = allMissionObjects "B_UAV_01_F";
 if (_cnt >= _limit) exitWith {
    [format ["<t color='#F44336' size = '.48'>Достигнут лимит в %1 дартеров!</t>", _limit], 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
 };
-_groundPos = [[14724,16698,0], 0, 50, 1, 0, 0, 0] call QS_fnc_findSafePos;
+_groundPos = [[8020,10109,0], 0, 50, 1, 0, 0, 0] call QS_fnc_findSafePos;
 _uav = createVehicle ["B_UAV_01_F", _groundPos, [], 0, "NONE"];
 _uav setVariable ["BLUFOR_UAV", true];
 createVehicleCrew _uav;
