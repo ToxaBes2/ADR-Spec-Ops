@@ -19,6 +19,7 @@ UAV_RANGE = compileFinal preprocessFileLineNumbers "scripts\UAV_Range.sqf";     
 ((getMarkerPos "respawn_west") nearestObject 167578) hideObject true;
 ((getMarkerPos "respawn_west") nearestObject 167570) hideObject true;
 ((getMarkerPos "respawn_west") nearestObject 168751) hideObject true;
+((getMarkerPos "respawn_west") nearestObject 168755) hideObject true;
 ((getMarkerPos "respawn_west") nearestObject 168746) hideObject true;
 ((getMarkerPos "respawn_west") nearestObject 168749) hideObject true;
 ((getMarkerPos "respawn_west") nearestObject 168740) hideObject true;
@@ -53,6 +54,20 @@ UAV_RANGE = compileFinal preprocessFileLineNumbers "scripts\UAV_Range.sqf";     
 ([6287,10830] nearestObject 281332) hideObject true;
 ([6287,10830] nearestObject 281446) hideObject true;
 ([6287,10830] nearestObject 281447) hideObject true;
+
+// bad rocks on turn
+([7309,8827] nearestObject 35022) hideObject true;
+([7309,8827] nearestObject 35346) hideObject true;
+([7309,8827] nearestObject 35024) hideObject true;
+([7309,8827] nearestObject 35294) hideObject true;
+([7309,8827] nearestObject 36774) hideObject true;
+([7309,8827] nearestObject 35370) hideObject true;
+([7309,8827] nearestObject 35021) hideObject true;
+([7309,8827] nearestObject 35352) hideObject true;
+([7309,8827] nearestObject 35368) hideObject true;
+([7309,8827] nearestObject 35367) hideObject true;
+([7309,8827] nearestObject 35502) hideObject true;
+([7309,8827] nearestObject 36790) hideObject true;
 
 if (isDedicated) exitWith {
 	"addToScore" addPublicVariableEventHandler {
