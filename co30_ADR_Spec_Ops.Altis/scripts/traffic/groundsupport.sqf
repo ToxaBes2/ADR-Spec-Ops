@@ -15,6 +15,11 @@ _start = [
 ];
 while {true} do {
     _startPos = selectRandom _start;
+    if (!(isNil {CURRENT_AO_POSITION})) then {
+        while {_startPos distance2D CURRENT_AO_POSITION < 1000} do {
+            _startPos = selectRandom _start;
+        };
+    };
     _roadSegments = _startPos nearRoads 20;
     while {count _roadSegments == 0} do {
         _startPos = selectRandom _start;
