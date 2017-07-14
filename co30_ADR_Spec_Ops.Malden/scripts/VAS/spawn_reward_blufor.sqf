@@ -20,7 +20,7 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
         publicVariable "hqSideChat"; 
         [WEST, "HQ"] sideChat hqSideChat;
         _vehName = _this select 0;
-        _start = [11000,10000,500];
+        _start = [10000,11100,500];
         _land = [8092,10275,0];
         _startCargo = [0,0,100];
         landpoint = "Land_HelipadEmpty_F" createVehicle _land;
