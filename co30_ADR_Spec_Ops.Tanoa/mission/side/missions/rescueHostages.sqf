@@ -225,8 +225,10 @@ _unitPos = ["UP", "MIDDLE"];
         _pos = [(_x select 0), (_x select 1), (_x select 2)];
         _holyRandom = floor random 10;
         if (_hostagesPlaced < 4) then {
-            (selectRandom [INFANTRY_HOSTAGES]) createUnit [_pos, _hostagesGroup, "currentHostage = this"];
+            (selectRandom [INFANTRY_HOSTAGES]) createUnit [_pos, _hostagesGroup, "currentHostage = this"];            
             currentHostage allowDamage false;
+            currentHostage setVariable ["NOAI", true, true];
+            currentHostage setVariable ["zbe_cacheDisabled", true, true];
             doStop currentHostage;
             commandStop currentHostage;
             currentHostage setPosASL _pos;
@@ -241,8 +243,10 @@ _unitPos = ["UP", "MIDDLE"];
             currentHostage allowDamage true;
         } else {
             if (_holyRandom > 3 || _withHostages) then {
-                (selectRandom [INFANTRY_SUPPORT]) createUnit [_pos, _houseGroup, "currentGuard = this;this setvariable [""NOAI"",true];"];
+                (selectRandom [INFANTRY_SUPPORT]) createUnit [_pos, _houseGroup, "currentGuard = this"];
                 currentGuard allowDamage false;
+                currentGuard setVariable ["NOAI", true, true];
+                currentGuard setVariable ["zbe_cacheDisabled", true, true];
                 doStop currentGuard;
                 commandStop currentGuard;
                 currentGuard setPosASL _pos;
@@ -262,9 +266,11 @@ _commanderGroup = createGroup ENEMY_SIDE;
 
 _posATL = _cargoHQ buildingPos (selectRandom [1,6]);
 _posATL = [(_posATL select 0), (_posATL select 1), ((_posATL select 2) + 0.2)];
-(selectRandom [INFANTRY_OFFICER]) createUnit [[1,1,0], _commanderGroup, "officer = this;this setvariable [""NOAI"",true];"];
+(selectRandom [INFANTRY_OFFICER]) createUnit [[1,1,0], _commanderGroup, "officer = this"];
 waitUntil{!isNull officer};
 officer allowDamage false;
+officer setVariable ["NOAI", true, true];
+officer setVariable ["zbe_cacheDisabled", true, true];
 officer setPos _posATL;
 doStop officer;
 commandStop officer;
@@ -310,8 +316,10 @@ _staticGroup = createGroup ENEMY_SIDE;
     _y = 0;
     _posATL = _cargoHQ buildingPos _x;
     _posATL = [(_posATL select 0), (_posATL select 1), (_posATL select 2) + 0.3];
-    (selectRandom [INFANTRY_HOUSE]) createUnit [[10,10,10], _houseGroup, "currentGuard = this;this setvariable [""NOAI"",true];"];
+    (selectRandom [INFANTRY_HOUSE]) createUnit [[10,10,10], _houseGroup, "currentGuard = this"];
     currentGuard allowDamage false;
+    currentGuard setVariable ["NOAI", true, true];
+    currentGuard setVariable ["zbe_cacheDisabled", true, true];
     sleep 0.1;
     currentGuard setPos _posATL;
     doStop currentGuard;
@@ -487,6 +495,14 @@ while { sideMissionUp } do {
             SM_FAIL = true; publicVariable "SM_FAIL";
         };
         _showHostagesMessage = false;
+    };
+    sleep 1;
+
+    if (count units _hostagesGroup == 0) then {
+        if ((SM_FAIL_RESCUE + SM_SUCCESS_RESCUE) < 4) then {
+            SM_FAIL_RESCUE = 4 - SM_SUCCESS_RESCUE;
+            publicVariable "SM_FAIL_RESCUE";
+        };
     };
     sleep 1;
 
