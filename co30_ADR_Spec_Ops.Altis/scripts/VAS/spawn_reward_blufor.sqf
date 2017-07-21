@@ -23,47 +23,51 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
         _start = [15000,13500,500];
         _land = [15147,17138,0];
         _startCargo = [0,0,100];
-        landpoint = "Land_HelipadEmpty_F" createVehicle _land;
-        _veh = createVehicle ["B_Heli_Transport_03_F", [0,0,500], [], 0, "FLY"];
-        _veh setPos _start;
+        _landpoint = "Land_HelipadEmpty_F" createVehicle _land;
+
+        _veh = createVehicle ["B_T_VTOL_01_infantry_F", _start, [], 0, "FLY"];
         createVehicleCrew _veh;
         _veh setPos _start;
         _veh addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
         _veh lock 2;
         _veh allowCrewInImmobile true;
-        _cargo = "B_Slingload_01_Ammo_F" createVehicle _startCargo;
-        _cargo setPos _startCargo;
-        _veh setSlingLoad _cargo;
+        _veh setPilotLight true;
+        _veh setCollisionLight true;
         _crew = crew _veh;
         _group = group (driver _veh);
         {
             _x addCuratorEditableObjects [[_veh], true];
-        } forEach allCurators;    
-        _veh doMove _land;
+        } forEach allCurators;       
+        _wp0 = _group addWayPoint [_land, 0];
+        _wp0 setWaypointBehaviour "SAFE";
+        _wp0 setWaypointSpeed "NORMAL";
+        _wp0 setWaypointBehaviour "CARELESS";
+        _wp0 setWaypointForceBehaviour true;
+        _wp0 setWaypointCombatMode "BLUE";
+        _wp0 setWaypointCompletionRadius 30;
+        _wp0 setWaypointType "SCRIPTED";
+        _wp0 setWaypointScript "A3\functions_f\waypoints\fn_wpLand.sqf";
+        _wp2 = _group addWayPoint [_start, 1];
+        _wp2 setWaypointType "MOVE";
+        _wp2 setWaypointBehaviour "SAFE";
+        _wp2 setWaypointForceBehaviour true;
+        _wp2 setWaypointSpeed "FULL";    
+        _wp2 setWaypointStatements ["true", "cleanUpveh = vehicle leader this; {deleteVehicle _x} forEach crew cleanUpveh + [cleanUpveh];"];
+
         waitUntil {
             sleep 2;
-            if (unitReady (effectiveCommander _veh) || {!(alive _cargo)} || {(getPos _cargo) select 2 < 2}) exitWith {true};
+            if (!(alive _veh) || (getPosATL _veh) select 2 < 1) exitWith {true};        
         };
-        if (alive _cargo) then {
-            _veh land "land";
-        };    
-        waitUntil {
-            sleep 1;
-            if (!(alive _cargo) || {(getPos _cargo) select 2 < 7}) exitWith {true};        
-        };
-        _veh setSlingLoad objNull;
-        _veh land "NONE";
-        _veh doMove _start; 
-        _veh flyInHeight 100;
-        if (alive _cargo) then {  
+ 
+        if (alive _veh) then {  
+            deleteVehicle _landpoint;
+            _vehPos = getPos _veh;
+            _vehPos set [2,0];
+            _spawnPos = [_vehPos, 15, 100, 2, 0, 0, 0, [], [_vehPos]] call QS_fnc_findSafePos;
             _veh setDamage 0;
             _veh setFuel 1;
             _veh setVehicleAmmo 1;  
-            _spawnPos = getPos _cargo;
-            _spawnPos set [2, 0];
-            //_spawnDamage = damage _cargo;
-            deleteVehicle _cargo;
-            sleep 2;
+            sleep 1;
             if (_vehName == "ctrg") then {
         
                 // spawn group of bots
