@@ -87,7 +87,7 @@ _ghillieItems = ["U_B_GhillieSuit","U_O_GhillieSuit","U_I_GhillieSuit","U_B_Full
 //_restrictedAttachments = ["optic_AMS_snd","optic_Arco","optic_Arco_ghex_F","optic_DMS_ghex_F","optic_ERCO_snd_F""optic_LRPS_ghex_F","optic_KHS_hex","optic_KHS_hex","bipod_02_F_hex""bipod_02_F_tan""bipod_01_F_mtp","bipod_01_F_snd","muzzle_snds_H_MG","muzzle_snds_338_sand""muzzle_snds_m_snd_F""muzzle_snds_58_wdm_F","muzzle_snds_H_snd_F","muzzle_snds_B_snd_F","muzzle_snds_93mmg_tan""muzzle_snds_65_TI_hex_F","muzzle_snds_65_TI_ghex_F"];
 
 // RESTRICTED GOOGLES
-_restrictedGoogles = ["G_Balaclava_TI_tna_F","G_Balaclava_TI_G_tna_F"];
+_restrictedGoogles = [];
 
 // UNIFORM
 _allowedUniform = ["U_B_HeliPilotCoveralls","U_B_PilotCoveralls","U_B_Wetsuit","U_B_CTRG_Soldier_2_F","U_B_CTRG_Soldier_3_F","U_B_CTRG_Soldier_F",
@@ -343,8 +343,8 @@ _assignedItems = assignedItems _player;
 //        [format ["<t color='#F44336' size = '.55'>%1</t>", RESTRICTED_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 //    };
 //} forEach _attachments;
-_goggles = goggles _player;
-if (_goggles in _restrictedGoogles) then {
-    removeGoggles _player;
-    [format ["<t color='#F44336' size = '.55'>%1</t>", RESTRICTED_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
-};
+//_goggles = goggles _player;
+//if (_goggles in _restrictedGoogles) then {
+//    removeGoggles _player;
+//    [format ["<t color='#F44336' size = '.55'>%1</t>", RESTRICTED_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
+//};
