@@ -7,7 +7,8 @@ _veh = _this select 0;
 _vehType = typeOf _veh;
 _allowedVehicles = ["O_Plane_CAS_02_dynamicLoadout_F ","B_Plane_CAS_01_dynamicLoadout_F","O_T_VTOL_02_infantry_dynamicLoadout_F",
 "O_Heli_Light_02_dynamicLoadout_F","O_Heli_Attack_02_dynamicLoadout_F","B_Heli_Attack_01_dynamicLoadout_F","I_Plane_Fighter_04_F",
-"B_Plane_Fighter_01_F","O_Plane_Fighter_02_F","I_Plane_Fighter_03_dynamicLoadout_F","I_Heli_light_03_dynamicLoadout_F"];
+"B_Plane_Fighter_01_F","O_Plane_Fighter_02_F","O_Plane_Fighter_02_Stealth_F","B_Plane_Fighter_01_Stealth_F","I_Plane_Fighter_03_dynamicLoadout_F",
+"I_Heli_light_03_dynamicLoadout_F"];
 
 //"B_UAV_05_F","B_UAV_02_dynamicLoadout_F",
 
