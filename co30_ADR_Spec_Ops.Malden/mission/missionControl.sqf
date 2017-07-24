@@ -17,11 +17,11 @@ _missionList = [
 	"rescueHostages",
     "heliCrash",
 	//"convoy",
-	//"snatch",
+	"snatch",
 	"swordfish",
 	"yellowfog",
-	"grapeswrath"
-	//"oilmama"
+	"grapeswrath",
+	"oilmama"
 ];
 AVANPOST_COORDS = false; publicVariable "AVANPOST_COORDS";
 AVANPOST_RESPAWN = false; publicVariable "AVANPOST_RESPAWN";

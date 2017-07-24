@@ -245,6 +245,13 @@ for "_i" from 1 to _n do {
     [_uavGroup, _posSpawn, (40 + (random 80))] call BIS_fnc_taskPatrol;
     _unitsArray pushBack _uav;
     _enemiesArray pushBack _uavGroup;
+    [_uav] spawn {
+        _u = _this select 0;
+        while {alive _u} do {
+            sleep 180;
+            _u setFuel 1;
+        };        
+    };
 };
 
 // spawn fuel vehicle
