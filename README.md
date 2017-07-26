@@ -21,6 +21,9 @@ We welcome for any contributions to the ongoing development of this mission. You
   <a href="https://github.com/ToxaBes/ADR-Spec-Ops/raw/master/co30_ADR_Spec_Ops.Tanoa.pbo">
     <img src="https://img.shields.io/badge/Download-Tanoa%20v0.0.5-green.svg?style=flat" alt="Download" />
   </a>
+  <a href="https://github.com/ToxaBes/ADR-Spec-Ops/raw/master/co30_ADR_Spec_Ops.Malden.pbo">
+    <img src="https://img.shields.io/badge/Download-Malden%20v0.0.1-green.svg?style=flat" alt="Download" />
+  </a>
   <a href="https://tehgam1.com">
     <img src="https://img.shields.io/badge/TEHGAM1-Site-red.svg?style=flat"
          alt="Site" />
