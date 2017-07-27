@@ -176,7 +176,7 @@ for "_i" from 1 to _n do {
     _height = (random 20) + 15;
     _posInit = [_campPos, 1, 100, 2, 1, 1, 0, [], [_campPos]] call QS_fnc_findSafePos;
     _posSpawn = [_posInit select 0, _posInit select 1, _height];
-    _uavData = [_posSpawn, 90, "B_UAV_01_F", ENEMY_SIDE] call BIS_fnc_spawnVehicle;
+    _uavData = [_posSpawn, 90, "O_UAV_01_F", ENEMY_SIDE] call BIS_fnc_spawnVehicle;
     _uav = _uavData select 0;
     _uavGroup = _uavData select 2;
     _uav addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
