@@ -7,6 +7,7 @@ if (!isServer) exitWith { /* GO AWAY PLAYER */ };
 private ["_v", "_t", "_d", "_s", "_i", "_sd", "_sp", "_ti", "_u"];
 
 #define DIST_FROM_SPAWN 100
+#define DIST_FROM_SPAWN_QUADBIKE 5
 
 _v = _this select 0;	// vehicle
 _d = _this select 1;	// spawn delay
@@ -40,35 +41,55 @@ while {true} do {
 			_v addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 		//};
 	} else {;
-    	if ((_v distance _sp) > DIST_FROM_SPAWN) then {
-    		if (isMultiplayer) then {_u = playableUnits;} else {_u = switchableUnits;};
-    		if (({(_v distance _x) < PARAMS_VehicleRespawnDistance} count _u) < 1) then {
-    			if ((count (crew _v)) == 0) then {
-    				//_v lock 2;
-    				//_v allowDamage FALSE;
-    				//_v setPos [(random 1000), (random 1000), (10000 + (random 20000))];
-    				//_v enableSimulationGlobal FALSE;
-    				//_v hideObjectGlobal TRUE;
-    				//waitUntil {
-    				//	sleep 5; 
-    				//	(({(_sp distance _x) < 1.5} count (entities "AllVehicles")) < 1)
-    				//};
-    				//_v enableSimulationGlobal TRUE;
-    				//_v hideObjectGlobal FALSE;
-    				_v lock 0;
-    				_v setDir _sd;
-    				_v setPos _sp;
-    				_v allowDamage TRUE;
-    				_v setDamage 0;
-    				_v setVehicleAmmo 1;
-    				_v setVelocity [0, 0, 0];
-    				if ((fuel _v) < 0.95) then {[[_v, 1],"setFuel", true, false] spawn BIS_fnc_MP;};
-    				if (isEngineOn _v) then {_v engineOn FALSE;};
-    				if (isCollisionLightOn _v) then {_v setCollisionLight FALSE;};
-    				if (isLightOn _v) then {_v setPilotLight FALSE;};
-    			};
-    		};
-    	};
+        if (isMultiplayer) then {_u = playableUnits;} else {_u = switchableUnits;};
+        if (_v isKindOf "Quadbike_01_base_F") then {
+            if ((_v distance _sp) > DIST_FROM_SPAWN_QUADBIKE) then {
+                if (({(_v distance _x) < 40} count _u) < 1) then {
+                    if ((count (crew _v)) == 0) then {
+                        _v lock 0;
+                        _v setDir _sd;
+                        _v setPos _sp;
+                        _v allowDamage TRUE;
+                        _v setDamage 0;
+                        _v setVehicleAmmo 1;
+                        _v setVelocity [0, 0, 0];
+                        [[_v, 1],"setFuel", true, false] spawn BIS_fnc_MP;
+                        [[_v, FALSE],"engineOn", true, false] spawn BIS_fnc_MP;
+                        if (isCollisionLightOn _v) then {_v setCollisionLight FALSE;};
+                        if (isLightOn _v) then {_v setPilotLight FALSE;};                            
+                    };
+                };
+            };
+        } else {
+    	    if ((_v distance _sp) > DIST_FROM_SPAWN) then {    	    	
+    	    	if (({(_v distance _x) < PARAMS_VehicleRespawnDistance} count _u) < 1) then {
+    	    		if ((count (crew _v)) == 0) then {
+    	    			//_v lock 2;
+    	    			//_v allowDamage FALSE;
+    	    			//_v setPos [(random 1000), (random 1000), (10000 + (random 20000))];
+    	    			//_v enableSimulationGlobal FALSE;
+    	    			//_v hideObjectGlobal TRUE;
+    	    			//waitUntil {
+    	    			//	sleep 5; 
+    	    			//	(({(_sp distance _x) < 1.5} count (entities "AllVehicles")) < 1)
+    	    			//};
+    	    			//_v enableSimulationGlobal TRUE;
+    	    			//_v hideObjectGlobal FALSE;
+    	    			_v lock 0;
+    	    			_v setDir _sd;
+    	    			_v setPos _sp;
+    	    			_v allowDamage TRUE;
+    	    			_v setDamage 0;
+    	    			_v setVehicleAmmo 1;
+    	    			_v setVelocity [0, 0, 0];
+    	    			[[_v, 1],"setFuel", true, false] spawn BIS_fnc_MP;
+    	    			[[_v, FALSE],"engineOn", true, false] spawn BIS_fnc_MP;                        
+    	    			if (isCollisionLightOn _v) then {_v setCollisionLight FALSE;};
+    	    			if (isLightOn _v) then {_v setPilotLight FALSE;};
+    	    		};
+    	    	};
+    	    };
+        };
     };
 	sleep 30;
 };
