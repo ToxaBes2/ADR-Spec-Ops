@@ -8,19 +8,19 @@ class EditorData
 	toggles=9;
 	class ItemIDProvider
 	{
-		nextID=3504;
+		nextID=3509;
 	};
 	class MarkerIDProvider
 	{
-		nextID=32;
+		nextID=33;
 	};
 	class LayerIndexProvider
 	{
-		nextID=2105;
+		nextID=2173;
 	};
 	class Camera
 	{
-		pos[]={6956.2822,155.37344,7080.9541};
+		pos[]={6992.1812,37.185703,7282.1382};
 		dir[]={-0.42301401,-0.5088737,0.74974674};
 		up[]={-0.25005606,0.86084116,0.44319823};
 		aside[]={0.87094277,-1.0058284e-007,0.49139321};
@@ -668,7 +668,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=807;
+		items=812;
 		class Item0
 		{
 			dataType="Object";
@@ -7144,6 +7144,7 @@ class Mission
 			};
 			id=1248;
 			type="B_Quadbike_01_F";
+			atlOffset=-2.3841858e-007;
 		};
 		class Item144
 		{
@@ -9358,8 +9359,8 @@ class Mission
 						};
 						class Attribute1
 						{
-							property="face";
-							expression="_this setface _value;";
+							property="enableStamina";
+							expression="_this enablestamina _value;";
 							class Value
 							{
 								class data
@@ -9368,10 +9369,10 @@ class Mission
 									{
 										type[]=
 										{
-											"STRING"
+											"BOOL"
 										};
 									};
-									value="WhiteHead_15";
+									value=0;
 								};
 							};
 						};
@@ -9415,8 +9416,8 @@ class Mission
 						};
 						class Attribute4
 						{
-							property="enableStamina";
-							expression="_this enablestamina _value;";
+							property="face";
+							expression="_this setface _value;";
 							class Value
 							{
 								class data
@@ -9425,10 +9426,10 @@ class Mission
 									{
 										type[]=
 										{
-											"BOOL"
+											"STRING"
 										};
 									};
-									value=0;
+									value="WhiteHead_15";
 								};
 							};
 						};
@@ -9447,12 +9448,11 @@ class Mission
 		class Item244
 		{
 			dataType="Marker";
-			position[]={6971.3281,-4.3199718e-031,7298.5142};
+			position[]={6890.7993,2.6600001,7288.417};
 			name="Side";
 			type="Empty";
 			colorName="ColorWEST";
 			id=1880;
-			atlOffset=-2.6600001;
 		};
 		class Item245
 		{
@@ -9530,6 +9530,7 @@ class Mission
 			};
 			id=2132;
 			type="B_T_Quadbike_01_F";
+			atlOffset=-2.3841858e-007;
 		};
 		class Item248
 		{
@@ -9548,6 +9549,7 @@ class Mission
 			};
 			id=2133;
 			type="B_T_Quadbike_01_F";
+			atlOffset=-2.3841858e-007;
 		};
 		class Item249
 		{
@@ -9566,6 +9568,7 @@ class Mission
 			};
 			id=2134;
 			type="B_T_Quadbike_01_F";
+			atlOffset=-2.3841858e-007;
 		};
 		class Item250
 		{
@@ -9584,6 +9587,7 @@ class Mission
 			};
 			id=2135;
 			type="B_T_Quadbike_01_F";
+			atlOffset=-2.3841858e-007;
 		};
 		class Item251
 		{
@@ -9602,6 +9606,7 @@ class Mission
 			};
 			id=2136;
 			type="B_T_Quadbike_01_F";
+			atlOffset=-2.3841858e-007;
 		};
 		class Item252
 		{
@@ -30601,6 +30606,7 @@ class Mission
 			};
 			id=3433;
 			type="B_Quadbike_01_F";
+			atlOffset=2.3841858e-007;
 		};
 		class Item770
 		{
@@ -30619,6 +30625,7 @@ class Mission
 			};
 			id=3434;
 			type="B_Quadbike_01_F";
+			atlOffset=-2.3841858e-007;
 		};
 		class Item771
 		{
@@ -31977,6 +31984,51 @@ class Mission
 			id=3503;
 			type="HeadlessClient_F";
 			atlOffset=1.3039536;
+		};
+		class Item807
+		{
+			dataType="Marker";
+			position[]={6958.6318,0,7320.0752};
+			name="reward1";
+			type="Empty";
+			id=3504;
+			atlOffset=-2.6600001;
+		};
+		class Item808
+		{
+			dataType="Marker";
+			position[]={6982.7261,0,7321.9932};
+			name="reward2";
+			type="Empty";
+			id=3505;
+			atlOffset=-2.6600001;
+		};
+		class Item809
+		{
+			dataType="Marker";
+			position[]={6983.9438,0,7302.7788};
+			name="reward3";
+			type="Empty";
+			id=3506;
+			atlOffset=-2.6600001;
+		};
+		class Item810
+		{
+			dataType="Marker";
+			position[]={6955.0078,0,7295.3052};
+			name="reward4";
+			type="Empty";
+			id=3507;
+			atlOffset=-2.6600001;
+		};
+		class Item811
+		{
+			dataType="Marker";
+			position[]={6949.7129,0,7337.999};
+			name="reward5";
+			type="Empty";
+			id=3508;
+			atlOffset=-2.6600001;
 		};
 	};
 };

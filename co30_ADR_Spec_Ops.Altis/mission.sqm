@@ -8,15 +8,15 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1999;
+		nextID=2004;
 	};
 	class MarkerIDProvider
 	{
-		nextID=225;
+		nextID=226;
 	};
 	class Camera
 	{
-		pos[]={17830.877,27.014702,18112.486};
+		pos[]={15098.07,42.91,17152.57};
 		dir[]={0,-0.70710683,0.70710683};
 		up[]={0,0.70710677,0.70710677};
 		aside[]={0.99999994,0,-0};
@@ -398,7 +398,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=748;
+		items=753;
 		class Item0
 		{
 			dataType="Marker";
@@ -9844,11 +9844,10 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={15089.238,21.506905,17192.35};
-				angles[]={0,2.4065213,0};
+				position[]={15089.238,21.506523,17192.35};
+				angles[]={0,2.4065299,0};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
 				lock="UNLOCKED";
@@ -9857,6 +9856,7 @@ class Mission
 			};
 			id=1061;
 			type="B_GMG_01_high_F";
+			atlOffset=2.0082722;
 		};
 		class Item335
 		{
@@ -25772,6 +25772,51 @@ class Mission
 			isPlayable=1;
 			id=1998;
 			type="HeadlessClient_F";
+		};
+		class Item748
+		{
+			dataType="Marker";
+			position[]={15098.705,0,17179.732};
+			name="reward1";
+			type="Empty";
+			id=1999;
+			atlOffset=-17.91;
+		};
+		class Item749
+		{
+			dataType="Marker";
+			position[]={15118.301,0,17196.787};
+			name="reward2";
+			type="Empty";
+			id=2000;
+			atlOffset=-17.91;
+		};
+		class Item750
+		{
+			dataType="Marker";
+			position[]={15136.332,0,17182.855};
+			name="reward3";
+			type="Empty";
+			id=2001;
+			atlOffset=-17.91;
+		};
+		class Item751
+		{
+			dataType="Marker";
+			position[]={15118.469,0,17163.818};
+			name="reward4";
+			type="Empty";
+			id=2002;
+			atlOffset=-17.91;
+		};
+		class Item752
+		{
+			dataType="Marker";
+			position[]={15104.318,0,17143.283};
+			name="reward5";
+			type="Empty";
+			id=2003;
+			atlOffset=-17.91;
 		};
 	};
 };

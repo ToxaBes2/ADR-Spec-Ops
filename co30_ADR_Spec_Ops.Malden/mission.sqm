@@ -8,14 +8,18 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1192;
+		nextID=1197;
+	};
+	class MarkerIDProvider
+	{
+		nextID=1;
 	};
 	class Camera
 	{
-		pos[]={5532.6323,27.961435,11601.745};
-		dir[]={0,-0.70710683,0.70710683};
-		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,-0};
+		pos[]={8023.7524,54.38308,10217.593};
+		dir[]={0.81309766,-0.57978684,-0.052162126};
+		up[]={0.57859784,0.8147679,-0.037118424};
+		aside[]={-0.064020738,7.4505806e-009,-0.99794912};
 	};
 };
 binarizationWanted=0;
@@ -399,7 +403,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=758;
+		items=763;
 		class Item0
 		{
 			dataType="Marker";
@@ -683,7 +687,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={8039.0234,29.756557,10267.099};
-			angle=3.8746948;
+			angle=3.8746946;
 			class Attributes
 			{
 				condition="this and ((getPos (thisList select 0)) select 2 < 1)";
@@ -3781,7 +3785,7 @@ class Mission
 			};
 			id=150;
 			type="B_Quadbike_01_F";
-			atlOffset=-0.078000069;
+			atlOffset=-0.078000307;
 		};
 		class Item135
 		{
@@ -3800,7 +3804,7 @@ class Mission
 			};
 			id=151;
 			type="B_Quadbike_01_F";
-			atlOffset=-0.078000069;
+			atlOffset=-0.078000307;
 		};
 		class Item136
 		{
@@ -27220,6 +27224,51 @@ class Mission
 			id=1191;
 			type="B_UGV_01_rcws_F";
 			atlOffset=0.56908607;
+		};
+		class Item758
+		{
+			dataType="Marker";
+			position[]={8082.3677,0,10226.913};
+			name="reward1";
+			type="Empty";
+			id=1192;
+			atlOffset=-29.559484;
+		};
+		class Item759
+		{
+			dataType="Marker";
+			position[]={8049.251,0,10227.965};
+			name="reward2";
+			type="Empty";
+			id=1193;
+			atlOffset=-29.564144;
+		};
+		class Item760
+		{
+			dataType="Marker";
+			position[]={8070.0938,0,10193.485};
+			name="reward3";
+			type="Empty";
+			id=1194;
+			atlOffset=-29.563925;
+		};
+		class Item761
+		{
+			dataType="Marker";
+			position[]={8017.7114,0,10220.043};
+			name="reward4";
+			type="Empty";
+			id=1195;
+			atlOffset=-29.583965;
+		};
+		class Item762
+		{
+			dataType="Marker";
+			position[]={8016.0269,0,10192.058};
+			name="reward5";
+			type="Empty";
+			id=1196;
+			atlOffset=-29.603535;
 		};
 	};
 };

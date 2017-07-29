@@ -15,7 +15,7 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
     _vehName = _vehs select 0;    
     [_vehName] spawn {    
         REWARD_IN_PROGRESS = true; publicVariable "REWARD_IN_PROGRESS";
-        _rewardDir = 90;
+        _rewardDir = 80;
         hqSideChat = "Наградная техника будет доставлена через несколько минут..."; 
         publicVariable "hqSideChat"; 
         [WEST, "HQ"] sideChat hqSideChat;
@@ -72,7 +72,7 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
                 // spawn group of bots
                 _rewardGroup = [_spawnPos, west, (configfile >> "CfgGroups" >> "West" >> "BLU_CTRG_F" >> "Infantry" >> "CTRG_InfSquad")] call BIS_fnc_spawnGroup;
                 [(units _rewardGroup)] call QS_fnc_setSkill4;
-                if ((getPos (leader _rewardGroup)) distance2D _land < 50) then {
+                if ((getPos (leader _rewardGroup)) distance2D _land < 200) then {
                     hqSideChat = "Груз доставлен";
                 } else {
                     hqSideChat = "Груз потерян из-за нападения";
@@ -81,23 +81,41 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
                 deleteGroup _rewardGroup;                
             } else {
         
-                // Spawn the vehicle    
-                _vehReward = createVehicle [_vehName, _spawnPos, [], 0, "NONE"];
-                waitUntil {!isNull _vehReward};
+                // Spawn the vehicle
+                _spawnPositions = [];
+                if (_veh distance2D _land < 200) then {
+                    _spawnPositions = ["reward1","reward2","reward3","reward4","reward5"];
+                };
+                _vehReward = createVehicle [_vehName, _spawnPos, _spawnPositions, 0, "NONE"];
+                _correctPos = getPos _vehReward;
+                _correctPos set [2,0];
+                _vehReward setPos _correctPos;
+
                 _vehReward  addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
                 _vehReward setDir _rewardDir;
                 _vehReward lock 0;
-                //_vehReward setDamage _spawnDamage;
                 if (getNumber(configFile >> "CfgVehicles" >> typeof _vehReward >> "isUav") == 1) then {
-                    createVehicleCrew _vehReward;
-                    _crew = crew _vehReward;
-                    _grp = createGroup WEST;
-                    _crew joinSilent _grp;
-                    _grp addVehicle _vehReward;
-                    {
-                        _x setName "[AI]";
-                    } forEach units _grp;
-                };    
+                    if (_vehReward isKindOf "UAV_05_Base_F") then {
+                        [_vehReward] spawn {
+                            _u = _this select 0;
+                            sleep 2;
+                            createVehicleCrew _u;
+                            _grp = group _u; 
+                            {
+                                _x setName "[AI]";
+                            } forEach units _grp;
+                        };
+                    } else {
+                        createVehicleCrew _vehReward;
+                        _crew = crew _vehReward;
+                        _grp = createGroup WEST;
+                        _crew joinSilent _grp;
+                        _grp addVehicle _vehReward;
+                        {
+                            _x setName "[AI]";
+                        } forEach units _grp;
+                    };                                    
+                };   
 
                 if (_vehReward isKindOf "LandVehicle") then {
                     clearWeaponCargoGlobal _vehReward;
@@ -219,7 +237,7 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
                         } forEach _textures;
                     };
                 };
-                if (_vehReward distance2D _land < 50) then {
+                if (_vehReward distance2D _land < 200) then {
                     hqSideChat = "Груз доставлен";                    
                 } else {
                     hqSideChat = "Груз потерян из-за нападения";
