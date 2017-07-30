@@ -397,4 +397,42 @@ if (random 10 > 6) then {
     _enemiesArray = _enemiesArray + [_ATGroup];
 };
 
+// Spawn UAV groups
+_numUAVs = selectRandom [1,2];
+for "_x" from 0 to _numUAVs do {
+    _randomPos = [[[getMarkerPos currentAO, (PARAMS_AOSize / 1.6)], []], ["water", "out"]] call QS_fnc_randomPos;
+    _randPos = _randomPos isFlatEmpty[3, 1, 0.3, 15, 0, false];
+    _res = count _randPos;
+    while {_res < 1} do {
+        _randomPos = [[[getMarkerPos currentAO, (PARAMS_AOSize / 1.2)], []], ["water", "out"]] call QS_fnc_randomPos;
+        _randPos = _randomPos isFlatEmpty[3, 1, 0.3, 10, 0, false];
+        _res = count _randPos;
+    };
+    _uavGroup = [_randomPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "SpecOps" >> "O_T_AttackTeam_UGV")] call BIS_fnc_spawnGroup;
+    _uavGroup setBehaviour "COMBAT";
+    _uavGroup setCombatMode "RED";
+    [(units _uavGroup)] call QS_fnc_setSkill4;
+    [_uavGroup, getMarkerPos currentAO, 500] call BIS_fnc_taskPatrol;
+    _enemiesArray = _enemiesArray + [_uavGroup];
+    {
+        if !(vehicle _x == _x) then {
+            _enemiesArray = _enemiesArray + [vehicle _x];
+        };
+    } forEach units _uavGroup;
+};
+
+// darter units
+_numUAVs = selectRandom [1,2,3];
+for "_x" from 0 to _numUAVs do {
+    _darterGroup = createGroup EAST;
+    _randomPos = [[[getMarkerPos currentAO, (PARAMS_AOSize / 1.6)], []], ["water", "out"]] call QS_fnc_randomPos;    
+    "O_T_Soldier_UAV_F" createUnit [_randomPos, _darterGroup];
+    _darterGroup setBehaviour "COMBAT";
+    _darterGroup setCombatMode "RED";
+    [(units _darterGroup)] call QS_fnc_setSkill4;
+    [_darterGroup, true] call QS_fnc_moveToHC;
+    [_darterGroup, getMarkerPos currentAO, 500] call BIS_fnc_taskPatrol;
+    _enemiesArray = _enemiesArray + [_darterGroup];
+};
+
 _enemiesArray;
