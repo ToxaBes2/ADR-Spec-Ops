@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={8023.7524,54.38308,10217.593};
-		dir[]={0.81309766,-0.57978684,-0.052162126};
-		up[]={0.57859784,0.8147679,-0.037118424};
-		aside[]={-0.064020738,7.4505806e-009,-0.99794912};
+		pos[]={8090.7295,71.924194,10167.781};
+		dir[]={0.17981935,-0.57978684,0.79467863};
+		up[]={0.12795912,0.8147679,0.56549102};
+		aside[]={0.97534257,7.4505806e-009,-0.22069979};
 	};
 };
 binarizationWanted=0;
@@ -444,7 +444,7 @@ class Mission
 		class Item3
 		{
 			dataType="Marker";
-			position[]={8090.5186,29.44944,10278.103};
+			position[]={8099.4736,29.550421,10173.479};
 			name="Side";
 			text="Наградная техника";
 			type="b_unknown";
@@ -687,7 +687,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={8039.0234,29.756557,10267.099};
-			angle=3.8746946;
+			angle=3.8746943;
 			class Attributes
 			{
 				condition="this and ((getPos (thisList select 0)) select 2 < 1)";
