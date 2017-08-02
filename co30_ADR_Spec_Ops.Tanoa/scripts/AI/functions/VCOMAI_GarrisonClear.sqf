@@ -13,7 +13,7 @@ if (_VCOM_MovedRecentlyCover || {_VCOMAI_ActivelyClearing} || {_VCOMAI_StartedIn
 
 //systemchat format ["F %1",_Unit];
 _Enemy = _Unit call VCOMAI_ClosestEnemy;
-if (isNil "_Enemy" || {(typeName _Enemy) isEqualTo "ARRAY"}) exitWith {};
+if (isNil "_Enemy" || {format ["%1", _Enemy] == "[0,0,0]"}) exitWith {};
 
 //Find nearest building to the enemy
 _nBuilding = nearestBuilding _Enemy;

@@ -21,7 +21,7 @@ item16[] = {"Rank_2",2,250,108.044998,118.735039,198.045074,168.735031,0.000000,
 item17[] = {"Rank_1",2,250,204.537415,115.553947,294.537506,165.553940,0.000000,"Rank 1"};
 item18[] = {"Rank_0",2,250,315.812500,118.358521,405.812592,168.358505,0.000000,"Rank 0"};
 item19[] = {"Moving_Along",8,218,8.288406,-22.891024,98.288376,27.108961,0.000000,"Moving Along"};
-item20[] = {"Leader_Or_Not",2,4346,15.372906,-170.689804,105.372978,-120.690002,0.000000,"Leader" \n "Or" \n "Not"};
+item20[] = {"Leader_Or_Not",2,250,15.372906,-170.689804,105.372978,-120.690002,0.000000,"Leader" \n "Or" \n "Not"};
 item21[] = {"Leader",4,218,850.242676,-424.281799,950.242676,-374.281799,50.000000,"Leader"};
 item22[] = {"SubLeader",4,218,-773.983521,-440.744019,-683.983521,-390.744019,49.000000,"SubLeader"};
 item23[] = {"Normal_Unit",8,218,25.000000,-675.000000,125.000000,-625.000000,47.000000,"Normal Unit"};
@@ -120,7 +120,7 @@ item115[] = {"IsDriver",4,218,-900.000000,-1250.000000,-850.000000,-1225.000000,
 item116[] = {"IsDriver_Check_2",3,250,-1025.000000,-1225.000000,-925.000000,-1175.000000,0.000000,"IsDriver Check"};
 item117[] = {"Driver_Checks_2",3,250,-800.000000,-1325.000000,-700.000000,-1275.000000,0.000000,"Driver Checks"};
 item118[] = {"CheckIfStatic",4,218,158.912964,-2322.029053,258.912964,-2272.029053,80.000000,"CheckIfStatic"};
-item119[] = {"",7,210,108.500000,-2266.500000,116.500000,-2258.500000,0.000000,""};
+item119[] = {"",7,210,83.755798,-2244.005127,91.755798,-2236.005127,0.000000,""};
 item120[] = {"SetupStatic_1",2,250,262.137390,-2461.630371,362.137390,-2411.630371,0.000000,"SetupStatic"};
 item121[] = {"SatchelPlant",4,218,80.370094,-2387.530273,180.370087,-2337.530273,70.000000,"SatchelPlant"};
 item122[] = {"PlantTheSatch_1",2,250,149.746582,-2566.593750,249.746597,-2516.593750,0.000000,"PlantTheSatch"};
@@ -211,6 +211,16 @@ item206[] = {"Simulation_Pause",4,218,-367.213348,0.593945,-267.213348,50.593948
 item207[] = {"Simulation_Pause",2,250,-489.309601,85.760246,-399.309662,135.760223,0.000000,"Simulation Pause"};
 item208[] = {"Simulation_Pause",4,218,-441.620544,163.074951,-341.620544,213.074966,1005.000000,"Simulation Pause"};
 item209[] = {"Wait",4,218,-618.750549,86.344101,-518.750366,136.344177,0.000000,"Wait"};
+item210[] = {"Clear_Garrison",4,218,-465.503113,-2593.999268,-365.504028,-2543.999512,60.000000,"Clear Garrison"};
+item211[] = {"Clear_Building_1",2,250,71.325127,-2936.324951,171.325119,-2886.324951,0.000000,"Clear Building"};
+item212[] = {"Building_Assault",4,218,-619.108093,-2613.111328,-519.108948,-2563.111572,65.000000,"Building Assault" \n ""};
+item213[] = {"Assault__Buildin",2,250,49.829350,-3013.750000,149.829315,-2963.750000,0.000000,"Assault" \n " Building"};
+item214[] = {"Clear_Garrison",4,218,-1846.716309,-1991.576050,-1746.717163,-1941.576294,60.000000,"Clear Garrison"};
+item215[] = {"Clear_Building_2",2,250,-1332.580933,-2346.556396,-1232.580933,-2296.556396,0.000000,"Clear Building"};
+item216[] = {"Building_Assault",4,4314,657.474670,-1106.115356,757.473816,-1056.115601,65.000000,"Building Assault" \n ""};
+item217[] = {"Assault__Buildin_1",2,250,1161.769409,-1401.040527,1261.769409,-1351.040527,0.000000,"Assault" \n " Building"};
+item218[] = {"Building_Assault",4,218,-1963.423340,-1996.503418,-1863.424072,-1946.503662,65.000000,"Building Assault" \n ""};
+item219[] = {"Assault__Buildin_2",2,250,-1346.093872,-2424.167480,-1246.093994,-2374.167480,0.000000,"Assault" \n " Building"};
 link0[] = {0,1};
 link1[] = {0,2};
 link2[] = {0,29};
@@ -325,179 +335,194 @@ link110[] = {72,146};
 link111[] = {72,149};
 link112[] = {72,154};
 link113[] = {72,160};
-link114[] = {73,59};
-link115[] = {74,75};
-link116[] = {75,59};
-link117[] = {76,77};
-link118[] = {77,59};
-link119[] = {78,25};
-link120[] = {79,25};
-link121[] = {80,81};
-link122[] = {80,82};
-link123[] = {80,102};
-link124[] = {81,100};
-link125[] = {82,85};
-link126[] = {83,200};
-link127[] = {84,86};
-link128[] = {85,83};
-link129[] = {85,84};
-link130[] = {86,87};
-link131[] = {86,89};
-link132[] = {86,91};
-link133[] = {86,92};
-link134[] = {87,88};
-link135[] = {88,100};
-link136[] = {89,90};
-link137[] = {91,93};
-link138[] = {92,93};
-link139[] = {93,94};
-link140[] = {93,95};
-link141[] = {94,97};
-link142[] = {95,96};
-link143[] = {97,98};
-link144[] = {98,99};
-link145[] = {99,88};
-link146[] = {100,101};
-link147[] = {101,20};
-link148[] = {102,103};
-link149[] = {103,104};
-link150[] = {103,106};
-link151[] = {103,107};
-link152[] = {103,111};
-link153[] = {103,119};
-link154[] = {103,158};
-link155[] = {103,186};
-link156[] = {104,105};
-link157[] = {105,106};
-link158[] = {106,97};
-link159[] = {107,108};
-link160[] = {109,110};
-link161[] = {109,113};
-link162[] = {109,140};
-link163[] = {110,138};
-link164[] = {111,112};
-link165[] = {112,106};
-link166[] = {113,116};
-link167[] = {114,202};
-link168[] = {115,117};
-link169[] = {116,114};
-link170[] = {116,115};
-link171[] = {117,125};
-link172[] = {117,127};
-link173[] = {117,129};
-link174[] = {117,130};
-link175[] = {118,120};
-link176[] = {119,118};
-link177[] = {119,121};
-link178[] = {119,148};
-link179[] = {119,151};
-link180[] = {119,156};
-link181[] = {120,106};
-link182[] = {121,122};
-link183[] = {122,106};
-link184[] = {123,124};
-link185[] = {124,142};
-link186[] = {125,126};
-link187[] = {126,138};
-link188[] = {127,128};
-link189[] = {129,131};
-link190[] = {130,131};
-link191[] = {131,132};
-link192[] = {131,133};
-link193[] = {132,135};
-link194[] = {133,134};
-link195[] = {135,136};
-link196[] = {136,137};
-link197[] = {137,126};
-link198[] = {138,139};
-link199[] = {139,20};
-link200[] = {140,141};
-link201[] = {141,123};
-link202[] = {141,142};
-link203[] = {141,143};
-link204[] = {141,159};
-link205[] = {141,166};
-link206[] = {141,169};
-link207[] = {141,188};
-link208[] = {142,135};
-link209[] = {143,144};
-link210[] = {145,106};
-link211[] = {146,147};
-link212[] = {147,59};
-link213[] = {148,145};
-link214[] = {149,150};
-link215[] = {150,59};
-link216[] = {151,152};
-link217[] = {152,106};
-link218[] = {153,59};
-link219[] = {154,153};
-link220[] = {155,106};
-link221[] = {156,155};
-link222[] = {157,28};
-link223[] = {158,108};
-link224[] = {159,144};
-link225[] = {160,161};
-link226[] = {161,59};
-link227[] = {162,163};
-link228[] = {163,164};
-link229[] = {164,20};
-link230[] = {165,20};
-link231[] = {166,167};
-link232[] = {167,142};
-link233[] = {168,170};
-link234[] = {169,168};
-link235[] = {169,171};
-link236[] = {169,174};
-link237[] = {169,175};
-link238[] = {169,178};
-link239[] = {170,142};
-link240[] = {171,172};
-link241[] = {172,142};
-link242[] = {173,142};
-link243[] = {174,173};
-link244[] = {175,176};
-link245[] = {176,142};
-link246[] = {177,142};
-link247[] = {178,177};
-link248[] = {179,20};
-link249[] = {180,20};
-link250[] = {181,20};
-link251[] = {182,20};
-link252[] = {183,20};
-link253[] = {184,185};
-link254[] = {185,59};
-link255[] = {186,187};
-link256[] = {187,106};
-link257[] = {188,189};
-link258[] = {189,142};
-link259[] = {190,191};
-link260[] = {191,192};
-link261[] = {191,193};
-link262[] = {191,194};
-link263[] = {191,195};
-link264[] = {191,196};
-link265[] = {191,199};
-link266[] = {192,20};
-link267[] = {193,25};
-link268[] = {194,25};
-link269[] = {195,25};
-link270[] = {196,25};
-link271[] = {197,20};
-link272[] = {198,20};
-link273[] = {199,191};
-link274[] = {200,201};
-link275[] = {201,100};
-link276[] = {202,203};
-link277[] = {203,126};
-link278[] = {204,205};
-link279[] = {205,53};
-link280[] = {206,207};
-link281[] = {207,208};
-link282[] = {207,209};
-link283[] = {208,20};
-link284[] = {209,207};
-globals[] = {0.000000,0,0,0,0,640,480,2,530,6316128,1,-854.838745,495.052460,541.354370,-581.755127,1125,936,1};
-window[] = {2,-1,-1,-1,-1,956,234,1612,234,3,1143};
+link114[] = {72,216};
+link115[] = {73,59};
+link116[] = {74,75};
+link117[] = {75,59};
+link118[] = {76,77};
+link119[] = {77,59};
+link120[] = {78,25};
+link121[] = {79,25};
+link122[] = {80,81};
+link123[] = {80,82};
+link124[] = {80,102};
+link125[] = {81,100};
+link126[] = {82,85};
+link127[] = {83,200};
+link128[] = {84,86};
+link129[] = {85,83};
+link130[] = {85,84};
+link131[] = {86,87};
+link132[] = {86,89};
+link133[] = {86,91};
+link134[] = {86,92};
+link135[] = {87,88};
+link136[] = {88,100};
+link137[] = {89,90};
+link138[] = {91,93};
+link139[] = {92,93};
+link140[] = {93,94};
+link141[] = {93,95};
+link142[] = {94,97};
+link143[] = {95,96};
+link144[] = {97,98};
+link145[] = {98,99};
+link146[] = {99,88};
+link147[] = {100,101};
+link148[] = {101,20};
+link149[] = {102,103};
+link150[] = {103,104};
+link151[] = {103,106};
+link152[] = {103,107};
+link153[] = {103,111};
+link154[] = {103,119};
+link155[] = {103,158};
+link156[] = {103,186};
+link157[] = {104,105};
+link158[] = {105,106};
+link159[] = {106,97};
+link160[] = {107,108};
+link161[] = {109,110};
+link162[] = {109,113};
+link163[] = {109,140};
+link164[] = {110,138};
+link165[] = {111,112};
+link166[] = {112,106};
+link167[] = {113,116};
+link168[] = {114,202};
+link169[] = {115,117};
+link170[] = {116,114};
+link171[] = {116,115};
+link172[] = {117,125};
+link173[] = {117,127};
+link174[] = {117,129};
+link175[] = {117,130};
+link176[] = {118,120};
+link177[] = {119,118};
+link178[] = {119,121};
+link179[] = {119,148};
+link180[] = {119,151};
+link181[] = {119,156};
+link182[] = {119,210};
+link183[] = {119,212};
+link184[] = {120,106};
+link185[] = {121,122};
+link186[] = {122,106};
+link187[] = {123,124};
+link188[] = {124,142};
+link189[] = {125,126};
+link190[] = {126,138};
+link191[] = {127,128};
+link192[] = {129,131};
+link193[] = {130,131};
+link194[] = {131,132};
+link195[] = {131,133};
+link196[] = {132,135};
+link197[] = {133,134};
+link198[] = {135,136};
+link199[] = {136,137};
+link200[] = {137,126};
+link201[] = {138,139};
+link202[] = {139,20};
+link203[] = {140,141};
+link204[] = {141,123};
+link205[] = {141,142};
+link206[] = {141,143};
+link207[] = {141,159};
+link208[] = {141,166};
+link209[] = {141,169};
+link210[] = {141,188};
+link211[] = {142,135};
+link212[] = {143,144};
+link213[] = {145,106};
+link214[] = {146,147};
+link215[] = {147,59};
+link216[] = {148,145};
+link217[] = {149,150};
+link218[] = {150,59};
+link219[] = {151,152};
+link220[] = {152,106};
+link221[] = {153,59};
+link222[] = {154,153};
+link223[] = {155,106};
+link224[] = {156,155};
+link225[] = {157,28};
+link226[] = {158,108};
+link227[] = {159,144};
+link228[] = {160,161};
+link229[] = {161,59};
+link230[] = {162,163};
+link231[] = {163,164};
+link232[] = {164,20};
+link233[] = {165,20};
+link234[] = {166,167};
+link235[] = {167,142};
+link236[] = {168,170};
+link237[] = {169,168};
+link238[] = {169,171};
+link239[] = {169,174};
+link240[] = {169,175};
+link241[] = {169,178};
+link242[] = {169,214};
+link243[] = {169,218};
+link244[] = {170,142};
+link245[] = {171,172};
+link246[] = {172,142};
+link247[] = {173,142};
+link248[] = {174,173};
+link249[] = {175,176};
+link250[] = {176,142};
+link251[] = {177,142};
+link252[] = {178,177};
+link253[] = {179,20};
+link254[] = {180,20};
+link255[] = {181,20};
+link256[] = {182,20};
+link257[] = {183,20};
+link258[] = {184,185};
+link259[] = {185,59};
+link260[] = {186,187};
+link261[] = {187,106};
+link262[] = {188,189};
+link263[] = {189,142};
+link264[] = {190,191};
+link265[] = {191,192};
+link266[] = {191,193};
+link267[] = {191,194};
+link268[] = {191,195};
+link269[] = {191,196};
+link270[] = {191,199};
+link271[] = {192,20};
+link272[] = {193,25};
+link273[] = {194,25};
+link274[] = {195,25};
+link275[] = {196,25};
+link276[] = {197,20};
+link277[] = {198,20};
+link278[] = {199,191};
+link279[] = {200,201};
+link280[] = {201,100};
+link281[] = {202,203};
+link282[] = {203,126};
+link283[] = {204,205};
+link284[] = {205,53};
+link285[] = {206,207};
+link286[] = {207,208};
+link287[] = {207,209};
+link288[] = {208,20};
+link289[] = {209,207};
+link290[] = {210,211};
+link291[] = {211,106};
+link292[] = {212,213};
+link293[] = {213,106};
+link294[] = {214,215};
+link295[] = {215,142};
+link296[] = {216,217};
+link297[] = {217,59};
+link298[] = {218,219};
+link299[] = {219,142};
+globals[] = {0.000000,0,0,0,0,640,480,2,542,6316128,1,-1529.623413,2218.818848,-294.928223,-3039.663086,788,577,1};
+window[] = {0,-1,-1,-32000,-32000,872,150,1528,150,1,806};
 *//*%FSM</HEAD>*/
 class FSM
 {
@@ -629,6 +654,7 @@ class FSM
        "_VCOM_VisuallyCanSee = false; //Converted" \n
        "_VCOM_HASUAV = false; //Converted" \n
        "_VCOMAI_ActivelyClearing= false; //Converted" \n
+       "_VCOMAI_ActivelyAssault= false; //Converted" \n
        "_VCOMAI_StartedInside = false; //Converted" \n
        "_VCOMAI_LastCStance = (behaviour _Unit); //Converted" \n
        "_VCOM_Unit_AIWarnDistance = VCOM_Unit_AIWarnDistance; //Converted" \n
@@ -1061,6 +1087,8 @@ class FSM
           condition=/*%FSM<CONDITION""">*/"_LastTimeCheck4 < (diag_ticktime - 120)"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/"_VCOM_CALLEDARTILLERY = false;" \n
            "_VCOMAI_ActivelyClearing = false;" \n
+           "_VCOMAI_ActivelyAssault = false;" \n
+           "" \n
            "_LastTimeCheck4 = diag_ticktime;" \n
            "//_Vcom_StanceSet = _Unit getvariable [""Vcom_StanceSet"",0];"/*%FSM</ACTION""">*/;
         };
@@ -1538,6 +1566,16 @@ class FSM
           to="SetupStatic";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"((_myNearestEnemy distance _Unit) < 800)  && {(_VCOM_HASSTATIC)} && {!(_VCOM_HASDEPLOYED)};"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Building_Assault">*/
+        class Building_Assault
+        {
+          priority = 65.000000;
+          to="Assault__Buildin_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(((nearestBuilding _MyNearestEnemy) distance2D _MyNearestEnemy) < 10 ) && ((_myNearestEnemy distance _Unit) < 120) && ((_myNearestEnemy distance _Unit) > 20) && !(_VCOMAI_ActivelyClearing) && !(_VCOMAI_ActivelyAssault) && ((random 100) > 50)"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -2166,6 +2204,27 @@ class FSM
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
+        /*%FSM<LINK "Building_Assault">*/
+        class Building_Assault
+        {
+          priority = 65.000000;
+          to="Assault__Buildin";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(((nearestBuilding _MyNearestEnemy) distance2D _MyNearestEnemy) < 10 ) && ((_myNearestEnemy distance _Unit) < 120) && ((_myNearestEnemy distance _Unit) > 20) && !(_VCOMAI_ActivelyClearing) && !(_VCOMAI_ActivelyAssault) && ((random 100) > 50)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Clear_Garrison">*/
+        class Clear_Garrison
+        {
+          priority = 60.000000;
+          to="Clear_Building_1";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"( ((nearestBuilding _MyNearestEnemy) distance2D _MyNearestEnemy) < 10 ) && !(_VCOMAI_ActivelyClearing) && ((random 100) > 50)" \n
+           ""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
         /*%FSM<LINK "MinePlant">*/
         class MinePlant
         {
@@ -2664,6 +2723,28 @@ class FSM
           to="PlantTheSatch_2";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"(_VCOM_HASSATCHEL) && !(_VCOM_SATCHELRECENTLY) && !(_CheckClass)"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Building_Assault">*/
+        class Building_Assault
+        {
+          priority = 65.000000;
+          to="Assault__Buildin_2";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"(((nearestBuilding _MyNearestEnemy) distance2D _MyNearestEnemy) < 10 ) && ((_myNearestEnemy distance _Unit) < 120) && ((_myNearestEnemy distance _Unit) > 20) && !(_VCOMAI_ActivelyClearing) && !(_VCOMAI_ActivelyAssault) && ((random 100) > 50)" \n
+           ""/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+        /*%FSM<LINK "Clear_Garrison">*/
+        class Clear_Garrison
+        {
+          priority = 60.000000;
+          to="Clear_Building_2";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"( ((nearestBuilding _MyNearestEnemy) distance2D _MyNearestEnemy) < 10 ) && !(_VCOMAI_ActivelyClearing) && ((random 100) > 50)" \n
+           ""/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/
@@ -3380,6 +3461,150 @@ class FSM
           to="Simulation_Pause";
           precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
           condition=/*%FSM<CONDITION""">*/"time > _t + 10"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Clear_Building_1">*/
+    class Clear_Building_1
+    {
+      name = "Clear_Building_1";
+      init = /*%FSM<STATEINIT""">*/"private [""_t"", ""_wait""];" \n
+       "_t = time;" \n
+       "_wait = 30;" \n
+       "//Old Condition -> //([_Unit,_VCOM_MovedRecentlyCover,_VCOMAI_ActivelyClearing,_VCOMAI_StartedInside] call VCOMAI_BuildingCheck) && !(_VCOMAI_ActivelyClearing) && ((random 100) > 90)" \n
+       "" \n
+       "//systemchat format [""%1 GARRISONCLEAR"",_Unit];" \n
+       "[_Unit,_VCOM_MovedRecentlyCover,_VCOM_InCover,_VCOMAI_ActivelyClearing,_VCOMAI_StartedInside,_VCOM_GARRISONED] spawn VCOMAI_GarrisonClear;" \n
+       "" \n
+       "_VCOM_InCover = true;" \n
+       "_VCOMAI_ActivelyClearing = true;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Wait">*/
+        class Wait
+        {
+          priority = 0.000000;
+          to="Leader_Or_Not";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _t + _wait"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Assault__Buildin">*/
+    class Assault__Buildin
+    {
+      name = "Assault__Buildin";
+      init = /*%FSM<STATEINIT""">*/"private [""_t"", ""_wait""];" \n
+       "_t = time;" \n
+       "_wait = 30;" \n
+       "" \n
+       "[_Unit,_VCOMAI_ActivelyClearing,_VCOMAI_ActivelyAssault] spawn VCOMAI_AssaultBuilding;" \n
+       "" \n
+       "_VCOM_InCover = true;" \n
+       "_VCOMAI_ActivelyAssault = true;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Wait">*/
+        class Wait
+        {
+          priority = 0.000000;
+          to="Leader_Or_Not";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _t + _wait"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Clear_Building_2">*/
+    class Clear_Building_2
+    {
+      name = "Clear_Building_2";
+      init = /*%FSM<STATEINIT""">*/"private [""_t"", ""_wait""];" \n
+       "_t = time;" \n
+       "_wait = 30;" \n
+       "//Old Condition -> //([_Unit,_VCOM_MovedRecentlyCover,_VCOMAI_ActivelyClearing,_VCOMAI_StartedInside] call VCOMAI_BuildingCheck) && !(_VCOMAI_ActivelyClearing) && ((random 100) > 90)" \n
+       "" \n
+       "//systemchat format [""%1 GARRISONCLEAR"",_Unit];" \n
+       "[_Unit,_VCOM_MovedRecentlyCover,_VCOM_InCover,_VCOMAI_ActivelyClearing,_VCOMAI_StartedInside,_VCOM_GARRISONED] spawn VCOMAI_GarrisonClear;" \n
+       "" \n
+       "_VCOM_InCover = true;" \n
+       "_VCOMAI_ActivelyClearing = true;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Wait">*/
+        class Wait
+        {
+          priority = 0.000000;
+          to="Leader_Or_Not";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _t + _wait"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Assault__Buildin_1">*/
+    class Assault__Buildin_1
+    {
+      name = "Assault__Buildin_1";
+      init = /*%FSM<STATEINIT""">*/"private [""_t"", ""_wait""];" \n
+       "_t = time;" \n
+       "_wait = 30;" \n
+       "" \n
+       "[_Unit,_VCOMAI_ActivelyClearing,_VCOMAI_ActivelyAssault] spawn VCOMAI_AssaultBuilding;" \n
+       "" \n
+       "_VCOM_InCover = true;" \n
+       "_VCOMAI_ActivelyAssault = true;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Wait">*/
+        class Wait
+        {
+          priority = 0.000000;
+          to="Leader_Or_Not";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _t + _wait"/*%FSM</CONDITION""">*/;
+          action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+        };
+        /*%FSM</LINK>*/
+      };
+    };
+    /*%FSM</STATE>*/
+    /*%FSM<STATE "Assault__Buildin_2">*/
+    class Assault__Buildin_2
+    {
+      name = "Assault__Buildin_2";
+      init = /*%FSM<STATEINIT""">*/"private [""_t"", ""_wait""];" \n
+       "_t = time;" \n
+       "_wait = 30;" \n
+       "" \n
+       "[_Unit,_VCOMAI_ActivelyClearing,_VCOMAI_ActivelyAssault] spawn VCOMAI_AssaultBuilding;" \n
+       "" \n
+       "_VCOM_InCover = true;" \n
+       "_VCOMAI_ActivelyAssault = true;"/*%FSM</STATEINIT""">*/;
+      precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+      class Links
+      {
+        /*%FSM<LINK "Wait">*/
+        class Wait
+        {
+          priority = 0.000000;
+          to="Leader_Or_Not";
+          precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+          condition=/*%FSM<CONDITION""">*/"time > _t + _wait"/*%FSM</CONDITION""">*/;
           action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
         };
         /*%FSM</LINK>*/

@@ -71,6 +71,9 @@ VCOMAI_DebugText = compile preprocessFileLineNumbers "scripts\AI\Functions\VCOMA
 VCOMAI_RearmSelf = compile preprocessFileLineNumbers "scripts\AI\Functions\VCOMAI_RearmSelf.sqf";
 VCOMAI_RearmGo = compile preprocessFileLineNumbers "scripts\AI\Functions\VCOMAI_RearmGo.sqf";
 VCOMAI_SuppressedEffect = compile preprocessFileLineNumbers "scripts\AI\Functions\VCOMAI_SuppressedEffect.sqf";
+VCOMAI_FindWindows = compile preprocessFileLineNumbers "scripts\AI\Functions\VCOMAI_FindWindows.sqf";
+VCOMAI_FindDoors = compile preprocessFileLineNumbers "scripts\AI\Functions\VCOMAI_FindDoors.sqf";
+VCOMAI_AssaultBuilding = compile preprocessFileLineNumbers "scripts\AI\Functions\VCOMAI_AssaultBuilding.sqf";
 
 //Danger FSM
 VCOMAI_RecentEnemyDetected = compile preprocessFileLineNumbers "scripts\AI\functions\DangerCauses\VCOMAI_RecentEnemyDetected.sqf";
