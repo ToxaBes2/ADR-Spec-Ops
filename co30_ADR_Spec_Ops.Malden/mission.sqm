@@ -381,7 +381,7 @@ class Mission
 	class Intel
 	{
 		briefingName="ADR: SpecOps [Malden]";
-		overviewText="version 0.0.1";
+		overviewText="version 0.1.0";
 		resistanceWest=0;
 		timeOfChanges=1800.0002;
 		startWeather=0;

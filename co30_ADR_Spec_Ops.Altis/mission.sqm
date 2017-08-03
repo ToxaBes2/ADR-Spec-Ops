@@ -370,7 +370,7 @@ class Mission
 	class Intel
 	{
 		briefingName="Co-30 ADR: Spec Ops [Altis]";
-		overviewText="version 0.0.9";
+		overviewText="version 0.1.0";
 		resistanceWest=0;
 		timeOfChanges=28800;
 		startWeather=0;

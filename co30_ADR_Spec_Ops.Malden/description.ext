@@ -8,7 +8,7 @@ Contributors: Razgriz33 [AW], Jester [AW], Kamaradski [AW], David [AW], chucky [
 //------------------------- On Load
 author = "ToxaBes";
 onLoadName = "ADR: Spec Ops";
-OnLoadMission = "Malden v0.0.1";
+OnLoadMission = "Malden v0.1.0";
 loadScreen = "media\images\adr_specops_malden_loading.jpg";
 overviewPicture = "media\images\adr_specops_malden_loading.jpg";
 

@@ -2,7 +2,7 @@
 
 author = "evil_c0okie & ToxaBes";
 onLoadName = "ADR: Spec Ops";
-OnLoadMission = "Tanoa v0.0.5";
+OnLoadMission = "Tanoa v0.1.0";
 loadScreen = "media\images\adr_specops_tanoa_loading.jpg";
 overviewPicture = "media\images\adr_specops_tanoa_loading.jpg";
 
