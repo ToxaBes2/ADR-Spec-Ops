@@ -116,7 +116,7 @@ for "_i" from 0 to 5 do {
 //};
 _player addWeapon _selectedWeapon;
 
-if ((handgunWeapon _player) isKindOf ["Pistol"]) then {
+if ((handgunWeapon _player) != "") then {
     _player addHandgunItem "acc_flashlight_pistol";
 };
 
