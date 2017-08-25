@@ -413,25 +413,130 @@ for "_x" from 0 to _numUAVs do {
     _uavGroup setCombatMode "RED";
     [(units _uavGroup)] call QS_fnc_setSkill4;
     [_uavGroup, getMarkerPos currentAO, 500] call BIS_fnc_taskPatrol;
-    _enemiesArray = _enemiesArray + [_uavGroup];
+    _enemiesArray = _enemiesArray + [_uavGroup];    
     {
         if !(vehicle _x == _x) then {
             _enemiesArray = _enemiesArray + [vehicle _x];
         };
     } forEach units _uavGroup;
+    _ugvs = nearestObjects [_randomPos, ["O_UGV_01_rcws_F", "O_T_UGV_01_rcws_ghex_F"], 50, true];
+    if (count _ugvs > 0) then {
+        _ugv = _ugvs select 0;    
+        if !(isNull _ugv) then {
+            [_ugv] spawn {
+                _ugv = _this select 0;
+                sleep 10;
+                _leader = leader (group _ugv);
+                while {alive _ugv} do {
+                    sleep 180;
+                    _ugv setFuel 1;
+                    _pos = getPos _ugv;
+                    _targetsArray = nearestObjects [_pos, ["Man","Car","Tank"], 300, true];
+                    {
+                        if !(side _x == ENEMY_SIDE) then {
+                            _leader reveal [_x, 4];
+                        };
+                    } forEach _targetsArray;                            
+                };   
+            };
+        };
+    };
 };
 
 // darter units
 _numUAVs = selectRandom [1,2,3];
+_bridges = ["Land_Bridge_HighWay_PathLod_F","Land_Bridge_Concrete_PathLod_F","Land_Bridge_Asphalt_PathLod_F","Land_Bridge_01_PathLod_F"];
 for "_x" from 0 to _numUAVs do {
-    _darterGroup = createGroup EAST;
-    _randomPos = [[[getMarkerPos currentAO, (PARAMS_AOSize / 1.6)], []], ["water", "out"]] call QS_fnc_randomPos;    
+    _darterGroup = createGroup ENEMY_SIDE;
+    _randomPos = [[[getMarkerPos currentAO, (PARAMS_AOSize / 2)], []], ["water", "out"]] call QS_fnc_randomPos;    
+    _objects = _randomPos nearObjects ["building", 150];
+    _goodPos = [];
+    if (count _objects > 0) then {
+        _houseList = _objects call QS_fnc_TBshuffle;
+        _house = selectRandom _houseList;
+        if !(typeOf _house in _bridges) then {
+            _c = 0;
+            while { format ["%1", _house buildingPos _c] != "[0,0,0]" } do {
+                _buildingPos = _house buildingPos _c;
+                _nearMan = nearestObject [_buildingPos, "Man"];
+                _skip = false;
+                if (_nearMan != objNull) then {
+                    if (_nearMan distance2D _buildingPos < 2) then {
+                        _skip = true;
+                    };
+                };            
+                if !(_skip) then {
+                    _goodPos pushBack _buildingPos;
+                };
+                _c = _c + 1;
+            };
+        };
+    };
+    _cntPos = count _goodPos;
+    if (_cntPos > 0) then {
+        _randomPos = selectRandom _goodPos;
+    };
     "O_T_Soldier_UAV_F" createUnit [_randomPos, _darterGroup];
     _darterGroup setBehaviour "COMBAT";
     _darterGroup setCombatMode "RED";
     [(units _darterGroup)] call QS_fnc_setSkill4;
     [_darterGroup, true] call QS_fnc_moveToHC;
-    [_darterGroup, getMarkerPos currentAO, 500] call BIS_fnc_taskPatrol;
+    if (_cntPos > 0) then {
+        _unit = leader _darterGroup;
+        _unit setUnitPos "MIDDLE";
+        removeBackpack _unit;
+        _height = (random 100) + 80;
+        _posSpawn = [_randomPos select 0, _randomPos select 1, _height];
+        _uavData = [_posSpawn, 90, "O_UAV_01_F", ENEMY_SIDE] call BIS_fnc_spawnVehicle;
+        _uav = _uavData select 0;
+        _uavGroup = _uavData select 2;
+        _uav addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
+        _uavGroup setBehaviour "SAFE";
+        _uavGroup setCombatMode "RED";
+        [(units _uavGroup)] call QS_fnc_setSkill4;
+        [_uavGroup, _posSpawn, (150 + (random 150))] call BIS_fnc_taskPatrol;
+        _enemiesArray = _enemiesArray + [_uav];
+        _enemiesArray = _enemiesArray + [_uavGroup];
+        [_uav, _unit] spawn {
+            sleep 10;
+            _uav = _this select 0;
+            _unit = _this select 1;
+            while {alive _unit && alive _uav} do {
+                sleep 240;
+                _uav setFuel 1;
+                _pos = getPos _uav;
+                _targetsArray = nearestObjects [_pos, ["Man","Car","Tank"], 350, true];
+                _targets = [];
+                {
+                    if !(side _x == ENEMY_SIDE) then {                        
+                        _targets pushBack _x;
+                    };
+                } forEach _targetsArray;
+                _leaders = [];
+                if (count _targets > 0) then {
+                    {
+                        if (side _x == ENEMY_SIDE) then {
+                            _groupPos = getPos (leader _x);
+                            if (_pos distance2D _groupPos < 400) then {
+                                _leaders pushBack (leader _x);
+                            };
+                        };
+                    } forEach allGroups;
+                };
+                if (count _leaders > 0) then {
+                    {
+                        _leader = _x;
+                        {
+                            _leader reveal [_x, 4];
+                        } forEach _targets;
+         
+                    } forEach _leaders;
+                };
+            };   
+        };
+    } else {
+        [_darterGroup, getMarkerPos currentAO, 500] call BIS_fnc_taskPatrol;
+    };
     _enemiesArray = _enemiesArray + [_darterGroup];
 };
 
