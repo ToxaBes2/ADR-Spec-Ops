@@ -182,6 +182,9 @@ if (_continue) then {
     if (worldName == "Tanoa") then {
         _map = 1;
     };
+    if (worldName == "Malden") then {
+        _map = 2;
+    };
     ["getPartizanItems",[_map], 0] remoteExec ["sqlServerCall", 2];
     [_map] spawn {
         _map = _this select 0;
@@ -256,6 +259,9 @@ if (_continue) then {
         };
     };
 
+    // Score for bases
+    //["getBaseScorePartizan",[_map], 0] remoteExec ["sqlServerCall", 2];
+    //["getBaseScoreBlufor",[_map], 0] remoteExec ["sqlServerCall", 2];    
 };
 
 // show restart warnings

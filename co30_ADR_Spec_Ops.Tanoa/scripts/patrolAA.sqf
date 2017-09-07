@@ -13,6 +13,10 @@ if (_name == "Tanoa") then {
     _dist = 8000;   
     _team = (configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "Infantry" >> "O_T_InfTeam_AA");
 };
+if (_name == "Malden") then {
+    _dist = 6000;   
+    _team = (configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "Infantry" >> "O_T_InfTeam_AA");
+};
 while {true} do {
     _groups = [];
     for "_i" from 0 to 3 do {	

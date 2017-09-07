@@ -31,6 +31,9 @@ _pos = format ["%1,%2", floor ((getPos player) select 0), floor ((getPos player)
 if (worldName == "Tanoa") then {
     _map = 1;
 };
+if (worldName == "Malden") then {
+    _map = 2;
+};
 _side = 0;
 if (playerSide == resistance) then {
     _side = 1;
