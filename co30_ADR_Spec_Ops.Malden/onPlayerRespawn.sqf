@@ -166,6 +166,9 @@ player addAction ["Прицепить химсвет на плечо", {if (isNi
 // Drop chemlight action
 player addAction ["Выбросить химсвет", {if (isNil "HAND_ITEM" || isNull HAND_ITEM) exitWith {};detach HAND_ITEM;HAND_ITEM = nil;player setVariable ["IN_HAND", false, true];},"",-1001,false,false,"",'!isNil "HAND_ITEM" && vehicle player == player '];
 
+// Weapon holster
+_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\holsterWeapon.sqf";};
+
 // Deal with static map markers
 if (playerSide == west) then {
     "partizan_base" setMarkerAlphaLocal 0;
