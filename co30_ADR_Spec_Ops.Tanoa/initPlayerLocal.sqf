@@ -116,7 +116,7 @@ player addEventHandler [ "GetInMan", {
         _player  = _this select 0;
         _vehicle = _this select 1;
         if ((_vehicle isKindOf "Air")) then {
-            1 fadeSound 0.33;
+            1 fadeSound 0.25;
             waitUntil {
                 sleep 5;
                 vehicle _player != _vehicle;
@@ -142,8 +142,8 @@ if (typeOf player in ["B_T_Engineer_F", "I_C_Soldier_Para_8_F"]) then {
 		while {true} do {
 			if ((typeOf cameraOn) in ["B_UAV_01_F","B_UAV_02_F","B_UAV_02_dynamicLoadout_F","B_UAV_05_F","B_T_UAV_03_dynamicLoadout_F","B_UAV_02_CAS_F","B_UGV_01_F","B_UGV_01_rcws_F","I_UAV_01_F","I_UAV_02_F","I_UAV_02_CAS_F","I_UGV_01_F","I_UGV_01_rcws_F","O_UAV_01_F","O_UAV_02_F","O_UAV_02_CAS_F","O_UGV_01_F","O_UGV_01_rcws_F","B_T_UAV_03_F","O_T_UAV_04_CAS_F"]) then {
 				_uav = cameraOn;
-				1 fadeSound 0.33;
-				_uav_action_id1 = _uav addAction ["<t color='#FFEB3B'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\radio_ca.paa' size='1.0'/> Вставить беруши</t>", {1 fadeSound 0.33}, "", -95, false, true, "", "soundVolume == 1"];
+				1 fadeSound 0.25;
+				_uav_action_id1 = _uav addAction ["<t color='#FFEB3B'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\radio_ca.paa' size='1.0'/> Вставить беруши</t>", {1 fadeSound 0.25}, "", -95, false, true, "", "soundVolume == 1"];
 				_uav_action_id2 = _uav addAction ["<t color='#FFEB3B'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\radio_ca.paa' size='1.0'/> Вытащить беруши</t>", {1 fadeSound 1}, "", -95, false, true, "", "soundVolume != 1"];
 				_uav_action_id3 = _uav addAction ["<t color='#FFEB3B'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\top_close_gs.paa' size='1.0'/> Уничтожить беспилотник</t>", {(_this select 0) setDamage 1}, "", -99, false];                                                                
                 while {cameraOn == _uav} do {
