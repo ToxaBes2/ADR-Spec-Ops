@@ -47,6 +47,9 @@ switch (_mode) do {
     case "truck" : {
         _class = "I_G_Van_01_transport_F";
     };
+    case "van" : {
+        _class = "I_G_Van_02_transport_F";
+    };
 };
 
 // Find suitable position

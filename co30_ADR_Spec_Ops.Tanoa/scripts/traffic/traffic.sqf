@@ -5,7 +5,7 @@ Based on Enigma Traffic script
 */
 if (!isServer) exitWith {};
 #define CIV_SIDE civilian
-#define CIV_VEHICLES "B_Quadbike_01_F", "C_SUV_01_F", "I_G_Offroad_01_F", "C_Offroad_02_unarmed_F", "C_Hatchback_01_sport_F", "I_C_Van_01_transport_F"
+#define CIV_VEHICLES "B_Quadbike_01_F","C_SUV_01_F","I_G_Offroad_01_F","C_Offroad_02_unarmed_F","C_Hatchback_01_sport_F","I_C_Van_01_transport_F","C_Van_02_transport_F","C_Van_02_medevac_F","C_Van_02_vehicle_F","C_IDAP_Truck_02_water_F"
 #define CIV_COUNT 10
 #define CIV_DEBUG false
 
@@ -134,6 +134,23 @@ TRAFFIC_CreateVehicle = {
         _pos = [_posX, _posY, 0];
         _vehicleType = selectRandom [CIV_VEHICLES];
         _vehicle = _vehicleType createVehicle _pos;
+        switch (_vehicleType) do { 
+            case "C_Van_02_transport_F" : {
+                [
+                    _vehicle,
+                    ["AAN",1], 
+                    ["ladder_hide",0,"spare_tyre_holder_hide",0,"spare_tyre_hide",0,"reflective_tape_hide",0,"roof_rack_hide",0,"LED_lights_hide",0,"rearsteps_hide",0,"side_protective_frame_hide",0,"front_protective_frame_hide",0,"beacon_front_hide",0,"beacon_rear_hide",0]
+                ] call BIS_fnc_initVehicle;
+            }; 
+            case "C_Van_02_medevac_F" : {
+                [
+                    _vehicle,
+                    ["CivAmbulance",1], 
+                    ["reflective_tape_hide",0,"LED_lights_hide",0,"sidesteps_hide",0,"beacon_front_hide",0,"beacon_rear_hide",0]
+                ] call BIS_fnc_initVehicle;
+            }; 
+            default { }; 
+        };
         _vehicle addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
         _vehicle setDir _direction;
         _vehiclesGroup  = createGroup CIV_SIDE;
