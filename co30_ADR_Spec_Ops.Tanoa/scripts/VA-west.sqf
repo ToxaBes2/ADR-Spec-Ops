@@ -446,7 +446,7 @@ _myBox = _this select 0;
 "IEDUrbanSmall_Remote_Mag",
 "SLAMDirectionalMine_Wire_Mag",
 "SatchelCharge_Remote_Mag",
-
+"APERSMineDispenser_Mag",
 // Ракеты
 "NLAW_F",
 "RPG32_F",

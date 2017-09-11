@@ -214,22 +214,34 @@ sqlResponse = {
                 };
             };
         };
-        //case "getBaseScorePartizan": {
-        //    _scorePartizan = 0;
-        //    _queryResult = _queryResult call BIS_fnc_parseNumber;
-        //    if !(typeName _queryResult == "ARRAY") then {
-        //        _scorePartizan = _queryResult;
-        //    };
-        //    PARTIZAN_BASE_SCORE = _scorePartizan; publicVariable "PARTIZAN_BASE_SCORE";
-        //};
-        //case "getBaseScoreBlufor": {
-        //    _scoreBlufor = 0;
-        //    _queryResult = _queryResult call BIS_fnc_parseNumber;
-        //    if !(typeName _queryResult == "ARRAY") then {
-        //        _scoreBlufor = _queryResult;
-        //    };
-        //    BLUFOR_BASE_SCORE = _scoreBlufor; publicVariable "BLUFOR_BASE_SCORE";
-        //};
+        case "getBaseScorePartizan": {
+            _scorePartizan = 0;            
+            _queryResult = _queryResult call BIS_fnc_parseNumber;            
+            if !(typeName _queryResult == "ARRAY") then {
+                _scorePartizan = 0;
+            } else {
+                _queryResult = _queryResult select 1;
+                while {typeName _queryResult == "ARRAY"} do {
+                    _queryResult = _queryResult select 0;
+                };
+                _scorePartizan = _queryResult;
+            };
+            PARTIZAN_BASE_SCORE = _scorePartizan; publicVariable "PARTIZAN_BASE_SCORE";
+        };
+        case "getBaseScoreBlufor": {
+            _scoreBlufor = 0;            
+            _queryResult = _queryResult call BIS_fnc_parseNumber;            
+            if !(typeName _queryResult == "ARRAY") then {
+                _scoreBlufor = 0;
+            } else {
+                _queryResult = _queryResult select 1;
+                while {typeName _queryResult == "ARRAY"} do {
+                    _queryResult = _queryResult select 0;
+                };
+                _scoreBlufor = _queryResult;
+            };
+            BLUFOR_BASE_SCORE = _scoreBlufor; publicVariable "BLUFOR_BASE_SCORE";
+        };
     };           
 };
 KRON_StrToArray = {

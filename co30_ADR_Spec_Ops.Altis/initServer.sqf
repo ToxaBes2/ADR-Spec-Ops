@@ -260,8 +260,8 @@ if (_continue) then {
     };
 
     // Score for bases
-    //["getBaseScorePartizan",[_map], 0] remoteExec ["sqlServerCall", 2];
-    //["getBaseScoreBlufor",[_map], 0] remoteExec ["sqlServerCall", 2];    
+    ["getBaseScorePartizan",[_map], 0] remoteExec ["sqlServerCall", 2];
+    ["getBaseScoreBlufor",[_map], 0] remoteExec ["sqlServerCall", 2];    
 };
 
 // show restart warnings
