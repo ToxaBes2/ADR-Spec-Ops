@@ -85,9 +85,10 @@ if (_player getUnitTrait "engineer" || typeOf _player in ["I_C_Soldier_Para_8_F"
     _player removeItem "ItemGPS";
     _player addItem "I_UavTerminal";
     _player assignItem "I_UavTerminal";
+    _player addItem "MineDetector";
 } else {
-	  _player addItem "ItemGPS";
-	  _player assignItem "ItemGPS";
+	_player addItem "ItemGPS";
+	_player assignItem "ItemGPS";
 };
 _weaponData = selectRandom _weapons;
 _selectedWeapon = _weaponData select 0;

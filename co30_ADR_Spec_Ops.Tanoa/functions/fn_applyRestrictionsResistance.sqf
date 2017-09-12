@@ -129,16 +129,19 @@ if (({"I_UavTerminal" == _x} count _assignedItems) > 0) then {
 	if (({_player isKindOf _x} count _uavOperator) < 1) then {
 		_player unassignItem "I_UavTerminal";
 		_player removeItem "I_UavTerminal";
+		_box addItemCargoGlobal ["I_UavTerminal", 1];
 		[format ["<t color='#F44336' size = '.55'>%1</t>", UAV_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 	};
 };
 
-// Mine detector
-if (({"MineDetector" == _x} count _assignedItems) > 0) then {	
+// UAV
+_assignedItems = assignedItems _player;
+if (({"I_UavTerminal" == _x} count _assignedItems) > 0) then {
 	if (({_player isKindOf _x} count _uavOperator) < 1) then {
-		_player unassignItem "MineDetector";
-		_player removeItem "MineDetector";
-		[format ["<t color='#F44336' size = '.55'>%1</t>", MINEDETECOR_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
+		_player unassignItem "I_UavTerminal";
+		_player removeItem "I_UavTerminal";
+		_box addItemCargoGlobal ["I_UavTerminal", 1];
+		[format ["<t color='#F44336' size = '.55'>%1</t>", UAV_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
 	};
 };
 
