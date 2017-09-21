@@ -235,6 +235,42 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
                             _idx = _idx + 1;
                         } forEach _textures;
                     };
+                    case "O_Truck_03_device_F": {
+                        _vehReward addMPEventHandler ["MPKilled", {            
+                            _basePos = getMarkerPos "respawn_west";
+                            _curObj = _this select 0;
+                            _curObj setDamage 0.9;
+                            _epicenter = getPos _curObj;
+                            if (isServer) then {
+                                _bigBomb = createVehicle ["Bo_GBU12_LGB", _epicenter, [], 0, "NONE"];
+                                if (((_this select 0) distance _basePos) > 1500) then {
+                                    _k = 1.66;
+                                    _radius = 900;
+                                    _radiusEMI = 1400;
+                                    _allObjects1 = nearestObjects [_epicenter,[], _radius];
+                                    {
+                                        _distance = [_epicenter, getPos _x] call BIS_fnc_distance2D;
+                                        _x setDamage (abs ((_distance / _radius) - _k));
+                                    } foreach _allObjects1;
+                                    _allObjects2 = nearestObjects [_epicenter, ["LandVehicle","Air","Ship"], _radiusEMI];
+                                    {
+                                        _x engineOn false;
+                                        _fuel = fuel _x;
+                                        _x setFuel 0;
+                                        sleep 0.01;
+                                        _x setFuel _fuel;
+                                        _x setHit ["motor", 1];
+                                        driver _x action ["lightOff", _x];
+                                        _x setHit ["elektronika", 1];
+                                    } foreach _allObjects2;
+                                };
+                                deleteVehicle _curObj;
+                            };
+                            if (hasInterface) then {
+                                [_epicenter] execVM "scripts\nuke\nuke.sqf";
+                            };
+                        }];
+                    };
                 };
                 if (_vehReward distance2D _land < 200) then {
                     hqSideChat = "Груз доставлен";                    
