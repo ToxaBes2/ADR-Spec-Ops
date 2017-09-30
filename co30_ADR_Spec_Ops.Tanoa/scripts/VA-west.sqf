@@ -93,6 +93,7 @@ _myBox = _this select 0;
 //"V_TacVest_camo",
 //"V_TacVest_khk",
 "V_TacVest_oli",
+"V_PlateCarrier2_tna_F",
 
 // Шлемы
 "H_BandMask_demon",
