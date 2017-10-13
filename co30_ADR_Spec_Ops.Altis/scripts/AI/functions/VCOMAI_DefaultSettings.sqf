@@ -66,105 +66,105 @@ ArtilleryArray = [];
 AccuracyFunctionRank6 = {
 _Unit = _this select 0;
 
-_Unit setSkill ["aimingAccuracy",(0.75 + (random 0.25))];
-_Unit setSkill ["aimingShake",(0.8 + (random 0.1))];
-_Unit setSkill ["spotDistance",(0.8 + (random 0.2))];
-_Unit setSkill ["spotTime",(0.8 + (random 0.2))];
-_Unit setSkill ["courage",(0.7 + (random 0.3))];
-_Unit setSkill ["commanding",1.0];
-_Unit setSkill ["aimingSpeed",(0.6 + (random 0.2))];
-_Unit setSkill ["general",1.0];
-_Unit setSkill ["endurance",1.0];
-_Unit setSkill ["reloadSpeed",(0.7 + (random 0.3))];
+_Unit setSkill ["aimingAccuracy", 0.2];
+_Unit setSkill ["aimingShake", 0.4];
+_Unit setSkill ["aimingSpeed", 0.5];
+_Unit setSkill ["commanding", 0.5];
+_Unit setSkill ["courage", 0.5];
+_Unit setSkill ["endurance", 0.5];
+_Unit setSkill ["general", 0.5];
+_Unit setSkill ["reloadSpeed", 0.8];
+_Unit setSkill ["spotDistance", 0.5];
+_Unit setSkill ["spotTime", 0.5];
 };
 //Major Level AI
 AccuracyFunctionRank5 = {
 _Unit = _this select 0;
 
-_Unit setSkill ["aimingAccuracy",(0.75 + (random 0.25))];
-_Unit setSkill ["aimingShake",(0.8 + (random 0.1))];
-_Unit setSkill ["spotDistance",(0.8 + (random 0.2))];
-_Unit setSkill ["spotTime",(0.8 + (random 0.2))];
-_Unit setSkill ["courage",(0.7 + (random 0.3))];
-_Unit setSkill ["commanding",1.0];
-_Unit setSkill ["aimingSpeed",(0.6 + (random 0.2))];
-_Unit setSkill ["general",1.0];
-_Unit setSkill ["endurance",1.0];
-_Unit setSkill ["reloadSpeed",(0.7 + (random 0.3))];
+_Unit setSkill ["aimingAccuracy", 0.2];
+_Unit setSkill ["aimingShake", 0.4];
+_Unit setSkill ["aimingSpeed", 0.5];
+_Unit setSkill ["commanding", 0.5];
+_Unit setSkill ["courage", 0.5];
+_Unit setSkill ["endurance", 0.5];
+_Unit setSkill ["general", 0.5];
+_Unit setSkill ["reloadSpeed", 0.8];
+_Unit setSkill ["spotDistance", 0.5];
+_Unit setSkill ["spotTime", 0.5];
 };
 //Captain Level AI
 AccuracyFunctionRank4 = {
 _Unit = _this select 0;
 
-_Unit setSkill ["aimingAccuracy",(0.65 + (random 0.25))];
-_Unit setSkill ["aimingShake",(0.7 + (random 0.15))];
-_Unit setSkill ["spotDistance",(0.8 + (random 0.2))];
-_Unit setSkill ["spotTime",(0.8 + (random 0.2))];
-_Unit setSkill ["courage",(0.7 + (random 0.3))];
-_Unit setSkill ["commanding",1.0];
-_Unit setSkill ["aimingSpeed",(0.6 + (random 0.2))];
-_Unit setSkill ["general",1.0];
-_Unit setSkill ["endurance",1.0];
-_Unit setSkill ["reloadSpeed",(0.7 + (random 0.3))];
+_Unit setSkill ["aimingAccuracy", 0.2];
+_Unit setSkill ["aimingShake", 0.4];
+_Unit setSkill ["aimingSpeed", 0.5];
+_Unit setSkill ["commanding", 0.5];
+_Unit setSkill ["courage", 0.5];
+_Unit setSkill ["endurance", 0.5];
+_Unit setSkill ["general", 0.5];
+_Unit setSkill ["reloadSpeed", 0.8];
+_Unit setSkill ["spotDistance", 0.5];
+_Unit setSkill ["spotTime", 0.5];
 };
 //Lieutenant Level AI
 AccuracyFunctionRank3 = {
 _Unit = _this select 0;
 
-_Unit setSkill ["aimingAccuracy",(0.65 + (random 0.25))];
-_Unit setSkill ["aimingShake",(0.7 + (random 0.15))];
-_Unit setSkill ["spotDistance",(0.8 + (random 0.2))];
-_Unit setSkill ["spotTime",(0.8 + (random 0.2))];
-_Unit setSkill ["courage",(0.7 + (random 0.3))];
-_Unit setSkill ["commanding",1.0];
-_Unit setSkill ["aimingSpeed",(0.6 + (random 0.2))];
-_Unit setSkill ["general",1.0];
-_Unit setSkill ["endurance",1.0];
-_Unit setSkill ["reloadSpeed",(0.7 + (random 0.3))];
+_Unit setSkill ["aimingAccuracy", 0.2];
+_Unit setSkill ["aimingShake", 0.4];
+_Unit setSkill ["aimingSpeed", 0.5];
+_Unit setSkill ["commanding", 0.5];
+_Unit setSkill ["courage", 0.5];
+_Unit setSkill ["endurance", 0.5];
+_Unit setSkill ["general", 0.5];
+_Unit setSkill ["reloadSpeed", 0.8];
+_Unit setSkill ["spotDistance", 0.5];
+_Unit setSkill ["spotTime", 0.5];
 };
 //Sergeant Level AI
 AccuracyFunctionRank2 = {
 _Unit = _this select 0;
 
-_Unit setSkill ["aimingAccuracy",(0.65 + (random 0.25))];
-_Unit setSkill ["aimingShake",(0.7 + (random 0.15))];
-_Unit setSkill ["spotDistance",(0.8 + (random 0.2))];
-_Unit setSkill ["spotTime",(0.8 + (random 0.2))];
-_Unit setSkill ["courage",(0.7 + (random 0.3))];
-_Unit setSkill ["commanding",1.0];
-_Unit setSkill ["aimingSpeed",(0.6 + (random 0.2))];
-_Unit setSkill ["general",1.0];
-_Unit setSkill ["endurance",1.0];
-_Unit setSkill ["reloadSpeed",(0.7 + (random 0.3))];
+_Unit setSkill ["aimingAccuracy", 0.2];
+_Unit setSkill ["aimingShake", 0.4];
+_Unit setSkill ["aimingSpeed", 0.5];
+_Unit setSkill ["commanding", 0.5];
+_Unit setSkill ["courage", 0.5];
+_Unit setSkill ["endurance", 0.5];
+_Unit setSkill ["general", 0.5];
+_Unit setSkill ["reloadSpeed", 0.8];
+_Unit setSkill ["spotDistance", 0.5];
+_Unit setSkill ["spotTime", 0.5];
 };
 //Corporal Level AI
 AccuracyFunctionRank1 = {
 _Unit = _this select 0;
 
-_Unit setSkill ["aimingAccuracy",(0.65 + (random 0.25))];
-_Unit setSkill ["aimingShake",(0.7 + (random 0.15))];
-_Unit setSkill ["spotDistance",(0.8 + (random 0.2))];
-_Unit setSkill ["spotTime",(0.8 + (random 0.2))];
-_Unit setSkill ["courage",(0.7 + (random 0.3))];
-_Unit setSkill ["commanding",1.0];
-_Unit setSkill ["aimingSpeed",(0.6 + (random 0.2))];
-_Unit setSkill ["general",1.0];
-_Unit setSkill ["endurance",1.0];
-_Unit setSkill ["reloadSpeed",(0.7 + (random 0.3))];
+_Unit setSkill ["aimingAccuracy", 0.2];
+_Unit setSkill ["aimingShake", 0.4];
+_Unit setSkill ["aimingSpeed", 0.5];
+_Unit setSkill ["commanding", 0.5];
+_Unit setSkill ["courage", 0.5];
+_Unit setSkill ["endurance", 0.5];
+_Unit setSkill ["general", 0.5];
+_Unit setSkill ["reloadSpeed", 0.8];
+_Unit setSkill ["spotDistance", 0.5];
+_Unit setSkill ["spotTime", 0.5];
 };
 //Private Level AI
 AccuracyFunctionRank0 = {
 _Unit = _this select 0;
 
-_Unit setSkill ["aimingAccuracy",(0.65 + (random 0.25))];
-_Unit setSkill ["aimingShake",(0.7 + (random 0.15))];
-_Unit setSkill ["spotDistance",(0.8 + (random 0.2))];
-_Unit setSkill ["spotTime",(0.8 + (random 0.2))];
-_Unit setSkill ["courage",(0.7 + (random 0.3))];
-_Unit setSkill ["commanding",1.0];
-_Unit setSkill ["aimingSpeed",(0.6 + (random 0.2))];
-_Unit setSkill ["general",1.0];
-_Unit setSkill ["endurance",1.0];
-_Unit setSkill ["reloadSpeed",(0.7 + (random 0.3))];
+_Unit setSkill ["aimingAccuracy", 0.2];
+_Unit setSkill ["aimingShake", 0.4];
+_Unit setSkill ["aimingSpeed", 0.5];
+_Unit setSkill ["commanding", 0.5];
+_Unit setSkill ["courage", 0.5];
+_Unit setSkill ["endurance", 0.5];
+_Unit setSkill ["general", 0.5];
+_Unit setSkill ["reloadSpeed", 0.8];
+_Unit setSkill ["spotDistance", 0.5];
+_Unit setSkill ["spotTime", 0.5];
 };
 };
