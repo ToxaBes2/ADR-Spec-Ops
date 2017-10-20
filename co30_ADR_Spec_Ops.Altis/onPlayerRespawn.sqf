@@ -173,6 +173,9 @@ player addAction ["Выбросить химсвет", {if (isNil "HAND_ITEM" ||
 // Weapon holster
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\holsterWeapon.sqf";};
 
+// Unlock DLC vehicles
+_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\dlc_unlocker.sqf";};
+
 // Deal with static map markers
 if (playerSide == west) then {
     "partizan_base" setMarkerAlphaLocal 0;
