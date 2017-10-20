@@ -550,3 +550,15 @@
 		</Key>
     </Package>
 </Project>
+<Project name="Misc">
+	<Package name="Misc">
+		<Key ID="STR_Misc_Getin">
+			<Original>Get in</Original>
+			<Russian>Войти</Russian>
+		</Key>
+		<Key ID="STR_Misc_NoDLC">
+			<Original>without DLC</Original>
+			<Russian>без DLC</Russian>
+		</Key>
+	</Package>
+</Project>
