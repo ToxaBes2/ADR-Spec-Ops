@@ -63,10 +63,10 @@ _aircraft_nocopilot = [
 "O_Heli_Transport_04_bench_F",					// Тару сидения
 "O_Heli_Light_02_unarmed_F",					// Касатка транспортная
 "O_Heli_Light_02_F",							// Касатка боевая
-"B_Heli_Transport_01_F",						// Гостхок
-"B_Heli_Transport_01_camo_F",					// Гостхок камуфляж
-"B_CTRG_Heli_Transport_01_sand_F",				// Гостхок CTRG песок
-"B_CTRG_Heli_Transport_01_tropic_F",			// Гостхок CTRG тропики
+//"B_Heli_Transport_01_F",						// Гостхок
+//"B_Heli_Transport_01_camo_F",					// Гостхок камуфляж
+//"B_CTRG_Heli_Transport_01_sand_F",			// Гостхок CTRG песок
+//"B_CTRG_Heli_Transport_01_tropic_F",			// Гостхок CTRG тропики
 "I_Heli_Transport_02_F",						// Мохаук
 "I_Heli_light_03_unarmed_F",					// Хелкат транспортный
 "I_Heli_light_03_F",							// Хелкат боевой
@@ -76,6 +76,7 @@ _aircraft_nocopilot = [
 "O_Heli_Light_02_dynamicLoadout_F",
 "O_Heli_Attack_02_dynamicLoadout_F",
 "B_Heli_Attack_01_dynamicLoadout_F",
+"I_Heli_light_03_dynamicLoadout_F",
 
 // Самолеты
 "B_T_VTOL_01_armed_F",							// V-44 X Blackfish боевой

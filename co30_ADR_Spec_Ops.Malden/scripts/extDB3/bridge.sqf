@@ -169,7 +169,7 @@ sqlResponse = {
             if (typeName _queryResult == "ARRAY") then {
                 if (count _queryResult > 1) then {
                     _queryResult = _queryResult select 1; 
-                    diag_log format ["weather result: %1", _queryResult];
+                    //diag_log format ["weather result: %1", _queryResult];
                     _delay = 1200;
                     {
                         _param = _x select 0;
