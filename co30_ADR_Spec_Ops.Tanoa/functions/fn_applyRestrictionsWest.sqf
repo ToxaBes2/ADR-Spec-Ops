@@ -119,7 +119,7 @@ _allowedHeadgear = ["H_BandMask_demon","H_BandMask_khk","H_BandMask_reaper","H_B
 "H_Beret_02","H_Beret_Colonel","H_Beret_blk","H_Beret_brn_SF","H_Beret_grn","H_Beret_grn_SF","H_Beret_red","H_Cap_blk","H_Cap_grn",
 "H_Cap_headphones","H_Cap_khaki_specops_UK","H_Cap_oli","H_Cap_oli_hs","H_MilCap_rucamo","H_Shemag_khk","H_Shemag_tan","H_TurbanO_blk",
 "H_Watchcap_blk","H_Watchcap_camo","H_Watchcap_khk","H_Watchcap_sgg","H_Booniehat_tna_F","H_HelmetB_Enh_tna_F","H_HelmetB_Light_tna_F",
-"H_HelmetB_TI_tna_F","H_HelmetB_tna_F","H_MilCap_tna_F"];
+"H_HelmetB_TI_tna_F","H_HelmetB_tna_F","H_MilCap_tna_F","H_HelmetB","H_HelmetSpecB"];
 
 // ITEMS
 _allowedItems = ["ItemMap","ItemRadio","ItemGPS","ItemCompass","ItemWatch","G_Spectacles","B_UavTerminal","NVGoggles_INDEP","NVGoggles_OPFOR","NVGoggles_tna_F",
