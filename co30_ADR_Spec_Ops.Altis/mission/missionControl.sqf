@@ -11,17 +11,27 @@ _prioList = [
 	"priorityPower"
 ];
 _missionList = [
+    "convoy",
 	"HQside",
+	"rescueHostages",
+	"heliCrash",
+	"grapeswrath",
 	"destroyUrban",
 	"secureSide",
-	"rescueHostages",    
+	"rescueHostages", 
+	"heliCrash",  
+	"grapeswrath", 
 	"swordfish",
 	"snatch",
 	"convoy",
 	"heliCrash",
+	"rescueHostages",
 	"yellowfog",
+	"convoy",	
+	"heliCrash",
 	"grapeswrath",
-	"oilmama"
+	"oilmama",
+	"heliCrash"
 ];
 AVANPOST_COORDS = false; publicVariable "AVANPOST_COORDS";
 AVANPOST_RESPAWN = false; publicVariable "AVANPOST_RESPAWN";
