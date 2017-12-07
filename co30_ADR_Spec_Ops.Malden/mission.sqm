@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=129;
+	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1197;
+		nextID=1201;
 	};
 	class MarkerIDProvider
 	{
@@ -55,7 +55,6 @@ addons[]=
 	"A3_Weapons_F_Bootcamp_Ammoboxes",
 	"A3_Structures_F_EPA_Civ_Camping",
 	"A3_Structures_F_EPC_Civ_Accessories",
-	"A3_Structures_F_Argo",
 	"A3_Structures_F_Heli_Items_Airport",
 	"A3_Structures_F_Heli_Ind_Machines",
 	"A3_Structures_F_Heli_Items_Tools",
@@ -240,85 +239,85 @@ class AddonsMetaData
 		};
 		class Item20
 		{
-			className="A3_Structures_F_Argo";
-			name="Arma 3 Malden - Buildings and Structures";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item21
-		{
 			className="A3_Characters_F";
 			name="Arma 3 Alpha - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item22
+		class Item21
 		{
 			className="A3_Characters_F_Orange";
 			name="Arma 3 Orange - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item23
+		class Item22
 		{
 			className="A3_Props_F_Exp";
 			name="Arma 3 Apex - Decorative and Mission Objects";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item24
+		class Item23
 		{
 			className="A3_Static_F";
 			name="Arma 3 Alpha - Turrets";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item25
+		class Item24
 		{
 			className="A3_Soft_F_Exp";
 			name="Arma 3 Apex - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item26
+		class Item25
 		{
 			className="A3_Boat_F_Exp";
 			name="Arma 3 Apex - Boats and Submersibles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item27
+		class Item26
 		{
 			className="A3_Modules_F";
 			name="Arma 3 Alpha - Scripted Modules";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item28
+		class Item27
 		{
 			className="A3_Air_F_EPB";
 			name="Arma 3 Adapt Episode - Aircraft";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item29
+		class Item28
 		{
 			className="A3_Drones_F";
 			name="Arma 3 Beta - Drones";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item30
+		class Item29
 		{
 			className="A3_Air_F_Exp";
 			name="Arma 3 Apex - Aircraft";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item31
+		class Item30
 		{
 			className="A3_Air_F_Gamma";
 			name="Arma 3 - Aircraft";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item31
+		{
+			className="A3_Structures_F_Argo";
+			name="Arma 3 Malden - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -411,7 +410,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=763;
+		items=767;
 		class Item0
 		{
 			dataType="Marker";
@@ -696,7 +695,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={8039.0234,29.756557,10267.099};
-			angle=3.8746941;
+			angle=3.8746939;
 			class Attributes
 			{
 				condition="this and ((getPos (thisList select 0)) select 2 < 1)";
@@ -1083,7 +1082,7 @@ class Mission
 			};
 			id=43;
 			type="B_MRAP_01_hmg_F";
-			atlOffset=-1.335144e-005;
+			atlOffset=0.00016975403;
 		};
 		class Item42
 		{
@@ -1390,7 +1389,6 @@ class Mission
 				angles[]={0,4.7119598,6.2823396};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
 				skill=0.60000002;
@@ -1398,7 +1396,7 @@ class Mission
 			};
 			id=52;
 			type="Land_CampingTable_F";
-			atlOffset=4.196167e-005;
+			atlOffset=0.6605072;
 		};
 		class Item50
 		{
@@ -1409,7 +1407,6 @@ class Mission
 				angles[]={0,4.7119598,6.2823396};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
 				skill=0.60000002;
@@ -1418,6 +1415,7 @@ class Mission
 			};
 			id=53;
 			type="Land_Laptop_unfolded_F";
+			atlOffset=0.81300926;
 		};
 		class Item51
 		{
@@ -4006,7 +4004,7 @@ class Mission
 			};
 			id=162;
 			type="Land_CampingTable_F";
-			atlOffset=0.70984459;
+			atlOffset=0.70854759;
 		};
 		class Item147
 		{
@@ -21122,7 +21120,6 @@ class Mission
 				angles[]={0,4.7119598,6.2823396};
 			};
 			side="Empty";
-			flags=4;
 			class Attributes
 			{
 				skill=0.60000002;
@@ -21131,6 +21128,7 @@ class Mission
 			};
 			id=51;
 			type="Land_Laptop_unfolded_F";
+			atlOffset=0.81300926;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -23650,7 +23648,7 @@ class Mission
 			};
 			id=1083;
 			type="Land_CampingTable_small_F";
-			atlOffset=185.97;
+			atlOffset=185.9713;
 		};
 		class Item681
 		{
@@ -23760,7 +23758,7 @@ class Mission
 			};
 			id=1089;
 			type="Land_CampingTable_small_F";
-			atlOffset=185.84354;
+			atlOffset=185.84483;
 		};
 		class Item687
 		{
@@ -26661,7 +26659,7 @@ class Mission
 			};
 			id=246;
 			type="B_UGV_01_rcws_F";
-			atlOffset=0.078350067;
+			atlOffset=0.066148758;
 		};
 		class Item755
 		{
@@ -26739,7 +26737,7 @@ class Mission
 				};
 			};
 			id=243;
-			atlOffset=0.078350067;
+			atlOffset=0.066148758;
 		};
 		class Item756
 		{
@@ -26817,7 +26815,7 @@ class Mission
 				};
 			};
 			id=1188;
-			atlOffset=0.56908607;
+			atlOffset=0.55689812;
 		};
 		class Item757
 		{
@@ -26836,7 +26834,7 @@ class Mission
 			};
 			id=1191;
 			type="B_UGV_01_rcws_F";
-			atlOffset=0.56908607;
+			atlOffset=0.55689812;
 		};
 		class Item758
 		{
@@ -26882,6 +26880,52 @@ class Mission
 			type="Empty";
 			id=1196;
 			atlOffset=-29.603535;
+		};
+		class Item763
+		{
+			dataType="Marker";
+			position[]={6392.623,104.828,13795.148};
+			name="background";
+			markerType="RECTANGLE";
+			type="Empty";
+			colorName="ColorGrey";
+			a=6400;
+			b=1000;
+			id=1197;
+			atlOffset=164.91493;
+		};
+		class Item764
+		{
+			dataType="Marker";
+			position[]={10188.722,112.64779,14080.214};
+			name="ts";
+			text="Teamspeak - ts.tehgam.com";
+			type="mil_box";
+			colorName="ColorWhite";
+			id=1198;
+			atlOffset=185.79128;
+		};
+		class Item765
+		{
+			dataType="Marker";
+			position[]={10189.186,112.63013,13440.194};
+			name="st";
+			text="Site - tehgam1.com";
+			type="mil_box";
+			colorName="ColorWhite";
+			id=1199;
+			atlOffset=185.73317;
+		};
+		class Item766
+		{
+			dataType="Marker";
+			position[]={769.72308,1.3541944e+038,13783.211};
+			name="dip";
+			text="Текущий статус: война";
+			type="mil_warning";
+			colorName="ColorWhite";
+			id=1200;
+			atlOffset=1.3541944e+038;
 		};
 	};
 };
