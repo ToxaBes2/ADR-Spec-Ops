@@ -40,30 +40,33 @@ if (_dmgSum > 0) then {
 _veh setDamage 0;
 
 //Rearming
-_mags = magazinesAllTurrets _veh;
-if (count _mags != 0) then {
-    _ammo = 0;
-    {_ammo = _ammo + (_x select 2) / (getNumber (configFile >> "CfgMagazines" >> (_x select 0) >> "count"));} forEach _mags;
-    _ammo = _ammo / (count _mags);
-    if (_ammo < 1) then {
-    	systemChat "Перезарядка ...";
-    	uiSleep (5 + (1 - _ammo) * 30);
-    };
-};
-_veh setVehicleAmmo 1;
-
-// Rearm ammo trucks cargo ammo to 32 562 ammo (one full AA rearm)
-if (finite getAmmoCargo _veh) then {
-    while {true} do {
-        call {
-            if ((typeOf _veh) in ["B_Truck_01_ammo_F", "O_Truck_02_Ammo_F", "I_Truck_02_ammo_F"]) exitWith {
-                _veh setAmmoCargo 0.000000032562; // 32 562 ammo
-            };
-            if ((typeOf _veh) == "O_Truck_03_ammo_F") exitWith {
-                _veh setAmmoCargo 1.08538;        // 32 562 ammo
-            };
+_bluforServicePos = getmarkerPos "base_vehicle_service";
+if (_bluforServicePos distance2D _veh < 50) then {
+    _mags = magazinesAllTurrets _veh;
+    if (count _mags != 0) then {
+        _ammo = 0;
+        {_ammo = _ammo + (_x select 2) / (getNumber (configFile >> "CfgMagazines" >> (_x select 0) >> "count"));} forEach _mags;
+        _ammo = _ammo / (count _mags);
+        if (_ammo < 1) then {
+        	systemChat "Перезарядка ...";
+        	uiSleep (5 + (1 - _ammo) * 30);
         };
-        if (getAmmoCargo _veh != 0) exitWith {}; // Due to very low values setAmmoCargo rounds to 0 on first try
+    };
+    _veh setVehicleAmmo 1;
+    
+    // Rearm ammo trucks cargo ammo to 32 562 ammo (one full AA rearm)
+    if (finite getAmmoCargo _veh) then {
+        while {true} do {
+            call {
+                if ((typeOf _veh) in ["B_Truck_01_ammo_F", "O_Truck_02_Ammo_F", "I_Truck_02_ammo_F"]) exitWith {
+                    _veh setAmmoCargo 0.000000032562; // 32 562 ammo
+                };
+                if ((typeOf _veh) == "O_Truck_03_ammo_F") exitWith {
+                    _veh setAmmoCargo 1.08538;        // 32 562 ammo
+                };
+            };
+            if (getAmmoCargo _veh != 0) exitWith {}; // Due to very low values setAmmoCargo rounds to 0 on first try
+        };
     };
 };
 
