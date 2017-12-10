@@ -354,7 +354,12 @@ class ScenarioData
 		minPlayers=1;
 		maxPlayers=30;
 	};
+	wreckManagerMode=1;
+	wreckLimit=10;
 	wreckRemovalMaxTime=3600;
+	corpseManagerMode=1;
+	corpseLimit=20;
+	minPlayerDistance=100;
 };
 class CustomAttributes
 {
@@ -1396,7 +1401,7 @@ class Mission
 			};
 			id=52;
 			type="Land_CampingTable_F";
-			atlOffset=0.6605072;
+			atlOffset=0.66053963;
 		};
 		class Item50
 		{

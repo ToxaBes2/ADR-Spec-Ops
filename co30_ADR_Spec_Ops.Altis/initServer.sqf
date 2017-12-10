@@ -76,6 +76,7 @@ baseTurret11, baseTurret12, baseTurret13, baseTurret14, baseTurret15, baseTurret
 _grpTurret1 setBehaviour "COMBAT";
 _grpTurret1 setCombatMode "RED";
 [(units _grpTurret1)] call QS_fnc_setSkill4;
+addMissionEventHandler ["BuildingChanged",{[_this select 0,_this select 1,_this select 2] call QS_fnc_mapBuildings;}];
 
 // Server scripts
 _null = [] spawn {_this call compile preProcessFileLineNumbers "mission\missionControl.sqf"};                              // Main AO and side objectives
@@ -88,6 +89,7 @@ _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\traffic\
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\traffic\groundsupport.sqf"};                       // Blufor ground support system 
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\patrolAA.sqf"};                                    // random AA patrols 
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\passToHC.sqf"};                                    // Headless clients with balncing 
+_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\clearObjects.sqf";};                               // Clear objects
 
 //crossroad disableAI "ANIM";
 enemyCasArray = [];

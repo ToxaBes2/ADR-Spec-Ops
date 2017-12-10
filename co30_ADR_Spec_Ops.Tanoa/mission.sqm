@@ -16,7 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=2309;
+		nextID=2377;
 	};
 	class Camera
 	{
@@ -389,6 +389,12 @@ class ScenarioData
 		minPlayers=1;
 		maxPlayers=30;
 	};
+	wreckManagerMode=1;
+	wreckLimit=10;
+	wreckRemovalMaxTime=3600;
+	corpseManagerMode=1;
+	corpseLimit=20;
+	minPlayerDistance=100;
 };
 class CustomAttributes
 {
@@ -4446,7 +4452,7 @@ class Mission
 			type="mil_box";
 			colorName="ColorWhite";
 			id=885;
-			atlOffset=21.287571;
+			atlOffset=21.287418;
 		};
 		class Item97
 		{
@@ -4457,7 +4463,7 @@ class Mission
 			type="mil_box";
 			colorName="ColorWhite";
 			id=886;
-			atlOffset=16.189442;
+			atlOffset=16.189365;
 		};
 		class Item98
 		{
@@ -9330,8 +9336,8 @@ class Mission
 						};
 						class Attribute1
 						{
-							property="enableStamina";
-							expression="_this enablestamina _value;";
+							property="face";
+							expression="_this setface _value;";
 							class Value
 							{
 								class data
@@ -9340,10 +9346,10 @@ class Mission
 									{
 										type[]=
 										{
-											"BOOL"
+											"STRING"
 										};
 									};
-									value=0;
+									value="WhiteHead_15";
 								};
 							};
 						};
@@ -9387,8 +9393,8 @@ class Mission
 						};
 						class Attribute4
 						{
-							property="face";
-							expression="_this setface _value;";
+							property="enableStamina";
+							expression="_this enablestamina _value;";
 							class Value
 							{
 								class data
@@ -9397,10 +9403,10 @@ class Mission
 									{
 										type[]=
 										{
-											"STRING"
+											"BOOL"
 										};
 									};
-									value="WhiteHead_15";
+									value=0;
 								};
 							};
 						};

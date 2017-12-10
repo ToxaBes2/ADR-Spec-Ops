@@ -98,6 +98,7 @@ class QS
 		class getShorePos {};		
 		class killerCatcher {};
 		class KeyDown {};
+		class mapBuildings {};
 		class moveToHC {};
 		class partizanSUCCESS {};
 		class pilotCheck {};

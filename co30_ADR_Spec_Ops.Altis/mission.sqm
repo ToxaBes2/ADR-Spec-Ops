@@ -58,7 +58,6 @@ addons[]=
 	"A3_Weapons_F_Bootcamp_Ammoboxes",
 	"A3_Structures_F_EPA_Civ_Camping",
 	"A3_Structures_F_EPC_Civ_Accessories",
-	"A3_Structures_F_Argo",
 	"A3_Structures_F_Heli_Items_Airport",
 	"A3_Structures_F_Heli_Ind_Machines",
 	"A3_Structures_F_Heli_Items_Tools",
@@ -93,7 +92,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=33;
+		items=32;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -236,89 +235,82 @@ class AddonsMetaData
 		};
 		class Item20
 		{
-			className="A3_Structures_F_Argo";
-			name="Arma 3 Malden - Buildings and Structures";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item21
-		{
 			className="A3_Modules_F";
 			name="Arma 3 Alpha - Scripted Modules";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item22
+		class Item21
 		{
 			className="A3_Modules_F_Curator";
 			name="Arma 3 Zeus Update - Scripted Modules";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item23
+		class Item22
 		{
 			className="A3_Characters_F";
 			name="Arma 3 Alpha - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item24
+		class Item23
 		{
 			className="A3_Drones_F";
 			name="Arma 3 Beta - Drones";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item25
+		class Item24
 		{
 			className="A3_Characters_F_Orange";
 			name="Arma 3 Orange - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item26
+		class Item25
 		{
 			className="A3_Props_F_Exp";
 			name="Arma 3 Apex - Decorative and Mission Objects";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item27
+		class Item26
 		{
 			className="A3_Static_F";
 			name="Arma 3 Alpha - Turrets";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item28
+		class Item27
 		{
 			className="A3_Soft_F_Exp";
 			name="Arma 3 Apex - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item29
+		class Item28
 		{
 			className="A3_Air_F_Exp";
 			name="Arma 3 Apex - Aircraft";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item30
+		class Item29
 		{
 			className="A3_Boat_F_Exp";
 			name="Arma 3 Apex - Boats and Submersibles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item31
+		class Item30
 		{
 			className="A3_Air_F_Gamma";
 			name="Arma 3 - Aircraft";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item32
+		class Item31
 		{
 			className="A3_Air_F_EPB";
 			name="Arma 3 Adapt Episode - Aircraft";
@@ -344,7 +336,12 @@ class ScenarioData
 		minPlayers=1;
 		maxPlayers=30;
 	};
+	wreckManagerMode=1;
+	wreckLimit=10;
 	wreckRemovalMaxTime=3600;
+	corpseManagerMode=1;
+	corpseLimit=20;
+	minPlayerDistance=100;
 };
 class CustomAttributes
 {
@@ -1811,7 +1808,7 @@ class Mission
 			};
 			id=630;
 			type="Land_CampingTable_small_F";
-			atlOffset=185.97;
+			atlOffset=185.97131;
 		};
 		class Item112
 		{
@@ -2181,6 +2178,7 @@ class Mission
 			};
 			id=650;
 			type="B_MRAP_01_hmg_F";
+			atlOffset=0.00018310547;
 		};
 		class Item129
 		{
@@ -2541,7 +2539,7 @@ class Mission
 			};
 			id=662;
 			type="Land_CampingTable_F";
-			atlOffset=0.46265984;
+			atlOffset=0.46136284;
 		};
 		class Item138
 		{
@@ -5604,7 +5602,7 @@ class Mission
 			};
 			id=836;
 			type="Land_CampingTable_small_F";
-			atlOffset=185.97;
+			atlOffset=185.97131;
 		};
 		class Item248
 		{
@@ -5791,7 +5789,7 @@ class Mission
 			};
 			id=857;
 			type="Land_CampingTable_F";
-			atlOffset=-0.0037517548;
+			atlOffset=-0.0050487518;
 		};
 		class Item257
 		{
@@ -9125,7 +9123,7 @@ class Mission
 				};
 			};
 			id=963;
-			atlOffset=0.10000038;
+			atlOffset=0.087802887;
 		};
 		class Item320
 		{
@@ -9144,7 +9142,7 @@ class Mission
 			};
 			id=964;
 			type="B_UGV_01_rcws_F";
-			atlOffset=0.10000038;
+			atlOffset=0.087802887;
 		};
 		class Item321
 		{
@@ -22783,6 +22781,7 @@ class Mission
 			};
 			id=754;
 			type="Land_BagBunker_Tower_F";
+			atlOffset=0.0017795563;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -25079,6 +25078,7 @@ class Mission
 			name="partizan_chemlight";
 			id=1976;
 			type="ModuleChemlight_F";
+			atlOffset=-9.5367432e-007;
 			class CustomAttributes
 			{
 				class Attribute0
