@@ -84,6 +84,38 @@ _compositions = [
     ]
 ];
 
+_compositionsMedic = [
+    [
+        ["Land_CncWall1_F",[0.274902,2.35059,0],357.797,1,0,[0,0],"","",true,false],
+        ["Land_CncWall1_F",[-0.196289,2.86475,0],88.0495,1,0,[0,0],"","",true,false],
+        ["Land_CncWall1_F",[1.53467,2.41064,0],357.797,1,0,[0,0],"","",true,false],
+        ["Land_CncWall1_F",[-3.59131,-0.638184,0],357.797,1,0,[0,0],"","",true,false],
+        ["Land_CncWall1_F",[-0.852051,3.33423,0],357.797,1,0,[0,0],"","",true,false],
+        ["Land_CncWall1_F",[2.79297,2.45581,0],357.797,1,0,[0,0],"","",true,false],
+        ["Land_CncWall1_F",[-4.84277,-0.677979,0],357.797,1,0,[0,0],"","",true,false],
+        ["Land_CncWall1_F",[-6.06689,-0.708008,0],357.797,1,0,[0,0],"","",true,false],
+        ["Land_CncWall4_F",[-6.61523,-1.69092,0],87.7966,1,0,[0,0],"","",true,false],
+        ["Land_CncWall4_F",[6.03906,2.58594,0],357.797,1,0,[0,0],"","",true,false],
+        ["Land_CncWall1_F",[-7.36377,0.850586,0],357.797,1,0,[0,0],"","",true,false],
+        ["Land_CncWall4_F",[8.61963,-1.02759,0],267.797,1,0,[0,0],"","",true,false],
+        ["Land_CncWall1_F",[8.48535,2.07007,0],267.797,1,0,[0,0],"","",true,false],
+        ["Land_CncWall1_F",[-8.55664,0.825684,0],357.797,1,0,[0,0],"","",true,false],
+        ["Land_CncWall1_F",[-8.97607,1.4187,0],88.0495,1,0,[0,0],"","",true,false],
+        ["Land_CncWall4_F",[1.33154,-9.09692,0],357.797,1,0,[0,0],"","",true,false],
+        ["Land_CncWall4_F",[-6.41357,-6.93701,0],87.7966,1,0,[0,0],"","",true,false],
+        ["Land_CncWall4_F",[-3.83984,-9.27393,0],357.797,1,0,[0,0],"","",true,false],
+        ["Land_CncWall4_F",[8.82178,-6.27393,0],267.797,1,0,[0,0],"","",true,false],
+        ["Land_CncWall4_F",[6.50049,-8.89844,0],357.797,1,0,[0,0],"","",true,false],
+        ["Land_TTowerSmall_1_F",[7.69922,-7.59351,0],87.7966,1,0,[0,0],"","",true,false],
+        ["Land_PowerGenerator_F",[5.59619,-7.47266,0],85.1977,1,0,[0,0],"","",true,false],
+        ["Land_Cargo_Patrol_V3_F",[-6.84912,-3.76416,0],87.5777,1,0,[0,0],"","",true,false],
+        ["Land_Medevac_house_V1_F",[4.51172,-3.41797,0],88.1376,1,0,[0,0],"","",true,false],
+        ["Land_BagBunker_Small_F",[-6.22217,3.21631,0],178.913,1,0,[0,0],"","",true,false],
+        ["O_HMG_01_high_F",[-5.92334,3.03271,-0.0871177],356.578,1,0,[0,0],"","",true,false],
+        ["O_Truck_03_medical_F",[4.96289,6.7478,-0.000307083],89.6723,1,0,[0,0],"","",true,false]
+    ]
+];
+
 _newObjs = [];
 _multiplyMatrixFunc =
 {
@@ -101,12 +133,18 @@ _cnt = selectRandom [1,2,3];
 if (isNil "CLEAR_POSITIONS") then {
     CLEAR_POSITIONS = [];
 };
+_medicBunkerSpawned = false;
 for "_i" from 0 to _cnt do {
     _pos = [_centerPos, 0, 1000, 12, 0, 10] call QS_fnc_findSafePos;    
     if (format ["%1", _pos] != "[0,0,0]") then {
         CLEAR_POSITIONS pushBack [_pos, 20];
         _azi = [_centerPos, _pos] call BIS_fnc_dirTo;
-        _objs = selectRandom _compositions;    
+        _objs = selectRandom _compositions;
+        if !(_medicBunkerSpawned) then {
+            if (random 10 > 5) then {
+               _objs = selectRandom _compositionsMedic;  
+            };
+        };    
         _posX = _pos select 0;
         _posY = _pos select 1;
         {		

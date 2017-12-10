@@ -23,6 +23,10 @@ sleep 7;
 [_v] call _i;
 _v addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 
+if (isNil "BLUFOR_BASE_SCORE") then {
+    BLUFOR_BASE_SCORE = 1;
+};
+
 // MONITOR LOOP
 while {true} do {
     if (BLUFOR_BASE_SCORE < _score) then {
