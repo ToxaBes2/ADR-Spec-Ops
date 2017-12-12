@@ -133,17 +133,19 @@ _cnt = selectRandom [1,2,3];
 if (isNil "CLEAR_POSITIONS") then {
     CLEAR_POSITIONS = [];
 };
-_medicBunkerSpawned = false;
+_useMedicalBunker = false;
+if (random 10 < 4) then {
+    _useMedicalBunker = true;  
+};
 for "_i" from 0 to _cnt do {
     _pos = [_centerPos, 0, 1000, 12, 0, 10] call QS_fnc_findSafePos;    
     if (format ["%1", _pos] != "[0,0,0]") then {
         CLEAR_POSITIONS pushBack [_pos, 20];
         _azi = [_centerPos, _pos] call BIS_fnc_dirTo;
         _objs = selectRandom _compositions;
-        if !(_medicBunkerSpawned) then {
-            if (random 10 > 5) then {
-               _objs = selectRandom _compositionsMedic;  
-            };
+        if (_useMedicalBunker) then {
+            _objs = selectRandom _compositionsMedic; 
+            _useMedicalBunker = false; 
         };    
         _posX = _pos select 0;
         _posY = _pos select 1;

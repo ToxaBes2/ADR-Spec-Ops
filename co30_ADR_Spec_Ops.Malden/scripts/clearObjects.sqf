@@ -38,6 +38,7 @@ while {true} do {
                 deleteVehicle _currentObject;
                 _origObject = (_x select 0) call BIS_fnc_objectFromNetId;
                 _origObject setDamage 0;
+                _origObject hideObjectGlobal false;
                 _indexes pushBack _idx;                
             };
             _idx = _idx + 1;
