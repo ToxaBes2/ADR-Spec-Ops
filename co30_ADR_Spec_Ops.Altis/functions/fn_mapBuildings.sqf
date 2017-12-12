@@ -8,6 +8,9 @@ private _ruin = _this select 2;
 if (isNil "RUINS") then {
 	RUINS = [];			
 };
+_towers = ["Land_TTowerBig_1_F","Land_TTowerBig_2_F"];
 if (_ruin) then {
-	RUINS pushBack [netid _object, netid _newobject];
+	if !((typeOf _object) in _towers) then {
+	    RUINS pushBack [netid _object, netid _newobject];
+	};	
 };
