@@ -11,7 +11,7 @@ _this select 4: Use CSAT Pacific faction, instead of CSAT. Default: true (Bool)
 _this select 5: Side of the group. Default: EAST (String)
 */
 
-private ["_minDistanceFromStart", "_attackPosition", "_minDistanceFromPlayers", "_pacificFaction", "_groupSide", "_maxDistanceFromStart", "_min", "_minDist", "_max", "_startPos", "_dist", "_search", "_players", "_d", "_testPos", "_i", "_distance", "_forestPos", "_viperGroup"];
+private ["_attackPosition", "_minDistanceFromStart", "_minDistanceFromPlayers", "_maxDistanceFromStart", "_pacificFaction", "_groupSide", "_min", "_max", "_startPos", "_dist", "_search", "_players", "_d", "_testPos", "_i", "_minDist", "_distance", "_forestPos", "_viperGroup"];
 
 _attackPosition = _this select 0;
 _minDistanceFromStart = if (count _this > 1) then {_this select 1} else {0};
@@ -25,18 +25,18 @@ if (typename _attackPosition == "OBJECT") then {_attackPosition = getpos _attack
 
 // If distance given as an array of min and max. Pick a random between them.
 if (typename _minDistanceFromStart == "ARRAY") then {
-  _min = _minDist select 0;
-  _max = _minDist select 1;
+  _min = _minDistanceFromStart select 0;
+  _max = _minDistanceFromStart select 1;
   _minDistanceFromStart = (_min + random(_max - _min));
 };
 if (typename _minDistanceFromPlayers == "ARRAY") then {
-  _min = _minDist select 0;
-  _max = _minDist select 1;
-  _minDistanceFromStart = (_min + random(_max - _min));
+  _min = _minDistanceFromPlayers select 0;
+  _max = _minDistanceFromPlayers select 1;
+  _minDistanceFromPlayers = (_min + random(_max - _min));
 };
 if (typename _maxDistanceFromStart == "ARRAY") then {
-  _min = _minDist select 0;
-  _max = _minDist select 1;
+  _min = _maxDistanceFromStart select 0;
+  _max = _maxDistanceFromStart select 1;
   _maxDistanceFromStart = (_min + random(_max - _min));
 };
 
