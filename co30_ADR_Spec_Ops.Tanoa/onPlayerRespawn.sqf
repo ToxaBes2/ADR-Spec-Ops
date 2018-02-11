@@ -19,7 +19,11 @@ if (typeOf player in ["B_Helipilot_F", "B_T_Helipilot_F"]) then {
 
 	//===== FIELD REPAIR
 	vehicle_repaired = false;
-	player addAction ["<t color='#FFC107'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_debug_ca.paa' size='1.0'/> Полевой ремонт</t>", QS_fnc_actionPilotRepair, "", 100, false, true, "", "[] call QS_fnc_conditionPilotRepair"];
+
+	// Pilot 3
+    if (BLUFOR_BASE_SCORE > 24) then {
+	    player addAction ["<t color='#FFC107'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_debug_ca.paa' size='1.0'/> Полевой ремонт</t>", QS_fnc_actionPilotRepair, "", 100, false, true, "", "[] call QS_fnc_conditionPilotRepair"];
+    };
 
 	//===== Aircraft weapon loadout selection
 	//Hellcat
@@ -195,6 +199,7 @@ if (playerSide == west) then {
 	"partizan_dock11" setMarkerAlphaLocal 0;
 	"partizan_dock12" setMarkerAlphaLocal 0;
 	"partizan_dock13" setMarkerAlphaLocal 0;
+	"level_blufor" setMarkerAlphaLocal 1;
 } else {
     "partizan_base" setMarkerAlphaLocal 1;
 	"partizan_vehicle" setMarkerAlphaLocal 1;
@@ -228,6 +233,7 @@ if (playerSide == west) then {
 	"partizan_dock11" setMarkerAlphaLocal 1;
 	"partizan_dock12" setMarkerAlphaLocal 1;
 	"partizan_dock13" setMarkerAlphaLocal 1;
+	"level_blufor" setMarkerAlphaLocal 0;
 };
 
 // Remove color corrections effects

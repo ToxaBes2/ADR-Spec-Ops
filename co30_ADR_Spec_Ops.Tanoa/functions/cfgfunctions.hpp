@@ -92,6 +92,7 @@ class QS
 		class garrisonFortEAST {};
 		class garrisonFortFIA {};
 		class garrisonFortIND {};
+		class getBots {};
 		class getCargoData {};
 		class getMainAO {};
 		class getRewardsData {};
@@ -111,6 +112,7 @@ class QS
 		class respawnPilot {};
 		class respawnAvanpost {};
 		class serverMapTP {};
+		class setBaseBlufor {};
 		class setSkill1 {};
 		class setSkill2 {};
 		class setSkill3 {};
@@ -120,6 +122,7 @@ class QS
 		class taskMaxDistPatrol {};
 		class uh80Turret {};
 		class uh80TurretActions {};
+		class updateBaseBlufor {};
 		class vMonitor {};
 		class vSetup02 {};
 	};

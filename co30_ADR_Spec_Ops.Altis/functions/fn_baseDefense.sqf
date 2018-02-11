@@ -80,6 +80,39 @@ _grpTurret setBehaviour "COMBAT";
 _grpTurret setCombatMode "RED";
 [(units _grpTurret)] call QS_fnc_setSkill4;
 
+if (BLUFOR_BASE_SCORE > 27) then {
+    _posSpawn = [6840, 7295, (random 15) + 15];
+    _uavData = [_posSpawn, 90, "B_UAV_01_F", WEST] call BIS_fnc_spawnVehicle;
+    base_darter2 = _uavData select 0;
+    _uavGroup = _uavData select 2;
+    base_darter2 addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
+    base_darter2 addWeapon ("LMG_Mk200_F");
+    base_darter2 addMagazine ("200Rnd_65x39_cased_Box_Tracer");
+    _uavGroup setBehaviour "SAFE";
+    _uavGroup setCombatMode "RED";
+    [(units _uavGroup)] call QS_fnc_setSkill3;
+    [_uavGroup, _posSpawn, (40 + (random 80))] call BIS_fnc_taskPatrol;
+    _uavGroup deleteGroupWhenEmpty true;
+    [base_darter2] spawn {
+        _u = _this select 0;
+        while {alive _u} do {
+            _u setFuel 1;
+            _u setVehicleAmmo 1;
+            sleep 600;
+        };        
+    };
+    [base_darter2] spawn {
+        _u = _this select 0;
+        while {alive _u} do {
+            waitUntil {isUAVConnected _u};
+            _ctrl = UAVControl _u;
+            _unit = _ctrl select 0;
+            _unit connectTerminalToUAV objNull;
+            "Доступ к автоматической системе охраны запрещен!" remoteExec ["hint", _unit];                 
+        };
+    };
+};
+
 sleep 5;
 _enemies = nearestObjects [(getMarkerPos "respawn_west"), ["SoldierGB", "SoldierEB"], 250];
 if (count _enemies > 0) then {
@@ -90,5 +123,11 @@ if (count _enemies > 0) then {
 
 //---------- Cool-off period before next use
 sleep _inactiveTimer;
+if (alive base_darter2) then {
+    {
+        deleteVehicle _x;
+    } forEach (crew base_darter2);
+    deleteVehicle base_darter2;
+};
 BASEDEFENSE_SWITCH = nil; publicVariable "BASEDEFENSE_SWITCH";
 hqSideChat = "Защита базы доступна."; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;

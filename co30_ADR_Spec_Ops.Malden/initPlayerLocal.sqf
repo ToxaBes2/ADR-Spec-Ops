@@ -96,6 +96,7 @@ _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\vehicle\
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\admin_uid.sqf";};                                   // Admin tools
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\shutDownThermal.sqf";};                             // Disable thermal mode for Viper's helmet and ENVG-II goggles 
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\dlc_unlocker.sqf";};                                // Unlock DLC vehicles
+_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\disableSystemActions.sqf";};                        // disable system action like arsenal
 if !(isNil "EW_ATTACK") then {
     if (EW_ATTACK) then {
         _null = [] spawn {_this call QS_fnc_EWattack;};                                                                      // priority EW
@@ -194,6 +195,8 @@ if (playerSide == west) then {
         removeHeadgear player;
         {player removeItem _x} foreach (items player);
     };
+
+    player removeWeapon (secondaryWeapon player);
 };
 
 // hide arsenal load buttons for partizans and add restrictions

@@ -21,7 +21,7 @@ if (!isNil "SELECTED_REWARD" && {count SELECTED_REWARD == 2}) then {
         [WEST, "HQ"] sideChat hqSideChat;
         _vehName = _this select 0;
         _start = [10000,11100,500];
-        _land = [8092,10275,0];
+        _land = [8040,10313,0];//[8092,10275,0];
         _startCargo = [0,0,100];
         _landpoint = "Land_HelipadEmpty_F" createVehicle _land;
 

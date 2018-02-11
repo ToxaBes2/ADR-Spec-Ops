@@ -7,7 +7,7 @@ _player = _this select 0;
 _vehicle = _this select 1;
 if ((_vehicle isKindOf "Air") && (_vehicle getCargoIndex _player == -1)) then {
 	while {vehicle _player == _vehicle} do {		
-        if (daytime <= 20 && daytime > 4) then {
+        if (daytime <= 20 && daytime > 4 && BLUFOR_BASE_SCORE < 32) then {
             _vehicle disableTIEquipment true;
             _vehicle disableNVGEquipment true;
         } else {

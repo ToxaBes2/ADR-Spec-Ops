@@ -5,10 +5,26 @@ Description: Tell player which vehicles are allowed for weapon loadout changing
 private ["_veh", "_vehType", "_allowedVehicles"];
 _veh = _this select 0;
 _vehType = typeOf _veh;
-_allowedVehicles = ["O_Plane_CAS_02_dynamicLoadout_F ","B_Plane_CAS_01_dynamicLoadout_F","O_T_VTOL_02_infantry_dynamicLoadout_F",
+_allowedVehicles = [];
+
+//Pilot 2
+if (BLUFOR_BASE_SCORE > 15) then {
+    _allowedVehicles = ["O_Plane_CAS_02_dynamicLoadout_F ","B_Plane_CAS_01_dynamicLoadout_F","I_Plane_Fighter_03_dynamicLoadout_F",
+"O_Heli_Light_02_dynamicLoadout_F","O_Heli_Attack_02_dynamicLoadout_F","B_Heli_Attack_01_dynamicLoadout_F",
+"I_Heli_light_03_dynamicLoadout_F"];
+};
+
+//Pilot 4
+if (BLUFOR_BASE_SCORE > 33) then {
+    _allowedVehicles = ["O_Plane_CAS_02_dynamicLoadout_F ","B_Plane_CAS_01_dynamicLoadout_F","O_T_VTOL_02_infantry_dynamicLoadout_F",
 "O_Heli_Light_02_dynamicLoadout_F","O_Heli_Attack_02_dynamicLoadout_F","B_Heli_Attack_01_dynamicLoadout_F","I_Plane_Fighter_04_F",
 "B_Plane_Fighter_01_F","O_Plane_Fighter_02_F","O_Plane_Fighter_02_Stealth_F","B_Plane_Fighter_01_Stealth_F","I_Plane_Fighter_03_dynamicLoadout_F",
 "I_Heli_light_03_dynamicLoadout_F","B_UAV_05_F","B_UAV_02_dynamicLoadout_F"];
+};
+
+if (count _allowedVehicles == 0) exitWith {
+    _veh vehicleChat "Смена вооружения недоступна на данном уровне развития базы.";
+};
 
 if (!(_vehType in _allowedVehicles)) exitWith {
 	_veh vehicleChat "Смена вооружения доступна только для:";

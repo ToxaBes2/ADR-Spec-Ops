@@ -342,10 +342,14 @@ DEFEND_NOW = false; publicVariable "DEFEND_NOW";
 if (DEFEND_AO_VICTORY) then {
     _targetCompleteText = format ["<t align='center' size='2.2'>Удержали</t><br/><t size='1.5' align='center' color='#C6FF00'>%1</t><br/>____________________<br/>Хорошая работа! Возвращайтесь на базу для перегруппировки на следующее задание.", _nameAO];
 } else {
-    _targetCompleteText = format ["<t align='center' size='2.2'>Отступление</t><br/><t size='1.5' align='center' color='#F44336'>%1</t><br/>____________________<br/>Мы отступаем! Возвращайтесь на базу для перегруппировки на следующее задание.<br/><br/>Командование перебросило Вашу наградную технику более результативным подразделениям.", _nameAO];
+    _targetCompleteText = format ["<t align='center' size='2.2'>Отступление</t><br/><t size='1.5' align='center' color='#F44336'>%1</t><br/>____________________<br/>Мы отступаем! Возвращайтесь на базу для перегруппировки на следующее задание.<br/><br/>Командование перебросило Вашу наградную технику более результативным подразделениям и вдвое уменьшило уровень развития базы.", _nameAO];
 
     // delete reward vehicles
     BLUFOR_REWARDS_LIST = []; publicVariable "BLUFOR_REWARDS_LIST";
+
+    // decrease level to half of current value
+    BLUFOR_BASE_SCORE = floor (BLUFOR_BASE_SCORE / 2); publicVariable "BLUFOR_BASE_SCORE";
+    [BLUFOR_BASE_SCORE] call QS_fnc_setBaseBlufor;
 };
 DEFEND_AO_VICTORY = nil; publicVariable "DEFEND_AO_VICTORY";
 GlobalSideHint = [west, _targetCompleteText]; publicVariable "GlobalSideHint";

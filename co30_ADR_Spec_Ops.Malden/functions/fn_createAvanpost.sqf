@@ -4,6 +4,7 @@ Description: create avanpost near AO.
 Format: [_centerAO] call QS_fnc_createAvanpost;
 */
 if (!isServer) exitWith {};
+if (BLUFOR_BASE_SCORE < 10) exitWith {};
 _centerAO = _this select 0;
 _centerAO set [2, 0];
 _azi 	= random 360;

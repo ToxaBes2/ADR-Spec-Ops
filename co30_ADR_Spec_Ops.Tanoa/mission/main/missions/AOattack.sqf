@@ -345,6 +345,10 @@ if (DEFEND_AO_VICTORY) then {
 
     // delete reward vehicles
     BLUFOR_REWARDS_LIST = []; publicVariable "BLUFOR_REWARDS_LIST";
+
+    // decrease level to half of current value
+    BLUFOR_BASE_SCORE = floor (BLUFOR_BASE_SCORE / 2); publicVariable "BLUFOR_BASE_SCORE";
+    [BLUFOR_BASE_SCORE] call QS_fnc_setBaseBlufor;
 };
 DEFEND_AO_VICTORY = nil; publicVariable "DEFEND_AO_VICTORY";
 GlobalSideHint = [west, _targetCompleteText]; publicVariable "GlobalSideHint";

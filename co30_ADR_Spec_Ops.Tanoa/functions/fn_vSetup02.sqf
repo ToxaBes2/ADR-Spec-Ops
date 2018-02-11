@@ -90,6 +90,16 @@ call {
     		sleep 2;
     		createVehicleCrew _u;
     	};
+
+        if (BLUFOR_BASE_SCORE > 34) then {
+            if (_t == "B_UGV_01_rcws_F") then {
+                _magazine = selectRandom ["1Rnd_GAT_missiles", "1Rnd_GAA_missiles"];
+                for "_i" from 1 to 4 do {
+                    _u addMagazineTurret [_magazine, [0]];
+                };
+                _u addWeaponTurret ["missiles_titan_static",[0]];
+            };
+        };
     };
 
     // Random textures for Prowlers

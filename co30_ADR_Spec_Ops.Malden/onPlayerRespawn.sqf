@@ -19,8 +19,12 @@ if (typeOf player in ["B_Helipilot_F", "B_T_Helipilot_F"]) then {
 
 	//===== FIELD REPAIR
 	vehicle_repaired = false;
-	player addAction ["<t color='#FFC107'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_debug_ca.paa' size='1.0'/> Полевой ремонт</t>", QS_fnc_actionPilotRepair, "", 100, false, true, "", "[] call QS_fnc_conditionPilotRepair"];
 
+	// Pilot 3
+    if (BLUFOR_BASE_SCORE > 24) then {
+        player addAction ["<t color='#FFC107'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_debug_ca.paa' size='1.0'/> Полевой ремонт</t>", QS_fnc_actionPilotRepair, "", 100, false, true, "", "[] call QS_fnc_conditionPilotRepair"];
+    };
+    
 	//===== Aircraft weapon loadout selection
 	//Hellcat
 	player addAction["<t color='#FFC107'><img image='\a3\ui_f\data\map\VehicleIcons\iconhelicopter_ca.paa' size='1.0'/> M134 Minigun 7.62 mm[5000]; DAR[24]</t>", QS_fnc_actionChangeLoadout, 0, 99, false, true, "", "(typeOf (vehicle player) == 'I_Heli_light_03_F') && (((vehicle player) distance2D (getMarkerPos 'changeLoadout')) < 7) && ((getPos (vehicle player) select 2) < 1) && (driver (vehicle player) == player) && (isNil 'ADR_aircraftChangeLoadout')"];
@@ -208,6 +212,7 @@ if (playerSide == west) then {
     "P1_8" setMarkerAlphaLocal 0;
     "P1_9" setMarkerAlphaLocal 0;
     "P1_10" setMarkerAlphaLocal 0;
+    "level_blufor" setMarkerAlphaLocal 1;
 } else {
     "partizan_base" setMarkerAlphaLocal 1;
 	"partizan_vehicle" setMarkerAlphaLocal 1;
@@ -239,6 +244,7 @@ if (playerSide == west) then {
     "P1_8" setMarkerAlphaLocal 1;
     "P1_9" setMarkerAlphaLocal 1;
     "P1_10" setMarkerAlphaLocal 1;
+    "level_blufor" setMarkerAlphaLocal 0;
 };
 
 // Remove color corrections effects
