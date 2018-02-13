@@ -174,7 +174,7 @@ if (playerSide == west) then {
     }];
     [missionNamespace, "arsenalClosed", {
         if (playerSide == west) then {
-           [player, true] call QS_fnc_applyRestrictionsWest;
+           [player, true, true] call QS_fnc_applyRestrictionsWest;
         };        
     }] call BIS_fnc_addScriptedEventHandler;
     [missionNamespace, "arsenalOpened", {
@@ -217,7 +217,7 @@ if (playerSide == resistance) then {
     }];
     [missionNamespace, "arsenalClosed", {
         if (playerSide == resistance) then {
-           [player, true] call QS_fnc_applyRestrictionsResistance;
+           [player, true, true] call QS_fnc_applyRestrictionsResistance;
         };        
     }] call BIS_fnc_addScriptedEventHandler;
     [missionNamespace, "arsenalOpened", {
@@ -414,3 +414,10 @@ _null = [_uid, _profileName] spawn {
 // Set initial view distance to 1 km
 setViewDistance 1000;
 setObjectViewDistance [1000,50];
+
+// Apply arsenal changes
+if (playerSide == west) then {
+    if !(isNil "BLUFOR_BASE_SCORE") then {
+        [BLUFOR_BASE_SCORE] call QS_fnc_updateArsenal;
+    };
+};

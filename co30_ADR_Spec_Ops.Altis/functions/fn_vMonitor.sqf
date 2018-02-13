@@ -33,13 +33,23 @@ while {true} do {
         if (alive _v) then {
             if ((count (crew _v)) == 0) then {
                 if !(isObjectHidden _v) then {
-                    _v hideObjectGlobal true;
+                    _v hideObjectGlobal true;                    
                 };
+            };
+            if (unitIsUAV _v) then {
+                _v hideObjectGlobal true;  
+                _crew = crew _v;
+                {
+                    deleteVehicle _x;
+                } forEach _crew;
             };
         };        
     } else {
         if (isObjectHidden _v) then {
             _v hideObjectGlobal false;
+            if (unitIsUAV _v) then {
+                createVehicleCrew _v;
+            };
         };
     	_destroyed = _v getVariable ["AVANPOST_DESTROYED", false];
     	if (_destroyed) exitWith {

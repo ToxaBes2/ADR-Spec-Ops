@@ -122,6 +122,7 @@ class QS
 		class taskMaxDistPatrol {};
 		class uh80Turret {};
 		class uh80TurretActions {};
+		class updateArsenal {};
 		class updateBaseBlufor {};
 		class vMonitor {};
 		class vSetup02 {};
