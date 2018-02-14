@@ -97,6 +97,7 @@ _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\admin_ui
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\shutDownThermal.sqf";};                             // Disable thermal mode for Viper's helmet and ENVG-II goggles
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\dlc_unlocker.sqf";};                                // Unlock DLC vehicles
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\disableSystemActions.sqf";};                        // disable system action like arsenal
+_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\statusBar\statusBar.sqf";};                         // Show FPS status bar
 if !(isNil "EW_ATTACK") then {
     if (EW_ATTACK) then {
         _null = [] spawn {_this call QS_fnc_EWattack;};                                                                      // priority EW

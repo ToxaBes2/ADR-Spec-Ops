@@ -18,30 +18,48 @@ if (!_shift && !_ctrlKey && !_alt) then {
            _handled = true;
         };
     };
-    _jumping = player getVariable ["is_jumping", false];
-    if (_dikCode in (actionKeys "GetOver") && {alive player} && {currentWeapon player == primaryWeapon player || currentWeapon player == handgunWeapon player} 
-        && {isNull objectParent player} && {speed player > 11} && {stance player == "STAND"} && {getFatigue player < 0.5} && {isTouchingGround player} 
-        && {!_jumping}) then {
-        player setVariable ["is_jumping", true];
-        0 spawn {
-            private _v = velocity player;
-            private _veloH = [(_v select 0) + 0.6, (_v select 1) + 0.6, (_v select 2) + 0.1];
-            private _veloL = [_v select 0, _v select 1, (_v select 2) - 1];
-            private _maxHight = (getPosATL player select 2) + 1.3;            
-            [player, "AovrPercMrunSrasWrflDf"] remoteExecCall ["switchMove"];
-            sleep 0.05;
-            while {animationState player == "AovrPercMrunSrasWrflDf"} do {
-                if (getPosATL player select 2 > _maxHight) then {
-                    player setVelocity _veloL;
-                } else {
-                    player setVelocity _veloH;
+
+    // V - jumping while run  
+    if (_shift && _dikCode == 47) then {         
+        _jumping = player getVariable ["is_jumping", false];
+        if (speed player >= 2 && {stance player == "STAND"} && {vehicle player == player} && {!_jumping}) then {
+            player setVariable ["is_jumping", true, true];
+            [] spawn {
+                _speed = 0.8;
+                _height = 3.5;
+                _vel = velocity player;
+                _dir = direction player;                
+                player setVelocity [(_vel select 0) + (sin _dir * _speed), (_vel select 1) + (cos _dir * _speed), (_vel select 2) + _height];
+                [player, "AovrPercMrunSrasWrflDf"] remoteExecCall ["switchMove"];
+                player spawn {
+                    sleep 2;
+                    _this setVariable ["is_jumping", false, true];
                 };
-                sleep 0.05;
             };
-            sleep 1;
-            player setVariable ["is_jumping", false];
+            _handled = true;
         };
-        _handled = true;
+    };
+} else {
+
+    // V - jumping while run  
+    if (_shift && _dikCode == 47) then {         
+        _jumping = player getVariable ["is_jumping", false];
+        if (speed player >= 2 && {stance player == "STAND"} && {vehicle player == player} && {!_jumping}) then {
+            player setVariable ["is_jumping", true, true];
+            [] spawn {
+                _speed = 0.8;
+                _height = 3.5;
+                _vel = velocity player;
+                _dir = direction player;                
+                player setVelocity [(_vel select 0) + (sin _dir * _speed), (_vel select 1) + (cos _dir * _speed), (_vel select 2) + _height];
+                [player, "AovrPercMrunSrasWrflDf"] remoteExecCall ["switchMove"];
+                player spawn {
+                    sleep 2;
+                    _this setVariable ["is_jumping", false, true];
+                };
+            };
+            _handled = true;
+        };
     };
 };
 _handled;  

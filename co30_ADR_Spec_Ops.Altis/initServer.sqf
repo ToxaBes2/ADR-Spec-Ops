@@ -300,3 +300,14 @@ if (_continue) then {
         };
     };    
 };
+
+_showFPS = "ShowFPS" call BIS_fnc_getParamValue;
+if (_showFPS == 1) then {
+    [] spawn {
+        while {true} do {
+            SERVER_FPS = round diag_fps;
+            publicVariable "SERVER_FPS";
+            sleep 3;
+        };  
+    };
+};

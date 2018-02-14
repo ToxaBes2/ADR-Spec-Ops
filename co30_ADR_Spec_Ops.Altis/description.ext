@@ -106,10 +106,10 @@ class CfgFunctions
 	    };
 	};
 
-class RscTitles
-	{
-		#include "scripts\vehicle\crew\namesleft.hpp"	// Occupants HUD for vehicles
-	};
+class RscTitles	{
+	#include "scripts\vehicle\crew\namesleft.hpp"	// Occupants HUD for vehicles
+	#include "scripts\statusBar\statusBar.hpp"      // FPS status bar
+};
 
 // this sounds taken from task-force-arma-3-radio (https://github.com/michail-nikolaev/task-force-arma-3-radio) by Michail Nicolaev
 class CfgSounds
@@ -304,6 +304,13 @@ class Params {
 		texts[] = {"Реальная","Aрхивная"};
 		default = 0;
 	};
+
+	class ShowFPS {
+        title = "Вывод FPS на экран";
+		texts[] = {"Выключено","Включено"};
+		values[] = {0,1};
+		default = 1;
+    };
 };
 
 //------------------------- Notifications

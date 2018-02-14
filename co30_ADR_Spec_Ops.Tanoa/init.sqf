@@ -1,4 +1,22 @@
-if (!hasInterface && !isDedicated) exitWith {};
+if (!hasInterface && !isDedicated) exitWith {
+    _showFPS = "ShowFPS" call BIS_fnc_getParamValue;
+    if (_showFPS == 1) then {
+        [] spawn {
+            while {true} do {
+            	if !(isNil "HC1") then {
+                    HC1_FPS = round diag_fps;
+                    publicVariable "HC1_FPS";
+                    sleep 3;
+                };
+                if !(isNil "HC2") then {
+                    HC2_FPS = round diag_fps;
+                    publicVariable "HC2_FPS";
+                    sleep 3;
+                };
+            };
+        };
+    };
+};
 [] spawn {_this call compile preProcessFileLineNumbers "scripts\AI\init.sqf"};                                      // AI custom system
 [] spawn {_this call compile preProcessFileLineNumbers "scripts\radio\createChannels.sqf"};                         // Custom channels
 [] spawn {_this call compile preProcessFileLineNumbers "scripts\radio\speakEvent.sqf"};                             // Radio effects (psh-psh)
