@@ -30,6 +30,9 @@ if (!TIMER_IN_USE) then {
         };
     };
 
+    NUCLEAR_TIMER_SIDE = side player;
+    publicVariable "NUCLEAR_TIMER_SIDE";
+
     // Play animation
     player playMove ("Ainv" + _stance + "Mstp" + _raised + _weapon + "Dnon_Putdown_Amov" + _stance + "Mstp" + _raised + _weapon + "Dnon");
 

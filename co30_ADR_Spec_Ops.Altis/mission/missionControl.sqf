@@ -37,7 +37,7 @@ AVANPOST_COORDS = false; publicVariable "AVANPOST_COORDS";
 AVANPOST_RESPAWN = false; publicVariable "AVANPOST_RESPAWN";
 while { true } do {	
     if (PARAMS_SideObjectives == 1) then {
-    	[] spawn QS_fnc_clearInfo;
+    	[] spawn QS_fnc_clearInfo;    	
         hqSideChat = "Вторичная цель выявлена, ждите указаний!"; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
 	    _mission = selectRandom _missionList;
 	    if !(isNil "LAST_SIDE_MISSION") then {
@@ -49,6 +49,7 @@ while { true } do {
 	    publicVariable "LAST_SIDE_MISSION";
 	    WIN_WEST = 0; publicVariable "WIN_WEST";
         WIN_GUER = 0; publicVariable "WIN_GUER";
+        MISSION_START_TIME = time; publicVariable "MISSION_START_TIME";
 	    currentMission = [_mission] spawn {_this call compile preProcessFileLineNumbers format ["mission\side\missions\%1.sqf", _this select 0]};
 	    waitUntil {
 	    	sleep _loopTimeout;

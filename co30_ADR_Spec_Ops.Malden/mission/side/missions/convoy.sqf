@@ -136,6 +136,11 @@ for "_i" from 0 to ((count _vehicles) - 1) do {
             _basePos = getMarkerPos "respawn_west";
             _curObj = _this select 0;
             _curObj setDamage 0.9;
+            _unit = _this select 1;
+            _side = side _unit;
+            if (_side == west || _side == resistance) then {
+                NUCLEAR_TIMER_SIDE = _side; publicVariable "NUCLEAR_TIMER_SIDE";
+            };
             _epicenter = getPos _curObj;
             if (isServer) then {
                 convoyVclDestroyed = true; publicVariable "convoyVclDestroyed";

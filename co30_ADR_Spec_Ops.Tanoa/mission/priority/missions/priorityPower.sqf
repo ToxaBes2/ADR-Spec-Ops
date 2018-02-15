@@ -34,9 +34,10 @@ while {!_accepted} do {
 _objPos = [_flatPos, 20, 50, 10, 0, 0.5, 0, [], [_flatPos]] call QS_fnc_findSafePos;
 
 // SPAWN OBJECTIVE
-sideObj = "Land_Communication_F" createVehicle _flatPos;
+sideObj = "Land_Communication_F" createVehicle [0,0,100];
 waitUntil {!isNull sideObj};
 sideObj allowDamage false;
+sideObj setPos _flatPos;
 sideObj setDir random 360;
 house = "Land_Cargo_HQ_V4_F" createVehicle _objPos;
 house setDir 180;
@@ -66,13 +67,15 @@ sleep 0.3;
 tower1 = "Land_Cargo_Patrol_V4_F" createVehicle _tower1;
 tower2 = "Land_Cargo_Patrol_V4_F" createVehicle _tower2;
 tower3 = "Land_Cargo_Patrol_V4_F" createVehicle _tower3;
-power = "Land_DieselGroundPowerUnit_01_F" createVehicle _power;
+power = "Land_DieselGroundPowerUnit_01_F" createVehicle [0,0,120];
 power allowDamage false;
+power setPos _power;
 light = "Land_PortableLight_double_F" createVehicle _light;
 light setDir 0;
-EWCar = "O_Truck_03_repair_F" createVehicle _EWCar;
-EWCar addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
+EWCar = "O_Truck_03_repair_F" createVehicle [0,0,140];
 EWCar allowDamage false;
+EWCar setPos _EWCar;
+EWCar addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 EWCar setFuel 0;
 AwardCar = "O_Truck_03_ammo_F" createVehicle _AwardCar;
 AwardCar addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];

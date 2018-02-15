@@ -111,7 +111,19 @@ if (count _secondObjects > 0) then {
         {
             _x addCuratorEditableObjects [[_obj], true];
         } forEach allCurators;
-        _obj addMPEventHandler ["MPKilled", {MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";}];
+        _obj addMPEventHandler ["MPKilled", {
+            _unit = _this select 1;
+            _side = side _unit;
+            if (_side == west || _side == resistance) then {
+                // nothing to do
+            } else {
+                if !(isNil "NUCLEAR_TIMER_SIDE") then {
+                    _side = NUCLEAR_TIMER_SIDE;
+                };
+            };
+            WinBunker = _side; publicVariable "WinBunker";
+            MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";
+        }];
         [_obj, "QS_fnc_addActionTakeControl", nil, true] spawn BIS_fnc_MP;
     };
 };
@@ -162,17 +174,25 @@ radioTower addEventHandler
 ];
 radioTower addEventHandler
 [
-	"Killed",
-	{
-	    _points = 10;
+    "Killed",
+    {
+        _points = 10;
         _unit = _this select 1;
+        _side = side _unit;
+        if (_side == west || _side == resistance) then {
+            // nothing to do
+        } else {
+            if !(isNil "NUCLEAR_TIMER_SIDE") then {
+                _side = NUCLEAR_TIMER_SIDE;
+            };
+        };
         _unit addScore _points;
-		["ScoreBonus", ["Радиовышка уничтожена!", _points]] remoteExec ["BIS_fnc_showNotification", _unit];
-        WinRadiotower = side _unit; publicVariable "WinRadiotower";
-        if (side _unit == resistance) then {
+        ["ScoreBonus", ["Радиовышка уничтожена!", _points]] remoteExec ["BIS_fnc_showNotification", _unit];
+        WinRadiotower = _side; publicVariable "WinRadiotower";
+        if (_side == resistance) then {
             [2] call QS_fnc_partizanSUCCESS;
         };
-	}
+    }
 ];
 
 // Spawn minefield
@@ -445,4 +465,5 @@ _vehs = nearestObjects [_positionAO, ["LandVehicle"], (PARAMS_AOSize* 1.4)];
         deleteVehicle _x;
     };
 } forEach _vehs;
+NUCLEAR_TIMER_SIDE = nil; publicVariable "NUCLEAR_TIMER_SIDE";
 true

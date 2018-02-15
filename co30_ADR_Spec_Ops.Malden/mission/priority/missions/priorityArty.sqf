@@ -23,33 +23,36 @@ while {!_accepted} do {
 		_accepted = true;
 	};
 };
-_flatPos1 = [(_flatPos select 0) - 4, (_flatPos select 1) - 4, (_flatPos select 2)];
-_flatPos2 = [(_flatPos select 0) + 4, (_flatPos select 1) + 4, (_flatPos select 2)];
-_flatPos3 = [(_flatPos select 0) + 24, (_flatPos select 1) + 24, (_flatPos select 2)];
+_flatPos1 = [(_flatPos select 0) - 4, (_flatPos select 1) - 4, 1];
+_flatPos2 = [(_flatPos select 0) + 4, (_flatPos select 1) + 4, 1];
+_flatPos3 = [(_flatPos select 0) + 24, (_flatPos select 1) + 24, 1];
 
 // 2. SPAWN OBJECTIVES
 _PTdir = random 360;
 sleep 0.3;
-priorityObj1 = "O_MBT_02_arty_F" createVehicle _flatPos1;
+priorityObj1 = "O_MBT_02_arty_F" createVehicle [0,0,100];
 waitUntil {!isNull priorityObj1};
-priorityObj1 addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 priorityObj1 allowDamage false;
+priorityObj1 setPos _flatPos1;
+priorityObj1 addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 priorityObj1 setDir _PTdir;
 sleep 0.3;
-priorityObj2 = "O_MBT_02_arty_F" createVehicle _flatPos2;
+priorityObj2 = "O_MBT_02_arty_F" createVehicle [0,0,120];
 waitUntil {!isNull priorityObj2};
-priorityObj2 addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 priorityObj2 allowDamage false;
+priorityObj2 setPos _flatPos2;
+priorityObj2 addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 priorityObj2 setDir _PTdir;
 sleep 0.3;
 priorityObj1 addEventHandler ["Fired", {if (!isPlayer (gunner priorityObj1)) then { priorityObj1 setVehicleAmmo 1; }; }];
 priorityObj2 addEventHandler ["Fired", {if (!isPlayer (gunner priorityObj2)) then { priorityObj2 setVehicleAmmo 1; }; }];
 
 // SPAWN AMMO TRUCK (for ambiance and plausibiliy of unlimited ammo)
-ammoTruck = "O_Truck_03_ammo_F" createVehicle _flatPos3;
+ammoTruck = "O_Truck_03_ammo_F" createVehicle [0,0,140];
 waitUntil {!isNull ammoTruck};
-ammoTruck addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 ammoTruck allowDamage false;
+ammoTruck setPos _flatPos3;
+ammoTruck addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 ammoTruck setDir random 360;
 {_x lock 0;} forEach [priorityObj1, priorityObj2, ammoTruck];
 

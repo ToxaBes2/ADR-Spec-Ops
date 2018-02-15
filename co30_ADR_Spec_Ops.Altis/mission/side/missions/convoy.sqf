@@ -146,6 +146,11 @@ for "_i" from 0 to ((count _vehicles) - 1) do {
             _curObj = _this select 0;
             _curObj setDamage 0.9;
             _epicenter = getPos _curObj;
+            _unit = _this select 1;
+            _side = side _unit;
+            if (_side == west || _side == resistance) then {
+                NUCLEAR_TIMER_SIDE = _side; publicVariable "NUCLEAR_TIMER_SIDE";
+            };
             if (isServer) then {
                 convoyVclDestroyed = true; publicVariable "convoyVclDestroyed";
                 _bigBomb = createVehicle ["Bo_GBU12_LGB", _epicenter, [], 0, "NONE"];
