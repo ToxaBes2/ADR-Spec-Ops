@@ -113,6 +113,7 @@ class QS
 		class respawnAvanpost {};
 		class serverMapTP {};
 		class setBaseBlufor {};
+		class setBaseResistance {};
 		class setSkill1 {};
 		class setSkill2 {};
 		class setSkill3 {};
@@ -124,6 +125,7 @@ class QS
 		class uh80TurretActions {};
 		class updateArsenal {};
 		class updateBaseBlufor {};
+		class updateBaseResistance {};
 		class vMonitor {};
 		class vSetup02 {};
 	};

@@ -43,15 +43,15 @@ switch (_mode) do {
     case 1 : {
         BLUFOR_BASE_SCORE = BLUFOR_BASE_SCORE + 1; publicVariable "BLUFOR_BASE_SCORE";
         [BLUFOR_BASE_SCORE] call QS_fnc_setBaseBlufor;        
-        _completeText = format["<t align='center'><t size='2.2'>Основное задание</t><br/><t size='1.5' color='#C6FF00'>выполненно регулярной армией</t><br/>____________________<br/>Уровень базы регулярной армии увеличился на 1.<br/><br/><t size='1.1' color='#FFC107'>Новый уровень: %1</t</t>", BLUFOR_BASE_SCORE];
+        _completeText = format["<t align='center'><t size='2.2'>Основное задание</t><br/><t size='1.5' color='#C6FF00'>выполненно регулярной армией</t><br/>____________________<br/>Уровень базы регулярной армии увеличился на 1.<br/><br/><t size='1.1' color='#FFC107'>Новый уровень: %1</t></t>", BLUFOR_BASE_SCORE];
         showNotification = ["Reward", _vehName, resistance];
     }; 
     case 3 : { 
-        _completeText = format["<t align='center'><t size='2.2'>Допзадание</t><br/><t size='1.5' color='#C6FF00'>выполненно регулярной армией</t><br/>____________________<br/>За успешное проведение, непосредственные участники задания получают в награду:<br/><br/><t size='1.1' color='#FFC107'>%1</t</t>", _vehName];    
+        _completeText = format["<t align='center'><t size='2.2'>Допзадание</t><br/><t size='1.5' color='#C6FF00'>выполненно регулярной армией</t><br/>____________________<br/>За успешное проведение, непосредственные участники задания получают в награду:<br/><br/><t size='1.1' color='#FFC107'>%1</t></t>", _vehName];    
         showNotification = ["CompletedSideMission", sideMarkerText];
     };
     case 4 : { 
-        _completeText = format["<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#C6FF00'>выполнена регулярной армией</t><br/>____________________<br/>За успешное проведение, непосредственные участники задания получают в награду:<br/><br/><t size='1.1' color='#FFC107'>%1</t</t>", _vehName];    
+        _completeText = format["<t align='center'><t size='2.2'>Спецоперация</t><br/><t size='1.5' color='#C6FF00'>выполнена регулярной армией</t><br/>____________________<br/>За успешное проведение, непосредственные участники задания получают в награду:<br/><br/><t size='1.1' color='#FFC107'>%1</t></t>", _vehName];    
         showNotification = ["CompletedSpecMission", sideMarkerText]; 
     };
 };

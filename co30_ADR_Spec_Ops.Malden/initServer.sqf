@@ -258,6 +258,7 @@ if (_continue) then {
 [] spawn {
     sleep 10;
     [BLUFOR_BASE_SCORE] call QS_fnc_setBaseBlufor;
+    [PARTIZAN_BASE_SCORE] call QS_fnc_setBaseResistance;
 };
 
 // show restart warnings

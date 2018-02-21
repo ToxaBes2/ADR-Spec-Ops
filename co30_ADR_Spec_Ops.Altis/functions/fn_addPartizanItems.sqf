@@ -3,6 +3,11 @@ Author: ToxaBes
 Description: add partizan items on init load
 */
 _player = _this select 0;
+_level = 0;
+if !(isNil "PARTIZAN_BASE_SCORE") then {
+    _level = PARTIZAN_BASE_SCORE;
+};
+
 _uniform = ["U_BG_Guerilla1_1","U_BG_Guerilla2_1","U_BG_Guerilla2_2","U_BG_Guerilla2_3","U_BG_Guerilla3_1","U_BG_Guerilla3_2","U_BG_Guerilla6_1",
 "U_BG_Guerrilla_6_1","U_BG_leader","U_IG_Guerrilla_6_1","U_IG_leader","U_I_G_resistanceLeader_F","U_OG_Guerilla1_1","U_OG_Guerilla2_1",
 "U_OG_Guerilla2_2","U_OG_Guerilla2_3","U_OG_Guerilla3_1","U_OG_Guerilla3_2","U_OG_Guerrilla_6_1","U_OG_leader"];
@@ -19,8 +24,6 @@ _googles = ["G_Aviator","G_Balaclava_blk","G_Balaclava_lowprofile","G_Balaclava_
 "G_Bandanna_khk","G_Bandanna_oli","G_Bandanna_shades","G_Bandanna_sport","G_Bandanna_tan","G_Lowprofile","G_Shades_Black",
 "G_Shades_Blue","G_Shades_Green","G_Shades_Red","G_Spectacles","G_Spectacles_Tinted","G_Sport_Blackred","G_Sport_Blackyellow",
 "G_Sport_Checkered","G_Sport_Greenblack","G_Sport_Red","G_Squares","G_Squares_Tinted","G_balaclava_combat"];
-//_weapons = ["arifle_Mk20_F","arifle_Mk20C_F","arifle_Mk20_plain_F","arifle_Mk20C_plain_F","arifle_TRG20_F","arifle_TRG21_F"];
-
 _weapons = [
     ["hgun_ACPC2_F", ["9Rnd_45ACP_Mag"]],
     ["hgun_ACPC2_snds_F", ["9Rnd_45ACP_Mag"]],
@@ -46,10 +49,25 @@ _weapons = [
     ["SMG_02_ARCO_pointg_F", ["30Rnd_9x21_Mag_SMG_02","30Rnd_9x21_Mag_SMG_02_Tracer_Red","30Rnd_9x21_Mag_SMG_02_Tracer_Yellow","30Rnd_9x21_Mag_SMG_02_Tracer_Green","30Rnd_9x21_Mag","30Rnd_9x21_Red_Mag","30Rnd_9x21_Yellow_Mag","30Rnd_9x21_Green_Mag"], "muzzle_snds_L"]
 ];
 
+if (_level > 1 && _level < 11) then {
+    _weapons = [
+        ["arifle_Mk20_F", ["30Rnd_556x45_Stanag"]],
+        ["arifle_Mk20C_F", ["30Rnd_556x45_Stanag"]],
+        ["arifle_Mk20_plain_F", ["30Rnd_556x45_Stanag"]],
+        ["arifle_Mk20C_plain_F", ["30Rnd_556x45_Stanag"]],
+        ["arifle_TRG20_F", ["30Rnd_556x45_Stanag"]],
+        ["arifle_TRG21_F", ["30Rnd_556x45_Stanag"]]
+    ];
+};
+
 // check for Apex DLC to allow dlc weapons
 if (395180 in (getDLCs 1)) then {
-    //_weapons = ["arifle_Mk20_F","arifle_Mk20C_F","arifle_Mk20_plain_F","arifle_Mk20C_plain_F","arifle_TRG20_F","arifle_TRG21_F","arifle_AKS_F"];
-    _weapons append [["hgun_Pistol_01_F", ["10Rnd_9x21_Mag"]],["SMG_05_F", ["30Rnd_9x21_Mag_SMG_02","30Rnd_9x21_Mag_SMG_02_Tracer_Red","30Rnd_9x21_Mag_SMG_02_Tracer_Yellow","30Rnd_9x21_Mag_SMG_02_Tracer_Green"], "muzzle_snds_L"]];
+    if (_level == 0) then {
+        _weapons append [["hgun_Pistol_01_F", ["10Rnd_9x21_Mag"]],["SMG_05_F", ["30Rnd_9x21_Mag_SMG_02","30Rnd_9x21_Mag_SMG_02_Tracer_Red","30Rnd_9x21_Mag_SMG_02_Tracer_Yellow","30Rnd_9x21_Mag_SMG_02_Tracer_Green"], "muzzle_snds_L"]];    
+    };
+    if (_level > 1 && _level < 11) then {
+        _weapons append [["arifle_AKS_F", ["30Rnd_545x39_Mag_F"]]];
+    };
 };
 
 removeAllweapons _player;
@@ -122,10 +140,23 @@ if ((handgunWeapon _player) != "") then {
 };
 
 // add needed things in partizan ammo
-//partizan_ammo addItemCargoGlobal ["U_I_Wetsuit", 1];
-//partizan_ammo addItemCargoGlobal ["V_RebreatherIA", 1];
-//partizan_ammo addItemCargoGlobal ["G_Diving", 1];
-//partizan_ammo addWeaponCargoGlobal ["arifle_SDAR_F", 1];
-//partizan_ammo addMagazineCargoGlobal ["20Rnd_556x45_UW_mag", 7];
-//partizan_ammo addItemCargoGlobal ["FirstAidKit", 5];
+if (_level > 0) then {
+    _items = itemCargo partizan_ammo;
+    if !("U_I_Wetsuit" in _items) then {
+        partizan_ammo addItemCargoGlobal ["U_I_Wetsuit", 1];
+    };
+    if !("V_RebreatherIA" in _items) then {
+        partizan_ammo addItemCargoGlobal ["V_RebreatherIA", 1];
+    };
+    if !("G_I_Diving" in _items) then {
+        partizan_ammo addItemCargoGlobal ["G_I_Diving", 1];
+    };
+    if !("arifle_SDAR_F" in _items) then {
+        partizan_ammo addWeaponCargoGlobal ["arifle_SDAR_F", 1];
+    };
+    if !("20Rnd_556x45_UW_mag" in _items) then {
+        partizan_ammo addMagazineCargoGlobal ["20Rnd_556x45_UW_mag", 5];
+    };
+};
+
 true

@@ -8,7 +8,7 @@ class EditorData
 	toggles=9;
 	class ItemIDProvider
 	{
-		nextID=3529;
+		nextID=3530;
 	};
 	class MarkerIDProvider
 	{
@@ -16,7 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=2921;
+		nextID=2989;
 	};
 	class Camera
 	{
@@ -675,7 +675,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=816;
+		items=817;
 		class Item0
 		{
 			dataType="Object";
@@ -9350,8 +9350,8 @@ class Mission
 						};
 						class Attribute1
 						{
-							property="face";
-							expression="_this setface _value;";
+							property="enableStamina";
+							expression="_this enablestamina _value;";
 							class Value
 							{
 								class data
@@ -9360,10 +9360,10 @@ class Mission
 									{
 										type[]=
 										{
-											"STRING"
+											"BOOL"
 										};
 									};
-									value="WhiteHead_15";
+									value=0;
 								};
 							};
 						};
@@ -9407,8 +9407,8 @@ class Mission
 						};
 						class Attribute4
 						{
-							property="enableStamina";
-							expression="_this enablestamina _value;";
+							property="face";
+							expression="_this setface _value;";
 							class Value
 							{
 								class data
@@ -9417,10 +9417,10 @@ class Mission
 									{
 										type[]=
 										{
-											"BOOL"
+											"STRING"
 										};
 									};
-									value=0;
+									value="WhiteHead_15";
 								};
 							};
 						};
@@ -31752,6 +31752,17 @@ class Mission
 			type="mil_warning";
 			colorName="ColorWhite";
 			id=3528;
+			atlOffset=1.3541944e+038;
+		};
+		class Item816
+		{
+			dataType="Marker";
+			position[]={6842.0527,1.3541944e+038,16199.92};
+			name="level_resistance";
+			text="Уровень базы: 0";
+			type="mil_warning";
+			colorName="ColorWhite";
+			id=3529;
 			atlOffset=1.3541944e+038;
 		};
 	};

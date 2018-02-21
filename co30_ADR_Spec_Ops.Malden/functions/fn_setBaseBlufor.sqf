@@ -14,6 +14,7 @@ if (worldName == "Malden") then {
     _map = 2;
 };
 BLUFOR_BASE_SCORE = _level; publicVariable "BLUFOR_BASE_SCORE";
-"level_blufor" setMarkerText format ["Уровень базы: %1", _level];
 [_level] remoteExec ["QS_fnc_updateBaseBlufor", 2];
 ["setBaseScoreBlufor",[_map, _level], 0] remoteExec ["sqlServerCall", 2];
+"level_blufor" setMarkerText format ["Уровень базы: %1", _level];
+["level_blufor", 0] remoteExec ["setMarkerAlphaLocal", resistance];

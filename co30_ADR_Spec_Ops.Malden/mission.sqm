@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1227;
+		nextID=1228;
 	};
 	class MarkerIDProvider
 	{
@@ -425,7 +425,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=773;
+		items=774;
 		class Item0
 		{
 			dataType="Marker";
@@ -27121,6 +27121,17 @@ class Mission
 			type="mil_warning";
 			colorName="ColorWhite";
 			id=1226;
+			atlOffset=1.3541944e+038;
+		};
+		class Item773
+		{
+			dataType="Marker";
+			position[]={5736.9824,1.3541944e+038,13794.887};
+			name="level_resistance";
+			text="Уровень базы: 0";
+			type="mil_warning";
+			colorName="ColorWhite";
+			id=1227;
 			atlOffset=1.3541944e+038;
 		};
 	};

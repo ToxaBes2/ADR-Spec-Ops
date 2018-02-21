@@ -200,6 +200,7 @@ if (playerSide == west) then {
 	"partizan_dock12" setMarkerAlphaLocal 0;
 	"partizan_dock13" setMarkerAlphaLocal 0;
 	"level_blufor" setMarkerAlphaLocal 1;
+	"level_resistance" setMarkerAlphaLocal 0;
 } else {
     "partizan_base" setMarkerAlphaLocal 1;
 	"partizan_vehicle" setMarkerAlphaLocal 1;
@@ -234,6 +235,7 @@ if (playerSide == west) then {
 	"partizan_dock12" setMarkerAlphaLocal 1;
 	"partizan_dock13" setMarkerAlphaLocal 1;
 	"level_blufor" setMarkerAlphaLocal 0;
+	"level_resistance" setMarkerAlphaLocal 1;
 };
 
 // Remove color corrections effects
