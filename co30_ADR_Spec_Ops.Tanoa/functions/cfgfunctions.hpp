@@ -14,6 +14,8 @@ class QS
 		class clearItemsBase {};
 		class CheckVisionMode {};
 		class darter {};
+		class darterAntimine {};
+		class darterAPmine {};
 		class darterPelican {};
 		class DeleteEnemyEAST {};
 		class diplomacySwitch {};

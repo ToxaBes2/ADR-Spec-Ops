@@ -3,12 +3,21 @@ private ["_pilots", "_btc_tk_prison", "_tk", "_rules", "_playerType", "_null"];
 if (typeOf player in ["B_Soldier_SL_F", "B_T_Soldier_SL_F"]) then {
     player addAction ["<t color='#D8D80E'><img image='\A3\ui_f\data\gui\cfg\CommunicationMenu\call_ca.paa' size='1.0'/> Поддержка</t>", "scripts\commander\tools.sqf", "", -99, false, true];   // Commander tools
 };
+if (typeOf player in ["I_G_engineer_F", "I_C_Soldier_Para_8_F"]) then {
+    player addAction ["<t color='#D8D80E'><img image='\A3\ui_f\data\gui\cfg\CommunicationMenu\call_ca.paa' size='1.0'/> Поддержка</t>", "scripts\commander\partizan_tools.sqf", "", -99, false, true];   // Commander tools
+};
 if (typeOf player in ["B_engineer_F", "B_T_Engineer_F"]) then {
     player addAction ["<t color='#D8D80E'>Вызвать AR-2 дартер</t>", QS_fnc_darter, "", -99, false, true];
     player addAction ["<t color='#D8D80E'>Вызвать AL-6 дартер</t>", QS_fnc_darterPelican, 0, -99, false, true];  
 };
 if (typeOf player in ["I_G_engineer_F"]) then {
     player addAction ["<t color='#D8D80E'>Вызвать AL-6 дартер</t>", QS_fnc_darterPelican, 1, -99, false, true];
+    if (PARTIZAN_BASE_SCORE > 3) then {
+        player addAction ["<t color='#D8D80E'>Вызвать разминирующий дартер</t>", QS_fnc_darterAntimine, 0, -99, false, true];
+    }; 
+    if (PARTIZAN_BASE_SCORE > 12) then {
+        player addAction ["<t color='#D8D80E'>Вызвать дартер с минами</t>", QS_fnc_darterAPmine, 0, -99, false, true];
+    }; 
 };
 
 //=========================== PILOTS ONLY

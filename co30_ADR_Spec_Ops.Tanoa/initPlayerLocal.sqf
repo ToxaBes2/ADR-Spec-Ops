@@ -418,6 +418,7 @@ setObjectViewDistance [1000,50];
 
 // Apply arsenal changes
 if (playerSide == west) then {
+    player removeWeapon (primaryWeapon player);
     if !(isNil "BLUFOR_BASE_SCORE") then {
         [BLUFOR_BASE_SCORE] call QS_fnc_updateArsenal;
     };

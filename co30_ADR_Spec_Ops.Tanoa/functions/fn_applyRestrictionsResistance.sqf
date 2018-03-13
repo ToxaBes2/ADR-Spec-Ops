@@ -113,13 +113,15 @@ if (({_x in _optics} count _marksmanOpticsItems) > 0) then {
 };
 
 // Ghillie
-_uniform = format ["%1", uniform _player];
-if (_uniform != "") then {
-    if (_uniform in _ghillieItems) then {
-    	if (({_player isKindOf _x} count _ghillieGroups) < 1) then {
-    		removeUniform _player;
-    		[format ["<t color='#F44336' size = '.55'>%1</t>", GHILLIIE_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
-    	};
+if (PARTIZAN_BASE_SCORE < 29) then {
+    _uniform = format ["%1", uniform _player];
+    if (_uniform != "") then {
+        if (_uniform in _ghillieItems) then {
+        	if (({_player isKindOf _x} count _ghillieGroups) < 1) then {
+        		removeUniform _player;
+        		[format ["<t color='#F44336' size = '.55'>%1</t>", GHILLIIE_MSG], 0, 1, 5, 0, 0] spawn BIS_fnc_dynamicText;
+        	};
+        };
     };
 };
 

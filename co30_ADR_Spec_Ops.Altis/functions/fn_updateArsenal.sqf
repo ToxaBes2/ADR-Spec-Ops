@@ -7,7 +7,7 @@ _level = _this select 0;
 _initialWList = ["hgun_Pistol_Signal_F","hgun_P07_F","hgun_Pistol_01_F","hgun_Rook40_F","hgun_P07_snds_F","hgun_Rook40_snds_F","hgun_Pistol_heavy_01_F",
 "hgun_Pistol_heavy_02_F","hgun_Pistol_heavy_01_snds_F","hgun_Pistol_heavy_01_MRD_F","hgun_Pistol_heavy_02_Yorris_F","hgun_ACPC2_F","hgun_ACPC2_snds_F",
 "Binocular","Rangefinder","Laserdesignator","MineDetector","arifle_SDAR_F","launch_NLAW_F","arifle_MX_F","arifle_MXC_F","arifle_MXM_F","arifle_MX_GL_F",
-"arifle_MX_SW_F","srifle_LRR_camo_F"];
+"arifle_MX_SW_F","srifle_LRR_camo_F","SMG_01_F","arifle_MX_F","arifle_MX_SW_F","arifle_MXM_F","srifle_LRR_camo_F","arifle_MXC_F"];
 
 _allWList = ["srifle_GM6_camo_F","srifle_LRR_camo_F","hgun_Pistol_Signal_F","hgun_P07_F","hgun_Rook40_F","hgun_P07_snds_F","hgun_Rook40_snds_F",
 "hgun_Pistol_heavy_01_F","hgun_Pistol_heavy_02_F","hgun_Pistol_heavy_01_snds_F","hgun_Pistol_heavy_01_MRD_F","hgun_Pistol_heavy_02_Yorris_F","SMG_01_F",
@@ -31,7 +31,8 @@ _bluforWList = ["hgun_PDW2000_F","SMG_01_F","SMG_05_F","arifle_MXM_Black_F","ari
     "arifle_MX_SW_Black_F","srifle_LRR_F","launch_B_Titan_F","launch_B_Titan_short_F","srifle_EBR_F","srifle_DMR_02_F","srifle_DMR_02_camo_F",
     "srifle_DMR_02_sniper_F","srifle_DMR_03_F","srifle_DMR_03_khaki_F","srifle_DMR_03_tan_F","srifle_DMR_03_multicam_F","srifle_DMR_03_woodland_F",
     "MMG_02_camo_F","MMG_02_black_F","MMG_02_sand_F","MMG_02_black_RCO_BI_F","arifle_SPAR_03_snd_F","arifle_SPAR_03_blk_F","arifle_SPAR_02_snd_F",
-    "arifle_SPAR_02_blk_F","arifle_SPAR_01_snd_F","arifle_SPAR_01_blk_F","arifle_SPAR_01_GL_snd_F","arifle_SPAR_01_GL_blk_F"];
+    "arifle_SPAR_02_blk_F","arifle_SPAR_01_snd_F","arifle_SPAR_01_blk_F","arifle_SPAR_01_GL_snd_F","arifle_SPAR_01_GL_blk_F","SMG_01_F","arifle_MX_F",
+    "arifle_MX_SW_F","arifle_MXM_F","srifle_LRR_camo_F","arifle_MXC_F"];
 
 _resistanceWList = ["LMG_Mk200_BI_F","LMG_Mk200_F","arifle_Mk20_F","arifle_Mk20C_F","arifle_Mk20_GL_F","arifle_Mk20_plain_F","arifle_Mk20C_plain_F",
 "arifle_Mk20_GL_plain_F","arifle_TRG20_F","arifle_TRG21_F","arifle_TRG21_GL_F","srifle_DMR_06_olive_F","srifle_DMR_06_camo_F"];
@@ -43,30 +44,27 @@ _opforWList = ["srifle_GM6_F","arifle_Katiba_GL_F","arifle_Katiba_F","arifle_Kat
 _indWList = ["LMG_03_F","launch_RPG7_F","arifle_AK12_F","arifle_AKM_F","arifle_AKS_F","arifle_AK12_GL_F"];
 
 [ammo1, _allWList, true, false] call BIS_fnc_removeVirtualWeaponCargo;
-[ammo1, _initialWList, true, false] call BIS_fnc_addVirtualWeaponCargo;
 [base_arsenal_infantry, _allWList, true, false] call BIS_fnc_removeVirtualWeaponCargo;
-[base_arsenal_infantry, _initialWList, true, false] call BIS_fnc_addVirtualWeaponCargo;
 
 // Arsenal #1
 if (_level > 1) then {        
-    [ammo1, _bluforWList, true, false] call BIS_fnc_addVirtualWeaponCargo;
-    [base_arsenal_infantry, _bluforWList, true, false] call BIS_fnc_addVirtualWeaponCargo;
+    _initialWList = _initialWList + _bluforWList;
 };
 
 // Arsenal #2
 if (_level > 10) then {        
-    [ammo1, _resistanceWList, true, false] call BIS_fnc_addVirtualWeaponCargo;
-    [base_arsenal_infantry, _resistanceWList, true, false] call BIS_fnc_addVirtualWeaponCargo;
+    _initialWList = _initialWList + _resistanceWList;
 };
 
 // Arsenal #3
 if (_level > 19) then {        
-    [ammo1, _opforWList, true, false] call BIS_fnc_addVirtualWeaponCargo;
-    [base_arsenal_infantry, _opforWList, true, false] call BIS_fnc_addVirtualWeaponCargo;
+    _initialWList = _initialWList + _opforWList;
 };
 
 // Arsenal #4
 if (_level > 28) then {        
-    [ammo1, _indWList, true, false] call BIS_fnc_addVirtualWeaponCargo;
-    [base_arsenal_infantry, _indWList, true, false] call BIS_fnc_addVirtualWeaponCargo;
+    _initialWList = _initialWList + _indWList;
 };
+
+[ammo1, _initialWList, true, false] call BIS_fnc_addVirtualWeaponCargo;
+[base_arsenal_infantry, _initialWList, true, false] call BIS_fnc_addVirtualWeaponCargo;

@@ -379,7 +379,7 @@ if (_additionalCheck) then {
             _initialWList = ["hgun_Pistol_Signal_F","hgun_P07_F","hgun_Pistol_01_F","hgun_Rook40_F","hgun_P07_snds_F","hgun_Rook40_snds_F","hgun_Pistol_heavy_01_F",
 "hgun_Pistol_heavy_02_F","hgun_Pistol_heavy_01_snds_F","hgun_Pistol_heavy_01_MRD_F","hgun_Pistol_heavy_02_Yorris_F","hgun_ACPC2_F","hgun_ACPC2_snds_F",
 "Binocular","Rangefinder","Laserdesignator","MineDetector","arifle_SDAR_F","launch_NLAW_F","arifle_MX_F","arifle_MXC_F","arifle_MXM_F","arifle_MX_GL_F",
-"arifle_MX_SW_F","srifle_LRR_camo_F"];
+"arifle_MX_SW_F","srifle_LRR_camo_F","SMG_01_F"];
             _bluforWList = ["hgun_PDW2000_F","SMG_01_F","SMG_05_F","arifle_MXM_Black_F","arifle_MX_Black_F","arifle_MXC_Black_F","arifle_MX_GL_Black_F",
     "arifle_MX_SW_Black_F","srifle_LRR_F","launch_B_Titan_F","launch_B_Titan_short_F","srifle_EBR_F","srifle_DMR_02_F","srifle_DMR_02_camo_F",
     "srifle_DMR_02_sniper_F","srifle_DMR_03_F","srifle_DMR_03_khaki_F","srifle_DMR_03_tan_F","srifle_DMR_03_multicam_F","srifle_DMR_03_woodland_F",
