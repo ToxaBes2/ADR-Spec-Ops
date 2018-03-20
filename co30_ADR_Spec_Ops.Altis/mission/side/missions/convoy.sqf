@@ -75,6 +75,13 @@ GlobalHint = _briefing; hint parseText GlobalHint; publicVariable "GlobalHint";
 showNotification = ["NewSpecMission", "Конвой"]; publicVariable "showNotification";
 sideMissionUp = true; publicVariable "sideMissionUp";
 
+// save info in DB
+try {
+    _position = format ["%1,%2", floor (_flatPos select 0), floor (_flatPos select 1)];
+    ["setInfo",["spec_name", "Конвой"], 0] remoteExec ["sqlServerCall", 2];
+    ["setInfo",["spec_position", _position], 0] remoteExec ["sqlServerCall", 2];
+} catch {};
+
 // wait for player in zone, then wait a bit and spawn convoy
 canStart = false;
 _trig1 = createTrigger ["EmptyDetector", _flatPos, false];
@@ -536,13 +543,6 @@ while {!SM_CONVOY_SUCCESS && !SM_CONVOY_FAIL && _attackersLeft > 0} do {
     sleep 2;
 };
 [_startPoint, 200, ["vehicles", "fire"]] call QS_fnc_addHades;
-
-// save info in DB
-try {
-    _position = format ["%1,%2", floor (_flatPos select 0), floor (_flatPos select 1)];
-    ["setInfo",["spec_name", "Конвой"], 0] remoteExec ["sqlServerCall", 2];
-    ["setInfo",["spec_position", _position], 0] remoteExec ["sqlServerCall", 2];
-} catch {};
 
 while { sideMissionUp } do {
     sleep 2;

@@ -124,33 +124,33 @@ QS_fnc_iconDrawMap = compileFinal "
 	_textSize = 0.05;
 	_textFont = 'puristaMedium';
 	_textOffset = 'right';
+	_group = group player;
 	{
 		_v = vehicle _x;
-		if ((side _v == playerSide) || (playerSide == west && _v isKindOf 'B_Soldier_base_F') || (playerSide == resistance && _v isKindOf 'I_G_Soldier_base_F')) then {
-			_iconType = [_v] call QS_fnc_iconType;
-			_color = [_x] call QS_fnc_iconColor;
-			_pos = getPosASL _v;
-			_iconSize = [_v] call QS_fnc_iconSize;
-			_dir = getDir _v;
-			_text = [_v] call QS_fnc_iconText;
-
-			if (_x == crew _v select 0 || {_x in allUnitsUav}) then {
-				_this select 0 drawIcon [
-					_iconType,
-					_color,
-					_pos,
-					_iconSize,
-					_iconSize,
-					_dir,
-					_text,
-					_shadow,
-					_textSize,
-					_textFont,
-					_textOffset
-				];
-			};
-		};
-	} count (playableUnits + switchableUnits + allUnitsUav);
+		if (""ItemGPS"" in assignedItems player) then {
+		    if (_v distance2D player < 800) then {
+		    	_iconType = [_v] call QS_fnc_iconType;
+		    	_color = [_x] call QS_fnc_iconColor;
+		    	_pos = getPosASL _v;
+		    	_iconSize = [_v] call QS_fnc_iconSize;
+		    	_dir = getDir _v;
+		    	_text = [_v] call QS_fnc_iconText;    
+		    	_this select 0 drawIcon [
+		    		_iconType,
+		    		_color,
+		    		_pos,
+		    		_iconSize,
+		    		_iconSize,
+		    		_dir,
+		    		_text,
+		    		_shadow,
+		    		_textSize,
+		    		_textFont,
+		    		_textOffset
+		    	];
+		    };
+	    };
+	} count (units _group);
 ";
 
 //======================== DRAW GPS
@@ -231,9 +231,11 @@ QS_fnc_iconDrawFriendlyGPS = compileFinal "
 
 [] spawn {
 	sleep 0.1;
-	//===== INIT MAP
-	//waitUntil {sleep 0.1; !(isNull (findDisplay 12))};
-	//clientEhDrawMap = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw",QS_fnc_iconDrawMap];
+	//===== INIT MAP	
+	if (typeOf player in ["B_Soldier_SL_F","B_T_Soldier_SL_F","I_C_Soldier_Para_5_F","I_G_Soldier_LAT_F"]) then {
+		waitUntil {sleep 0.1; !(isNull (findDisplay 12))};
+	    clientEhDrawMap = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw", QS_fnc_iconDrawMap];
+    };
 
 	//===== INIT GPS (waits for GPS to open)
 	disableSerialization;

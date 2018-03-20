@@ -79,10 +79,12 @@ if (_level > 27) then {
         };
     };
 } else {
-    {
-        deleteVehicle _x;
-    } forEach (crew base_darter);
-    deleteVehicle base_darter;    
+    if (!isNil "base_darter") then {
+        {
+            deleteVehicle _x;
+        } forEach (crew base_darter);
+        deleteVehicle base_darter;    
+    };   
 };
 
 // Engeneer 4
