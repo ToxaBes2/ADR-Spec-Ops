@@ -9,6 +9,7 @@ _rewards = [
     ["Припасы OPFOR", ["Box_East_Support_F", "O_supplyCrate_F", "Box_East_Ammo_F"]],
     ["Оружие партизан", ["Box_AAF_Equip_F", "Box_IND_Wps_F", "Box_IND_WpsSpecial_F"]],
     ["Припасы партизан", ["Box_IND_Support_F", "IG_supplyCrate_F", "Box_IND_Ammo_F"]],
+    ["Оружие SMA", ["SMA_Weapon_Box"]],
     ["Снаряжение Синдиката", ["Box_Syndicate_Wps_F", "Box_Syndicate_Ammo_F"]],       
     ["Минно-взрывные средства", ["Box_NATO_AmmoOrd_F", "Box_East_AmmoOrd_F", "Box_IED_Exp_F"]],
     ["Пусковые установки", ["Box_NATO_WpsLaunch_F", "Box_East_WpsLaunch_F", "Box_IND_WpsLaunch_F", "Box_Syndicate_WpsLaunch_F"]],
