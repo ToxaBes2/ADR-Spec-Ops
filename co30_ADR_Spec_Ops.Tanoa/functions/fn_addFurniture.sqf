@@ -41,7 +41,7 @@ _positions = [
     ["Land_Tablet_02_F",-5.1,1.8,13.62,100],
     ["Land_OfficeChair_01_F",-4.2,1.1,12.8,90],
     ["Land_CampingTable_small_F",-0.5,1,12.8,270],
-    ["Box_East_WpsSpecial_F",2,-3.8,12.75,0],
+    ["Box_T_East_WpsSpecial_F",2,-3.8,12.75,0],
     ["Land_EngineCrane_01_F",4,3,15.35,45],
     ["O_CargoNet_01_ammo_F",3.25,2.25,15.35,45],
     ["Land_Pallet_MilBoxes_F",-2,2.2,15.35,180],
@@ -64,16 +64,32 @@ _positions = [
     _obj setDir _newDir;
     _obj enableSimulation false;
     _obj allowDamage false;
-    if (_name == "Box_East_WpsSpecial_F" || _name == "O_CargoNet_01_ammo_F") then {
+    if (_name == "Box_T_East_WpsSpecial_F" || _name == "O_CargoNet_01_ammo_F") then {
         clearItemCargoGlobal _obj;
         [_obj, "QS_fnc_addActionDestroy", nil, true] spawn BIS_fnc_MP;
+        if (_name == "O_CargoNet_01_ammo_F") then {
+            _obj addWeaponCargoGlobal ["arifle_ARX_hex_F", 2];
+            _obj addWeaponCargoGlobal ["arifle_ARX_ghex_F", 2];
+            _obj addWeaponCargoGlobal ["arifle_ARX_blk_F", 2];
+            _obj addWeaponCargoGlobal ["arifle_CTARS_blk_F", 2];
+            _obj addWeaponCargoGlobal ["arifle_CTAR_blk_F", 4];
+            _obj addWeaponCargoGlobal ["arifle_CTAR_GL_blk_F", 2];
+            _obj addWeaponCargoGlobal ["launch_RPG32_ghex_F", 2];
+            _obj addMagazineCargoGlobal ["30Rnd_65x39_caseless_green", 20];
+            _obj addMagazineCargoGlobal ["30Rnd_65x39_caseless_green_mag_Tracer", 20];
+            _obj addMagazineCargoGlobal ["10Rnd_50BW_Mag_F", 10];
+            _obj addMagazineCargoGlobal ["100Rnd_580x42_Mag_F", 5];
+            _obj addMagazineCargoGlobal ["100Rnd_580x42_Mag_Tracer_F", 5];
+            _obj addMagazineCargoGlobal ["30Rnd_580x42_Mag_F", 20];
+            _obj addMagazineCargoGlobal ["30Rnd_580x42_Mag_Tracer_F", 20];
+        };
     };
 } forEach _positions;
 
 _bunkerObjects = [
     "MapBoard_altis_F","Land_PressureWasher_01_F","MapBoard_seismic_F","Land_CampingTable_F","Land_PCSet_01_screen_F","Land_PCSet_01_keyboard_F",
     "Land_PCSet_01_mouse_F","Land_PCSet_01_case_F","Land_OfficeChair_01_F","Land_SatellitePhone_F","Land_Tablet_02_F","Land_CampingTable_small_F",
-    "Box_East_WpsSpecial_F","Land_EngineCrane_01_F","O_CargoNet_01_ammo_F","Land_Pallet_MilBoxes_F","Land_Laptop_unfolded_F","Land_Document_01_F",
+    "Box_T_East_WpsSpecial_F","Land_EngineCrane_01_F","O_CargoNet_01_ammo_F","Land_Pallet_MilBoxes_F","Land_Laptop_unfolded_F","Land_Document_01_F",
     "Land_Laptop_device_F","Land_File_research_F","Land_DataTerminal_01_F","Land_Cargo_Tower_V1_F","Land_HBarrier_3_F","Land_HBarrierBig_F",
     "Land_PortableLight_double_F","Land_Razorwire_F","Land_Pallets_stack_F","Land_PaperBox_closed_F","Land_WaterTank_F","Land_Pallets_stack_F",
     "Land_ToiletBox_F","Land_HBarrier_5_F"

@@ -57,7 +57,7 @@ _composition = [
     ["Land_OfficeChair_01_F", 7, 306, (90 + (random 10)), 0.72, false, false, false, [-4.9707,4.78125,0.723526]],
     ["Land_CampingTable_small_F", 1.6, 325, 0, 0.6, false, false, false, [-0.25,2.2,0.603112]],
     ["Land_PressureWasher_01_F", 3, 300, 180, 0.6, false, false, false, [-1.43555,2.2,0.603112]],
-    ["Box_East_WpsSpecial_F", 8.3, 330, 180, 0.7, false, false, true, [-3.19141,8.3,0.723531]],
+    ["Box_T_East_WpsSpecial_F", 8.3, 330, 180, 0.7, false, false, true, [-3.19141,8.3,0.723531]],
     ["Land_EngineCrane_01_F", 6, 280, 20, 3.15, false, false, false, [-4.80664,2,3.11098]],
     ["O_CargoNet_01_ammo_F", 6.1, 270, 20, 3.15, false, false, true, [-5.10352,1.41992,3.15]],
     ["Land_Pallet_MilBoxes_F", 6, 320, 20, 3.15, false, false, false,[-4,5.4,3.12796]],
@@ -100,9 +100,25 @@ _composition = [
         };
         _pos set [2, (_pos select 2) - 0.3];
     };
-    if (_name == "Box_East_WpsSpecial_F" || _name == "O_CargoNet_01_ammo_F") then {
+    if (_name == "Box_T_East_WpsSpecial_F" || _name == "O_CargoNet_01_ammo_F") then {
         clearItemCargoGlobal _obj;
         [_obj, "QS_fnc_addActionDestroy", nil, true] spawn BIS_fnc_MP;
+        if (_name == "O_CargoNet_01_ammo_F") then {
+            _obj addWeaponCargoGlobal ["arifle_ARX_hex_F", 2];
+            _obj addWeaponCargoGlobal ["arifle_ARX_ghex_F", 2];
+            _obj addWeaponCargoGlobal ["arifle_ARX_blk_F", 2];
+            _obj addWeaponCargoGlobal ["arifle_CTARS_blk_F", 2];
+            _obj addWeaponCargoGlobal ["arifle_CTAR_blk_F", 4];
+            _obj addWeaponCargoGlobal ["arifle_CTAR_GL_blk_F", 2];
+            _obj addWeaponCargoGlobal ["launch_RPG32_ghex_F", 2];
+            _obj addMagazineCargoGlobal ["30Rnd_65x39_caseless_green", 20];
+            _obj addMagazineCargoGlobal ["30Rnd_65x39_caseless_green_mag_Tracer", 20];
+            _obj addMagazineCargoGlobal ["10Rnd_50BW_Mag_F", 10];
+            _obj addMagazineCargoGlobal ["100Rnd_580x42_Mag_F", 5];
+            _obj addMagazineCargoGlobal ["100Rnd_580x42_Mag_Tracer_F", 5];
+            _obj addMagazineCargoGlobal ["30Rnd_580x42_Mag_F", 20];
+            _obj addMagazineCargoGlobal ["30Rnd_580x42_Mag_Tracer_F", 20];
+        };
     };
     _obj setDir _objDir;
     if (count _deltaCoords > 0) then {
