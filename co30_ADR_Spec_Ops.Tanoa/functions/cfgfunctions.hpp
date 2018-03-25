@@ -103,6 +103,7 @@ class QS
 		class KeyDown {};
 		class mapBuildings {};
 		class moveToHC {};
+		class openArsenal {};
 		class partizanSUCCESS {};
 		class pilotCheck {};
 		class punishObject {};
@@ -124,8 +125,7 @@ class QS
 		class strobeUse {};
 		class taskMaxDistPatrol {};
 		class uh80Turret {};
-		class uh80TurretActions {};
-		class updateArsenal {};
+		class uh80TurretActions {};		
 		class updateBaseBlufor {};
 		class updateBaseResistance {};
 		class vMonitor {};

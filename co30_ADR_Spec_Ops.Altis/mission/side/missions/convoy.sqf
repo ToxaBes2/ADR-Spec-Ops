@@ -77,22 +77,22 @@ sideMissionUp = true; publicVariable "sideMissionUp";
 
 // save info in DB
 try {
-    _position = format ["%1,%2", floor (_flatPos select 0), floor (_flatPos select 1)];
+    _posData = format ["%1,%2", floor (_flatPos select 0), floor (_flatPos select 1)];
     ["setInfo",["spec_name", "Конвой"], 0] remoteExec ["sqlServerCall", 2];
-    ["setInfo",["spec_position", _position], 0] remoteExec ["sqlServerCall", 2];
+    ["setInfo",["spec_position", _posData], 0] remoteExec ["sqlServerCall", 2];
 } catch {};
 
 // wait for player in zone, then wait a bit and spawn convoy
 canStart = false;
 _trig1 = createTrigger ["EmptyDetector", _flatPos, false];
 _trig1 setTriggerArea [150, 150, 0, false];
-_trig1 setTriggerActivation ["WEST", "PRESENT", false];
+_trig1 setTriggerActivation ["ANYPLAYER", "PRESENT", false];
 _trig1 setTriggerStatements ["this", "canStart = true;", ""];
 
-_trig2 = createTrigger ["EmptyDetector", _flatPos, false];
-_trig2 setTriggerArea [150, 150, 0, false];
-_trig2 setTriggerActivation ["GUER", "PRESENT", false];
-_trig2 setTriggerStatements ["this", "canStart = true;", ""];
+//_trig2 = createTrigger ["EmptyDetector", _flatPos, false];
+//_trig2 setTriggerArea [150, 150, 0, false];
+//_trig2 setTriggerActivation ["GUER", "PRESENT", false];
+//_trig2 setTriggerStatements ["this", "canStart = true;", ""];
 while {!canStart} do {
     sleep 5;
 };
@@ -628,7 +628,7 @@ while { sideMissionUp } do {
             sleep 0.5;
         } forEach _enemiesArray;
         deleteVehicle _trig1;
-        deleteVehicle _trig2;
+        //deleteVehicle _trig2;
     };
     sleep 3;
 };

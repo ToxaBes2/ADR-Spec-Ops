@@ -1,5 +1,138 @@
-private ["_myBox"];
+/*
+Author: ToxaBes
+Description: fill arsenal for support class
+*/
 _myBox = _this select 0;
+
+_weaponsList = [
+    "hgun_Pistol_Signal_F",
+    "hgun_P07_F",
+    "hgun_Rook40_F",
+    "hgun_P07_snds_F",
+    "hgun_Pistol_01_F",
+    "hgun_Rook40_snds_F",
+    "hgun_Pistol_heavy_01_F",
+    "hgun_Pistol_heavy_02_F",
+    "hgun_Pistol_heavy_01_snds_F",
+    "hgun_Pistol_heavy_01_MRD_F",
+    "hgun_Pistol_heavy_02_Yorris_F",
+    "hgun_ACPC2_F",
+    "hgun_ACPC2_snds_F",
+    "SMG_01_F",
+    "Binocular",
+    "Rangefinder",
+    //"Laserdesignator",
+    "arifle_SDAR_F",
+    //"launch_NLAW_F",
+    "arifle_MX_F",
+    "arifle_MXC_F",
+    //"arifle_MXM_F",
+    //"arifle_MX_GL_F",
+    "arifle_MX_SW_F"
+];
+
+_bluforWList = [
+    "hgun_PDW2000_F",
+    "SMG_05_F",
+    //"arifle_MXM_Black_F",
+    "arifle_MX_Black_F",
+    "arifle_MXC_Black_F",
+    //"arifle_MX_GL_Black_F",
+    "arifle_MX_SW_Black_F",
+    //"srifle_LRR_F",
+    //"launch_B_Titan_F",
+    //"launch_B_Titan_short_F",
+    //"srifle_EBR_F",
+    //"srifle_DMR_02_F",
+    //"srifle_DMR_02_camo_F",
+    //"srifle_DMR_02_sniper_F",
+    //"srifle_DMR_03_F",
+    //"srifle_DMR_03_khaki_F",
+    //"srifle_DMR_03_tan_F",
+    //"srifle_DMR_03_multicam_F",
+    //"srifle_DMR_03_woodland_F",
+    "MMG_02_camo_F",
+    "MMG_02_black_F",
+    "MMG_02_sand_F",
+    "MMG_02_black_RCO_BI_F",
+    //"arifle_SPAR_03_snd_F",
+    //"arifle_SPAR_03_blk_F",
+    //"arifle_SPAR_01_GL_snd_F",
+    //"arifle_SPAR_01_GL_blk_F",
+    //"srifle_LRR_camo_F",
+    "arifle_SPAR_02_snd_F",
+    "arifle_SPAR_02_blk_F",
+    "arifle_SPAR_01_snd_F",
+    "arifle_SPAR_01_blk_F"
+];
+
+_resistanceWList = [
+   "LMG_Mk200_BI_F",
+   "LMG_Mk200_F",
+   "arifle_Mk20_F",
+   "arifle_Mk20C_F",
+   //"arifle_Mk20_GL_F",
+   "arifle_Mk20_plain_F",
+   "arifle_Mk20C_plain_F",
+   //"arifle_Mk20_GL_plain_F",
+   "arifle_TRG20_F",
+   //"arifle_TRG21_GL_F",
+   //"srifle_DMR_06_olive_F",
+   //"srifle_DMR_06_camo_F",
+   "arifle_TRG21_F"
+];
+
+_opforWList = [
+    //"srifle_GM6_F",
+    //"arifle_Katiba_GL_F",
+    "arifle_Katiba_F",
+    "arifle_Katiba_C_F",
+    "LMG_Zafir_F",
+    //"srifle_DMR_01_F",
+    //"srifle_DMR_04_F",
+    //"srifle_DMR_04_Tan_F",
+    //"srifle_DMR_05_blk_F",
+    //"srifle_DMR_05_tan_f",
+    "MMG_01_tan_F",
+    //"srifle_DMR_07_blk_F",
+    //"arifle_ARX_blk_F",
+    //"arifle_ARX_blk_F",
+    "arifle_CTARS_blk_F",
+    //"arifle_CTAR_GL_blk_F",
+    //"launch_RPG32_F",
+    "arifle_CTAR_blk_F"
+];
+
+_indWList = [
+    "LMG_03_F",
+    //"launch_RPG7_F",
+    "arifle_AK12_F",
+    "arifle_AKM_F",
+    //"arifle_AK12_GL_F",
+    "arifle_AKS_F"    
+];
+
+// Arsenal #1
+if (BLUFOR_BASE_SCORE > 1) then {        
+    _weaponsList = _weaponsList + _bluforWList;
+};
+
+// Arsenal #2
+if (BLUFOR_BASE_SCORE > 10) then {        
+    _weaponsList = _weaponsList + _resistanceWList;
+};
+
+// Arsenal #3
+if (BLUFOR_BASE_SCORE > 19) then {        
+    _weaponsList = _weaponsList + _opforWList;
+};
+
+// Arsenal #4
+if (BLUFOR_BASE_SCORE > 28) then {        
+    _weaponsList = _weaponsList + _indWList;
+};
+
+[_myBox, _weaponsList, false, false] call BIS_fnc_addVirtualWeaponCargo;
 
 //--- Рюкзаки
 [_myBox, [
@@ -69,26 +202,26 @@ _myBox = _this select 0;
 //"B_Carryall_ghex_F",
 //"B_AssaultPack_tna_F",
 //"B_FieldPack_ghex_F"
-],true, false] call BIS_fnc_addVirtualBackpackCargo;
+],false, false] call BIS_fnc_addVirtualBackpackCargo;
 
 [_myBox, [
 //--- НАТО
 "U_B_CombatUniform_mcam",
 "U_B_CombatUniform_mcam_tshirt",
 "U_B_CombatUniform_mcam_vest",
-"U_B_GhillieSuit",
-"U_B_HeliPilotCoveralls",
+//"U_B_GhillieSuit",
+//"U_B_HeliPilotCoveralls",
 "U_B_Wetsuit",
 "U_B_CombatUniform_mcam_worn",
 "U_B_SpecopsUniform_sgg",
-"U_B_PilotCoveralls",
+//"U_B_PilotCoveralls",
 "U_B_CTRG_1",
 "U_B_CTRG_2",
 "U_B_CTRG_3",
 "U_B_survival_uniform",
-"U_B_FullGhillie_lsh",
-"U_B_FullGhillie_sard",
-"U_B_FullGhillie_ard",
+//"U_B_FullGhillie_lsh",
+//"U_B_FullGhillie_sard",
+//"U_B_FullGhillie_ard",
 
 //--- Зелёные
 //"U_I_CombatUniform",
@@ -204,9 +337,9 @@ _myBox = _this select 0;
 "H_HelmetB_sand",
 "H_HelmetCrew_B",
 "H_Helmet_Kerry",
-"H_PilotHelmetFighter_B",
-"H_PilotHelmetHeli_B",
-"H_CrewHelmetHeli_B",
+//"H_PilotHelmetFighter_B",
+//"H_PilotHelmetHeli_B",
+//"H_CrewHelmetHeli_B",
 "H_HelmetB_light_grass",
 "H_HelmetB_light_snakeskin",
 "H_HelmetB_light_desert",
@@ -392,20 +525,20 @@ _myBox = _this select 0;
 "optic_ACO_grn_smg",
 "optic_Holosight",
 "optic_Holosight_smg",
-"optic_SOS",
+//"optic_SOS",
 "optic_MRCO",
 "optic_DMS",
 "optic_Yorris",
 "optic_MRD",
-"optic_LRPS",
+//"optic_LRPS",
 "optic_NVS",
-"optic_AMS",
-"optic_AMS_khk",
-"optic_AMS_snd",
-"optic_KHS_blk",
+//"optic_AMS",
+//"optic_AMS_khk",
+//"optic_AMS_snd",
+//"optic_KHS_blk",
 //"optic_KHS_hex",
-"optic_KHS_old",
-"optic_KHS_tan",
+//"optic_KHS_old",
+//"optic_KHS_tan",
 //Tanoa
 "optic_Arco_blk_F",
 "optic_ERCO_snd_F",
@@ -433,13 +566,13 @@ _myBox = _this select 0;
 "ItemCompass",
 "ItemWatch",
 "G_Spectacles",
-"B_UavTerminal",
+//"B_UavTerminal",
 "NVGoggles",
 "NVGoggles_INDEP",
 "NVGoggles_OPFOR",
 "FirstAidKit",
-"Medikit",
-"ToolKit",
+//"Medikit",
+//"ToolKit",
 //Tanoa
 //"O_NVGoggles_hex_F",
 //"O_NVGoggles_urb_F",
@@ -455,7 +588,7 @@ _myBox = _this select 0;
 //"U_C_Scientist",
 //"U_C_WorkerCoveralls",
 //"U_C_HunterBody_grn"
-], true, false] call BIS_fnc_addVirtualItemCargo;
+], false, false] call BIS_fnc_addVirtualItemCargo;
 
 //--- Патроны
 [_myBox, [
@@ -599,38 +732,8 @@ _myBox = _this select 0;
 "RPG7_F"
 ], true, false] call BIS_fnc_addVirtualMagazineCargo;
 
-//--- Оружие
-[_myBox, [
-"hgun_Pistol_Signal_F",
-"hgun_P07_F",
-"hgun_Rook40_F",
-"hgun_P07_snds_F",
-"hgun_Pistol_01_F",
-"hgun_Rook40_snds_F",
-"hgun_Pistol_heavy_01_F",
-"hgun_Pistol_heavy_02_F",
-"hgun_Pistol_heavy_01_snds_F",
-"hgun_Pistol_heavy_01_MRD_F",
-"hgun_Pistol_heavy_02_Yorris_F",
-"hgun_ACPC2_F",
-"hgun_ACPC2_snds_F",
-"SMG_01_F",
-"Binocular",
-"Rangefinder",
-"Laserdesignator",
-"MineDetector",
-"arifle_SDAR_F",
-"launch_NLAW_F",
-"arifle_MX_F",
-"arifle_MXC_F",
-"arifle_MXM_F",
-"arifle_MX_GL_F",
-"arifle_MX_SW_F",
-"srifle_LRR_camo_F"
-], true, false] call BIS_fnc_addVirtualWeaponCargo;
-
 // SMA Weapons
-if (isClass(configfile >> "CfgPatches" >> "SMA_Weapons")) then {       
+if (isClass(configfile >> "CfgPatches" >> "SMA_Weapons") && BLUFOR_BASE_SCORE > 1) then {       
     [_myBox,[
         // optics
         "SMA_ELCAN_SPECTER",
@@ -755,7 +858,7 @@ if (isClass(configfile >> "CfgPatches" >> "SMA_Weapons")) then {
         "SMA_AAC_762_sdn6",
         "SMA_AAC_762_sdn6_w",
         "SMA_AAC_762_sdn6_d"
-    ], true, false] call BIS_fnc_addVirtualItemCargo;
+    ], false, false] call BIS_fnc_addVirtualItemCargo;
 
     [_myBox,[
         "SMA_30Rnd_762x35_BLK_EPR",
@@ -794,21 +897,21 @@ if (isClass(configfile >> "CfgPatches" >> "SMA_Weapons")) then {
         "SMA_150Rnd_762_M80A1",
         "SMA_150Rnd_762_M80A1_Tracer",
         "SMA_150Rnd_762_M80A1_Mixed"
-    ], true, false] call BIS_fnc_addVirtualMagazineCargo; 
+    ], false, false] call BIS_fnc_addVirtualMagazineCargo; 
 
     [_myBox,[
         "SMA_HK416afgQCB",
         "SMA_HK416afg",
         "SMA_HK416vfg",
-        "SMA_HK416GL",
+        //"SMA_HK416GL",
         "SMA_HK416afgOD",
         "SMA_HK416MOEOD",
         "SMA_HK416CQBafgOD",
         "SMA_HK416CQBMOEOD",
-        "SMA_HK416GLOD",
-        "SMA_HK416CQBGLOD",
+        //"SMA_HK416GLOD",
+        //"SMA_HK416CQBGLOD",
         "SMA_HK416_afg_ODPAINTED",
-        "SMA_HK416_GL_ODPAINTED",
+        //"SMA_HK416_GL_ODPAINTED",
         "SMA_HK416_vfg_ODPAINTED",
         "SMA_HK416CQB_vfg_ODPAINTED",
         "SMA_HK416CUSTOMafg",
@@ -823,12 +926,12 @@ if (isClass(configfile >> "CfgPatches" >> "SMA_Weapons")) then {
         "SMA_HK416CUSTOMCQBafgODP",
         "SMA_HK416CUSTOMafgB",
         "SMA_HK416CUSTOMafgODP",
-        "SMA_HK416GLCQB",
-        "SMA_HK416GLCQB_B",
-        "SMA_HK416GLCQB_ODP",
-        "SMA_HK417",
-        "SMA_HK417vfg",
-        "SMA_HK417_16in",
+        //"SMA_HK416GLCQB",
+        //"SMA_HK416GLCQB_B",
+        //"SMA_HK416GLCQB_ODP",
+        //"SMA_HK417",
+        //"SMA_HK417vfg",
+        //"SMA_HK417_16in",
         "SMA_SAR21_F",
         "SMA_SAR21MMS_F",
         "SMA_SAR21_AFG_F",
@@ -838,16 +941,16 @@ if (isClass(configfile >> "CfgPatches" >> "SMA_Weapons")) then {
         "SMA_STG_E4_F",
         "SMA_STG_E4_BLACK_F",
         "SMA_STG_E4_OD_F",
-        "SMA_AUG_EGLM",
+        //"SMA_AUG_EGLM",
         "SMA_AUG_A3_F",
         "SMA_AUG_A3_MCAM_F",
         "SMA_AUG_A3_KRYPT_F",
-        "SMA_AUG_EGLM_Olive",
-        "SMA_AUG_EGLM_tan",
+        //"SMA_AUG_EGLM_Olive",
+        //"SMA_AUG_EGLM_tan",
         "SMA_MK16",
         "SMA_Mk17",
-        "SMA_Mk16_EGLM",
-        "SMA_Mk17_EGLM",
+        //"SMA_Mk16_EGLM",
+        //"SMA_Mk17_EGLM",
         "SMA_Mk16_black",
         "SMA_Mk16_Green",
         "SMA_Mk16_blackQCB",
@@ -855,25 +958,25 @@ if (isClass(configfile >> "CfgPatches" >> "SMA_Weapons")) then {
         "SMA_Mk16QCB",
         "SMA_Mk17_black",
         "SMA_Mk17_Green",
-        "SMA_MK16_EGLM_black",
-        "SMA_MK16_EGLM_Green",
-        "SMA_MK17_EGLM_black",
-        "SMA_MK17_EGLM_Green",
-        "SMA_Mk17_16_black",
-        "SMA_Mk17_16_Green",
-        "SMA_Mk17_16",
+        //"SMA_MK16_EGLM_black",
+        //"SMA_MK16_EGLM_Green",
+        //"SMA_MK17_EGLM_black",
+        //"SMA_MK17_EGLM_Green",
+        //"SMA_Mk17_16_black",
+        //"SMA_Mk17_16_Green",
+        //"SMA_Mk17_16",
         "SMA_ACR",
         "SMA_ACRblk",
-        "SMA_ACRGL",
-        "SMA_ACRGL_B",
+        //"SMA_ACRGL",
+        //"SMA_ACRGL_B",
         "SMA_ACRMOE",
         "SMA_ACRMOE_Blk",
         "SMA_ACRREM",
         "SMA_ACRREMblk",
-        "SMA_ACRREMGL",
-        "SMA_ACRREMGL_B",
-        "SMA_ACRREMCQBGL",
-        "SMA_ACRREMCQBGL_B",
+        //"SMA_ACRREMGL",
+        //"SMA_ACRREMGL_B",
+        //"SMA_ACRREMCQBGL",
+        //"SMA_ACRREMCQBGL_B",
         "SMA_ACRREMMOE",
         "SMA_ACRREMMOEblk",
         "SMA_ACRREMMOECQB",
@@ -892,10 +995,10 @@ if (isClass(configfile >> "CfgPatches" >> "SMA_Weapons")) then {
         "SMA_ACRREMAFGblk_N",
         "SMA_ACRREMAFGCQB_N",
         "SMA_ACRREMAFGCQBblk_N",
-        "SMA_ACRREMCQBGL_B_N",
-        "SMA_ACRREMCQBGL_N",
-        "SMA_ACRREMGL_B_N",
-        "SMA_ACRREMGL_N",
+        //"SMA_ACRREMCQBGL_B_N",
+        //"SMA_ACRREMCQBGL_N",
+        //"SMA_ACRREMGL_B_N",
+        //"SMA_ACRREMGL_N",
         "sma_minimi_mk3_762tlb",
         "sma_minimi_mk3_762tlb_des",
         "sma_minimi_mk3_762tlb_wdl",
@@ -958,20 +1061,20 @@ if (isClass(configfile >> "CfgPatches" >> "SMA_Weapons")) then {
         "SMA_MK18MOEOD_SM",
         "SMA_MK18MOEBLKTAN",
         "SMA_MK18MOEBLKTAN_SM",
-        "SMA_MK18_GL",
-        "SMA_MK18_GL_SM",
-        "SMA_MK18TANBLK_GL",
-        "SMA_MK18TANBLK_GL_SM",
-        "SMA_MK18TAN_GL",
-        "SMA_MK18TAN_GL_SM",
-        "SMA_MK18BLK_GL",
-        "SMA_MK18BLK_GL_SM",
-        "SMA_MK18ODBLK_GL",
-        "SMA_MK18ODBLK_GL_SM",
-        "SMA_MK18OD_GL",
-        "SMA_MK18OD_GL_SM",
-        "SMA_M4_GL",
-        "SMA_M4_GL_SM",
+        //"SMA_MK18_GL",
+        //"SMA_MK18_GL_SM",
+        //"SMA_MK18TANBLK_GL",
+        //"SMA_MK18TANBLK_GL_SM",
+        //"SMA_MK18TAN_GL",
+        //"SMA_MK18TAN_GL_SM",
+        //"SMA_MK18BLK_GL",
+        //"SMA_MK18BLK_GL_SM",
+        //"SMA_MK18ODBLK_GL",
+        //"SMA_MK18ODBLK_GL_SM",
+        //"SMA_MK18OD_GL",
+        //"SMA_MK18OD_GL_SM",
+        //"SMA_M4_GL",
+        //"SMA_M4_GL_SM",
         "SMA_M4afg",
         "SMA_M4afg_SM",
         "SMA_M4afg_Tan",
@@ -991,10 +1094,5 @@ if (isClass(configfile >> "CfgPatches" >> "SMA_Weapons")) then {
         "SMA_M4afgSTOCK",
         "SMA_M4CQBR",
         "SMA_M4CQBRMOE"
-    ], true, false] call BIS_fnc_addVirtualWeaponCargo;
+    ], false, false] call BIS_fnc_addVirtualWeaponCargo;
 };
-
-sleep 5;
-
-_myBox removeAction (_myBox getvariable ['bis_fnc_arsenal_action', -1]);
-_myBox setvariable ['bis_fnc_arsenal_action', nil];

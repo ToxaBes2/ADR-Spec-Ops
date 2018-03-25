@@ -43,9 +43,6 @@ if (_level > 0) then {
     } foreach _turrets;
 };
 
-// Arsenal update
-[_level] call QS_fnc_updateArsenal;
-
 // Base #4
 if (_level > 27) then {
     _posSpawn = [15167, 17246, (random 15) + 15];
