@@ -71,7 +71,7 @@ _bluforWList = [
     //"arifle_MX_GL_khk_F",
     //"arifle_MX_SW_khk_F",
     "arifle_MX_khk_F",
-    //"srifle_LRR_tna_F",
+    "srifle_LRR_tna_F",
     "SMG_05_F"
 ];
 
@@ -92,7 +92,7 @@ _resistanceWList = [
 ];
 
 _opforWList = [
-    //"srifle_GM6_F",
+    "srifle_GM6_F",
     //"arifle_Katiba_GL_F",
     "arifle_Katiba_F",
     "arifle_Katiba_C_F",

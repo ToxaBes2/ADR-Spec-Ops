@@ -70,6 +70,52 @@ if (395180 in (getDLCs 1)) then {
     };
 };
 
+_secondaryWeapon = [];
+if (_level > 10) then {
+    switch (typeOf _player) do { 
+        case "I_G_Soldier_LAT_F": {
+            _secondaryWeapon = [
+                ["launch_NLAW_F", "NLAW_F"]
+            ];
+        }; 
+        case "I_G_engineer_F": {
+            _weapons = [
+                ["srifle_DMR_06_olive_F", ["20Rnd_762x51_Mag"]],
+                ["arifle_AKM_F", ["30Rnd_762x39_Mag_F"]]
+            ];
+        }; 
+        case "I_G_medic_F": {
+            _weapons = [
+                ["LMG_03_F", ["200Rnd_556x45_Box_F"]]
+            ];
+        }; 
+        default {}; 
+    };
+};
+
+_optics = [];
+if (_level > 19) then {
+    switch (typeOf _player) do { 
+        case "I_G_Soldier_LAT_F": {
+            _secondaryWeapon = [
+                ["launch_B_Titan_F", "Titan_AA"]
+            ];
+        }; 
+        case "I_G_engineer_F": {
+            _weapons = [
+                ["srifle_DMR_06_olive_F", ["20Rnd_762x51_Mag"]]
+            ];
+            _optics = ["optic_SOS"];
+        }; 
+        case "I_G_medic_F": {
+            _weapons = [
+                ["LMG_Mk200_BI_F", ["200Rnd_65x39_cased_Box"]]
+            ];
+        }; 
+        default {}; 
+    };
+};
+
 removeAllweapons _player;
 removevest _player;
 removeBackpack _player;
@@ -134,6 +180,17 @@ for "_i" from 0 to 5 do {
 //    _player addMagazines ["30Rnd_556x45_Stanag_Tracer_Yellow", 2];
 //};
 _player addWeapon _selectedWeapon;
+
+if (count _secondaryWeapon > 0) then {
+    _secWeapon = _secondaryWeapon select 0;
+    _secmagazine = _secondaryWeapon select 1;
+    _player addWeapon _secWeapon;
+    _player addMagazines [_secmagazine, 3];
+};
+
+if (count _optics > 0) then {
+    _player addPrimaryWeaponItem (_optics select 0);
+};
 
 if ((handgunWeapon _player) != "") then {
     _player addHandgunItem "acc_flashlight_pistol";

@@ -16,8 +16,8 @@ _additionalCheck = _this param [2, false];
 #define PILOT_MSG "Пилоты могут использовать только пистолеты и пистолеты-пулемёты"
 #define GRENADIER_MSG "Использовать подствольные гранатометы могут только командиры отделений, медики и инженеры"
 #define COMMANDER_MSG "Использовать бинокли с лазерным целеуказателем могут только командиры отделений"
-#define MARKSMANOPT_MSG "Использовать оптические прицелы LRPS, SOS, AMS, KAHLIA могут только снайперы и пехотные снайперы"
-#define GHILLIIE_MSG "Использовать гилли и маскхалаты могут только снайперы и пехотные снайперы"
+#define MARKSMANOPT_MSG "Использовать оптические прицелы LRPS, SOS, AMS, KAHLIA могут только пехотные снайперы"
+#define GHILLIIE_MSG "Использовать гилли и маскхалаты могут только пехотные снайперы"
 #define UNIFORM_MSG "Униформа противника запрещена"
 #define VEST_MSG "Жилеты противника запрещены"
 #define BACKPACK_MSG "Рюкзаки противника запрещены"
@@ -41,7 +41,7 @@ _missileSmallSoldiers = ["B_soldier_AT_F","B_T_Soldier_AT_F","B_Soldier_SL_F","B
 _missileSmallSpecialised = ["launch_RPG32_F","launch_NLAW_F","launch_RPG32_ghex_F","launch_RPG7_F"];
 
 // SNIPER RIFLES
-_snipers = ["B_sniper_F","B_T_Sniper_F"];
+_snipers = ["B_soldier_M_F","B_T_soldier_M_F","B_sniper_F","B_T_Sniper_F"];
 _sniperSpecialised = ["srifle_GM6_camo_F","srifle_GM6_camo_SOS_F","srifle_GM6_camo_LRPS_F","srifle_LRR_camo_F","srifle_LRR_camo_SOS_F","srifle_LRR_camo_LRPS_F","srifle_GM6_F","srifle_GM6_SOS_F","srifle_GM6_LRPS_F","srifle_LRR_F","srifle_LRR_SOS_F","srifle_LRR_LRPS_F","srifle_LRR_tna_F","srifle_LRR_tna_LRPS_F","srifle_GM6_ghex_F","srifle_GM6_ghex_LRPS_F","srifle_GM6_SOS_F","srifle_GM6_LRPS_F","srifle_GM6_camo_F","srifle_GM6_camo_SOS_F","srifle_GM6_camo_LRPS_F","srifle_GM6_ghex_F","srifle_GM6_camo_F","srifle_LRR_tna_F","srifle_LRR_camo_F"];
 
 // LMG

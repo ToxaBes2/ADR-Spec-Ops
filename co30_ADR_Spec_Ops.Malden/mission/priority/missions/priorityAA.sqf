@@ -109,6 +109,7 @@ _guardsGroup = [_fuzzyPos, 300, 15, ENEMY_SIDE] call QS_fnc_FillBots;
 _priorityGroup setBehaviour "COMBAT";
 _priorityGroup setCombatMode "RED";
 _priorityGroup allowFleeing 0;
+_priorityGroup setVariable ["zbe_cacheDisabled", true];
 
 // 6a. UNLIMITED AMMO
 priorityObj1 addEventHandler ["Fired", { priorityObj1 setVehicleAmmo 1 }];

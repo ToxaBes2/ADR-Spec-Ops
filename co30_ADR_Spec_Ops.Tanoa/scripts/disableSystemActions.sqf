@@ -4,9 +4,9 @@ inGameUISetEventHandler ["Action", "
     if (isNil ""ARSENAL_ENABLED"") then {
         ARSENAL_ENABLED = true;
     };
-    _actionId = 7;
+    _actionId = 6;
     if (ARSENAL_ENABLED) then {
-        _actionId = 8;
+        _actionId = 7;
     };
     if (_id == _actionId && (_text == ""ammo1"" || _text == ""ammo2"" || _text == ""base_arsenal_infantry"" || _text == ""base_arsenal_pilots"")) then {
         hint ""Действие запрещено, используйте красный пункт меню Арсенал"";

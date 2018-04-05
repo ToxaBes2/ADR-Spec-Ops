@@ -78,6 +78,7 @@ priorityGunner2 = ((units _priorityGroup) select 3);
 _priorityGroup setBehaviour "COMBAT";
 _priorityGroup setCombatMode "RED";
 _priorityGroup allowFleeing 0;
+_priorityGroup setVariable ["zbe_cacheDisabled", true];
 _unitsArray = _unitsArray + [_priorityGroup];
 
 // 4. SPAWN H-BARRIER RING

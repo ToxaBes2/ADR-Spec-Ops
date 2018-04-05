@@ -21,13 +21,14 @@ _rewards = [
     ["M2A1 «Сламмер»", ["B_MBT_01_cannon_F"]],
     ["M2A4 «Сламмер» UP", ["B_MBT_01_TUSK_F"]],
     ["V-44 X Blackfish", ["B_T_VTOL_01_armed_F"]],
-    ["M4 «Скорчер»", ["B_MBT_01_arty_F"]],
-    ["Беспилотник Sentinel", ["B_UAV_05_F"]], 
-    ["F/A-181 «Черная Оса 2»", ["B_Plane_Fighter_01_F"]], 
-    ["F/A-181 «Черная Оса 2» стелс", ["B_Plane_Fighter_01_Stealth_F"]], 
-    ["To-201 «Шикра»", ["O_Plane_Fighter_02_F"]], 
-    ["To-201 «Шикра» стелс", ["O_Plane_Fighter_02_Stealth_F"]], 
-    ["А-149 «Грифон»", ["I_Plane_Fighter_04_F"]]
+    ["M4 «Скорчер»", ["B_MBT_01_arty_F"]],  
+    ["M5 «Cендсторм»", ["B_MBT_01_mlrs_F"]], 
+    //["F/A-181 «Черная Оса 2»", ["B_Plane_Fighter_01_F"]], 
+    //["F/A-181 «Черная Оса 2» стелс", ["B_Plane_Fighter_01_Stealth_F"]], 
+    //["To-201 «Шикра»", ["O_Plane_Fighter_02_F"]], 
+    //["To-201 «Шикра» стелс", ["O_Plane_Fighter_02_Stealth_F"]], 
+    //["А-149 «Грифон»", ["I_Plane_Fighter_04_F"]],
+    ["Беспилотник Sentinel", ["B_UAV_05_F"]]
 ];
 _mode = _this select 0; // 1 - bunker + radiotower, 2 - defend AO, 3 - side mission, 4 - special operation
 _vehName = "";

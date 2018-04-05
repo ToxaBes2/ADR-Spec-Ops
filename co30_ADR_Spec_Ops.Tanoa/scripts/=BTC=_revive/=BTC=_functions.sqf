@@ -1658,7 +1658,7 @@ BTC_check_healer =
 			};
 		};
     } else {
-        _others = ["B_Soldier_SL_F", "B_soldier_AR_F", "B_soldier_AT_F", "B_soldier_M_F", "B_sniper_F", "B_engineer_F", "B_Helipilot_F"];
+        _others = ["B_T_Soldier_SL_F", "B_T_Soldier_AR_F", "B_T_Soldier_AT_F", "B_T_Medic_F", "B_T_soldier_M_F", "B_T_sniper_F", "B_T_Engineer_F", "B_T_Helipilot_F"];
         _men = nearestObjects [_pos, _others, 500];
         if (count _men > 0) then {
         	{

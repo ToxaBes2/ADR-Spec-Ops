@@ -95,11 +95,11 @@ _enemiesArray = [sideObj] call QS_fnc_SMenemyEAST;
 _fuzzyPos = [((_flatPos select 0) - 300) + (random 600), ((_flatPos select 1) - 300) + (random 600), 0];
 _guardsGroup = [_fuzzyPos, 300, 15, ENEMY_SIDE] call QS_fnc_FillBots;
 _enemiesArray = _enemiesArray + [_guardsGroup];
-power allowDamage true;
-power setDamage 0.5;
+//power allowDamage true;
+//power setDamage 0.5;
 EWCar allowDamage true;
 AwardCar allowDamage true;
-sideObj allowDamage true;
+//sideObj allowDamage true;
 
 // BRIEF
 hqSideChat = "Штаб, это Дельта-Браво, ни черта понять не можем, не работают тепловизоры, ночное видение, ПТ. Что-то мешает работе. Прием."; publicVariable "hqSideChat"; [WEST, "HQ"] sideChat hqSideChat;
@@ -138,12 +138,12 @@ try {
 
 // MAIN LOOP
 while {currentAOUp} do {
-	if ((!alive sideObj || !alive power || !alive EWCar) && currentAOUp) exitWith {
-		_completeText = "<t align='center' size='2.2'>Внимание</t><br/><t size='1.5' color='#F44336'>Приоритетная цель провалена!</t><br/>____________________<br/>Данные невозможно перехватить т.к. оборудование потеряно.<br/><br/>Возвращайтесь к выполнению основной задачи.";
-        GlobalHint = _completeText; hint parseText _completeText; publicVariable "GlobalHint";
-        showNotification = ["FailedPriorityTarget", ["Приоритетная цель провалена!", "\a3\ui_f\data\gui\cfg\hints\uavconncetion_ca.paa"]]; publicVariable "showNotification";
-        EW_ATTACK = false; publicVariable "EW_ATTACK";
-	};
+	//if ((!alive sideObj || !alive power || !alive EWCar) && currentAOUp) exitWith {
+	//	_completeText = "<t align='center' size='2.2'>Внимание</t><br/><t size='1.5' color='#F44336'>Приоритетная цель провалена!</t><br/>____________________<br/>Данные невозможно перехватить т.к. оборудование потеряно.<br/><br/>Возвращайтесь к выполнению основной задачи.";
+    //    GlobalHint = _completeText; hint parseText _completeText; publicVariable "GlobalHint";
+    //    showNotification = ["FailedPriorityTarget", ["Приоритетная цель провалена!", "\a3\ui_f\data\gui\cfg\hints\uavconncetion_ca.paa"]]; publicVariable "showNotification";
+    //    EW_ATTACK = false; publicVariable "EW_ATTACK";
+	//};
 
 	if (SM_POWER && POWERFIX && currentAOUp) exitWith {
         _completeText = "<t align='center' size='2.2'>Внимание</t><br/><t size='1.5' color='#C6FF00'>РЭБ противника подавлена</t><br/>____________________<br/>Противник лишился РЭБ и узла связи, захвачены важные данные.<br/><br/>Возвращайтесь к выполнению основной задачи.";
@@ -170,13 +170,13 @@ while {currentAOUp} do {
 		    sleep 0.1;
 		};
 
-        hqSideChat = "В захваченных данных говорится о технике недалеко от узла связи!"; publicVariable "hqSideChat"; [OUR_SIDE, "HQ"] sideChat hqSideChat;
-        sleep 2;
-        hqSideChat = "Обыщите местность в радиусе 200-300м пока противник не забрал ее."; publicVariable "hqSideChat"; [OUR_SIDE, "HQ"] sideChat hqSideChat;
-		award = "O_MBT_02_cannon_F" createVehicle _award;
-		award addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
+        //hqSideChat = "В захваченных данных говорится о технике недалеко от узла связи!"; publicVariable "hqSideChat"; [OUR_SIDE, "HQ"] sideChat hqSideChat;
+        //sleep 2;
+        //hqSideChat = "Обыщите местность в радиусе 200-300м пока противник не забрал ее."; publicVariable "hqSideChat"; [OUR_SIDE, "HQ"] sideChat hqSideChat;
+		//award = "O_MBT_02_cannon_F" createVehicle _award;
+		//award addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 	};
-	sleep 1;
+	sleep 5;
 };
 EW_ATTACK = false; publicVariable "EW_ATTACK";
 { _x setMarkerPos [-10000, -10000, -10000] } forEach ["priorityMarker","priorityCircle"]; publicVariable "priorityMarker";
@@ -184,7 +184,12 @@ EW_ATTACK = false; publicVariable "EW_ATTACK";
 // DELETE
 { _x setPos [-10000, -10000, 0]; } forEach [_object, researchTable, _dummy];
 sleep 30;
-{ deleteVehicle _x } forEach [sideObj, house, tower1, tower2, tower3, power, barrels, light, EWCar, AwardCar];
+{ deleteVehicle _x } forEach [sideObj, house, tower1, tower2, tower3, power, barrels, light];
+{
+	if (count (crew _x) == 0) then {
+        deleteVehicle _x;
+    };
+} forEach [EWCar, AwardCar];
 deleteVehicle nearestObject [getPos sideObj, "Land_Communication_F"];
 [_enemiesArray] call QS_fnc_TBdeleteObjects;
 sleep 270;

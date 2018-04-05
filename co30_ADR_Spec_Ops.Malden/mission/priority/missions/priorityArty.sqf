@@ -75,6 +75,7 @@ priorityGunner2 = ((units _priorityGroup) select 3);
 ((units _priorityGroup) select 3) assignAsGunner priorityObj2;
 ((units _priorityGroup) select 3) moveInGunner priorityObj2;
 [(units _priorityGroup)] call QS_fnc_setSkill4;
+_priorityGroup setVariable ["zbe_cacheDisabled", true];
 _priorityGroup setBehaviour "COMBAT";
 _priorityGroup setCombatMode "RED";
 _priorityGroup allowFleeing 0;

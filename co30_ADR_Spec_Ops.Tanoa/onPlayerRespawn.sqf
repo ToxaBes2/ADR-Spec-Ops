@@ -20,6 +20,21 @@ if (typeOf player in ["I_G_engineer_F"]) then {
     }; 
 };
 
+if (playerSide == resistance) then {
+    if (PARTIZAN_BASE_SCORE > 4) then {
+        player addAction ["<t color='#0DD86F'>Вызвать грузовик</t>", QS_fnc_partizanVehicles, 1, -99, false, true];
+    };
+    if (PARTIZAN_BASE_SCORE > 13) then {
+        player addAction ["<t color='#0D5BD8'>Вызвать гидроцикл</t>", QS_fnc_partizanVehicles, 2, -99, false, true];
+    };
+    if (PARTIZAN_BASE_SCORE > 22) then {
+        player addAction ["<t color='#8A0DD8'>Вызвать самолет</t>", QS_fnc_partizanVehicles, 3, -99, false, true];
+    };
+    if (PARTIZAN_BASE_SCORE > 31) then {
+        player addAction ["<t color='#D8D80E'>Вызвать вертолет</t>", QS_fnc_partizanVehicles, 4, -99, false, true];
+    };
+};
+
 //=========================== PILOTS ONLY
 if (typeOf player in ["B_Helipilot_F", "B_T_Helipilot_F"]) then {
 	//===== HELI TURRETS LOCK
@@ -80,12 +95,12 @@ if (!isDedicated) then {
 // Radio channels
 _playerType = typeOf player;
 switch (_playerType) do {
-    case "B_Helipilot_F" : {
+    case "B_T_Helipilot_F" : {
 
         // pilots have access to operative channels
         (RADIO_CHANNELS select 1) radioChannelAdd [player];
     };
-    case "B_Soldier_SL_F" : {
+    case "B_T_Soldier_SL_F" : {
 
         // commanders have access to operative and commander channels
         (RADIO_CHANNELS select 1) radioChannelAdd [player];

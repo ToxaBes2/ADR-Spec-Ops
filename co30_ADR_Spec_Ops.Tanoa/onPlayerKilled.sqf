@@ -39,3 +39,29 @@ if (playerSide == resistance) then {
     _side = 1;
 };
 ["logDeath",[_uid, _map, _pos, _side], player] remoteExec ["sqlServerCall", 2];
+
+// Radio channels
+_playerType = typeOf player;
+switch (_playerType) do {
+    case "B_T_Helipilot_F" : {
+
+        // pilots have access to operative channels
+        (RADIO_CHANNELS select 1) radioChannelAdd [player];
+    };
+    case "B_T_Soldier_SL_F" : {
+
+        // commanders have access to operative and commander channels
+        (RADIO_CHANNELS select 1) radioChannelAdd [player];
+        (RADIO_CHANNELS select 2) radioChannelAdd [player];
+    };
+    default {};
+};
+
+// add all players to emergency channel
+(RADIO_CHANNELS select 0) radioChannelAdd [player];
+
+// disable channels
+0 enableChannel [false, false];
+1 enableChannel [true, false];
+2 enableChannel [false, false];
+(RADIO_CHANNELS select 0) enableChannel [true, false];

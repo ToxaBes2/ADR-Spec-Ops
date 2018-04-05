@@ -46,7 +46,7 @@ if (count _Locations > 0) then {
             _Unit doSuppressiveFire _attackPosition;
             sleep _supressTime;  
             _Unit doWatch _attackPosition;        
-            if (_Unit hasWeapon "launch_RPG32_F" || _Unit hasWeapon "launch_RPG32_ghex_F" || Unit hasWeapon "launch_NLAW_F") then {                   
+            if (_Unit hasWeapon "launch_RPG32_F" || _Unit hasWeapon "launch_RPG32_ghex_F" || _Unit hasWeapon "launch_NLAW_F") then {                   
                 _Unit setDir _direction;
                 _Unit lookAt _target;
                 _Unit doTarget _target;               

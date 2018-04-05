@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=2033;
+		nextID=2041;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={16008.377,15.735317,17037.744};
-		dir[]={0,-0.70710683,0.70710683};
-		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,-0};
+		pos[]={15210.604,35.73521,17289.824};
+		dir[]={0,-0.54747027,0.83682609};
+		up[]={0,0.83682477,0.54747087};
+		aside[]={1.0000004,0,0};
 	};
 };
 binarizationWanted=0;
@@ -413,7 +413,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=779;
+		items=780;
 		class Item0
 		{
 			dataType="Marker";
@@ -8323,7 +8323,7 @@ class Mission
 			side="West";
 			class Entities
 			{
-				items=11;
+				items=7;
 				class Item0
 				{
 					dataType="Object";
@@ -8372,27 +8372,6 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={15207.299,18.481495,17326.623};
-						angles[]={0,0.63853425,6.282495};
-					};
-					side="West";
-					class Attributes
-					{
-						skill=0.60000002;
-						rank="CORPORAL";
-						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
-						description="Пулеметчик";
-						isPlayable=1;
-					};
-					id=929;
-					type="B_soldier_AR_F";
-					atlOffset=0.51876259;
-				};
-				class Item3
-				{
-					dataType="Object";
-					class PositionInfo
-					{
 						position[]={15215.21,18.475388,17335.143};
 						angles[]={0,3.9284215,6.282495};
 					};
@@ -8409,27 +8388,7 @@ class Mission
 					type="B_soldier_AT_F";
 					atlOffset=0.50005341;
 				};
-				class Item4
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={15221.185,18.470776,17332.594};
-						angles[]={0,3.9810197,6.282495};
-					};
-					side="West";
-					class Attributes
-					{
-						skill=0.60000002;
-						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
-						description="Медик";
-						isPlayable=1;
-					};
-					id=932;
-					type="B_medic_F";
-					atlOffset=0.48442459;
-				};
-				class Item5
+				class Item3
 				{
 					dataType="Object";
 					class PositionInfo
@@ -8449,7 +8408,7 @@ class Mission
 					type="B_medic_F";
 					atlOffset=0.5099411;
 				};
-				class Item6
+				class Item4
 				{
 					dataType="Object";
 					class PositionInfo
@@ -8469,7 +8428,7 @@ class Mission
 					type="B_medic_F";
 					atlOffset=0.5494709;
 				};
-				class Item7
+				class Item5
 				{
 					dataType="Object";
 					class PositionInfo
@@ -8490,49 +8449,7 @@ class Mission
 					type="B_soldier_M_F";
 					atlOffset=0.49240494;
 				};
-				class Item8
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={15204.085,18.483976,17330.008};
-						angles[]={0,1.0131642,6.282495};
-					};
-					side="West";
-					class Attributes
-					{
-						skill=0.60000002;
-						rank="CORPORAL";
-						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
-						description="Пехотный снайпер";
-						isPlayable=1;
-					};
-					id=937;
-					type="B_soldier_M_F";
-					atlOffset=0.52958488;
-				};
-				class Item9
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={15201.05,18.48632,17337.029};
-						angles[]={0,2.3695271,6.282495};
-					};
-					side="West";
-					class Attributes
-					{
-						skill=0.60000002;
-						rank="LIEUTENANT";
-						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
-						description="Снайпер";
-						isPlayable=1;
-					};
-					id=938;
-					type="B_sniper_F";
-					atlOffset=0.55262184;
-				};
-				class Item10
+				class Item6
 				{
 					dataType="Object";
 					class PositionInfo
@@ -8564,7 +8481,7 @@ class Mission
 				class Attribute0
 				{
 					property="groupID";
-					expression="_this setGroupID [_value];";
+					expression="[_this, _value] call CBA_fnc_setCallsign";
 					class Value
 					{
 						class data
@@ -8576,7 +8493,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="Группа Альфа";
+							value="Группа 1";
 						};
 					};
 				};
@@ -8589,7 +8506,7 @@ class Mission
 			side="West";
 			class Entities
 			{
-				items=11;
+				items=7;
 				class Item0
 				{
 					dataType="Object";
@@ -8638,27 +8555,6 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={15209.863,18.479515,17344.928};
-						angles[]={0,2.3561945,6.282495};
-					};
-					side="West";
-					class Attributes
-					{
-						skill=0.60000002;
-						rank="SERGEANT";
-						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
-						description="Пулеметчик";
-						isPlayable=1;
-					};
-					id=943;
-					type="B_soldier_AR_F";
-					atlOffset=0.51211548;
-				};
-				class Item3
-				{
-					dataType="Object";
-					class PositionInfo
-					{
 						position[]={15208.26,18.480755,17342.895};
 						angles[]={0,2.3561945,6.282495};
 					};
@@ -8675,7 +8571,7 @@ class Mission
 					type="B_soldier_AT_F";
 					atlOffset=0.52248192;
 				};
-				class Item4
+				class Item3
 				{
 					dataType="Object";
 					class PositionInfo
@@ -8695,7 +8591,7 @@ class Mission
 					type="B_medic_F";
 					atlOffset=0.49365616;
 				};
-				class Item5
+				class Item4
 				{
 					dataType="Object";
 					class PositionInfo
@@ -8715,27 +8611,7 @@ class Mission
 					type="B_medic_F";
 					atlOffset=0.48796082;
 				};
-				class Item6
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={15219.188,18.472317,17331.119};
-						angles[]={0,3.9518852,6.282495};
-					};
-					side="West";
-					class Attributes
-					{
-						skill=0.60000002;
-						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
-						description="Медик";
-						isPlayable=1;
-					};
-					id=948;
-					type="B_medic_F";
-					atlOffset=0.48671913;
-				};
-				class Item7
+				class Item5
 				{
 					dataType="Object";
 					class PositionInfo
@@ -8756,49 +8632,7 @@ class Mission
 					type="B_soldier_M_F";
 					atlOffset=0.53802299;
 				};
-				class Item8
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={15205.875,18.482595,17331.73};
-						angles[]={0,0.79926473,6.282495};
-					};
-					side="West";
-					class Attributes
-					{
-						skill=0.60000002;
-						rank="CORPORAL";
-						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
-						description="Пехотный снайпер";
-						isPlayable=1;
-					};
-					id=951;
-					type="B_soldier_M_F";
-					atlOffset=0.52556419;
-				};
-				class Item9
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={15199.45,18.487555,17335.459};
-						angles[]={0,2.3561945,6.282495};
-					};
-					side="West";
-					class Attributes
-					{
-						skill=0.60000002;
-						rank="LIEUTENANT";
-						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
-						description="Снайпер";
-						isPlayable=1;
-					};
-					id=952;
-					type="B_sniper_F";
-					atlOffset=0.55625534;
-				};
-				class Item10
+				class Item6
 				{
 					dataType="Object";
 					class PositionInfo
@@ -8829,7 +8663,7 @@ class Mission
 				class Attribute0
 				{
 					property="groupID";
-					expression="_this setGroupID [_value];";
+					expression="[_this, _value] call CBA_fnc_setCallsign";
 					class Value
 					{
 						class data
@@ -8841,14 +8675,14 @@ class Mission
 									"STRING"
 								};
 							};
-							value="Группа Браво";
+							value="Группа 2";
 						};
 					};
 				};
 				nAttributes=1;
 			};
 		};
-		class Item317
+		class Item779
 		{
 			dataType="Group";
 			side="West";
@@ -8868,7 +8702,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
+						init="call{this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];}";
 						description="Пилот";
 						isPlayable=1;
 					};
@@ -8912,7 +8746,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
+						init="call{this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];}";
 						description="Пилот";
 						isPlayable=1;
 					};
@@ -8954,7 +8788,7 @@ class Mission
 				class Attribute0
 				{
 					property="groupID";
-					expression="_this setGroupID [_value];";
+					expression="[_this, _value] call CBA_fnc_setCallsign";
 					class Value
 					{
 						class data
@@ -8966,7 +8800,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="Группа Чарли";
+							value="Группа 4";
 						};
 					};
 				};
@@ -9257,7 +9091,7 @@ class Mission
 					class Attributes
 					{
 						skill=0.60000002;
-						init="enableSentences false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacearsenal_ca.paa' size='1.0'/> Арсенал</t>"",{[base_arsenal_infantry, player] call QS_fnc_openArsenal},[],15,true,true,'','(ARSENAL_ENABLED && (player distance _target) < 8) && (playerSide == west) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_dynamicLoadout_F"",""B_UAV_05_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""B_T_UAV_03_dynamicLoadout_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])'];this addAction [""<t color='#C6FF00'><img image='\a3\ui_f\data\gui\rsc\rscdisplayarcademap\icon_toolbox_modules_ca.paa' size='1.0'/> "" + localize 'STR_VAS_Menu_Title' + ""</t>"",""createDialog 'VAS_Info_Diag';"",[],12,true,true,'','((player distance _target) < 8) && (playerSide == west) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_dynamicLoadout_F"",""B_UAV_05_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""B_T_UAV_03_dynamicLoadout_F"",""I_UAV_02_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])'];this addAction [""<img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\gps_ca.paa' size='1.0'/> Дипломатия: <t color='#23D80E'>объявить перемирие</t>"", ""scripts\diplomacyBlufor.sqf"", 1, -100, false, true, """", '(_target getVariable [""DIPLOMACY"",0]) != 1 && playerSide == west'];" \n "this addAction [""<img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\gps_ca.paa' size='1.0'/> Дипломатия: <t color='#F44336'>объявить войну</t>"", ""scripts\diplomacyBlufor.sqf"", 0, -100, false, true, """", '(_target getVariable [""DIPLOMACY"",0] == 1) && playerSide == west'];";
+						init="enableSentences false; this addAction [""<t color='#F44336'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacearsenal_ca.paa' size='1.0'/> Арсенал</t>"",{[base_arsenal_infantry, player] call QS_fnc_openArsenal},[],15,true,true,'','(ARSENAL_ENABLED && (player distance _target) < 8) && (playerSide == west) && !((typeOf cameraOn) in [""B_UAV_01_F"",""B_UAV_02_F"",""B_UAV_02_dynamicLoadout_F"",""B_UAV_05_F"",""B_UAV_02_CAS_F"",""B_UGV_01_F"",""B_UGV_01_rcws_F"",""I_UAV_01_F"",""I_UAV_02_F"",""B_T_UAV_03_dynamicLoadout_F"",""I_UAV_02_CAS_F"",""I_UGV_01_F"",""I_UGV_01_rcws_F"",""O_UAV_01_F"",""O_UAV_02_F"",""O_UAV_02_CAS_F"",""O_UGV_01_F"",""O_UGV_01_rcws_F"",""B_T_UAV_03_F"",""O_T_UAV_04_CAS_F""])'];this addAction [""<img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\gps_ca.paa' size='1.0'/> Дипломатия: <t color='#23D80E'>объявить перемирие</t>"", ""scripts\diplomacyBlufor.sqf"", 1, -100, false, true, """", '(_target getVariable [""DIPLOMACY"",0]) != 1 && playerSide == west'];" \n "this addAction [""<img image='\a3\ui_f\data\gui\rsc\rscdisplayarsenal\gps_ca.paa' size='1.0'/> Дипломатия: <t color='#F44336'>объявить войну</t>"", ""scripts\diplomacyBlufor.sqf"", 0, -100, false, true, """", '(_target getVariable [""DIPLOMACY"",0] == 1) && playerSide == west'];";
 						name="base_arsenal_infantry";
 						disableSimulation=1;
 						class Inventory
@@ -10707,7 +10541,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="this allowDamage false; " \n "this addAction[""<t color='#C6FF00'><img image='\a3\ui_f\data\GUI\Cfg\CommunicationMenu\supplydrop_ca.paa' size='1.0'/> Наградная Техника</t>"",""createDialog 'VAS_BLUFOR_Reward_Diag';"",[],7,true,false,"""",'((vehicle player) == player && playerSide == west)', 5]; " \n "this addAction[""<t color='#C6FF00'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacegarage_ca.paa' size='1.0'/> Поставить технику в гараж</t>"",""[_this select 1] call QS_fnc_garage;"",[],-5,true,true,"""",'(playerSide == west && !(vehicle player == player) && (driver (vehicle player) == player))',15];this addAction[""<t color='#0099FF'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayMain\menu_multiplayer_ca.paa' size='1.0'/> Вызвать подкрепление</t>"",""[_this select 1] call QS_fnc_getBots;"",[],-5,true,true,"""",'(playerSide == west && vehicle player == player && typeOf player in [""B_Soldier_SL_F"", ""B_T_Soldier_SL_F""])',20];   " \n "  " \n "";
+				init="this allowDamage false; " \n "this addAction[""<t color='#C6FF00'><img image='\a3\ui_f\data\GUI\Cfg\CommunicationMenu\supplydrop_ca.paa' size='1.0'/> Наградная Техника</t>"",""createDialog 'VAS_BLUFOR_Reward_Diag';"",[],7,true,false,"""",'((vehicle player) == player && (playerSide == west || (playerSide == resistance && PARTIZAN_BASE_SCORE > 23)))', 5]; " \n "this addAction[""<t color='#F4426E'><img image='\a3\ui_f\data\GUI\Cfg\CommunicationMenu\supplydrop_ca.paa' size='1.0'/> Удалить всю технику</t>"",""[_this select 1] call QS_fnc_clearGarage;"",[],0,true,false,"""",'((vehicle player) == player && playerSide == resistance && PARTIZAN_BASE_SCORE > 5)', 5];" \n "this addAction[""<t color='#C6FF00'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayArsenal\spacegarage_ca.paa' size='1.0'/> Поставить технику в гараж</t>"",""[_this select 1] call QS_fnc_garage;"",[],-5,true,true,"""",'(playerSide == west && !(vehicle player == player) && (driver (vehicle player) == player))',15];this addAction[""<t color='#0099FF'><img image='\a3\ui_f\data\gui\Rsc\RscDisplayMain\menu_multiplayer_ca.paa' size='1.0'/> Вызвать подкрепление</t>"",""[_this select 1] call QS_fnc_getBots;"",[],-5,true,true,"""",'(playerSide == west && vehicle player == player && typeOf player in [""B_Soldier_SL_F"", ""B_T_Soldier_SL_F""])',20];   " \n "  " \n "";
 			};
 			id=1260;
 			type="Land_Atm_02_F";
@@ -10861,7 +10695,7 @@ class Mission
 				class Attribute0
 				{
 					property="groupID";
-					expression="_this setGroupID [_value];";
+					expression="[_this, _value] call CBA_fnc_setCallsign";
 					class Value
 					{
 						class data
@@ -11029,7 +10863,7 @@ class Mission
 				class Attribute0
 				{
 					property="groupID";
-					expression="_this setGroupID [_value];";
+					expression="[_this, _value] call CBA_fnc_setCallsign";
 					class Value
 					{
 						class data
@@ -24335,7 +24169,7 @@ class Mission
 			class Attributes
 			{
 				name="gatetrigger2";
-				condition="this && BLUFOR_BASE_SCORE > 0";
+				condition="this && BLUFOR_BASE_SCORE > 0 && PARTIZAN_BASE_SCORE < 15";
 				onActivation="stop2 setPosATL [15248.6,17313.4,-1.8];gate2 animate [""Door_1_rot"", 1]";
 				onDeactivation="stop2 setPosATL [15248.6,17313.4,0];gate2 animate [""Door_1_rot"", 0]";
 				sizeA=4;
@@ -24377,7 +24211,7 @@ class Mission
 			class Attributes
 			{
 				name="gatetrigger1";
-				condition="this && BLUFOR_BASE_SCORE > 0";
+				condition="this && BLUFOR_BASE_SCORE > 0 && PARTIZAN_BASE_SCORE < 15";
 				onActivation="stop1 setPosATL [15169.817,17397.924,-1.8];gate1 animate [""Door_1_rot"", 1];";
 				onDeactivation="stop1 setPosATL [15169.817,17397.924,0];gate1 animate [""Door_1_rot"", 0];";
 				sizeA=4;
@@ -25966,6 +25800,229 @@ class Mission
 			colorName="ColorWhite";
 			id=2032;
 			atlOffset=1.3541944e+038;
+		};
+		class Item317
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=7;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={15200.672,18.567734,17337.238};
+						angles[]={0,1.9980228,6.282495};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						rank="CAPTAIN";
+						init="call{this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];}";
+						description="Командир отделения";
+						isPlayable=1;
+					};
+					id=2034;
+					type="B_Soldier_SL_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male07ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.04;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+				class Item1
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={15207.299,18.481495,17326.623};
+						angles[]={0,0.63853425,6.282495};
+					};
+					side="West";
+					class Attributes
+					{
+						skill=0.60000002;
+						rank="CORPORAL";
+						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
+						description="Пулеметчик";
+						isPlayable=1;
+					};
+					id=929;
+					type="B_soldier_AR_F";
+					atlOffset=0.51876259;
+				};
+				class Item2
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={15209.953,18.56057,17345.082};
+						angles[]={0,2.3561945,6.282495};
+					};
+					side="West";
+					flags=4;
+					class Attributes
+					{
+						skill=0.60000002;
+						rank="SERGEANT";
+						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
+						description="Ракетчик ПТ";
+						isPlayable=1;
+					};
+					id=2038;
+					type="B_soldier_AT_F";
+				};
+				class Item3
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={15221.185,18.470776,17332.594};
+						angles[]={0,3.9810197,6.282495};
+					};
+					side="West";
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
+						description="Медик";
+						isPlayable=1;
+					};
+					id=932;
+					type="B_medic_F";
+					atlOffset=0.48442459;
+				};
+				class Item4
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={15219.188,18.472317,17331.119};
+						angles[]={0,3.9518852,6.282495};
+					};
+					side="West";
+					class Attributes
+					{
+						skill=0.60000002;
+						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
+						description="Медик";
+						isPlayable=1;
+					};
+					id=948;
+					type="B_medic_F";
+					atlOffset=0.48671913;
+				};
+				class Item5
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={15204.085,18.483976,17330.008};
+						angles[]={0,1.0131642,6.282495};
+					};
+					side="West";
+					class Attributes
+					{
+						skill=0.60000002;
+						rank="CORPORAL";
+						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
+						description="Пехотный снайпер";
+						isPlayable=1;
+					};
+					id=937;
+					type="B_soldier_M_F";
+					atlOffset=0.52958488;
+				};
+				class Item6
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={15198.963,18.569054,17335.572};
+						angles[]={0,1.9023505,6.282495};
+					};
+					side="West";
+					flags=4;
+					class Attributes
+					{
+						skill=0.60000002;
+						rank="CORPORAL";
+						init="this addEventHandler [""respawn"", {_null = [] spawn {_this call compile preProcessFileLineNumbers ""scripts\admin_uid.sqf"";};}];";
+						description="Инженер";
+						isPlayable=1;
+					};
+					id=2036;
+					type="B_engineer_F";
+				};								
+			};
+			class Attributes
+			{
+			};
+			id=2033;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="groupID";
+					expression="[_this, _value] call CBA_fnc_setCallsign";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="Группа 3";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 	};
 };

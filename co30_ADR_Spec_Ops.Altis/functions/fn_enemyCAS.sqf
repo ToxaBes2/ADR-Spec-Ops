@@ -12,7 +12,7 @@ Description:
 private ["_casArray", "_casLimit", "_aoPos", "_basePos", "_spawnPos", "_players", "_minDist", "_distance", "_casSelect", "_casVehicle", "_casCrew"];
 
 //Array of possible enemy CAS vehicles
-_casArray = ["O_Plane_CAS_02_F", "I_Plane_Fighter_03_AA_F", "O_Heli_Attack_02_F", "O_Heli_Light_02_F", "O_Plane_Fighter_02_F","O_Plane_Fighter_02_Stealth_F","I_Plane_Fighter_04_F"];
+_casArray = ["O_Plane_CAS_02_F", "I_Plane_Fighter_03_AA_F", "O_Heli_Attack_02_F", "O_Heli_Light_02_F"];
 
 //Limit of how many CAS vehicles are allowed to operate at the same time
 _casLimit = 1;

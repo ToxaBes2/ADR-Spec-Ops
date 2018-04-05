@@ -11,6 +11,7 @@ class QS
 		class applyRestrictionsWest {};
 		class applyRestrictionsResistance {};
 		class baseDefense {};
+		class clearGarage {};
 		class clearItemsBase {};
 		class CheckVisionMode {};
 		class darter {};
@@ -19,6 +20,7 @@ class QS
 		class darterPelican {};
 		class DeleteEnemyEAST {};
 		class diplomacySwitch {};
+		class enableHostagesDamage {};
 		class EWattack {};
 		class FillBots {};
 		class FillCargoPatrol {};
@@ -105,6 +107,7 @@ class QS
 		class moveToHC {};
 		class openArsenal {};
 		class partizanSUCCESS {};
+		class partizanVehicles {};
 		class pilotCheck {};
 		class punishObject {};
 		class randomPos {};
@@ -121,6 +124,7 @@ class QS
 		class setSkill2 {};
 		class setSkill3 {};
 		class setSkill4 {};
+		class spawnReward {};
 		class spawnViper {};
 		class strobeUse {};
 		class taskMaxDistPatrol {};

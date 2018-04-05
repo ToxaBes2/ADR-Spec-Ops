@@ -226,12 +226,12 @@ _unitPos = ["UP", "MIDDLE"];
             currentHostage setDir (_x select 3);
             currentHostage setCaptive true;
             currentHostage setUnitPos (selectRandom _unitPos);
+            currentHostage disableAI "ANIM";
             currentHostage disableAI "MOVE";
             currentHostage addEventHandler ["killed", {SM_FAIL_RESCUE = SM_FAIL_RESCUE + 1;publicVariable "SM_FAIL_RESCUE";[(_this select 0),"QS_fnc_removeAction0",nil,true] spawn BIS_fnc_MP;(_this select 0) removeWeapon "hgun_Rook40_F";}];
             [currentHostage, "QS_fnc_addActionRescue",nil,true] spawn BIS_fnc_MP;
             _hostagesPlaced = _hostagesPlaced + 1;
             _withHostages = true;
-            currentHostage allowDamage true;
         } else {
             if (_holyRandom > 3 || _withHostages) then {
                 (selectRandom [INFANTRY_SUPPORT]) createUnit [_pos, _houseGroup, "currentGuard = this"];
@@ -278,6 +278,27 @@ if (_distance > 100) then {
     officer setPos _posATL;
 };
 officer allowDamage true;
+
+//damage trigger
+CAN_DAMAGE_HOSTAGES = false; publicVariable "CAN_DAMAGE_HOSTAGES";
+_triggerPos = getPosATL ((units _hostagesGroup) select 0);
+_triggerPos set [2,0];
+_trig1 = createTrigger ["EmptyDetector", _triggerPos, true];
+_trig1 setTriggerArea [40, 40, 0, false, 20];
+_trig1 setTriggerActivation ["ANYPLAYER", "PRESENT", false];
+_trig1 setTriggerStatements ["this", "[] call QS_fnc_enableHostagesDamage", ""];
+
+[_hostagesGroup, officer] spawn {
+    _hostagesGroup = _this select 0;
+    _officer = _this select 1;
+    while {!CAN_DAMAGE_HOSTAGES && alive _officer} do {
+        sleep 5;
+    };
+    {
+        _x allowDamage true;
+        _x enableAI "ANIM";
+    } forEach (units _hostagesGroup);
+};
 
 // guards with static weapons on cargoHQ
 _staticGroup = createGroup ENEMY_SIDE;
@@ -567,4 +588,5 @@ while { sideMissionUp } do {
         [_startPoint, 500] call QS_fnc_DeleteEnemyEAST;
     };
     sleep 1;
+    deleteVehicle _trig1;
 };
