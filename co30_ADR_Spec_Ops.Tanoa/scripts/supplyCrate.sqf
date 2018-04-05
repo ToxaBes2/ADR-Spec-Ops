@@ -98,6 +98,23 @@ call {
         _cargo addItemCargoGlobal ["ToolKit", 2];
         _cargo addBackpackCargoGlobal ["B_AssaultPack_mcamo", 2];
         _cargo addBackpackCargoGlobal ["B_Kitbag_mcamo_Eng", 2];
+        if (isClass(configfile >> "CfgPatches" >> "SMA_Weapons")) then { 
+             _cargo addMagazineCargoGlobal ["SMA_30Rnd_762x35_BLK_EPR", 20];
+             _cargo addMagazineCargoGlobal ["SMA_30Rnd_762x35_SS", 10];
+             _cargo addMagazineCargoGlobal ["SMA_30Rnd_762x39_SKS_FMJ", 20];
+             _cargo addMagazineCargoGlobal ["SMA_30Rnd_762x39_SKS_7n23_AP", 20];
+             _cargo addMagazineCargoGlobal ["SMA_20Rnd_762x51mm_M80A1_EPR", 20];
+             _cargo addMagazineCargoGlobal ["SMA_20Rnd_762x51mm_Mk316_Mod_0_Special_Long_Range", 20];
+             _cargo addMagazineCargoGlobal ["SMA_20Rnd_762x51mm_Lapua_FMJ_Subsonic", 10];
+             _cargo addMagazineCargoGlobal ["SMA_30Rnd_556x45_M855A1", 20];
+             _cargo addMagazineCargoGlobal ["SMA_30Rnd_556x45_Mk318", 20];
+             _cargo addMagazineCargoGlobal ["SMA_30Rnd_556x45_Mk262", 20];
+             _cargo addMagazineCargoGlobal ["SMA_30Rnd_68x43_SPC_FMJ", 20];
+             _cargo addMagazineCargoGlobal ["SMA_30Rnd_68x43_BT", 10];
+             _cargo addMagazineCargoGlobal ["SMA_30Rnd_68x43_sub", 10];
+             _cargo addMagazineCargoGlobal ["SMA_150Rnd_762_M80A1", 6];
+        };
+        _cargo addAction ["<t color='#7F0000'>Уничтожить ящик</t>","mission\main\actions\destroyCargo.sqf",[],-21,true,true,"","", 5]; 
     };
     if (_cargo_type == 12) exitWith {
         // Creating cargo
@@ -152,6 +169,23 @@ call {
     	_cargo addItemCargoGlobal ["Laserdesignator", 2];
     	_cargo addBackpackCargoGlobal ["B_AssaultPack_rgr", 2];
     	_cargo addBackpackCargoGlobal ["B_Kitbag_rgr", 2];
+        if (isClass(configfile >> "CfgPatches" >> "SMA_Weapons")) then { 
+             _cargo addMagazineCargoGlobal ["SMA_30Rnd_762x35_BLK_EPR", 20];
+             _cargo addMagazineCargoGlobal ["SMA_30Rnd_762x35_SS", 10];
+             _cargo addMagazineCargoGlobal ["SMA_30Rnd_762x39_SKS_FMJ", 20];
+             _cargo addMagazineCargoGlobal ["SMA_30Rnd_762x39_SKS_7n23_AP", 20];
+             _cargo addMagazineCargoGlobal ["SMA_20Rnd_762x51mm_M80A1_EPR", 20];
+             _cargo addMagazineCargoGlobal ["SMA_20Rnd_762x51mm_Mk316_Mod_0_Special_Long_Range", 20];
+             _cargo addMagazineCargoGlobal ["SMA_20Rnd_762x51mm_Lapua_FMJ_Subsonic", 10];
+             _cargo addMagazineCargoGlobal ["SMA_30Rnd_556x45_M855A1", 20];
+             _cargo addMagazineCargoGlobal ["SMA_30Rnd_556x45_Mk318", 20];
+             _cargo addMagazineCargoGlobal ["SMA_30Rnd_556x45_Mk262", 20];
+             _cargo addMagazineCargoGlobal ["SMA_30Rnd_68x43_SPC_FMJ", 20];
+             _cargo addMagazineCargoGlobal ["SMA_30Rnd_68x43_BT", 10];
+             _cargo addMagazineCargoGlobal ["SMA_30Rnd_68x43_sub", 10];
+             _cargo addMagazineCargoGlobal ["SMA_150Rnd_762_M80A1", 6];
+        };
+        _cargo addAction ["<t color='#7F0000'>Уничтожить ящик</t>","mission\main\actions\destroyCargo.sqf",[],-21,true,true,"","", 5]; 
     };
     if (_cargo_type == 13) exitWith {
         // Creating cargo
