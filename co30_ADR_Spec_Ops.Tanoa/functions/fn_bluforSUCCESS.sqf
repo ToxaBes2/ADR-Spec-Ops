@@ -28,7 +28,15 @@ _rewards = [
     //["To-201 «Шикра»", ["O_Plane_Fighter_02_F"]], 
     //["To-201 «Шикра» стелс", ["O_Plane_Fighter_02_Stealth_F"]], 
     //["А-149 «Грифон»", ["I_Plane_Fighter_04_F"]],
-    ["Беспилотник Sentinel", ["B_UAV_05_F"]]
+    ["Беспилотник Sentinel", ["B_UAV_05_F"]],
+    ["Rhino «Убийца танков UP»", ["B_T_AFV_Wheeled_01_up_cannon_F"]],
+    ["Rhino «Убийца танков»", ["B_T_AFV_Wheeled_01_cannon_F"]],
+    ["T-140 «Ангара»", ["O_T_MBT_04_cannon_F"]],
+    ["T-140K «Ангара»", ["O_T_MBT_04_cannon_F"]],
+    ["Ракетная установка на базе Zamak", ["I_Truck_02_MRL_F"]],
+    ["Бронетранспортер 301 Nyx (ПТ)", ["I_LT_01_AT_F"]],
+    ["Бронетранспортер 303 Nyx (Разведка)", ["I_LT_01_scout_F"]],
+    ["Бронетранспортер 304 Nyx (Авт. пушка)", ["I_LT_01_cannon_F"]]
 ];
 _mode = _this select 0; // 1 - bunker + radiotower, 2 - defend AO, 3 - side mission, 4 - special operation
 _vehName = "";

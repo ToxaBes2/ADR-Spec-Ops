@@ -17,7 +17,10 @@ _rewards = [
     ["Мобильный постановщик электронных помех", ["I_Truck_02_ammo_F", "Land_SatelliteAntenna_01_F"]],
     ["Мобильный Аванпост", ["I_Truck_02_medical_F"]],
     ["Вертолет Pawnee", ["B_Heli_Light_01_armed_F"]],     
-    ["Вертолет Хеллкет (вооруженный)", ["I_Heli_light_03_F"]]
+    ["Вертолет Хеллкет (вооруженный)", ["I_Heli_light_03_F"]],
+    ["Внедорожник (ПТ)", ["I_C_Offroad_02_AT_F"]],
+    ["Внедорожник (Пулемет)", ["I_C_Offroad_02_LMG_F"]],
+    ["Пикап (ПТ)", ["I_G_Offroad_01_AT_F"]]
 ];
 
 _mode = _this select 0; // 1 - bunker, 2 - radiotower., 3 - side mission, 4 - special operation

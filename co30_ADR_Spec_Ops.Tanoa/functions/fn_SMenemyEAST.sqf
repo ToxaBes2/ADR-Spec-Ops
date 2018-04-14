@@ -51,6 +51,7 @@ _randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call QS_fnc_randomP
 _data = [_randomPos, (random 360), (selectRandom [VEH_TYPES]), ENEMY_SIDE] call BIS_fnc_spawnVehicle;
 _SMveh1 = _data select 0;
 _SMvehPatrol = _data select 2;
+[_SMveh1,"",["showCamonetHull",(selectRandom [0,1]),"showCamonetTurret",(selectRandom [0,1]),"showSLATHull",(selectRandom [0,1])]] call BIS_fnc_initVehicle;
 _SMveh1 addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 [_SMvehPatrol, getPos sideObj, 75] call BIS_fnc_taskPatrol;
 _SMveh1 lock 0;
@@ -65,6 +66,7 @@ _randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call QS_fnc_randomP
 _data = [_randomPos, (random 360), (selectRandom [VEH_TYPES]), ENEMY_SIDE] call BIS_fnc_spawnVehicle;
 _SMveh2 = _data select 0;
 _SMvehPatrol = _data select 2;
+[_SMveh2,"",["showCamonetHull",(selectRandom [0,1]),"showCamonetTurret",(selectRandom [0,1]),"showSLATHull",(selectRandom [0,1])]] call BIS_fnc_initVehicle;
 _SMveh2 addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 [_SMvehPatrol, getPos sideObj, 150] call BIS_fnc_taskPatrol;
 _SMveh2 lock 0;
@@ -79,6 +81,7 @@ _randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call QS_fnc_randomP
 _data = [_randomPos, (random 360), "O_T_APC_Tracked_02_AA_ghex_F", ENEMY_SIDE] call BIS_fnc_spawnVehicle;
 _SMaa = _data select 0;
 _SMaaPatrol = _data select 2;
+[_SMaa,"",["showCamonetHull",(selectRandom [0,1]),"showCamonetTurret",(selectRandom [0,1]),"showSLATHull",(selectRandom [0,1])]] call BIS_fnc_initVehicle;
 _SMaa lock 0;
 _SMaa addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 [_SMaaPatrol, getPos sideObj, 150] call BIS_fnc_taskPatrol;

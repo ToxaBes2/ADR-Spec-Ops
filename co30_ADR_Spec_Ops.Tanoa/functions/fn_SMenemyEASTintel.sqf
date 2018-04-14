@@ -42,6 +42,7 @@ _randomPos = [[[getPos _intelObj, 300], []], ["water", "out"]] call QS_fnc_rando
 _data = [_randomPos, (random 360), (selectRandom [VEH_TYPES]), ENEMY_SIDE] call BIS_fnc_spawnVehicle;
 _SMveh = _data select 0;
 _SMvehPatrol = _data select 2;
+[_SMveh,"",["showCamonetHull",(selectRandom [0,1]),"showCamonetTurret",(selectRandom [0,1]),"showSLATHull",(selectRandom [0,1])]] call BIS_fnc_initVehicle;
 _SMveh addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 [_SMvehPatrol, getPos _intelObj, 150] call BIS_fnc_taskPatrol;
 [(units _SMvehPatrol)] call QS_fnc_setSkill3;

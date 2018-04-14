@@ -71,6 +71,10 @@ _bluforWList = [
     "arifle_MX_GL_khk_F",
     //"arifle_MX_SW_khk_F",
     "arifle_MX_khk_F",
+    "launch_MRAWS_green_rail_F",
+    "launch_MRAWS_olive_rail_F",
+    "launch_MRAWS_green_F",
+    "launch_MRAWS_olive_F",
     //"srifle_LRR_tna_F",
     "SMG_05_F"
 ];

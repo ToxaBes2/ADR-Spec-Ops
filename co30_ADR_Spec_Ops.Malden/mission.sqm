@@ -1452,6 +1452,7 @@ class Mission
 			};
 			id=54;
 			type="B_APC_Wheeled_01_cannon_F";
+			atlOffset=-0.076711655;
 		};
 		class Item52
 		{
@@ -2549,7 +2550,7 @@ class Mission
 			};
 			id=100;
 			type="B_APC_Tracked_01_CRV_F";
-			atlOffset=0.1989994;
+			atlOffset=0.018913269;
 		};
 		class Item88
 		{
@@ -3471,7 +3472,7 @@ class Mission
 			};
 			id=140;
 			type="B_APC_Tracked_01_rcws_F";
-			atlOffset=1.9073486e-006;
+			atlOffset=-0.1800251;
 		};
 		class Item125
 		{
@@ -7434,7 +7435,7 @@ class Mission
 			};
 			id=286;
 			type="I_C_Boat_Transport_02_F";
-			atlOffset=12.843979;
+			atlOffset=12.841198;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -7476,7 +7477,7 @@ class Mission
 			};
 			id=287;
 			type="I_C_Boat_Transport_02_F";
-			atlOffset=12.930791;
+			atlOffset=12.92801;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -7518,7 +7519,7 @@ class Mission
 			};
 			id=288;
 			type="I_C_Boat_Transport_02_F";
-			atlOffset=1.3959699;
+			atlOffset=1.393189;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -7560,7 +7561,7 @@ class Mission
 			};
 			id=289;
 			type="I_C_Boat_Transport_02_F";
-			atlOffset=1.3141918;
+			atlOffset=1.3114109;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -13318,7 +13319,7 @@ class Mission
 			};
 			id=673;
 			type="C_Boat_Transport_02_F";
-			atlOffset=3.5016181;
+			atlOffset=3.4988372;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -22274,7 +22275,7 @@ class Mission
 			};
 			id=1009;
 			type="C_Boat_Transport_02_F";
-			atlOffset=5.113441;
+			atlOffset=5.1106601;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -22329,7 +22330,7 @@ class Mission
 			};
 			id=1011;
 			type="C_Boat_Transport_02_F";
-			atlOffset=2.0991449;
+			atlOffset=2.096364;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -22384,7 +22385,7 @@ class Mission
 			};
 			id=1013;
 			type="C_Boat_Transport_02_F";
-			atlOffset=0.81589139;
+			atlOffset=0.81311047;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -22439,7 +22440,7 @@ class Mission
 			};
 			id=1015;
 			type="C_Boat_Transport_02_F";
-			atlOffset=5.5279722;
+			atlOffset=5.5251913;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -22486,7 +22487,7 @@ class Mission
 				class Attribute0
 				{
 					property="VehicleCustomization";
-					expression="if (local _this) then {if (isSimpleObject _this) then {_this setVariable ['VehicleCustomization',_value]} else {([_this] + _value) call (uinamespace getvariable 'bis_fnc_initVehicle');};};";
+					expression="if (local _this) then {if (isSimpleObject _this) then {_this setVariable ['bis_fnc_initVehicle_customization',_value]} else {([_this] + _value + [true]) call (uinamespace getvariable 'bis_fnc_initVehicle');};};";
 					class Value
 					{
 						class data
@@ -22596,7 +22597,7 @@ class Mission
 			};
 			id=1025;
 			type="C_Boat_Transport_02_F";
-			atlOffset=3.0469999;
+			atlOffset=3.044219;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -22651,7 +22652,7 @@ class Mission
 			};
 			id=1027;
 			type="C_Boat_Transport_02_F";
-			atlOffset=1.973676;
+			atlOffset=1.9708951;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -22706,7 +22707,7 @@ class Mission
 			};
 			id=1029;
 			type="C_Boat_Transport_02_F";
-			atlOffset=1.9239544;
+			atlOffset=1.9211735;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -22761,7 +22762,7 @@ class Mission
 			};
 			id=1031;
 			type="C_Boat_Transport_02_F";
-			atlOffset=1.7530017;
+			atlOffset=1.7502208;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -22816,7 +22817,7 @@ class Mission
 			};
 			id=1033;
 			type="C_Boat_Transport_02_F";
-			atlOffset=0.81295937;
+			atlOffset=0.81017846;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -26946,7 +26947,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={8128.5889,29.687845,10129.939};
-						angles[]={-0,1.6481167,6.2823396};
+						angles[]={0,1.6481167,6.2823396};
 					};
 					side="West";
 					flags=6;
@@ -27031,7 +27032,7 @@ class Mission
 					class PositionInfo
 					{
 						position[]={8128.9331,29.687553,10138.608};
-						angles[]={-0,2.8520656,6.2823396};
+						angles[]={0,2.8520656,6.2823396};
 					};
 					side="West";
 					flags=4;
@@ -27046,7 +27047,7 @@ class Mission
 					id=1246;
 					type="B_soldier_AT_F";
 				};
-                class Item3
+				class Item3
 				{
 					dataType="Object";
 					class PositionInfo
@@ -27067,7 +27068,7 @@ class Mission
 					type="B_medic_F";
 					atlOffset=3.8146973e-006;
 				};
-                class Item4
+				class Item4
 				{
 					dataType="Object";
 					class PositionInfo
@@ -27088,7 +27089,7 @@ class Mission
 					type="B_medic_F";
 					atlOffset=3.8146973e-006;
 				};
-                class Item5
+				class Item5
 				{
 					dataType="Object";
 					class PositionInfo

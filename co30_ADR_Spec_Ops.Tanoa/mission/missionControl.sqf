@@ -8,7 +8,8 @@ sleep _loopTimeout;
 _prioList = [
 	"priorityAA",
 	"priorityArty",
-	"priorityPower"
+	"priorityPower",
+	"priorityMortar"
 ];
 _missionList = [
     "convoy",

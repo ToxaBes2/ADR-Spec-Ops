@@ -55,6 +55,7 @@ for "_x" from 0 to 1 do {
 
 _randomPos = [[[getPos sideObj, 300], []], ["water", "out"]] call QS_fnc_randomPos;
 _SMveh = selectRandom [VEH_TYPES] createVehicle _randomPos;
+[_SMveh,"",["showCamonetHull",(selectRandom [0,1]),"showCamonetTurret",(selectRandom [0,1]),"showSLATHull",(selectRandom [0,1])]] call BIS_fnc_initVehicle;
 waitUntil {sleep 0.5; !isNull _SMveh};
 _SMveh addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 	"I_engineer_F" createUnit [_randomPos,_SMvehPatrol];
@@ -81,6 +82,7 @@ for "_x" from 0 to 1 do {
 	_data = [_randomPos, (random 360), "O_APC_Tracked_02_AA_F", ENEMY_SIDE] call BIS_fnc_spawnVehicle;
     _SMaa = _data select 0;
     _SMaaPatrol = _data select 2;
+    [_SMaa,"",["showCamonetHull",(selectRandom [0,1]),"showCamonetTurret",(selectRandom [0,1]),"showSLATHull",(selectRandom [0,1])]] call BIS_fnc_initVehicle;
     _SMaa addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 	_SMaa lock 0;
 	[_SMaaPatrol, getPos sideObj, 150] call BIS_fnc_taskPatrol;

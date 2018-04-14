@@ -73,6 +73,7 @@ _vehName = _this select 0;
                 _spawnPositions = ["reward1","reward2","reward3","reward4","reward5"];
             };
             _vehReward = createVehicle [_vehName, _spawnPos, _spawnPositions, 0, "NONE"];
+            [_vehReward,"",["showCamonetHull",(selectRandom [0,1]),"showCamonetTurret",(selectRandom [0,1]),"showSLATHull",(selectRandom [0,1])]] call BIS_fnc_initVehicle;
             _correctPos = getPos _vehReward;
             _correctPos set [2,0];
             _vehReward setPos _correctPos;

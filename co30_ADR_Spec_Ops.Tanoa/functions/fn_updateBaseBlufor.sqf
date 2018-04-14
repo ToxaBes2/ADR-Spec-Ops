@@ -50,6 +50,8 @@ if (_level > 27) then {
     base_darter addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
     base_darter addWeapon ("LMG_Mk200_F");
     base_darter addMagazine ("200Rnd_65x39_cased_Box_Tracer");
+    base_darter setVariable ["VCOM_NOAI", true];
+    _uavGroup setVariable ["zbe_cacheDisabled", true];
     _uavGroup setBehaviour "SAFE";
     _uavGroup setCombatMode "RED";
     [(units _uavGroup)] call QS_fnc_setSkill3;

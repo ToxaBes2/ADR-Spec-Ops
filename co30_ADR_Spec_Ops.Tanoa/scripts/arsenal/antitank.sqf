@@ -49,6 +49,10 @@ _bluforWList = [
     //"srifle_LRR_F",
     "launch_B_Titan_short_tna_F",
     "launch_B_Titan_tna_F",
+    "launch_MRAWS_green_rail_F",
+    "launch_MRAWS_olive_rail_F",
+    "launch_MRAWS_green_F",
+    "launch_MRAWS_olive_F",
     //"srifle_EBR_F",
     //"srifle_DMR_02_F",
     //"srifle_DMR_02_camo_F",
@@ -106,6 +110,7 @@ _opforWList = [
     //"arifle_CTARS_blk_F",
     "arifle_CTAR_blk_F",
     //"arifle_CTAR_GL_blk_F",
+    "launch_O_Vorona_green_F",
     "launch_RPG32_F"
 ];
 

@@ -132,36 +132,42 @@ try {
 } catch {};
 
 // FIRING SEQUENCE LOOP
-_radius = 80;
+_radius = 30;
 waitUntil{sleep 1; !isNil "currentAOUp"};
 while {(canMove priorityObj1 || canMove priorityObj2) && currentAOUp} do {
 	if (!currentAOUp) then {
-        priorityObj1 setDamage 1;
-        priorityObj2 setDamage 1;
+        {
+	    	if (side _x == east || side _x == sideEmpty) then {
+                deleteVehicle _x;
+            };
+        } forEach [priorityObj1, priorityObj2];
 	} else {
 	    _accepted = false;
 	    _unit = objNull;
 	    _targetPos = [0, 0, 0];
 	    while {!_accepted} do {
-            _total = playableUnits + switchableUnits;
-            if (count _total > 0) then {
-                _unit = _total select (floor (random (count _total)));
-            };
-	    	if (!isNull _unit) then {
-	    		_targetPos = getPos _unit;
-	    		if ((_targetPos distance (getMarkerPos "respawn_west")) > 1000 && vehicle _unit == _unit && side _unit == WEST) then {
-	    			_accepted = true;
-	    		} else {
-	    			sleep 7;
+	    	_targetPos = [0,0,0];
+	    	_delta1 = _targetPos distance2D (getMarkerPos "respawn_west");
+            {
+                if (side _x isEqualTo WEST) then  {
+                	_tmpPos = getPos _x;                                       
+                    if ((_tmpPos distance2D (getMarkerPos "respawn_west")) > 300 && vehicle _x == _x) then {
+	    			    _delta2 = _tmpPos distance2D (getMarkerPos "respawn_west");
+                        if (_delta2 < _delta1) then {
+                            _delta1 = _delta2;
+                        	_targetPos = _tmpPos;
+                        	_accepted = true;
+                        };	    			 
+	    		    };
 	    		};
-	    	};
+            } forEach AllPlayers;
 	    	sleep 10;
 	    };
 	    if (PARAMS_ArtilleryTargetTickWarning == 1) then {
 	    	hqSideChat = selectRandom _firingMessages; publicVariable "hqSideChat"; [WEST,"HQ"] sideChat hqSideChat;
 	    };
-	    _dir = [_flatPos, _targetPos] call BIS_fnc_dirTo;
-	    { _x setDir _dir; } forEach [priorityObj1, priorityObj2];
+	    //_dir = [_flatPos, _targetPos] call BIS_fnc_dirTo;
+	    //{ _x setDir _dir; } forEach [priorityObj1, priorityObj2];
 	    sleep 5;
 	    {
 	    	if (alive _x) then {

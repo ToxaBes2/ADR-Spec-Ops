@@ -189,6 +189,9 @@ _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\holsterW
 // Unlock DLC vehicles
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\dlc_unlocker.sqf";};
 
+// disable system action
+_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\disableSystemActions.sqf";};
+
 // Deal with static map markers
 if (playerSide == west) then {
     "partizan_base" setMarkerAlphaLocal 0;

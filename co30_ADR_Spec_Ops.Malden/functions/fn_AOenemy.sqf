@@ -6,7 +6,7 @@ Description: Spawn enemies in the AO.
 #define INF_TYPE "OIA_InfSentry","OIA_InfSquad","OIA_InfSquad_Weapons","OIA_InfTeam","OIA_InfTeam_AA","OIA_InfTeam_AT","OI_reconPatrol","OI_reconSentry","OI_reconTeam"
 #define INF_URBANTYPE "OIA_GuardSentry","OIA_GuardSquad","OIA_GuardTeam"
 #define MRAP_TYPE "O_MRAP_02_gmg_F","O_MRAP_02_hmg_F"
-#define VEH_TYPE "O_MBT_02_cannon_F","O_APC_Tracked_02_cannon_F","O_APC_Wheeled_02_rcws_F","O_APC_Tracked_02_cannon_F","I_APC_Wheeled_03_cannon_F","I_APC_tracked_03_cannon_F","I_MBT_03_cannon_F"
+#define VEH_TYPE "O_MBT_02_cannon_F","O_APC_Tracked_02_cannon_F","O_APC_Wheeled_02_rcws_F","O_APC_Tracked_02_cannon_F","I_APC_Wheeled_03_cannon_F","I_APC_tracked_03_cannon_F","I_MBT_03_cannon_F","O_MBT_04_cannon_F","O_MBT_04_command_F","I_LT_01_AT_F","I_LT_01_scout_F","I_LT_01_cannon_F"
 #define AIR_TYPE "O_Heli_Attack_02_F","O_Heli_Attack_02_black_F","I_Heli_light_03_F","O_Heli_Light_02_F"
 #define STATIC_TYPE "O_HMG_01_F","O_HMG_01_high_F","O_Mortar_01_F"
 #define ENEMY_SIDE EAST
@@ -193,6 +193,7 @@ for "_x" from 1 to PARAMS_AAPatrol do {
         _res = count _randPos;
     };
 	_aa = "O_APC_Tracked_02_AA_F" createVehicle _randomPos;
+    [_aa,"",["showCamonetHull",(selectRandom [0,1]),"showCamonetTurret",(selectRandom [0,1]),"showSLATHull",(selectRandom [0,1])]] call BIS_fnc_initVehicle;    
 	waitUntil{!isNull _aa};
     _aa addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 	"O_engineer_F" createUnit [_randomPos,_aaGroup];
@@ -297,6 +298,7 @@ for "_x" from 0 to 1 do {
         _res = count _randPos;
     };
 	_AOveh = selectRandom [VEH_TYPE] createVehicle _randomPos;
+    [_AOveh,"",["showCamonetHull",(selectRandom [0,1]),"showCamonetTurret",(selectRandom [0,1]),"showSLATHull",(selectRandom [0,1])]] call BIS_fnc_initVehicle;    
 	waitUntil{!isNull _AOveh};
     _AOveh addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
 	"O_engineer_F" createUnit [_randomPos,_AOvehGroup];

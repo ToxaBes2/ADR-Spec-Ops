@@ -88,6 +88,8 @@ if (BLUFOR_BASE_SCORE > 27) then {
     base_darter2 addEventHandler ['incomingMissile', {_this spawn QS_fnc_HandleIncomingMissile}];
     base_darter2 addWeapon ("LMG_Mk200_F");
     base_darter2 addMagazine ("200Rnd_65x39_cased_Box_Tracer");
+    base_darter2 setVariable ["VCOM_NOAI", true];
+    _uavGroup setVariable ["zbe_cacheDisabled", true];
     _uavGroup setBehaviour "SAFE";
     _uavGroup setCombatMode "RED";
     [(units _uavGroup)] call QS_fnc_setSkill3;

@@ -21,7 +21,7 @@ _uavOperator = ["I_C_Soldier_Para_8_F"];
 
 // AT / MISSILE LAUNCHERS
 _missileSoldiers = ["I_C_Soldier_Para_5_F"];
-_missileSpecialised = ["launch_B_Titan_F","launch_O_Titan_F","launch_I_Titan_F","launch_B_Titan_short_F","launch_O_Titan_short_F","launch_I_Titan_short_F","launch_B_Titan_tna_F","launch_B_Titan_short_tna_F","launch_O_Titan_ghex_F","launch_O_Titan_short_ghex_F"];
+_missileSpecialised = ["launch_B_Titan_F","launch_O_Titan_F","launch_I_Titan_F","launch_B_Titan_short_F","launch_O_Titan_short_F","launch_I_Titan_short_F","launch_B_Titan_tna_F","launch_B_Titan_short_tna_F","launch_O_Titan_ghex_F","launch_O_Titan_short_ghex_F","launch_O_Vorona_green_F"];
 
 // SNIPER RIFLES
 _snipers = ["I_C_Soldier_Para_8_F"];

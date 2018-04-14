@@ -34,6 +34,7 @@ _cargo addMagazineCargoGlobal ["10Rnd_50BW_Mag_F", 15];
 _cargo addMagazineCargoGlobal ["10Rnd_93x64_DMR_05_Mag", 15];
 _cargo addMagazineCargoGlobal ["10Rnd_338_Mag", 15];
 _cargo addMagazineCargoGlobal ["20Rnd_762x51_Mag", 20];
+_crate addMagazineCargoGlobal ["7Rnd_408_Mag", 15];
 _cargo addMagazineCargoGlobal ["20Rnd_650x39_Cased_Mag_F", 20];
 _cargo addMagazineCargoGlobal ["SmokeShellBlue", 40];
 _cargo addMagazineCargoGlobal ["B_IR_Grenade", 10];
