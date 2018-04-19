@@ -57,7 +57,7 @@ if (!TIMER_IN_USE) then {
     publicVariable "hqSideChat";
     [playerSide, "HQ"] sideChat hqSideChat;
     _epicenter = getPos _object;
-    if ((_object distance _basePos) > 2200) then {
+    if ((_object distance2D _basePos) > 2000) then {
        _object setDamage 0.95;
        _bigBomb = createVehicle ["Bo_GBU12_LGB", _epicenter, [], 0, "NONE"];
     };

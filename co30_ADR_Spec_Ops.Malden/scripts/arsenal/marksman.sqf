@@ -684,6 +684,10 @@ if (BLUFOR_BASE_SCORE > 28) then {
 "Titan_AA",
 "Titan_AP",
 "Titan_AT",
+"Vorona_HEAT",
+"Vorona_HE",
+"MRAWS_HEAT_F",
+"MRAWS_HE_F",
 //Батарейки
 "Laserbatteries",
 // Патроны Apex

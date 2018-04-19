@@ -101,6 +101,7 @@ class QS
 		class getMainAO {};
 		class getRewardsData {};
 		class getShorePos {};
+		class inventory {};	
 		class killerCatcher {};
 		class KeyDown {};
 		class mapBuildings {};

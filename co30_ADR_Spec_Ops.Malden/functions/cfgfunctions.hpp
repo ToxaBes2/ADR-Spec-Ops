@@ -100,7 +100,8 @@ class QS
 		class getCargoData {};
 		class getMainAO {};
 		class getRewardsData {};
-		class getShorePos {};		
+		class getShorePos {};	
+		class inventory {};		
 		class killerCatcher {};
 		class KeyDown {};
 		class mapBuildings {};

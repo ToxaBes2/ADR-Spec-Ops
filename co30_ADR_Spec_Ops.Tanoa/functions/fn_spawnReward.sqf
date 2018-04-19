@@ -232,14 +232,17 @@ _vehName = _this select 0;
                         _epicenter = getPos _curObj;
                         if (isServer) then {
                             _bigBomb = createVehicle ["Bo_GBU12_LGB", _epicenter, [], 0, "NONE"];
-                            if (((_this select 0) distance _basePos) > 1500) then {
-                                _k = 1.66;
-                                _radius = 900;
-                                _radiusEMI = 1400;
-                                _allObjects1 = nearestObjects [_epicenter,[], _radius];
+                            if (((_this select 0) distance _basePos) > 2000) then {
+                                _radiusMAN = 1000;
+                                _radiusEMI = 1500;
+                                _radiusALL = 100;
+                                _allObjects0 = nearestObjects [_epicenter,[], _radiusALL];
                                 {
-                                    _distance = [_epicenter, getPos _x] call BIS_fnc_distance2D;
-                                    _x setDamage (abs ((_distance / _radius) - _k));
+                                    _x setDamage 1;
+                                } foreach _allObjects0;
+                                _allObjects1 = nearestObjects [_epicenter,["Man"], _radiusMAN];
+                                {
+                                    (vehicle _x) setDamage 1;
                                 } foreach _allObjects1;
                                 _allObjects2 = nearestObjects [_epicenter, ["LandVehicle","Air","Ship"], _radiusEMI];
                                 {
