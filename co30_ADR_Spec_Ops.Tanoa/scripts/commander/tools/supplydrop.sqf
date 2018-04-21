@@ -97,6 +97,7 @@ _cargo addAction ["<t color='#7F0000'>Уничтожить ящик</t>","missio
 	waitUntil {(getPos _cargo select 2) < 2};
     detach _cargo;
     sleep 5;
+    _cargo allowDamage true;
     _smoke3 = createVehicle ["SmokeShellBlue", position _cargo, [], 0, 'NONE'];
     _smoke3 attachTo [_cargo, [0, 0, 0.5]];
     sleep 900;
