@@ -73,7 +73,7 @@ call {
 
     if(_t in _mh9) exitWith {
     	_u addWeapon "CMFlareLauncher";
-    	_u addMagazine "168Rnd_CMFlare_Chaff_Magazine";
+    	_u addMagazine "240Rnd_CMFlare_Chaff_Magazine";
     };
 
     if(_t in _hellcats) exitWith {

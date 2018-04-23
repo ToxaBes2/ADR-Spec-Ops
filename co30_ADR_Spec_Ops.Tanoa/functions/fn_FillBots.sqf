@@ -149,7 +149,13 @@ for "_i" from 1 to _bots do {
            _wallsDir = _wallsDir + [_watchDir];
         };
     };
-    (selectRandom _units) createUnit [_pos, _grp, "[this] call QS_fnc_moveToHC;currentGuard = this;", 0, (selectRandom ["CAPTAIN","MAJOR","COLONEL"])];
+    _unitClassName = selectRandom _units;
+    if (_unitClassName in ["O_Soldier_AA_F","O_soldierU_AA_F","O_A_soldier_AA_F","O_T_Soldier_AAA_F"]) then {
+        if (random 10 < 5) then {
+            _unitClassName = selectRandom _units;
+        };
+    };
+    _unitClassName createUnit [_pos, _grp, "[this] call QS_fnc_moveToHC;currentGuard = this;", 0, (selectRandom ["CAPTAIN","MAJOR","COLONEL"])];
     currentGuard allowDamage false;
     currentGuard setVariable ["BIS_enableRandomization", false];
     if (typeOf _house in _towers) then {

@@ -274,8 +274,10 @@ if (isNil "CLEAR_POSITIONS") then {
             } forEach _objs;    
             _bunkerGroup = [_pos, 30, 5, east] call QS_fnc_FillBots;
             _cargoPostGroups = [_pos, 30, east] call QS_fnc_FillCargoPatrol;                  
-            _pos2 = [_pos, 0, 5, 1, 0, 10] call QS_fnc_findSafePos;
-            "O_Soldier_AA_F" createUnit [_pos2, _unitGroup, "", 0, (selectRandom ["CAPTAIN","MAJOR","COLONEL"])];
+            if (randon 10 > 6) then {
+                _pos2 = [_pos, 0, 5, 1, 0, 10] call QS_fnc_findSafePos;
+                "O_Soldier_AA_F" createUnit [_pos2, _unitGroup, "", 0, (selectRandom ["CAPTAIN","MAJOR","COLONEL"])];
+            };
             _pos3 = [_pos, 0, 12, 1, 0, 10] call QS_fnc_findSafePos;
             "O_Soldier_AT_F" createUnit [_pos3, _unitGroup, "", 0, (selectRandom ["CAPTAIN","MAJOR","COLONEL"])];
             _unitGroup setBehaviour "COMBAT";

@@ -210,7 +210,7 @@ if (count (_heliData) > 8) then {
 };
 if (_heliType == "B_Heli_Light_01_armed_F") then {
     heliSnatch addweapon "CMFlareLauncher";
-    heliSnatch addMagazine "168Rnd_CMFlare_Chaff_Magazine";
+    heliSnatch addMagazine "240Rnd_CMFlare_Chaff_Magazine";
 };
 
 

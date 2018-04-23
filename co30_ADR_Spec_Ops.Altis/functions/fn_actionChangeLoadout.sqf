@@ -52,7 +52,7 @@ if (_vehType in _allowedVehicles) then {
 			{
 				uiSleep 1;
 			    _veh addMagazineTurret [_x, [-1]];
-			} forEach ["5000Rnd_762x51_Yellow_Belt", "24Rnd_missiles", "168Rnd_CMFlare_Chaff_Magazine"];
+			} forEach ["5000Rnd_762x51_Yellow_Belt", "24Rnd_missiles", "240Rnd_CMFlare_Chaff_Magazine"];
 
 			{
 				uiSleep 3;
@@ -65,7 +65,7 @@ if (_vehType in _allowedVehicles) then {
 			{
 				uiSleep 1;
 			    _veh addMagazineTurret [_x, [-1]];
-			} forEach ["2000Rnd_65x39_Belt_Tracer_Green_Splash", "96Rnd_40mm_G_belt", "168Rnd_CMFlare_Chaff_Magazine"];
+			} forEach ["2000Rnd_65x39_Belt_Tracer_Green_Splash", "96Rnd_40mm_G_belt", "240Rnd_CMFlare_Chaff_Magazine"];
 
 			{
 				uiSleep 3;
@@ -78,7 +78,7 @@ if (_vehType in _allowedVehicles) then {
 			{
 				uiSleep 1;
 			    _veh addMagazineTurret [_x, [-1]];
-			} forEach ["1000Rnd_20mm_shells", "168Rnd_CMFlare_Chaff_Magazine"];
+			} forEach ["1000Rnd_20mm_shells", "240Rnd_CMFlare_Chaff_Magazine"];
 
 			{
 				uiSleep 3;
@@ -92,7 +92,7 @@ if (_vehType in _allowedVehicles) then {
 			{
 				uiSleep 1;
 			    _veh addMagazineTurret [_x, [-1]];
-			} forEach ["300Rnd_20mm_shells", "4Rnd_GAA_missiles", "2Rnd_AAA_missiles", "120Rnd_CMFlare_Chaff_Magazine"];
+			} forEach ["300Rnd_20mm_shells", "4Rnd_GAA_missiles", "2Rnd_AAA_missiles", "240Rnd_CMFlare_Chaff_Magazine"];
 
 			{
 				uiSleep 3;
@@ -105,7 +105,7 @@ if (_vehType in _allowedVehicles) then {
 			{
 				uiSleep 1;
 			    _veh addMagazineTurret [_x, [-1]];
-			} forEach ["300Rnd_20mm_shells", "2Rnd_LG_scalpel", "2Rnd_AAA_missiles", "2Rnd_GBU12_LGB_MI10", "120Rnd_CMFlare_Chaff_Magazine"];
+			} forEach ["300Rnd_20mm_shells", "2Rnd_LG_scalpel", "2Rnd_AAA_missiles", "2Rnd_GBU12_LGB_MI10", "240Rnd_CMFlare_Chaff_Magazine"];
 
 			{
 				uiSleep 3;
@@ -118,7 +118,7 @@ if (_vehType in _allowedVehicles) then {
 			{
 				uiSleep 1;
 			    _veh addMagazineTurret [_x, [-1]];
-			} forEach ["300Rnd_20mm_shells", "2Rnd_AAA_missiles", "4Rnd_Bomb_04_F", "120Rnd_CMFlare_Chaff_Magazine"];
+			} forEach ["300Rnd_20mm_shells", "2Rnd_AAA_missiles", "4Rnd_Bomb_04_F", "240Rnd_CMFlare_Chaff_Magazine"];
 
 			{
 				uiSleep 3;
@@ -131,7 +131,7 @@ if (_vehType in _allowedVehicles) then {
 			{
 				uiSleep 1;
 			    _veh addMagazineTurret [_x, [-1]];
-			} forEach ["300Rnd_20mm_shells", "2Rnd_LG_scalpel", "4Rnd_Bomb_04_F", "120Rnd_CMFlare_Chaff_Magazine"];
+			} forEach ["300Rnd_20mm_shells", "2Rnd_LG_scalpel", "4Rnd_Bomb_04_F", "240Rnd_CMFlare_Chaff_Magazine"];
 
 			{
 				uiSleep 3;
@@ -144,7 +144,7 @@ if (_vehType in _allowedVehicles) then {
 			{
 				uiSleep 1;
 			    _veh addMagazineTurret [_x, [-1]];
-			} forEach ["300Rnd_20mm_shells", "20Rnd_Rocket_03_AP_F", "2Rnd_AAA_missiles", "2Rnd_GBU12_LGB_MI10", "120Rnd_CMFlare_Chaff_Magazine"];
+			} forEach ["300Rnd_20mm_shells", "20Rnd_Rocket_03_AP_F", "2Rnd_AAA_missiles", "2Rnd_GBU12_LGB_MI10", "240Rnd_CMFlare_Chaff_Magazine"];
 
 			{
 				uiSleep 3;
@@ -157,7 +157,7 @@ if (_vehType in _allowedVehicles) then {
 			{
 				uiSleep 1;
 			    _veh addMagazineTurret [_x, [-1]];
-			} forEach ["300Rnd_20mm_shells", "20Rnd_Rocket_03_HE_F", "20Rnd_Rocket_03_HE_F", "20Rnd_Rocket_03_HE_F", "2Rnd_AAA_missiles", "120Rnd_CMFlare_Chaff_Magazine"];
+			} forEach ["300Rnd_20mm_shells", "20Rnd_Rocket_03_HE_F", "20Rnd_Rocket_03_HE_F", "20Rnd_Rocket_03_HE_F", "2Rnd_AAA_missiles", "240Rnd_CMFlare_Chaff_Magazine"];
 
 			{
 				uiSleep 3;
@@ -170,7 +170,7 @@ if (_vehType in _allowedVehicles) then {
 			{
 				uiSleep 1;
 			    _veh addMagazineTurret [_x, [-1]];
-			} forEach ["300Rnd_20mm_shells", "2Rnd_LG_scalpel", "20Rnd_Rocket_03_HE_F", "2Rnd_AAA_missiles", "120Rnd_CMFlare_Chaff_Magazine"];
+			} forEach ["300Rnd_20mm_shells", "2Rnd_LG_scalpel", "20Rnd_Rocket_03_HE_F", "2Rnd_AAA_missiles", "240Rnd_CMFlare_Chaff_Magazine"];
 				{
 				uiSleep 3;
 			    _veh addWeaponTurret [_x, [-1]];

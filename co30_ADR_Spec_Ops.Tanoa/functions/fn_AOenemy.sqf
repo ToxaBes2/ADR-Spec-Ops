@@ -3,7 +3,7 @@
 Author:	Quiksilver (credits: Ahoyworld.co.uk. Rarek et al for AW_fnc_spawnUnits.)
 Description: Spawn enemies in the AO.
 */
-#define INF_TYPE "O_T_InfSentry","O_T_InfSquad","O_T_InfSquad_Weapons","O_T_InfTeam","O_T_InfTeam_AA","O_T_InfTeam_AT","O_T_reconPatrol","O_T_reconSentry","O_T_reconTeam"
+#define INF_TYPE "O_T_InfSentry","O_T_InfSquad","O_T_InfSquad_Weapons","O_T_InfTeam","O_T_InfTeam_AT","O_T_reconPatrol","O_T_reconSentry","O_T_reconTeam"
 #define INF_URBANTYPE "OIA_GuardSentry","OIA_GuardSquad","OIA_GuardTeam"
 #define MRAP_TYPE "O_T_MRAP_02_hmg_ghex_F","O_T_MRAP_02_gmg_ghex_F","O_T_LSV_02_armed_F"
 #define VEH_TYPE "O_T_APC_Tracked_02_cannon_ghex_F","O_T_APC_Wheeled_02_rcws_ghex_F","O_T_MBT_02_cannon_ghex_F","I_APC_Wheeled_03_cannon_F","I_APC_tracked_03_cannon_F","I_MBT_03_cannon_F","O_MBT_04_cannon_F","O_MBT_04_command_F","I_LT_01_AT_F","I_LT_01_scout_F","I_LT_01_cannon_F"
@@ -381,7 +381,7 @@ if (random 10 > 6) then {
     _direction = [(getMarkerPos "respawn_west"), (getMarkerPos currentAO)] call BIS_fnc_dirTo;
     _targetPos = [(getMarkerPos "respawn_west"), _medianaRes, _direction] call BIS_fnc_relPos;
     _atPos = [_targetPos, 1, 500, 2, 0, 2, 0, [], [_targetPos]] call QS_fnc_findSafePos;
-    if (random 10 > 5) then {
+    if (random 10 > 3) then {
         _null = [_atPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "Infantry" >> "O_T_InfTeam_AT")] call BIS_fnc_spawnGroup;
     } else {
     	_null = [_atPos, EAST, (configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "Infantry" >> "O_T_InfTeam_AA")] call BIS_fnc_spawnGroup;
