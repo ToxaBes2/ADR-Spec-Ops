@@ -48,6 +48,7 @@ if (playerSide == resistance) then {
 	// Resistance engineers only
 	if (typeOf player in ["I_G_engineer_F"]) then {
 		player setUnitTrait ["UAVHacker", true];
+        player setUnitTrait ["explosiveSpecialist", true];
 		player setUnitTrait ["engineer", true];
 	};
 	if (typeOf player in ["I_G_medic_F"]) then {
@@ -135,6 +136,9 @@ player addEventHandler [ "GetOutMan", {
 
 // Put earplugs in automaticly when controling UAV (Engineers only)
 if (typeOf player in ["B_engineer_F", "I_G_engineer_F", "I_G_engineer_F"]) then {
+    player setUnitTrait ["engineer", true];
+    player setUnitTrait ["explosiveSpecialist", true];
+    player setUnitTrait ["UAVHacker", true];
 	_null = [] spawn {
 		private ["_uav", "_uav_action_id1", "_uav_action_id2"];
 		while {true} do {
