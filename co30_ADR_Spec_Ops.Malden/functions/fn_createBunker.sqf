@@ -102,6 +102,8 @@ _composition = [
     };
     if (_name == "Box_East_WpsSpecial_F" || _name == "O_CargoNet_01_ammo_F") then {
         clearItemCargoGlobal _obj;
+        _obj addMagazineCargoGlobal ["Vorona_HEAT", 3];
+        _obj addMagazineCargoGlobal ["Vorona_HE", 3];
         [_obj, "QS_fnc_addActionDestroy", nil, true] spawn BIS_fnc_MP;        
     };
     _obj setDir _objDir;

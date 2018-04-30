@@ -267,7 +267,7 @@ BTC_fnc_handledamage_2 =
 			case (_part == "hand_2") : {BTC_r_damage_hands = BTC_r_damage_hands + _damage;BTC_r_damage = BTC_r_damage + (_damage / 3);};
 			case (_part == "body")   : {BTC_r_damage = BTC_r_damage + ((_damage / 3) * 2);};
 			case (_part == "head")   : {BTC_r_head = BTC_r_head + _damage;BTC_r_damage = BTC_r_damage + _damage;};
-			case (_part == "" && BTC_r_hit != time)       : {BTC_r_damage = BTC_r_damage + (_damage / 2);};//What the hell
+			case (_part == "" && BTC_r_hit != serverTime)       : {BTC_r_damage = BTC_r_damage + (_damage / 2);};//What the hell
 		};
 	};
 	if (Alive _unit && format ["%1", _unit getVariable "BTC_need_revive"] == "0") then
@@ -275,7 +275,7 @@ BTC_fnc_handledamage_2 =
 		if (BTC_respawn_gear == 1) then {BTC_gear = [_unit] call BTC_get_gear;};
 		if (BTC_r_damage > 1.5 || (BTC_r_head > 1.2)) then {if (BTC_r_wait_for_revive == 1) then {[_unit] spawn BTC_fnc_wait_for_revive;} else {_unit setDamage 1;};};
 		if (!BTC_r_bleeding_loop && BTC_r_damage > 0.3) then {[_unit] spawn BTC_fnc_bleeding;};
-		if (BTC_r_bleeding_loop && BTC_r_hit != time) then {_unit setVariable ["BTC_r_status",[(_unit getVariable "BTC_r_status" select 0),(((_unit getVariable "BTC_r_status") select 1) + (_damage * 5)),(_unit getVariable "BTC_r_status" select 2),(_unit getVariable "BTC_r_status" select 3),(_unit getVariable "BTC_r_status" select 4)],false]};
+		if (BTC_r_bleeding_loop && BTC_r_hit != serverTime) then {_unit setVariable ["BTC_r_status",[(_unit getVariable "BTC_r_status" select 0),(((_unit getVariable "BTC_r_status") select 1) + (_damage * 5)),(_unit getVariable "BTC_r_status" select 2),(_unit getVariable "BTC_r_status" select 3),(_unit getVariable "BTC_r_status" select 4)],false]};
 	};
 	if ((BTC_r_damage > 0.5 && ((_unit getVariable "BTC_r_status" select 2) != 1)) && (BTC_r_damage > 0.7 && ((_unit getVariable "BTC_r_status" select 4) != 1))) then {_unit setVariable ["BTC_r_status",[((_unit getVariable "BTC_r_status") select 0),(_unit getVariable "BTC_r_status" select 1),1,(_unit getVariable "BTC_r_status" select 3),1],true];}
 	else
@@ -283,7 +283,7 @@ BTC_fnc_handledamage_2 =
 		if (BTC_r_damage > 0.5 && ((_unit getVariable "BTC_r_status" select 2) != 1)) then {_unit setVariable ["BTC_r_status",[((_unit getVariable "BTC_r_status") select 0),(_unit getVariable "BTC_r_status" select 1),1,(_unit getVariable "BTC_r_status" select 3),(_unit getVariable "BTC_r_status" select 4)],true];};
 		if (BTC_r_damage > 0.7 && ((_unit getVariable "BTC_r_status" select 3) != 1)) then {_unit setVariable ["BTC_r_status",[((_unit getVariable "BTC_r_status") select 0),(_unit getVariable "BTC_r_status" select 1),(_unit getVariable "BTC_r_status" select 2),(_unit getVariable "BTC_r_status" select 3),1],true];};
 	};
-	BTC_r_hit = time;
+	BTC_r_hit = serverTime;	
 	_unit setDamage 0;
 };
 
@@ -293,9 +293,9 @@ BTC_fnc_bleeding =
 	BTC_r_bleeding_loop = true;
 	BTC_r_unc = false;BTC_r_unc_loop = false;
 	//titleText ["", "BLACK IN"];
-	_timeout_bleed = time;
+	_timeout_bleed = serverTime;
 	_timeout_eff_mor = 0;
-	_timeout_eff = time + 10;
+	_timeout_eff = serverTime + 10;
 	_timeout_mor   = 0;
 	_unit setVariable ["BTC_r_status",[1,(_unit getVariable "BTC_r_status" select 1),(_unit getVariable "BTC_r_status" select 2),(_unit getVariable "BTC_r_status" select 3),(_unit getVariable "BTC_r_status" select 4)],true];
 	hint "You're bleeding!";
@@ -304,7 +304,7 @@ BTC_fnc_bleeding =
 		sleep 0.1;
 		if (((_unit getVariable "BTC_r_status" select 0)) == 0 && ((_unit getVariable "BTC_r_status" select 1)) == 0 && (_unit getVariable "BTC_r_status" select 2) == 0) then {BTC_r_bleeding_loop = false;};
 		//Bleeding
-		if (((_unit getVariable "BTC_r_status" select 0)) == 1 && time > _timeout_bleed) then
+		if (((_unit getVariable "BTC_r_status" select 0)) == 1 && serverTime > _timeout_bleed) then
 		{
 			private ["_moving_ratio"];
 			_moving_ratio = 1;
@@ -320,7 +320,7 @@ BTC_fnc_bleeding =
 			//player sidechat format ["Bleeding: %1",((_unit getVariable "BTC_r_status") select 1)];
 		};
 		//modifica con appannamento
-		if (time > _timeout_eff) then
+		if (serverTime > _timeout_eff) then
 		{
 			private ["_n"];
 			//if (((_unit getVariable "BTC_r_status") select 1) > 50 || ((_unit getVariable "BTC_r_status") select 0) == 1 || ((_unit getVariable "BTC_r_status") select 2) == 1) then {};
@@ -330,13 +330,13 @@ BTC_fnc_bleeding =
 				//player sideChat "APP" + str(_n);
 				titleText ["", "BLACK OUT",_n];
 			};
-			_timeout_eff = time + 7;
+			_timeout_eff = serverTime + 7;
 		};
 		if (((_unit getVariable "BTC_r_status") select 1) == 0) then {titleText ["", "PLAIN"];};
 		if (BTC_r_damage_legs > 0.45 || ((_unit getVariable "BTC_r_status") select 1) > 55) then {player forceWalk true;} else {player forceWalk false;};
 		//morphine
-		if ((_unit getVariable "BTC_r_status" select 2) == 1 && _timeout_mor == 0) then {_timeout_mor = time + 120;_timeout_eff_mor = time + 3;}; //else {_timeout_mor = 0;_timeout_eff_mor = 0;};
-		if ((_unit getVariable "BTC_r_status" select 2) == 1 && time > _timeout_eff_mor) then {addCamShake [2,4,3];_timeout_eff_mor = time + 3;};
+		if ((_unit getVariable "BTC_r_status" select 2) == 1 && _timeout_mor == 0) then {_timeout_mor = serverTime + 120;_timeout_eff_mor = serverTime + 3;}; //else {_timeout_mor = 0;_timeout_eff_mor = 0;};
+		if ((_unit getVariable "BTC_r_status" select 2) == 1 && serverTime > _timeout_eff_mor) then {addCamShake [2,4,3];_timeout_eff_mor = serverTime + 3;};
 		//if ((BTC_r_damage > 1) && ((_unit getVariable "BTC_r_status" select 3) != 1)) then {_unit setVariable ["BTC_r_status",[((_unit getVariable "BTC_r_status") select 0),(_unit getVariable "BTC_r_status" select 1),(_unit getVariable "BTC_r_status" select 2),1],true];_timeout_mor = time + 120;};
 		//medikit - perch? in base a BTC_r_damage? Solo se in attesa di revive oppure ferito armi e gambe
 		//if ((((_unit getVariable "BTC_r_status") select 0) > 75) && (_unit getVariable "BTC_r_status" select 3) != 1) then {_unit setVariable ["BTC_r_status",[((_unit getVariable "BTC_r_status") select 0),(_unit getVariable "BTC_r_status" select 1),(_unit getVariable "BTC_r_status" select 2),1],true];};
@@ -352,11 +352,11 @@ BTC_fnc_bleeding =
 		//Passa al wait for revive o morte
 		if (((_unit getVariable "BTC_r_status") select 1) >= 100) then {BTC_r_bleeding_loop = false;};
 		//Pu? svenire se perde troppo sangue o per dolore
-		if ((((_unit getVariable "BTC_r_status") select 1) > 65 || (time > _timeout_mor && _timeout_mor != 0)) && !BTC_r_unc) then
+		if ((((_unit getVariable "BTC_r_status") select 1) > 65 || (serverTime > _timeout_mor && _timeout_mor != 0)) && !BTC_r_unc) then
 		{
-			if (((random 1.5) < (((_unit getVariable "BTC_r_status") select 1) / 100) && !BTC_r_unc) || (time > _timeout_mor)) then
+			if (((random 1.5) < (((_unit getVariable "BTC_r_status") select 1) / 100) && !BTC_r_unc) || (serverTime > _timeout_mor)) then
 			{
-				if ((_unit getVariable "BTC_r_status" select 2) == 1 && !BTC_r_unc) then {_timeout_mor = time + 120;};
+				if ((_unit getVariable "BTC_r_status" select 2) == 1 && !BTC_r_unc) then {_timeout_mor = serverTime + 120;};
 				_unit spawn
 				{
 					if (!BTC_r_unc && !BTC_r_unc_loop) then
@@ -565,9 +565,9 @@ BTC_r_apply_bandage =
 			private ["_pos","_timeout","_unc"];
 			hint "Applying Bandage, do not move!";
 			_pos = getpos _unit;
-			_timeout = time + 8;
+			_timeout = serverTime + 8;
 			_unc = false;
-			while {_pos distance getPos _unit < 1 && time < _timeout && !isNull _unit && player getVariable "BTC_need_revive" == 0 && Alive _unit} do
+			while {_pos distance getPos _unit < 1 && serverTime < _timeout && !isNull _unit && player getVariable "BTC_need_revive" == 0 && Alive _unit} do
 			{
 				if (BTC_r_unc_loop) then {_unc = true;};
 				sleep 0.1;
@@ -616,9 +616,9 @@ BTC_r_apply_tra =
 			private ["_pos","_timeout","_unc"];
 			hint "Transfusion, do not move!";
 			_pos = getpos _unit;
-			_timeout = time + 10;
+			_timeout = serverTime + 10;
 			_unc = false;
-			while {_pos distance getPos _unit < 1 && time < _timeout && !isNull _unit && player getVariable "BTC_need_revive" == 0 && Alive _unit} do
+			while {_pos distance getPos _unit < 1 && serverTime < _timeout && !isNull _unit && player getVariable "BTC_need_revive" == 0 && Alive _unit} do
 			{
 				if (BTC_r_unc_loop) then {_unc = true;};
 				sleep 0.1;
@@ -676,9 +676,9 @@ BTC_r_apply_mor =
 			private ["_pos","_timeout","_unc"];
 			hint "Applying Morphine, do not move!";
 			_pos = getpos _unit;
-			_timeout = time + 6;
+			_timeout = serverTime + 6;
 			_unc = false;
-			while {_pos distance getPos _unit < 1 && time < _timeout && !isNull _unit && player getVariable "BTC_need_revive" == 0 && Alive _unit} do
+			while {_pos distance getPos _unit < 1 && serverTime < _timeout && !isNull _unit && player getVariable "BTC_need_revive" == 0 && Alive _unit} do
 			{
 				if (BTC_r_unc_loop) then {_unc = true;};
 				sleep 0.1;
@@ -733,9 +733,9 @@ BTC_r_apply_epi =
 			private ["_pos","_timeout","_unc"];
 			hint "Applying epi, do not move!";
 			_pos = getpos _unit;
-			_timeout = time + 6;
+			_timeout = serverTime + 6;
 			_unc = false;
-			while {_pos distance getPos _unit < 1 && time < _timeout && !isNull _unit && player getVariable "BTC_need_revive" == 0 && Alive _unit} do
+			while {_pos distance getPos _unit < 1 && serverTime < _timeout && !isNull _unit && player getVariable "BTC_need_revive" == 0 && Alive _unit} do
 			{
 				if (BTC_r_unc_loop) then {_unc = true;};
 				sleep 0.1;
@@ -814,9 +814,9 @@ BTC_r_apply_med =
 			private ["_pos","_timeout","_unc"];
 			hint "Applying medikit, do not move!";
 			_pos = getpos _unit;
-			_timeout = time + 10;
+			_timeout = serverTime + 10;
 			_unc = false;
-			while {_pos distance getPos _unit < 1 && time < _timeout && !isNull _unit && player getVariable "BTC_need_revive" == 0 && Alive _unit} do
+			while {_pos distance getPos _unit < 1 && serverTime < _timeout && !isNull _unit && player getVariable "BTC_need_revive" == 0 && Alive _unit} do
 			{
 				if (BTC_r_unc_loop) then {_unc = true;};
 				sleep 0.1;
@@ -861,7 +861,7 @@ BTC_fnc_wait_for_revive =
 	WaitUntil {animationstate player == "AinjPpneMstpSnonWrflDnon"};
 	_pos = getPos player;
 	if (BTC_injured_marker == 1) then {BTC_marker_pveh = [0,BTC_side,_pos,_unit];publicVariable "BTC_marker_pveh";};
-	BTC_r_timeout = time + BTC_revive_time_max;
+	BTC_r_timeout = serverTime + BTC_revive_time_max;
 	private ["_id","_lifes"];
 	BTC_respawn_cond = false;
 	if (BTC_black_screen == 0 && BTC_disable_respawn == 0) then {if (BTC_action_respawn == 0) then {disableSerialization;_dlg = createDialog "BTC_respawn_button_dialog";} else {_id = player addAction [("<t color=""#ED2744"">") + ("Respawn") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_player_respawn], 9, true, true, "", "true"];};};
@@ -887,7 +887,7 @@ BTC_fnc_wait_for_revive =
         lbSetCurSel [12, 0];
         ctrlShow [12, true];
     };
-	while {format ["%1", player getVariable "BTC_need_revive"] == "1" && time < BTC_r_timeout && !BTC_respawn_cond} do
+	while {format ["%1", player getVariable "BTC_need_revive"] == "1" && serverTime < BTC_r_timeout && !BTC_respawn_cond} do
 	{	    
 		if (BTC_disable_respawn == 0) then {
 			if (BTC_black_screen == 1 || (BTC_black_screen == 0 && BTC_action_respawn == 0)) then {
@@ -926,7 +926,7 @@ BTC_fnc_wait_for_revive =
 	};
 	//diag_log text format ["WHY!!!",""];diag_log text format ["%1 %2 %3",format ["%1", player getVariable "BTC_need_revive"] == "1" , time < BTC_r_timeout , !BTC_respawn_cond];
 	closedialog 0;
-	if (time > BTC_r_timeout && format ["%1", player getVariable "BTC_need_revive"] == "1") then
+	if (serverTime > BTC_r_timeout && format ["%1", player getVariable "BTC_need_revive"] == "1") then
 	{
 		player setDamage 1;
 	};
@@ -1103,7 +1103,7 @@ BTC_first_aid =
         _injured setVariable ["BTC_revivie_in_progress", true, true];
 
         // add extra 5 sec to revive process for each minute after death except first minute
-        _current_time = time;
+        _current_time = serverTime;
         _dead_time = _injured getVariable ["BTC_dead_time", _current_time];
         _diff = _current_time - (_dead_time + 60);
         if (_diff > 0) then {
@@ -1115,7 +1115,7 @@ BTC_first_aid =
 		waitUntil {animationState player == "ainvpknlmstpsnonwrfldnon_medic0s"};
 
 		// Get the start time
-		_t = time;
+		_t = serverTime;
 
 		// Create progress bar
 		with uiNamespace do {
@@ -1140,7 +1140,7 @@ BTC_first_aid =
 		};
 		
 		// Break the process if animation is interupted
-		while {time < (_t + _reviveTime)} do {
+		while {serverTime < (_t + _reviveTime)} do {
 		    uiSleep 0.25;
 		    if (animationState player != "ainvpknlmstpsnonwrfldnon_medic0s") then {
 		        ["<t color='#F44336' size = '.48'>Операция прервана</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
@@ -1429,7 +1429,8 @@ BTC_player_killed = {
 			};
 			if (BTC_black_screen == 0) then {titleText ["", "BLACK IN"]; titleFadeOut 1;};
 			disableUserInput false;
-			_time = time;
+            _time = serverTime;
+
 			_timeout = _time + BTC_revive_time_max;
             player setVariable ["BTC_revivie_in_progress", false, true];
             player setVariable ["BTC_dead_time", _time, true];
@@ -1517,7 +1518,7 @@ BTC_player_killed = {
                 lbSetCurSel [12, 0];
                 ctrlShow [12, true];
             };	
-			while {(format ["%1", player getVariable "BTC_need_revive"] == "1") && {(time < _timeout)} && {(!BTC_respawn_cond)}} do {
+			while {(format ["%1", player getVariable "BTC_need_revive"] == "1") && {(serverTime < _timeout)} && {(!BTC_respawn_cond)}} do {
 				if (BTC_disable_respawn == 0) then {if (BTC_black_screen == 1 || (BTC_black_screen == 0 && BTC_action_respawn == 0)) then {if (!Dialog && !BTC_respawn_cond) then {_dlg = createDialog "BTC_respawn_button_dialog";};};};   
                 if (_allowAvanpostBlufor && playerSide == west) then {
                     ctrlShow [10, true];
@@ -1564,7 +1565,7 @@ BTC_player_killed = {
 					[_timeout] spawn {
 						private ["_timeout"];
 						_timeout = _this select 0;
-						while {(format ["%1", player getVariable "BTC_need_revive"] == "1") && {(time < _timeout)} && {(!BTC_respawn_cond)}} do {
+						while {(format ["%1", player getVariable "BTC_need_revive"] == "1") && {(serverTime < _timeout)} && {(!BTC_respawn_cond)}} do {
 							BTC_r_u_camera attachTo [player,BTC_r_s_cam_view];
 							BTC_r_u_camera camCommit 0;
 							if (BTC_r_camera_nvg) then {
@@ -1588,7 +1589,7 @@ BTC_player_killed = {
 				(findDisplay 46) displayRemoveEventHandler ["KeyDown",BTC_r_camera_EH_keydown];
 			};
 			closedialog 0;
-			if (time > _timeout && format ["%1", player getVariable "BTC_need_revive"] == "1") then {
+			if (serverTime > _timeout && format ["%1", player getVariable "BTC_need_revive"] == "1") then {
 				_respawn = [] spawn BTC_player_respawn;
 			};
 			if (format ["%1", player getVariable "BTC_need_revive"] == "0" && !BTC_respawn_cond) then {

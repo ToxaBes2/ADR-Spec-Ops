@@ -81,8 +81,10 @@ _positions = [
             _obj addMagazineCargoGlobal ["100Rnd_580x42_Mag_F", 5];
             _obj addMagazineCargoGlobal ["100Rnd_580x42_Mag_Tracer_F", 5];
             _obj addMagazineCargoGlobal ["30Rnd_580x42_Mag_F", 20];
-            _obj addMagazineCargoGlobal ["30Rnd_580x42_Mag_Tracer_F", 20];
+            _obj addMagazineCargoGlobal ["30Rnd_580x42_Mag_Tracer_F", 20];            
         };
+        _obj addMagazineCargoGlobal ["Vorona_HEAT", 3];
+        _obj addMagazineCargoGlobal ["Vorona_HE", 3];
     };
 } forEach _positions;
 
