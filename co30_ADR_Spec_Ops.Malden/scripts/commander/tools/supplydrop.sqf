@@ -1,11 +1,10 @@
 _center = _this select 0;
-["<t color='#7FDA0B' size = '.48'>Сброс боеприпасов...</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
-_radius = 100;
-_height = 300;
+systemChat "Сброс боеприпасов...";
+_height = 250;
 _pos = [
-	(_center select 0) - _radius + (2 * random _radius),
-	(_center select 1) - _radius + (2 * random _radius),
-	_height
+    (_center select 0),
+    (_center select 1),
+    _height
 ];
 _parachute = createVehicle ["B_Parachute_02_F", [100, 100, 200], [], 0, 'FLY'];
 _parachute setPos _pos;

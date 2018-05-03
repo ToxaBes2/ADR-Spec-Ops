@@ -5,7 +5,7 @@ Description: helicopter with descent
 _center = _this select 0;
 _units = ["B_Soldier_SL_F","B_Soldier_GL_F","B_soldier_AT_F","B_medic_F","B_soldier_AR_F","B_HeavyGunner_F","B_soldier_AAR_F","B_soldier_M_F",
 "B_Sharpshooter_F","B_soldier_LAT_F","B_sniper_F","B_ghillie_ard_F","B_ghillie_lsh_F","B_ghillie_sard_F"];
-["<t color='#7FDA0B' size = '.48'>Запрос десанта...</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
+systemChat "Вызов десанта...";
 _posHeli = [(_center select 0) + 1000 + (random 500) - (random 500), (_center select 1) + 1000 + (random 500) - (random 500), 300];
 _heli = createVehicle ["B_Heli_Transport_03_unarmed_F", _posHeli, [], 0, "FLY"];
 createVehicleCrew _heli;

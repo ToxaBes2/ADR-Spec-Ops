@@ -313,3 +313,7 @@ if (_showFPS == 1) then {
         };  
     };
 };
+
+// CBA related staff
+CBA_display_ingame_warnings = false;
+publicVariable "CBA_display_ingame_warnings";

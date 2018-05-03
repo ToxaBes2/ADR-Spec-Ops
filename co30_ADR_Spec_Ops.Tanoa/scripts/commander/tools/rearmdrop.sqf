@@ -1,5 +1,5 @@
 _center = _this select 0;
-["<t color='#7FDA0B' size = '.48'>Сброс модуля...</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
+systemChat "Сброс модуля...";
 _radius = 100;
 _height = 200;
 _pos = [

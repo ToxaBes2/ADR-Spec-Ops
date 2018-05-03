@@ -3,14 +3,13 @@ Author: ToxaBes
 Description: blackfish gunship support
 */
 _center = _this select 0;
-["<t color='#7FDA0B' size = '.48'>Запрос авиаподдержки...</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
-_radius = 100;
+systemChat "Запрос авиаподдержки...";
 _height = 600;
 _loiterRadius = 500;
-_duration = selectRandom [180, 240, 300];
+_duration = selectRandom [240, 300];
 _pos = [
-	(_center select 0) - _radius + (2 * random _radius),
-	(_center select 1) - _radius + (2 * random _radius),
+	(_center select 0),
+	(_center select 1),
 	_height
 ];
 _spawnPos = [(_pos select 0) + 2000, (_pos select 1) + 2000, _height];
@@ -42,6 +41,13 @@ while {(count (waypoints _vehGroup)) > 0} do {
     _wp setWaypointSpeed "Normal";
     _wp setWaypointCombatMode "RED";
     _vehGroup setCurrentWaypoint _wp;
+
+    _nearestTargets = nearestObjects [_pos, ["Man","LanVehicle"], 350];
+    {
+        if (side _x != blufor) then {
+            _vehGroup reveal _x;
+        };
+    } forEach _nearestTargets;
 
     sleep _duration;
     while {(count (waypoints _vehGroup)) > 0} do {

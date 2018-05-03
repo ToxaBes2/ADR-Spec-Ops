@@ -2,10 +2,10 @@ _magazine = _this select 0;
 _center = _this select 1;
 _basePos = getMarkerPos "respawn_west";
 if (_basePos distance2D _center < 800) exitWith {
-    ["<t color='#F44336' size = '.48'>Артудар по базе отменен командованием!</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
+    systemChat "Артудар по базе отменен командованием!";
 };
 
-["<t color='#7FDA0B' size = '.48'>Вызываем артподдержку...</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
+systemChat "Вызываем артподдержку...";
 _artPos = [_center, 1000, 2500, 4, 0, 10, 0] call QS_fnc_findSafePos;
 _mbt = createVehicle ["B_MBT_01_arty_F", _artPos, [], 0, 'NONE'];
 _mbt allowDamage false;

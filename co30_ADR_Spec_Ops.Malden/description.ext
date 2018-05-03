@@ -109,6 +109,7 @@ class CfgFunctions
 class RscTitles	{
 	#include "scripts\vehicle\crew\namesleft.hpp"	// Occupants HUD for vehicles
 	#include "scripts\statusBar\statusBar.hpp"      // FPS status bar
+	#include "scripts\artillery\dialog.hpp"         // Artillery HUD with decimal azimuth
 };
 
 // this sounds taken from task-force-arma-3-radio (https://github.com/michail-nikolaev/task-force-arma-3-radio) by Michail Nicolaev
