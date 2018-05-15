@@ -232,10 +232,10 @@ QS_fnc_iconDrawFriendlyGPS = compileFinal "
 [] spawn {
 	sleep 0.1;
 	//===== INIT MAP
-	if (typeOf player in ["B_Soldier_SL_F", "B_T_Soldier_SL_F","I_C_Soldier_Para_5_F","I_G_Soldier_LAT_F"]) then {
-		waitUntil {sleep 0.1; !(isNull (findDisplay 12))};
-	    clientEhDrawMap = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw", QS_fnc_iconDrawMap];
-    };
+	//if (typeOf player in ["B_Soldier_SL_F", "B_T_Soldier_SL_F","I_C_Soldier_Para_5_F","I_G_Soldier_LAT_F"]) then {
+	//	waitUntil {sleep 0.1; !(isNull (findDisplay 12))};
+	//    clientEhDrawMap = ((findDisplay 12) displayCtrl 51) ctrlAddEventHandler ["Draw", QS_fnc_iconDrawMap];
+    //};
 
 	//===== INIT GPS (waits for GPS to open)
 	disableSerialization;

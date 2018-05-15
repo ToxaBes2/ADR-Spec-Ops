@@ -316,3 +316,9 @@ if (_showFPS == 1) then {
 // CBA related staff
 CBA_display_ingame_warnings = false;
 publicVariable "CBA_display_ingame_warnings";
+
+// Ctab init settings
+cTab_helmetClass_has_HCam_server = ["H_HelmetB_light","H_Helmet_Kerry","H_HelmetSpecB","H_HelmetO_ocamo"];
+publicVariable "cTab_helmetClass_has_HCam_server";
+cTab_userMarkerLists = [];
+cTab_userMarkerTransactionId = -1;

@@ -2,9 +2,9 @@ _center = _this select 0;
 systemChat "Сброс боеприпасов...";
 _height = 250;
 _pos = [
-    (_center select 0),
-    (_center select 1),
-    _height
+	(_center select 0),
+	(_center select 1),
+	_height
 ];
 _parachute = createVehicle ["B_Parachute_02_F", [100, 100, 200], [], 0, 'FLY'];
 _parachute setPos _pos;
@@ -51,21 +51,23 @@ _cargo addMagazineCargoGlobal ["IEDUrbanBig_Remote_Mag", 2];
 _cargo addMagazineCargoGlobal ["SatchelCharge_Remote_Mag", 2];
 _cargo addMagazineCargoGlobal ["SLAMDirectionalMine_Wire_Mag", 4];
 _cargo addMagazineCargoGlobal ["APERSBoundingMine_Range_Mag", 6];
-_cargo addBackpackCargoGlobal ["B_Kitbag_mcamo_Eng", 1];
+_cargo addBackpackCargoGlobal ["B_Kitbag_sgg", 1];
 _cargo addBackpackCargoGlobal ["B_Kitbag_rgr", 1];
-_cargo addBackpackCargoGlobal ["B_TacticalPack_mcamo", 1];
-_cargo addBackpackCargoGlobal ["B_TacticalPack_blk", 1];
-_cargo addBackpackCargoGlobal ["B_AssaultPack_mcamo", 1];
+_cargo addBackpackCargoGlobal ["B_TacticalPack_oli", 1];
+_cargo addBackpackCargoGlobal ["B_TacticalPack_rgr", 1];
+_cargo addBackpackCargoGlobal ["B_AssaultPack_tna_F", 1];
 _cargo addBackpackCargoGlobal ["B_AssaultPack_rgr", 1];
 _cargo addItemCargoGlobal ["Medikit", 2];
+_cargo addItemCargoGlobal ["Medikit", 2];
 _cargo addItemCargoGlobal ["ToolKit", 2];
-_cargo addWeaponCargoGlobal ["arifle_MX_F",2];
-_cargo addWeaponCargoGlobal ["arifle_SPAR_01_snd_F",2];
-_cargo addItemCargoGlobal ["muzzle_snds_H_snd_F", 2];
-_cargo addItemCargoGlobal ["muzzle_snds_m_snd_F", 2];
+_cargo addWeaponCargoGlobal ["arifle_MX_khk_F",2];
+_cargo addWeaponCargoGlobal ["arifle_SPAR_01_khk_F",2];
+_cargo addItemCargoGlobal ["muzzle_snds_H_khk_F", 2];
+_cargo addItemCargoGlobal ["muzzle_snds_m_khk_F", 2];
 _cargo addItemCargoGlobal ["acc_pointer_IR", 4];
-_cargo addItemCargoGlobal ["bipod_01_F_snd", 4];
-_cargo addItemCargoGlobal ["optic_ERCO_snd_F", 2];
+_cargo addItemCargoGlobal ["bipod_01_F_khk", 4];
+_cargo addItemCargoGlobal ["optic_ERCO_khk_F", 2];
+_cargo addItemCargoGlobal ["optic_Hamr_khk_F", 2];
 _cargo addItemCargoGlobal ["optic_Hamr", 2];
 if (isClass(configfile >> "CfgPatches" >> "SMA_Weapons")) then { 
      _cargo addMagazineCargoGlobal ["SMA_30Rnd_762x35_BLK_EPR", 20];

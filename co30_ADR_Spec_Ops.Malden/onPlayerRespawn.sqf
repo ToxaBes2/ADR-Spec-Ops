@@ -1,7 +1,8 @@
 private ["_pilots", "_btc_tk_prison", "_tk", "_rules", "_playerType", "_null"];
 
 if (typeOf player in ["B_Soldier_SL_F", "B_T_Soldier_SL_F"]) then {
-    player addAction ["<t color='#D8D80E'><img image='\A3\ui_f\data\gui\cfg\CommunicationMenu\call_ca.paa' size='1.0'/> Поддержка</t>", "scripts\commander\tools.sqf", "", -99, false, true];   // Commander tools
+//    player addAction ["<t color='#D8D80E'><img image='\A3\ui_f\data\gui\cfg\CommunicationMenu\call_ca.paa' size='1.0'/> Поддержка</t>", "scripts\commander\tools.sqf", "", -99, false, true];   // Commander tools
+    player addAction ["<t color='#D8D80E'><img image='\A3\ui_f\data\gui\cfg\CommunicationMenu\call_ca.paa' size='1.0'/> Командирский планшет</t>", "scripts\cTab\shared\openTablet.sqf", "", -99, false, true];   // Commander tools
 };
 if (typeOf player in ["I_G_engineer_F", "I_C_Soldier_Para_8_F"]) then {
     player addAction ["<t color='#D8D80E'><img image='\A3\ui_f\data\gui\cfg\CommunicationMenu\call_ca.paa' size='1.0'/> Поддержка</t>", "scripts\commander\partizan_tools.sqf", "", -99, false, true];   // Commander tools

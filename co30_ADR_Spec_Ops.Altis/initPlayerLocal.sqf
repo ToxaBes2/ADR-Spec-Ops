@@ -100,6 +100,7 @@ _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\dlc_unlo
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\disableSystemActions.sqf";};                        // disable system action like arsenal
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\statusBar\statusBar.sqf";};                         // Show FPS status bar
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\artillery\dialog.sqf";};                            // Show decimal azimuth for artillery gunner
+_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\cTab\shared\cTab_initPlayer.sqf";};                 // Commander tablet
 if !(isNil "EW_ATTACK") then {
     if (EW_ATTACK) then {
         _null = [] spawn {_this call QS_fnc_EWattack;};                                                                      // priority EW

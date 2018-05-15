@@ -11,7 +11,9 @@ _heli = createVehicle ["B_Heli_Transport_03_unarmed_F", _posHeli, [], 0, "FLY"];
 createVehicleCrew _heli;
 _group = group (driver _heli);
 [(units _group)] call QS_fnc_setSkill4;
-
+_heli disableAi "TARGET";
+_heli disableAi "AUTOTARGET";
+_group allowFleeing 0;
 _backpack = "B_Parachute";
 _cargoGrp = createGroup WEST;
 _emptySeats = _heli emptyPositions "cargo";
@@ -39,19 +41,12 @@ _wp1 setWayPointSpeed "FULL";
 _wp1 setWayPointType "MOVE";
 _wp1 setWayPointCombatMode "BLUE";
 _wp1 setWaypointVisible false;
-_delta = 2000;
-_finish = [(_center select 0) + _delta, (_center select 1) + _delta, 1000];
-_wp2 = _group addWaypoint [_finish, 1];
-_wp2 setWaypointSpeed "FULL";
-_wp2 setWaypointType "MOVE";
-_wp2 setWayPointCombatMode "BLUE";
-_wp2 setWaypointStatements ["true", "cleanUpveh = vehicle leader this; {deleteVehicle _x} forEach crew cleanUpveh + [cleanUpveh];"];
-_wp2 setWaypointVisible false;
 [_heli, _center, _group, _cargoGrp] spawn {
     _heli  = _this select 0;
     _center   = _this select 1;
     _group = _this select 2;
     _cargoGrp = _this select 3;
+    _delta = 2000;
     waitUntil {sleep 1; [_heli, _center] call BIS_fnc_distance2D < 400};
     _heli animateDoor ["Door_rear_source", 1];
     {
@@ -67,7 +62,16 @@ _wp2 setWaypointVisible false;
     _getToMarker setWayPointCombatMode "RED";
     _getToMarker setWaypointFormation "NO CHANGE";
     _getTomarker setWaypointVisible false;
-    
+    while {(count (waypoints _group)) > 0} do {
+        deleteWaypoint ((waypoints _group) select 0);
+    };
+    _finish = [(_center select 0) + _delta, (_center select 1) + _delta, 1000];
+    _wp2 = _group addWaypoint [_finish, 0];
+    _wp2 setWaypointSpeed "FULL";
+    _wp2 setWaypointType "MOVE";
+    _wp2 setWayPointCombatMode "BLUE";
+    _wp2 setWaypointStatements ["true", "cleanUpveh = vehicle leader this; {deleteVehicle _x} forEach crew cleanUpveh + [cleanUpveh];"];
+    _wp2 setWaypointVisible false;
     sleep 900;
     {
         deleteVehicle _x;

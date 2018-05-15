@@ -73,11 +73,13 @@ corpseRemovalMaxTime = 180;								// Max time before removal
 #include "scripts\outlw_magRepack\MagRepack_config.hpp" // Mag Repack by Outlawled
 #include "scripts\dynamic_loadout\parent.hpp"           // Dynamic loadout
 #include "scripts\dynamic_loadout\dialog.hpp"           // Dynamic loadout
+#include "scripts\cTab\shared\cTab_dialogs.hpp" 		// cTab dialogs
 
 class CfgFunctions
 	{
 		#include "functions\cfgfunctions.hpp"			// Integrated I&A functions
 		#include "scripts\taw_vd\CfgFunctions.hpp"		// View distance
+		#include "scripts\cTab\functions\cfgfunctions.hpp"	// cTab functions
 
 		// Dynamic loadout
 		class DL {
