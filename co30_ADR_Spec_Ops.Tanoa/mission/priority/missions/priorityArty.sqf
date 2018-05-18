@@ -131,6 +131,17 @@ try {
     ["setInfo",["prio_position", _position], 0] remoteExec ["sqlServerCall", 2];
 } catch {};
 
+if !(isNil "PARTIZAN_BASE_SCORE") then {
+    if (PARTIZAN_BASE_SCORE > 33) then {
+        _taskMarker = createMarker ["TASK_MARKER1", [0,0]];
+        _taskMarker setMarkerColor "ColorRed";
+        _taskMarker setMarkerType "mil_dot";
+        [_taskMarker, 0] remoteExec ["setMarkerAlphaLocal", west, true];
+        [_taskMarker, 1] remoteExec ["setMarkerAlphaLocal", resistance, true];
+        _taskMarker setMarkerPos (getPos priorityObj1);
+    };
+};
+
 // FIRING SEQUENCE LOOP
 _radius = 30;
 waitUntil{sleep 1; !isNil "currentAOUp"};
@@ -199,6 +210,8 @@ _completeText = "<t align='center' size='2.2'>Внимание</t><br/><t size='
 GlobalHint = _completeText; hint parseText _completeText; publicVariable "GlobalHint";
 showNotification = ["CompletedPriorityTarget", ["Артиллерия нейтрализована", "\a3\ui_f\data\gui\cfg\hints\artillerycall_ca.paa"]]; publicVariable "showNotification";
 { _x setMarkerPos [-10000, -10000, -10000] } forEach ["priorityMarker","priorityCircle"]; publicVariable "priorityMarker";
+
+deleteMarker "TASK_MARKER1";
 
 // DELETE
 { _x removeEventHandler ["Fired", 0]; } forEach [priorityObj1, priorityObj2];

@@ -174,6 +174,31 @@ for "_c" from 1 to 2 do {
 _nearestDevices = _flatPos nearObjects [INFANTRY_TERMINAL, 200];
 [_startPoint, 200, ["vehicles", "fire"]] call QS_fnc_addHades;
 
+if !(isNil "PARTIZAN_BASE_SCORE") then {
+    if (PARTIZAN_BASE_SCORE > 33) then {
+        _taskMarker1 = createMarker ["TASK_MARKER1", [0,0]];
+        _taskMarker1 setMarkerColor "ColorRed";
+        _taskMarker1 setMarkerType "mil_dot";
+        [_taskMarker1, 0] remoteExec ["setMarkerAlphaLocal", west, true];
+        [_taskMarker1, 1] remoteExec ["setMarkerAlphaLocal", resistance, true];
+        _taskMarker1 setMarkerPos (getPos (_nearestDevices select 0));
+
+        _taskMarker2 = createMarker ["TASK_MARKER2", [0,0]];
+        _taskMarker2 setMarkerColor "ColorRed";
+        _taskMarker2 setMarkerType "mil_dot";
+        [_taskMarker2, 0] remoteExec ["setMarkerAlphaLocal", west, true];
+        [_taskMarker2, 1] remoteExec ["setMarkerAlphaLocal", resistance, true];
+        _taskMarker2 setMarkerPos (getPos (_nearestDevices select 1));
+
+        _taskMarker3 = createMarker ["TASK_MARKER3", [0,0]];
+        _taskMarker3 setMarkerColor "ColorRed";
+        _taskMarker3 setMarkerType "mil_dot";
+        [_taskMarker3, 0] remoteExec ["setMarkerAlphaLocal", west, true];
+        [_taskMarker3, 1] remoteExec ["setMarkerAlphaLocal", resistance, true];
+        _taskMarker3 setMarkerPos (getPos (_nearestDevices select 2));
+    };
+};
+
 _viperSquadSpawned = false;
 _showMarkers = false;
 _markers = [];
@@ -270,6 +295,13 @@ while { sideMissionUp } do {
                 [4] spawn QS_fnc_bluforSUCCESS;
             } else {
                 [4] spawn QS_fnc_partizanSUCCESS;
+                if (PARTIZAN_BASE_SCORE > 32) then {
+                    if (WIN_GUER == 3) then {
+                        BLUFOR_REWARDS_LIST = []; publicVariable "BLUFOR_REWARDS_LIST";
+                        BLUFOR_BASE_SCORE = 0; publicVariable "BLUFOR_BASE_SCORE";
+                        [BLUFOR_BASE_SCORE] call QS_fnc_setBaseBlufor;
+                    };
+                };
             };
         };
         if (_showMarkers) then {
@@ -277,6 +309,9 @@ while { sideMissionUp } do {
                 deleteMarker _x;
             } forEach _markers;
         };
+        deleteMarker "TASK_MARKER1";
+        deleteMarker "TASK_MARKER2";
+        deleteMarker "TASK_MARKER3";
         sleep 120;
         {
             deleteVehicle _x;

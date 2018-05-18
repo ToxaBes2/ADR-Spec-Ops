@@ -65,6 +65,7 @@ _inMain = true;
 if (_terminalChance > 5) then {
     _inMain = false;
 };
+_mkrPos = [0,0];
 if (_chance < 5) then {
     _bunkerType = 1;
     _bunkerPos = [_positionAO, 1, (PARAMS_AOSize/2), 30, 0, 4, 0, [], [_positionAO]] call QS_fnc_findSafePos;
@@ -77,6 +78,7 @@ if (_chance < 5) then {
         _flatPos = _bunkerPos isFlatEmpty [5, 1, 0.3, 15, 0, false];
         _res = count _flatPos;
     };
+    _mkrPos = _bunkerPos;
     CLEAR_POSITIONS pushBack [_bunkerPos, 30]; publicVariable "CLEAR_POSITIONS";
     _null = [_bunkerPos, ENEMY_SIDE, (configfile >> "CfgGroups" >> "Empty" >> "Military" >> "Outposts" >> "OutpostB")] call BIS_fnc_spawnGroup;
     _bunkerPos set [2, 0];
@@ -99,6 +101,7 @@ if (_chance < 5) then {
     _bigZ = _bunkerPosition select 3;
     CLEAR_POSITIONS pushBack [_bunkerPos, 50]; publicVariable "CLEAR_POSITIONS";
     _bunkerObjects = [_bunkerPos, _smallZ, _bigZ, _inMain] call QS_fnc_createBunker;
+    _mkrPos = _bunkerPos;
 };
 
 // add second command center
@@ -106,11 +109,15 @@ _inSecond = !_inMain;
 _secondObjects = [_positionAO, _inSecond] call QS_fnc_createSecondCommandCenter;
 if (count _secondObjects > 0) then {
     _objects = _objects + _secondObjects;
+    if (_inSecond) then {
+        _mkrPos = getPos (_secondObjects select 0);
+    };
 } else {
     if (_inSecond) then {
         {
             _x addCuratorEditableObjects [[_obj], true];
         } forEach allCurators;
+        _mkrPos = getPos _obj;
         _obj addMPEventHandler ["MPKilled", {
             _unit = _this select 1;
             _side = side _unit;
@@ -125,6 +132,18 @@ if (count _secondObjects > 0) then {
             MAIN_AO_SUCCESS = true; publicVariable "MAIN_AO_SUCCESS";
         }];
         [_obj, "QS_fnc_addActionTakeControl", nil, true] spawn BIS_fnc_MP;
+    };
+};
+
+if !(isNil "PARTIZAN_BASE_SCORE") then {
+    if (PARTIZAN_BASE_SCORE > 24) then {
+        _commandcenterMarker = createMarker ["COMMANDCENTER_MARKER", [0,0]];
+        _commandcenterMarker setMarkerColor "ColorRed";
+        _commandcenterMarker setMarkerType "hd_objective";
+        _commandcenterMarker setMarkerText "КП";
+        [_commandcenterMarker, 0] remoteExec ["setMarkerAlphaLocal", west, true];
+        [_commandcenterMarker, 1] remoteExec ["setMarkerAlphaLocal", resistance, true];
+        _commandcenterMarker setMarkerPos _mkrPos;
     };
 };
 
@@ -195,6 +214,18 @@ radioTower addEventHandler
     }
 ];
 
+if !(isNil "PARTIZAN_BASE_SCORE") then {
+    if (PARTIZAN_BASE_SCORE > 15) then {
+        _radiotowerMarker = createMarker ["RADIOTOWER_MARKER", [0,0]];
+        _radiotowerMarker setMarkerColor "ColorRed";
+        _radiotowerMarker setMarkerType "hd_objective";
+        _radiotowerMarker setMarkerText "Радиовышка";
+        [_radiotowerMarker, 0] remoteExec ["setMarkerAlphaLocal", west, true];
+        [_radiotowerMarker, 1] remoteExec ["setMarkerAlphaLocal", resistance, true];
+        _radiotowerMarker setMarkerPos (getPos radioTower);
+    };
+};
+
 // Spawn minefield
 _campPos = _flatPos;
 _hasMines = false;
@@ -237,6 +268,17 @@ if (_positionAO distance2D (getMarkerPos "respawn_west") > 2500) then {
     _avanpostData = [_positionAO] call QS_fnc_createAvanpost;
     _avanpostPos = _avanpostData select 0;
     _avanpostObjects = _avanpostData select 1;
+    if !(isNil "PARTIZAN_BASE_SCORE") then {
+        if (PARTIZAN_BASE_SCORE > 6) then {
+            _avanpostMarker = createMarker ["AVANPORST_MARKER", [0,0]];
+            _avanpostMarker setMarkerColor "ColorRed";
+            _avanpostMarker setMarkerType "hd_objective";
+            _avanpostMarker setMarkerText "Аванпост";
+            [_avanpostMarker, 0] remoteExec ["setMarkerAlphaLocal", west, true];
+            [_avanpostMarker, 1] remoteExec ["setMarkerAlphaLocal", resistance, true];
+            _avanpostMarker setMarkerPos _avanpostPos;
+        };
+    };
 };
 
 // Spawn enemies
@@ -376,6 +418,10 @@ GlobalSideHint = [west, _targetCompleteText]; publicVariable "GlobalSideHint";
 // hide avanpost respawn
 AVANPOST_COORDS = false; publicVariable "AVANPOST_COORDS";
 AVANPOST_RESPAWN = false; publicVariable "AVANPOST_RESPAWN";
+
+deleteMarker "AVANPORST_MARKER";
+deleteMarker "RADIOTOWER_MARKER";
+deleteMarker "COMMANDCENTER_MARKER";
 
 // Restore yellow color of nearby vehicle service markers
 CURRENT_AO_POSITION = nil; publicVariable "CURRENT_AO_POSITION";

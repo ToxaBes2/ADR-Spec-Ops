@@ -131,6 +131,17 @@ try {
     ["setInfo",["prio_position", _position], 0] remoteExec ["sqlServerCall", 2];
 } catch {};
 
+if !(isNil "PARTIZAN_BASE_SCORE") then {
+    if (PARTIZAN_BASE_SCORE > 33) then {
+        _taskMarker = createMarker ["TASK_MARKER1", [0,0]];
+        _taskMarker setMarkerColor "ColorRed";
+        _taskMarker setMarkerType "mil_dot";
+        [_taskMarker, 0] remoteExec ["setMarkerAlphaLocal", west, true];
+        [_taskMarker, 1] remoteExec ["setMarkerAlphaLocal", resistance, true];
+        _taskMarker setMarkerPos (getPos priorityObj1);
+    };
+};
+
 // FIRING SEQUENCE LOOP
 _radius = 30;
 waitUntil{sleep 1; !isNil "currentAOUp"};
@@ -193,6 +204,8 @@ while {(canMove priorityObj1 || canMove priorityObj2) && currentAOUp} do {
 	    };
 	};
 };
+
+deleteMarker "TASK_MARKER1";
 
 // DE-BRIEF
 _completeText = "<t align='center' size='2.2'>Внимание</t><br/><t size='1.5' color='#C6FF00'>Артиллерия подавлена</t><br/>____________________<br/>Противник лишился артиллерийских орудий.<br/><br/>Возвращайтесь к выполнению основной задачи.";

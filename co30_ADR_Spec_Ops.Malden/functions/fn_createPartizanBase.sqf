@@ -4,7 +4,7 @@ Description: create partizane base.
 Format: [] call QS_fnc_createPartizanBase;
 */
 private ["_basePositions", "_dist", "_position", "_accepted", "_curPos", "_respawnPos", "_sd", "_sp"];
-
+_pos = param [0, [0,0,0]];
 _basePositions = [
     [7079.04,12195.7,0.258788],[5436.1,11379.6,3.61993],[6082.19,10867.4,0.884155],[6045.56,10726.9,0],[5427.37,10056,0.315811],
     [5210.55,10363.2,0.752335],[4959.13,10308.9,3.27534],[5057.25,8416.87,0.298096],[4494.28,8309.15,0.937469],[2911.58,5573.61,3.68797],
@@ -17,21 +17,44 @@ _dist = 1500;
 _position = [0, 0, 0];
 _accepted = false;
 _curPos = getPos partizan_ammo;
-while {!_accepted} do {
-	_position = _basePositions call BIS_fnc_selectRandom;;
-	if (_position distance2D (getMarkerPos "aoMarker") > _dist) then {
-		if (_position distance2D (getMarkerPos "sideMarker") > _dist) then {
-			if (_position distance2D (getMarkerPos "priorityMarker") > _dist) then {
-				if (_position distance2D (_curPos) > _dist) then {
-				    _accepted = true;
-				};
-			};
-		};
-	};
+
+if (format ["%1", _pos] == "[0,0,0]") then {
+    while {!_accepted} do {
+        _position = _basePositions call BIS_fnc_selectRandom;;
+        if (_position distance2D (getMarkerPos "aoMarker") > _dist) then {
+            if (_position distance2D (getMarkerPos "sideMarker") > _dist) then {
+                if (_position distance2D (getMarkerPos "priorityMarker") > _dist) then {
+                    if (_position distance2D (_curPos) > _dist) then {
+                        _accepted = true;
+                    };
+                };
+            };
+        };
+    };
+} else {
+    _position = _basePositions select 0;
+    _delta = _position distance2D _pos;
+    {
+        if (_x distance2D _pos < _delta) then {
+            _position = _x;
+            _delta = _position distance2D _pos;
+        };
+    } forEach _basePositions;
 };
+
 _respawnPos = [((_position select 0) + random 3),((_position select 1) + random 3),_position select 2];
 partizan_ammo setPos _position;
 "respawn_guerrila" setMarkerPos _respawnPos;
 "partizan_base" setMarkerPos _position;
 ["partizan_base", 0] remoteExec ["setMarkerAlphaLocal", west];
 partizan_chemlight setPos _position;
+
+if !(isNil "PARTIZAN_BASE_SCORE") then {
+    if (PARTIZAN_BASE_SCORE > 18) then {
+        _boxes = nearestObjects [_curPos, ["ReammoBox_F"], 50];
+        {
+            _newPos = [_respawnPos, 5, 50, 2, 0, 10, 0, [], []] call QS_fnc_findSafePos;
+            _x setPos _newPos;
+        } forEach _boxes;
+    };
+};

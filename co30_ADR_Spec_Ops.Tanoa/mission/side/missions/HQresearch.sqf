@@ -80,6 +80,17 @@ try {
     ["setInfo",["side_position", _position], 0] remoteExec ["sqlServerCall", 2];
 } catch {};
 
+if !(isNil "PARTIZAN_BASE_SCORE") then {
+    if (PARTIZAN_BASE_SCORE > 33) then {
+        _taskMarker = createMarker ["TASK_MARKER1", [0,0]];
+        _taskMarker setMarkerColor "ColorRed";
+        _taskMarker setMarkerType "mil_dot";
+        [_taskMarker, 0] remoteExec ["setMarkerAlphaLocal", west, true];
+        [_taskMarker, 1] remoteExec ["setMarkerAlphaLocal", resistance, true];
+        _taskMarker setMarkerPos (getPos sideObj);
+    };
+};
+
 // [ CORE LOOPS ]
 while { sideMissionUp } do {
 
@@ -125,6 +136,7 @@ while { sideMissionUp } do {
 		sideMissionUp = false; publicVariable "sideMissionUp";
 
 		// DELETE
+		deleteMarker "TASK_MARKER1";
 		sleep 120;
 		{ deleteVehicle _x } forEach [sideObj, veh];
 		deleteVehicle nearestObject [getPos sideObj, "Land_Research_HQ_ruins_F"];

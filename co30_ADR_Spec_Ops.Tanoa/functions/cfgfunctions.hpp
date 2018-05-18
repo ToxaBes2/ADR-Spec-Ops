@@ -24,7 +24,7 @@ class QS
 		class EWattack {};
 		class FillBots {};
 		class FillCargoPatrol {};
-		class FindPosBuilding {};
+		class FindPosBuilding {};		
 		class HandleIncomingMissile {};
 		class HMDLaserTarget {};
 		class PTenemyEAST {};
@@ -97,6 +97,7 @@ class QS
 		class garrisonFortFIA {};
 		class garrisonFortIND {};
 		class getBots {};
+		class getPartizans {};
 		class getCargoData {};
 		class getMainAO {};
 		class getRewardsData {};
@@ -129,6 +130,8 @@ class QS
 		class spawnViper {};
 		class strobeUse {};
 		class taskMaxDistPatrol {};
+		class ugv1 {};
+		class ugv2 {};
 		class uh80Turret {};
 		class uh80TurretActions {};		
 		class updateBaseBlufor {};

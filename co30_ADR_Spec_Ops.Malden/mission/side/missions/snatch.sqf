@@ -405,6 +405,17 @@ try {
     ["setInfo",["spec_position", _position], 0] remoteExec ["sqlServerCall", 2];
 } catch {};
 
+if !(isNil "PARTIZAN_BASE_SCORE") then {
+    if (PARTIZAN_BASE_SCORE > 33) then {
+        _taskMarker = createMarker ["TASK_MARKER1", [0,0]];
+        _taskMarker setMarkerColor "ColorRed";
+        _taskMarker setMarkerType "mil_dot";
+        [_taskMarker, 0] remoteExec ["setMarkerAlphaLocal", west, true];
+        [_taskMarker, 1] remoteExec ["setMarkerAlphaLocal", resistance, true];
+        _taskMarker setMarkerPos (getPos heliSnatch);
+    };
+};
+
 while { sideMissionUp } do {
     sleep 2;
 
@@ -439,7 +450,7 @@ while { sideMissionUp } do {
         {
             deleteVehicle _x;
         } forEach _nearestMines;
-
+        deleteMarker "TASK_MARKER1";
         sleep 120;
         {
             [_x] call QS_fnc_TBdeleteObjects;

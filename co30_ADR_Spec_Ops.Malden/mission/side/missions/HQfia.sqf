@@ -83,6 +83,17 @@ try {
     ["setInfo",["side_position", _position], 0] remoteExec ["sqlServerCall", 2];
 } catch {};
 
+if !(isNil "PARTIZAN_BASE_SCORE") then {
+    if (PARTIZAN_BASE_SCORE > 33) then {
+        _taskMarker = createMarker ["TASK_MARKER1", [0,0]];
+        _taskMarker setMarkerColor "ColorRed";
+        _taskMarker setMarkerType "mil_dot";
+        [_taskMarker, 0] remoteExec ["setMarkerAlphaLocal", west, true];
+        [_taskMarker, 1] remoteExec ["setMarkerAlphaLocal", resistance, true];
+        _taskMarker setMarkerPos (getPos sideObj);
+    };
+};
+
 while { sideMissionUp } do {
 
 	// IF PACKAGE DESTROYED [FAIL]
@@ -124,6 +135,7 @@ while { sideMissionUp } do {
 
 		// DELETE
 		sleep 120;
+		deleteMarker "TASK_MARKER1";
 		{ deleteVehicle _x } forEach [sideObj, tower1, tower2, tower3];
 		deleteVehicle nearestObject [getPos sideObj, "Land_Cargo_HQ_V2_ruins_F"];
 		[_enemiesArray] call QS_fnc_TBdeleteObjects;

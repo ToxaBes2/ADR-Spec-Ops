@@ -185,6 +185,17 @@ try {
     ["setInfo",["prio_position", _position], 0] remoteExec ["sqlServerCall", 2];
 } catch {};
 
+if !(isNil "PARTIZAN_BASE_SCORE") then {
+    if (PARTIZAN_BASE_SCORE > 33) then {
+        _taskMarker = createMarker ["TASK_MARKER1", [0,0]];
+        _taskMarker setMarkerColor "ColorRed";
+        _taskMarker setMarkerType "mil_dot";
+        [_taskMarker, 0] remoteExec ["setMarkerAlphaLocal", west, true];
+        [_taskMarker, 1] remoteExec ["setMarkerAlphaLocal", resistance, true];
+        _taskMarker setMarkerPos (getPos priorityObj1);
+    };
+};
+
 // 8. CORE LOOP
 waitUntil{sleep 1; !isNil "currentAOUp"};
 _loopVar = TRUE;
@@ -267,4 +278,5 @@ while {_loopVar} do {
 	};
 	sleep 5;
 };
+deleteMarker "TASK_MARKER1";
 [_fuzzyPos, 500] call QS_fnc_DeleteEnemyEAST;

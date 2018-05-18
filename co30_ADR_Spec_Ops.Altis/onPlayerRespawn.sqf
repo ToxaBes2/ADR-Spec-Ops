@@ -19,6 +19,12 @@ if (typeOf player in ["I_G_engineer_F"]) then {
     if (PARTIZAN_BASE_SCORE > 12) then {
         player addAction ["<t color='#D8D80E'>Вызвать дартер с минами</t>", QS_fnc_darterAPmine, 0, -99, false, true];
     }; 
+    if (PARTIZAN_BASE_SCORE > 21) then {
+        player addAction ["<t color='#D8D80E'>Вызвать БПА с турелями</t>", QS_fnc_ugv1, 0, -99, false, true];
+    };
+    if (PARTIZAN_BASE_SCORE > 30) then {
+        player addAction ["<t color='#D8D80E'>Вызвать БПА с ПТ/ПВО</t>", QS_fnc_ugv2, 0, -99, false, true];
+    };
 };
 
 if (playerSide == resistance) then {
@@ -240,6 +246,16 @@ if (playerSide == west) then {
     "P1_8" setMarkerAlphaLocal 0;
     "level_blufor" setMarkerAlphaLocal 1;
     "level_resistance" setMarkerAlphaLocal 0;
+    "AVANPORST_MARKER" setMarkerAlphaLocal 0;
+    "RADIOTOWER_MARKER" setMarkerAlphaLocal 0;
+    "COMMANDCENTER_MARKER" setMarkerAlphaLocal 0;
+    "TASK_MARKER1" setMarkerAlphaLocal 0;
+    "TASK_MARKER2" setMarkerAlphaLocal 0;
+    "TASK_MARKER3" setMarkerAlphaLocal 0;
+    "PARTIZAN_CACHE1" setMarkerAlphaLocal 0;
+    "PARTIZAN_CACHE2" setMarkerAlphaLocal 0;
+    "PARTIZAN_CACHE3" setMarkerAlphaLocal 0;
+    "PARTIZAN_CACHE4" setMarkerAlphaLocal 0;
 } else {
     "partizan_base" setMarkerAlphaLocal 1;
 	"partizan_vehicle" setMarkerAlphaLocal 1;
@@ -271,6 +287,16 @@ if (playerSide == west) then {
     "P1_8" setMarkerAlphaLocal 1;
     "level_blufor" setMarkerAlphaLocal 0;
     "level_resistance" setMarkerAlphaLocal 1;
+    "AVANPORST_MARKER" setMarkerAlphaLocal 1;
+    "RADIOTOWER_MARKER" setMarkerAlphaLocal 1;
+    "COMMANDCENTER_MARKER" setMarkerAlphaLocal 1;
+    "TASK_MARKER1" setMarkerAlphaLocal 1;
+    "TASK_MARKER2" setMarkerAlphaLocal 1;
+    "TASK_MARKER3" setMarkerAlphaLocal 1;
+    "PARTIZAN_CACHE1" setMarkerAlphaLocal 1;
+    "PARTIZAN_CACHE2" setMarkerAlphaLocal 1;
+    "PARTIZAN_CACHE3" setMarkerAlphaLocal 1;
+    "PARTIZAN_CACHE4" setMarkerAlphaLocal 1;
 };
 
 // Remove color corrections effects
