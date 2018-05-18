@@ -8,7 +8,7 @@ Contributors: Razgriz33 [AW], Jester [AW], Kamaradski [AW], David [AW], chucky [
 //------------------------- On Load
 author = "ToxaBes";
 onLoadName = "ADR: Spec Ops";
-OnLoadMission = "Altis v0.1.0";
+OnLoadMission = "Altis v0.1.1";
 loadScreen = "media\images\adr_specops_loading.jpg";
 overviewPicture = "media\images\adr_specops_loading.jpg";
 
