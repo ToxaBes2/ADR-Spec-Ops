@@ -57,9 +57,11 @@ if (_t in _strider) then {
 	_u setObjectTextureGlobal [1, '\A3\data_f\vehicles\turret_co.paa'];
 };
 
-if(_t in _mh9) then {
-	_u addWeapon "CMFlareLauncher";
+
+if(_u isKindOf "Air") then {
+	_u removeWeapon "CMFlareLauncher";
 	_u addMagazine "240Rnd_CMFlare_Chaff_Magazine";
+	_u addWeapon "CMFlareLauncher";	
 };
 
 //if(_t in _huron) then {

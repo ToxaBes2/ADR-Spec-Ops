@@ -71,9 +71,10 @@ call {
     	_u setObjectTextureGlobal [1, "\A3\data_f\vehicles\turret_co.paa"];
     };
 
-    if(_t in _mh9) exitWith {
-    	_u addWeapon "CMFlareLauncher";
-    	_u addMagazine "240Rnd_CMFlare_Chaff_Magazine";
+    if(_u isKindOf "Air") then {
+        _u removeWeapon "CMFlareLauncher";
+        _u addMagazine "240Rnd_CMFlare_Chaff_Magazine";
+        _u addWeapon "CMFlareLauncher"; 
     };
 
     if(_t in _hellcats) exitWith {
