@@ -74,7 +74,8 @@ call {
     if(_u isKindOf "Air") then {
         _u removeWeapon "CMFlareLauncher";
         _u addMagazine "240Rnd_CMFlare_Chaff_Magazine";
-        _u addWeapon "CMFlareLauncher"; 
+        _u addWeapon "CMFlareLauncher";
+        _u addMagazine "240Rnd_CMFlare_Chaff_Magazine";
     };
 
     if(_t in _hellcats) exitWith {

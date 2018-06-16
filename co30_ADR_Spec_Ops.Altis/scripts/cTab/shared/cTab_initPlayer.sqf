@@ -8,6 +8,8 @@
 if (!hasInterface) exitWith {};
 if !(typeOf player in ["B_Soldier_SL_F", "B_T_Soldier_SL_F"]) exitWith {};
 
+systemChat ('Командирский планшет: "Shift+M"');
+
 // keys.sqf parses the userconfig
 #include "..\functions\keys.sqf"
 #include "..\shared\cTab_gui_macros.hpp"

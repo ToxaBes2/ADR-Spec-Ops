@@ -9,13 +9,17 @@ _allowedComanders = ["B_Soldier_SL_F", "B_T_Soldier_SL_F", "I_G_Soldier_LAT_F", 
 _allowedBluforCommanders = ["B_Soldier_SL_F", "B_T_Soldier_SL_F"];
 _player = typeOf player;
 
-//if (_dikCode in (actionKeys "ShowMap")) then {
-//    if (_player in _allowedBluforCommanders) exitWith {
-//        [0,"cTab_Tablet_dlg",player,vehicle player] call cTab_fnc_open;
-//        _handled = true;
-//        _handled;
-//    };
-//};
+if (_dikCode in (actionKeys "ShowMap") && _shift) then {
+    if (_player in _allowedBluforCommanders) exitWith {
+        if (isNil "cTabIfOpen") then {
+            [0,"cTab_Tablet_dlg",player,vehicle player] call cTab_fnc_open;
+        } else {
+            [] call cTab_fnc_close;
+        };
+        _handled = true;
+        _handled;
+    };
+};
 
 if (!_shift && !_ctrlKey && !_alt) then {
     if (_dikCode in (actionKeys "ShowMap")) then {

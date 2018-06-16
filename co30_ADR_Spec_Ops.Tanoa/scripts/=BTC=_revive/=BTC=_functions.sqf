@@ -861,7 +861,7 @@ BTC_fnc_wait_for_revive =
 	WaitUntil {animationstate player == "AinjPpneMstpSnonWrflDnon"};
 	_pos = getPos player;
 	if (BTC_injured_marker == 1) then {BTC_marker_pveh = [0,BTC_side,_pos,_unit];publicVariable "BTC_marker_pveh";};
-	BTC_r_timeout = serverTime + BTC_revive_time_max;
+	BTC_r_timeout = time + BTC_revive_time_max;
 	private ["_id","_lifes"];
 	BTC_respawn_cond = false;
 	if (BTC_black_screen == 0 && BTC_disable_respawn == 0) then {if (BTC_action_respawn == 0) then {disableSerialization;_dlg = createDialog "BTC_respawn_button_dialog";} else {_id = player addAction [("<t color=""#ED2744"">") + ("Respawn") + "</t>","scripts\=BTC=_revive\=BTC=_addAction.sqf",[[],BTC_player_respawn], 9, true, true, "", "true"];};};
@@ -887,7 +887,7 @@ BTC_fnc_wait_for_revive =
         lbSetCurSel [12, 0];
         ctrlShow [12, true];
     };
-	while {format ["%1", player getVariable "BTC_need_revive"] == "1" && serverTime < BTC_r_timeout && !BTC_respawn_cond} do
+	while {format ["%1", player getVariable "BTC_need_revive"] == "1" && time < BTC_r_timeout && !BTC_respawn_cond} do
 	{	    
 		if (BTC_disable_respawn == 0) then {
 			if (BTC_black_screen == 1 || (BTC_black_screen == 0 && BTC_action_respawn == 0)) then {
@@ -926,7 +926,7 @@ BTC_fnc_wait_for_revive =
 	};
 	//diag_log text format ["WHY!!!",""];diag_log text format ["%1 %2 %3",format ["%1", player getVariable "BTC_need_revive"] == "1" , time < BTC_r_timeout , !BTC_respawn_cond];
 	closedialog 0;
-	if (serverTime > BTC_r_timeout && format ["%1", player getVariable "BTC_need_revive"] == "1") then
+	if (time > BTC_r_timeout && format ["%1", player getVariable "BTC_need_revive"] == "1") then
 	{
 		player setDamage 1;
 	};
@@ -1115,7 +1115,7 @@ BTC_first_aid =
 		waitUntil {animationState player == "ainvpknlmstpsnonwrfldnon_medic0s"};
 
 		// Get the start time
-		_t = serverTime;
+		_t = time;
 
 		// Create progress bar
 		with uiNamespace do {
@@ -1140,7 +1140,7 @@ BTC_first_aid =
 		};
 		
 		// Break the process if animation is interupted
-		while {serverTime < (_t + _reviveTime)} do {
+		while {time < (_t + _reviveTime)} do {
 		    uiSleep 0.25;
 		    if (animationState player != "ainvpknlmstpsnonwrfldnon_medic0s") then {
 		        ["<t color='#F44336' size = '.48'>Операция прервана</t>", 0, 0.8, 3, 0.5, 0] spawn BIS_fnc_dynamicText;
@@ -1654,7 +1654,7 @@ BTC_check_healer =
 				};
 			} foreach _healers;
 			if !(isNull _healer) then {
-				_msg = format ["Ближайший медик (%1) находится на расстоянии %2м.", name _healer,round(_healer distance _pos)];
+				_msg = format ["Ближайший медик (%1) находится на расстоянии %2м.", name _healer,round(_healer distance2D _pos)];
 			};
 		};
     } else {
@@ -1682,7 +1682,7 @@ BTC_check_healer =
 	        } foreach _veh;
         };
 		if !(isNull _healer) then {
-			_msg = format ["Ближайший игрок (%1) находится на расстоянии %2м.", name _healer,round(_healer distance _pos)];
+			_msg = format ["Ближайший игрок (%1) находится на расстоянии %2м.", name _healer,round(_healer distance2D _pos)];
 		};
     };
 	_msg
@@ -1716,6 +1716,7 @@ BTC_player_respawn = {
 		// Continue the respawn procedure
 		deTach player;
 		player setVariable ["BTC_need_revive",0,true];
+		player setVariable ["BTC_dead_time", nil, true];
 		closeDialog 0;
 		if (BTC_black_screen == 0) then {titleText ["", "BLACK OUT"]; titleFadeOut 1;};
 		sleep 0.2;
