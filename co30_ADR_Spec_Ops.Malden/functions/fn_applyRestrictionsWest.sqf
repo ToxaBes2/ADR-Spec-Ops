@@ -34,7 +34,7 @@ _uavOperator = ["B_engineer_F", "B_T_Engineer_F"];
 
 // AT / MISSILE LAUNCHERS
 _missileSoldiers = ["B_soldier_AT_F","B_T_Soldier_AT_F"];
-_missileSpecialised = ["launch_B_Titan_F","launch_O_Titan_F","launch_I_Titan_F","launch_B_Titan_short_F","launch_O_Titan_short_F","launch_I_Titan_short_F","launch_B_Titan_tna_F","launch_B_Titan_short_tna_F","launch_O_Titan_ghex_F","launch_O_Titan_short_ghex_F","launch_O_Vorona_brown_F"];
+_missileSpecialised = ["launch_Titan_short_F","launch_Titan_F","launch_B_Titan_F","launch_O_Titan_F","launch_I_Titan_F","launch_B_Titan_short_F","launch_O_Titan_short_F","launch_I_Titan_short_F","launch_B_Titan_tna_F","launch_B_Titan_short_tna_F","launch_O_Titan_ghex_F","launch_O_Titan_short_ghex_F","launch_O_Vorona_brown_F"];
 
 // SMALL MISSILE LAUNCHERS
 _missileSmallSoldiers = ["B_soldier_AT_F","B_T_Soldier_AT_F","B_Soldier_SL_F","B_T_Soldier_SL_F"];

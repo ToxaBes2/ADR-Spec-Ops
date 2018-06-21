@@ -58,9 +58,7 @@ if (_t in _strider) then {
 };
 
 
-if(_u isKindOf "Air") then {
-	_u removeWeapon "CMFlareLauncher";
-	_u addMagazine "240Rnd_CMFlare_Chaff_Magazine";
+if(_t in _mh9) then {
 	_u addWeapon "CMFlareLauncher";	
 	_u addMagazine "240Rnd_CMFlare_Chaff_Magazine";
 };
