@@ -8,6 +8,7 @@ _weaponsList = [
     "hgun_Pistol_Signal_F",
     "hgun_P07_F",
     "hgun_Rook40_F",
+    "hgun_P07_khk_F",
     "hgun_P07_snds_F",
     "hgun_Pistol_01_F",
     "hgun_Rook40_snds_F",
@@ -370,6 +371,7 @@ if (BLUFOR_BASE_SCORE > 28) then {
 "muzzle_snds_acp",
 
 // Сошки
+"bipod_01_F_khk",
 "bipod_01_F_blk",
 //"bipod_01_F_mtp",
 //"bipod_01_F_snd",
