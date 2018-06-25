@@ -90,6 +90,7 @@ class QS
 		class deleteOldSMUnits {};
 		class deleteUnits {};
 		class enemyCAS {};
+		class executeRQ {};
 		class findOverwatch {};
 		class findSafePos {};
 		class garage {};
@@ -128,6 +129,8 @@ class QS
 		class setSkill4 {};
 		class spawnReward {};
 		class spawnViper {};
+		class startRQ {};
+		class stopRQ {};
 		class strobeUse {};
 		class taskMaxDistPatrol {};
 		class ugv1 {};

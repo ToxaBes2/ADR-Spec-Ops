@@ -198,6 +198,7 @@ sqlResponse = {
                                 _delay setLightnings _value;
                             };
                             case "fog": {
+                                _value = _value / 2;
                                 _delay setFog _value;
                             };
                         };                       
@@ -241,6 +242,39 @@ sqlResponse = {
                 _scoreBlufor = _queryResult;
             };
             BLUFOR_BASE_SCORE = _scoreBlufor; publicVariable "BLUFOR_BASE_SCORE";
+        };
+        case "setRequest": {
+            ["getRequestId",[], 0] remoteExec ["sqlServerCall", 2];
+        };
+        case "getRequestId": {
+            _queryResult = _queryResult call BIS_fnc_parseNumber;    
+            _last_id = 0;        
+            if !(typeName _queryResult == "ARRAY") then {
+                _last_id = 0;
+            } else {
+                _queryResult = _queryResult select 1;
+                while {typeName _queryResult == "ARRAY"} do {
+                    _queryResult = _queryResult select 0;
+                };
+                _last_id = _queryResult;
+            };
+            missionNamespace setVariable ["LAST_REQUEST_ID", _last_id];
+        };
+        case "getRequest": {
+            _queryResult = call compile _queryResult;  
+            if (isNil "_queryResult") exitWith {};          
+            if (typeName _queryResult == "ARRAY") then {
+                if (count _queryResult > 1) then {
+                    _queryResult = _queryResult select 1; 
+                    if (typeName _queryResult == "ARRAY") then {
+                        if (count _queryResult > 0) then {
+                            _queryResult = _queryResult select 0;
+                        };
+                    };
+                    //systemChat format ["RQ: %1", _queryResult]; 
+                    [_queryResult] call QS_fnc_executeRQ;    
+                };
+            };
         };
     };           
 };
