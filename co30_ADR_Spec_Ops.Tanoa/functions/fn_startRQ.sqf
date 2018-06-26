@@ -6,11 +6,17 @@ _base = _this select 0;
 _radius = _this select 1;
 _txid = _this param [2, false];
 if (!_txid) then {
-	_rand = random 100000;
-	_time = serverTime;
+	_rand = round (random 100000);
+	_time = round (serverTime);
     _txid = format["TX_ID_%1_%2", _time, _rand];
 };
 missionNamespace setVariable [format["%1", _txid], true];
+
+if (isNil "TRANSACTIONS") then {
+    TRANSACTIONS = [];
+};
+TRANSACTIONS pushBack _txid; publicVariable "TRANSACTIONS";
+
 [_base, _radius, _txid] spawn {
     _base = _this select 0;
     _radius = _this select 1;

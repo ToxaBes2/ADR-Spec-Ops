@@ -38,6 +38,9 @@ try {
     ["setInfo",["main_position", _position], 0] remoteExec ["sqlServerCall", 2];
 } catch {};
 
+// start Red Queen
+_txid = [_positionAO, 750] call QS_fnc_startRQ;
+
 // Color nearby vehicle service markers in grey(inactive) while AO is up
 CURRENT_AO_POSITION = _positionAO; publicVariable "CURRENT_AO_POSITION";
 _serviceMarkers = [];
@@ -422,6 +425,9 @@ AVANPOST_RESPAWN = false; publicVariable "AVANPOST_RESPAWN";
 deleteMarker "AVANPORST_MARKER";
 deleteMarker "RADIOTOWER_MARKER";
 deleteMarker "COMMANDCENTER_MARKER";
+
+// stop Red Queen
+[_txid] call QS_fnc_stopRQ;
 
 // Restore yellow color of nearby vehicle service markers
 CURRENT_AO_POSITION = nil; publicVariable "CURRENT_AO_POSITION";
