@@ -13,7 +13,7 @@ _bluforWList = [
 ];
 
 _resistanceWList = [
-    "hgun_PDW2000_F"
+    "hgun_PDW2000_F","hgun_PDW2000_snds_F","hgun_PDW2000_Holo_F","hgun_PDW2000_Holo_snds_F"
 ];
 
 _opforWList = [

@@ -130,6 +130,7 @@ _null = player addEventHandler ["Fired", {
     if (_this select 4 == "DemoCharge_Remote_Ammo") then {
         [_this select 0] call C4_Attach;
     };
+    [[_this select 6], "scripts\flares.sqf"] remoteExec ["BIS_fnc_execVM", 0, true];
 }];
 
 if (typeOf player in ["I_C_Soldier_Para_3_F","I_C_Soldier_Para_5_F","I_C_Soldier_Para_8_F"]) then {
