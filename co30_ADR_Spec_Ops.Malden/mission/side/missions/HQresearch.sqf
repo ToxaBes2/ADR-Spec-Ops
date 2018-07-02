@@ -73,6 +73,9 @@ sideMarkerText = "Шпионаж"; publicVariable "sideMarkerText";
 sideMissionUp = true; publicVariable "sideMissionUp";
 SM_SUCCESS = false; publicVariable "SM_SUCCESS";
 
+// start Red Queen
+_txid = [_flatPos, 400] call QS_fnc_startRQ;
+
 // save info in DB
 try {
     _position = format ["%1,%2", floor (_fuzzyPos select 0), floor (_fuzzyPos select 1)];
@@ -134,6 +137,9 @@ while { sideMissionUp } do {
         };
 		{ _x setMarkerPos [-10000, -10000, -10000]; } forEach ["sideMarker", "sideCircle"]; publicVariable "sideMarker";
 		sideMissionUp = false; publicVariable "sideMissionUp";
+
+		// stop Red Queen
+        [_txid] call QS_fnc_stopRQ;
 
 		// DELETE
 		deleteMarker "TASK_MARKER1";

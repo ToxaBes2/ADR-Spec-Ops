@@ -40,7 +40,7 @@ TRANSACTIONS pushBack _txid; publicVariable "TRANSACTIONS";
                     if (vehicle _leader isKindOf "LandVehicle") then {
                         _distance = 650 + random 50;
                     };
-                    if (vehicle _leader isKindOf "Air") then {
+                    if (vehicle _leader isKindOf "Helicopter") then {
                         _distance = 950 + random 50;
                     };                                                       
                     _targets = nearestObjects [_leader, ["Man","LandVehicle","Air"], _distance]; 
@@ -72,7 +72,7 @@ TRANSACTIONS pushBack _txid; publicVariable "TRANSACTIONS";
                         };
                     };
                 };
-                if (vehicle _leader isKindOf "Air") then {
+                if (vehicle _leader isKindOf "Helicopter") then {
                     _forceGroup set [3, 1];
                 };               
                 if (vehicle _leader isKindOf "StaticMortar") then {

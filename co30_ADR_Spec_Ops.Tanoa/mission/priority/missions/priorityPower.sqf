@@ -129,6 +129,9 @@ _bots = _fuzzyPos nearObjects ["Man", 600];
 	};
 } forEach _bots;
 
+// start Red Queen
+_txid = [_flatPos, 400] call QS_fnc_startRQ;
+
 // save info in DB
 try {
     _position = format ["%1,%2", floor (_fuzzyPos select 0), floor (_fuzzyPos select 1)];
@@ -191,6 +194,9 @@ while {currentAOUp} do {
 };
 EW_ATTACK = false; publicVariable "EW_ATTACK";
 { _x setMarkerPos [-10000, -10000, -10000] } forEach ["priorityMarker","priorityCircle"]; publicVariable "priorityMarker";
+
+// stop Red Queen
+[_txid] call QS_fnc_stopRQ;
 
 deleteMarker "TASK_MARKER1";
 

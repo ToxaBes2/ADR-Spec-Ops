@@ -105,6 +105,9 @@ _fuzzyPos = [((_flatPos select 0) - 300) + (random 600), ((_flatPos select 1) - 
 _guardsGroup = [_fuzzyPos, 300, 15, ENEMY_SIDE] call QS_fnc_FillBots;
 _enemiesArray = _enemiesArray + [_guardsGroup];
 
+// start Red Queen
+_txid = [_flatPos, 400] call QS_fnc_startRQ;
+
 // 7. BRIEF
 { _x setMarkerPos _fuzzyPos; } forEach ["priorityMarker", "priorityCircle"];
 priorityTargetText = "Артиллерия"; publicVariable "priorityTargetText";
@@ -212,6 +215,9 @@ _completeText = "<t align='center' size='2.2'>Внимание</t><br/><t size='
 GlobalHint = _completeText; hint parseText _completeText; publicVariable "GlobalHint";
 showNotification = ["CompletedPriorityTarget", ["Артиллерия нейтрализована", "\a3\ui_f\data\gui\cfg\hints\artillerycall_ca.paa"]]; publicVariable "showNotification";
 { _x setMarkerPos [-10000, -10000, -10000] } forEach ["priorityMarker","priorityCircle"]; publicVariable "priorityMarker";
+
+// stop Red Queen
+[_txid] call QS_fnc_stopRQ;
 
 // DELETE
 { _x removeEventHandler ["Fired", 0]; } forEach [priorityObj1, priorityObj2];

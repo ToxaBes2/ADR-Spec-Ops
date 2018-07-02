@@ -68,6 +68,9 @@ sideMarkerText = "Прототип"; publicVariable "sideMarkerText";
 "sideMarker" setMarkerText "Допзадание: Прототип"; publicVariable "sideMarker";
 publicVariable "sideObj";
 
+// start Red Queen
+_txid = [_flatPos, 400] call QS_fnc_startRQ;
+
 _briefing = "<t align='center'><t size='2.2'>Допзадание</t><br/><t size='1.5' color='#FFC107'>Прототип</t><br/>____________________<br/>Вражеские силы взяли на испытание новый прототип боевого вертолёта, который они скрывают в одном из своих ангаров.<br/><br/>Ваша задача — выдвинуться в указанный район, захватить данные о вертолёте и уничтожить прототип.</t>";
 GlobalHint = _briefing; hint parseText _briefing; publicVariable "GlobalHint";
 showNotification = ["NewSideMission", "Прототип"]; publicVariable "showNotification";
@@ -133,6 +136,9 @@ while { sideMissionUp } do {
         };
 		{ _x setMarkerPos [-10000, -10000, -10000]; } forEach ["sideMarker", "sideCircle"]; publicVariable "sideMarker";
 		sideMissionUp = false; publicVariable "sideMissionUp";
+
+		// stop Red Queen
+        [_txid] call QS_fnc_stopRQ;
 
 		// DELETE
 		deleteMarker "TASK_MARKER1";

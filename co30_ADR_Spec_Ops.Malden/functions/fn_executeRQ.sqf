@@ -55,7 +55,7 @@ if (count _order > 7) then {
                     };
                 };
             };
-            if (vehicle _leader isKindOf "Air") then {
+            if (vehicle _leader isKindOf "Helicopter") then {
                 if (isNull _nearestAirGroup) then {
                     _nearestAirGroup = _x;
                 } else {
@@ -77,11 +77,12 @@ if (count _order > 7) then {
             }; 
         } forEach _groups;  
 
-        if (_infantry == 1 && !isNull _nearestInfantryGroup) then {
+        if (_infantry == 1 && !isNull _nearestInfantryGroup) then {            
             while {(count (waypoints _nearestInfantryGroup)) > 0} do {
 		        deleteWaypoint ((waypoints _nearestInfantryGroup) select 0);
 	        };
             [_nearestInfantryGroup, _attackPos] call BIS_fnc_taskAttack;
+            [_nearestInfantryGroup, 150] spawn QS_fnc_patrol;
         };
 
         if (_light_vehs == 1 && !isNull _nearestLighVehsGroup) then {
@@ -89,6 +90,7 @@ if (count _order > 7) then {
 		        deleteWaypoint ((waypoints _nearestLighVehsGroup) select 0);
 	        };
             [_nearestLighVehsGroup, _attackPos] call BIS_fnc_taskAttack;
+            [_nearestLighVehsGroup, 250] spawn QS_fnc_patrol;
         };
 
         if (_heavy_vehs == 1 && !isNull _nearestHeavyVehsGroup) then {
@@ -96,6 +98,7 @@ if (count _order > 7) then {
 		        deleteWaypoint ((waypoints _nearestHeavyVehsGroup) select 0);
 	        };
             [_nearestHeavyVehsGroup, _attackPos] call BIS_fnc_taskAttack;
+            [_nearestHeavyVehsGroup, 250] spawn QS_fnc_patrol;
         };
 
         if (_air == 1 && !isNull _nearestAirGroup) then {
@@ -103,6 +106,7 @@ if (count _order > 7) then {
 		        deleteWaypoint ((waypoints _nearestAirGroup) select 0);
 	        };
             [_nearestAirGroup, _attackPos] call BIS_fnc_taskAttack;
+            [_nearestAirGroup, 500] spawn QS_fnc_patrol;
         };
 
         if (_mortar == 1 && !isNull _nearestMortarGroup) then {

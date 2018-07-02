@@ -36,6 +36,9 @@ _smPos = getMarkerPos currentSM;
 sleep 1;
 _object setPosATL _smPos;
 
+// start Red Queen
+_txid = [_smPos, 400] call QS_fnc_startRQ;
+
 _sideGroup1 = [_smPos, 50, 20, ENEMY_SIDE] call QS_fnc_FillBots;
 _sideGroup2 = [_smPos, 350, 40, ENEMY_SIDE] call QS_fnc_FillBots;
 sleep 1;
@@ -79,6 +82,9 @@ if (WIN_WEST > WIN_GUER) then {
     [3] spawn QS_fnc_partizanSUCCESS;
 };
 "sideMarker" setMarkerPos [-10000, -10000, -10000]; publicVariable "sideMarker";
+
+// stop Red Queen
+[_txid] call QS_fnc_stopRQ;
 
 // DELETE, DESPAWN, HIDE and RESET
 SM_SUCCESS = false; publicVariable "SM_SUCCESS";

@@ -179,6 +179,9 @@ priorityObj1 allowDamage true;
 priorityObj2 allowDamage true;
 ammoTruck allowDamage true;
 
+// start Red Queen
+_txid = [_flatPos, 400] call QS_fnc_startRQ;
+
 // save info in DB
 try {
     _position = format ["%1,%2", floor (_fuzzyPos select 0), floor (_fuzzyPos select 1)];
@@ -264,6 +267,9 @@ while {_loopVar} do {
 			GlobalHint = _completeText; hint parseText _completeText; publicVariable "GlobalHint";
 			showNotification = ["CompletedPriorityTarget", ["Зенитная батарея нейтрализована", "\a3\ui_f\data\gui\cfg\hints\target_ca.paa"]]; publicVariable "showNotification";
 			{_x setMarkerPos [-10000, -10000, -10000];} forEach ["priorityMarker","priorityCircle"]; publicVariable "priorityMarker";
+
+            // stop Red Queen
+            [_txid] call QS_fnc_stopRQ;
 
 			// 10. DELETE
 			{

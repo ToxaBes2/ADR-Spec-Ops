@@ -68,6 +68,9 @@ GlobalHint = _briefing; hint parseText GlobalHint; publicVariable "GlobalHint";
 showNotification = ["NewSideMission", "Пусковые установки"]; publicVariable "showNotification";
 sideMarkerText = "Система ПВО"; publicVariable "sideMarkerText";
 
+// start Red Queen
+_txid = [_flatPos, 400] call QS_fnc_startRQ;
+
 // [ CORE LOOPS ]
 sideMissionUp = true; publicVariable "sideMissionUp";
 SM_SUCCESS = false; publicVariable "SM_SUCCESS";
@@ -128,6 +131,9 @@ while { sideMissionUp } do {
             [3] spawn QS_fnc_partizanSUCCESS;
         };
 		{ _x setMarkerPos [-10000, -10000, -10000]; } forEach ["sideMarker", "sideCircle"]; publicVariable "sideMarker";
+
+		// stop Red Queen
+        [_txid] call QS_fnc_stopRQ;
 
 		// DELETE
 		deleteMarker "TASK_MARKER1";

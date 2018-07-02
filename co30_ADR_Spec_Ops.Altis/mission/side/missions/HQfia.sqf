@@ -67,6 +67,9 @@ sideMarkerText = "Лагерь"; publicVariable "sideMarkerText";
 "sideMarker" setMarkerText "Допзадание: Лагерь"; publicVariable "sideMarker";
 publicVariable "sideObj";
 
+// start Red Queen
+_txid = [_flatPos, 400] call QS_fnc_startRQ;
+
 _briefing = "<t align='center'><t size='2.2'>Новое допзадание</t><br/><t size='1.5' color='#FFC107'>Лагерь</t><br/>____________________<br/>Противник проводит подготовку боевиков на территории острова.<br/><br/>Ваша задача — выдвинуться в указанный район, найти и уничтожить врага и захватить их боезапас.</t>";
 GlobalHint = _briefing; hint parseText GlobalHint; publicVariable "GlobalHint";
 showNotification = ["NewSideMission", "Лагерь"]; publicVariable "showNotification";
@@ -132,6 +135,9 @@ while { sideMissionUp } do {
             [3] spawn QS_fnc_partizanSUCCESS;
         };
 		{ _x setMarkerPos [-10000, -10000, -10000]; } forEach ["sideMarker", "sideCircle"]; publicVariable "sideMarker";
+
+		// stop Red Queen
+        [_txid] call QS_fnc_stopRQ;
 
 		// DELETE
 		deleteMarker "TASK_MARKER1";

@@ -103,6 +103,9 @@ sideMarkerText = "Тайник"; publicVariable "sideMarkerText";
 publicVariable "sideMarker";
 publicVariable "sideObj";
 
+// start Red Queen
+_txid = [_flatPos, 400] call QS_fnc_startRQ;
+
 _c4Message = selectRandom ["Заряд установлен! 30 секунд до взрыва.", "C-4 активирован! 30 секунд до детонации.", "Взрывчатка на месте! 30 секунд до взрыва."];
 _briefing = "<t align='center'><t size='2.2'>Допзадание</t><br/><t size='1.5' color='#FFC107'>Тайник</t><br/>____________________<br/>Противник тайно переправляет и складирует значительное количество взрывчатых веществ близи своего прибрежного лагеря.<br/><br/>Ваша задача — выдвинуться в указанный район, найти и обезвредить текущую партию взрывчатки.</t>";
 GlobalHint = _briefing; publicVariable "GlobalHint"; hint parseText GlobalHint;
@@ -170,6 +173,9 @@ while { sideMissionUp } do {
         };
 		{ _x setMarkerPos [-10000, -10000, -10000];} forEach ["sideMarker", "sideCircle"];
 		publicVariable "sideMarker";
+
+		// stop Red Queen
+        [_txid] call QS_fnc_stopRQ;
 
 		// SECONDARY EXPLOSIONS, create a function for this?
 		sleep 10 + (random 10);

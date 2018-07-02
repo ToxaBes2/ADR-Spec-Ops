@@ -109,6 +109,7 @@ class QS
 		class mapBuildings {};
 		class moveToHC {};
 		class openArsenal {};
+		class patrol {};
 		class partizanSUCCESS {};
 		class partizanVehicles {};
 		class pilotCheck {};

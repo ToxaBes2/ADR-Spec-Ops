@@ -179,6 +179,9 @@ _firingMessages = [
 	"Противник начал минометный обстрел нашей базы. В укрытие!"
 ];
 
+// start Red Queen
+_txid = [_flatPos, 400] call QS_fnc_startRQ;
+
 // save info in DB
 try {
     _position = format ["%1,%2", floor (_flatPos select 0), floor (_flatPos select 1)];
@@ -253,6 +256,9 @@ _completeText = "<t align='center' size='2.2'>Внимание</t><br/><t size='
 GlobalHint = _completeText; hint parseText _completeText; publicVariable "GlobalHint";
 showNotification = ["CompletedPriorityTarget", ["Минометы нейтрализованы", "\a3\ui_f\data\gui\cfg\hints\artillerycall_ca.paa"]]; publicVariable "showNotification";
 { _x setMarkerPos [-10000, -10000, -10000] } forEach ["priorityMarker","priorityCircle"]; publicVariable "priorityMarker";
+
+// stop Red Queen
+[_txid] call QS_fnc_stopRQ;
 
 deleteMarker "TASK_MARKER1";
 
