@@ -12,7 +12,7 @@ while {_alive > 0} do {
     if (_alive > 0) then {
     	_leader = leader _curGroup;
     	_hasEnemy = _leader findNearestEnemy _leader;
-        if !(_hasEnemy) then {
+        if (isNull _hasEnemy) then {
             while {(count (waypoints _curGroup)) > 0} do {
                  deleteWaypoint ((waypoints _curGroup) select 0);
             };
