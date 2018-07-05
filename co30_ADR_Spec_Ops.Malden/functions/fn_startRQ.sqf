@@ -160,6 +160,43 @@ TRANSACTIONS pushBack _txid; publicVariable "TRANSACTIONS";
         if (count _targetGroups > 0 && _hasForces) then {
             {
                 _curTarget = _x;
+                _lightVehs = _forceGroup select 1;
+                _heavyVehs = _forceGroup select 2;
+                _air = _forceGroup select 3;
+                _mortar = _forceGroup select 4;
+                _z = _curTarget select 7;
+                if (_z > 20) then {
+                    _mortar = 0;                    
+                };
+                _targetPos = [_curTarget select 5, _curTarget select 6, 0];
+
+                // jungle check
+                _objs = nearestTerrainObjects [_targetPos, ["Tree"], 100];
+                if (count _objs > 200) then {
+                    _lightVehs = 0;
+                    _heavyVehs = 0;
+                    _air = 0;
+                    _mortar = 0;
+                };
+
+                // mountains check
+                _angle = 0;
+                _angles = [0, 45, 90, 135, 180, 225, 270, 315];
+                {
+                    if (_angle <= 20) then {
+                        _ang = _x;
+                        _radGrad = [_targetPos, _ang] call BIS_fnc_terrainGradAngle;
+                        _radGrad = abs _radGrad;
+                        if (_radGrad > _angle) then {
+                            _angle = _radGrad;
+                        };
+                    };
+                } forEach _angles;
+                if (_angle > 20) then {
+                    _heavyVehs = 0;
+                    _mortar = 0;
+                };
+
                 _data = [
                     _curTarget select 5,  // x
                     _curTarget select 6,  // y
@@ -170,10 +207,10 @@ TRANSACTIONS pushBack _txid; publicVariable "TRANSACTIONS";
                     _curTarget select 3,  // air
                     _curTarget select 4,  // survive
                     _forceGroup select 0, // has infantry
-                    _forceGroup select 1, // has light vehs
-                    _forceGroup select 2, // has heavy vehs
-                    _forceGroup select 3, // has air
-                    _forceGroup select 4  // has mortar
+                    _lightVehs,           // has light vehs
+                    _heavyVehs,           // has heavy vehs
+                    _air,                 // has air
+                    _mortar               // has mortar
                 ];
                 ["setRequest", _data, 0] remoteExec ["sqlServerCall", 2];
                 sleep 2;
