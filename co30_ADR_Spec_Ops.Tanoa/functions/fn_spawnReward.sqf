@@ -223,6 +223,8 @@ _vehName = _this select 0;
                         _vehReward setObjectTextureGlobal [_idx, _x];
                         _idx = _idx + 1;
                     } forEach _textures;
+                    _vehReward animate ["wing_fold_l", 1, true]; 
+                    _vehReward animate ["wing_fold_r", 1, true]; 
                 };
                 case "O_Truck_03_device_F": {
                     _vehReward addMPEventHandler ["MPKilled", {            
