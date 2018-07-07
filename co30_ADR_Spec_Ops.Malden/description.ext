@@ -80,6 +80,7 @@ class CfgFunctions
 		#include "functions\cfgfunctions.hpp"			// Integrated I&A functions
 		#include "scripts\taw_vd\CfgFunctions.hpp"		// View distance
 		#include "scripts\cTab\functions\cfgfunctions.hpp"	// cTab functions
+		#include "scripts\AI\cfgfunctions.hpp"          // AI functions
 
 		// Dynamic loadout
 		class DL {

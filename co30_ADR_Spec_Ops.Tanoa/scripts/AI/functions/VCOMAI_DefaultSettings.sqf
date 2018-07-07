@@ -1,170 +1,129 @@
-VCOMAI_Func = 
+Vcm_Settings = 
 {
-//Variable for enabling/disabling skill changes for AI. True is on, False is off.
-VCOM_AISkillEnabled = true;
-//Variable for finding out which config was loaded.
-VCOM_AIConfig = "Mission Folder";
-//Turn this on to see certain debug messages. 1 is on
-VCOM_AIDEBUG = 0;
-//Turn on map markers that track AI movement
-VCOM_UseMarkers = false;
-//Turns off VCOMAI for AI units in a players squad
-NOAI_FOR_PLAYERLEADERS = 1;
-//Will AI garrison static weapons nearby?
-VCOM_STATICGARRISON = 1;
-//How far can the AI hear gunshots from?
-VCOM_HEARINGDISTANCE = 500;
-//Should AI be able to call for artillery. 1 = YES 0 = NO
-VCOM_Artillery = 1;
-//Should we let AI use flanking manuevers? false means they can flank
-VCOM_NOPATHING = false;
-//Should AI use smoke grenades? Besides default A3 behavior?
-VCOM_USESMOKE = true;
-//Chance of AI using grenades
-VCOM_GRENADECHANCE = 40;
-//Should the AI lay mines?
-VCOM_MineLaying = true;
-//Chance of AI to lay a mine.
-VCOM_MineLayChance = 25;
-//AI will automatically disembark from vehicles when in combat.
-VCOM_AIDisembark = true;
-//How low should an AI's mag count be for them to consider finding more ammo? This DOES NOT include the mag loaded in the gun already.
-VCOM_AIMagLimit = 1;
-//Should the rain impact accuracy of AI? DEFAULT = true;
-VCOM_RainImpact = false;
-//How much should rain impact the accuracy of AI? Default = 3. Default formula is -> _WeatherCheck = (rain)/3; "rain" is on a scale from 0 to 1. 1 Being very intense rain.
-VCOM_RainPercent = 3;
-//Should AI and players have an additional layer of suppression that decreases aiming when suppressed? Default = true;
-VCOM_Suppression = true;
-//How much should suppression impact both AI and player aiming? Default is 5. Normal ArmA is 1.
-VCOM_SuppressionVar = 3;
-//Should AI/players be impacted by adrenaline? This provides players and AI with a small speed boost to animations to assist with cover seeking and positioning for a short time. Default = true;
-VCOM_Adrenaline = true;
-//How much of a speed boost should players/AI recieve? Default = 1.35; (1 is ArmA's normal speed).
-VCOM_AdrenalineVar = 1.35;
-//How many AI UNITS can be calculating cover positions at once?
-VCOM_CurrentlyMovingLimit = 5;
-//How many AI UNITS can be suppressing others at once?
-VCOM_CurrentlySuppressingLimit = 10;
+	/*
+		ADDITIONAL COMMANDS
+		(group this) setVariable ["VCM_NOFLANK",true]; //This command will stop the AI squad from executing advanced movement maneuvers.
+		(group this) setVariable ["VCM_NORESCUE",true]; //This command will stop the AI squad from responding to calls for backup.
+		(group this) setVariable ["VCM_TOUGHSQUAD",true]; //This command will stop the AI squad from calling for backup.
+		(group this) setVariable ["Vcm_Disable",true]; //This command will disable Vcom AI on a group entirely.
+		(group this) setVariable ["VCM_DisableForm",true]; //This command will disable AI group from changing formations.	
+		(group this) setVariable ["VCM_Skilldisable",true]; //This command will disable an AI group from being impacted by Vcom AI skill changes.	
+		
+	*/	
 
-//The longer an AI's target stays in 1 location, the more accurate and aware of the target the AI becomes.DEFAULT = [WEST,EAST,CIVILIAN,RESISTANCE];
-VCOM_IncreasingAccuracy = true;
-//VCOM_SideBasedMovement- Remove sides from the array below to force that specific AI side to not execute any advance movement code. (I.E. Moving to reinforce allies, being alerted by distant gunshots and etc). AI with this will still react normally in combat. DEFAULT = [WEST,EAST,CIVILIAN,RESISTANCE];
-VCOM_SideBasedMovement = [WEST,EAST,RESISTANCE];
-//VCOM_SideBasedExecution- Remove sides from the array below to remove that specific AI side from executing any of the VCOMAI scripts at all. DEFAULT = [WEST,EAST,CIVILIAN,RESISTANCE];
-VCOM_SideBasedExecution = [WEST,EAST,RESISTANCE];
-//Distance AI will respond to call of help from each other. 
-VCOM_Unit_AIWarnDistance = 750;
+	Vcm_ActivateAI = true; //Set this to false to disable VcomAI. It can be set to true at any time to re-enable Vcom AI
+	VcmAI_ActiveList = []; //Leave this alone.
+	Vcm_ArtilleryArray = []; //Leave this alone
+	VCM_ARTYENABLE = true; //Enable improved artillery handling.
+	VCM_AIMagLimit = 2; //Number of mags remaining before AI looks for ammo.
+	VCM_Debug = false; //Enable debug mode.
+	VCM_MINECHANCE = 95; //Chance to lay a mine
+	VCM_ARTYLST = []; //List of all AI inside of artillery pieces, leave this alone.
+	VCM_ARTYDELAY = 300; //Delay between squads requesting artillery
+	VCM_ARTYWT = -(VCM_ARTYDELAY);
+	VCM_ARTYET = -(VCM_ARTYDELAY);
+	VCM_ARTYRT = -(VCM_ARTYDELAY);
+	VCM_ARTYSPREAD = 400; //Spread of artillery rounds;	
+	VCM_SIDEENABLED = [west,east,resistance]; //Sides that will activate Vcom AI
+	VCM_RAGDOLL = true; //Should AI ragdoll when hit
+	VCM_RAGDOLLCHC = 10; //CHANCE AI RAGDOLL	
+	VCM_HEARINGDISTANCE = 800; //Distance AI hear unsuppressed gunshots.
+	VCM_WARNDIST = 1000; //How far AI can request help from other groups.
+	VCM_WARNDELAY = 20; //How long the AI have to survive before they can call in for support. This activates once the AI enter combat.
+	VCM_STATICARMT = 300; //How long AI stay on static weapons when initially arming them. This is just for AI WITHOUT static bags. They will stay for this duration when NO ENEMIES ARE SEEN, or their group gets FAR away.	
+	VCM_StealVeh = true; //Will the AI steal vehicles.
+	VCM_AIDISTANCEVEHPATH = 500; //Distance AI check from the squad leader to steal vehicles
+	VCM_ADVANCEDMOVEMENT = true; //True means AI will actively generate waypoints if no other waypoints are generated for the AI group (2 or more). False disables this advanced movements.
+	VCM_FRMCHANGE = true; //AI GROUPS WILL CHANGE FORMATIONS TO THEIR BEST GUESS.
+	VCM_SKILLCHANGE = true; //AI Groups will have their skills changed by Vcom.
+	
+	VCM_ATTACHMENTIGNORE = []; //ADD WEAPON ATTACHMENT CLASSNAMES HERE THAT SHOULD 'NOT' COUNT AS A SUPPRESSOR. VCM_ATTACHMENTIGNORE = ["Atch1","Atch2","Atch3"];
+	
+	//AI SKILL SETTINGS HERE!!!!!!!!!!!!
+	//LOW DIFFICULTY
+	//VCM_AIDIFA = [['aimingAccuracy',0.15],['aimingShake',0.1],['aimingSpeed',0.25],['commanding',1],['courage',1],['endurance',1],['general',0.5],['reloadSpeed',1],['spotDistance',0.8],['spotTime',0.8]];
+		
+	//MEDIUM DIFFICULTY
+	//VCM_AIDIFA = [['aimingAccuracy',0.25],['aimingShake',0.15],['aimingSpeed',0.35],['commanding',1],['courage',1],['endurance',1],['general',1],['reloadSpeed',1],['spotDistance',0.85],['spotTime',0.85]];
+	
+	//HIGH DIFFICULTY
+	VCM_AIDIFA = [['aimingAccuracy',0.3],['aimingShake',0.4],['aimingSpeed',0.5],['commanding',1],['courage',1],['endurance',0.8],['general',0.6],['reloadSpeed',0.6],['spotDistance',0.6],['spotTime',0.6]];
+	
+	//SIDE SPECIFIC
+	VCM_AIDIFWEST =       [['aimingAccuracy',0.3],['aimingShake',0.4],['aimingSpeed',0.5],['commanding',1],['courage',1],['endurance',0.8],['general',0.6],['reloadSpeed',0.6],['spotDistance',0.6],['spotTime',0.6]];
+	VCM_AIDIFEAST =       [['aimingAccuracy',0.3],['aimingShake',0.4],['aimingSpeed',0.5],['commanding',1],['courage',1],['endurance',0.8],['general',0.6],['reloadSpeed',0.6],['spotDistance',0.6],['spotTime',0.6]];
+	VCM_AIDIFRESISTANCE = [['aimingAccuracy',0.3],['aimingShake',0.4],['aimingSpeed',0.5],['commanding',1],['courage',1],['endurance',0.8],['general',0.6],['reloadSpeed',0.6],['spotDistance',0.6],['spotTime',0.6]];
+		
+	VCM_AISIDESPEC =
+	{
+		private _Side = (side (group _this));
+		switch (_Side) do {
+			case west: 
+			{
+				{
+					_this setSkill _x;
+				} forEach VCM_AIDIFWEST;				
+			};
+			case east: 
+			{
+				{
+					_this setSkill _x;
+				} forEach VCM_AIDIFEAST;					
+			}; 
+			case resistance: 
+			{
+				{
+					_this setSkill _x;
+				} forEach VCM_AIDIFRESISTANCE;					
+			}; 
+		};		
+	};
+	
+	
+	VCM_CLASSNAMESPECIFIC = false; //Do you want the AI to have classname specific skill settings?
+	VCM_SIDESPECIFICSKILL = false; //Do you want the AI to have side specific skill settings? This overrides classname specific skills.
+	VCM_SKILL_CLASSNAMES = []; //Here you can assign certain unit classnames to specific skill levels. This will override the AI skill level above.
+	
+	/*
+	EXAMPLE FOR VCM_SKILL_CLASSNAMES
+	
+	VCM_SKILL_CLASSNAMES = [["Classname1",[aimingaccuracy,aimingshake,spotdistance,spottime,courage,commanding,aimingspeed,general,endurance,reloadspeed]],["Classname2",[aimingaccuracy,aimingshake,spotdistance,spottime,courage,commanding,aimingspeed,general,endurance,reloadspeed]]];
+	VCM_SKILL_CLASSNAMES = 	[
+														["B_GEN_Soldier_F",[0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1]],
+														["B_G_Soldier_AR_F",[0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1]]
+													]; 
+	
+	*/
 
-//The following commands are to be left alone, except under rare circumstances.
-MarkerArray = [];
-VcomAI_UnitQueue = [];
-VcomAI_ActiveList = [];
-ArtilleryArray = [];
-//AI ACCURACY SETTINGS - You can change these numbers below
-//Colonel Level AI
-AccuracyFunctionRank6 = {
-_Unit = _this select 0;
-
-_Unit setSkill ["aimingAccuracy", 0.2];
-_Unit setSkill ["aimingShake", 0.4];
-_Unit setSkill ["aimingSpeed", 0.5];
-_Unit setSkill ["commanding", 0.5];
-_Unit setSkill ["courage", 0.5];
-_Unit setSkill ["endurance", 0.5];
-_Unit setSkill ["general", 0.5];
-_Unit setSkill ["reloadSpeed", 0.8];
-_Unit setSkill ["spotDistance", 0.5];
-_Unit setSkill ["spotTime", 0.5];
-};
-//Major Level AI
-AccuracyFunctionRank5 = {
-_Unit = _this select 0;
-
-_Unit setSkill ["aimingAccuracy", 0.2];
-_Unit setSkill ["aimingShake", 0.4];
-_Unit setSkill ["aimingSpeed", 0.5];
-_Unit setSkill ["commanding", 0.5];
-_Unit setSkill ["courage", 0.5];
-_Unit setSkill ["endurance", 0.5];
-_Unit setSkill ["general", 0.5];
-_Unit setSkill ["reloadSpeed", 0.8];
-_Unit setSkill ["spotDistance", 0.5];
-_Unit setSkill ["spotTime", 0.5];
-};
-//Captain Level AI
-AccuracyFunctionRank4 = {
-_Unit = _this select 0;
-
-_Unit setSkill ["aimingAccuracy", 0.2];
-_Unit setSkill ["aimingShake", 0.4];
-_Unit setSkill ["aimingSpeed", 0.5];
-_Unit setSkill ["commanding", 0.5];
-_Unit setSkill ["courage", 0.5];
-_Unit setSkill ["endurance", 0.5];
-_Unit setSkill ["general", 0.5];
-_Unit setSkill ["reloadSpeed", 0.8];
-_Unit setSkill ["spotDistance", 0.5];
-_Unit setSkill ["spotTime", 0.5];
-};
-//Lieutenant Level AI
-AccuracyFunctionRank3 = {
-_Unit = _this select 0;
-
-_Unit setSkill ["aimingAccuracy", 0.2];
-_Unit setSkill ["aimingShake", 0.4];
-_Unit setSkill ["aimingSpeed", 0.5];
-_Unit setSkill ["commanding", 0.5];
-_Unit setSkill ["courage", 0.5];
-_Unit setSkill ["endurance", 0.5];
-_Unit setSkill ["general", 0.5];
-_Unit setSkill ["reloadSpeed", 0.8];
-_Unit setSkill ["spotDistance", 0.5];
-_Unit setSkill ["spotTime", 0.5];
-};
-//Sergeant Level AI
-AccuracyFunctionRank2 = {
-_Unit = _this select 0;
-
-_Unit setSkill ["aimingAccuracy", 0.2];
-_Unit setSkill ["aimingShake", 0.4];
-_Unit setSkill ["aimingSpeed", 0.5];
-_Unit setSkill ["commanding", 0.5];
-_Unit setSkill ["courage", 0.5];
-_Unit setSkill ["endurance", 0.5];
-_Unit setSkill ["general", 0.5];
-_Unit setSkill ["reloadSpeed", 0.8];
-_Unit setSkill ["spotDistance", 0.5];
-_Unit setSkill ["spotTime", 0.5];
-};
-//Corporal Level AI
-AccuracyFunctionRank1 = {
-_Unit = _this select 0;
-
-_Unit setSkill ["aimingAccuracy", 0.2];
-_Unit setSkill ["aimingShake", 0.4];
-_Unit setSkill ["aimingSpeed", 0.5];
-_Unit setSkill ["commanding", 0.5];
-_Unit setSkill ["courage", 0.5];
-_Unit setSkill ["endurance", 0.5];
-_Unit setSkill ["general", 0.5];
-_Unit setSkill ["reloadSpeed", 0.8];
-_Unit setSkill ["spotDistance", 0.5];
-_Unit setSkill ["spotTime", 0.5];
-};
-//Private Level AI
-AccuracyFunctionRank0 = {
-_Unit = _this select 0;
-
-_Unit setSkill ["aimingAccuracy", 0.2];
-_Unit setSkill ["aimingShake", 0.4];
-_Unit setSkill ["aimingSpeed", 0.5];
-_Unit setSkill ["commanding", 0.5];
-_Unit setSkill ["courage", 0.5];
-_Unit setSkill ["endurance", 0.5];
-_Unit setSkill ["general", 0.5];
-_Unit setSkill ["reloadSpeed", 0.8];
-_Unit setSkill ["spotDistance", 0.5];
-_Unit setSkill ["spotTime", 0.5];
-};
+		
+	VCM_AIDIFSET =
+	{
+		{
+			private _unit = _x;
+			_unit setSkill 0.9;
+			_unit allowFleeing 0;			
+			{
+				_unit setSkill _x;
+			} forEach VCM_AIDIFA;
+			
+			
+			if (VCM_CLASSNAMESPECIFIC && {count VCM_SKILL_CLASSNAMES > 0}) then
+			{
+				{
+					if (typeOf _unit isEqualTo (_x select 0)) exitWith
+					{
+						_ClassnameSet = true;
+						_unit setSkill ["aimingAccuracy",((_x select 1) select 0)];_unit setSkill ["aimingShake",((_x select 1) select 1)];_unit setSkill ["spotDistance",((_x select 1) select 2)];_unit setSkill ["spotTime",((_x select 1) select 3)];_unit setSkill ["courage",((_x select 1) select 4)];_unit setSkill ["commanding",((_x select 1) select 5)];	_unit setSkill ["aimingSpeed",((_x select 1) select 6)];_unit setSkill ["general",((_x select 1) select 7)];_unit setSkill ["endurance",((_x select 1) select 8)];_unit setSkill ["reloadSpeed",((_x select 1) select 9)];
+					};
+				} foreach VCM_SKILL_CLASSNAMES;
+			};			
+			
+			if (VCM_SIDESPECIFICSKILL) then
+			{
+				_unit call VCM_AISIDESPEC;
+			};
+			
+		} forEach (units _this);
+	};	
+	
 };
