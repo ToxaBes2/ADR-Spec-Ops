@@ -52,6 +52,8 @@ while { true } do {
         WIN_GUER = 0; publicVariable "WIN_GUER";
         MISSION_START_TIME = time; publicVariable "MISSION_START_TIME";
 	    currentMission = [_mission] spawn {_this call compile preProcessFileLineNumbers format ["mission\side\missions\%1.sqf", _this select 0]};
+	    _side = selectRandom [west, resistance];
+	    [_side] spawn QS_fnc_assaultBase;
 	    waitUntil {
 	    	sleep _loopTimeout;
 	    	scriptDone currentMission;
@@ -70,6 +72,8 @@ while { true } do {
 	if (PARAMS_AO == 1) then {
 		[] spawn QS_fnc_clearInfo;
 	    currentMission = [] spawn {_this call compile preProcessFileLineNumbers "mission\main\missions\AOattack.sqf"};
+	    _side = selectRandom [west, resistance];
+	    [_side] spawn QS_fnc_assaultBase;
 	    _chance = random 10;
         if (_chance < PARAMS_PriorityObjectivesChance) then {
         	sleep (_loopTimeout * 3);

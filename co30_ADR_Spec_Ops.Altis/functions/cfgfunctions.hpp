@@ -10,6 +10,7 @@ class QS
 		class addCurators {};
 		class applyRestrictionsWest {};
 		class applyRestrictionsResistance {};
+		class assaultBase {};
 		class baseDefense {};
 		class clearGarage {};
 		class clearItemsBase {};

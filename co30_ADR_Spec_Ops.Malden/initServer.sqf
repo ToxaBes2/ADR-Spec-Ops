@@ -76,6 +76,7 @@ _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\patrolAA
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\passToHC.sqf"};                                    // Headless clients with balncing 
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\clearObjects.sqf";};                               // Clear objects
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\partizan\cache.sqf";};                             // Partizan Caches
+
 //crossroad disableAI "ANIM";
 enemyCasArray = [];
 enemyCasGroup = createGroup east;
