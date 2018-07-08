@@ -3,6 +3,14 @@ Author: ToxaBes
 Description: attack base
 */
 _side = _this select 0;
+_cnt = 0;
+{
+    if (side _x == _side) then {
+        _cnt = _cnt + 1;
+    };
+} forEach allPlayers;
+if (_cnt == 0) exitWith {};
+
 _dist = 750;
 if (_side == resistance) then {
 	_dist = 450;
