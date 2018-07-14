@@ -143,6 +143,7 @@ while {true} do {
         _heli1 setSlingLoad objNull;            
         _parachute = createVehicle ["B_Parachute_02_F", [100, 100, 200], [], 0, 'FLY'];
         _parachute allowDamage false;
+        sleep 1.5;
         _parachute setPos (getPos _cargo);
         _cargo attachTo [_parachute, [0, 0, -0.4]];            
         while {(count (waypoints _group1)) > 0} do {
