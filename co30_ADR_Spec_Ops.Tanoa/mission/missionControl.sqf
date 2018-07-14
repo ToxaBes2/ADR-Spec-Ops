@@ -54,6 +54,7 @@ while { true } do {
 	    currentMission = [_mission] spawn {_this call compile preProcessFileLineNumbers format ["mission\side\missions\%1.sqf", _this select 0]};
 	    _side = selectRandom [west, resistance];
 	    [_side] spawn QS_fnc_assaultBase;
+	    [] spawn QS_fnc_convoyAir;
 	    waitUntil {
 	    	sleep _loopTimeout;
 	    	scriptDone currentMission;
@@ -74,6 +75,7 @@ while { true } do {
 	    currentMission = [] spawn {_this call compile preProcessFileLineNumbers "mission\main\missions\AOattack.sqf"};
 	    _side = selectRandom [west, resistance];
 	    [_side] spawn QS_fnc_assaultBase;
+	    [] spawn QS_fnc_convoyGround;
 	    _chance = random 10;
         if (_chance < PARAMS_PriorityObjectivesChance) then {
         	sleep (_loopTimeout * 3);

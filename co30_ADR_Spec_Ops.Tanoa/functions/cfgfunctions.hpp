@@ -81,6 +81,8 @@ class QS
 		class conditionPilotRepair {};
 		class conditionUH80TurretActionLock {};
 		class conditionUH80TurretActionUnlock {};
+		class convoyGround {};
+		class convoyAir {};
 		class createAvanpost {};		
 		class createBunker {};
 		class createPartizanBase {};

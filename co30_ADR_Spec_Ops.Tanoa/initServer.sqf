@@ -71,7 +71,6 @@ _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\zbe_cach
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\bridges.sqf"};                  // Custom bridges
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\traffic\traffic.sqf"};          // Civilian traffic system
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\traffic\airsupport.sqf"};       // Blufor air support system 
-_null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\traffic\groundsupport.sqf"};    // Blufor ground support system
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\patrolAA.sqf"};                 // random AA patrols 
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\passToHC.sqf"};                 // Headless clients with balncing 
 _null = [] spawn {_this call compile preProcessFileLineNumbers "scripts\clearObjects.sqf";};            // Clear objects

@@ -8,7 +8,7 @@ class EditorData
 	toggles=1;
 	class ItemIDProvider
 	{
-		nextID=1253;
+		nextID=1254;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={10072.789,62.342873,4037.4868};
-		dir[]={-0.095076323,-0.61474085,-0.78298032};
-		up[]={-0.074102946,0.78872889,-0.61025786};
-		aside[]={-0.99270934,3.1245872e-007,0.12054433};
+		pos[]={7370.9697,112.65564,8760.9541};
+		dir[]={-0.76567823,-0.17430605,0.6191619};
+		up[]={-0.13553861,0.98469239,0.10960273};
+		aside[]={0.62878752,-4.4703484e-008,0.77758181};
 	};
 };
 binarizationWanted=0;
@@ -86,6 +86,7 @@ addons[]=
 	"A3_Structures_F_Argo_Walls_Military",
 	"A3_Structures_F_Naval_Buoys",
 	"A3_Structures_F_Naval_Piers",
+	"cba_xeh",
 	"A3_Boat_F_Gamma_Boat_Civil_01",
 	"A3_Structures_F_EPC_Items_Electronics",
 	"A3_Modules_F",
@@ -433,7 +434,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=775;
+		items=776;
 		class Item0
 		{
 			dataType="Marker";
@@ -22837,7 +22838,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={10066.787,27.993324,4006.5857};
-			angle=3.1588323;
+			angle=3.1588321;
 			class Attributes
 			{
 				condition="this and ((getPos (thisList select 0)) select 2 < 1)";
@@ -22918,7 +22919,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={5504.6836,70.790176,3493.7256};
-			angle=3.3519807;
+			angle=3.3519804;
 			class Attributes
 			{
 				condition="this and ((getPos (thisList select 0)) select 2 < 1)";
@@ -27260,7 +27261,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={7231.1167,169.978,7796.4409};
-				angles[]={-0,4.1935024,0};
+				angles[]={0,4.1935024,0};
 			};
 			side="Empty";
 			flags=4;
@@ -27333,6 +27334,7 @@ class Mission
 			};
 			id=1250;
 			type="Land_RepairDepot_01_civ_F";
+			atlOffset=-0.00010681152;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -27480,6 +27482,62 @@ class Mission
 				{
 					property="allowDamage";
 					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=2;
+			};
+		};
+		class Item775
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={7312.0752,84.725822,8841.5215};
+				angles[]={0.043172773,5.5036688,6.0981274};
+			};
+			areaSize[]={9,0,16};
+			areaIsRectangle=1;
+			flags=1;
+			id=1253;
+			type="ModuleHideTerrainObjects_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="#filter";
+					expression="_this setVariable [""#filter"",_value]";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=15;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="#hideLocally";
+					expression="_this setVariable [""#hideLocally"",_value]";
 					class Value
 					{
 						class data

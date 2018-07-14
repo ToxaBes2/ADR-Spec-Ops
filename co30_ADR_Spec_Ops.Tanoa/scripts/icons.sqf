@@ -188,7 +188,7 @@ QS_fnc_iconDrawEnemyGPS = compileFinal "
 				};
 			};
 		};
-	} count (playableUnits + switchableUnits + allUnitsUav);
+	} count allUnits;
 ";
 
 QS_fnc_iconDrawFriendlyGPS = compileFinal "

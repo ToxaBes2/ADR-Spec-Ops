@@ -18,11 +18,13 @@ if (_side == resistance) then {
 sleep 10;
 _name = worldName;
 _team = "";
+_team2 = "";
 _veh1 = "";
 _veh2 = "";
 if (_name == "Altis") then {
 	if (_side == west) then {
 	    _team = (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "O_InfTeam_AT_Heavy");
+        _team2 = (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfAssault");
 	    _veh1 = selectRandom ["O_LSV_02_armed_F", "O_MRAP_02_gmg_F", "O_MRAP_02_hmg_F"];
         _veh2 = selectRandom ["O_APC_Wheeled_02_rcws_v2_F", "O_APC_Tracked_02_cannon_F", "O_APC_Tracked_02_AA_F","I_APC_Wheeled_03_cannon_F","I_APC_tracked_03_cannon_F"];
 	} else {
@@ -34,6 +36,7 @@ if (_name == "Altis") then {
 if (_name == "Tanoa") then {
 	if (_side == west) then {
 	    _team = (configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "Infantry" >> "O_T_InfTeam_AT_Heavy");
+        _team2 = (configfile >> "CfgGroups" >> "East" >> "OPF_T_F" >> "Infantry" >> "O_T_InfSquad_Weapons");
 	    _veh1 = selectRandom ["O_T_LSV_02_armed_F", "O_T_MRAP_02_hmg_ghex_F", "O_T_MRAP_02_gmg_ghex_F"];
         _veh2 = selectRandom ["O_T_APC_Tracked_02_cannon_ghex_F","O_T_APC_Wheeled_02_rcws_v2_ghex_F", "O_T_APC_Tracked_02_AA_ghex_F","I_APC_Wheeled_03_cannon_F","I_APC_tracked_03_cannon_F"];
 	} else {
@@ -45,6 +48,7 @@ if (_name == "Tanoa") then {
 if (_name == "Malden") then {
 	if (_side == west) then {
 	    _team = (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "O_InfTeam_AT_Heavy");
+        _team2 = (configfile >> "CfgGroups" >> "East" >> "OPF_F" >> "Infantry" >> "OIA_InfAssault");
 	    _veh1 = selectRandom ["O_LSV_02_armed_F", "O_MRAP_02_gmg_F", "O_MRAP_02_hmg_F"];
         _veh2 = selectRandom ["O_APC_Wheeled_02_rcws_v2_F", "O_APC_Tracked_02_cannon_F", "O_APC_Tracked_02_AA_F","I_APC_Wheeled_03_cannon_F","I_APC_tracked_03_cannon_F"];
 	} else {
@@ -69,7 +73,7 @@ if (_score > 9) then {
     _group setCombatMode "RED";
     _group setVariable ["zbe_cacheDisabled", true];
     [(units _group)] call QS_fnc_setSkill4;
-    [_group, _basePos, 150] call BIS_fnc_taskPatrol;
+    [_group, _basePos, 100] call BIS_fnc_taskPatrol;
     _group deleteGroupWhenEmpty true;
     _groups = _groups + [_group];
 };
@@ -87,7 +91,7 @@ if (_score > 19) then {
     [(units _veh1Group)] call QS_fnc_setSkill4;
     _veh1Group deleteGroupWhenEmpty true;
     _groups = _groups + [_veh1Group];
-    [_veh1Group, _basePos, 200] call BIS_fnc_taskPatrol;
+    [_veh1Group, _basePos, 250] call BIS_fnc_taskPatrol;
 };
 if (_score > 29) then {
 	_veh2Group = createGroup east;
@@ -103,7 +107,19 @@ if (_score > 29) then {
     [(units _veh2Group)] call QS_fnc_setSkill4;
     _veh2Group deleteGroupWhenEmpty true;
     _groups = _groups + [_veh2Group];
-    [_veh2Group, _basePos, 300] call BIS_fnc_taskPatrol;
+    [_veh2Group, _basePos, 350] call BIS_fnc_taskPatrol;
+
+    // team 2 is west only
+    if (_side == west) then {
+        _group2 = [_groundPos, EAST, _team2] call BIS_fnc_spawnGroup;
+        _group2 setBehaviour "COMBAT";
+        _group2 setCombatMode "RED";
+        _group2 setVariable ["zbe_cacheDisabled", true];
+        [(units _group2)] call QS_fnc_setSkill4;
+        [_group2, _basePos, 150] call BIS_fnc_taskPatrol;
+        _group2 deleteGroupWhenEmpty true;
+        _groups = _groups + [_group2];
+    };
 };
 sleep 1800;
 {

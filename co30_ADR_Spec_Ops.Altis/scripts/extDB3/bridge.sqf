@@ -170,6 +170,7 @@ sqlResponse = {
                 if (count _queryResult > 1) then {
                     _queryResult = _queryResult select 1; 
                     //diag_log format ["weather result: %1", _queryResult];
+                    _fog = 0;
                     _delay = 1200;
                     {
                         _param = _x select 0;
@@ -199,6 +200,7 @@ sqlResponse = {
                             };
                             case "fog": {
                                 _value = _value / 2;
+                                _fog = _value;
                                 _delay setFog _value;
                             };
                         };                       
@@ -206,10 +208,17 @@ sqlResponse = {
                     simulWeatherSync; 
                     if (lastWeatherTime == 0) then {
                         forceWeatherChange;
+                        if (_fog == 0) then {
+                            0 setFog 0; 
+                        };
                     } else {
-                        _null = [_delay] spawn { 
+                        _null = [_delay, _fog] spawn { 
                             sleep (_this select 0);   
                             forceWeatherChange;
+                            _fog = _this select 1; 
+                            if (_fog == 0) then {
+                                0 setFog 0; 
+                            };
                         };
                     };                    
                 };

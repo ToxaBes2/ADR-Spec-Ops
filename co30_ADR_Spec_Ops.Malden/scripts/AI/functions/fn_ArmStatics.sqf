@@ -1,25 +1,30 @@
 //Function for getting AI in a squad to arm any nearby statics
 
 private _Leader = (leader _this);
-private _Weaps = nearestObjects [_Leader, ["StaticWeapon"], 250];
+private _Weaps = nearestObjects [_Leader, ["StaticWeapon"], 300];
 private _UnitsA = units _this;
 if (count _Weaps < 0) exitWith {};
 private _FA = [];
 {
-private _Unit = [_UnitsA,_x,true,"W1"] call VCM_fnc_ClstObj;
-private _Foot = isNull objectParent _Unit;
-if (_Foot) then
-{
-	if (_Unit distance2D _x < 100) then
-	{
-		_FA pushback [_Unit,_x];
-		private _Del = (_UnitsA findIf {_x isEqualTo _Unit});
-		_UnitsA deleteAt _Del;	
-	};
-};
+    private _Unit = [_UnitsA,_x,true,"W1"] call VCM_fnc_ClstObj;
+    private _Foot = false;
+    
+    if (_Unit isKindOf "Man") then {
+    	_Foot = isNull (objectParent _Unit);
+    };
+    
+    if (_Foot) then
+    {
+    	if (_Unit distance2D _x < 200) then
+    	{
+    		_FA pushback [_Unit,_x];
+    		private _Del = (_UnitsA findIf {_x isEqualTo _Unit});
+    		_UnitsA deleteAt _Del;	
+    	};
+    };
 } foreach _Weaps;
 
-if (count _FA < 0) exitWith {};
+if (count _FA <= 0) exitWith {};
 {
 	_x spawn
 	{
