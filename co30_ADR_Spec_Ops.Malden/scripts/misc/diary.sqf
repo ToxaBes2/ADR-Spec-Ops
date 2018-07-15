@@ -370,10 +370,6 @@ player createDiaryRecord ["credits",
 <font size='14'>
     • 12s
 <br />
-    • evil_c0okie
-<br />
-    • kovt
-<br />
     • Noart
 <br />
     • ToxaBes
